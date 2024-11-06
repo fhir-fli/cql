@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -93,7 +93,7 @@ class Not extends UnaryExpression {
     final operandValue = operand.execute(context);
     if (operandValue == null) {
       return null;
-    } else if (operandValue is FhirBoolean && operandValue.isValid) {
+    } else if (operandValue is FhirBoolean) {
       return FhirBoolean(!operandValue.value!);
     } else if (operandValue is bool) {
       return FhirBoolean(!operandValue);

@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -100,31 +100,24 @@ class Implies extends BinaryExpression {
 
     /// TRUE implies TRUE and FALSE implies anything is TRUE
     if ((left is FhirBoolean &&
-            left.isValid &&
             left.value == true &&
             right is FhirBoolean &&
-            right.isValid &&
             right.value == true) ||
-        (left is FhirBoolean && left.isValid && left.value == false) ||
+        (left is FhirBoolean && left.value == false) ||
         (left == null)) {
       return FhirBoolean(true);
     }
 
     /// TRUE implies FALSE
     if (left is FhirBoolean &&
-        left.isValid &&
         left.value == true &&
         right is FhirBoolean &&
-        right.isValid &&
         right.value == false) {
       return FhirBoolean(false);
     }
 
     /// TRUE implies NULL
-    if (left is FhirBoolean &&
-        left.isValid &&
-        left.value == true &&
-        right == null) {
+    if (left is FhirBoolean && left.value == true && right == null) {
       return null;
     }
 

@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -124,44 +124,37 @@ class Successor extends UnaryExpression {
   static dynamic successor(dynamic value) {
     if (value == null) {
       return null;
-    } else if (value is FhirInteger && value.isValid) {
-      return FhirInteger(value.value! + 1);
-    } else if (value is FhirInteger64 && value.isValid) {
+    } else if (value is FhirInteger ) {
+      return FhirInteger.tryParse(value.value! + 1);
+    } else if (value is FhirInteger64 ) {
       return FhirInteger64(value.value! + BigInt.from(1));
-    } else if (value is FhirDecimal && value.isValid) {
+    } else if (value is FhirDecimal ) {
       return FhirDecimal(value.value! + 0.00000001);
-    } else if (value is FhirDateTimeBase && value.isValid) {
-      switch (value.precision) {
-        case FhirDateTimePrecision.yyyy:
-          return value + ExtendedDuration(days: 1);
-        case FhirDateTimePrecision.yyyy_MM:
-          return value + ExtendedDuration(days: 1);
-        case FhirDateTimePrecision.yyyy_MM_dd:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_Z:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_ZZ:
-          return value + ExtendedDuration(days: 1);
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_Z:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HHZZ:
-          return value + ExtendedDuration(hours: 1);
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_Z:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mmZZ:
-          return value + ExtendedDuration(minutes: 1);
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_Z:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ssZZ:
-          return value + ExtendedDuration(seconds: 1);
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSS_Z:
-        case FhirDateTimePrecision.yyyy_MM_dd_T_HH_mm_ss_SSSZZ:
-        case FhirDateTimePrecision.instant:
-        case FhirDateTimePrecision.dateTime:
-          return value + ExtendedDuration(milliseconds: 1);
-        case FhirDateTimePrecision.invalid:
-          return null;
+    } else if (value is FhirDateTimeBase ) {
+          if (value.yearsPrecision) {
+        return value - ExtendedDuration(years: 1);
       }
-    } else if (value is FhirTime && value.isValid) {
+      if (value.monthsPrecision) {
+        return value - ExtendedDuration(months: 1);
+      }
+      if (value.daysPrecision) {
+        return value - ExtendedDuration(days: 1);
+      }
+
+      if (value.hoursPrecision) {
+        return value - ExtendedDuration(hours: 1);
+      }
+
+      if (value.minutesPrecision) {
+        return value - ExtendedDuration(minutes: 1);
+      }
+      if (value.secondsPrecision) {
+        return value - ExtendedDuration(seconds: 1);
+      }
+
+      return value - ExtendedDuration(milliseconds: 1);
+  
+    } else if (value is FhirTime ) {
       if (value.millisecond != null) {
         return value.plus(milliseconds: 1);
       } else if (value.second != null) {

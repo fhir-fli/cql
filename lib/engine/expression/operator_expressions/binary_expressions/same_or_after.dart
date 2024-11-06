@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -280,7 +280,7 @@ class SameOrAfter extends BinaryExpression {
       return result == null ? null : FhirBoolean(result);
     } else {
       /// Check if years are equal
-      final yearsEqual = left.year >= right.year;
+      final yearsEqual = (left.year ?? 0) >= (right.year ?? 0);
 
       /// If they're not equal, or we're only comparing to the year,
       /// return the result
@@ -290,12 +290,12 @@ class SameOrAfter extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a month, then there isn't enough precision, and we return null
-      else if (!left.precision.hasMonth || !right.precision.hasMonth) {
+      else if (!left.hasMonth || !right.hasMonth) {
         return null;
       }
 
       /// Check if months are equal
-      final monthsEqual = left.month >= right.month;
+      final monthsEqual = (left.month ?? 0) >= (right.month ?? 0);
 
       /// If they're not equal, or we're only comparing to the month,
       /// return the result
@@ -305,12 +305,12 @@ class SameOrAfter extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a day, then there isn't enough precision, and we return null
-      else if (!left.precision.hasDay || !right.precision.hasDay) {
+      else if (!left.hasDay || !right.hasDay) {
         return null;
       }
 
       /// Check if days are equal
-      final daysEqual = left.day >= right.day;
+      final daysEqual = (left.day ?? 0) >= (right.day ?? 0);
 
       /// If they're not equal, or we're only comparing to the day,
       /// return the result
@@ -320,12 +320,12 @@ class SameOrAfter extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have an hour, then there isn't enough precision, and we return null
-      else if (!left.precision.hasHours || !right.precision.hasHours) {
+      else if (!left.hasHours || !right.hasHours) {
         return null;
       }
 
       /// Check if hours are equal
-      final hoursEqual = left.hour >= right.hour;
+      final hoursEqual = (left.hour ?? 0) >= (right.hour ?? 0);
 
       /// If they're not equal, or we're only comparing to the hour,
       /// return the result
@@ -336,12 +336,12 @@ class SameOrAfter extends BinaryExpression {
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a minute, then there isn't enough precision, and we return null
 
-      else if (!left.precision.hasMinutes || !right.precision.hasMinutes) {
+      else if (!left.hasMinutes || !right.hasMinutes) {
         return null;
       }
 
       /// Check if minutes are equal
-      final minutesEqual = left.minute >= right.minute;
+      final minutesEqual = (left.minute ?? 0) >= (right.minute ?? 0);
 
       /// If they're not equal, or we're only comparing to the minute,
       /// return the result
@@ -351,12 +351,12 @@ class SameOrAfter extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a second, then there isn't enough precision, and we return null
-      else if (!left.precision.hasSeconds || !right.precision.hasSeconds) {
+      else if (!left.hasSeconds || !right.hasSeconds) {
         return null;
       }
 
       /// Check if seconds are equal
-      final secondsEqual = left.second >= right.second;
+      final secondsEqual = (left.second ?? 0) >= (right.second ?? 0);
 
       /// If they're not equal, or we're only comparing to the second,
       /// return the result
@@ -367,12 +367,12 @@ class SameOrAfter extends BinaryExpression {
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a millisecond, then there isn't enough precision, and we return
       /// null
-      else if (!left.precision.hasMilliseconds ||
-          !right.precision.hasMilliseconds) {
+      else if (!left.hasMilliseconds || !right.hasMilliseconds) {
         return null;
       } else {
         /// Check if milliseconds are equal
-        final millisecondsEqual = left.millisecond >= right.millisecond;
+        final millisecondsEqual =
+            (left.millisecond ?? 0) >= (right.millisecond ?? 0);
 
         /// We've reached the end of the precision, return the result
         return FhirBoolean(millisecondsEqual);

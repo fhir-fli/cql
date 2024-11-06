@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../cql.dart';
@@ -126,7 +126,7 @@ class PopulationStdDev extends AggregateExpression {
       final double? varianceDouble = double.tryParse(varianceString);
       if (varianceDouble != null) {
         UcumDecimal stdDevValue =
-            UcumDecimal.fromDouble(math.sqrt(varianceDouble));
+            UcumDecimal.fromNum(math.sqrt(varianceDouble));
         return ValidatedQuantity(
             value: stdDevValue, unit: popVarianceResult.unit);
       }

@@ -3,7 +3,7 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_r5/fhir_r5.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../cql.dart';
@@ -953,11 +953,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       List<Type>? lastReturnTypes = operand.last.getReturnTypes(library);
       Type? firstType;
       Type? lastType;
-      if (firstReturnTypes != null && firstReturnTypes.isNotEmpty) {
-        firstType = firstReturnTypes.first;
+      if (firstReturnTypes?.isNotEmpty ?? false) {
+        firstType = firstReturnTypes!.first;
       }
-      if (lastReturnTypes != null && lastReturnTypes.isNotEmpty) {
-        lastType = lastReturnTypes.first;
+      if (lastReturnTypes?.isNotEmpty ?? false) {
+        lastType = lastReturnTypes!.first;
       }
       if (firstType != null && lastType != null) {
         firstType = LiteralType.typeToLiteral(firstType);
@@ -1399,32 +1399,32 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
     codeSystemIndex =
         library.codeSystems?.def.indexWhere((element) => element.name == name);
-    if (codeSystemIndex != null && codeSystemIndex != -1) {
+    if (codeSystemIndex != -1) {
       return CodeSystemRef(name: name, libraryName: libraryName);
     } else {
       valueSetIndex =
           library.valueSets?.def.indexWhere((element) => element.name == name);
-      if (valueSetIndex != null && valueSetIndex != -1) {
+      if (valueSetIndex != -1) {
         return ValueSetRef(name: name, libraryName: libraryName);
       } else {
         codeIndex =
             library.codes?.def.indexWhere((element) => element.name == name);
-        if (codeIndex != null && codeIndex != -1) {
+        if (codeIndex != -1) {
           return CodeRef(name: name, libraryName: libraryName);
         } else {
           conceptIndex = library.concepts?.def
               .indexWhere((element) => element.name == name);
-          if (conceptIndex != null && conceptIndex != -1) {
+          if (conceptIndex != -1) {
             return ConceptRef(name: name, libraryName: libraryName);
           } else {
             parameterIndex = library.parameters?.def
                 .indexWhere((element) => element.name == name);
-            if (parameterIndex != null && parameterIndex != -1) {
+            if (parameterIndex != -1) {
               return ParameterRef(name: name, libraryName: libraryName);
             } else {
               expressionIndex = library.statements?.def
                   .indexWhere((element) => element.name == name);
-              if (expressionIndex != null && expressionIndex != -1) {
+              if (expressionIndex != -1) {
                 return ExpressionRef(name: name, libraryName: libraryName);
               } else {
                 return IdentifierRef(name: name, libraryName: libraryName);

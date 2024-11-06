@@ -1,4 +1,4 @@
-import 'package:fhir_r5/fhir_r5.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../cql.dart';
 
@@ -104,7 +104,7 @@ class Property extends CqlExpression {
           case double _:
             return FhirDecimal(result.first);
           case DateTime _:
-            return FhirDateTime(result.first);
+            return FhirDateTime.fromDateTime(result.first);
           default:
             return result.first;
         }

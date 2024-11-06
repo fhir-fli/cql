@@ -1,5 +1,5 @@
 import 'package:cql/engine/engine.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:flutter_test/flutter_test.dart';
 
 void expandTest() {
@@ -13,13 +13,17 @@ void expandTest() {
       final expand = Expand(operand: [list]);
       final result = expand.execute({});
       final interval2 = CqlInterval(
-          low: FhirDate('2018-01-01'), high: FhirDate('2018-01-01'));
+          low: fhir.FhirDate.fromString('2018-01-01'),
+          high: fhir.FhirDate.fromString('2018-01-01'));
       final interval3 = CqlInterval(
-          low: FhirDate('2018-01-02'), high: FhirDate('2018-01-02'));
+          low: fhir.FhirDate.fromString('2018-01-02'),
+          high: fhir.FhirDate.fromString('2018-01-02'));
       final interval4 = CqlInterval(
-          low: FhirDate('2018-01-03'), high: FhirDate('2018-01-03'));
+          low: fhir.FhirDate.fromString('2018-01-03'),
+          high: fhir.FhirDate.fromString('2018-01-03'));
       final interval5 = CqlInterval(
-          low: FhirDate('2018-01-04'), high: FhirDate('2018-01-04'));
+          low: fhir.FhirDate.fromString('2018-01-04'),
+          high: fhir.FhirDate.fromString('2018-01-04'));
       expect(result, [interval2, interval3, interval4, interval5]);
     });
     test('// expand { Interval[@T10:00, @T12:30] } per hour', () {
@@ -30,16 +34,16 @@ void expandTest() {
       final expand = Expand(operand: [interval1]);
       final result = expand.execute({});
       expect(result, [
-        FhirInteger(1),
-        FhirInteger(2),
-        FhirInteger(3),
-        FhirInteger(4),
-        FhirInteger(5),
-        FhirInteger(6),
-        FhirInteger(7),
-        FhirInteger(8),
-        FhirInteger(9),
-        FhirInteger(10)
+        fhir.FhirInteger(1),
+        fhir.FhirInteger(2),
+        fhir.FhirInteger(3),
+        fhir.FhirInteger(4),
+        fhir.FhirInteger(5),
+        fhir.FhirInteger(6),
+        fhir.FhirInteger(7),
+        fhir.FhirInteger(8),
+        fhir.FhirInteger(9),
+        fhir.FhirInteger(10)
       ]);
     });
   });

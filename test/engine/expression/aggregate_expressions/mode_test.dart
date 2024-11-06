@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ucum/ucum.dart';
 
@@ -19,7 +19,7 @@ void modeTest() {
       );
       final mode = Mode(source: list);
       final result = mode.execute({});
-      expect(result, equals(FhirDecimal(8.0)));
+      expect(result, equals(fhir.FhirDecimal(8.0)));
     });
     test(
         """define "QuantityMode": Mode({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 2.0 'mg' }) // 2.0 'mg'""",
@@ -37,7 +37,7 @@ void modeTest() {
       expect(
           result,
           equals(ValidatedQuantity(
-              value: UcumDecimal.fromDouble(2.0), unit: 'mg')));
+              value: UcumDecimal.fromNum(2.0), unit: 'mg')));
     });
     test(
         'define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })',

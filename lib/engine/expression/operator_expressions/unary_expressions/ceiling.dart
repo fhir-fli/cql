@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -88,11 +88,11 @@ class Ceiling extends UnaryExpression {
     final value = operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirInteger && value.isValid) {
+    } else if (value is FhirInteger) {
       return value;
-    } else if (value is FhirInteger64 && value.isValid) {
-      return FhirInteger(value.value!);
-    } else if (value is FhirDecimal && value.isValid) {
+    } else if (value is FhirInteger64) {
+      return FhirInteger.tryParse(value.value!);
+    } else if (value is FhirDecimal) {
       return FhirInteger(value.value!.ceil());
     } else {
       throw ArgumentError(

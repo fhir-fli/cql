@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -143,7 +143,7 @@ class MaxValue extends CqlExpression {
         return FhirInteger(2147483647);
       case 'FhirInteger64':
       case 'Long':
-        return FhirInteger64('9223372036854775807');
+        return FhirInteger64.fromString('9223372036854775807');
       case 'FhirDecimal':
       case 'Decimal':
         return FhirDecimal(99999999999999999999.99999999);
@@ -155,7 +155,7 @@ class MaxValue extends CqlExpression {
         return FhirDate.fromUnits(year: 9999, month: 12, day: 31);
       case 'FhirDateTime':
       case 'DateTime':
-        return FhirDateTime('9999-12-31T23:59:59.999');
+        return FhirDateTime.fromString('9999-12-31T23:59:59.999');
       case 'FhirTime':
       case 'Time':
         return FhirTime.fromUnits(

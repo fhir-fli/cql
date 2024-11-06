@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ucum/ucum.dart';
 
@@ -28,7 +28,7 @@ void avgTest() {
       expect(
           result,
           equals(ValidatedQuantity(
-              value: UcumDecimal.fromDouble(5.0), unit: 'cm')));
+              value: UcumDecimal.fromNum(5.0), unit: 'cm')));
     });
     test('define "AvgIsNull": Avg(null as List<Decimal>)', () {
       final list = ListExpression(element: [LiteralNull()]);

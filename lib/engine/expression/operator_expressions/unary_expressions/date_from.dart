@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -100,9 +100,9 @@ class DateFrom extends UnaryExpression {
   @override
   FhirDate? execute(Map<String, dynamic> context) {
     final operandValue = operand.execute(context);
-    if (operandValue is FhirDateTimeBase) {
+    if (operandValue is FhirDateTimeBase && operandValue.year != null) {
       return FhirDate.fromUnits(
-        year: operandValue.year,
+        year: operandValue.year!,
         month: operandValue.month,
         day: operandValue.day,
       );

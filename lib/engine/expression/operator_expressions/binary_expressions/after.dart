@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -7,7 +7,7 @@ import '../../../../cql.dart';
 /// Returns true if the starting point of the first interval is greater than
 /// the ending point of the second interval.
 /// If precision is specified and the point type is Date, DateTime, or Time,
-/// comparisons used in the operation are performed at the specified precision.
+/// comparisons used in the operation are performed at the specified 
 /// If either argument is null, the result is null.
 /// Signature:
 ///
@@ -82,7 +82,7 @@ import '../../../../cql.dart';
 ///
 /// If precision is specified and the point type is a Date, DateTime, or Time
 /// type, comparisons used in the operation are performed at the specified
-/// precision.
+/// 
 ///
 /// If either argument is null, the result is null.
 ///
@@ -296,9 +296,9 @@ class After extends BinaryExpression {
       return result == null ? null : FhirBoolean(result);
     } else {
       // Start from the highest precision and go down to the specified one.
-      if (left.year > right.year) {
+      if ((left.year ?? 0) > (right.year ?? 0)) {
         return FhirBoolean(true);
-      } else if (left.year < right.year) {
+      } else if ((left.year ?? 0) < (right.year ?? 0)) {
         return FhirBoolean(false);
       } // Year comparison is equal, move to next precision
       if (precision == CqlDateTimePrecision.year) {
@@ -306,11 +306,11 @@ class After extends BinaryExpression {
             false); // If only comparing years, they are equal at this point.
       }
 
-      if (!left.precision.hasMonth || !right.precision.hasMonth) {
+      if (!left.hasMonth || !right.hasMonth) {
         return null;
-      } else if (left.month > right.month) {
+      } else if ((left.month ?? 0) > (right.month ?? 0)) {
         return FhirBoolean(true);
-      } else if (left.month < right.month) {
+      } else if ((left.month ?? 0) < (right.month ?? 0)) {
         return FhirBoolean(false);
       }
       if (precision == CqlDateTimePrecision.month) {
@@ -318,11 +318,11 @@ class After extends BinaryExpression {
             false); // If only comparing months, they are equal at this point.
       }
 
-      if (!left.precision.hasDay || !right.precision.hasDay) {
+      if (!left.hasDay || !right.hasDay) {
         return null;
-      } else if (left.day > right.day) {
+      } else if (left.day! > right.day!) {
         return FhirBoolean(true);
-      } else if (left.day < right.day) {
+      } else if (left.day! < right.day!) {
         return FhirBoolean(false);
       }
       if (precision == CqlDateTimePrecision.day) {
@@ -330,11 +330,11 @@ class After extends BinaryExpression {
             false); // If only comparing days, they are equal at this point.
       }
 
-      if (!left.precision.hasHours || !right.precision.hasHours) {
+      if (!left.hasHours || !right.hasHours) {
         return null;
-      } else if (left.hour > right.hour) {
+      } else if (left.hour! > right.hour!) {
         return FhirBoolean(true);
-      } else if (left.hour < right.hour) {
+      } else if (left.hour! < right.hour!) {
         return FhirBoolean(false);
       }
 
@@ -343,11 +343,11 @@ class After extends BinaryExpression {
             false); // If only comparing hours, they are equal at this point.
       }
 
-      if (!left.precision.hasMinutes || !right.precision.hasMinutes) {
+      if (!left.hasMinutes || !right.hasMinutes) {
         return null;
-      } else if (left.minute > right.minute) {
+      } else if (left.minute! > right.minute!) {
         return FhirBoolean(true);
-      } else if (left.minute < right.minute) {
+      } else if (left.minute! < right.minute!) {
         return FhirBoolean(false);
       }
 
@@ -356,11 +356,11 @@ class After extends BinaryExpression {
             false); // If only comparing minutes, they are equal at this point.
       }
 
-      if (!left.precision.hasSeconds || !right.precision.hasSeconds) {
+      if (!left.hasSeconds || !right.hasSeconds) {
         return null;
-      } else if (left.second > right.second) {
+      } else if (left.second! > right.second!) {
         return FhirBoolean(true);
-      } else if (left.second < right.second) {
+      } else if (left.second! < right.second!) {
         return FhirBoolean(false);
       }
 
@@ -369,11 +369,11 @@ class After extends BinaryExpression {
             false); // If only comparing seconds, they are equal at this point.
       }
 
-      if (!left.precision.hasMilliseconds || !right.precision.hasMilliseconds) {
+      if (!left.hasMilliseconds || !right.hasMilliseconds) {
         return null;
-      } else if (left.millisecond > right.millisecond) {
+      } else if (left.millisecond! > right.millisecond!) {
         return FhirBoolean(true);
-      } else if (left.millisecond < right.millisecond) {
+      } else if (left.millisecond! < right.millisecond!) {
         return FhirBoolean(false);
       }
 

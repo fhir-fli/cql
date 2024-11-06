@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -155,9 +155,7 @@ class Log extends BinaryExpression {
     if (first == null ||
         second == null ||
         first is! FhirDecimal ||
-        !first.isValid ||
-        second is! FhirDecimal ||
-        !second.isValid) {
+        second is! FhirDecimal) {
       return null;
     }
     return FhirDecimal(log(first.value!) / log(second.value!));

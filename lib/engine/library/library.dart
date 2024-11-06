@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
 
 import '../../cql.dart';
 
@@ -174,14 +174,16 @@ class CqlLibrary extends Element {
       throw Exception("ValueSetRef not found");
     });
 
-    return valueSetDef == null ? null : CqlValueSet.fromValueSetDef(valueSetDef);
+    return valueSetDef == null
+        ? null
+        : CqlValueSet.fromValueSetDef(valueSetDef);
   }
 
   dynamic execute([Map<String, dynamic>? executionContext]) {
     final Map<String, dynamic> context =
         executionContext ?? <String, dynamic>{};
     context['library'] = this;
-    context['startTimestamp'] = FhirDateTime(DateTime.now());
+    context['startTimestamp'] = fhir.FhirDateTime.fromDateTime(DateTime.now());
     // final usingDefinitionExecuted = usings?.execute();
     // final includeDefinitionExecuted = includes?.execute();
     // final codeSystemsExecuted = codeSystems?.execute();

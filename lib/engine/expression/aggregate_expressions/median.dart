@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../cql.dart';
@@ -150,7 +150,7 @@ class Median extends AggregateExpression {
           // Calculate the average of the two middle quantities
           var sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
           return ValidatedQuantity(
-              value: sum.value / UcumDecimal.fromInt(2), unit: sum.unit);
+              value: sum.value / UcumDecimal.fromNum(2), unit: sum.unit);
         }
       }
     }

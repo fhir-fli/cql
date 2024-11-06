@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../cql.dart';
@@ -95,8 +95,8 @@ final exercises03 = {
     month: DateTime.now().month,
     day: DateTime.now().day,
   ),
-  'Add 30 Minutes': FhirDateTime('2014-02-01T15:00'),
-  'Add 24 Months': FhirDate('2016'),
+  'Add 30 Minutes': FhirDateTime.fromString('2014-02-01T15:00'),
+  'Add 24 Months': FhirDate.fromString('2016'),
   'Calendar Years Equivalent To UCUM Annum (a)': FhirBoolean(true),
   'Calendar Months Equivalent To UCUM Month (mo)': FhirBoolean(true),
   'Calendar Weeks Equal To UCUM Weeks (wk)': FhirBoolean(true),

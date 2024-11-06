@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../cql.dart';
 
@@ -130,7 +130,7 @@ class Instance extends CqlExpression {
           }
           final result = element!.first.value.execute(context);
           if (result is String) {
-            return FhirDate(result);
+            return FhirDate.fromString(result);
           } else if (result is FhirDate) {
             return result;
           }
@@ -148,7 +148,7 @@ class Instance extends CqlExpression {
           }
           final result = element!.first.value.execute(context);
           if (result is String) {
-            return FhirDateTime(result);
+            return FhirDateTime.fromString(result);
           } else if (result is FhirDateTime) {
             return result;
           }
@@ -184,7 +184,7 @@ class Instance extends CqlExpression {
           }
           final result = element!.first.value.execute(context);
           if (result is int) {
-            return FhirInteger64(result);
+            return FhirInteger64.fromNum(result);
           } else if (result is FhirInteger64) {
             return result;
           }

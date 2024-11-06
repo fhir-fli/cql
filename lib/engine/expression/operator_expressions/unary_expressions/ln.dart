@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -131,7 +131,7 @@ class Ln extends UnaryExpression {
   @override
   FhirDecimal? execute(Map<String, dynamic> context) {
     final first = operand.execute(context);
-    if (first == null || first is! FhirDecimal || !first.isValid) {
+    if (first == null || first is! FhirDecimal) {
       return null;
     }
     return FhirDecimal(log(first.value!));

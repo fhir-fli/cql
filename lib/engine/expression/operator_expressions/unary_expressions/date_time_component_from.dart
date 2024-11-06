@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -73,7 +73,7 @@ class DateTimeComponentFrom extends UnaryExpression {
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
-      'precision': precision.toJson(),
+      'precision': toJson(),
       'type': type,
       'operand': operand.toJson(),
     };
@@ -110,31 +110,31 @@ class DateTimeComponentFrom extends UnaryExpression {
     if (operandValue is FhirDateTime) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.precision.hasYear
+          return operandValue.hasYear
               ? FhirInteger(operandValue.year)
               : null;
         case CqlDateTimePrecision.month:
-          return operandValue.precision.hasMonth
+          return operandValue.hasMonth
               ? FhirInteger(operandValue.month)
               : null;
         case CqlDateTimePrecision.day:
-          return operandValue.precision.hasDay
+          return operandValue.hasDay
               ? FhirInteger(operandValue.day)
               : null;
         case CqlDateTimePrecision.hour:
-          return operandValue.precision.hasHours
+          return operandValue.hasHours
               ? FhirInteger(operandValue.hour)
               : null;
         case CqlDateTimePrecision.minute:
-          return operandValue.precision.hasMinutes
+          return operandValue.hasMinutes
               ? FhirInteger(operandValue.minute)
               : null;
         case CqlDateTimePrecision.second:
-          return operandValue.precision.hasSeconds
+          return operandValue.hasSeconds
               ? FhirInteger(operandValue.second)
               : null;
         case CqlDateTimePrecision.millisecond:
-          return operandValue.precision.hasMilliseconds
+          return operandValue.hasMilliseconds
               ? FhirInteger(operandValue.millisecond)
               : null;
         default:
@@ -143,15 +143,15 @@ class DateTimeComponentFrom extends UnaryExpression {
     } else if (operandValue is FhirDate) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.precision.hasYear
+          return operandValue.hasYear
               ? FhirInteger(operandValue.year)
               : null;
         case CqlDateTimePrecision.month:
-          return operandValue.precision.hasMonth
+          return operandValue.hasMonth
               ? FhirInteger(operandValue.month)
               : null;
         case CqlDateTimePrecision.day:
-          return operandValue.precision.hasDay
+          return operandValue.hasDay
               ? FhirInteger(operandValue.day)
               : null;
         default:

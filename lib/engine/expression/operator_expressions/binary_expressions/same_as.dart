@@ -1,12 +1,12 @@
 import 'package:cql/engine/engine.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
 /// Operator to compare two Date, DateTime, or Time values to the specified
 /// precision for equality.
 /// The SameAs operator compares values starting from the year or hour component
-/// down to the specified precision.
+/// down to the specified 
 /// If all values are specified and have the same value for each component, then
 /// the result is true.
 /// If a compared component is specified in both dates but the values are not
@@ -254,7 +254,7 @@ class SameAs extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a month, then there isn't enough precision, and we return null
-      else if (!left.precision.hasMonth || !right.precision.hasMonth) {
+      else if (!left.hasMonth || !right.hasMonth) {
         return null;
       }
 
@@ -269,7 +269,7 @@ class SameAs extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a day, then there isn't enough precision, and we return null
-      else if (!left.precision.hasDay || !right.precision.hasDay) {
+      else if (!left.hasDay || !right.hasDay) {
         return null;
       }
 
@@ -284,7 +284,7 @@ class SameAs extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have an hour, then there isn't enough precision, and we return null
-      else if (!left.precision.hasHours || !right.precision.hasHours) {
+      else if (!left.hasHours || !right.hasHours) {
         return null;
       }
 
@@ -300,7 +300,7 @@ class SameAs extends BinaryExpression {
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a minute, then there isn't enough precision, and we return null
 
-      else if (!left.precision.hasMinutes || !right.precision.hasMinutes) {
+      else if (!left.hasMinutes || !right.hasMinutes) {
         return null;
       }
 
@@ -315,7 +315,7 @@ class SameAs extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a second, then there isn't enough precision, and we return null
-      else if (!left.precision.hasSeconds || !right.precision.hasSeconds) {
+      else if (!left.hasSeconds || !right.hasSeconds) {
         return null;
       }
 
@@ -331,8 +331,8 @@ class SameAs extends BinaryExpression {
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a millisecond, then there isn't enough precision, and we return
       /// null
-      else if (!left.precision.hasMilliseconds ||
-          !right.precision.hasMilliseconds) {
+      else if (!left.hasMilliseconds ||
+          !right.hasMilliseconds) {
         return null;
       } else {
         /// Check if milliseconds are equal

@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:flutter_test/flutter_test.dart';
 
 void maxTest() {
@@ -13,7 +13,7 @@ void maxTest() {
       ]);
       final max = Max(source: list);
       final result = max.execute({});
-      expect(result, equals(FhirInteger(8)));
+      expect(result, equals(fhir.FhirInteger(8)));
     });
     test('define "LongMax": Max({ 2L, 4L, 8L, 6L }) // 8L', () {
       final list = ListExpression(element: [
@@ -24,7 +24,7 @@ void maxTest() {
       ]);
       final max = Max(source: list);
       final result = max.execute({});
-      expect(result, equals(FhirInteger64(BigInt.from(8))));
+      expect(result, equals(fhir.FhirInteger64(BigInt.from(8))));
     });
     test(
         'define "DateMax": Max({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2013-01-01',
@@ -36,7 +36,7 @@ void maxTest() {
       ]);
       final max = Max(source: list);
       final result = max.execute({});
-      expect(result, equals(FhirDate('2013-01-01')));
+      expect(result, equals(fhir.FhirDate.fromString('2013-01-01')));
     });
     test(
         'define "MaxIsNull": Max({ null as Quantity, null as Quantity, null as Quantity })',

@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -110,7 +110,9 @@ class ToLong extends UnaryExpression {
           if (result.value == null) {
             return null;
           } else {
-            return result.value! ? FhirInteger64(1) : FhirInteger64(0);
+            return result.value!
+                ? FhirInteger64.fromNum(1)
+                : FhirInteger64.fromNum(0);
           }
         }
       case String _:
@@ -124,7 +126,9 @@ class ToLong extends UnaryExpression {
         }
       case FhirInteger _:
         {
-          return result.value == null ? null : FhirInteger64(result.value!);
+          return result.value == null
+              ? null
+              : FhirInteger64.fromNum(result.value!);
         }
       case FhirInteger64 _:
         {

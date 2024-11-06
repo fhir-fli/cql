@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -176,60 +176,39 @@ class Subtract extends BinaryExpression {
     switch (left) {
       case FhirInteger _:
         return right is FhirInteger
-            ? (left).isValid && right.isValid
-                ? FhirInteger(left.value! - right.value!)
-                : null
+            ? FhirInteger.tryParse(left.value! - right.value!)
             : right is FhirDecimal
-                ? (left).isValid && right.isValid
-                    ? FhirDecimal(double.parse(UcumDecimal.fromInt(left.value!)
-                        .subtract(UcumDecimal.fromDouble(right.value!))
-                        .asUcumDecimal()))
-                    : null
+                ? FhirDecimal(double.parse(UcumDecimal.fromNum(left.value!)
+                    .subtract(UcumDecimal.fromNum(right.value!))
+                    .asUcumDecimal()))
                 : right is FhirInteger64
-                    ? (left).isValid && right.isValid
-                        ? FhirInteger64(
-                            (left.value as int) - right.value!.toInt())
-                        : null
+                    ? FhirInteger64.tryParse(
+                        (left.value as int) - right.value!.toInt())
                     : null;
       case FhirInteger64 _:
         return right is FhirInteger64
-            ? (left).isValid && right.isValid
-                ? FhirInteger64(left.value! - right.value!)
-                : null
+            ? FhirInteger64(left.value! - right.value!)
             : right is FhirDecimal
-                ? (left).isValid && right.isValid
-                    ? FhirDecimal(double.parse(
-                        UcumDecimal.fromBigInt(left.value!)
-                            .subtract(UcumDecimal.fromDouble(right.value!))
-                            .asUcumDecimal()))
-                    : null
+                ? FhirDecimal(double.parse(UcumDecimal.fromBigInt(left.value!)
+                    .subtract(UcumDecimal.fromNum(right.value!))
+                    .asUcumDecimal()))
                 : right is FhirInteger
-                    ? (left).isValid && right.isValid
-                        ? FhirInteger64(
-                            left.value!.toInt() - right.value!.toInt())
-                        : null
+                    ? FhirInteger64.tryParse(
+                        left.value!.toInt() - right.value!.toInt())
                     : null;
       case FhirDecimal _:
         return right is FhirDecimal
-            ? (left).isValid && right.isValid
-                ? FhirDecimal(double.parse(UcumDecimal.fromDouble(left.value!)
-                    .subtract(UcumDecimal.fromDouble(right.value!))
-                    .asUcumDecimal()))
-                : null
+            ? FhirDecimal(double.parse(UcumDecimal.fromNum(left.value!)
+                .subtract(UcumDecimal.fromNum(right.value!))
+                .asUcumDecimal()))
             : right is FhirInteger
-                ? (left).isValid && right.isValid
-                    ? FhirDecimal(double.parse(
-                        UcumDecimal.fromDouble(left.value!)
-                            .subtract(UcumDecimal.fromInt(right.value!))
-                            .asUcumDecimal()))
-                    : null
+                ? FhirDecimal(double.parse(UcumDecimal.fromNum(left.value!)
+                    .subtract(UcumDecimal.fromNum(right.value!))
+                    .asUcumDecimal()))
                 : right is FhirInteger64
-                    ? (left).isValid && right.isValid
-                        ? FhirDecimal(double.parse(
-                            UcumDecimal.fromDouble(left.value!)
-                                .subtract(UcumDecimal.fromBigInt(right.value!))
-                                .asUcumDecimal()))
-                        : null
+                    ? FhirDecimal(double.parse(UcumDecimal.fromNum(left.value!)
+                        .subtract(UcumDecimal.fromBigInt(right.value!))
+                        .asUcumDecimal()))
                     : null;
       case ValidatedQuantity _:
         return right is ValidatedQuantity

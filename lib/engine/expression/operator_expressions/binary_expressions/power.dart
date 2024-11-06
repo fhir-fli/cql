@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -170,20 +170,11 @@ class Power extends BinaryExpression {
       final second = operand.last.execute(context);
       if (first == null || second == null) {
         return null;
-      } else if (first is FhirInteger &&
-          first.isValid &&
-          second is FhirInteger &&
-          second.isValid) {
-        return FhirInteger(pow(first.value!, second.value!));
-      } else if (first is FhirInteger64 &&
-          first.isValid &&
-          second is FhirInteger64 &&
-          second.isValid) {
+      } else if (first is FhirInteger && second is FhirInteger) {
+        return FhirInteger.tryParse(pow(first.value!, second.value!));
+      } else if (first is FhirInteger64 && second is FhirInteger64) {
         return FhirInteger64(first.value!.pow(second.value!.toInt()));
-      } else if (first is FhirDecimal &&
-          first.isValid &&
-          second is FhirDecimal &&
-          second.isValid) {
+      } else if (first is FhirDecimal && second is FhirDecimal) {
         return FhirDecimal(pow(first.value!, second.value!));
       } else {
         throw ArgumentError(

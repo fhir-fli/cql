@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -109,51 +109,48 @@ class Multiply extends BinaryExpression {
     } else {
       switch (left) {
         case FhirInteger _:
-          if (right is FhirInteger && left.isValid && right.isValid) {
-            return FhirInteger(left.value! * right.value!);
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
-            return FhirDecimal(double.parse((UcumDecimal.fromInt(left.value!) *
-                    UcumDecimal.fromDouble(right.value!))
+          if (right is FhirInteger) {
+            return FhirInteger.tryParse(left.value! * right.value!);
+          } else if (right is FhirDecimal) {
+            return FhirDecimal(double.parse((UcumDecimal.fromNum(left.value!) *
+                    UcumDecimal.fromNum(right.value!))
                 .asUcumDecimal()));
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+          } else if (right is FhirInteger64) {
             return FhirInteger64(
                 BigInt.from(left.value as int) * (right.value as BigInt));
           }
           break;
         case FhirInteger64 _:
-          if (right is FhirInteger && left.isValid && right.isValid) {
+          if (right is FhirInteger) {
             return FhirInteger64(left.value! * BigInt.from(right.value as int));
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+          } else if (right is FhirInteger64) {
             return FhirInteger64(left.value! * right.value!);
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+          } else if (right is FhirDecimal) {
             return FhirDecimal(double.parse(
                 (UcumDecimal.fromBigInt(left.value!) *
-                        UcumDecimal.fromDouble(right.value!))
+                        UcumDecimal.fromNum(right.value!))
                     .asUcumDecimal()));
           }
           break;
         case FhirDecimal _:
-          if (right is FhirInteger && left.isValid && right.isValid) {
-            return FhirDecimal(double.parse(
-                (UcumDecimal.fromDouble(left.value!) *
-                        UcumDecimal.fromInt(right.value!))
-                    .asUcumDecimal()));
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
-            return FhirDecimal(double.parse(
-                (UcumDecimal.fromDouble(left.value!) *
-                        UcumDecimal.fromBigInt(right.value!))
-                    .asUcumDecimal()));
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
-            return FhirDecimal(double.parse(
-                (UcumDecimal.fromDouble(left.value!) *
-                        UcumDecimal.fromDouble(right.value!))
-                    .asUcumDecimal()));
+          if (right is FhirInteger) {
+            return FhirDecimal(double.parse((UcumDecimal.fromNum(left.value!) *
+                    UcumDecimal.fromNum(right.value!))
+                .asUcumDecimal()));
+          } else if (right is FhirInteger64) {
+            return FhirDecimal(double.parse((UcumDecimal.fromNum(left.value!) *
+                    UcumDecimal.fromBigInt(right.value!))
+                .asUcumDecimal()));
+          } else if (right is FhirDecimal) {
+            return FhirDecimal(double.parse((UcumDecimal.fromNum(left.value!) *
+                    UcumDecimal.fromNum(right.value!))
+                .asUcumDecimal()));
           } else if (right is ValidatedQuantity) {
             return ValidatedQuantity.fromNumber(left.value!) * right;
           }
           break;
         case ValidatedQuantity _:
-          if (right is FhirDecimal && left.isValid() && right.isValid) {
+          if (right is FhirDecimal && left.isValid()) {
             return left * ValidatedQuantity.fromNumber(right.value!);
           } else if (right is ValidatedQuantity) {
             return left * right;

@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -106,44 +106,42 @@ class TruncatedDivide extends BinaryExpression {
     switch (left) {
       case FhirInteger _:
         {
-          if (right is FhirInteger && left.isValid && right.isValid) {
+          if (right is FhirInteger) {
             return FhirInteger(left.value! ~/ right.value!);
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+          } else if (right is FhirInteger64) {
             return FhirInteger64(BigInt.from(left.value!) ~/ right.value!);
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+          } else if (right is FhirDecimal) {
             return FhirDecimal(left.value! ~/ right.value!);
           }
         }
         break;
       case FhirInteger64 _:
         {
-          if (right is FhirInteger && left.isValid && right.isValid) {
+          if (right is FhirInteger) {
             return FhirInteger64(left.value! ~/ BigInt.from(right.value!));
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+          } else if (right is FhirInteger64) {
             return FhirInteger64(left.value! ~/ right.value!);
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+          } else if (right is FhirDecimal) {
             return FhirDecimal(left.value!.toDouble() ~/ right.value!);
           }
         }
         break;
       case FhirDecimal _:
         {
-          if (right is FhirInteger && left.isValid && right.isValid) {
+          if (right is FhirInteger) {
             return FhirDecimal(left.value! ~/ right.value!);
-          } else if (right is FhirInteger64 && left.isValid && right.isValid) {
+          } else if (right is FhirInteger64) {
             return FhirDecimal(left.value! ~/ right.value!.toDouble());
-          } else if (right is FhirDecimal && left.isValid && right.isValid) {
+          } else if (right is FhirDecimal) {
             return FhirDecimal(left.value! ~/ right.value!);
-          } else if (right is ValidatedQuantity &&
-              left.isValid &&
-              right.isValid()) {
+          } else if (right is ValidatedQuantity && right.isValid()) {
             return ValidatedQuantity.fromNumber(left.value!) ~/ right;
           }
         }
         break;
       case ValidatedQuantity _:
         {
-          if (right is FhirDecimal && left.isValid() && right.isValid) {
+          if (right is FhirDecimal && left.isValid()) {
             return left ~/ ValidatedQuantity.fromNumber(right.value!);
           } else if (right is ValidatedQuantity &&
               left.isValid() &&

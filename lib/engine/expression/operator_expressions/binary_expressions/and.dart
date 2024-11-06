@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -105,9 +105,7 @@ class And extends BinaryExpression {
   static FhirBoolean? and(dynamic left, dynamic right) {
     /// Both operands are non-null and true
     if (left is FhirBoolean &&
-        left.isValid &&
-        right is FhirBoolean &&
-        right.isValid) {
+        right is FhirBoolean) {
       return FhirBoolean(left.value! && right.value!);
     }
 

@@ -1,5 +1,5 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_r5/fhir_r5.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import '../../../cql.dart';
 
 class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
@@ -40,7 +40,7 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                   context: name,
                   expression: SingletonFrom(
                     operand: Retrieve(
-                      templateId: R5ResourceType.typesAsStrings.contains(name)
+                      templateId: R4ResourceType.typesAsStrings.contains(name)
                           ? 'http://hl7.org/fhir/StructureDefinition/$name'
                           : name,
                       dataType:

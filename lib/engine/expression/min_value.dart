@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -143,7 +143,7 @@ class MinValue extends CqlExpression {
         return FhirInteger(-2147483648);
       case 'FhirInteger64':
       case 'Long':
-        return FhirInteger64('-9223372036854775808');
+        return FhirInteger64.fromString('-9223372036854775808');
       case 'FhirDecimal':
       case 'Decimal':
         return FhirDecimal(-99999999999999999999.99999999);
@@ -155,7 +155,7 @@ class MinValue extends CqlExpression {
         return FhirDate.fromUnits(year: 1, month: 1, day: 1);
       case 'FhirDateTime':
       case 'DateTime':
-        return FhirDateTime('0001-01-01T00:00:00.000');
+        return FhirDateTime.fromString('0001-01-01T00:00:00.000');
       case 'FhirTime':
       case 'Time':
         return FhirTime.fromUnits(

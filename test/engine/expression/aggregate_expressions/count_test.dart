@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:flutter_test/flutter_test.dart';
 
 void countTest() {
@@ -14,7 +14,7 @@ void countTest() {
       ]);
       final count = Count(source: list);
       final result = count.execute({});
-      expect(result, equals(FhirInteger(5)));
+      expect(result, equals(fhir.FhirInteger(5)));
     });
     test('define "Count0": Count({ null, null, null }) // 0', () {
       final list = ListExpression(element: [
@@ -24,12 +24,12 @@ void countTest() {
       ]);
       final count = Count(source: list);
       final result = count.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(fhir.FhirInteger(0)));
     });
     test('define "CountNull0": Count(null as List<Decimal>) // 0', () {
       final count = Count(source: LiteralNull());
       final result = count.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(fhir.FhirInteger(0)));
     });
   });
 }

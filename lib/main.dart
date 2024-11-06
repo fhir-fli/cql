@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -136,9 +136,9 @@ void parseFile(BuildContext context) async {
                   answer is FhirDateTimeBase) {
                 if (result != answer) {
                   final difference =
-                      result.valueDateTime.difference(answer.valueDateTime);
+                      result.valueDateTime?.difference(answer.valueDateTime!);
                   equalReason +=
-                      '$key: $result differs by ${difference.inMilliseconds} '
+                      '$key: $result differs by ${difference?.inMilliseconds} '
                       'ms from $answer\n';
                   areEqual = false;
                 }

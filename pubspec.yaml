@@ -10,11 +10,8 @@ environment:
 dependencies:
   antlr4: ^4.13.1
   collection: ^1.18.0
-  # fhir_primitives: ^0.1.0
-  fhir_primitives:
-    path: ../fhir_primitives
-  fhir_r5:
-    path: ../fhir_r5
+  fhir_r4:
+    path: ../fhir_r4
   flutter:
     sdk: flutter
   freezed_annotation: ^2.4.1

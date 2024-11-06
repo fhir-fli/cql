@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -122,7 +122,7 @@ class Case extends CqlExpression {
     if (comparand == null) {
       final index = caseItem.indexWhere((element) {
         final whenResult = element.when_.execute(context);
-        if (whenResult is FhirBoolean && whenResult.isValid) {
+        if (whenResult is FhirBoolean) {
           return whenResult.value!;
         } else {
           return false;

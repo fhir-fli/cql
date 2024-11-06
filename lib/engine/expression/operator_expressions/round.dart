@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../cql.dart';
 
@@ -110,11 +110,11 @@ class Round extends OperatorExpression {
     final value = operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirDecimal && value.isValid) {
+    } else if (value is FhirDecimal) {
       final precisionValue = precision?.execute(context);
       if (precisionValue == null) {
         return FhirDecimal(value.value!.round());
-      } else if (precisionValue is FhirInteger && precisionValue.isValid) {
+      } else if (precisionValue is FhirInteger) {
         num mod = pow(10.0, precisionValue.value!.toDouble());
         return FhirDecimal((value.value! * mod).round().toDouble() / mod);
       } else {

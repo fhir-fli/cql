@@ -1,5 +1,5 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
-import 'package:fhir_r5/fhir_r5.dart' as r5;
+import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_r4/fhir_r4.dart' as r5;
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';

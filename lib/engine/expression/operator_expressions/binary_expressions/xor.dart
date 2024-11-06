@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -97,25 +97,19 @@ class Xor extends BinaryExpression {
 
     /// If one operand is true and the other is false
     if ((left is FhirBoolean &&
-            left.isValid &&
             left.value == true &&
             right is FhirBoolean &&
-            right.isValid &&
             right.value == false) ||
         (right is FhirBoolean &&
-            right.isValid &&
             right.value == true &&
             left is FhirBoolean &&
-            left.isValid &&
             left.value == false)) {
       return FhirBoolean(true);
     } else
 
     /// If both operands are true or both are false
     if ((left is FhirBoolean &&
-        left.isValid &&
         right is FhirBoolean &&
-        right.isValid &&
         left.value == right.value)) {
       return FhirBoolean(false);
     }

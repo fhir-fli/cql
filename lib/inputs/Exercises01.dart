@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 final exercises01 = {
-  "This is a quoted identifier": FhirDate("2021-04-01"),
+  "This is a quoted identifier": FhirDate.fromString("2021-04-01"),
   "_1MoreIdentifier": ValidatedQuantity.fromString("0.0 'g'"),
   "Inequality Expression": FhirBoolean(true),
   "Relative Comparison Expression": FhirBoolean(true),

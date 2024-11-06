@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -206,7 +206,7 @@ class Equal extends BinaryExpression {
             result = left == BigInt.from(right);
           } else if (right is BigInt) {
             result = left == right;
-          } else if (right is FhirNumber && right.isValid) {
+          } else if (right is FhirNumber) {
             result = left == BigInt.from(right.value!);
           } else if (right is FhirInteger64) {
             result = left == right.value;
@@ -236,7 +236,7 @@ class Equal extends BinaryExpression {
             result = left.value == BigInt.from(right);
           } else if (right is BigInt) {
             result = left.value == right;
-          } else if (right is FhirNumber && right.isValid) {
+          } else if (right is FhirNumber) {
             result = left.value == BigInt.from(right.value!);
           } else if (right is FhirInteger64) {
             result = left == right;

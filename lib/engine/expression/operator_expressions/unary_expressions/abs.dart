@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -96,11 +96,11 @@ class Abs extends UnaryExpression {
     final value = operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirInteger && value.isValid) {
-      return FhirInteger(value.value!.abs());
-    } else if (value is FhirInteger64 && value.isValid) {
+    } else if (value is FhirInteger) {
+      return FhirInteger.tryParse(value.value!.abs());
+    } else if (value is FhirInteger64) {
       return FhirInteger64(value.value!.abs());
-    } else if (value is FhirDecimal && value.isValid) {
+    } else if (value is FhirDecimal) {
       return FhirDecimal(value.value!.abs());
     } else if (value is ValidatedQuantity && value.isValid()) {
       return ValidatedQuantity(value: value.value.absolute(), unit: value.unit);

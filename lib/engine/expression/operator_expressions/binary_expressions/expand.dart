@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -255,7 +255,7 @@ class Expand extends BinaryExpression {
       case FhirDecimal _:
         return FhirDecimal(.00000001);
       case FhirInteger64 _:
-        return FhirInteger64(1);
+        return FhirInteger64.fromNum(1);
       case FhirDate _:
         return ValidatedQuantity.fromNumber(1, unit: 'day');
       case FhirDateTime _:

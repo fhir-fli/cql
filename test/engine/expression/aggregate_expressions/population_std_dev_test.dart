@@ -1,5 +1,5 @@
 import 'package:cql/cql.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ucum/ucum.dart';
 
@@ -32,7 +32,7 @@ void main() {
       expect(
           result,
           equals(ValidatedQuantity(
-              value: UcumDecimal.fromDouble(1.4142135623730951), unit: 'mg')));
+              value: UcumDecimal.fromNum(1.4142135623730951), unit: 'mg')));
     });
     test(
         'define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity, null as Quantity, null as Quantity })',

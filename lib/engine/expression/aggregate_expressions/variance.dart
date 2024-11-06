@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../cql.dart';
@@ -147,7 +147,7 @@ class Variance extends AggregateExpression {
       }
       if (sumOfSquaredValues != null) {
         var varianceValue =
-            sumOfSquaredValues / UcumDecimal.fromInt(sourceResult.length);
+            sumOfSquaredValues / UcumDecimal.fromNum(sourceResult.length);
         return ValidatedQuantity(value: varianceValue, unit: mean.unit);
       }
     }

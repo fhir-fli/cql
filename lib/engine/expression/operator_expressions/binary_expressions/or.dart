@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 
 import '../../../../cql.dart';
 
@@ -94,22 +94,20 @@ class Or extends BinaryExpression {
     final right = operand[1].execute(context);
 
     /// If either operand is true
-    if ((left is FhirBoolean && left.isValid && left.value == true) ||
-        (right is FhirBoolean && right.isValid && right.value == true)) {
+    if ((left is FhirBoolean && left.value == true) ||
+        (right is FhirBoolean && right.value == true)) {
       return FhirBoolean(true);
     }
 
     /// If both operands are false
-    if ((left is FhirBoolean && left.isValid && left.value == false) &&
-        (right is FhirBoolean && right.isValid && right.value == false)) {
+    if ((left is FhirBoolean && left.value == false) &&
+        (right is FhirBoolean && right.value == false)) {
       return FhirBoolean(false);
     }
 
     /// If one operand is false and the other is null
-    if (((left is FhirBoolean && left.isValid && left.value == false) &&
-            right == null) ||
-        ((right is FhirBoolean && right.isValid && right.value == false) &&
-            left == null)) {
+    if (((left is FhirBoolean && left.value == false) && right == null) ||
+        ((right is FhirBoolean && right.value == false) && left == null)) {
       return null;
     }
 

@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -205,8 +205,7 @@ class Equivalent extends BinaryExpression {
         if (right is num || right is BigInt) {
           result = UcumDecimal.fromString(left.toString())
               .equivalent(UcumDecimal.fromString(right.toString()));
-        } else if ((right is FhirNumber && right.isValid) ||
-            (right is FhirInteger64 && right.isValid)) {
+        } else if ((right is FhirNumber) || (right is FhirInteger64)) {
           result = (UcumDecimal.fromString(left.toString())
               .equivalent(UcumDecimal.fromString(right.toString())));
         } else if (right is ValidatedQuantity && left is double) {
@@ -221,8 +220,7 @@ class Equivalent extends BinaryExpression {
           if (right is num || right is BigInt) {
             result = UcumDecimal.fromString(left.value!.toString())
                 .equivalent(UcumDecimal.fromString(right.toString()));
-          } else if ((right is FhirNumber && right.isValid) ||
-              (right is FhirInteger64 && right.isValid)) {
+          } else if ((right is FhirNumber) || (right is FhirInteger64)) {
             result = UcumDecimal.fromString(left.value!.toString())
                 .equivalent(UcumDecimal.fromString(right.toString()));
           } else if (right is ValidatedQuantity && left is FhirDecimal) {
@@ -236,7 +234,7 @@ class Equivalent extends BinaryExpression {
       case ValidatedQuantity _:
         if (right is ValidatedQuantity) {
           result = left.equivalent(right);
-        } else if (right is FhirDecimal && right.isValid) {
+        } else if (right is FhirDecimal) {
           result = left.equivalent(ValidatedQuantity.fromNumber(right.value!));
         } else if (right is double) {
           result = left.equivalent(ValidatedQuantity.fromNumber(right));

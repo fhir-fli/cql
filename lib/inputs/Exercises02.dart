@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 final exercises02 = {
@@ -27,30 +27,30 @@ final exercises02 = {
   'Length Quantity': ValidatedQuantity.fromString("100 'cm2'"),
   'Respect the Units': FhirBoolean(true),
   'Calculate the Units': ValidatedQuantity.fromString("100 'cm2'"),
-  'Date Value': FhirDate('2021-03-01'),
-  'DateTime Value': FhirDateTime('2021-03-01T14:30:14.5'),
+  'Date Value': FhirDate.fromString('2021-03-01'),
+  'DateTime Value': FhirDateTime.fromString('2021-03-01T14:30:14.5'),
   'Time Value (at midnight)': FhirTime('12:00:00.000'),
   'Time Value': FhirTime('14:30:14.5'),
-  'Partial Date (Year)': FhirDate('2014'),
-  'Partial Date (Year-Month)': FhirDate('2014-01'),
+  'Partial Date (Year)': FhirDate.fromString('2014'),
+  'Partial Date (Year-Month)': FhirDate.fromString('2014-01'),
   'Partial Time (Hour)': FhirTime('14'),
   'Partial Time (Hour Minute)': FhirTime('14:30'),
-  'DateTime Function': FhirDate('2014-07-05'),
+  'DateTime Function': FhirDate.fromString('2014-07-05'),
   'Time Function': FhirTime('14:30'),
-  'Date From': FhirDate('2014-01-25'),
+  'Date From': FhirDate.fromString('2014-01-25'),
   'Time From': FhirTime('14:30:14'),
   'Component From (Year)': FhirInteger(2014),
-  'Now Function': FhirDateTime(DateTime.now()),
-  'Today Function': FhirDate(DateTime.now().toIso8601String().substring(0, 10)),
+  'Now Function': FhirDateTime.fromDateTime(DateTime.now()),
+  'Today Function': FhirDate.fromString(DateTime.now().toIso8601String().substring(0, 10)),
   'TimeOfDay Function':
       FhirTime(DateTime.now().toIso8601String().substring(11)),
   'Simple Info': <String, dynamic>{
     "name": 'Patrick',
-    "dob": FhirDate('2014-01-01')
+    "dob": FhirDate.fromString('2014-01-01')
   },
   'Nested Info': <String, dynamic>{
     "name": 'Patrick',
-    "dob": FhirDate('2014-01-01'),
+    "dob": FhirDate.fromString('2014-01-01'),
     "address": {
       "line1": '41 Spinning Ave',
       "city": 'Dayton',

@@ -1,4 +1,4 @@
-import 'package:fhir_primitives/fhir_primitives.dart';
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
@@ -305,17 +305,17 @@ class LiteralDate extends LiteralType {
 
   @override
   Map<String, dynamic> toJson() {
-    final date = FhirDate(value);
+    final date = FhirDate.fromString(value);
     return {
       'type': type,
-      if (date.precision.hasYear) 'year': LiteralInteger(date.year).toJson(),
-      if (date.precision.hasMonth) 'month': LiteralInteger(date.month).toJson(),
-      if (date.precision.hasDay) 'day': LiteralInteger(date.day).toJson(),
+      if (date.hasYear) 'year': LiteralInteger(date.year!).toJson(),
+      if (date.hasMonth) 'month': LiteralInteger(date.month!).toJson(),
+      if (date.hasDay) 'day': LiteralInteger(date.day!).toJson(),
     };
   }
 
   @override
-  FhirDate execute(Map<String, dynamic> context) => FhirDate(value);
+  FhirDate execute(Map<String, dynamic> context) => FhirDate.fromString(value);
 
   @override
   String get type => 'Date';
@@ -344,22 +344,19 @@ class LiteralDateTime extends LiteralType {
 
   @override
   Map<String, dynamic> toJson() {
-    final dateTime = FhirDateTime(value);
+    final dateTime = FhirDateTime.fromString(value);
     return {
       'type': type,
-      'year': LiteralInteger(dateTime.year).toJson(),
-      if (dateTime.precision.hasMonth)
-        'month': LiteralInteger(dateTime.month).toJson(),
-      if (dateTime.precision.hasDay)
-        'day': LiteralInteger(dateTime.day).toJson(),
-      if (dateTime.precision.hasHours)
-        'hour': LiteralInteger(dateTime.hour).toJson(),
-      if (dateTime.precision.hasMinutes)
-        'minute': LiteralInteger(dateTime.minute).toJson(),
-      if (dateTime.precision.hasSeconds)
-        'second': LiteralInteger(dateTime.second).toJson(),
-      if (dateTime.precision.hasMilliseconds)
-        'millisecond': LiteralInteger(dateTime.millisecond).toJson(),
+      'year': LiteralInteger(dateTime.year!).toJson(),
+      if (dateTime.hasMonth) 'month': LiteralInteger(dateTime.month!).toJson(),
+      if (dateTime.hasDay) 'day': LiteralInteger(dateTime.day!).toJson(),
+      if (dateTime.hasHours) 'hour': LiteralInteger(dateTime.hour!).toJson(),
+      if (dateTime.hasMinutes)
+        'minute': LiteralInteger(dateTime.minute!).toJson(),
+      if (dateTime.hasSeconds)
+        'second': LiteralInteger(dateTime.second!).toJson(),
+      if (dateTime.hasMilliseconds)
+        'millisecond': LiteralInteger(dateTime.millisecond!).toJson(),
     };
   }
 
@@ -370,7 +367,8 @@ class LiteralDateTime extends LiteralType {
   String toString() => 'LiteralDateTime: $value';
 
   @override
-  FhirDateTime execute(Map<String, dynamic> context) => FhirDateTime(value);
+  FhirDateTime execute(Map<String, dynamic> context) =>
+      FhirDateTime.fromString(value);
 
   @override
   List<Type>? getReturnTypes(CqlLibrary library) => [FhirDateTime];
@@ -660,12 +658,12 @@ class LiteralTime extends LiteralType {
   }
 
   factory LiteralTime.fromJson(dynamic json) {
-    if (json is String && FhirTime(json).isValid) {
+    if (json is String && FhirTime.tryParse(json) != null) {
       return LiteralTime(
         json,
       );
     } else if (json is Map<String, dynamic> && json['value'] != null) {
-      if (json['value'] is String && FhirTime(json['value']).isValid) {
+      if (json['value'] is String && FhirTime.tryParse(json['value']) != null) {
         return LiteralTime(
           json['value'],
         );
