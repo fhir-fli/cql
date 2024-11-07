@@ -1,6 +1,7 @@
 import 'package:antlr4/antlr4.dart';
 import '../../../cql.dart';
 
+// Visitor for Quantity Expressions, ensuring we correctly capture quantities and units
 class CqlQuantityVisitor extends CqlBaseVisitor<LiteralQuantity> {
   CqlQuantityVisitor(super.library);
 
@@ -10,6 +11,7 @@ class CqlQuantityVisitor extends CqlBaseVisitor<LiteralQuantity> {
     final int thisNode = getNextNode();
     num? number;
     String? unit;
+
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         number = num.tryParse(child.text!);
@@ -17,6 +19,7 @@ class CqlQuantityVisitor extends CqlBaseVisitor<LiteralQuantity> {
         unit = visitUnit(child);
       }
     }
+
     if (number != null) {
       return LiteralQuantity(LiteralDecimal(number), unit: unit);
     }

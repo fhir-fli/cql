@@ -8,12 +8,13 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     printIf(ctx);
     final int thisNode = getNextNode();
     if (ctx.childCount == 3) {
-      CqlExpression left =
+      final CqlExpression left =
           visitTermExpression(ctx.children![0] as TermExpressionContext);
-      CqlExpression right =
+      final CqlExpression right =
           visitTermExpression(ctx.children![2] as TermExpressionContext);
-      // CqlExpression? result;
+
       final intervalOperatorPhrase = ctx.children![1];
+
       switch (intervalOperatorPhrase) {
         case ConcurrentWithIntervalOperatorPhraseContext _:
           return visitConcurrentWithIntervalOperatorPhrase(
