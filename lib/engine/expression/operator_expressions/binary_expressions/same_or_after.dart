@@ -279,8 +279,11 @@ class SameOrAfter extends BinaryExpression {
       final result = left.isSameOrAfter(right);
       return result == null ? null : FhirBoolean(result);
     } else {
+      if(left.year == null || right.year == null){
+        return null;
+      }
       /// Check if years are equal
-      final yearsEqual = (left.year ?? 0) >= (right.year ?? 0);
+      final yearsEqual = left.year! >= right.year!;
 
       /// If they're not equal, or we're only comparing to the year,
       /// return the result
@@ -290,12 +293,12 @@ class SameOrAfter extends BinaryExpression {
 
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a month, then there isn't enough precision, and we return null
-      else if (!left.hasMonth || !right.hasMonth) {
+      else if (!left.hasMonth ^ !right.hasMonth) {
         return null;
       }
 
       /// Check if months are equal
-      final monthsEqual = (left.month ?? 0) >= (right.month ?? 0);
+      final monthsEqual = left.month! >= right.month!;
 
       /// If they're not equal, or we're only comparing to the month,
       /// return the result
@@ -310,7 +313,7 @@ class SameOrAfter extends BinaryExpression {
       }
 
       /// Check if days are equal
-      final daysEqual = (left.day ?? 0) >= (right.day ?? 0);
+      final daysEqual = left.day! >= right.day!;
 
       /// If they're not equal, or we're only comparing to the day,
       /// return the result
@@ -325,7 +328,7 @@ class SameOrAfter extends BinaryExpression {
       }
 
       /// Check if hours are equal
-      final hoursEqual = (left.hour ?? 0) >= (right.hour ?? 0);
+      final hoursEqual = left.hour! >= right.hour!;
 
       /// If they're not equal, or we're only comparing to the hour,
       /// return the result
@@ -341,7 +344,7 @@ class SameOrAfter extends BinaryExpression {
       }
 
       /// Check if minutes are equal
-      final minutesEqual = (left.minute ?? 0) >= (right.minute ?? 0);
+      final minutesEqual = left.minute! >= right.minute!;
 
       /// If they're not equal, or we're only comparing to the minute,
       /// return the result
@@ -356,7 +359,7 @@ class SameOrAfter extends BinaryExpression {
       }
 
       /// Check if seconds are equal
-      final secondsEqual = (left.second ?? 0) >= (right.second ?? 0);
+      final secondsEqual = left.second! >= right.second!;
 
       /// If they're not equal, or we're only comparing to the second,
       /// return the result
@@ -372,7 +375,7 @@ class SameOrAfter extends BinaryExpression {
       } else {
         /// Check if milliseconds are equal
         final millisecondsEqual =
-            (left.millisecond ?? 0) >= (right.millisecond ?? 0);
+            left.millisecond! >= right.millisecond!;
 
         /// We've reached the end of the precision, return the result
         return FhirBoolean(millisecondsEqual);

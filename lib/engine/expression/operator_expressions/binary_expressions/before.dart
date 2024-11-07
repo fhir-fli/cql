@@ -7,7 +7,7 @@ import '../../../../cql.dart';
 /// Returns true if the ending point of the first interval is less than the
 /// starting point of the second interval.
 /// If precision is specified and the point type is Date, DateTime, or Time,
-/// comparisons used in the operation are performed at the specified 
+/// comparisons used in the operation are performed at the specified
 /// If either argument is null, the result is null.
 /// Signature:
 ///
@@ -84,7 +84,7 @@ import '../../../../cql.dart';
 ///
 /// If precision is specified and the point type is a Date, DateTime, or Time
 /// type, comparisons used in the operation are performed at the specified
-/// 
+///
 ///
 /// If either argument is null, the result is null.
 ///
@@ -303,7 +303,9 @@ class Before extends BinaryExpression {
       return result == null ? null : FhirBoolean(result);
     } else {
       // Start from the highest precision and go down to the specified one.
-      if (left.year! < right.year!) {
+      if (!left.hasYear || !right.hasYear) {
+        return null;
+      } else if (left.year! < right.year!) {
         return FhirBoolean(true);
       } else if (left.year! > right.year!) {
         return FhirBoolean(false);

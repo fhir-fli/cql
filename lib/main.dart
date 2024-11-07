@@ -19,24 +19,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: TextButton(
-                onPressed: (() => parseFile(context)),
-                child: const SizedBox(
-                    height: 200,
-                    width: 200,
-                    child: Center(
-                      child: Text('Press\nme',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 45)),
-                    ))),
-          ),
-        ),
-      ),
-    );
+    parseFile(context);
+    return Container();
   }
 }
 
@@ -49,7 +33,7 @@ void parseFile(BuildContext context) async {
   int i = 0;
   for (final file in manifestMap.keys) {
     i++;
-    if (i > 5) {
+    if (i > 3) {
       break;
     }
     final pathExpression = await rootBundle.loadString(file);
@@ -85,7 +69,7 @@ void parseFile(BuildContext context) async {
       // throw 'stop';
       // }
       log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
-      // if (file.contains('04')) {
+      // if (file.contains('03')) {
       //   log(jsonEncode({'library': resultLibrary}));
       // }
       bool areEqual = true;

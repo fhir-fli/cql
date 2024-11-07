@@ -160,6 +160,7 @@ class Modulo extends BinaryExpression {
       }
     }
 
-    throw ArgumentError('Invalid arguments for multiply operation');
+    throw ArgumentError('Invalid arguments for modulo operation'
+        '1. $left ${left.runtimeType}\n2. $right ${right.runtimeType}');
   }
 }

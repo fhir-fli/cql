@@ -159,6 +159,7 @@ class Multiply extends BinaryExpression {
       }
     }
 
-    throw ArgumentError('Invalid arguments for multiply operation');
+    throw ArgumentError('Invalid arguments for multiply operation\n'
+        '1. $left ${left.runtimeType}\n2. $right ${right.runtimeType}');
   }
 }

@@ -20,7 +20,7 @@ final exercises02 = {
   'Decimal Comparison Ignores Precision': FhirBoolean(true),
   'Standard Arithmetic Precedence': FhirInteger(52),
   'Use Parentheses to Force Precedence': FhirInteger(70),
-  'Division Returns Decimal': FhirInteger(5),
+  'Division Returns Decimal': FhirDecimal(5),
   'Use Truncated Divide (div) for Integer Division': FhirInteger(5),
   'Mod returns remainder': FhirInteger(0),
   'Mass Quantity': ValidatedQuantity.fromString("25 'mg'"),

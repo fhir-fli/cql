@@ -7,7 +7,7 @@ import '../../../../cql.dart';
 /// Returns true if the starting point of the first interval is greater than
 /// the ending point of the second interval.
 /// If precision is specified and the point type is Date, DateTime, or Time,
-/// comparisons used in the operation are performed at the specified 
+/// comparisons used in the operation are performed at the specified
 /// If either argument is null, the result is null.
 /// Signature:
 ///
@@ -82,7 +82,7 @@ import '../../../../cql.dart';
 ///
 /// If precision is specified and the point type is a Date, DateTime, or Time
 /// type, comparisons used in the operation are performed at the specified
-/// 
+///
 ///
 /// If either argument is null, the result is null.
 ///
@@ -296,9 +296,11 @@ class After extends BinaryExpression {
       return result == null ? null : FhirBoolean(result);
     } else {
       // Start from the highest precision and go down to the specified one.
-      if ((left.year ?? 0) > (right.year ?? 0)) {
+      if (left.year == null || right.year == null) {
+        return null;
+      } else if (left.year! > right.year!) {
         return FhirBoolean(true);
-      } else if ((left.year ?? 0) < (right.year ?? 0)) {
+      } else if (left.year! < right.year!) {
         return FhirBoolean(false);
       } // Year comparison is equal, move to next precision
       if (precision == CqlDateTimePrecision.year) {
@@ -308,9 +310,9 @@ class After extends BinaryExpression {
 
       if (!left.hasMonth || !right.hasMonth) {
         return null;
-      } else if ((left.month ?? 0) > (right.month ?? 0)) {
+      } else if (left.month! > right.month!) {
         return FhirBoolean(true);
-      } else if ((left.month ?? 0) < (right.month ?? 0)) {
+      } else if (left.month! < right.month!) {
         return FhirBoolean(false);
       }
       if (precision == CqlDateTimePrecision.month) {
