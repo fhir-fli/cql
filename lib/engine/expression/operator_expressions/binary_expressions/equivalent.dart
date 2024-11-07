@@ -189,10 +189,10 @@ class Equivalent extends BinaryExpression {
         break;
       case FhirDateTimeBase _:
         result =
-            right is FhirDateTimeBase ? left.isEqual(right) ?? false : false;
+            right is FhirDateTimeBase ? left.isEquivalent(right) ?? false : false;
         break;
       case FhirTime _:
-        result = right is FhirTime ? left.isEqual(right) ?? false : false;
+        result = right is FhirTime ? left.isEquivalent(right) ?? false : false;
         break;
       case CqlCode _:
         result = left.equivalent(right);
@@ -216,19 +216,14 @@ class Equivalent extends BinaryExpression {
         break;
       case FhirNumber _:
       case FhirInteger64 _:
-        if (left.isValid) {
-          if (right is num || right is BigInt) {
-            result = UcumDecimal.fromString(left.value!.toString())
-                .equivalent(UcumDecimal.fromString(right.toString()));
-          } else if ((right is FhirNumber) || (right is FhirInteger64)) {
-            result = UcumDecimal.fromString(left.value!.toString())
-                .equivalent(UcumDecimal.fromString(right.toString()));
-          } else if (right is ValidatedQuantity && left is FhirDecimal) {
-            result =
-                ValidatedQuantity.fromNumber(left.value!).equivalent(right);
-          }
-        } else {
-          result = false;
+        if (right is num || right is BigInt) {
+          result = UcumDecimal.fromString(left.value!.toString())
+              .equivalent(UcumDecimal.fromString(right.toString()));
+        } else if ((right is FhirNumber) || (right is FhirInteger64)) {
+          result = UcumDecimal.fromString(left.value!.toString())
+              .equivalent(UcumDecimal.fromString(right.toString()));
+        } else if (right is ValidatedQuantity && left is FhirDecimal) {
+          result = ValidatedQuantity.fromNumber(left.value!).equivalent(right);
         }
         break;
       case ValidatedQuantity _:

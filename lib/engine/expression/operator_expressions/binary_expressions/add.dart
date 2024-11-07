@@ -160,7 +160,7 @@ class Add extends BinaryExpression {
         return right is ValidatedQuantity
             ? left.isValid() && right.isValid()
                 ? left + right
-                : right is FhirDecimal && right.isValid()
+                : right is FhirDecimal
                     ? left + right
                     : null
             : null;

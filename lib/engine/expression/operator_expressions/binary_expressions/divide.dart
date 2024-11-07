@@ -114,9 +114,7 @@ class Divide extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     } else if ((left is FhirNumber || left is FhirInteger64) &&
-        left.isValid &&
-        (right is FhirNumber || right is FhirInteger64) &&
-        right.isValid) {
+        (right is FhirNumber || right is FhirInteger64)) {
       final leftDecimal = UcumDecimal.fromString(left.value.toString());
       final rightDecimal = UcumDecimal.fromString(right.value.toString());
       final result = leftDecimal / rightDecimal;
