@@ -6,7 +6,7 @@ import 'Exercises03.dart';
 import 'Exercises05.dart';
 import 'Simple.dart';
 
-final results = {
+final results = <String, dynamic>{
   'Simple.cql': simple,
   'Exercises01.cql': exercises01,
   'Exercises02.cql': exercises02,

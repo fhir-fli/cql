@@ -1,36 +1,5 @@
 {
     "library": {
-        "annotation": [
-            {
-                "translatorVersion": "3.3.2",
-                "translatorOptions": "",
-                "signatureLevel": "None",
-                "type": "CqlToElmInfo"
-            },
-            {
-                "libraryId": "Exercises04Key",
-                "startLine": 167,
-                "startChar": 3,
-                "endLine": 167,
-                "endChar": 7,
-                "message": "List-valued expression was demoted to a singleton.",
-                "errorType": "semantic",
-                "errorSeverity": "warning",
-                "type": "CqlToElmError"
-            },
-            {
-                "message": "List-valued expression was demoted to a singleton.",
-                "errorType": "semantic",
-                "errorSeverity": "warning",
-                "type": "CqlToElmError"
-            },
-            {
-                "message": "List-valued expression was demoted to a singleton.",
-                "errorType": "semantic",
-                "errorSeverity": "warning",
-                "type": "CqlToElmError"
-            }
-        ],
         "identifier": {
             "id": "Exercises04Key"
         },

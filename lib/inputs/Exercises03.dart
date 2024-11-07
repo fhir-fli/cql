@@ -5,7 +5,7 @@ import 'package:ucum/ucum.dart';
 
 import '../cql.dart';
 
-final exercises03 = {
+final exercises03 = <String, dynamic>{
   'String Equality': FhirBoolean(true),
   'String Equivalence': FhirBoolean(true),
   'String Comparison': FhirBoolean(true),

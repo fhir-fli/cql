@@ -33,7 +33,7 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         return handleSubtraction(left, right);
       }
 
-      // Handle addition/concatenation
+      // Determine appropriate operation for addition or concatenation
       return handleConcatenationOrAddition(left, right, additionOperator);
     }
 
@@ -57,50 +57,59 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     }
   }
 
-  // Helper function to handle concatenation and addition with null handling
+  // Determine whether to use Add or Concatenate based on operand types
   CqlExpression handleConcatenationOrAddition(
       CqlExpression left, CqlExpression right, String? operator) {
     final bool isAddition = operator == '+';
 
-    if (left is LiteralString && right is LiteralString) {
-      return Concatenate(operand: [left, right], plus: isAddition);
-    } else if (left is LiteralString && right is LiteralNull) {
-      return Concatenate(operand: [
-        left,
-        As(operand: right, asType: QName.fromDataType('String'))
-      ], plus: isAddition);
-    } else if (left is LiteralNull && right is LiteralString) {
-      return Concatenate(operand: [
-        As(operand: left, asType: QName.fromDataType('String')),
-        right
-      ], plus: isAddition);
-    } else {
-      // If types are not simple literals, check types and apply Coalesce if necessary
-      return handleTypedConcatenation(left, right, isAddition);
-    }
-  }
-
-  // Helper function for type-checked concatenation with null coalescing
-  CqlExpression handleTypedConcatenation(
-      CqlExpression left, CqlExpression right, bool isAddition) {
-    final return1 = left.getReturnTypes(library);
-    final return2 = right.getReturnTypes(library);
-    final returnType1 = (return1?.length == 1) ? return1?.first : null;
-    final returnType2 = (return2?.length == 1) ? return2?.first : null;
-
-    if (returnType1 == String && returnType2 == String) {
-      return Concatenate(operand: [left, right], plus: isAddition);
-    } else if (returnType1 == String && returnType2 == Null) {
-      return Concatenate(operand: [left, LiteralString('')], plus: isAddition);
-    } else if (returnType1 == Null && returnType2 == String) {
-      return Concatenate(operand: [LiteralString(''), right], plus: isAddition);
-    } else {
-      // Handle complex cases where left and/or right are numeric literals
+    // Check for string concatenation
+    if (isAddition && (left is LiteralString || right is LiteralString)) {
+      return Concatenate(
+        operand: [
+          left is LiteralNull
+              ? As(operand: left, asType: QName.fromDataType('String'))
+              : left,
+          right is LiteralNull
+              ? As(operand: right, asType: QName.fromDataType('String'))
+              : right
+        ],
+        plus: true,
+      );
+    } else if (!isAddition &&
+        (left is LiteralString || right is LiteralString)) {
+      return Concatenate(
+        operand: [
+          Coalesce(operand: [
+            left is LiteralNull
+                ? As(operand: left, asType: QName.fromDataType('String'))
+                : left,
+            LiteralString(''),
+          ]),
+          Coalesce(operand: [
+            right is LiteralNull
+                ? As(operand: right, asType: QName.fromDataType('String'))
+                : right,
+            LiteralString(''),
+          ]),
+        ],
+        plus: true,
+      );
+    } else if (left is LiteralInteger ||
+        left is LiteralLong ||
+        left is LiteralDecimal ||
+        right is LiteralInteger ||
+        right is LiteralLong ||
+        right is LiteralDecimal) {
       return handleNumericConcatenationOrAddition(left, right);
+    } else if (left is LiteralQuantity || right is LiteralQuantity) {
+      return handleQuantityAddition(left, right);
     }
+
+    // Default to Add for all non-string types (e.g., Date + Quantity)
+    return Add(operand: [left, right]);
   }
 
-  // Helper function for numeric addition or concatenation handling
+  // Numeric addition with null handling for specific types
   CqlExpression handleNumericConcatenationOrAddition(
       CqlExpression left, CqlExpression right) {
     switch (left) {
