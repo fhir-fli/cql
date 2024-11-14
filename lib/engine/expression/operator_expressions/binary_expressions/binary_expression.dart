@@ -111,8 +111,8 @@ abstract class BinaryExpression extends OperatorExpression {
         return ProperIncludedIn.fromJson(json);
       case 'ProperIncludes':
         return ProperIncludes.fromJson(json);
-      case 'Skip':
-        return Skip.fromJson(json);
+      // case 'Skip':
+      //   return Skip.fromJson(json);
       case 'SameAs':
         return SameAs.fromJson(json);
       case 'SameOrAfter':
@@ -125,8 +125,8 @@ abstract class BinaryExpression extends OperatorExpression {
         return Starts.fromJson(json);
       case 'Subtract':
         return Subtract.fromJson(json);
-      case 'Take':
-        return Take.fromJson(json);
+      // case 'Take':
+      //   return Take.fromJson(json);
       case 'Times':
         return Times.fromJson(json);
       case 'TruncatedDivide':

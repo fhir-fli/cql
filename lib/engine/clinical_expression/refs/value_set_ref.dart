@@ -9,7 +9,7 @@ class ValueSetRef extends Ref {
   ValueSetRef({
     required super.name,
     super.libraryName,
-    this.preserve,
+    this.preserve = true,
     super.annotation,
     super.localId,
     super.locator,

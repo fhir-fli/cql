@@ -248,9 +248,9 @@ class In extends BinaryExpression {
         return FhirBoolean(right.contains(left));
       }
     } else if (right is CqlValueSet) {
-      final String url = right.id;
+      // final String url = right.id;
       // ignore: unused_local_variable
-      final response = get(Uri.parse(url));
+      // final response = get(Uri.parse(url));
     } else {
       throw ArgumentError(
           'In: Right operand must be of type Interval, List, or include Codes and ValueSets');

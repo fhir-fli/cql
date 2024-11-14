@@ -6,10 +6,10 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
 
   @override
   Retrieve visitRetrieve(RetrieveContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     CqlExpression? context;
     NamedTypeSpecifier? name;
-    // CqlExpression? codePath;
+    String? codeProperty;
     String? codeComparator;
     CqlExpression? codes;
 
@@ -19,7 +19,9 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
       } else if (child is NamedTypeSpecifierContext) {
         name = visitNamedTypeSpecifier(child);
       } else if (child is CodePathContext) {
-        // codePath = visitCodePath(child);
+        print('${child.text} - ${child.runtimeType}');
+        codeProperty = visitCodePath(child);
+        print('codeProperty: $codeProperty');
       } else if (child is CodeComparatorContext) {
         codeComparator = visitCodeComparator(child);
       } else if (child is TerminologyContext) {
@@ -27,7 +29,7 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
       }
     }
     String? templateId;
-    String? codeProperty;
+
     if (name != null) {
       for (final model in library.usings?.def ?? <UsingDef>[]) {
         if (model.localIdentifier != null) {
@@ -44,14 +46,10 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
               if (modelInfo.typeInfo[index] is ClassInfo) {
                 templateId =
                     (modelInfo.typeInfo[index] as ClassInfo).identifier;
-                codeProperty =
-                    (modelInfo.typeInfo[index] as ClassInfo).primaryCodePath;
                 localPart = (modelInfo.typeInfo[index] as ClassInfo).name;
               } else if (modelInfo.typeInfo[index] is ProfileInfo) {
                 templateId =
                     (modelInfo.typeInfo[index] as ProfileInfo).identifier;
-                codeProperty =
-                    (modelInfo.typeInfo[index] as ProfileInfo).primaryCodePath;
                 localPart = (modelInfo.typeInfo[index] as ProfileInfo).name;
               }
               name.namespace = QName.fromNamespace(modelInfo.url.toString(),
@@ -65,7 +63,7 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
         dataType: name.namespace,
         codes: codes,
         context: context,
-        codeComparator: codeComparator ?? 'in',
+        codeComparator: codes == null ? null : (codeComparator ?? 'in'),
         templateId: templateId,
         codeProperty: codeProperty,
       );

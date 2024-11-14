@@ -6,12 +6,13 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
-    printIf(ctx);
+    printIf(ctx, true);
     final int thisNode = getNextNode();
     String? equalityOperator;
     List<CqlExpression> operand = [];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
+         print('${child.text} ${child.runtimeType}');
         final result = byContext(child);
         if (result is CqlExpression) {
           operand.add(result);

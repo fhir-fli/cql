@@ -1,3 +1,5 @@
+import 'package:fhir_r4/fhir_r4.dart';
+
 import '../../../cql.dart';
 
 /// The Slice operator returns a portion of the elements in a list, beginning at the start index and ending just before the ending index.
@@ -72,4 +74,47 @@ class Slice extends OperatorExpression {
 
   @override
   String get type => 'Slice';
+
+  @override
+  List<dynamic>? execute(Map<String, dynamic> context) {
+    final start = startIndex.execute(context);
+    final end = endIndex.execute(context);
+    final src = source.execute(context);
+    return slice(src, start, end);
+  }
+
+  static List<dynamic>? slice(dynamic src, dynamic start, dynamic end) {
+    if (src == null) {
+      return null;
+    } else if (src is! List) {
+      throw ArgumentError('Take operator requires a list and an integer');
+    } else if (start == null) {
+      return [];
+    } else if ((start is num && start < 0) ||
+        (start is FhirNumber && (start.value ?? 0) < 0) ||
+        (start is FhirInteger64 && (start.value?.toInt() ?? 0) < 0) ||
+        (start is BigInt && start.toInt() < 0)) {
+      return [];
+    } else {
+      final startIndex = start is int
+          ? start
+          : start is FhirNumber && start.value is int
+              ? start.value! as int
+              : null;
+      if (startIndex == null) {
+        throw ArgumentError(
+            'Slices must have a start argument that is an integer');
+      }
+      final endIndex = end is int
+          ? end
+          : end is FhirNumber && end.value is int
+              ? end.value! as int
+              : null;
+      if (endIndex == null) {
+        throw ArgumentError(
+            'Slices must have an end argument that is an integer');
+      }
+      return src.sublist(start, end);
+    }
+  }
 }

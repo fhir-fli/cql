@@ -318,6 +318,7 @@ class Retrieve extends CqlExpression {
     }
 
     writeNotNull('id', id?.toJson());
+    val['dataType'] = dataType.toJson();
     writeNotNull('templateId', templateId);
     writeNotNull('codeProperty', codeProperty);
     writeNotNull('codeComparator', codeComparator);
@@ -344,7 +345,6 @@ class Retrieve extends CqlExpression {
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
-    val['dataType'] = dataType.toJson();
     writeNotNull('resultTypeName', resultTypeName);
     return val;
   }

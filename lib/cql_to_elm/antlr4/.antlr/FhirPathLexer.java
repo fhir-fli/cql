@@ -1,4 +1,4 @@
-// Generated from /home/grey/dev/new_fhir/cql/lib/cql-to-elm/antlr4/FhirPath.g4 by ANTLR 4.13.1
+// Generated from /home/grey/dev/fhir/cql/lib/cql_to_elm/antlr4/FhirPath.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

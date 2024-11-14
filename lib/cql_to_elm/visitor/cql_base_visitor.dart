@@ -90,11 +90,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       CqlChoiceTypeSpecifierVisitor(library).visitChoiceTypeSpecifier(ctx);
 
   @override
-  dynamic visitCodeComparator(CodeComparatorContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  String visitCodeComparator(CodeComparatorContext ctx) =>
+      ['in', '=', '~'].contains(ctx.text)
+          ? ctx.text
+          : throw ArgumentError('Invalid CodeComparator: ${ctx.text}');
 
   @override
   void visitCodeDefinition(CodeDefinitionContext ctx) =>
@@ -721,19 +720,18 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   dynamic visitSimplePathQualifiedIdentifier(
-      SimplePathQualifiedIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+          SimplePathQualifiedIdentifierContext ctx) =>
+      CqlSimplePathQualifiedIdentifierVisitor(library)
+          .visitSimplePathQualifiedIdentifier(ctx);
 
   @override
-  dynamic visitSimplePathReferentialIdentifier(
-      SimplePathReferentialIdentifierContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  String visitSimplePathReferentialIdentifier(
+          SimplePathReferentialIdentifierContext ctx) =>
+      ctx.childCount == 1 && ctx.getChild(0) is ReferentialIdentifierContext
+          ? visitReferentialIdentifier(
+              ctx.getChild(0) as ReferentialIdentifierContext)
+          : throw ArgumentError(
+              'Invalid Type for SimplePathReferentialIdentifier');
 
   @override
   dynamic visitSimpleStringLiteral(SimpleStringLiteralContext ctx) {

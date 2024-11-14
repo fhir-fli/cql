@@ -354,8 +354,8 @@ class CqlExpression extends Element {
           return SingletonFrom.fromJson(json);
         case 'Size':
           return Size.fromJson(json);
-        case 'Skip':
-          return Skip.fromJson(json);
+        // case 'Skip':
+        //   return Skip.fromJson(json);
         case 'Slice':
           return Slice.fromJson(json);
         case 'Sort':
@@ -386,8 +386,8 @@ class CqlExpression extends Element {
           return Sum.fromJson(json);
         case 'Tail':
           return Tail.fromJson(json);
-        case 'Take':
-          return Take.fromJson(json);
+        // case 'Take':
+        //   return Take.fromJson(json);
         case 'TernaryExpression':
           return TernaryExpression.fromJson(json);
         case 'TimeFrom':
@@ -467,6 +467,7 @@ class CqlExpression extends Element {
 
   factory CqlExpression.byName(
       String type, List<CqlExpression> operand, CqlLibrary library) {
+    print(type);
     switch (type) {
       case 'Abs':
         return Abs(operand: operand.first);
@@ -857,7 +858,17 @@ class CqlExpression extends Element {
       case 'Size':
         return Size(operand: operand.first);
       case 'Skip':
-        return Skip(operand: operand);
+        {
+          if (operand.length != 2) {
+            throw ArgumentError.value(operand, 'Skip must have 2 operands');
+          }
+          return Slice(
+              source: operand[0],
+              startIndex: operand[1],
+              endIndex:
+                  NamedTypeSpecifier(namespace: QName.fromDataType('Null')));
+        }
+      // return Skip(operand: operand);
       // case 'Slice':
       //   return Slice(operand: operand);
       // case 'Sort':
@@ -905,7 +916,15 @@ class CqlExpression extends Element {
           return Tail(operand: operand.first);
         }
       case 'Take':
-        return Take(operand: operand);
+        {
+          if (operand.length != 2) {
+            throw ArgumentError.value(operand, 'Take must have 2 operands');
+          }
+          return Slice(
+              source: operand[0],
+              startIndex: LiteralInteger(0),
+              endIndex: Coalesce(operand: [operand[1], LiteralInteger(0)]));
+        }
       // case 'TernaryExpression':
       //   return TernaryExpression(operands: operand);
       case 'TimeFrom':

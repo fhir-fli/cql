@@ -10,7 +10,11 @@ void takeTest() {
       LiteralInteger(3),
       LiteralInteger(4),
     ]);
-    final take = Take(operand: [list, LiteralInteger(2)]);
+    final take = Slice(
+        source: list,
+        startIndex: LiteralInteger(0),
+        endIndex: LiteralInteger(2));
+
     final result = take.execute({});
     expect(result, equals([FhirInteger(1), FhirInteger(2)]));
   });
@@ -19,7 +23,10 @@ void takeTest() {
       LiteralInteger(1),
       LiteralInteger(2),
     ]);
-    final take = Take(operand: [list, LiteralInteger(3)]);
+    final take = Slice(
+        source: list,
+        startIndex: LiteralInteger(0),
+        endIndex: LiteralInteger(3));
     final result = take.execute({});
     expect(result, equals([FhirInteger(1), FhirInteger(2)]));
   });
@@ -30,12 +37,20 @@ void takeTest() {
       LiteralInteger(3),
       LiteralInteger(4),
     ]);
-    final take = Take(operand: [list, LiteralNull()]);
+
+    final take = Slice(
+      source: list,
+      startIndex: LiteralInteger(0),
+      endIndex: LiteralNull(),
+    );
     final result = take.execute({});
     expect(result, equals([]));
   });
   test('define "TakeIsNull": Take(null, 2)', () {
-    final take = Take(operand: [LiteralNull(), LiteralInteger(2)]);
+    final take = Slice(
+        source: LiteralNull(),
+        startIndex: LiteralInteger(0),
+        endIndex: LiteralInteger(2));
     final result = take.execute({});
     expect(result, equals(null));
   });

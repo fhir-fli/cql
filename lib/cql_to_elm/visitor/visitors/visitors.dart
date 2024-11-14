@@ -89,6 +89,7 @@ export 'cql_referential_or_type_name_identifier_visitor.dart';
 export 'cql_retrieve_expression_visitor.dart';
 export 'cql_retrieve_visitor.dart';
 export 'cql_set_aggregate_expression_term_visitor.dart';
+export 'cql_simple_path_qualified_identifier_visitor.dart';
 export 'cql_simple_path_indexer_visitor.dart';
 export 'cql_source_clause_visitor.dart';
 export 'cql_starts_interval_operator_phrase_visitor.dart';

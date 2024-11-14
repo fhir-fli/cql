@@ -115,8 +115,8 @@ abstract class OperatorExpression extends CqlExpression {
         return SameOrAfter.fromJson(json);
       case 'SameOrBefore':
         return SameOrBefore.fromJson(json);
-      case 'Skip':
-        return Skip.fromJson(json);
+      // case 'Skip':
+      //   return Skip.fromJson(json);
       case 'StartsWith':
         return StartsWith.fromJson(json);
       case 'Starts':
@@ -291,8 +291,8 @@ abstract class OperatorExpression extends CqlExpression {
         return Split.fromJson(json);
       case 'Substring':
         return Substring.fromJson(json);
-      case 'Take':
-        return Take.fromJson(json);
+      // case 'Take':
+      //   return Take.fromJson(json);
       case 'TimeExpression':
         return TimeExpression.fromJson(json);
       case 'TimeOfDay':
