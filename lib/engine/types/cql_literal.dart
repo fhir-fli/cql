@@ -4,6 +4,14 @@ import 'package:ucum/ucum.dart';
 import '../../cql.dart';
 
 abstract class LiteralType extends CqlExpression {
+  LiteralType({
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
+
   @override
   String get type;
   String get valueType => '{urn:hl7-org:elm-types:r1}$type';
@@ -52,12 +60,20 @@ abstract class LiteralType extends CqlExpression {
 }
 
 class LiteralNull extends LiteralType {
-  LiteralNull();
+  LiteralNull({super.resultTypeName});
 
-  factory LiteralNull.fromJson(dynamic json) => LiteralNull();
+  factory LiteralNull.fromJson(dynamic json) =>
+      LiteralNull(resultTypeName: json['resultTypeName']);
 
   @override
-  Map<String, dynamic> toJson() => {'type': type};
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if(resultTypeName != null){
+      json['resultTypeName'] = resultTypeName;
+    }
+    json['type'] = type;
+    return json;
+  }
 
   @override
   String? execute(Map<String, dynamic> context) => null;

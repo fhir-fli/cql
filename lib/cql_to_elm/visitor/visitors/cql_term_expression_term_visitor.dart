@@ -9,7 +9,9 @@ class CqlTermExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      return byContext(child);
+      final result = byContext(child);
+      print(result.toString());
+      return result;
     }
     throw ArgumentError('$thisNode Invalid TermExpressionTerm');
   }

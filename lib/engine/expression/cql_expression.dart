@@ -865,8 +865,8 @@ class CqlExpression extends Element {
           return Slice(
               source: operand[0],
               startIndex: operand[1],
-              endIndex:
-                  NamedTypeSpecifier(namespace: QName.fromDataType('Null')));
+              endIndex: LiteralNull(
+                  resultTypeName: QName.fromDataType('Integer').toJson()));
         }
       // return Skip(operand: operand);
       // case 'Slice':
@@ -912,8 +912,15 @@ class CqlExpression extends Element {
       case 'Sum':
         return Sum(source: operand.first);
       case 'Tail':
-        if (operand.length == 1) {
-          return Tail(operand: operand.first);
+        {
+          if (operand.length != 1) {
+            throw ArgumentError.value(operand, 'Tail must have 1 operand');
+          }
+          return Slice(
+              source: operand[0],
+              startIndex: LiteralInteger(1),
+              endIndex: LiteralNull(
+                  resultTypeName: QName.fromDataType('Integer').toJson()));
         }
       case 'Take':
         {

@@ -16,8 +16,18 @@ abstract class AliasedQuerySource extends CqlExpression {
     super.resultTypeSpecifier,
   });
 
+  /// Dynamic deserialization for AliasedQuerySource and its subclasses
   factory AliasedQuerySource.fromJson(Map<String, dynamic> json) {
-    return RelationshipClause.fromJson(json);
+    switch (json['type']) {
+      case 'RelationshipClause':
+        return RelationshipClause.fromJson(json);
+      case 'With':
+        return With.fromJson(json);
+      case 'Without':
+        return Without.fromJson(json);
+      default:
+        throw ArgumentError('Unsupported AliasedQuerySource type: ${json['type']}');
+    }
   }
 
   @override

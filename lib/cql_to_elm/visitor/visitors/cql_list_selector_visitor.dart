@@ -7,50 +7,89 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
   @override
   ListExpression visitListSelector(ListSelectorContext ctx) {
     printIf(ctx);
+
+    // Type specifier for the list (if provided)
     TypeSpecifierExpression? typeSpecifier;
-    final List<CqlExpression> element = <CqlExpression>[];
+    final List<CqlExpression> elements = <CqlExpression>[];
+
+    // Extract elements and type specifiers
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         typeSpecifier = visitTypeSpecifier(child);
       } else if (child is ExpressionContext) {
         final result = byContext(child);
         if (result is CqlExpression) {
-          element.add(result);
+          elements.add(result);
         }
-      }
-    }
-    final typesList = <Type>{};
-    for (final e in element) {
-      final types = e.getReturnTypes(library);
-      if (types != null) {
-        typesList.addAll(types);
       }
     }
 
-    final nonNullList = typesList.where((element) => element != Null).toSet();
-    if (nonNullList.length == 1 && typesList.length == 2) {
-      // final type = nonNullList.first;
-      final newElement = <CqlExpression>[];
-      for (final e in element) {
-        final returnTypes = e.getReturnTypes(library);
+    // Gather return types for all elements
+    final typesList = <Type>{};
+    for (final element in elements) {
+      final returnTypes = element.getReturnTypes(library);
+      if (returnTypes != null) {
+        typesList.addAll(returnTypes);
+      }
+    }
+
+    // Identify non-null types
+    final nonNullTypes = typesList.where((type) => type != Null).toSet();
+
+    if (nonNullTypes.length > 1) {
+      // Mixed types: use a ChoiceTypeSpecifier
+      final choiceTypeSpecifier = ChoiceTypeSpecifier(
+        choice: nonNullTypes.map((type) {
+          return NamedTypeSpecifier(
+            namespace: QName.fromDataType(type.toString()),
+          );
+        }).toList(),
+      );
+
+      return ListExpression(
+        typeSpecifier: choiceTypeSpecifier,
+        element: elements.map((e) {
+          final returnTypes = e.getReturnTypes(library);
+          if (returnTypes == null ||
+              returnTypes.isEmpty ||
+              returnTypes.first == Null) {
+            return As(
+              operand: e,
+              asTypeSpecifier: choiceTypeSpecifier,
+            );
+          }
+          return e;
+        }).toList(),
+      );
+    } else if (nonNullTypes.length == 1 && typesList.contains(Null)) {
+      // Single non-null type with Null elements: wrap Null elements in `As` expressions
+      final wrappedElements = <CqlExpression>[];
+      final nonNullType = nonNullTypes.first;
+
+      for (final element in elements) {
+        final returnTypes = element.getReturnTypes(library);
         if (returnTypes == null ||
             returnTypes.isEmpty ||
             returnTypes.first == Null) {
-          newElement.add(As(
-              operand: e, asType: QName.fromDataType('${nonNullList.first}')));
+          wrappedElements.add(As(
+            operand: element,
+            asType: QName.fromDataType(nonNullType.toString()),
+          ));
         } else {
-          newElement.add(e);
+          wrappedElements.add(element);
         }
       }
+
       return ListExpression(
         typeSpecifier: typeSpecifier,
-        element: newElement,
-      );
-    } else {
-      return ListExpression(
-        typeSpecifier: typeSpecifier,
-        element: element,
+        element: wrappedElements,
       );
     }
+
+    // Otherwise, return the list as-is
+    return ListExpression(
+      typeSpecifier: typeSpecifier,
+      element: elements,
+    );
   }
 }
