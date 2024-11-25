@@ -137,7 +137,7 @@ class SameOrAfter extends BinaryExpression {
   String get type => 'SameOrAfter';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => const [FhirBoolean];
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirBoolean'];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

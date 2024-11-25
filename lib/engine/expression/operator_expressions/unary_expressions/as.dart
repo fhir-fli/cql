@@ -139,8 +139,8 @@ class As extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) {
-    return asType?.getReturnTypes(library);
+  List<String> getReturnTypes(CqlLibrary library) {
+    return asType?.getReturnTypes(library) ?? ['Unknown'];
   }
 
   @override

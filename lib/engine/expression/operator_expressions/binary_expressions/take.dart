@@ -81,7 +81,7 @@
 //   String get type => 'Take';
 
 //   @override
-//   List<Type> getReturnTypes(CqlLibrary library) => const [List];
+//   List<String> getReturnTypes(CqlLibrary library) => const [List];
 
 //   @override
 //   List<dynamic>? execute(Map<String, dynamic> context) {

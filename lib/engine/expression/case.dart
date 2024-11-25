@@ -1,5 +1,4 @@
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:ucum/ucum.dart';
 
 import '../../cql.dart';
 
@@ -88,29 +87,25 @@ class Case extends CqlExpression {
   String get type => 'Case';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) {
-    List<Type>? types;
+  List<String> getReturnTypes(CqlLibrary library) {
+    List<String> types = [];
     for (final item in caseItem) {
       final newTypes = item.then.getReturnTypes(library);
-      if (newTypes != null) {
-        types ??= [];
-        types.addAll(newTypes);
-      }
+      types.addAll(newTypes);
     }
     final elseTypes = elseExpr.getReturnTypes(library);
-    if (elseTypes != null) {
-      types ??= [];
-      types.addAll(elseTypes);
-    }
-    if (types == null || types.isEmpty) {
-      return null;
+
+    types.addAll(elseTypes);
+
+    if (types.isEmpty) {
+      return types;
     } else {
-      if (types.contains(ValidatedQuantity) || types.contains(FhirDecimal)) {
-        return [FhirDecimal];
-      } else if (types.contains(FhirInteger64)) {
-        return [FhirInteger64];
-      } else if (types.contains(FhirInteger)) {
-        return [FhirInteger];
+      if (types.contains('ValidatedQuantity') || types.contains('FhirDecimal')) {
+        return ['FhirDecimal'];
+      } else if (types.contains('FhirInteger64')) {
+        return ['FhirInteger64'];
+      } else if (types.contains('FhirInteger')) {
+        return ['FhirInteger'];
       } else {
         return types.toSet().toList();
       }

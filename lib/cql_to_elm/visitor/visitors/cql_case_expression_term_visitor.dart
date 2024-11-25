@@ -1,5 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:ucum/ucum.dart';
 import '../../../cql.dart';
 
 class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
@@ -28,34 +26,34 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
     }
     if (caseItem.isNotEmpty && elseExpr != null) {
       final elseTypes = elseExpr.getReturnTypes(library);
-      final caseTypes = <Type>[];
+      final caseTypes = <String>[];
       for (final case_ in caseItem) {
         final newCaseTypes = case_.then.getReturnTypes(library);
-        if (newCaseTypes != null && newCaseTypes.isNotEmpty) {
+        if (newCaseTypes.isNotEmpty) {
           caseTypes.addAll(newCaseTypes);
         }
       }
-      final totalTypes = caseTypes.toSet().union(elseTypes?.toSet() ?? {});
-      if (totalTypes.contains(ValidatedQuantity) ||
-          totalTypes.contains(FhirDecimal)) {
-        if (elseTypes?.length == 1 &&
-            (elseTypes?.first == FhirInteger64 ||
-                elseTypes?.first == FhirInteger)) {
+      final totalTypes = caseTypes.toSet().union(elseTypes.toSet());
+      if (totalTypes.contains('ValidatedQuantity') ||
+          totalTypes.contains('FhirDecimal')) {
+        if (elseTypes.length == 1 &&
+            (elseTypes.first == 'FhirInteger64' ||
+                elseTypes.first == 'FhirInteger')) {
           elseExpr = ToDecimal(operand: elseExpr);
         }
         for (var i = 0; i < caseTypes.length; i++) {
-          if (caseTypes[i] == FhirInteger64 || caseTypes[i] == FhirInteger) {
+          if (caseTypes[i] == 'FhirInteger64' || caseTypes[i] == 'FhirInteger') {
             caseItem[i] = CaseItem(
                 when_: caseItem[i].when_,
                 then: ToDecimal(operand: caseItem[i].then));
           }
         }
-      } else if (totalTypes.contains(FhirInteger64)) {
-        if (elseTypes?.length == 1 && elseTypes?.first == FhirInteger) {
+      } else if (totalTypes.contains('FhirInteger64')) {
+        if (elseTypes.length == 1 && elseTypes.first == 'FhirInteger') {
           elseExpr = ToLong(operand: elseExpr);
         }
         for (var i = 0; i < caseTypes.length; i++) {
-          if (caseTypes[i] == FhirInteger) {
+          if (caseTypes[i] == 'FhirInteger') {
             caseItem[i] = CaseItem(
                 when_: caseItem[i].when_,
                 then: ToLong(operand: caseItem[i].then));

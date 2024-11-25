@@ -88,7 +88,7 @@ class Split extends OperatorExpression {
   String get type => 'Split';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [List];
+  List<String> getReturnTypes(CqlLibrary library) => ['List<String>'];
 
   @override
   List<String>? execute(Map<String, dynamic> context) {

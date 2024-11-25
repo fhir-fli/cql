@@ -83,7 +83,13 @@ class Distinct extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [List];
+  List<String> getReturnTypes(CqlLibrary library) {
+    final returnTypes = operand.getReturnTypes(library).toSet();
+    if(returnTypes.length == 1) {
+      return ['List<${returnTypes.first}>'];
+    }
+    return ['List'];
+  }
 
   @override
   List<dynamic>? execute(Map<String, dynamic> context) {

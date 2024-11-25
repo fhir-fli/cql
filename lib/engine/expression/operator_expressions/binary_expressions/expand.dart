@@ -169,8 +169,8 @@ class Expand extends BinaryExpression {
   String get type => 'Expand';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) =>
-      [List<CqlInterval>, List<Object>];
+  List<String> getReturnTypes(CqlLibrary library) =>
+      ['List<CqlInterval>', 'List'];
 
   @override
   dynamic execute(Map<String, dynamic> context) {

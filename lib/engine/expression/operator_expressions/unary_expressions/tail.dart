@@ -53,7 +53,13 @@ class Tail extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [List];
+  List<String> getReturnTypes(CqlLibrary library) {
+    final returnType = operand.getReturnTypes(library).toSet();
+    if (returnType.length == 1) {
+      return ['List<${returnType.first}>'];
+    }
+    return ['List'];
+  }
 
   @override
   dynamic execute(Map<String, dynamic> context) {

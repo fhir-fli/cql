@@ -16,46 +16,47 @@ abstract class LiteralType extends CqlExpression {
   String get type;
   String get valueType => '{urn:hl7-org:elm-types:r1}$type';
 
-  static Type? typeToLiteral(Type type) {
-    if (type == FhirBoolean) {
-      return LiteralBoolean;
-    } else if (type == FhirDate) {
-      return LiteralDate;
-    } else if (type == FhirDateTime) {
-      return LiteralDateTime;
-    } else if (type == FhirDecimal) {
-      return LiteralDecimal;
-    } else if (type == FhirInteger) {
-      return LiteralInteger;
-    } else if (type == FhirInteger64) {
-      return LiteralLong;
-    } else if (type == String) {
-      return LiteralString;
-    } else if (type == FhirTime) {
-      return LiteralTime;
-    } else if (type == ValidatedQuantity) {
-      return LiteralQuantity;
-    } else if (type == ValidatedRatio) {
-      return LiteralRatio;
-    } else if (type == Null) {
-      return LiteralNull;
-    } else {
-      return null;
+  static String? typeToLiteral(String type) {
+    switch (type) {
+      case 'FhirBoolean':
+        return 'LiteralBoolean';
+      case 'FhirDate':
+        return 'LiteralDate';
+      case 'FhirDateTime':
+        return 'LiteralDateTime';
+      case 'FhirDecimal':
+        return 'LiteralDecimal';
+      case 'FhirInteger':
+        return 'LiteralInteger';
+      case 'FhirInteger64':
+        return 'LiteralLong';
+      case 'String':
+        return 'LiteralString';
+      case 'FhirTime':
+        return 'LiteralTime';
+      case 'ValidatedQuantity':
+        return 'LiteralQuantity';
+      case 'ValidatedRatio':
+        return 'LiteralRatio';
+      case 'Null':
+        return 'LiteralNull';
+      default:
+        return null;
     }
   }
 
-  static List<Type> get literalTypes => [
-        LiteralBoolean,
-        LiteralDate,
-        LiteralDateTime,
-        LiteralDecimal,
-        LiteralInteger,
-        LiteralLong,
-        LiteralString,
-        LiteralTime,
-        LiteralQuantity,
-        LiteralRatio,
-        LiteralNull,
+  static List<String> get literalTypes => [
+        'LiteralBoolean',
+        'LiteralDate',
+        'LiteralDateTime',
+        'LiteralDecimal',
+        'LiteralInteger',
+        'LiteralLong',
+        'LiteralString',
+        'LiteralTime',
+        'LiteralQuantity',
+        'LiteralRatio',
+        'LiteralNull',
       ];
 }
 
@@ -68,7 +69,7 @@ class LiteralNull extends LiteralType {
   @override
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if(resultTypeName != null){
+    if (resultTypeName != null) {
       json['resultTypeName'] = resultTypeName;
     }
     json['type'] = type;
@@ -85,7 +86,7 @@ class LiteralNull extends LiteralType {
   String get type => 'Null';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [Null];
+  List<String> getReturnTypes(CqlLibrary library) => ['Null'];
 }
 
 class LiteralBoolean extends LiteralType {
@@ -121,7 +122,7 @@ class LiteralBoolean extends LiteralType {
   String toString() => 'LiteralBoolean: $value';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirBoolean];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirBoolean'];
 }
 
 class LiteralCode extends LiteralType {
@@ -160,7 +161,7 @@ class LiteralCode extends LiteralType {
   String get type => 'Code';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlCode];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlCode'];
 
   @override
   CqlCode execute(Map<String, dynamic> context) => CqlCode(
@@ -201,7 +202,7 @@ class LiteralConcept extends LiteralType {
   String get type => 'Concept';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlConcept];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlConcept'];
 
   @override
   CqlConcept execute(Map<String, dynamic> context) {
@@ -340,7 +341,7 @@ class LiteralDate extends LiteralType {
   String toString() => 'LiteralDate: $value';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDate];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirDate'];
 }
 
 class LiteralDateTime extends LiteralType {
@@ -387,7 +388,7 @@ class LiteralDateTime extends LiteralType {
       FhirDateTime.fromString(value);
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDateTime];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirDateTime'];
 }
 
 class LiteralDecimal extends LiteralType {
@@ -459,7 +460,7 @@ class LiteralDecimal extends LiteralType {
   String toString() => 'LiteralDecimal: $value';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDecimal];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirDecimal'];
 }
 
 class LiteralInteger extends LiteralType {
@@ -500,7 +501,7 @@ class LiteralInteger extends LiteralType {
   String toString() => 'LiteralInteger: $value';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirInteger];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirInteger'];
 }
 
 class LiteralLong extends LiteralType {
@@ -541,7 +542,7 @@ class LiteralLong extends LiteralType {
   String toString() => 'LiteralLong: $value';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirInteger64];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirInteger64'];
 }
 
 class LiteralQuantity extends LiteralType {
@@ -581,7 +582,7 @@ class LiteralQuantity extends LiteralType {
   String toString() => 'LiteralQuantity: ${value.value} $unit';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [ValidatedQuantity];
+  List<String> getReturnTypes(CqlLibrary library) => ['ValidatedQuantity'];
 }
 
 class LiteralRatio extends LiteralType {
@@ -647,7 +648,7 @@ class LiteralString extends LiteralType {
   String get type => 'String';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [String];
+  List<String> getReturnTypes(CqlLibrary library) => ['String'];
 }
 
 class LiteralTime extends LiteralType {
@@ -714,7 +715,7 @@ class LiteralTime extends LiteralType {
   FhirTime execute(Map<String, dynamic> context) => FhirTime(value);
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirTime];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirTime'];
 }
 
 abstract class LiteralCqlInterval extends LiteralType {
@@ -779,7 +780,7 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
   String get type => 'Interval<Integer>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) =>
@@ -825,7 +826,7 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
   String get type => 'Interval<Decimal>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) =>
@@ -871,7 +872,7 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
   String get type => 'Interval<Quantity>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) =>
@@ -917,7 +918,7 @@ class LiteralDateInterval extends LiteralCqlInterval {
   String get type => 'Interval<Date>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) => CqlInterval<FhirDate>(
@@ -962,7 +963,7 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
   String get type => 'Interval<DateTime>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) =>
@@ -1008,7 +1009,7 @@ class LiteralTimeInterval extends LiteralCqlInterval {
   String get type => 'Interval<Time>';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) => ['CqlInterval'];
 
   @override
   CqlInterval? execute(Map<String, dynamic> context) => CqlInterval<FhirTime>(

@@ -1,5 +1,4 @@
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:http/http.dart';
 
 import '../../../../cql.dart';
 
@@ -211,7 +210,7 @@ class In extends BinaryExpression {
   String get type => 'In';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => const [FhirBoolean];
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirBoolean'];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {
@@ -230,7 +229,7 @@ class In extends BinaryExpression {
     if (right is CqlInterval ||
         (rightReturnTypes != null &&
             rightReturnTypes.isNotEmpty &&
-            rightReturnTypes.first == CqlInterval)) {
+            rightReturnTypes.first == 'CqlInterval')) {
       if (left == null) {
         return null;
       } else if (right == null) {
@@ -241,7 +240,7 @@ class In extends BinaryExpression {
     } else if (right is List ||
         (rightReturnTypes != null &&
             rightReturnTypes.isNotEmpty &&
-            rightReturnTypes.first == List)) {
+            rightReturnTypes.first.contains('List'))) {
       if (right == null) {
         return FhirBoolean(false);
       } else {

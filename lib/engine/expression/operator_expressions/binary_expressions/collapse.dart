@@ -123,7 +123,7 @@ class Collapse extends BinaryExpression {
   String get type => 'Collapse';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => [List<CqlInterval>];
+  List<String> getReturnTypes(CqlLibrary library) => const ['List<CqlInterval>'];
 
   @override
   List<CqlInterval>? execute(Map<String, dynamic> context) {

@@ -77,5 +77,5 @@ class Substring extends OperatorExpression {
   String get type => 'Substring';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [String];
+  List<String> getReturnTypes(CqlLibrary library) => ['String'];
 }

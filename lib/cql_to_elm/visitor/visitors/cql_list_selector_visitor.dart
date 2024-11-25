@@ -25,68 +25,27 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
     }
 
     // Gather return types for all elements
-    final typesList = <Type>{};
+    final typesList = <String>{};
     for (final element in elements) {
       final returnTypes = element.getReturnTypes(library);
-      if (returnTypes != null) {
         typesList.addAll(returnTypes);
-      }
     }
 
-    // Identify non-null types
-    final nonNullTypes = typesList.where((type) => type != Null).toSet();
-
-    if (nonNullTypes.length > 1) {
-      // Mixed types: use a ChoiceTypeSpecifier
-      final choiceTypeSpecifier = ChoiceTypeSpecifier(
-        choice: nonNullTypes.map((type) {
-          return NamedTypeSpecifier(
-            namespace: QName.fromDataType(type.toString()),
-          );
-        }).toList(),
-      );
-
+    // Handle mixed types without adding a ChoiceTypeSpecifier
+    if (typesList.length > 1) {
+      // Just ensure each element is correctly represented; no overarching typeSpecifier
       return ListExpression(
-        typeSpecifier: choiceTypeSpecifier,
+        typeSpecifier: null, // Do not include a typeSpecifier at the list level
         element: elements.map((e) {
-          final returnTypes = e.getReturnTypes(library);
-          if (returnTypes == null ||
-              returnTypes.isEmpty ||
-              returnTypes.first == Null) {
-            return As(
-              operand: e,
-              asTypeSpecifier: choiceTypeSpecifier,
-            );
+          if (e is LiteralNull) {
+            return e; // Keep null as-is
           }
-          return e;
+          return e; // Directly include all other elements
         }).toList(),
-      );
-    } else if (nonNullTypes.length == 1 && typesList.contains(Null)) {
-      // Single non-null type with Null elements: wrap Null elements in `As` expressions
-      final wrappedElements = <CqlExpression>[];
-      final nonNullType = nonNullTypes.first;
-
-      for (final element in elements) {
-        final returnTypes = element.getReturnTypes(library);
-        if (returnTypes == null ||
-            returnTypes.isEmpty ||
-            returnTypes.first == Null) {
-          wrappedElements.add(As(
-            operand: element,
-            asType: QName.fromDataType(nonNullType.toString()),
-          ));
-        } else {
-          wrappedElements.add(element);
-        }
-      }
-
-      return ListExpression(
-        typeSpecifier: typeSpecifier,
-        element: wrappedElements,
       );
     }
 
-    // Otherwise, return the list as-is
+    // If only one type or empty list, return as-is
     return ListExpression(
       typeSpecifier: typeSpecifier,
       element: elements,

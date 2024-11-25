@@ -93,7 +93,7 @@ class Negate extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) =>
+  List<String> getReturnTypes(CqlLibrary library) =>
       operand.getReturnTypes(library);
 
   @override

@@ -138,7 +138,7 @@ class IncludedIn extends BinaryExpression {
   String get type => 'IncludedIn';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => [FhirBoolean];
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirBoolean'];
 
   // TODO(Dokotela): Implement precision
   @override

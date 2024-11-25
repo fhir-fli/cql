@@ -165,9 +165,7 @@ class Equivalent extends BinaryExpression {
   String get type => 'Equivalent';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) {
-    return [FhirBoolean];
-  }
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirBoolean'];
 
   @override
   FhirBoolean execute(Map<String, dynamic> context) {
@@ -188,8 +186,9 @@ class Equivalent extends BinaryExpression {
             : false;
         break;
       case FhirDateTimeBase _:
-        result =
-            right is FhirDateTimeBase ? left.isEquivalent(right) ?? false : false;
+        result = right is FhirDateTimeBase
+            ? left.isEquivalent(right) ?? false
+            : false;
         break;
       case FhirTime _:
         result = right is FhirTime ? left.isEquivalent(right) ?? false : false;

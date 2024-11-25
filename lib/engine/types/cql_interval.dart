@@ -32,6 +32,14 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
     }
   }
 
+  String get type => T != dynamic
+      ? T.toString()
+      : low != null
+          ? low.runtimeType.toString()
+          : high != null
+              ? high.runtimeType.toString()
+              : 'dynamic';
+
   dynamic getSize(dynamic start, dynamic end) {
     if (start == null || end == null) {
       return null;

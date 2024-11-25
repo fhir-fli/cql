@@ -64,7 +64,13 @@ class ListExpression extends CqlExpression {
   String get type => 'List';
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => [List];
+  List<String> getReturnTypes(CqlLibrary library) {
+    final returnTypes = <String>{};
+    element?.forEach((e) {
+      returnTypes.addAll(e.getReturnTypes(library));
+    });
+    return returnTypes.toList();
+  }
 
   @override
   List<dynamic> execute(Map<String, dynamic> context) {

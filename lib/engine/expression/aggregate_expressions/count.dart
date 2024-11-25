@@ -96,7 +96,7 @@ class Count extends AggregateExpression {
   String get type => 'Count';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirInteger];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirInteger'];
 
   @override
   FhirInteger execute(Map<String, dynamic> context) {

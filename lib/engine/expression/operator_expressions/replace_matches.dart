@@ -93,7 +93,7 @@ class ReplaceMatches extends TernaryExpression {
   String get type => 'ReplaceMatches';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [String];
+  List<String> getReturnTypes(CqlLibrary library) => ['String'];
 
   @override
   String? execute(Map<String, dynamic> context) {

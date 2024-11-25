@@ -50,10 +50,10 @@ class Concatenate extends NaryExpression {
       operand.add(As(operand: first, asType: QName.fromDataType('String')));
     } else {
       final return1 = first.getReturnTypes(library);
-      if (return1?.length == 1) {
-        if (return1!.first == LiteralString) {
+      if (return1.length == 1) {
+        if (return1.first == 'LiteralString') {
           operand.add(first);
-        } else if (return1.first == LiteralNull) {
+        } else if (return1.first == 'LiteralNull') {
           operand.add(As(operand: first, asType: QName.fromDataType('String')));
         }
       }
@@ -65,10 +65,10 @@ class Concatenate extends NaryExpression {
       operand.add(As(operand: second, asType: QName.fromDataType('String')));
     } else {
       final return2 = second.getReturnTypes(library);
-      if (return2?.length == 1) {
-        if (return2!.first == LiteralString) {
+      if (return2.length == 1) {
+        if (return2.first == 'LiteralString') {
           operand.add(second);
-        } else if (return2.first == LiteralNull) {
+        } else if (return2.first == 'LiteralNull') {
           operand
               .add(As(operand: second, asType: QName.fromDataType('String')));
         }
@@ -173,5 +173,5 @@ class Concatenate extends NaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [String];
+  List<String> getReturnTypes(CqlLibrary library) => ['String'];
 }

@@ -111,24 +111,24 @@ class MaxValue extends CqlExpression {
   String get type => 'MaxValue';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) {
+  List<String> getReturnTypes(CqlLibrary library) {
     switch (valueType.localPart) {
       case 'Integer':
-        return [FhirInteger];
+        return ['FhirInteger'];
       case 'Long':
-        return [FhirInteger64];
+        return ['FhirInteger64'];
       case 'Decimal':
-        return [FhirDecimal];
+        return ['FhirDecimal'];
       case 'Quantity':
-        return [ValidatedQuantity];
+        return ['ValidatedQuantity'];
       case 'Date':
-        return [FhirDate];
+        return ['FhirDate'];
       case 'DateTime':
-        return [FhirDateTime];
+        return ['FhirDateTime'];
       case 'Time':
-        return [FhirTime];
+        return ['FhirTime'];
       default:
-        return null;
+        return ['None'];
     }
   }
 

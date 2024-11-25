@@ -122,7 +122,7 @@ class Contains extends BinaryExpression {
   String get type => 'Contains';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => const [FhirBoolean];
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirBoolean'];
 
   @override
   FhirBoolean? execute(Map<String, dynamic> context) {

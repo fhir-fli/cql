@@ -9,7 +9,6 @@ class CqlInvocationTermVisitor extends CqlBaseVisitor<dynamic> {
     printIf(ctx);
     final int thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
-      print('INVOCATION: ${child.text} ${child.runtimeType}');
       if (child is MemberInvocationContext) {
         return visitMemberInvocation(child);
       } else if (child is FunctionInvocationContext) {

@@ -112,8 +112,8 @@ class DifferenceBetween extends BinaryExpression {
   String get type => 'DifferenceBetween';
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) =>
-      const [FhirInteger, CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) =>
+      const ['FhirInteger', 'CqlInterval'];
 
   // TODO(Dokotela): uncertainties
   @override

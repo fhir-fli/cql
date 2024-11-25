@@ -184,6 +184,6 @@ class ExpressionDef extends Element {
   dynamic execute(Map<String, dynamic> context) =>
       {name: expression?.execute(context)};
 
-  List<Type>? getReturnTypes(CqlLibrary library) =>
-      expression?.getReturnTypes(library);
+  List<String> getReturnTypes(CqlLibrary library) =>
+      expression?.getReturnTypes(library) ?? [];
 }

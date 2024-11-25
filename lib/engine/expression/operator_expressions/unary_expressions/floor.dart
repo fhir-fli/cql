@@ -80,7 +80,7 @@ class Floor extends UnaryExpression {
   }
 
   @override
-  List<Type> getReturnTypes(CqlLibrary library) => const [FhirInteger];
+  List<String> getReturnTypes(CqlLibrary library) => const ['FhirInteger'];
 
   @override
   FhirInteger? execute(Map<String, dynamic> context) {

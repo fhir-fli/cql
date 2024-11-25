@@ -183,9 +183,8 @@ class QName {
     }
   }
 
-  List<Type>? getReturnTypes(CqlLibrary library) {
-    final thisType = type;
-    return thisType == null ? null : [thisType];
+  List<String> getReturnTypes(CqlLibrary library) {
+    return [localPart];
   }
 
   Type? get type {

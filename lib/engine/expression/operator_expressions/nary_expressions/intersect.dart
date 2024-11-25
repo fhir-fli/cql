@@ -107,7 +107,24 @@ class Intersect extends NaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [List, CqlInterval];
+  List<String> getReturnTypes(CqlLibrary library) {
+    final leftReturnTypes = operand![0].getReturnTypes(library);
+    final rightReturnTypes = operand![1].getReturnTypes(library);
+    if (leftReturnTypes.length == 1 && rightReturnTypes.length == 1) {
+      if (leftReturnTypes.first == rightReturnTypes.first) {
+        return [leftReturnTypes.first];
+      }
+      if (leftReturnTypes.contains('List') &&
+          rightReturnTypes.contains('List')) {
+        return ['List'];
+      }
+      if (leftReturnTypes.contains('CqlInterval') &&
+          rightReturnTypes.contains('CqlInterval')) {
+        return ['CqlInterval'];
+      }
+    }
+    return ['Unknown'];
+  }
 
   @override
   dynamic execute(Map<String, dynamic> context) {

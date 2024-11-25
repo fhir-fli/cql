@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
@@ -24,167 +25,159 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void parseFile(BuildContext context) {
+void parseFile(BuildContext context) async {
   try {
-    DefaultAssetBundle.of(context)
-        .loadString('AssetManifest.json')
-        .then((assetsFile) {
-      final Map<String, dynamic> manifestMap = json.decode(assetsFile);
-      manifestMap.removeWhere((key, value) => !key.contains('cql/'));
+    final assetsFile =
+        await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
+    final Map<String, dynamic> manifestMap = json.decode(assetsFile)
+      ..removeWhere((key, value) => !key.contains('cql/'));
 
-      for (int i = 8; i < 9; i++) {
-        final file =
-            manifestMap.keys.firstWhereOrNull((e) => e.contains('$i.cql'));
-        if (file == null) {
-          break;
-        }
-        print('FILE: $file');
-        rootBundle.loadString(file).then((pathExpression) {
-          rootBundle
-              .loadString(file.replaceAll('cql', 'json'))
-              .then((jsonString) {
-            final json = jsonDecode(jsonString);
-            final answers = results[file.split("/").last];
+    for (int i = 1; i < 5; i++) {
+      final file =
+          manifestMap.keys.firstWhereOrNull((e) => e.contains('$i.cql'));
+      if (file == null) break;
 
-            final dynamic tempContext = contexts[file.split("/").last];
-            final Map<String, dynamic>? context =
-                tempContext is Map<String, dynamic> ? tempContext : null;
+      print('FILE: $file');
+      await _processFile(file);
+    }
+  } catch (e, s) {
+    print('Error: $e\nStacktrace: $s');
+  }
+}
 
-            final parserAndErrors = parse(pathExpression);
-            final parser = parserAndErrors.parser;
+Future<void> _processFile(String file) async {
+  try {
+    final pathExpression = await rootBundle.loadString(file);
+    final jsonString =
+        await rootBundle.loadString(file.replaceAll('cql', 'json'));
+    final json = jsonDecode(jsonString);
+    final answers = results[file.split("/").last];
+    final dynamic tempContext = contexts[file.split("/").last];
+    final Map<String, dynamic>? context =
+        tempContext is Map<String, dynamic> ? tempContext : null;
 
-            try {
-              final visitor = CqlBaseVisitor(CqlLibrary());
-              visitor.visit(parser.library_());
-              final errors = parserAndErrors.errorListener.errors
-                  .map((e) => e.copyWith(
-                      libraryId: visitor.library.identifier?.id,
-                      libraryVersion: visitor.library.identifier?.version))
-                  .toList();
-              visitor.library.annotation ??= [];
-              visitor.library.annotation!.addAll(errors);
-              var jsonLibrary = json['library'];
-              (jsonLibrary as Map<String, dynamic>).remove('annotation');
-              var resultLibrary = visitor.result['library'];
-              (resultLibrary as Map<String, dynamic>).remove('annotation');
-              // if (print) {
-              // if (file.contains('05')) {
-              //   log(jsonEncode(visitor.result));
-              // }
-              // log(file);
-              // throw 'stop';
-              // }
-              log('${file.split("/").last} Elm is equal: ${const DeepCollectionEquality().equals(jsonLibrary, resultLibrary).toString()}');
-              // if (file.contains('08')) {
-              print(jsonEncode({'library': resultLibrary}));
-              // }
-              bool areEqual = true;
-              String equalReason = '';
-              final results = visitor.library.execute(context);
-              if (results is Map<String, dynamic>) {
-                results.remove('startTimestamp');
-                results.remove('library');
-                results.forEach((key, value) {
-                  final result = value;
-                  final answer = answers?[key];
-                  if (result != answer) {
-                    if (result is List && answer is List) {
-                      if (!(const DeepCollectionEquality()
-                          .equals(result, answer))) {
-                        if (jsonEncode(result) != jsonEncode(answer)) {
-                          areEqual = false;
-                          equalReason +=
-                              'LISTS: $key: $result (${result.runtimeType}) != '
-                              '$answer (${answer.runtimeType})\n';
-                        }
-                      }
-                    } else if (result is Map && answer is Map) {
-                      final tempAnswer = Map.from(answer);
-                      if (!(const DeepCollectionEquality()
-                          .equals(result, tempAnswer))) {
-                        if (result.keys.length != tempAnswer.keys.length) {
-                          areEqual = false;
-                          equalReason += 'unequal keys length (for key: $key)\n'
-                              'result: ${result.keys}\n'
-                              'answer: ${tempAnswer.keys}\n';
-                        } else {
-                          for (final key in result.keys) {
-                            if (!tempAnswer.containsKey(key)) {
-                              areEqual = false;
-                              equalReason += 'missing key: $key\n';
-                            } else if (result[key] != tempAnswer[key]) {
-                              areEqual = false;
-                              equalReason +=
-                                  '${result[key]} != ${tempAnswer[key]}\n';
-                            } else {
-                              tempAnswer.remove(key);
-                            }
-                          }
-                          if (tempAnswer.isNotEmpty) {
-                            areEqual = false;
-                            equalReason += 'extra keys: ${tempAnswer.keys}\n';
-                          }
-                        }
-                      }
-                    } else {
-                      if (result.runtimeType == answer.runtimeType &&
-                          result is FhirDateTimeBase &&
-                          answer is FhirDateTimeBase) {
-                        if (result != answer) {
-                          final difference = result.valueDateTime
-                              ?.difference(answer.valueDateTime!);
-                          equalReason +=
-                              '$key: $result differs by ${difference?.inMilliseconds} '
-                              'ms from $answer\n';
-                          areEqual = false;
-                        }
-                      } else if (result.runtimeType == answer.runtimeType &&
-                          result is FhirTime &&
-                          answer is FhirTime) {
-                        if (result != answer) {
-                          final int resultMilliseconds =
-                              (result.hour ?? 0) * 3600000 +
-                                  (result.minute ?? 0) * 60000 +
-                                  (result.second ?? 0) * 1000 +
-                                  (result.millisecond ?? 0);
-                          final int answerMilliseconds =
-                              (answer.hour ?? 0) * 3600000 +
-                                  (answer.minute ?? 0) * 60000 +
-                                  (answer.second ?? 0) * 1000 +
-                                  (answer.millisecond ?? 0);
+    final parserAndErrors = parse(pathExpression);
+    final parser = parserAndErrors.parser;
 
-                          final int differenceMilliseconds =
-                              resultMilliseconds - answerMilliseconds;
+    final visitor = CqlBaseVisitor(CqlLibrary());
+    visitor.visit(parser.library_());
 
-                          equalReason +=
-                              '$key: $result differs by $differenceMilliseconds '
-                              'ms from $answer\n';
-                          areEqual = false;
-                        }
-                      } else {
-                        equalReason +=
-                            '$key: $result (${result.runtimeType}) != '
-                            '$answer (${answer.runtimeType}\n';
-                        areEqual = false;
-                      }
-                    }
-                  }
-                });
-              }
-              log('${file.split("/").last} Results are equal: $areEqual\n$equalReason');
-            } catch (e, s) {
-              log(file);
-              log(e.toString());
-              log(s.toString());
-            }
-          });
-        });
+    final errors = parserAndErrors.errorListener.errors.map((e) {
+      return e.copyWith(
+        libraryId: visitor.library.identifier?.id,
+        libraryVersion: visitor.library.identifier?.version,
+      );
+    }).toList();
+
+    visitor.library.annotation ??= [];
+    visitor.library.annotation!.addAll(errors);
+
+    _compareLibraries(json['library'], visitor.result['library'], file);
+
+    final executionResults = visitor.library.execute(context);
+    _compareResults(executionResults, answers, file);
+  } catch (e, s) {
+    print('Error processing file $file: $e\nStacktrace: $s');
+  }
+}
+
+void _compareLibraries(
+    dynamic jsonLibrary, dynamic resultLibrary, String file) {
+  if (jsonLibrary is Map<String, dynamic> &&
+      resultLibrary is Map<String, dynamic>) {
+    jsonLibrary.remove('annotation');
+    resultLibrary.remove('annotation');
+
+    final areEqual =
+        const DeepCollectionEquality().equals(jsonLibrary, resultLibrary);
+    print('${file.split("/").last} Elm is equal: $areEqual');
+    if (file.contains('04.cql')) {
+      print(jsonEncode({'library': resultLibrary}));
+      // print(jsonEncode(jsonLibrary));R
+    }
+  }
+}
+
+void _compareResults(dynamic results, dynamic answers, String file) {
+  if (results is Map<String, dynamic>) {
+    results.remove('startTimestamp');
+    results.remove('library');
+
+    bool areEqual = true;
+    String equalReason = '';
+
+    results.forEach((key, value) {
+      final answer = answers?[key];
+      if (!_areValuesEqual(value, answer)) {
+        areEqual = false;
+        equalReason += '$key: ${_formatDifference(value, answer)}\n';
       }
     });
-  } catch (e, s) {
-    print(e);
-    print(s);
+
+    print('${file.split("/").last} Results are equal: $areEqual\n$equalReason');
   }
+}
+
+bool _areValuesEqual(dynamic result, dynamic answer) {
+  if (result is List && answer is List) {
+    return const DeepCollectionEquality().equals(result, answer);
+  } else if (result is Map && answer is Map) {
+    return _areMapsEqual(result, answer);
+  } else if (result is FhirDateTimeBase && answer is FhirDateTimeBase) {
+    return result == answer;
+  } else if (result is FhirTime && answer is FhirTime) {
+    return _calculateMilliseconds(result) == _calculateMilliseconds(answer);
+  }
+  return result == answer;
+}
+
+bool _areMapsEqual(Map result, Map answer) {
+  // First, check equality using DeepCollectionEquality
+  final equal = const DeepCollectionEquality().equals(result, Map.from(answer));
+  if (!equal) {
+    // If not equal, compare keys
+    if (!const DeepCollectionEquality()
+        .equals(result.keys.toSet(), Map.from(answer).keys.toSet())) {
+      print('Key sets are different: '
+          'result keys: ${result.keys}, answer keys: ${Map.from(answer).keys}');
+      return false;
+    }
+
+    // Compare values for each key
+    for (final key in result.keys) {
+      if (!_areValuesEqual(result[key], Map.from(answer)[key])) {
+        print(
+            'Key mismatch at $key: result: ${result[key]} (${result[key]?.runtimeType}) '
+            '!= answer: ${Map.from(answer)[key]} (${Map.from(answer)[key]?.runtimeType})');
+        return false;
+      }
+    }
+    // If all keys and values match, return true
+    return true;
+  }
+  // If DeepCollectionEquality is true, return true
+  return equal;
+}
+
+String _formatDifference(dynamic result, dynamic answer) {
+  if (result.runtimeType == answer.runtimeType) {
+    if (result is FhirDateTimeBase && answer is FhirDateTimeBase) {
+      final diff = result.valueDateTime?.difference(answer.valueDateTime!);
+      return 'differs by ${diff?.inMilliseconds ?? 0} ms';
+    } else if (result is FhirTime && answer is FhirTime) {
+      final diffMs =
+          _calculateMilliseconds(result) - _calculateMilliseconds(answer);
+      return 'differs by $diffMs ms';
+    }
+  }
+  return '$result (${result.runtimeType}) != $answer (${answer.runtimeType})';
+}
+
+int _calculateMilliseconds(FhirTime time) {
+  return (time.hour ?? 0) * 3600000 +
+      (time.minute ?? 0) * 60000 +
+      (time.second ?? 0) * 1000 +
+      (time.millisecond ?? 0);
 }
 
 CqlParsersAndErrors parse(String pathExpression) {

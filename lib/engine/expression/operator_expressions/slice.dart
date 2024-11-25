@@ -110,11 +110,7 @@ class Slice extends OperatorExpression {
           : end is FhirNumber && end.value is int
               ? end.value! as int
               : null;
-      if (endIndex == null) {
-        throw ArgumentError(
-            'Slices must have an end argument that is an integer');
-      }
-      return src.sublist(start, end);
+      return src.sublist(startIndex, endIndex);
     }
   }
 }

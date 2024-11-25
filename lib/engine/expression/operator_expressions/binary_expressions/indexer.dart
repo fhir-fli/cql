@@ -106,14 +106,14 @@ class Indexer extends BinaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) {
-    if ((operand[0].getReturnTypes(library)?.contains(String) ?? false) &&
-        (operand[1].getReturnTypes(library)?.contains(FhirInteger) ?? false)) {
-      return [String];
-    } else if ((operand[0].getReturnTypes(library)?.contains(List) ?? false) &&
-        (operand[1].getReturnTypes(library)?.contains(FhirInteger) ?? false)) {
-      return [dynamic];
+  List<String> getReturnTypes(CqlLibrary library) {
+    if (operand[0].getReturnTypes(library).contains('String') &&
+        operand[1].getReturnTypes(library).contains('FhirInteger')) {
+      return ['String'];
+    } else if (operand[0].getReturnTypes(library).contains('List') &&
+        operand[1].getReturnTypes(library).contains('FhirInteger')) {
+      return ['dynamic'];
     }
-    return null;
+    return [];
   }
 }

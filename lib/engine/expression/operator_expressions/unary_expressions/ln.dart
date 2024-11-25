@@ -55,12 +55,12 @@ class Ln extends UnaryExpression {
       operand = As(operand: first, asType: QName.fromDataType('Decimal'));
     } else {
       final return1 = first.getReturnTypes(library);
-      if (return1?.length == 1) {
-        if (return1!.first == LiteralInteger || return1.first == LiteralLong) {
+      if (return1.length == 1) {
+        if (return1.first == 'LiteralInteger' || return1.first == 'LiteralLong') {
           operand = ToDecimal(operand: first);
-        } else if (return1.first == LiteralDecimal) {
+        } else if (return1.first == 'LiteralDecimal') {
           operand = first;
-        } else if (return1.first == LiteralNull) {
+        } else if (return1.first == 'LiteralNull') {
           operand = As(operand: first, asType: QName.fromDataType('Decimal'));
         }
       }
@@ -138,5 +138,5 @@ class Ln extends UnaryExpression {
   }
 
   @override
-  List<Type>? getReturnTypes(CqlLibrary library) => [FhirDecimal];
+  List<String> getReturnTypes(CqlLibrary library) => ['FhirDecimal'];
 }

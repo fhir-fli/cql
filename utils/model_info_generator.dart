@@ -27,8 +27,6 @@ class XsdToModelInfoConverter {
     final rootElement = document.rootElement;
 
     // Extract the target namespace and model name
-    final namespace = rootElement.attributes
-        .firstWhere((p0) => p0.name.toString() == 'targetNamespace');
     final modelName = filePath.split('/').last.replaceAll('.qdm', '');
     final targetNamespace = rootElement.attributes
         .firstWhere((p0) => p0.name.toString() == 'xmlns');
