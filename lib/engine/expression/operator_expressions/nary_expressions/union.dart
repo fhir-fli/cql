@@ -165,4 +165,18 @@ class Union extends NaryExpression {
           'Union operator is not defined for ${left.runtimeType} and ${right.runtimeType}');
     }
   }
+
+  @override
+  List<String> getReturnTypes(CqlLibrary library) {
+    final returnTypes = <String>{};
+    operand?.forEach((e) {
+      returnTypes.addAll(e.getReturnTypes(library));
+    });
+    return returnTypes.toList();
+  }
+
+  @override
+  String toString() {
+    return 'Union{operand: ${operand?.map((e) => e.toString()).toList().join(', ')})';
+  }
 }

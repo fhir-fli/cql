@@ -648,6 +648,9 @@ class LiteralString extends LiteralType {
   String get type => 'String';
 
   @override
+  String toString() => 'LiteralString: $value';
+
+  @override
   List<String> getReturnTypes(CqlLibrary library) => ['String'];
 }
 

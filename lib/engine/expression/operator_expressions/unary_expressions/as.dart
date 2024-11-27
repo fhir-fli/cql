@@ -57,7 +57,7 @@ class As extends UnaryExpression {
   TypeSpecifierExpression? asTypeSpecifier;
 
   /// Determines if strict type checking should be enforced.
-  bool strict = false;
+  bool? strict;
 
   As({
     this.asType,
@@ -89,7 +89,7 @@ class As extends UnaryExpression {
             : TypeSpecifierExpression.fromJson(json['asTypeSpecifier'])
         ..asType =
             json['asType'] == null ? null : QName.fromFull(json['asType'])
-        ..strict = json['strict'] ?? false;
+        ..strict = json['strict'];
 
   @override
   String get type => 'As';
@@ -103,7 +103,7 @@ class As extends UnaryExpression {
     };
     if (operand is! NullExpression &&
         operand is! Property &&
-        operand is! LiteralNull) {
+        operand is! LiteralNull && strict != null) {
       data['strict'] = strict;
     }
 

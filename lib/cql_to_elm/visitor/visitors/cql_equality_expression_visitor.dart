@@ -7,23 +7,20 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
-    
     final int thisNode = getNextNode();
-    
 
     String? equalityOperator;
     List<CqlExpression> operand = [];
 
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        
+        print('Child: ${child.text} ${child.runtimeType}');
         final result = byContext(child);
-        
+        print('Result: $result');
 
         // Check if the left-hand side of Union qualifies for Query transformation
         if (result is NaryExpression && result is Union) {
           if (_requiresQuery(result)) {
-            
             final query = _transformUnionToQuery(result, thisNode);
             operand.add(query);
             continue;
@@ -32,106 +29,177 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
         if (result is CqlExpression) {
           operand.add(result);
-          
         } else if (result is String) {
           operand.add(ExpressionRef(name: result));
-          
         }
       } else {
         equalityOperator = child.text;
-        
       }
+    }
+
+    // Transform the second operand only when mixed types exist
+    if (operand.length == 2 && _requiresQueryOperand(operand[1])) {
+      operand[1] = _buildQueryFromOperand(operand[1]);
     }
 
     // Validate operands and operator
     if (operand.length == 2 && equalityOperator != null) {
-      
       switch (equalityOperator) {
         case '=':
-          
           return Equal(operand: translateOperand(operand));
         case '!=':
-          
           return Not(operand: Equal(operand: translateOperand(operand)));
         case '~':
-          
           return Equivalent(operand: translateOperand(operand));
         case '!~':
-          
           return Not(operand: Equivalent(operand: translateOperand(operand)));
         default:
           final errorMessage =
               'Unsupported equality operator: $equalityOperator';
-          
           throw ArgumentError('$thisNode $errorMessage');
       }
     }
 
     final errorMessage =
         'Invalid EqualityExpression: operands=${operand.length}, operator=$equalityOperator';
-    
     throw ArgumentError('$thisNode $errorMessage');
+  }
+
+  /// Determines if the operand requires transformation into a Query
+  bool _requiresQueryOperand(CqlExpression operand) {
+    if (operand is ListExpression) {
+      final elementTypes = operand.element
+          ?.map((e) => e.getReturnTypes(library))
+          .expand((types) => types)
+          .toSet();
+
+      return elementTypes != null && elementTypes.length > 1;
+    }
+    return false;
+  }
+
+  /// Builds a Query from an operand when required
+  Query _buildQueryFromOperand(CqlExpression operand) {
+    const alias = 'X';
+    return Query(
+      source: [
+        RelationshipClause(
+          alias: alias,
+          expression: operand,
+        ),
+      ],
+      returnClause: ReturnClause(
+        distinct: false,
+        expression: As(
+          operand: AliasRef(name: alias),
+          asTypeSpecifier: _buildChoiceTypeFromOperand(operand),
+        ),
+      ),
+    );
+  }
+
+  /// Builds a ChoiceTypeSpecifier from an operand
+  ChoiceTypeSpecifier _buildChoiceTypeFromOperand(CqlExpression operand) {
+    if (operand is ListExpression) {
+      final elementTypes = operand.element
+          ?.map((e) => e.getReturnTypes(library))
+          .expand((types) => types)
+          .toSet();
+
+      if (elementTypes == null || elementTypes.isEmpty) {
+        throw ArgumentError('Operand must have at least one valid type.');
+      }
+
+      final choices = elementTypes.map((type) {
+        return NamedTypeSpecifier(namespace: QName.fromDataType(type));
+      }).toList();
+
+      return ChoiceTypeSpecifier(choice: choices);
+    }
+    throw ArgumentError('Expected a ListExpression for ChoiceTypeSpecifier.');
   }
 
   /// Determine if a Union should transform into a Query
   bool _requiresQuery(NaryExpression union) {
-    
+    for(final op in union.operand ?? <CqlExpression>[]) {
+      print('op: $op');
+      print('ListExpression? : ${op is ListExpression}');
+    }
     final operandTypes = union.operand
         ?.map((op) => op.getReturnTypes(library))
-    
         .expand((types) => types)
         .toSet();
 
-    
     final requiresQuery = (operandTypes?.length ?? 0) > 1 &&
         !(operandTypes?.contains('Null') ?? false);
-    
+
     return requiresQuery;
   }
 
-  /// Transform a Union into a Query structure
-  Query _transformUnionToQuery(NaryExpression union, int parentNode) {
-    
-    final aliasCounter = parentNode;
-    final source = union.operand?.map((op) {
-      final relationship = RelationshipClause(
-        alias: 'Alias$aliasCounter',
-        expression: op,
-      );
-      
-      return relationship;
-    }).toList();
-
-    if (source == null || source.isEmpty) {
-      const errorMessage = 'Union must contain valid sources.';
-      
-      throw ArgumentError(errorMessage);
+  /// Transform a Union into either an `As` or a `Query` depending on operand types
+  CqlExpression _transformUnionToQuery(NaryExpression union, int parentNode) {
+    print('Transform Union to Query');
+    for(final op in union.operand ?? <CqlExpression>[]) {
+      print('op: $op');
+      print('ListExpression? : ${op is ListExpression}');
     }
+    // Check if all operands are static lists
+    final allOperandsAreLists =
+        union.operand?.every((op) => op is ListExpression) ?? false;
 
-    final query = Query(
-      source: source,
-      returnClause: ReturnClause(
-        distinct: false,
-        expression: As(
-          operand: ExpressionRef(name: 'Alias$aliasCounter'),
-          asTypeSpecifier: _buildChoiceType(union),
+    print('All Operands Are Lists: $allOperandsAreLists');
+
+    if (allOperandsAreLists) {
+      // Wrap each operand in an `As` with a `ChoiceTypeSpecifier`
+      final transformedOperands = union.operand?.map((op) {
+        return As(
+          operand: op,
+          asTypeSpecifier: _buildChoiceTypeFromOperand(op),
+        );
+      }).toList();
+
+      if (transformedOperands == null || transformedOperands.isEmpty) {
+        throw ArgumentError('Union must contain valid operands.');
+      }
+
+      // Return the Union directly with `As`-wrapped operands
+      return Union(operand: transformedOperands);
+    } else {
+      // Fallback to a Query structure for dynamic or mixed types
+      final aliasCounter = parentNode;
+      print('Alias Counter: $aliasCounter');
+      final source = union.operand?.map((op) {
+        print('Operand: $op');
+        return RelationshipClause(
+          alias: 'Alias$aliasCounter',
+          expression: op,
+        );
+      }).toList();
+
+      if (source == null || source.isEmpty) {
+        throw ArgumentError('Union must contain valid sources.');
+      }
+
+      return Query(
+        source: source,
+        returnClause: ReturnClause(
+          distinct: false,
+          expression: As(
+            operand: ExpressionRef(name: 'Alias$aliasCounter'),
+            asTypeSpecifier: _buildChoiceType(union),
+          ),
         ),
-      ),
-    );
-    
-    return query;
+      );
+    }
   }
 
   /// Build the ChoiceTypeSpecifier for the Query return clause
   ChoiceTypeSpecifier _buildChoiceType(NaryExpression union) {
-    
     final elementTypes = union.operand
         ?.map((op) => op.getReturnTypes(library))
-      
         .expand((types) => types)
         .toSet();
 
-    
     final choices = elementTypes
         ?.map((type) =>
             NamedTypeSpecifier(namespace: QName.fromDataType(type.toString())))
@@ -140,12 +208,12 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     if (choices == null || choices.isEmpty) {
       const errorMessage =
           'ChoiceTypeSpecifier requires at least one valid type.';
-      
+
       throw ArgumentError(errorMessage);
     }
 
     final choiceTypeSpecifier = ChoiceTypeSpecifier(choice: choices);
-    
+
     return choiceTypeSpecifier;
   }
 }

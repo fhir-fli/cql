@@ -130,4 +130,11 @@ class IntervalExpression extends CqlExpression {
       state: context,
     );
   }
+
+  @override
+  String toString() {
+    final lowString = low?.toString() ?? 'null';
+    final highString = high?.toString() ?? 'null';
+    return 'IntervalExpression(low: $lowString, high: $highString)';
+  }
 }

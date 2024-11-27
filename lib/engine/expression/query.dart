@@ -87,4 +87,9 @@ class Query extends CqlExpression {
 
   @override
   String get type => 'Query';
+
+  @override
+  String toString() {
+    return 'Query(source: $source, let: $let, relationship: $relationship, where: $where, returnClause: $returnClause, sort: $sort, aggregate: $aggregate)';
+  }
 }

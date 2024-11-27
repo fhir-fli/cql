@@ -76,4 +76,9 @@ class ListExpression extends CqlExpression {
   List<dynamic> execute(Map<String, dynamic> context) {
     return element!.map((e) => e.execute(context)).toList();
   }
+
+  @override
+  String toString() {
+    return 'ListExpression{element: ${element?.map((e) => e.toString()).toList().join(', ')}, typeSpecifier: $typeSpecifier}';
+  }
 }
