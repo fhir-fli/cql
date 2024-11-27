@@ -43,25 +43,14 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
         typesList.contains('Null');
     print('Needs null wrapping: $needsNullWrapping');
 
-    // Build a ChoiceTypeSpecifier for mixed types if wrapping is needed
-    ChoiceTypeSpecifier? choiceTypeSpecifier;
-    if (needsNullWrapping) {
-      choiceTypeSpecifier = ChoiceTypeSpecifier(
-        choice: typesList.map((type) {
-          print('Adding type to ChoiceTypeSpecifier: $type');
-          return NamedTypeSpecifier(namespace: QName.fromDataType(type));
-        }).toList(),
-      );
-      print('Generated ChoiceTypeSpecifier: $choiceTypeSpecifier');
-    }
-
     // Transform elements to wrap `Null` if required
     final transformedElements = elements.map((e) {
       if (e is LiteralNull && needsNullWrapping) {
-        print('Wrapping null with ChoiceTypeSpecifier');
+        final aggregateType = _getAggregateTypeFromContext(ctx);
+        print('Wrapping null with type: $aggregateType');
         return As(
           operand: e,
-          asTypeSpecifier: choiceTypeSpecifier!,
+          asType: QName.fromDataType(aggregateType),
         );
       }
       return e;
@@ -76,15 +65,13 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
     );
   }
 
+  /// Determines if the current ListSelector is in an aggregate context.
   bool _isInAggregateContext(ListSelectorContext ctx) {
     ParseTree? current = ctx.parent;
 
-    // Traverse up the tree to check for aggregate function context
     while (current != null) {
       if (current is FunctionInvocationContext) {
-        // Extract the function name correctly
         final functionName = (current.getChild(0))?.text;
-        print(current.getChild(0).runtimeType);
         print('Parent function name: $functionName');
 
         const aggregateFunctions = {
@@ -95,7 +82,10 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
           'StdDev',
           'Count',
           'PopulationVariance',
-          'PopulationStdDev'
+          'PopulationStdDev',
+          'Avg',
+          'Median',
+          'Mode',
         };
 
         final isAggregate = aggregateFunctions.contains(functionName);
@@ -105,6 +95,37 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
       current = current.parent; // Move up the tree
     }
 
-    return false; // Not in aggregate context
+    return false;
+  }
+
+  /// Extracts the expected aggregate type from the context for null wrapping.
+  String _getAggregateTypeFromContext(ListSelectorContext ctx) {
+    ParseTree? current = ctx.parent;
+
+    while (current != null) {
+      if (current is FunctionInvocationContext) {
+        final functionName = (current.getChild(0))?.text;
+        const aggregateFunctions = {
+          'Sum': 'Integer',
+          'Min': 'Integer',
+          'Max': 'Integer',
+          'Variance': 'Decimal',
+          'StdDev': 'Decimal',
+          'Count': 'Integer',
+          'PopulationVariance': 'Decimal',
+          'PopulationStdDev': 'Decimal',
+          'Avg': 'Decimal',
+          'Median': 'Decimal',
+          'Mode': 'Decimal',
+        };
+
+        if (functionName != null && aggregateFunctions.containsKey(functionName)) {
+          return aggregateFunctions[functionName]!;
+        }
+      }
+      current = current.parent;
+    }
+
+    throw StateError('Aggregate type could not be determined');
   }
 }

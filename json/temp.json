@@ -2355,27 +2355,49 @@
                             {
                                 "type": "Avg",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2396,27 +2418,49 @@
                             {
                                 "type": "Median",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2437,27 +2481,49 @@
                             {
                                 "type": "Mode",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2478,31 +2544,49 @@
                             {
                                 "type": "Variance",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
-                                            "type": "As",
-                                            "operand": {
-                                                "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2523,31 +2607,49 @@
                             {
                                 "type": "StdDev",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
-                                            "type": "As",
-                                            "operand": {
-                                                "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2568,31 +2670,49 @@
                             {
                                 "type": "PopulationVariance",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
-                                            "type": "As",
-                                            "operand": {
-                                                "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {
@@ -2613,31 +2733,49 @@
                             {
                                 "type": "PopulationStdDev",
                                 "source": {
-                                    "type": "List",
-                                    "element": [
+                                    "type": "Query",
+                                    "source": [
                                         {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "1",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "2",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                            "value": "3",
-                                            "type": "Literal"
-                                        },
-                                        {
-                                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
-                                            "type": "As",
-                                            "operand": {
-                                                "type": "Null"
+                                            "alias": "X",
+                                            "expression": {
+                                                "type": "List",
+                                                "element": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "1",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "2",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "3",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "type": "Null"
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "return": {
+                                        "distinct": false,
+                                        "expression": {
+                                            "type": "ToDecimal",
+                                            "operand": {
+                                                "name": "X",
+                                                "type": "AliasRef"
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             {

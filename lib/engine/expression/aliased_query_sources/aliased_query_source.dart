@@ -2,7 +2,7 @@ import '../../../cql.dart';
 
 /// The AliasedQuerySource element defines a single source for inclusion in a query scope.
 /// The type of the source is determined by the expression element, and the source can be accessed within the query scope by the given alias.
-abstract class AliasedQuerySource extends CqlExpression {
+class AliasedQuerySource extends CqlExpression {
   final String alias;
   final CqlExpression expression;
 
@@ -26,7 +26,21 @@ abstract class AliasedQuerySource extends CqlExpression {
       case 'Without':
         return Without.fromJson(json);
       default:
-        throw ArgumentError('Unsupported AliasedQuerySource type: ${json['type']}');
+        return AliasedQuerySource(
+          alias: json['alias'],
+          expression: CqlExpression.fromJson(json['expression']),
+          annotation: json['annotation'] != null
+              ? (json['annotation'] as List)
+                  .map((e) => CqlToElmBase.fromJson(e))
+                  .toList()
+              : null,
+          localId: json['localId'],
+          locator: json['locator'],
+          resultTypeName: json['resultTypeName'],
+          resultTypeSpecifier: json['resultTypeSpecifier'] != null
+              ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+              : null,
+        );
     }
   }
 
