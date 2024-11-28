@@ -6,23 +6,24 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
 
   @override
   dynamic visitFunction(FunctionContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
+    print('---- [DEBUG] Visiting Function ----');
+    print('Context: ${ctx.toStringTree()}');
+
     String? ref;
     List<CqlExpression> operand = [];
 
     // Extract the function name and operands
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
-        ref = visitReferentialIdentifier(child); // Extract function name
+        ref = visitReferentialIdentifier(child);
       } else if (child is ParamListContext) {
-        operand.addAll(visitParamList(child)); // Extract operands
+        operand.addAll(visitParamList(child));
       }
     }
 
     if (ref != null) {
-      print('Function name: $ref');
-      print('Operands before processing: $operand');
+      print('[DEBUG] Function name: $ref');
+      print('[DEBUG] Operands before processing: $operand');
 
       // Aggregate functions requiring `Query` transformation
       const queryBasedFunctions = {
@@ -36,16 +37,15 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       };
 
       if (queryBasedFunctions.contains(ref)) {
-        print('Detected query-based aggregate function: $ref');
+        print('[DEBUG] Detected query-based aggregate function: $ref');
 
         // Transform the first operand (assumed to be the list) into a `Query`
         if (operand.isNotEmpty && operand.first is ListExpression) {
           final listExpression = operand.first as ListExpression;
-
           operand[0] = _transformToQuery(listExpression, ref);
         }
 
-        print('Operands after processing: $operand');
+        print('[DEBUG] Operands after processing: $operand');
       } else {
         // For other aggregate functions, handle null wrapping if needed
         const aggregateFunctions = {
@@ -66,11 +66,23 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
 
+      // Ensure numeric literals are wrapped with `ToDecimal` when necessary
+      operand = operand.map((e) {
+        if (e is LiteralInteger && ref == 'Equal') {
+          print(
+              '[DEBUG] Wrapping LiteralInteger in ToDecimal for function "$ref"');
+          return ToDecimal(operand: e);
+        }
+        return e;
+      }).toList();
+
+      print('[DEBUG] Operands after type wrapping: $operand');
+
       // Create and return the corresponding expression
       return CqlExpression.byName(ref, operand, library);
     }
 
-    throw ArgumentError('$thisNode Invalid Function');
+    throw ArgumentError('Invalid Function');
   }
 
   Query _transformToQuery(ListExpression listExpression, String functionName) {
@@ -78,11 +90,11 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     const aliasName = 'X';
 
     final elementTypes = listExpression.element
-            ?.map((e) => e.resultTypeName)
-            .where((type) => type != null)
-            .cast<String>()
+            ?.expand((e) => e.getReturnTypes(library))
             .toSet() ??
         {};
+
+    print('Pre elementTypes: $elementTypes');
 
     // Determine the casting type based on elements and function
     final castingType = _determineCastingType(elementTypes, functionName);
@@ -128,7 +140,16 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     // If all elements are the same type, use that type
     if (elementTypes.length == 1) {
       return elementTypes.first; // E.g., "Integer"
-    }
+    } else if (elementTypes.length == 2) {
+      if (elementTypes.contains('LiteralNull') ||
+          elementTypes.contains('Null')) {
+        elementTypes.remove('LiteralNull');
+        elementTypes.remove('Null');
+        if (elementTypes.length == 1) {
+          return elementTypes.first;
+        }
+      }
+    } else
 
     // Handle mixed types or function-specific cases
     if (functionName == 'Avg' ||
@@ -145,8 +166,6 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
   /// Wraps `Null` elements with the expected aggregate type.
   ListExpression _processAggregateOperand(
       ListExpression listExpression, String aggregateType) {
-    print('Processing aggregate operand: $listExpression');
-
     final elements = listExpression.element;
 
     // Transform elements to wrap `Null` with the aggregate type

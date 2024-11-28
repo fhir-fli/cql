@@ -2378,7 +2378,7 @@
                                                         "type": "Literal"
                                                     },
                                                     {
-                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
                                                         "type": "As",
                                                         "operand": {
                                                             "type": "Null"
@@ -2567,7 +2567,7 @@
                                                         "type": "Literal"
                                                     },
                                                     {
-                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
                                                         "type": "As",
                                                         "operand": {
                                                             "type": "Null"
@@ -2630,7 +2630,7 @@
                                                         "type": "Literal"
                                                     },
                                                     {
-                                                        "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
                                                         "type": "As",
                                                         "operand": {
                                                             "type": "Null"
