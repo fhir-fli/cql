@@ -140,4 +140,7 @@ class Mode extends AggregateExpression {
     throw ArgumentError(
         'Invalid source type for Mode: ${sourceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'Mode { source: $source }';
 }

@@ -85,4 +85,7 @@ class Aggregate extends AggregateExpression {
 
   @override
   String get type => 'Aggregate';
+
+  @override
+  String toString() => 'Aggregate: $iteration';
 }

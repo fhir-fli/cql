@@ -114,4 +114,7 @@ class Count extends AggregateExpression {
           'but found ${sourceResult.runtimeType}');
     }
   }
+
+  @override
+  String toString() => 'Count: $source';
 }

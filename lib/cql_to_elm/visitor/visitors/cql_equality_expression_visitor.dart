@@ -37,9 +37,36 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       }
     }
 
-    // Transform the second operand only when mixed types exist
+    // Transform the second operand only when mixed types exist (retain original code)
     if (operand.length == 2 && _requiresQueryOperand(operand[1])) {
       operand[1] = _buildQueryFromOperand(operand[1]);
+    }
+
+    // Handle potential type mismatches between operands for promotion
+    if (operand.length == 2) {
+      final leftOperand = operand[0];
+      final rightOperand = operand[1];
+
+      print('[DEBUG] Left Operand Type: ${leftOperand.runtimeType}');
+      print('[DEBUG] Right Operand Type: ${rightOperand.runtimeType}');
+
+      // Promote the right operand if the left operand requires Decimal promotion
+      if (_requiresDecimalPromotion(leftOperand)) {
+        if (rightOperand is LiteralInteger) {
+          print(
+              '[DEBUG] Promoting right operand LiteralInteger to Decimal for equality comparison.');
+          operand[1] = ToDecimal(operand: rightOperand);
+        } else if (rightOperand is LiteralNull) {
+          // Optionally handle null values depending on context
+          print(
+              '[DEBUG] Right operand is LiteralNull; promoting to match Decimal.');
+          operand[1] = As(
+            operand: rightOperand,
+            asType: QName.fromDataType('Decimal'),
+          );
+        }
+        // Placeholder for other types of promotions (e.g., ValidatedQuantity)
+      }
     }
 
     // Validate operands and operator
@@ -64,6 +91,29 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         'Invalid EqualityExpression: operands=${operand.length}, operator=$equalityOperator';
     throw ArgumentError('$thisNode $errorMessage');
   }
+
+    bool _requiresDecimalPromotion(CqlExpression expression) {
+    // List of aggregate functions requiring Decimal promotion
+    const aggregatesRequiringDecimalPromotion = {
+      'Avg',
+      'Median',
+      'Variance',
+      'StdDev',
+      'PopulationVariance',
+      'PopulationStdDev'
+    };
+
+    print('[DEBUG] Checking if expression requires Decimal promotion: $expression');
+    if (expression is AggregateExpression) {
+      final expressionType = expression.runtimeType.toString();
+      print('[DEBUG] Expression type: $expressionType');
+      return aggregatesRequiringDecimalPromotion.contains(expressionType);
+    }
+
+    print('[DEBUG] Expression is not an AggregateExpression or does not require promotion.');
+    return false;
+  }
+
 
   /// Determines if the operand requires transformation into a Query
   bool _requiresQueryOperand(CqlExpression operand) {
@@ -121,7 +171,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   /// Determine if a Union should transform into a Query
   bool _requiresQuery(NaryExpression union) {
-    for(final op in union.operand ?? <CqlExpression>[]) {
+    for (final op in union.operand ?? <CqlExpression>[]) {
       print('op: $op');
       print('ListExpression? : ${op is ListExpression}');
     }
@@ -139,7 +189,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// Transform a Union into either an `As` or a `Query` depending on operand types
   CqlExpression _transformUnionToQuery(NaryExpression union, int parentNode) {
     print('Transform Union to Query');
-    for(final op in union.operand ?? <CqlExpression>[]) {
+    for (final op in union.operand ?? <CqlExpression>[]) {
       print('op: $op');
       print('ListExpression? : ${op is ListExpression}');
     }

@@ -149,4 +149,7 @@ class Sum extends AggregateExpression {
           'but found ${sourceResult.runtimeType}');
     }
   }
+
+  @override
+  String toString() => 'Sum { source: $source }';
 }

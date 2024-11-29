@@ -148,4 +148,25 @@ class Avg extends AggregateExpression {
     throw ArgumentError(
         'Invalid source type for Avg: ${sourceResult.runtimeType}');
   }
+
+  @override
+  List<String> getReturnTypes(CqlLibrary library) {
+    if (source is ListExpression) {
+      final elementTypes = source.getReturnTypes(library).toSet();
+
+      if (elementTypes.isEmpty) {
+        throw ArgumentError('Source must have at least one valid type.');
+      }
+
+      if (elementTypes.length > 1) {
+        throw ArgumentError('Source must have a single valid type.');
+      }
+
+      return elementTypes.toList();
+    }
+    return ['Unknown'];
+  }
+
+  @override
+  String toString() => 'Avg { source: $source }';
 }

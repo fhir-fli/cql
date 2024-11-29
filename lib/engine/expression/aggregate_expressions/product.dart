@@ -77,4 +77,7 @@ class Product extends AggregateExpression {
 
   @override
   String get type => 'Product';
+
+  @override
+  String toString() => 'Product { source: $source }';
 }

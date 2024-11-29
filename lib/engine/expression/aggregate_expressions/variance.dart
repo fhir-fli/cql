@@ -155,4 +155,7 @@ class Variance extends AggregateExpression {
     throw ArgumentError(
         'Unsupported type for Variance: ${sourceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'Variance { source: $source }';
 }

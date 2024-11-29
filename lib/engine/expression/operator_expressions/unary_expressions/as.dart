@@ -1,5 +1,4 @@
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4/fhir_r4.dart' as r5;
 import 'package:ucum/ucum.dart';
 
 import '../../../../cql.dart';
@@ -288,12 +287,17 @@ class As extends UnaryExpression {
           }
         case 'ValueSet':
           {
-            if (result is r5.ValueSet) {
+            if (result is ValueSet) {
               return result;
             }
             break;
           }
       }
     }
+  }
+
+  @override
+  String toString() {
+    return 'As { asType: $asType, asTypeSpecifier: $asTypeSpecifier, strict: $strict, operand: $operand }';
   }
 }

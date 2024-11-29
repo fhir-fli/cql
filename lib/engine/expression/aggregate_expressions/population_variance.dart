@@ -131,4 +131,7 @@ class PopulationVariance extends AggregateExpression {
     throw ArgumentError(
         'Unsupported type for Population Variance: ${sourceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'PopulationVariance { source: $source }';
 }

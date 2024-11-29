@@ -135,4 +135,7 @@ class PopulationStdDev extends AggregateExpression {
     throw ArgumentError(
         'Unsupported type for Population Standard Deviation: ${popVarianceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'PopulationStdDev { source: $source }';
 }

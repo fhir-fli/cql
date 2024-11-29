@@ -138,4 +138,7 @@ class StdDev extends AggregateExpression {
     throw ArgumentError(
         'Unsupported type for Standard Deviation: ${varianceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'StdDev { source: $source }';
 }

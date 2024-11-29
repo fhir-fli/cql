@@ -78,4 +78,7 @@ class GeometricMean extends AggregateExpression {
 
   @override
   String get type => 'GeometricMean';
+
+  @override
+  String toString() => 'GeometricMean: $source';
 }

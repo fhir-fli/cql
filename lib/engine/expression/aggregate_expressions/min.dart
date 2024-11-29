@@ -176,4 +176,7 @@ class Min extends AggregateExpression {
       });
     }
   }
+
+  @override
+  String toString() => 'Min: $source';
 }

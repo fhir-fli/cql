@@ -124,4 +124,7 @@ class AllTrue extends AggregateExpression {
     }
     throw ArgumentError('AllTrue operator failed to execute');
   }
+
+  @override
+  String toString() => 'AllTrue: $source';
 }

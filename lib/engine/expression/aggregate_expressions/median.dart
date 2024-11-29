@@ -157,4 +157,7 @@ class Median extends AggregateExpression {
     throw ArgumentError(
         'Invalid source type for Median: ${sourceResult.runtimeType}');
   }
+
+  @override
+  String toString() => 'Median: $source';
 }

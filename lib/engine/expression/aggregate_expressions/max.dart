@@ -206,4 +206,7 @@ class Max extends AggregateExpression {
       });
     }
   }
+
+  @override
+  String toString() => 'Max { source: $source }';
 }

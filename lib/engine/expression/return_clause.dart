@@ -51,4 +51,7 @@ class ReturnClause extends Element {
   }
 
   String get type => 'ReturnClause';
+
+  @override
+  String toString() => 'ReturnClause: $expression';
 }
