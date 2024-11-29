@@ -6,6 +6,7 @@ class CqlStatementVisitor extends CqlBaseVisitor<void> {
 
   @override
   void visitStatement(StatementContext ctx) {
+    print('\n\n\n*********************************************');
     printIf(ctx);
     ExpressionDef? statement;
     for (final child in ctx.children ?? <ParseTree>[]) {

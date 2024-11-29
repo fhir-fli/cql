@@ -150,8 +150,6 @@ class Equal extends BinaryExpression {
     if (operand.length != 2) {
       throw ArgumentError('Equal expression must have 2 operands');
     } else {
-      // print(
-      //     'Equal operand: ${operand[0]} ${operand[0].runtimeType} ${operand[1]} ${operand[1].runtimeType}');
       final left = operand[0].execute(context);
       final right = operand[1].execute(context);
       final result = equal(left, right);
@@ -160,8 +158,6 @@ class Equal extends BinaryExpression {
   }
 
   static FhirBoolean? equal(dynamic left, dynamic right) {
-    // print(
-    //     'left: $left (${left.runtimeType}), right: $right (${right.runtimeType})');
     if (left == null || right == null) {
       return null;
     }

@@ -19,9 +19,9 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
       } else if (child is NamedTypeSpecifierContext) {
         name = visitNamedTypeSpecifier(child);
       } else if (child is CodePathContext) {
-        print('${child.text} - ${child.runtimeType}');
+        
         codeProperty = visitCodePath(child);
-        print('codeProperty: $codeProperty');
+        
       } else if (child is CodeComparatorContext) {
         codeComparator = visitCodeComparator(child);
       } else if (child is TerminologyContext) {

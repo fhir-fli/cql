@@ -7,6 +7,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
+    printIf(ctx);
     final int thisNode = getNextNode();
 
     String? equalityOperator;
@@ -14,9 +15,9 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        print('Child: ${child.text} ${child.runtimeType}');
+        
         final result = byContext(child);
-        print('Result: $result');
+        
 
         // Check if the left-hand side of Union qualifies for Query transformation
         if (result is NaryExpression && result is Union) {
@@ -47,19 +48,15 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       final leftOperand = operand[0];
       final rightOperand = operand[1];
 
-      print('[DEBUG] Left Operand Type: ${leftOperand.runtimeType}');
-      print('[DEBUG] Right Operand Type: ${rightOperand.runtimeType}');
+      
+      
 
       // Promote the right operand if the left operand requires Decimal promotion
       if (_requiresDecimalPromotion(leftOperand)) {
         if (rightOperand is LiteralInteger) {
-          print(
-              '[DEBUG] Promoting right operand LiteralInteger to Decimal for equality comparison.');
           operand[1] = ToDecimal(operand: rightOperand);
         } else if (rightOperand is LiteralNull) {
           // Optionally handle null values depending on context
-          print(
-              '[DEBUG] Right operand is LiteralNull; promoting to match Decimal.');
           operand[1] = As(
             operand: rightOperand,
             asType: QName.fromDataType('Decimal'),
@@ -103,14 +100,14 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       'PopulationStdDev'
     };
 
-    print('[DEBUG] Checking if expression requires Decimal promotion: $expression');
+    
     if (expression is AggregateExpression) {
       final expressionType = expression.runtimeType.toString();
-      print('[DEBUG] Expression type: $expressionType');
+      
       return aggregatesRequiringDecimalPromotion.contains(expressionType);
     }
 
-    print('[DEBUG] Expression is not an AggregateExpression or does not require promotion.');
+    
     return false;
   }
 
@@ -172,8 +169,8 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// Determine if a Union should transform into a Query
   bool _requiresQuery(NaryExpression union) {
     for (final op in union.operand ?? <CqlExpression>[]) {
-      print('op: $op');
-      print('ListExpression? : ${op is ListExpression}');
+      
+      
     }
     final operandTypes = union.operand
         ?.map((op) => op.getReturnTypes(library))
@@ -188,16 +185,16 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   /// Transform a Union into either an `As` or a `Query` depending on operand types
   CqlExpression _transformUnionToQuery(NaryExpression union, int parentNode) {
-    print('Transform Union to Query');
+    
     for (final op in union.operand ?? <CqlExpression>[]) {
-      print('op: $op');
-      print('ListExpression? : ${op is ListExpression}');
+      
+      
     }
     // Check if all operands are static lists
     final allOperandsAreLists =
         union.operand?.every((op) => op is ListExpression) ?? false;
 
-    print('All Operands Are Lists: $allOperandsAreLists');
+    
 
     if (allOperandsAreLists) {
       // Wrap each operand in an `As` with a `ChoiceTypeSpecifier`
@@ -217,9 +214,9 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     } else {
       // Fallback to a Query structure for dynamic or mixed types
       final aliasCounter = parentNode;
-      print('Alias Counter: $aliasCounter');
+      
       final source = union.operand?.map((op) {
-        print('Operand: $op');
+        
         return RelationshipClause(
           alias: 'Alias$aliasCounter',
           expression: op,
