@@ -158,11 +158,28 @@ class Avg extends AggregateExpression {
         throw ArgumentError('Source must have at least one valid type.');
       }
 
-      if (elementTypes.length > 1) {
-        throw ArgumentError('Source must have a single valid type.');
+      elementTypes
+        ..remove('FhirInteger')
+        ..remove('FhirDecimal')
+        ..remove('FhirNumber')
+        ..remove('num')
+        ..remove('int')
+        ..remove('double')
+        ..remove('FhirInteger64')
+        ..remove('BigInt')
+        ..remove('Null')
+        ..remove('null');
+
+      if (elementTypes.isEmpty) {
+        return ['FhirDecimal'];
       }
 
-      return elementTypes.toList();
+      if (elementTypes.length == 1 &&
+          elementTypes.contains('ValidatedQuantity')) {
+        return ['ValidatedQuantity'];
+      }
+
+      throw ArgumentError('Invalid source type for Avg: $elementTypes');
     }
     return ['Unknown'];
   }

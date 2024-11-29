@@ -2421,49 +2421,31 @@
                             {
                                 "type": "Median",
                                 "source": {
-                                    "type": "Query",
-                                    "source": [
+                                    "type": "List",
+                                    "element": [
                                         {
-                                            "alias": "X",
-                                            "expression": {
-                                                "type": "List",
-                                                "element": [
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "1",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "2",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "3",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "type": "As",
-                                                        "operand": {
-                                                            "type": "Null"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "return": {
-                                        "distinct": false,
-                                        "expression": {
-                                            "type": "ToDecimal",
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "As",
                                             "operand": {
-                                                "name": "X",
-                                                "type": "AliasRef"
+                                                "type": "Null"
                                             }
                                         }
-                                    }
+                                    ]
                                 }
                             },
                             {
@@ -2487,49 +2469,31 @@
                             {
                                 "type": "Mode",
                                 "source": {
-                                    "type": "Query",
-                                    "source": [
+                                    "type": "List",
+                                    "element": [
                                         {
-                                            "alias": "X",
-                                            "expression": {
-                                                "type": "List",
-                                                "element": [
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "1",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "2",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "value": "3",
-                                                        "type": "Literal"
-                                                    },
-                                                    {
-                                                        "asType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                        "type": "As",
-                                                        "operand": {
-                                                            "type": "Null"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "return": {
-                                        "distinct": false,
-                                        "expression": {
-                                            "type": "ToDecimal",
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "2",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "3",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "asType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "type": "As",
                                             "operand": {
-                                                "name": "X",
-                                                "type": "AliasRef"
+                                                "type": "Null"
                                             }
                                         }
-                                    }
+                                    ]
                                 }
                             },
                             {

@@ -154,6 +154,7 @@ class QName {
         'CodeType',
       ].contains(type);
 
+
   static String _fhirTypeToElmType(String fhirType) {
     switch (fhirType) {
       case 'FhirDateTime':
@@ -184,7 +185,34 @@ class QName {
   }
 
   List<String> getReturnTypes(CqlLibrary library) {
-    return [localPart];
+    switch (localPart) {
+      case 'DateTime':
+        return ['FhirDateTime'];
+      case 'Time':
+        return ['FhirTime'];
+      case 'Date':
+        return ['FhirDate'];
+      case 'Decimal':
+        return ['FhirDecimal'];
+      case 'Integer':
+        return ['FhirInteger'];
+      case 'Boolean':
+        return ['FhirBoolean'];
+      case 'Concept':
+        return ['ConceptType'];
+      case 'Interval':
+        return ['CqlInterval'];
+      case 'Quantity':
+        return ['ValidatedQuantity'];
+      case 'Ratio':
+        return ['ValidatedRatio'];
+      case 'Code':
+        return ['CodeType'];
+      default:
+      return [localPart];
+    
+  }
+
   }
 
   Type? get type {

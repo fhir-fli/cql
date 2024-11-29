@@ -7,6 +7,7 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
   @override
   ListExpression visitListSelector(ListSelectorContext ctx) {
     printIf(ctx);
+    print('---- [DEBUG] Visiting ListSelector ----');
 
     // Type specifier for the list (if provided)
     TypeSpecifierExpression? typeSpecifier;
@@ -46,7 +47,7 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
     // Transform elements to wrap `Null` if required
     final transformedElements = elements.map((e) {
       if (e is LiteralNull && needsNullWrapping) {
-        final aggregateType = _getAggregateTypeFromContext(ctx);
+        final aggregateType = _getAggregateTypeFromContext(ctx, elements);
         print('Wrapping null with type: $aggregateType');
         return As(
           operand: e,
@@ -88,7 +89,10 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
           'Mode',
         };
 
-        final isAggregate = aggregateFunctions.contains(functionName);
+        print('FUNCTION NAME: $functionName');
+
+        final isAggregate =
+            aggregateFunctions.any((e) => functionName?.startsWith(e) ?? false);
         print('Is aggregate function: $isAggregate');
         return isAggregate;
       }
@@ -99,33 +103,19 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
   }
 
   /// Extracts the expected aggregate type from the context for null wrapping.
-  String _getAggregateTypeFromContext(ListSelectorContext ctx) {
-    ParseTree? current = ctx.parent;
+  String _getAggregateTypeFromContext(
+      ListSelectorContext ctx, List<CqlExpression> elements) {
+    // If elements are present, derive type from majority element type
+    final elementTypes = elements
+        .map((e) => e.getReturnTypes(library))
+        .expand((e) => e)
+        .toSet()
+        .toList();
 
-    while (current != null) {
-      if (current is FunctionInvocationContext) {
-        final functionName = (current.getChild(0))?.text;
-        const aggregateFunctions = {
-          'Sum': 'Integer',
-          'Min': 'Integer',
-          'Max': 'Integer',
-          'Variance': 'Decimal',
-          'StdDev': 'Decimal',
-          'Count': 'Integer',
-          'PopulationVariance': 'Decimal',
-          'PopulationStdDev': 'Decimal',
-          'Avg': 'Decimal',
-          'Median': 'Decimal',
-          'Mode': 'Decimal',
-        };
-
-        if (functionName != null && aggregateFunctions.containsKey(functionName)) {
-          return aggregateFunctions[functionName]!;
-        }
-      }
-      current = current.parent;
+    // Determine the type based on the existing elements
+    if (elementTypes.contains('FhirInteger')) {
+      return 'Integer'; // Prefer Integer if the list contains them
     }
-
-    throw StateError('Aggregate type could not be determined');
+    return 'Decimal'; // Fallback to Decimal if no clear majority
   }
 }

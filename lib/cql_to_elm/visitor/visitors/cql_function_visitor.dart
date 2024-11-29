@@ -25,7 +25,7 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       print('[DEBUG] Function name: $ref');
       print('[DEBUG] Operands before processing: $operand');
 
-      // Aggregate functions requiring `Query` transformation
+      // Define sets of functions for easier classification
       const queryBasedFunctions = {
         'Avg',
         'Median',
@@ -36,37 +36,56 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
         'PopulationStdDev',
       };
 
+      const aggregateFunctions = {
+        'Sum': 'Integer',
+        'Min': 'Integer',
+        'Max': 'Integer',
+        'Count': 'Integer',
+      };
+
+      // STEP 1: Wrap LiteralNull elements when appropriate for aggregate functions
+      if (aggregateFunctions.containsKey(ref)) {
+        final aggregateType = aggregateFunctions[ref]!;
+        operand = operand.map((element) {
+          if (element is ListExpression) {
+            return _processAggregateOperand(element, aggregateType);
+          }
+          return element;
+        }).toList();
+        print('[DEBUG] Operands after null wrapping: $operand');
+      }
+
+      // STEP 2: Determine if the function needs query transformation
       if (queryBasedFunctions.contains(ref)) {
         print('[DEBUG] Detected query-based aggregate function: $ref');
 
-        // Transform the first operand (assumed to be the list) into a `Query`
-        if (operand.isNotEmpty && operand.first is ListExpression) {
-          final listExpression = operand.first as ListExpression;
-          operand[0] = _transformToQuery(listExpression, ref);
+        const alwaysQueryFunctions = {
+          'Avg',
+          'Variance',
+          'StdDev',
+          'PopulationVariance',
+          'PopulationStdDev',
+        };
+
+        if (alwaysQueryFunctions.contains(ref)) {
+          if (operand.isNotEmpty && operand.first is ListExpression) {
+            operand[0] =
+                _transformToQuery(operand.first as ListExpression, ref);
+          }
+        } else {
+          const mayRequireQueryFunctions = {'Mode', 'Median'};
+
+          if (mayRequireQueryFunctions.contains(ref) &&
+              _requiresQueryTransformation(operand, ref)) {
+            operand[0] =
+                _transformToQuery(operand.first as ListExpression, ref);
+          }
         }
 
         print('[DEBUG] Operands after processing: $operand');
-      } else {
-        // For other aggregate functions, handle null wrapping if needed
-        const aggregateFunctions = {
-          'Sum': 'Integer',
-          'Min': 'Integer',
-          'Max': 'Integer',
-          'Count': 'Integer',
-        };
-
-        if (aggregateFunctions.containsKey(ref)) {
-          final aggregateType = aggregateFunctions[ref]!;
-          operand = operand.map((element) {
-            if (element is ListExpression) {
-              return _processAggregateOperand(element, aggregateType);
-            }
-            return element;
-          }).toList();
-        }
       }
 
-      // Ensure numeric literals are wrapped with `ToDecimal` when necessary
+      // STEP 3: Ensure numeric literals are wrapped with `ToDecimal` when necessary
       operand = operand.map((e) {
         if (e is LiteralInteger && ref == 'Equal') {
           print(
@@ -83,6 +102,72 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     }
 
     throw ArgumentError('Invalid Function');
+  }
+
+  bool _requiresQueryTransformation(
+      List<CqlExpression> operand, String functionName) {
+    print(
+        'Checking if query transformation is needed for function: $functionName');
+    print('Operand: $operand');
+
+    if (operand.isNotEmpty && operand.first is ListExpression) {
+      final listExpression = operand.first as ListExpression;
+      final elementTypes = listExpression.element
+              ?.expand((e) => e.getReturnTypes(library))
+              .toSet() ??
+          {};
+
+      print('List element types: $elementTypes');
+
+      // For Mode and Median, transformation might be needed.
+      if (functionName == 'Mode' || functionName == 'Median') {
+        // Enforce transformation if there's any `Null`.
+        return elementTypes.contains('LiteralNull') ||
+            elementTypes.contains('Null');
+      }
+
+      return elementTypes.length >
+          1; // Transform if the elements are heterogeneous.
+    }
+    return false;
+  }
+
+  ListExpression _processAggregateOperand(
+      ListExpression listExpression, String aggregateType) {
+    final elements = listExpression.element;
+
+    // Determine the target type based on the majority of the elements
+    final elementTypes = elements
+        ?.map((e) => e.getReturnTypes(library))
+        .expand((e) => e)
+        .toSet()
+        .toList();
+
+    print('Element types: $elementTypes');
+
+    // Default to `Integer` if more `Integer` elements are present, otherwise use `Decimal`
+    final majorityType = elementTypes?.contains('FhirInteger') ?? false
+        ? QName.fromDataType('Integer')
+        : QName.fromDataType('Decimal');
+
+    final transformedElements = elements?.map((e) {
+      if (e is LiteralNull) {
+        print('Forcefully wrapping null with As type: $majorityType');
+        return As(
+          operand: e,
+          asType: majorityType,
+        );
+      }
+      return e;
+    }).toList();
+
+    print(
+        'Transformed elements (after forceful null wrapping): $transformedElements');
+
+    return ListExpression(
+      typeSpecifier: listExpression.typeSpecifier,
+      element: transformedElements,
+    );
   }
 
   Query _transformToQuery(ListExpression listExpression, String functionName) {
@@ -149,7 +234,7 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
           return elementTypes.first;
         }
       }
-    } else
+    }
 
     // Handle mixed types or function-specific cases
     if (functionName == 'Avg' ||
@@ -160,31 +245,5 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
 
     // Default fallback if unsure
     return 'Integer';
-  }
-
-  /// Processes a `ListExpression` operand for aggregate functions.
-  /// Wraps `Null` elements with the expected aggregate type.
-  ListExpression _processAggregateOperand(
-      ListExpression listExpression, String aggregateType) {
-    final elements = listExpression.element;
-
-    // Transform elements to wrap `Null` with the aggregate type
-    final transformedElements = elements?.map((e) {
-      if (e is LiteralNull) {
-        print('Wrapping null with As type: $aggregateType');
-        return As(
-          operand: e,
-          asType: QName.fromDataType(aggregateType),
-        );
-      }
-      return e;
-    }).toList();
-
-    print('Transformed elements: $transformedElements');
-
-    return ListExpression(
-      typeSpecifier: listExpression.typeSpecifier,
-      element: transformedElements,
-    );
   }
 }
