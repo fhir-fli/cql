@@ -65,6 +65,7 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
           'StdDev',
           'PopulationVariance',
           'PopulationStdDev',
+          'Median',
         };
 
         if (alwaysQueryFunctions.contains(ref)) {
@@ -73,10 +74,8 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
                 _transformToQuery(operand.first as ListExpression, ref);
           }
         } else {
-          const mayRequireQueryFunctions = {'Mode', 'Median'};
-
-          if (mayRequireQueryFunctions.contains(ref) &&
-              _requiresQueryTransformation(operand, ref)) {
+          // Leave the conditional check only for those that may not always require wrapping
+          if (_requiresQueryTransformation(operand, ref)) {
             operand[0] =
                 _transformToQuery(operand.first as ListExpression, ref);
           }
@@ -119,15 +118,10 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
 
       print('List element types: $elementTypes');
 
-      // For Mode and Median, transformation might be needed.
-      if (functionName == 'Mode' || functionName == 'Median') {
-        // Enforce transformation if there's any `Null`.
-        return elementTypes.contains('LiteralNull') ||
-            elementTypes.contains('Null');
-      }
-
-      return elementTypes.length >
-          1; // Transform if the elements are heterogeneous.
+      // Existing transformation rules for mixed types or containing `Null`.
+      return elementTypes.contains('LiteralNull') ||
+          elementTypes.contains('Null') ||
+          elementTypes.length > 1; // Transform if the elements are heterogeneous.
     }
     return false;
   }
@@ -247,3 +241,4 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     return 'Integer';
   }
 }
+
