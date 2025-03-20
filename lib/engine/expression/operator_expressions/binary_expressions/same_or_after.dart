@@ -279,9 +279,10 @@ class SameOrAfter extends BinaryExpression {
       final result = left.isSameOrAfter(right);
       return result == null ? null : FhirBoolean(result);
     } else {
-      if(left.year == null || right.year == null){
+      if (left.year == null || right.year == null) {
         return null;
       }
+
       /// Check if years are equal
       final yearsEqual = left.year! >= right.year!;
 
@@ -374,8 +375,7 @@ class SameOrAfter extends BinaryExpression {
         return null;
       } else {
         /// Check if milliseconds are equal
-        final millisecondsEqual =
-            left.millisecond! >= right.millisecond!;
+        final millisecondsEqual = left.millisecond! >= right.millisecond!;
 
         /// We've reached the end of the precision, return the result
         return FhirBoolean(millisecondsEqual);

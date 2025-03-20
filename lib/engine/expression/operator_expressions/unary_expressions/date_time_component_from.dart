@@ -110,21 +110,13 @@ class DateTimeComponentFrom extends UnaryExpression {
     if (operandValue is FhirDateTime) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.hasYear
-              ? FhirInteger(operandValue.year)
-              : null;
+          return operandValue.hasYear ? FhirInteger(operandValue.year) : null;
         case CqlDateTimePrecision.month:
-          return operandValue.hasMonth
-              ? FhirInteger(operandValue.month)
-              : null;
+          return operandValue.hasMonth ? FhirInteger(operandValue.month) : null;
         case CqlDateTimePrecision.day:
-          return operandValue.hasDay
-              ? FhirInteger(operandValue.day)
-              : null;
+          return operandValue.hasDay ? FhirInteger(operandValue.day) : null;
         case CqlDateTimePrecision.hour:
-          return operandValue.hasHours
-              ? FhirInteger(operandValue.hour)
-              : null;
+          return operandValue.hasHours ? FhirInteger(operandValue.hour) : null;
         case CqlDateTimePrecision.minute:
           return operandValue.hasMinutes
               ? FhirInteger(operandValue.minute)
@@ -143,17 +135,11 @@ class DateTimeComponentFrom extends UnaryExpression {
     } else if (operandValue is FhirDate) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.hasYear
-              ? FhirInteger(operandValue.year)
-              : null;
+          return operandValue.hasYear ? FhirInteger(operandValue.year) : null;
         case CqlDateTimePrecision.month:
-          return operandValue.hasMonth
-              ? FhirInteger(operandValue.month)
-              : null;
+          return operandValue.hasMonth ? FhirInteger(operandValue.month) : null;
         case CqlDateTimePrecision.day:
-          return operandValue.hasDay
-              ? FhirInteger(operandValue.day)
-              : null;
+          return operandValue.hasDay ? FhirInteger(operandValue.day) : null;
         default:
           return null;
       }

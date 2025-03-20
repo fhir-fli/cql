@@ -87,11 +87,11 @@ class Truncate extends UnaryExpression {
     final value = operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirInteger ) {
+    } else if (value is FhirInteger) {
       return value;
-    } else if (value is FhirInteger64 ) {
+    } else if (value is FhirInteger64) {
       return FhirInteger.tryParse(value.value!);
-    } else if (value is FhirDecimal ) {
+    } else if (value is FhirDecimal) {
       return FhirInteger(value.value!.truncate());
     } else {
       throw ArgumentError(

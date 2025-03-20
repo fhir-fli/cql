@@ -154,7 +154,6 @@ class QName {
         'CodeType',
       ].contains(type);
 
-
   static String _fhirTypeToElmType(String fhirType) {
     switch (fhirType) {
       case 'FhirDateTime':
@@ -209,10 +208,8 @@ class QName {
       case 'Code':
         return ['CodeType'];
       default:
-      return [localPart];
-    
-  }
-
+        return [localPart];
+    }
   }
 
   Type? get type {

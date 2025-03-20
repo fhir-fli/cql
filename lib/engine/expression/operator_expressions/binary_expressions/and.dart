@@ -104,8 +104,7 @@ class And extends BinaryExpression {
 
   static FhirBoolean? and(dynamic left, dynamic right) {
     /// Both operands are non-null and true
-    if (left is FhirBoolean &&
-        right is FhirBoolean) {
+    if (left is FhirBoolean && right is FhirBoolean) {
       return FhirBoolean(left.value! && right.value!);
     }
 

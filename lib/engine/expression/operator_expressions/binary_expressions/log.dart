@@ -59,7 +59,8 @@ class Log extends BinaryExpression {
     } else {
       final return1 = operand.first.getReturnTypes(library);
       if (return1.length == 1) {
-        if (return1.first == 'LiteralInteger' || return1.first == 'LiteralLong') {
+        if (return1.first == 'LiteralInteger' ||
+            return1.first == 'LiteralLong') {
           operand.add(ToDecimal(operand: first));
         } else if (return1.first == 'FhirDecimal') {
           operand.add(first);

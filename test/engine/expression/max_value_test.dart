@@ -12,8 +12,8 @@ void maxValue() {
     test("""define "LongMaximum": maximum Long // 9223372036854775807""", () {
       final QName valueType = QName.fromFull('Long');
       final maxValue = MaxValue(valueType: valueType);
-      expect(
-          maxValue.execute({}), equals(fhir.FhirInteger64.fromString('9223372036854775807')));
+      expect(maxValue.execute({}),
+          equals(fhir.FhirInteger64.fromString('9223372036854775807')));
     });
     test(
         """define "DateTimeMaximum": maximum DateTime // @9999-12-31T23:59:59.999""",

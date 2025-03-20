@@ -41,7 +41,8 @@ final exercises02 = {
   'Time From': FhirTime('14:30:14'),
   'Component From (Year)': FhirInteger(2014),
   'Now Function': FhirDateTime.fromDateTime(DateTime.now()),
-  'Today Function': FhirDate.fromString(DateTime.now().toIso8601String().substring(0, 10)),
+  'Today Function':
+      FhirDate.fromString(DateTime.now().toIso8601String().substring(0, 10)),
   'TimeOfDay Function':
       FhirTime(DateTime.now().toIso8601String().substring(11)),
   'Simple Info': <String, dynamic>{

@@ -32,8 +32,8 @@ void medianTest() {
       final result = median.execute({});
       expect(
           result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromNum(2.0), unit: 'mg')));
+          equals(
+              ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')));
     });
     test(
         'define "MedianIsNull": Median({ null as Quantity, null as Quantity, null as Quantity })',

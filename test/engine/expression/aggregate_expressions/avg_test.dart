@@ -27,8 +27,8 @@ void avgTest() {
       final result = avg.execute({});
       expect(
           result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromNum(5.0), unit: 'cm')));
+          equals(
+              ValidatedQuantity(value: UcumDecimal.fromNum(5.0), unit: 'cm')));
     });
     test('define "AvgIsNull": Avg(null as List<Decimal>)', () {
       final list = ListExpression(element: [LiteralNull()]);

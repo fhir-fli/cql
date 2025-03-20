@@ -70,7 +70,8 @@ class ExpressionRef extends Ref {
         library.statements?.def.indexWhere((element) => element.name == name);
     if (expression != null && expression != -1) {
       return library.statements?.def[expression].expression
-          ?.getReturnTypes(library) ?? [];
+              ?.getReturnTypes(library) ??
+          [];
     }
     return [];
   }

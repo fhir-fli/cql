@@ -124,14 +124,14 @@ class Successor extends UnaryExpression {
   static dynamic successor(dynamic value) {
     if (value == null) {
       return null;
-    } else if (value is FhirInteger ) {
+    } else if (value is FhirInteger) {
       return FhirInteger.tryParse(value.value! + 1);
-    } else if (value is FhirInteger64 ) {
+    } else if (value is FhirInteger64) {
       return FhirInteger64(value.value! + BigInt.from(1));
-    } else if (value is FhirDecimal ) {
+    } else if (value is FhirDecimal) {
       return FhirDecimal(value.value! + 0.00000001);
-    } else if (value is FhirDateTimeBase ) {
-          if (value.yearsPrecision) {
+    } else if (value is FhirDateTimeBase) {
+      if (value.yearsPrecision) {
         return value - ExtendedDuration(years: 1);
       }
       if (value.monthsPrecision) {
@@ -153,8 +153,7 @@ class Successor extends UnaryExpression {
       }
 
       return value - ExtendedDuration(milliseconds: 1);
-  
-    } else if (value is FhirTime ) {
+    } else if (value is FhirTime) {
       if (value.millisecond != null) {
         return value.plus(milliseconds: 1);
       } else if (value.second != null) {

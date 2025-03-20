@@ -6,48 +6,37 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
   @override
   NaryExpression visitInFixSetExpression(InFixSetExpressionContext ctx) {
     printIf(ctx);
-    
+
     final int thisNode = getNextNode();
 
     if (ctx.childCount == 3) {
       final left = byContext(ctx.getChild(0)!);
-      
+
       final operator = ctx.getChild(1)!.text;
-      
+
       final right = byContext(ctx.getChild(2)!);
-      
 
       if (left is CqlExpression && right is CqlExpression) {
-        
-        
-
         // Get return types for left and right operands
         final leftTypes = left.getReturnTypes(library).toSet();
         final rightTypes = right.getReturnTypes(library).toSet();
 
-        
-        
-
         // Combine types and determine if transformation is needed
         final combinedTypes = _combineTypes(leftTypes, rightTypes);
-        
+
         final transformedOperands = _transformOperandsForMixedTypes(
           left,
           right,
           combinedTypes,
         );
-        
 
         switch (operator) {
           case '|': // Pipe operator
           case 'union':
-            
             return Union(operand: transformedOperands);
           case 'intersect':
-            
             return Intersect(operand: transformedOperands);
           case 'except':
-            
             return Except(operand: transformedOperands);
           default:
             throw ArgumentError('$thisNode Unsupported operator: $operator');
@@ -60,10 +49,8 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
 
   /// Combines return types from two operands.
   Set<String> _combineTypes(Set<String> leftTypes, Set<String> rightTypes) {
-    
-    
     final combined = {...leftTypes, ...rightTypes};
-    
+
     return combined;
   }
 
@@ -72,11 +59,8 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     CqlExpression right,
     Set<String> combinedTypes,
   ) {
-    
-
     // Static homogeneous lists can be wrapped directly in `As`.
     if (left is ListExpression && right is ListExpression) {
-      
       final choiceType = _buildChoiceType(combinedTypes);
       return [
         As(
@@ -91,7 +75,6 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     // Fallback for mixed/dynamic types.
     if (combinedTypes.length > 1) {
       final choiceType = _buildChoiceType(combinedTypes);
-      
 
       return [
         _transformExpressionToQuery(left, choiceType, 'AliasLeft'),
@@ -108,9 +91,6 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     ChoiceTypeSpecifier choiceType,
     String alias,
   ) {
-    
-    
-    
     return Query(
       source: [
         RelationshipClause(
@@ -130,14 +110,12 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
 
   /// Builds a ChoiceTypeSpecifier from the combined types.
   ChoiceTypeSpecifier _buildChoiceType(Set<String> combinedTypes) {
-    
     final choiceType = ChoiceTypeSpecifier(
       choice: combinedTypes.map((type) {
-        
         return NamedTypeSpecifier(namespace: QName.fromDataType(type));
       }).toList(),
     );
-    
+
     return choiceType;
   }
 }

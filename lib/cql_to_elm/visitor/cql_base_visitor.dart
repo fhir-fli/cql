@@ -162,11 +162,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       CqlContextIdentifierVisitor(library).visitContextIdentifier(ctx);
 
   @override
-  dynamic visitConversionExpressionTerm(ConversionExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  dynamic visitConversionExpressionTerm(ConversionExpressionTermContext ctx) =>
+      CqlConversionExpressionTermVisitor(library)
+          .visitConversionExpressionTerm(ctx);
 
   @override
   LiteralDate visitDateLiteral(DateLiteralContext ctx) =>
@@ -203,11 +201,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           .visitDifferenceBetweenExpression(ctx);
 
   @override
-  dynamic visitDifferenceExpressionTerm(DifferenceExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  DifferenceBetween visitDifferenceExpressionTerm(
+          DifferenceExpressionTermContext ctx) =>
+      CqlDifferenceExpressionTermVisitor(library)
+          .visitDifferenceExpressionTerm(ctx);
 
   @override
   String visitDisplayClause(DisplayClauseContext ctx) =>
@@ -220,11 +217,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           .visitDurationBetweenExpression(ctx);
 
   @override
-  dynamic visitDurationExpressionTerm(DurationExpressionTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  DurationBetween visitDurationExpressionTerm(
+          DurationExpressionTermContext ctx) =>
+      CqlDurationExpressionTermVisitor(library)
+          .visitDurationExpressionTerm(ctx);
 
   @override
   SingletonFrom visitElementExtractorExpressionTerm(
@@ -256,18 +252,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       CqlExpressionDefinitionVisitor(library).visitExpressionDefinition(ctx);
 
   @override
-  dynamic visitExternalConstant(ExternalConstantContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  dynamic visitExternalConstant(ExternalConstantContext ctx) =>
+      CqlExternalConstantVisitor(library).visitExternalConstant(ctx);
 
   @override
-  dynamic visitExternalConstantTerm(ExternalConstantTermContext ctx) {
-    printIf(ctx);
-    final int thisNode = getNextNode();
-    visitChildren(ctx);
-  }
+  dynamic visitExternalConstantTerm(ExternalConstantTermContext ctx) =>
+      CqlExternalConstantTermVisitor(library).visitExternalConstantTerm(ctx);
 
   @override
   dynamic visitFunction(FunctionContext ctx) =>
@@ -1875,7 +1865,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                 {
                   if (rightType.first == 'FhirInteger') {
                     return Modulo(operand: [left, ToDecimal(operand: right)]);
-                  } else if (rightType.first  == 'FhirInteger64') {
+                  } else if (rightType.first == 'FhirInteger64') {
                     return Modulo(operand: [left, ToDecimal(operand: right)]);
                   } else if (rightType.first == 'FhirDecimal') {
                     return Modulo(operand: [left, right]);

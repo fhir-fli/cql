@@ -100,7 +100,8 @@ class Case extends CqlExpression {
     if (types.isEmpty) {
       return types;
     } else {
-      if (types.contains('ValidatedQuantity') || types.contains('FhirDecimal')) {
+      if (types.contains('ValidatedQuantity') ||
+          types.contains('FhirDecimal')) {
         return ['FhirDecimal'];
       } else if (types.contains('FhirInteger64')) {
         return ['FhirInteger64'];

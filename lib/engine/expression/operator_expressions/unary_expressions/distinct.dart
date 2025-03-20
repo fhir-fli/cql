@@ -85,7 +85,7 @@ class Distinct extends UnaryExpression {
   @override
   List<String> getReturnTypes(CqlLibrary library) {
     final returnTypes = operand.getReturnTypes(library).toSet();
-    if(returnTypes.length == 1) {
+    if (returnTypes.length == 1) {
       return ['List<${returnTypes.first}>'];
     }
     return ['List'];

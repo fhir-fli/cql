@@ -102,7 +102,8 @@ class As extends UnaryExpression {
     };
     if (operand is! NullExpression &&
         operand is! Property &&
-        operand is! LiteralNull && strict != null) {
+        operand is! LiteralNull &&
+        strict != null) {
       data['strict'] = strict;
     }
 

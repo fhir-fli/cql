@@ -2,8 +2,7 @@ import 'package:antlr4/antlr4.dart';
 import '../../../../cql.dart';
 
 // TODO(Dokotela): test that it works
-class CqlDurationExpressionTermVisitor
-    extends CqlBaseVisitor<DurationBetween> {
+class CqlDurationExpressionTermVisitor extends CqlBaseVisitor<DurationBetween> {
   CqlDurationExpressionTermVisitor(super.library);
 
   @override
@@ -32,8 +31,7 @@ class CqlDurationExpressionTermVisitor
 
     // Ensure that precision and expression are assigned, as per the ANTLR rule
     if (precision == null || expression == null) {
-      final errorMessage =
-          'Invalid DurationExpressionTerm: missing components';
+      final errorMessage = 'Invalid DurationExpressionTerm: missing components';
       print('[ERROR] $errorMessage');
       throw ArgumentError('$thisNode $errorMessage');
     }

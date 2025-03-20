@@ -31,8 +31,8 @@ void populationVarianceTest() {
       final result = PopulationVariance(source: list).execute({});
       expect(
           result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromNum(2.0), unit: 'mg')));
+          equals(
+              ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')));
     });
     test(
         'define "PopulationVarianceIsNull": PopulationVariance({ null as Quantity, null as Quantity, null as Quantity })',

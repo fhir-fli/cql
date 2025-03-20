@@ -6,7 +6,7 @@ import '../../../../cql.dart';
 /// Operator to compare two Date, DateTime, or Time values to the specified
 /// precision for equality.
 /// The SameAs operator compares values starting from the year or hour component
-/// down to the specified 
+/// down to the specified
 /// If all values are specified and have the same value for each component, then
 /// the result is true.
 /// If a compared component is specified in both dates but the values are not
@@ -331,8 +331,7 @@ class SameAs extends BinaryExpression {
       /// if we're supposed to continue to compare, but either one doesn't
       /// have a millisecond, then there isn't enough precision, and we return
       /// null
-      else if (!left.hasMilliseconds ||
-          !right.hasMilliseconds) {
+      else if (!left.hasMilliseconds || !right.hasMilliseconds) {
         return null;
       } else {
         /// Check if milliseconds are equal

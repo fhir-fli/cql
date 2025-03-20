@@ -75,7 +75,7 @@ class Flatten extends UnaryExpression {
   @override
   List<String> getReturnTypes(CqlLibrary library) {
     final returnTypes = operand.getReturnTypes(library).toSet();
-    if(returnTypes.length == 1 && returnTypes.contains('List')) {
+    if (returnTypes.length == 1 && returnTypes.contains('List')) {
       return returnTypes.toList();
     }
     return ['List'];

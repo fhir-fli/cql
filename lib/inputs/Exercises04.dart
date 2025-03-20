@@ -24,9 +24,11 @@ final exercises04 = <String, dynamic>{
   'Interval Includes': FhirBoolean(true),
   'Interval Ends': FhirBoolean(true),
   'IntervalX': CqlInterval<FhirDate>(
-      low: FhirDate.fromString('2021-03-01'), high: FhirDate.fromString('2021-03-10')),
+      low: FhirDate.fromString('2021-03-01'),
+      high: FhirDate.fromString('2021-03-10')),
   'IntervalY': CqlInterval<FhirDate>(
-      low: FhirDate.fromString('2021-03-04'), high: FhirDate.fromString('2021-03-30')),
+      low: FhirDate.fromString('2021-03-04'),
+      high: FhirDate.fromString('2021-03-30')),
   'Interval Starts Before Start': FhirBoolean(true),
   'Interval Starts 3 Days Before Start': FhirBoolean(true),
   'Interval Starts 3 Days Or More Before Start': FhirBoolean(true),

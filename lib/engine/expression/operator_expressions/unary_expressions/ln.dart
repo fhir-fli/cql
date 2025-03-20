@@ -56,7 +56,8 @@ class Ln extends UnaryExpression {
     } else {
       final return1 = first.getReturnTypes(library);
       if (return1.length == 1) {
-        if (return1.first == 'LiteralInteger' || return1.first == 'LiteralLong') {
+        if (return1.first == 'LiteralInteger' ||
+            return1.first == 'LiteralLong') {
           operand = ToDecimal(operand: first);
         } else if (return1.first == 'LiteralDecimal') {
           operand = first;

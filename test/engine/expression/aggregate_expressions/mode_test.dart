@@ -36,8 +36,8 @@ void modeTest() {
       final result = mode.execute({});
       expect(
           result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromNum(2.0), unit: 'mg')));
+          equals(
+              ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')));
     });
     test(
         'define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })',

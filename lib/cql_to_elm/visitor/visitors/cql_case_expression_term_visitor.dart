@@ -42,7 +42,8 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
           elseExpr = ToDecimal(operand: elseExpr);
         }
         for (var i = 0; i < caseTypes.length; i++) {
-          if (caseTypes[i] == 'FhirInteger64' || caseTypes[i] == 'FhirInteger') {
+          if (caseTypes[i] == 'FhirInteger64' ||
+              caseTypes[i] == 'FhirInteger') {
             caseItem[i] = CaseItem(
                 when_: caseItem[i].when_,
                 then: ToDecimal(operand: caseItem[i].then));

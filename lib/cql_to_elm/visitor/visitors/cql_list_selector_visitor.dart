@@ -8,7 +8,7 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
   ListExpression visitListSelector(ListSelectorContext ctx) {
     // Initial debugging entry point for ListSelector
     print('[DEBUG] Entering visitListSelector with context: $ctx');
-    
+
     // Type specifier for the list (if provided)
     TypeSpecifierExpression? typeSpecifier;
     final List<CqlExpression> elements = <CqlExpression>[];
@@ -66,7 +66,8 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
     print('[DEBUG] Transformed elements: $transformedElements');
 
     // Return the list expression
-    print('[DEBUG] Returning ListExpression with typeSpecifier: $typeSpecifier and elements: $transformedElements');
+    print(
+        '[DEBUG] Returning ListExpression with typeSpecifier: $typeSpecifier and elements: $transformedElements');
     return ListExpression(
       typeSpecifier: typeSpecifier,
       element: transformedElements,
@@ -81,7 +82,8 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
     while (current != null) {
       if (current is FunctionInvocationContext) {
         final functionName = (current.getChild(0))?.text;
-        print('[DEBUG] Found FunctionInvocationContext with functionName: $functionName');
+        print(
+            '[DEBUG] Found FunctionInvocationContext with functionName: $functionName');
 
         const aggregateFunctions = {
           'Sum',
@@ -112,7 +114,8 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
   /// Extracts the expected aggregate type from the context for null wrapping.
   String _getAggregateTypeFromContext(
       ListSelectorContext ctx, List<CqlExpression> elements) {
-    print('[DEBUG] Getting aggregate type from context for elements: $elements');
+    print(
+        '[DEBUG] Getting aggregate type from context for elements: $elements');
     // If elements are present, derive type from majority element type
     final elementTypes = elements
         .map((e) => e.getReturnTypes(library))
@@ -120,7 +123,8 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
         .toSet()
         .toList();
 
-    print('[DEBUG] Element types for aggregate type determination: $elementTypes');
+    print(
+        '[DEBUG] Element types for aggregate type determination: $elementTypes');
     // Determine the type based on the existing elements
     if (elementTypes.contains('FhirInteger')) {
       print('[DEBUG] Aggregate type determined: Integer');

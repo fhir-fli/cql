@@ -31,8 +31,8 @@ void sumTest() {
       final result = sum.execute({});
       expect(
           result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromNum(15.0), unit: 'mg')));
+          equals(
+              ValidatedQuantity(value: UcumDecimal.fromNum(15.0), unit: 'mg')));
     });
     test(
         'define "SumIsNull": Sum({ null as Quantity, null as Quantity, null as Quantity })',

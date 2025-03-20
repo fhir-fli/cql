@@ -129,7 +129,8 @@ class Add extends BinaryExpression {
                     .add(UcumDecimal.fromNum(right.value!))
                     .asUcumDecimal()))
                 : right is FhirInteger64
-                    ? FhirInteger64.fromNum((left.value as int) + right.value!.toInt())
+                    ? FhirInteger64.fromNum(
+                        (left.value as int) + right.value!.toInt())
                     : null;
       case FhirInteger64 _:
         return right is FhirInteger64
@@ -139,7 +140,8 @@ class Add extends BinaryExpression {
                     .add(UcumDecimal.fromNum(right.value!))
                     .asUcumDecimal()))
                 : right is FhirInteger
-                    ? FhirInteger64.fromNum(left.value!.toInt() + right.value!.toInt())
+                    ? FhirInteger64.fromNum(
+                        left.value!.toInt() + right.value!.toInt())
                     : null;
       case FhirDecimal _:
         return right is FhirDecimal
@@ -151,10 +153,9 @@ class Add extends BinaryExpression {
                     .add(UcumDecimal.fromNum(right.value!))
                     .asUcumDecimal()))
                 : right is FhirInteger64
-                    ? FhirDecimal(double.parse(
-                        UcumDecimal.fromNum(left.value!)
-                            .add(UcumDecimal.fromBigInt(right.value!))
-                            .asUcumDecimal()))
+                    ? FhirDecimal(double.parse(UcumDecimal.fromNum(left.value!)
+                        .add(UcumDecimal.fromBigInt(right.value!))
+                        .asUcumDecimal()))
                     : null;
       case ValidatedQuantity _:
         return right is ValidatedQuantity
