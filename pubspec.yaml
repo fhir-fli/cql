@@ -1,0 +1,33 @@
+name: fhir_cql
+description: Clinical Quality Language (CQL) implementation in Dart. FHIR-version-independent engine with R4/R5/R6 ModelResolvers in a single package.
+version: 0.1.0-dev.1
+homepage: https://www.fhirfli.dev/
+repository: https://github.com/fhir-fli/fhir_cql
+
+environment:
+  sdk: ^3.5.0
+
+# fhir_cql depends on all maintained FHIR version packages — users construct
+# the matching ModelResolver (R4/R5/R6) at engine instantiation. Tree-shaking
+# strips unused resolvers + their transitive fhir_rN deps from AOT binaries,
+# so an R4-only consumer ships R4-only code.
+dependencies:
+  antlr4: ^4.13.2
+  collection: ^1.19.1
+  fhir_r4: ^0.5.0
+  fhir_r4_path: ^0.5.0
+  fhir_r5: ^0.5.0
+  fhir_r5_path: ^0.5.0
+  fhir_r6: ^0.5.0
+  fhir_r6_path: ^0.5.0
+  http: ^1.6.0
+  json_annotation: ^4.12.0
+  path: ^1.9.1
+  ucum: ^0.8.0
+  uuid: ^4.5.3
+  xml: ^6.6.1
+  xml2json: ^6.2.7
+
+dev_dependencies:
+  lints: ^5.1.1
+  test: ^1.29.0
