@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -135,19 +134,19 @@ class Variance extends AggregateExpression {
 
     var mean = Avg.avg(sourceResult);
 
-    // For FhirDecimal — sample variance uses (N-1) denominator
-    if (mean is FhirDecimal) {
-      FhirDecimal sumOfSquaredDiffs = FhirDecimal(0.0);
+    // For CqlDecimal — sample variance uses (N-1) denominator
+    if (mean is CqlDecimal) {
+      CqlDecimal sumOfSquaredDiffs = CqlDecimal(0.0);
       for (final val in sourceResult as List<dynamic>) {
-        if (val is FhirNumber) {
-          var diff = FhirDecimal(val.valueNum! - mean.valueNum!);
-          var squaredDiff = FhirDecimal(diff.valueNum! * diff.valueNum!);
+        if (val is CqlNumber) {
+          var diff = CqlDecimal(val.valueNum! - mean.valueNum!);
+          var squaredDiff = CqlDecimal(diff.valueNum! * diff.valueNum!);
           sumOfSquaredDiffs =
-              FhirDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
+              CqlDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
         }
       }
       var variance = sumOfSquaredDiffs.valueNum! / (sourceResult.length - 1);
-      return FhirDecimal(variance);
+      return CqlDecimal(variance);
     }
 
     // For ValidatedQuantity — sample variance uses (N-1) denominator.

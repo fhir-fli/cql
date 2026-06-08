@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Quantity;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity;
 import 'package:ucum/ucum.dart';
 
@@ -169,18 +169,18 @@ class As extends UnaryExpression {
       switch (asType!.localPart) {
         case 'Integer':
         case 'integer':
-          return value is FhirInteger ? value : null;
+          return value is CqlInteger ? value : null;
         case 'Decimal':
         case 'decimal':
-          return value is FhirDecimal ? value : null;
+          return value is CqlDecimal ? value : null;
         case 'String':
           return value is String ? value : null;
         case 'string':
-          // FHIR string: accept FhirString and subtypes (FhirCode, etc.)
-          return (value is String || value is FhirString) ? value : null;
+          // FHIR string: accept CqlString and subtypes (FhirCode, etc.)
+          return (value is String || value is CqlString) ? value : null;
         case 'Boolean':
         case 'boolean':
-          return value is FhirBoolean ? value : null;
+          return value is CqlBoolean ? value : null;
         case 'Quantity':
           if (value is ValidatedQuantity) return value;
           if (value is fhir.Quantity) return _fhirQuantityToValidated(value);
@@ -189,13 +189,13 @@ class As extends UnaryExpression {
           return value is ValidatedRatio ? value : null;
         case 'DateTime':
         case 'dateTime':
-          return value is FhirDateTime ? value : null;
+          return value is CqlDateTime ? value : null;
         case 'Date':
         case 'date':
-          return value is FhirDate ? value : null;
+          return value is CqlDate ? value : null;
         case 'Time':
         case 'time':
-          return value is FhirTime ? value : null;
+          return value is CqlTime ? value : null;
         case 'Code':
           return value is Code ? value : null;
         case 'code':
@@ -210,20 +210,20 @@ class As extends UnaryExpression {
           return value is CqlInterval ? value : null;
         case 'Interval<Long>':
         case 'CqlInterval<Long>':
-          return value is CqlInterval<FhirInteger64> ? value : null;
+          return value is CqlInterval<CqlLong> ? value : null;
         case 'Interval<Decimal>':
         case 'CqlInterval<Decimal>':
           return value is CqlInterval ? value : null;
-        case 'Interval<FhirDate>':
-        case 'CqlInterval<FhirDate>':
+        case 'Interval<CqlDate>':
+        case 'CqlInterval<CqlDate>':
         case 'CqlInterval<Date>':
           return value is CqlInterval ? value : null;
-        case 'Interval<FhirDateTime>':
-        case 'CqlInterval<FhirDateTime>':
+        case 'Interval<CqlDateTime>':
+        case 'CqlInterval<CqlDateTime>':
         case 'CqlInterval<DateTime>':
           return value is CqlInterval ? value : null;
-        case 'Interval<FhirTime>':
-        case 'CqlInterval<FhirTime>':
+        case 'Interval<CqlTime>':
+        case 'CqlInterval<CqlTime>':
         case 'CqlInterval<Time>':
           return value is CqlInterval ? value : null;
         case 'Interval<Quantity>':
@@ -286,19 +286,19 @@ class As extends UnaryExpression {
           return element;
         case 'Integer':
         case 'integer':
-          return element is FhirInteger ? element : _notMatched;
+          return element is CqlInteger ? element : _notMatched;
         case 'Decimal':
         case 'decimal':
-          return element is FhirDecimal ? element : _notMatched;
+          return element is CqlDecimal ? element : _notMatched;
         case 'String':
           return element is String ? element : _notMatched;
         case 'string':
-          return (element is String || element is FhirString)
+          return (element is String || element is CqlString)
               ? element
               : _notMatched;
         case 'Boolean':
         case 'boolean':
-          return element is FhirBoolean ? element : _notMatched;
+          return element is CqlBoolean ? element : _notMatched;
         case 'Quantity':
           if (element is ValidatedQuantity) return element;
           if (element is fhir.Quantity) {
@@ -309,13 +309,13 @@ class As extends UnaryExpression {
           return element is ValidatedRatio ? element : _notMatched;
         case 'DateTime':
         case 'dateTime':
-          return element is FhirDateTime ? element : _notMatched;
+          return element is CqlDateTime ? element : _notMatched;
         case 'Date':
         case 'date':
-          return element is FhirDate ? element : _notMatched;
+          return element is CqlDate ? element : _notMatched;
         case 'Time':
         case 'time':
-          return element is FhirTime ? element : _notMatched;
+          return element is CqlTime ? element : _notMatched;
         case 'Code':
           return element is Code ? element : _notMatched;
         case 'code':
@@ -330,20 +330,20 @@ class As extends UnaryExpression {
           return element is CqlInterval ? element : _notMatched;
         case 'Interval<Long>':
         case 'CqlInterval<Long>':
-          return element is CqlInterval<FhirInteger64> ? element : _notMatched;
+          return element is CqlInterval<CqlLong> ? element : _notMatched;
         case 'Interval<Decimal>':
         case 'CqlInterval<Decimal>':
           return element is CqlInterval ? element : _notMatched;
-        case 'Interval<FhirDate>':
-        case 'CqlInterval<FhirDate>':
+        case 'Interval<CqlDate>':
+        case 'CqlInterval<CqlDate>':
         case 'CqlInterval<Date>':
           return element is CqlInterval ? element : _notMatched;
-        case 'Interval<FhirDateTime>':
-        case 'CqlInterval<FhirDateTime>':
+        case 'Interval<CqlDateTime>':
+        case 'CqlInterval<CqlDateTime>':
         case 'CqlInterval<DateTime>':
           return element is CqlInterval ? element : _notMatched;
-        case 'Interval<FhirTime>':
-        case 'CqlInterval<FhirTime>':
+        case 'Interval<CqlTime>':
+        case 'CqlInterval<CqlTime>':
         case 'CqlInterval<Time>':
           return element is CqlInterval ? element : _notMatched;
         case 'Interval<Quantity>':

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -101,7 +100,7 @@ class Starts extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Starts expression must have 2 operands');
     }
@@ -114,7 +113,7 @@ class Starts extends BinaryExpression {
     }
   }
 
-  static FhirBoolean? starts(
+  static CqlBoolean? starts(
     CqlInterval left,
     CqlInterval right, [
     CqlDateTimePrecision? precision,
@@ -127,7 +126,7 @@ class Starts extends BinaryExpression {
     if (equal == null) {
       return null;
     } else if (equal.valueBoolean == false) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
     final result = SameOrBefore.sameOrBefore(leftEnd, rightEnd, precision);
     if (result != null) {
@@ -137,7 +136,7 @@ class Starts extends BinaryExpression {
       return null;
     }
     if (leftEnd is Comparable && rightEnd is Comparable) {
-      return FhirBoolean(leftEnd.compareTo(rightEnd) <= 0);
+      return CqlBoolean(leftEnd.compareTo(rightEnd) <= 0);
     }
     return null;
   }

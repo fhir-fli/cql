@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' show FhirBoolean;
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -87,7 +86,7 @@ class InCodeSystem extends OperatorExpression {
     if (codeSystemValue == null) return null;
     // Basic implementation: check if the code's system matches
     if (codeValue is CqlCode) {
-      return FhirBoolean(codeValue.system == codeSystemValue.id);
+      return CqlBoolean(codeValue.system == codeSystemValue.id);
     }
     return null;
   }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -88,27 +87,27 @@ class Or extends BinaryExpression {
   String get type => 'Or';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     /// Assuming operand is accessible and contains the operands
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
 
     /// If either operand is true
-    if ((left is FhirBoolean && left.valueBoolean == true) ||
-        (right is FhirBoolean && right.valueBoolean == true)) {
-      return FhirBoolean(true);
+    if ((left is CqlBoolean && left.valueBoolean == true) ||
+        (right is CqlBoolean && right.valueBoolean == true)) {
+      return CqlBoolean(true);
     }
 
     /// If both operands are false
-    if ((left is FhirBoolean && left.valueBoolean == false) &&
-        (right is FhirBoolean && right.valueBoolean == false)) {
-      return FhirBoolean(false);
+    if ((left is CqlBoolean && left.valueBoolean == false) &&
+        (right is CqlBoolean && right.valueBoolean == false)) {
+      return CqlBoolean(false);
     }
 
     /// If one operand is false and the other is null
-    if (((left is FhirBoolean && left.valueBoolean == false) &&
+    if (((left is CqlBoolean && left.valueBoolean == false) &&
             right == null) ||
-        ((right is FhirBoolean && right.valueBoolean == false) &&
+        ((right is CqlBoolean && right.valueBoolean == false) &&
             left == null)) {
       return null;
     }

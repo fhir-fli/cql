@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to check if the first operand properly contains the second operand.
@@ -72,7 +71,7 @@ class ProperContains extends BinaryExpression {
   String get type => 'ProperContains';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('ProperContains expression must have 2 operands');
     }
@@ -83,14 +82,14 @@ class ProperContains extends BinaryExpression {
 
   /// CQL-aware equality for list membership testing.
   ///
-  /// Uses [Equal.equal] but adds proper precision handling for [FhirTime]
-  /// and [FhirDateTimeBase] values. When two temporal values have different
+  /// Uses [Equal.equal] but adds proper precision handling for [CqlTime]
+  /// and [CqlDateTimeBase] values. When two temporal values have different
   /// precisions (e.g. seconds vs milliseconds), the result is `null` per the
-  /// CQL spec, even though [FhirTime._compare] may return `false`.
-  static FhirBoolean? _cqlEqual(dynamic a, dynamic b) {
+  /// CQL spec, even though [CqlTime._compare] may return `false`.
+  static CqlBoolean? _cqlEqual(dynamic a, dynamic b) {
     if (a == null || b == null) return null;
-    // Handle FhirTime precision differences
-    if (a is FhirTime && b is FhirTime) {
+    // Handle CqlTime precision differences
+    if (a is CqlTime && b is CqlTime) {
       final aHasMs = a.millisecond != null;
       final bHasMs = b.millisecond != null;
       if (aHasMs != bHasMs) {
@@ -100,16 +99,16 @@ class ProperContains extends BinaryExpression {
         final aSecStr = a.valueString?.split('.').first;
         final bSecStr = b.valueString?.split('.').first;
         if (aSecStr == bSecStr) return null;
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
     }
-    // Handle FhirDateTimeBase precision differences
-    // Equal.equal already delegates to FhirDateTimeBase.isEqual which
+    // Handle CqlDateTimeBase precision differences
+    // Equal.equal already delegates to CqlDateTimeBase.isEqual which
     // properly returns null for different precisions.
     return Equal.equal(a, b);
   }
 
-  static FhirBoolean? properContains(dynamic left, dynamic right,
+  static CqlBoolean? properContains(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left is CqlInterval) {
       if (right == null) return null;
@@ -119,9 +118,9 @@ class ProperContains extends BinaryExpression {
       final end = left.getEnd();
       if (start == null || end == null) return null;
       // Use After/Before for date/time types, Greater/Less for numerics
-      final FhirBoolean? afterStart;
-      final FhirBoolean? beforeEnd;
-      if (right is FhirDateTimeBase || right is FhirTime) {
+      final CqlBoolean? afterStart;
+      final CqlBoolean? beforeEnd;
+      if (right is CqlDateTimeBase || right is CqlTime) {
         afterStart = After.after(right, start, precision);
         beforeEnd = Before.before(right, end, precision);
       } else {
@@ -167,7 +166,7 @@ class ProperContains extends BinaryExpression {
         return null;
       }
       if (!found) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
 
       // Element found; now check that the list has at least one other
@@ -195,7 +194,7 @@ class ProperContains extends BinaryExpression {
         }
       }
 
-      return FhirBoolean(hasOther);
+      return CqlBoolean(hasOther);
     }
     return null;
   }

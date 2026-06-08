@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -33,11 +32,11 @@ class Exists extends UnaryExpression {
   String get type => 'Exists';
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async {
     final result = await operand.execute(context);
-    if (result == null) return FhirBoolean(false);
-    if (result is List) return FhirBoolean(result.any((e) => e != null));
-    return FhirBoolean(true);
+    if (result == null) return CqlBoolean(false);
+    if (result is List) return CqlBoolean(result.any((e) => e != null));
+    return CqlBoolean(true);
   }
 
   @override

@@ -1,5 +1,5 @@
-import 'package:collection/collection.dart';
 import 'package:fhir_r4/fhir_r4.dart';
+import 'package:collection/collection.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -146,7 +146,7 @@ class Equal extends BinaryExpression {
   String get type => 'Equal';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Equal expression must have 2 operands');
     } else {
@@ -157,7 +157,7 @@ class Equal extends BinaryExpression {
     }
   }
 
-  static FhirBoolean? equal(dynamic left, dynamic right) {
+  static CqlBoolean? equal(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }
@@ -166,7 +166,7 @@ class Equal extends BinaryExpression {
       case String _:
         if (right is String) {
           result = left == right;
-        } else if (right is FhirString) {
+        } else if (right is CqlString) {
           result = left == right.valueString;
         } else if (right is PrimitiveType) {
           result = left == right.valueString;
@@ -174,10 +174,10 @@ class Equal extends BinaryExpression {
           result = false;
         }
         break;
-      case FhirDateTimeBase _:
+      case CqlDateTimeBase _:
         // CQL spec: Date and DateTime are cross-comparable using precision
         // semantics. Date is implicitly promoted to DateTime.
-        if (right is FhirDateTimeBase) {
+        if (right is CqlDateTimeBase) {
           // CQL timezone normalization: when one DateTime has a timezone and
           // the other doesn't, assume the no-TZ value is in the same timezone.
           // isEqual() normalizes to UTC treating no-TZ as offset 0, which is
@@ -194,8 +194,8 @@ class Equal extends BinaryExpression {
           result = false;
         }
         break;
-      case FhirTime _:
-        result = right is FhirTime ? left.isEqual(right) : false;
+      case CqlTime _:
+        result = right is CqlTime ? left.isEqual(right) : false;
         break;
       case CqlCode _:
         result = left.equal(right);
@@ -212,9 +212,9 @@ class Equal extends BinaryExpression {
             result = left == right;
           } else if (right is BigInt) {
             result = left.toDouble() == right.toDouble();
-          } else if (right is FhirNumber) {
+          } else if (right is CqlNumber) {
             result = left == right.valueNum;
-          } else if (right is FhirInteger64) {
+          } else if (right is CqlLong) {
             result = BigInt.from(left) == right.valueBigInt;
           } else {
             result = false;
@@ -227,16 +227,16 @@ class Equal extends BinaryExpression {
             result = left == BigInt.from(right);
           } else if (right is BigInt) {
             result = left == right;
-          } else if (right is FhirNumber) {
+          } else if (right is CqlNumber) {
             result = left == BigInt.from(right.valueNum!);
-          } else if (right is FhirInteger64) {
+          } else if (right is CqlLong) {
             result = left == right.valueBigInt;
           } else {
             result = false;
           }
         }
         break;
-      case FhirNumber _:
+      case CqlNumber _:
         {
           if (right is CqlInterval) {
             return equal(right, left);
@@ -244,26 +244,26 @@ class Equal extends BinaryExpression {
             result = left.valueNum == right;
           } else if (right is BigInt) {
             result = left.valueNum == right.toDouble();
-          } else if (right is FhirNumber) {
+          } else if (right is CqlNumber) {
             // Compare by numeric value to handle implicit Integer→Decimal
-            // promotion (e.g. FhirDecimal(1.0) = FhirInteger(1) → true)
+            // promotion (e.g. CqlDecimal(1.0) = CqlInteger(1) → true)
             result = left.valueNum == right.valueNum;
-          } else if (right is FhirInteger64) {
+          } else if (right is CqlLong) {
             result = left.valueString == right.valueString;
           } else {
             result = false;
           }
         }
         break;
-      case FhirInteger64 _:
+      case CqlLong _:
         {
           if (right is num) {
             result = left.valueBigInt == BigInt.from(right);
           } else if (right is BigInt) {
             result = left.valueBigInt == right;
-          } else if (right is FhirNumber) {
+          } else if (right is CqlNumber) {
             result = left.valueString == right.valueString;
-          } else if (right is FhirInteger64) {
+          } else if (right is CqlLong) {
             result = left == right;
           } else {
             result = false;
@@ -409,15 +409,15 @@ class Equal extends BinaryExpression {
         }
         result = left == right;
     }
-    return result == null ? null : FhirBoolean(result);
+    return result == null ? null : CqlBoolean(result);
   }
 
-  /// Compare two FhirDateTimeBase values component by component without
+  /// Compare two CqlDateTimeBase values component by component without
   /// UTC normalization. Used when one has a timezone offset and the other
   /// doesn't — CQL assumes the no-TZ value is in the evaluation request's
   /// timezone, which equals raw component comparison.
   static bool? _componentEqualDateTime(
-      FhirDateTimeBase left, FhirDateTimeBase right) {
+      CqlDateTimeBase left, CqlDateTimeBase right) {
     // Year
     if (left.year == null || right.year == null) return null;
     if (left.year != right.year) return false;

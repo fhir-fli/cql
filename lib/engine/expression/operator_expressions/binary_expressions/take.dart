@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' show FhirInteger;
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -93,7 +92,7 @@ class Take extends BinaryExpression {
     if (count == null) {
       return [];
     }
-    if (!(count is int || count is FhirInteger)) {
+    if (!(count is int || count is CqlInteger)) {
       throw CqlException(
         message: 'Take operator requires the second operand to be an Integer '
             'but it found ${count.runtimeType}',

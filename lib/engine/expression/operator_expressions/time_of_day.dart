@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -68,8 +67,8 @@ class TimeOfDay extends OperatorExpression {
   String get type => 'TimeOfDay';
 
   @override
-  Future<FhirTime> execute(Map<String, dynamic> context) async {
-    final startTimestamp = context['startTimestamp'] as FhirDateTime;
-    return FhirTime(startTimestamp.toIso8601String()!.substring(11, 23));
+  Future<CqlTime> execute(Map<String, dynamic> context) async {
+    final startTimestamp = context['startTimestamp'] as CqlDateTime;
+    return CqlTime(startTimestamp.toIso8601String()!.substring(11, 23));
   }
 }

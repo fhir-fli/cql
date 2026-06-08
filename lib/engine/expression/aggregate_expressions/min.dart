@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -148,7 +147,7 @@ class Min extends AggregateExpression {
         if (value is int) {
           return value < element ? value : element;
         }
-        if (value is FhirInteger) {
+        if (value is CqlInteger) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -156,7 +155,7 @@ class Min extends AggregateExpression {
         if (value is double) {
           return value < element ? value : element;
         }
-        if (value is FhirDecimal) {
+        if (value is CqlDecimal) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -164,7 +163,7 @@ class Min extends AggregateExpression {
         if (value is BigInt) {
           return value < element ? value : element;
         }
-        if (value is FhirInteger64) {
+        if (value is CqlLong) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -172,17 +171,17 @@ class Min extends AggregateExpression {
         if (value is DateTime) {
           return value.isBefore(element) ? value : element;
         }
-        if (value is FhirDateTime) {
+        if (value is CqlDateTime) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;
         }
-        if (value is FhirDate) {
+        if (value is CqlDate) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;
         }
-        if (value is FhirTime) {
+        if (value is CqlTime) {
           return (Less.less(value, element)?.valueBoolean ?? true)
               ? value
               : element;

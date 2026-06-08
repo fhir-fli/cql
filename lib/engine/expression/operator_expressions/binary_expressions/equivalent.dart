@@ -1,5 +1,5 @@
-import 'package:collection/collection.dart';
 import 'package:fhir_r4/fhir_r4.dart';
+import 'package:collection/collection.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -168,13 +168,13 @@ class Equivalent extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async {
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
     return equivalent(left, right);
   }
 
-  static FhirBoolean equivalent(dynamic left, dynamic right) {
+  static CqlBoolean equivalent(dynamic left, dynamic right) {
     bool result = false;
     switch (left) {
       case null:
@@ -185,7 +185,7 @@ class Equivalent extends BinaryExpression {
           String? rightStr;
           if (right is String) {
             rightStr = right;
-          } else if (right is FhirString) {
+          } else if (right is CqlString) {
             rightStr = right.valueString;
           }
           // Don't compare String with non-string PrimitiveTypes (Integer,
@@ -194,13 +194,13 @@ class Equivalent extends BinaryExpression {
               left.toLowerCase().trim() == rightStr.toLowerCase().trim();
         }
         break;
-      case FhirDateTimeBase _:
-        result = right is FhirDateTimeBase
+      case CqlDateTimeBase _:
+        result = right is CqlDateTimeBase
             ? left.isEquivalent(right) ?? false
             : false;
         break;
-      case FhirTime _:
-        result = right is FhirTime ? left.isEquivalent(right) ?? false : false;
+      case CqlTime _:
+        result = right is CqlTime ? left.isEquivalent(right) ?? false : false;
         break;
       case CqlCode _:
         result = left.equivalent(right);
@@ -213,7 +213,7 @@ class Equivalent extends BinaryExpression {
         if (right is num || right is BigInt) {
           result = UcumDecimal.fromString(left.toString())
               .equivalent(UcumDecimal.fromString(right.toString()));
-        } else if ((right is FhirNumber) || (right is FhirInteger64)) {
+        } else if ((right is CqlNumber) || (right is CqlLong)) {
           result = (UcumDecimal.fromString(left.toString())
               .equivalent(UcumDecimal.fromString(right.toString())));
         } else if (right is ValidatedQuantity && left is double) {
@@ -222,21 +222,21 @@ class Equivalent extends BinaryExpression {
           result = false;
         }
         break;
-      case FhirNumber _:
-      case FhirInteger64 _:
+      case CqlNumber _:
+      case CqlLong _:
         if (right is num || right is BigInt) {
           result = UcumDecimal.fromString(left.valueString!)
               .equivalent(UcumDecimal.fromString(right.toString()));
-        } else if ((right is FhirNumber) || (right is FhirInteger64)) {
+        } else if ((right is CqlNumber) || (right is CqlLong)) {
           // CQL spec: for decimals, equivalent rounds to precision of least
           // precise operand. Use numeric comparison which handles this naturally.
-          if (left is FhirNumber && right is FhirNumber) {
+          if (left is CqlNumber && right is CqlNumber) {
             result = left.valueNum == right.valueNum;
           } else {
             result = UcumDecimal.fromString(left.valueString!)
                 .equivalent(UcumDecimal.fromString(right.valueString!));
           }
-        } else if (right is ValidatedQuantity && left is FhirDecimal) {
+        } else if (right is ValidatedQuantity && left is CqlDecimal) {
           result =
               ValidatedQuantity.fromString(left.valueString!).equivalent(right);
         }
@@ -244,7 +244,7 @@ class Equivalent extends BinaryExpression {
       case ValidatedQuantity _:
         if (right is ValidatedQuantity) {
           result = left.equivalent(right);
-        } else if (right is FhirDecimal) {
+        } else if (right is CqlDecimal) {
           result =
               left.equivalent(ValidatedQuantity.fromString(right.valueString!));
         } else if (right is double) {
@@ -366,6 +366,6 @@ class Equivalent extends BinaryExpression {
       default:
         result = left == right;
     }
-    return FhirBoolean(result);
+    return CqlBoolean(result);
   }
 }

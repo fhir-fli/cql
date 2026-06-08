@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -97,14 +96,14 @@ class Slice extends OperatorExpression {
     } else if (start == null) {
       return [];
     } else if ((start is num && start < 0) ||
-        (start is FhirNumber && (start.valueNum ?? 0) < 0) ||
-        (start is FhirInteger64 && (start.valueBigInt?.toInt() ?? 0) < 0) ||
+        (start is CqlNumber && (start.valueNum ?? 0) < 0) ||
+        (start is CqlLong && (start.valueBigInt?.toInt() ?? 0) < 0) ||
         (start is BigInt && start.toInt() < 0)) {
       return [];
     } else {
       final startIndex = start is int
           ? start
-          : start is FhirNumber && start.valueNum is int
+          : start is CqlNumber && start.valueNum is int
               ? start.valueNum! as int
               : null;
       if (startIndex == null) {
@@ -117,7 +116,7 @@ class Slice extends OperatorExpression {
       }
       final endIndex = end is int
           ? end
-          : end is FhirNumber && end.valueNum is int
+          : end is CqlNumber && end.valueNum is int
               ? end.valueNum! as int
               : null;
       return src.sublist(

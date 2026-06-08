@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -91,14 +90,14 @@ class PositionOf extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer'];
 
   @override
-  Future<FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final patternValue = await pattern.execute(context);
     final stringValue = await string.execute(context);
     if (patternValue == null || stringValue == null) {
       return null;
     }
     if (patternValue is String && stringValue is String) {
-      return FhirInteger(stringValue.indexOf(patternValue));
+      return CqlInteger(stringValue.indexOf(patternValue));
     }
     return null;
   }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -128,20 +127,20 @@ class TimeExpression extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['Time'];
 
   int? _toInt(dynamic val) {
-    if (val is FhirInteger) return val.valueInt;
+    if (val is CqlInteger) return val.valueInt;
     if (val is int) return val;
-    if (val is FhirNumber) return val.valueNum?.toInt();
+    if (val is CqlNumber) return val.valueNum?.toInt();
     return null;
   }
 
   @override
-  Future<FhirTime> execute(Map<String, dynamic> context) async {
+  Future<CqlTime> execute(Map<String, dynamic> context) async {
     final hourValue = _toInt(await hour.execute(context));
     final minuteValue = _toInt(await minute?.execute(context));
     final secondValue = _toInt(await second?.execute(context));
     final millisecondValue = _toInt(await millisecond?.execute(context));
 
-    return FhirTime.fromUnits(
+    return CqlTime.fromUnits(
       hour: hourValue,
       minute: minuteValue,
       second: secondValue,

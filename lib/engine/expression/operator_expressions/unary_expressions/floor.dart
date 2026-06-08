@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -83,16 +82,16 @@ class Floor extends UnaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Integer'];
 
   @override
-  Future<FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirInteger) {
+    } else if (value is CqlInteger) {
       return value;
-    } else if (value is FhirInteger64) {
-      return FhirInteger.tryParse(value.valueBigInt!);
-    } else if (value is FhirDecimal) {
-      return FhirInteger(value.valueNum!.floor());
+    } else if (value is CqlLong) {
+      return CqlInteger.tryParse(value.valueBigInt!);
+    } else if (value is CqlDecimal) {
+      return CqlInteger(value.valueNum!.floor());
     } else {
       throw ArgumentError(
           'Truncate operator can only be used with Decimal or Integer');

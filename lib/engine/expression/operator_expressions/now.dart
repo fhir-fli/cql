@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -75,7 +74,7 @@ class Now extends OperatorExpression {
   String get type => 'Now';
 
   @override
-  Future<FhirDateTime> execute(Map<String, dynamic> context) async {
+  Future<CqlDateTime> execute(Map<String, dynamic> context) async {
     return context['startTimestamp'];
   }
 }

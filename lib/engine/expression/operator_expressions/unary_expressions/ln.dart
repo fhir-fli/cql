@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -129,20 +128,20 @@ class Ln extends UnaryExpression {
   }
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final first = await operand.execute(context);
     if (first == null) return null;
     double? val;
-    if (first is FhirDecimal) {
+    if (first is CqlDecimal) {
       val = first.valueNum?.toDouble();
-    } else if (first is FhirInteger) {
+    } else if (first is CqlInteger) {
       val = first.valueNum?.toDouble();
     }
     if (val == null || val <= 0) return null;
     final result = log(val);
     if (result.isNaN || result.isInfinite) return null;
     // CQL Decimal: at most 8 digits of scale
-    return FhirDecimal(double.parse(result.toStringAsFixed(8)));
+    return CqlDecimal(double.parse(result.toStringAsFixed(8)));
   }
 
   @override

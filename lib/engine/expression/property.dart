@@ -1,6 +1,5 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
-import 'package:fhir_r4_path/fhir_r4_path.dart';
 
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:ucum/fhir/validated_quantity.dart' show ValidatedQuantity;
 
@@ -149,9 +148,9 @@ class Property extends CqlExpression {
                   ? fhir.Resource.fromJson(sourceResult.first)
                   : sourceResult is ValidatedQuantity
                       ? fhir.Quantity(
-                          value: fhir.FhirDecimal.tryParse(
+                          value: fhir.CqlDecimal.tryParse(
                               sourceResult.value.asUcumDecimal()),
-                          unit: fhir.FhirString(sourceResult.unit),
+                          unit: fhir.CqlString(sourceResult.unit),
                         )
                       : null;
       var result =

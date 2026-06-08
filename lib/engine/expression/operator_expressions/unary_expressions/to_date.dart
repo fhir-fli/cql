@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to convert the value of its argument to a Date value.
@@ -66,15 +66,15 @@ class ToDate extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.FhirDate) return value;
-    if (value is fhir.FhirDateTime) {
+    if (value is fhir.CqlDate) return value;
+    if (value is fhir.CqlDateTime) {
       final str = value.valueString;
       if (str == null) return null;
       // Extract just the date portion (YYYY-MM-DD)
       final datePart = str.length >= 10 ? str.substring(0, 10) : str;
-      return fhir.FhirDate.fromString(datePart);
+      return fhir.CqlDate.fromString(datePart);
     }
-    if (value is String) return fhir.FhirDate.fromString(value);
+    if (value is String) return fhir.CqlDate.fromString(value);
     return null;
   }
 }

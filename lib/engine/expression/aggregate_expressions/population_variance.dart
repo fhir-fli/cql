@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -111,17 +110,17 @@ class PopulationVariance extends AggregateExpression {
 
     var mean = Avg.avg(sourceResult);
 
-    if (mean is FhirDecimal) {
-      FhirDecimal sumOfSquaredDiffs = FhirDecimal(0.0);
+    if (mean is CqlDecimal) {
+      CqlDecimal sumOfSquaredDiffs = CqlDecimal(0.0);
       for (final val in sourceResult) {
-        var diff = FhirDecimal((val as FhirNumber).valueNum! - mean.valueNum!);
-        var squaredDiff = FhirDecimal(diff.valueNum! * diff.valueNum!);
+        var diff = CqlDecimal((val as CqlNumber).valueNum! - mean.valueNum!);
+        var squaredDiff = CqlDecimal(diff.valueNum! * diff.valueNum!);
         sumOfSquaredDiffs =
-            FhirDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
+            CqlDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
       }
       var variance =
           sumOfSquaredDiffs.valueNum! / sourceResult.length; // N instead of N-1
-      return FhirDecimal(variance.toStringAsFixed(8));
+      return CqlDecimal(variance.toStringAsFixed(8));
     } else if (mean is ValidatedQuantity) {
       final svc = UcumService();
       final meanUnit = mean.unit;

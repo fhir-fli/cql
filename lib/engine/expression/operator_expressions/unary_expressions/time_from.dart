@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -99,12 +98,12 @@ class TimeFrom extends UnaryExpression {
   }
 
   @override
-  Future<FhirTime?> execute(Map<String, dynamic> context) async {
+  Future<CqlTime?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    if (operandValue is FhirDateTime) {
+    if (operandValue is CqlDateTime) {
       // If the DateTime is not specified to the level of hours, return null
       if (!operandValue.hasHours) return null;
-      return FhirTime.fromUnits(
+      return CqlTime.fromUnits(
         hour: operandValue.hour,
         minute: operandValue.minute,
         second: operandValue.second,

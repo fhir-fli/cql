@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -98,10 +97,10 @@ class DateFrom extends UnaryExpression {
   }
 
   @override
-  Future<FhirDate?> execute(Map<String, dynamic> context) async {
+  Future<CqlDate?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    if (operandValue is FhirDateTimeBase && operandValue.year != null) {
-      return FhirDate.fromUnits(
+    if (operandValue is CqlDateTimeBase && operandValue.year != null) {
+      return CqlDate.fromUnits(
         year: operandValue.year!,
         month: operandValue.month,
         day: operandValue.day,

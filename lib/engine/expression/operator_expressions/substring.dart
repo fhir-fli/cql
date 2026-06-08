@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to return the string within stringToSub, starting at the 0-based index startIndex, and consisting of length characters.
@@ -87,7 +87,7 @@ class Substring extends OperatorExpression {
     if (str == null || start == null) return null;
 
     String? s;
-    if (str is fhir.FhirString) {
+    if (str is fhir.CqlString) {
       s = str.primitiveValue;
     } else if (str is String) {
       s = str;
@@ -95,7 +95,7 @@ class Substring extends OperatorExpression {
     if (s == null) return null;
 
     int? startIdx;
-    if (start is fhir.FhirInteger) {
+    if (start is fhir.CqlInteger) {
       startIdx = start.valueInt;
     } else if (start is int) {
       startIdx = start;
@@ -105,7 +105,7 @@ class Substring extends OperatorExpression {
     int? len;
     if (length != null) {
       final lengthVal = await length!.execute(context);
-      if (lengthVal is fhir.FhirInteger) {
+      if (lengthVal is fhir.CqlInteger) {
         len = lengthVal.valueInt;
       } else if (lengthVal is int) {
         len = lengthVal;
@@ -114,9 +114,9 @@ class Substring extends OperatorExpression {
 
     if (len != null) {
       final end = startIdx + len;
-      return fhir.FhirString(
+      return fhir.CqlString(
           s.substring(startIdx, end > s.length ? s.length : end));
     }
-    return fhir.FhirString(s.substring(startIdx));
+    return fhir.CqlString(s.substring(startIdx));
   }
 }

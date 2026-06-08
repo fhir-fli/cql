@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -138,27 +137,27 @@ class MaxValue extends CqlExpression {
 
   static dynamic maxValue(String type) {
     switch (type) {
-      case 'FhirInteger':
+      case 'CqlInteger':
       case 'Integer':
-        return FhirInteger(2147483647);
-      case 'FhirInteger64':
+        return CqlInteger(2147483647);
+      case 'CqlLong':
       case 'Long':
-        return FhirInteger64.fromString('9223372036854775807');
-      case 'FhirDecimal':
+        return CqlLong.fromString('9223372036854775807');
+      case 'CqlDecimal':
       case 'Decimal':
-        return FhirDecimal(99999999999999999999.99999999);
+        return CqlDecimal(99999999999999999999.99999999);
       case 'ValidatedQuantity':
       case 'Quantity':
         return ValidatedQuantity.fromNumber(99999999999999999999.99999999);
-      case 'FhirDate':
+      case 'CqlDate':
       case 'Date':
-        return FhirDate.fromUnits(year: 9999, month: 12, day: 31);
-      case 'FhirDateTime':
+        return CqlDate.fromUnits(year: 9999, month: 12, day: 31);
+      case 'CqlDateTime':
       case 'DateTime':
-        return FhirDateTime.fromString('9999-12-31T23:59:59.999');
-      case 'FhirTime':
+        return CqlDateTime.fromString('9999-12-31T23:59:59.999');
+      case 'CqlTime':
       case 'Time':
-        return FhirTime.fromUnits(
+        return CqlTime.fromUnits(
             hour: 23, minute: 59, second: 59, millisecond: 999);
       default:
         throw UnimplementedError();

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -118,7 +117,7 @@ class Case extends CqlExpression {
       int index = -1;
       for (int i = 0; i < caseItem.length; i++) {
         final result = await caseItem[i].when_.execute(context);
-        if (result is FhirBoolean && (result.valueBoolean ?? false)) {
+        if (result is CqlBoolean && (result.valueBoolean ?? false)) {
           index = i;
           break;
         }

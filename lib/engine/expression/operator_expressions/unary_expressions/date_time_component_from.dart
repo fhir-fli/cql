@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -105,61 +104,61 @@ class DateTimeComponentFrom extends UnaryExpression {
   String get type => 'DateTimeComponentFrom';
 
   @override
-  Future<FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    if (operandValue is FhirDateTime) {
+    if (operandValue is CqlDateTime) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.hasYear ? FhirInteger(operandValue.year) : null;
+          return operandValue.hasYear ? CqlInteger(operandValue.year) : null;
         case CqlDateTimePrecision.month:
-          return operandValue.hasMonth ? FhirInteger(operandValue.month) : null;
+          return operandValue.hasMonth ? CqlInteger(operandValue.month) : null;
         case CqlDateTimePrecision.day:
-          return operandValue.hasDay ? FhirInteger(operandValue.day) : null;
+          return operandValue.hasDay ? CqlInteger(operandValue.day) : null;
         case CqlDateTimePrecision.hour:
-          return operandValue.hasHours ? FhirInteger(operandValue.hour) : null;
+          return operandValue.hasHours ? CqlInteger(operandValue.hour) : null;
         case CqlDateTimePrecision.minute:
           return operandValue.hasMinutes
-              ? FhirInteger(operandValue.minute)
+              ? CqlInteger(operandValue.minute)
               : null;
         case CqlDateTimePrecision.second:
           return operandValue.hasSeconds
-              ? FhirInteger(operandValue.second)
+              ? CqlInteger(operandValue.second)
               : null;
         case CqlDateTimePrecision.millisecond:
           return operandValue.hasMilliseconds
-              ? FhirInteger(operandValue.millisecond)
+              ? CqlInteger(operandValue.millisecond)
               : null;
         default:
           return null;
       }
-    } else if (operandValue is FhirDate) {
+    } else if (operandValue is CqlDate) {
       switch (precision) {
         case CqlDateTimePrecision.year:
-          return operandValue.hasYear ? FhirInteger(operandValue.year) : null;
+          return operandValue.hasYear ? CqlInteger(operandValue.year) : null;
         case CqlDateTimePrecision.month:
-          return operandValue.hasMonth ? FhirInteger(operandValue.month) : null;
+          return operandValue.hasMonth ? CqlInteger(operandValue.month) : null;
         case CqlDateTimePrecision.day:
-          return operandValue.hasDay ? FhirInteger(operandValue.day) : null;
+          return operandValue.hasDay ? CqlInteger(operandValue.day) : null;
         default:
           return null;
       }
-    } else if (operandValue is FhirTime) {
+    } else if (operandValue is CqlTime) {
       switch (precision) {
         case CqlDateTimePrecision.hour:
           return operandValue.hour != null
-              ? FhirInteger(operandValue.hour)
+              ? CqlInteger(operandValue.hour)
               : null;
         case CqlDateTimePrecision.minute:
           return operandValue.minute != null
-              ? FhirInteger(operandValue.minute)
+              ? CqlInteger(operandValue.minute)
               : null;
         case CqlDateTimePrecision.second:
           return operandValue.second != null
-              ? FhirInteger(operandValue.second)
+              ? CqlInteger(operandValue.second)
               : null;
         case CqlDateTimePrecision.millisecond:
           return operandValue.millisecond != null
-              ? FhirInteger(operandValue.millisecond)
+              ? CqlInteger(operandValue.millisecond)
               : null;
         default:
           return null;

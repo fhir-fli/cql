@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -100,19 +99,19 @@ class ToLong extends UnaryExpression {
   }
 
   @override
-  Future<FhirInteger64?> execute(Map<String, dynamic> context) async {
+  Future<CqlLong?> execute(Map<String, dynamic> context) async {
     final result = await operand.execute(context);
     switch (result) {
       case null:
         return null;
-      case FhirBoolean _:
+      case CqlBoolean _:
         {
           if (result.valueBoolean == null) {
             return null;
           } else {
             return result.valueBoolean!
-                ? FhirInteger64.fromNum(1)
-                : FhirInteger64.fromNum(0);
+                ? CqlLong.fromNum(1)
+                : CqlLong.fromNum(0);
           }
         }
       case String _:
@@ -121,16 +120,16 @@ class ToLong extends UnaryExpression {
           if (value == null) {
             return null;
           } else {
-            return FhirInteger64(value);
+            return CqlLong(value);
           }
         }
-      case FhirInteger _:
+      case CqlInteger _:
         {
           return result.valueInt == null
               ? null
-              : FhirInteger64.fromNum(result.valueInt!);
+              : CqlLong.fromNum(result.valueInt!);
         }
-      case FhirInteger64 _:
+      case CqlLong _:
         {
           return result;
         }

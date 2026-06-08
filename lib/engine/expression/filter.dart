@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' show FhirBoolean;
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Filter operator returns a list with only those elements in the source list for which the condition element evaluates to true.
@@ -83,7 +82,7 @@ class Filter extends CqlExpression {
       bool keep = false;
       if (condResult == true) {
         keep = true;
-      } else if (condResult is FhirBoolean && condResult.valueBoolean == true) {
+      } else if (condResult is CqlBoolean && condResult.valueBoolean == true) {
         keep = true;
       }
       if (keep) {

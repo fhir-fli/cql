@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -118,7 +117,7 @@ class MeetsBefore extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('MeetsBefore expression must have 2 operands');
     }
@@ -129,7 +128,7 @@ class MeetsBefore extends BinaryExpression {
     return meetsBefore(left, right, precision);
   }
 
-  static FhirBoolean? meetsBefore(dynamic left, dynamic right,
+  static CqlBoolean? meetsBefore(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
@@ -143,7 +142,7 @@ class MeetsBefore extends BinaryExpression {
 
       // If intervals provably overlap, they cannot meet
       if (Meets.intervalsOverlap(eLS, eLE, eRS, eRE, precision)) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
 
       // Check meets before: leftEnd = predecessor(rightStart)
@@ -156,14 +155,14 @@ class MeetsBefore extends BinaryExpression {
         final ge = precision != null
             ? SameOrAfter.sameOrAfter(eLS, eRS, precision)
             : GreaterOrEqual.greaterOrEqual(eLS, eRS);
-        if (ge?.valueBoolean == true) return FhirBoolean(false);
+        if (ge?.valueBoolean == true) return CqlBoolean(false);
       }
       // If rightEnd < leftStart, right is entirely before left → can't meet before
       if (eRE != null && eLS != null) {
         final gt = precision != null
             ? After.after(eLS, eRE, precision)
             : Greater.greater(eLS, eRE);
-        if (gt?.valueBoolean == true) return FhirBoolean(false);
+        if (gt?.valueBoolean == true) return CqlBoolean(false);
       }
       return null;
     } else {

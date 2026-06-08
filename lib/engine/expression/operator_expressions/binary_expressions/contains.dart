@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -125,7 +124,7 @@ class Contains extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Contains expression must have 2 operands');
     }
@@ -134,10 +133,10 @@ class Contains extends BinaryExpression {
     return contains(left, right, precision);
   }
 
-  static FhirBoolean? contains(dynamic left, dynamic right,
+  static CqlBoolean? contains(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     } else if (left is CqlInterval) {
       if (right == null) {
         return null;
@@ -147,10 +146,10 @@ class Contains extends BinaryExpression {
       // Use CQL equivalence semantics for list membership testing
       for (final element in left) {
         if (Equivalent.equivalent(element, right).valueBoolean ?? false) {
-          return FhirBoolean(true);
+          return CqlBoolean(true);
         }
       }
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     } else {
       throw ArgumentError(
           'Contains: Left operand must be of type Interval or List');
@@ -163,13 +162,13 @@ class Contains extends BinaryExpression {
   /// Special case: if the point equals the known boundary of an interval
   /// with one unknown boundary, the result is true (the interval must be
   /// valid, so the point is definitely contained).
-  static FhirBoolean? _intervalContains(
+  static CqlBoolean? _intervalContains(
       CqlInterval interval, dynamic point, CqlDateTimePrecision? precision) {
     final start = interval.getStart();
     final end = interval.getEnd();
 
     // Compute lower bound check: point >= start
-    FhirBoolean? lowerCheck;
+    CqlBoolean? lowerCheck;
     if (start == null) {
       lowerCheck = null; // unknown boundary → uncertain
     } else if (precision != null) {
@@ -179,7 +178,7 @@ class Contains extends BinaryExpression {
     }
 
     // Compute upper bound check: point <= end
-    FhirBoolean? upperCheck;
+    CqlBoolean? upperCheck;
     if (end == null) {
       upperCheck = null; // unknown boundary → uncertain
     } else if (precision != null) {
@@ -199,14 +198,14 @@ class Contains extends BinaryExpression {
         final eq = precision != null
             ? SameAs.sameAs(point, end, precision)
             : Equal.equal(point, end);
-        if (eq?.valueBoolean == true) return FhirBoolean(true);
+        if (eq?.valueBoolean == true) return CqlBoolean(true);
       }
       if (end == null && start != null && lowerCheck?.valueBoolean == true) {
         // Known start, unknown end. If point == start, it must be in.
         final eq = precision != null
             ? SameAs.sameAs(point, start, precision)
             : Equal.equal(point, start);
-        if (eq?.valueBoolean == true) return FhirBoolean(true);
+        if (eq?.valueBoolean == true) return CqlBoolean(true);
       }
     }
 

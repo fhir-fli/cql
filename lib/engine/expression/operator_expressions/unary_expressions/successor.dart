@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -124,13 +123,13 @@ class Successor extends UnaryExpression {
   static dynamic successor(dynamic value) {
     if (value == null) {
       return null;
-    } else if (value is FhirInteger) {
-      return FhirInteger.tryParse(value.valueNum! + 1);
-    } else if (value is FhirInteger64) {
-      return FhirInteger64(value.valueBigInt! + BigInt.from(1));
-    } else if (value is FhirDecimal) {
-      return FhirDecimal(value.valueNum! + 0.00000001);
-    } else if (value is FhirDateTimeBase) {
+    } else if (value is CqlInteger) {
+      return CqlInteger.tryParse(value.valueNum! + 1);
+    } else if (value is CqlLong) {
+      return CqlLong(value.valueBigInt! + BigInt.from(1));
+    } else if (value is CqlDecimal) {
+      return CqlDecimal(value.valueNum! + 0.00000001);
+    } else if (value is CqlDateTimeBase) {
       if (value.yearsPrecision) {
         return value + ExtendedDuration(years: 1);
       }
@@ -153,7 +152,7 @@ class Successor extends UnaryExpression {
       }
 
       return value + ExtendedDuration(milliseconds: 1);
-    } else if (value is FhirTime) {
+    } else if (value is CqlTime) {
       if (value.millisecond != null) {
         return value.plus(milliseconds: 1);
       } else if (value.second != null) {

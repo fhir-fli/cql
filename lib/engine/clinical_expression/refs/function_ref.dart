@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Quantity, Ratio;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity, Ratio;
 import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
@@ -342,11 +342,11 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirDateTime) return value;
-    if (value is FhirDate) {
-      return FhirDateTime.fromString(value.valueString ?? '');
+    if (value is CqlDateTime) return value;
+    if (value is CqlDate) {
+      return CqlDateTime.fromString(value.valueString ?? '');
     }
-    if (value is String) return FhirDateTime.fromString(value);
+    if (value is String) return CqlDateTime.fromString(value);
     return null;
   }
 
@@ -363,10 +363,10 @@ class FunctionRef extends ExpressionRef {
     if (value is Period) {
       return CqlInterval(
         low: value.start != null
-            ? FhirDateTime.fromString(value.start.toString())
+            ? CqlDateTime.fromString(value.start.toString())
             : null,
         high: value.end != null
-            ? FhirDateTime.fromString(value.end.toString())
+            ? CqlDateTime.fromString(value.end.toString())
             : null,
         lowClosed: true,
         highClosed: true,
@@ -397,11 +397,11 @@ class FunctionRef extends ExpressionRef {
           low: low, high: high, lowClosed: true, highClosed: true);
     }
     // FHIR dateTime or instant → point interval
-    if (value is FhirDateTime || value is FhirInstant) {
+    if (value is CqlDateTime || value is FhirInstant) {
       return CqlInterval(
           low: value, high: value, lowClosed: true, highClosed: true);
     }
-    if (value is FhirDate) {
+    if (value is CqlDate) {
       return CqlInterval(
           low: value, high: value, lowClosed: true, highClosed: true);
     }
@@ -411,8 +411,8 @@ class FunctionRef extends ExpressionRef {
       final end = value['end'];
       if (start != null || end != null) {
         return CqlInterval(
-          low: start != null ? FhirDateTime.fromString(start.toString()) : null,
-          high: end != null ? FhirDateTime.fromString(end.toString()) : null,
+          low: start != null ? CqlDateTime.fromString(start.toString()) : null,
+          high: end != null ? CqlDateTime.fromString(end.toString()) : null,
           lowClosed: true,
           highClosed: true,
         );
@@ -450,8 +450,8 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirBoolean) return value;
-    if (value is bool) return FhirBoolean(value);
+    if (value is CqlBoolean) return value;
+    if (value is bool) return CqlBoolean(value);
     return null;
   }
 
@@ -459,14 +459,14 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirDate) return value;
-    if (value is FhirDateTime) {
+    if (value is CqlDate) return value;
+    if (value is CqlDateTime) {
       final str = value.valueString;
       if (str != null && str.length >= 10) {
-        return FhirDate.fromString(str.substring(0, 10));
+        return CqlDate.fromString(str.substring(0, 10));
       }
     }
-    if (value is String) return FhirDate.fromString(value);
+    if (value is String) return CqlDate.fromString(value);
     return null;
   }
 
@@ -496,14 +496,14 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirInteger) return value;
+    if (value is CqlInteger) return value;
     if (value is FhirPositiveInt) {
-      return FhirInteger(value.valueInt);
+      return CqlInteger(value.valueInt);
     }
     if (value is FhirUnsignedInt) {
-      return FhirInteger(value.valueInt);
+      return CqlInteger(value.valueInt);
     }
-    if (value is int) return FhirInteger(value);
+    if (value is int) return CqlInteger(value);
     return null;
   }
 
@@ -511,9 +511,9 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirDecimal) return value;
-    if (value is double) return FhirDecimal(value);
-    if (value is num) return FhirDecimal(value.toDouble());
+    if (value is CqlDecimal) return value;
+    if (value is double) return CqlDecimal(value);
+    if (value is num) return CqlDecimal(value.toDouble());
     return null;
   }
 
@@ -521,8 +521,8 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    if (value is FhirTime) return value;
-    if (value is String) return FhirTime(value);
+    if (value is CqlTime) return value;
+    if (value is String) return CqlTime(value);
     return null;
   }
 
@@ -585,17 +585,17 @@ class FunctionRef extends ExpressionRef {
     final value = await operand![0].execute(context);
     if (value == null) return null;
     // Primitive unwrapping
-    if (value is FhirBoolean) return value;
-    if (value is FhirInteger) return value;
-    if (value is FhirDecimal) return value;
-    if (value is FhirString) return value.valueString;
-    if (value is FhirDate) return value;
-    if (value is FhirDateTime) return value;
-    if (value is FhirTime) return value;
+    if (value is CqlBoolean) return value;
+    if (value is CqlInteger) return value;
+    if (value is CqlDecimal) return value;
+    if (value is CqlString) return value.valueString;
+    if (value is CqlDate) return value;
+    if (value is CqlDateTime) return value;
+    if (value is CqlTime) return value;
     if (value is FhirUri) return value.valueString;
     if (value is FhirId) return value.valueString;
-    if (value is FhirPositiveInt) return FhirInteger(value.valueInt);
-    if (value is FhirUnsignedInt) return FhirInteger(value.valueInt);
+    if (value is FhirPositiveInt) return CqlInteger(value.valueInt);
+    if (value is FhirUnsignedInt) return CqlInteger(value.valueInt);
     // Complex types
     if (value is CodeableConcept) {
       return await _helperToConcept(context);

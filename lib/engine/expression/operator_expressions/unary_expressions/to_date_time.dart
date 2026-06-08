@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -40,9 +39,9 @@ class ToDateTime extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is FhirDateTime) return value;
-    if (value is FhirDate) {
-      return FhirDateTime.fromString(value.valueString ?? '');
+    if (value is CqlDateTime) return value;
+    if (value is CqlDate) {
+      return CqlDateTime.fromString(value.valueString ?? '');
     }
     if (value is String) {
       // Validate against ISO-8601 datetime format: YYYY[-MM[-DD[Thh[:mm[:ss[.fff]]]]]][+/-hh:mm|Z]
@@ -50,7 +49,7 @@ class ToDateTime extends UnaryExpression {
           r'^\d{4}(-\d{2}(-\d{2}(T\d{2}(:\d{2}(:\d{2}(\.\d+)?)?)?(Z|[+-]\d{2}:\d{2})?)?)?)?$');
       if (!dateTimeRegex.hasMatch(value)) return null;
       try {
-        return FhirDateTime.fromString(value);
+        return CqlDateTime.fromString(value);
       } catch (_) {
         return null;
       }

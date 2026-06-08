@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -18,8 +17,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
     this.state,
   })  : lowClosed = lowClosed ?? true,
         highClosed = highClosed ?? true {
-    if (low is FhirDateTimeBase && high is FhirDateTimeBase) {
-      if ((low as FhirDateTimeBase).isAfter(high as FhirDateTimeBase) ?? true) {
+    if (low is CqlDateTimeBase && high is CqlDateTimeBase) {
+      if ((low as CqlDateTimeBase).isAfter(high as CqlDateTimeBase) ?? true) {
         throw Exception(
             "Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.");
       }
@@ -46,7 +45,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
       return null;
     }
 
-    if (start is FhirNumber || false) {
+    if (start is CqlNumber || false) {
       return Subtract.subtract(end, start);
     }
 

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -138,27 +137,27 @@ class MinValue extends CqlExpression {
 
   static dynamic minValue(String type) {
     switch (type) {
-      case 'FhirInteger':
+      case 'CqlInteger':
       case 'Integer':
-        return FhirInteger(-2147483648);
-      case 'FhirInteger64':
+        return CqlInteger(-2147483648);
+      case 'CqlLong':
       case 'Long':
-        return FhirInteger64.fromString('-9223372036854775808');
-      case 'FhirDecimal':
+        return CqlLong.fromString('-9223372036854775808');
+      case 'CqlDecimal':
       case 'Decimal':
-        return FhirDecimal(-99999999999999999999.99999999);
+        return CqlDecimal(-99999999999999999999.99999999);
       case 'ValidatedQuantity':
       case 'Quantity':
         return ValidatedQuantity.fromNumber(-99999999999999999999.99999999);
-      case 'FhirDate':
+      case 'CqlDate':
       case 'Date':
-        return FhirDate.fromUnits(year: 1, month: 1, day: 1);
-      case 'FhirDateTime':
+        return CqlDate.fromUnits(year: 1, month: 1, day: 1);
+      case 'CqlDateTime':
       case 'DateTime':
-        return FhirDateTime.fromString('0001-01-01T00:00:00.000');
-      case 'FhirTime':
+        return CqlDateTime.fromString('0001-01-01T00:00:00.000');
+      case 'CqlTime':
       case 'Time':
-        return FhirTime.fromUnits(
+        return CqlTime.fromUnits(
             hour: 0, minute: 0, second: 0, millisecond: 0);
       default:
         throw UnimplementedError();

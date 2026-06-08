@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Quantity;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity;
 import 'package:ucum/ucum.dart';
 
@@ -84,7 +84,7 @@ class ConvertQuantity extends BinaryExpression {
     }
 
     String? targetUnit;
-    if (right is FhirString) {
+    if (right is CqlString) {
       targetUnit = right.primitiveValue;
     } else if (right is String) {
       targetUnit = right;

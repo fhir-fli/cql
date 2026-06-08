@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -45,27 +44,15 @@ class ToString extends UnaryExpression {
       'type': type,
       'operand': operand.toJson(),
     };
-
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }
-
-    if (localId != null) {
-      data['localId'] = localId;
-    }
-
-    if (locator != null) {
-      data['locator'] = locator;
-    }
-
-    if (resultTypeName != null) {
-      data['resultTypeName'] = resultTypeName;
-    }
-
+    if (localId != null) data['localId'] = localId;
+    if (locator != null) data['locator'] = locator;
+    if (resultTypeName != null) data['resultTypeName'] = resultTypeName;
     if (resultTypeSpecifier != null) {
       data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
-
     return data;
   }
 
@@ -73,58 +60,60 @@ class ToString extends UnaryExpression {
   String get type => 'ToString';
 
   @override
-  Future<fhir.FhirString?> execute(Map<String, dynamic> context) async {
-    final value = await operand.execute(context);
-    return toStringCql(value);
+  Future<CqlString?> execute(Map<String, dynamic> context) async {
+    final raw = await operand.execute(context);
+    if (raw == null) return null;
+    // Convert any FHIR-typed input to CQL System types at the boundary.
+    final mr = requireModelResolver(context);
+    return toStringCql(mr.toCqlSystemType(raw));
   }
 
-  fhir.FhirString? toStringCql(dynamic value) {
-    if (value == null) {
-      return null;
-    }
+  CqlString? toStringCql(dynamic value) {
+    if (value == null) return null;
     switch (value) {
       case bool _:
-        return fhir.FhirString(value ? 'true' : 'false');
+        return CqlString(value ? 'true' : 'false');
       case int _:
-        return fhir.FhirString(value.toString());
+        return CqlString(value.toString());
       case double _:
-        return fhir.FhirString(value.toString());
+        return CqlString(value.toString());
       case String _:
-        return fhir.FhirString(value);
+        return CqlString(value);
       case DateTime _:
-        return fhir.FhirString(value.toIso8601String());
+        return CqlString(value.toIso8601String());
       case Ratio _:
         final numerator = '${value.numerator.value} ${value.numerator.unit}';
         final denominator =
             '${value.denominator.value} ${value.denominator.unit}';
-        return fhir.FhirString('$numerator:$denominator');
-      case fhir.FhirBoolean _:
-        return value.valueString?.toFhirString;
-      case fhir.FhirNumber _:
-        return value.valueString?.toFhirString;
-      case fhir.FhirString _:
+        return CqlString('$numerator:$denominator');
+      case CqlBoolean _:
+        return CqlString(value.valueString);
+      case CqlNumber _:
+        return CqlString(value.valueString);
+      case CqlString _:
         return value;
-      case fhir.FhirDateTimeBase _:
-        return value.valueString?.toFhirString;
-      case fhir.FhirTime _:
-        return value.valueString?.toFhirString;
-      case fhir.FhirUri _:
-        return value.valueString?.toFhirString;
+      case CqlDateTimeBase _:
+        return CqlString(value.valueString);
+      case CqlTime _:
+        return CqlString(value.valueString);
       case ValidatedQuantity _:
-        return fhir.FhirString(
+        return CqlString(
             '${value.value.asUcumDecimal()} \'${value.unit}\'');
       case CqlCode _:
-        return fhir.FhirString(
-            'Code { code: ${value.code} system: ${value.system} version: ${value.version} display: ${value.display} }');
+        return CqlString(
+            'Code { code: ${value.code} system: ${value.system} '
+            'version: ${value.version} display: ${value.display} }');
       case CqlConcept _:
         final codesStr = value.codes
             .map((c) =>
-                'Code { code: ${c.code} system: ${c.system} version: ${c.version} display: ${c.display} }')
+                'Code { code: ${c.code} system: ${c.system} '
+                'version: ${c.version} display: ${c.display} }')
             .join(', ');
-        return fhir.FhirString(
-            'Concept { $codesStr display: ${value.display} }');
+        return CqlString('Concept { $codesStr display: ${value.display} }');
       default:
-        throw Exception('Unsupported type for ToString: ${value.runtimeType}');
+        throw Exception(
+          'Unsupported type for ToString: ${value.runtimeType}',
+        );
     }
   }
 }

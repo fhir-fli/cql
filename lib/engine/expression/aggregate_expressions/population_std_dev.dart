@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -134,14 +133,14 @@ class PopulationStdDev extends AggregateExpression {
     final mean = Avg.avg(List.from(filtered));
     if (mean == null) return null;
 
-    /// For FhirDecimal — use PopulationVariance, then sqrt
-    if (mean is FhirDecimal) {
+    /// For CqlDecimal — use PopulationVariance, then sqrt
+    if (mean is CqlDecimal) {
       var popVarianceResult =
           PopulationVariance.populationVariance(sourceResult);
       if (popVarianceResult == null) return null;
-      if (popVarianceResult is FhirDecimal) {
+      if (popVarianceResult is CqlDecimal) {
         double stdDevValue = math.sqrt(popVarianceResult.valueNum!);
-        return FhirDecimal(stdDevValue.toStringAsFixed(8));
+        return CqlDecimal(stdDevValue.toStringAsFixed(8));
       }
     }
 

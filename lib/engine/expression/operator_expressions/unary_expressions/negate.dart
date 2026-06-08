@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -101,12 +100,12 @@ class Negate extends UnaryExpression {
     final value = await operand.execute(context);
     if (value == null) {
       return null;
-    } else if (value is FhirInteger) {
-      return FhirInteger.tryParse(value.valueNum! * -1);
-    } else if (value is FhirInteger64) {
-      return FhirInteger64(value.valueBigInt! * BigInt.from(-1));
-    } else if (value is FhirDecimal) {
-      return FhirDecimal(value.valueNum! * -1);
+    } else if (value is CqlInteger) {
+      return CqlInteger.tryParse(value.valueNum! * -1);
+    } else if (value is CqlLong) {
+      return CqlLong(value.valueBigInt! * BigInt.from(-1));
+    } else if (value is CqlDecimal) {
+      return CqlDecimal(value.valueNum! * -1);
     } else if (value is ValidatedQuantity && value.isValid()) {
       return ValidatedQuantity(
           value: value.value.multiply(UcumDecimal.fromNum(-1)),

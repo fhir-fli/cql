@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to check if the value of its argument can be converted to a String value.
@@ -34,14 +34,14 @@ class ConvertsToString extends UnaryExpression {
   String get type => 'ConvertsToString';
 
   @override
-  Future<fhir.FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<fhir.CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     try {
       final result = await ToString(operand: operand).execute(context);
-      return fhir.FhirBoolean(result != null);
+      return fhir.CqlBoolean(result != null);
     } catch (_) {
-      return fhir.FhirBoolean(false);
+      return fhir.CqlBoolean(false);
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -66,21 +65,21 @@ class HighBoundary extends BinaryExpression {
     final precisionValue = await operand[1].execute(context);
     if (value == null) return null;
     final int targetPrecision =
-        (precisionValue is FhirInteger) ? precisionValue.valueNum!.toInt() : 8;
+        (precisionValue is CqlInteger) ? precisionValue.valueNum!.toInt() : 8;
 
-    if (value is FhirDecimal) {
+    if (value is CqlDecimal) {
       return _highBoundaryDecimal(value, targetPrecision);
-    } else if (value is FhirDate) {
+    } else if (value is CqlDate) {
       return _highBoundaryDate(value, targetPrecision);
-    } else if (value is FhirDateTime) {
+    } else if (value is CqlDateTime) {
       return _highBoundaryDateTime(value, targetPrecision);
-    } else if (value is FhirTime) {
+    } else if (value is CqlTime) {
       return _highBoundaryTime(value, targetPrecision);
     }
     return value;
   }
 
-  static FhirDecimal _highBoundaryDecimal(FhirDecimal value, int precision) {
+  static CqlDecimal _highBoundaryDecimal(CqlDecimal value, int precision) {
     final str = value.valueString ?? '0';
     final dotIdx = str.indexOf('.');
     final currentDigits = dotIdx == -1 ? 0 : str.length - dotIdx - 1;
@@ -88,11 +87,11 @@ class HighBoundary extends BinaryExpression {
     final base = dotIdx == -1 ? '$str.' : str;
     final padded = base.padRight(
         (dotIdx == -1 ? str.length + 1 : dotIdx + 1) + precision, '9');
-    return FhirDecimal(double.parse(padded));
+    return CqlDecimal(double.parse(padded));
   }
 
   /// Precision mapping for Date: 4=year, 6=month, 8=day
-  static FhirDate _highBoundaryDate(FhirDate value, int precision) {
+  static CqlDate _highBoundaryDate(CqlDate value, int precision) {
     final year = value.year;
     if (year == null) return value;
     final month = value.month ?? (precision >= 6 ? 12 : null);
@@ -100,12 +99,12 @@ class HighBoundary extends BinaryExpression {
         (precision >= 8 && month != null
             ? DateTime(year, month + 1, 0).day
             : null);
-    return FhirDate.fromUnits(year: year, month: month, day: day);
+    return CqlDate.fromUnits(year: year, month: month, day: day);
   }
 
   /// Precision mapping for DateTime:
   /// 4=year, 6=month, 8=day, 10=hour, 12=minute, 14=second, 17=millisecond
-  static FhirDateTime _highBoundaryDateTime(FhirDateTime value, int precision) {
+  static CqlDateTime _highBoundaryDateTime(CqlDateTime value, int precision) {
     final year = value.year;
     if (year == null) return value;
     final month = value.month ?? (precision >= 6 ? 12 : null);
@@ -117,7 +116,7 @@ class HighBoundary extends BinaryExpression {
     final minute = value.minute ?? (precision >= 12 ? 59 : null);
     final second = value.second ?? (precision >= 14 ? 59 : null);
     final millisecond = value.millisecond ?? (precision >= 17 ? 999 : null);
-    return FhirDateTime.fromUnits(
+    return CqlDateTime.fromUnits(
       year: year,
       month: month,
       day: day,
@@ -130,13 +129,13 @@ class HighBoundary extends BinaryExpression {
   }
 
   /// Precision mapping for Time: 2=hour, 4=minute, 6=second, 9=millisecond
-  static FhirTime _highBoundaryTime(FhirTime value, int precision) {
+  static CqlTime _highBoundaryTime(CqlTime value, int precision) {
     final hour = value.hour;
     if (hour == null) return value;
     final minute = value.minute ?? (precision >= 4 ? 59 : null);
     final second = value.second ?? (precision >= 6 ? 59 : null);
     final millisecond = value.millisecond ?? (precision >= 9 ? 999 : null);
-    return FhirTime.fromUnits(
+    return CqlTime.fromUnits(
       hour: hour,
       minute: minute,
       second: second,

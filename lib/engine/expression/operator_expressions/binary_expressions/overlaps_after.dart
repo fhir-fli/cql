@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -109,7 +108,7 @@ class OverlapsAfter extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Binary expression requires two operands');
     }
@@ -118,7 +117,7 @@ class OverlapsAfter extends BinaryExpression {
     return overlapsAfter(left, right, precision);
   }
 
-  static FhirBoolean? overlapsAfter(dynamic left, dynamic right,
+  static CqlBoolean? overlapsAfter(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
@@ -129,15 +128,15 @@ class OverlapsAfter extends BinaryExpression {
         final leftEnd = left.getEnd();
         final rightEnd = right.getEnd();
 
-        FhirBoolean? afterResult;
-        FhirBoolean? overlapsResult;
+        CqlBoolean? afterResult;
+        CqlBoolean? overlapsResult;
 
-        if ((leftEnd is FhirDateTimeBase && rightEnd is FhirDateTimeBase) ||
-            (leftEnd is FhirTime && rightEnd is FhirTime)) {
+        if ((leftEnd is CqlDateTimeBase && rightEnd is CqlDateTimeBase) ||
+            (leftEnd is CqlTime && rightEnd is CqlTime)) {
           afterResult = After.after(leftEnd, rightEnd, precision);
           overlapsResult = Overlaps.overlaps(left, right, precision);
         } else if (leftEnd is Comparable && rightEnd is Comparable) {
-          afterResult = FhirBoolean(leftEnd.compareTo(rightEnd) > 0);
+          afterResult = CqlBoolean(leftEnd.compareTo(rightEnd) > 0);
           overlapsResult = Overlaps.overlaps(left, right);
         }
 

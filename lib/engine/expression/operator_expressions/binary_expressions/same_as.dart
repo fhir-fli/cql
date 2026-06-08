@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -135,7 +134,7 @@ class SameAs extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('SameAs expression must have 2 operands');
     }
@@ -143,9 +142,9 @@ class SameAs extends BinaryExpression {
     final right = await operand[1].execute(context);
     if (left == null || right == null) {
       return null;
-    } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
+    } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
       return _sameAsDateTime(left, right, precision);
-    } else if (left is FhirTime && right is FhirTime) {
+    } else if (left is CqlTime && right is CqlTime) {
       return _sameAsTime(left, right, precision);
     } else if (left is CqlInterval && right is CqlInterval) {
       return _sameAsInterval(left, right, precision);
@@ -153,7 +152,7 @@ class SameAs extends BinaryExpression {
       try {
         final rightInterval = CqlInterval(low: right, high: right);
         final result = left.equal(rightInterval);
-        return result == null ? null : FhirBoolean(result);
+        return result == null ? null : CqlBoolean(result);
       } catch (e) {
         return null;
       }
@@ -161,7 +160,7 @@ class SameAs extends BinaryExpression {
       try {
         final leftInterval = CqlInterval(low: left, high: left);
         final result = right.equal(leftInterval);
-        return result == null ? null : FhirBoolean(result);
+        return result == null ? null : CqlBoolean(result);
       } catch (e) {
         return null;
       }
@@ -170,27 +169,27 @@ class SameAs extends BinaryExpression {
     }
   }
 
-  static FhirBoolean? sameAs(
+  static CqlBoolean? sameAs(
       dynamic left, dynamic right, CqlDateTimePrecision? precision) {
     if (left == null || right == null) {
       return null;
     }
-    if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
+    if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
       return _sameAsDateTime(left, right, precision);
-    } else if (left is FhirTime && right is FhirTime) {
+    } else if (left is CqlTime && right is CqlTime) {
       return _sameAsTime(left, right, precision);
     }
     return Equal.equal(left, right);
   }
 
-  static FhirBoolean? _sameAsTime(
-    FhirTime left,
-    FhirTime right, [
+  static CqlBoolean? _sameAsTime(
+    CqlTime left,
+    CqlTime right, [
     CqlDateTimePrecision? precision,
   ]) {
     if (precision == null) {
       final result = left.isEqual(right);
-      return result == null ? null : FhirBoolean(result);
+      return result == null ? null : CqlBoolean(result);
     } else {
       /// Check if hours are equal
       final hoursEqual = left.hour == right.hour;
@@ -198,7 +197,7 @@ class SameAs extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the hour,
       /// return the result
       if (!hoursEqual || precision == CqlDateTimePrecision.hour) {
-        return FhirBoolean(hoursEqual);
+        return CqlBoolean(hoursEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -214,7 +213,7 @@ class SameAs extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the minute,
       /// return the result
       if (!minutesEqual || precision == CqlDateTimePrecision.minute) {
-        return FhirBoolean(minutesEqual);
+        return CqlBoolean(minutesEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -229,7 +228,7 @@ class SameAs extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the second,
       /// return the result
       if (!secondsEqual || precision == CqlDateTimePrecision.second) {
-        return FhirBoolean(secondsEqual);
+        return CqlBoolean(secondsEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -242,14 +241,14 @@ class SameAs extends BinaryExpression {
         final millisecondsEqual = left.millisecond == right.millisecond;
 
         /// We've reached the end of the precision, return the result
-        return FhirBoolean(millisecondsEqual);
+        return CqlBoolean(millisecondsEqual);
       }
     }
   }
 
-  /// Normalize a FhirDateTimeBase to UTC while preserving its precision level.
+  /// Normalize a CqlDateTimeBase to UTC while preserving its precision level.
   /// Used by Before, SameOrAfter, SameOrBefore for timezone normalization.
-  static FhirDateTime normalizeToUtc(FhirDateTimeBase dt) {
+  static CqlDateTime normalizeToUtc(CqlDateTimeBase dt) {
     final offset = dt.timeZoneOffset;
     final offsetHours = (offset ?? 0).truncate();
     final offsetMinutes = (((offset ?? 0) - offsetHours) * 60).truncate();
@@ -261,7 +260,7 @@ class SameAs extends BinaryExpression {
         (dt.minute ?? 0) - offsetMinutes,
         dt.second ?? 0,
         dt.millisecond ?? 0);
-    return FhirDateTime.fromUnits(
+    return CqlDateTime.fromUnits(
       year: utc.year,
       month: dt.hasMonth ? utc.month : null,
       day: dt.hasDay ? utc.day : null,
@@ -280,7 +279,7 @@ class SameAs extends BinaryExpression {
       precision == CqlDateTimePrecision.second ||
       precision == CqlDateTimePrecision.millisecond;
 
-  static FhirBoolean? _sameAsInterval(
+  static CqlBoolean? _sameAsInterval(
     CqlInterval left,
     CqlInterval right,
     CqlDateTimePrecision? precision,
@@ -292,24 +291,24 @@ class SameAs extends BinaryExpression {
 
     // Compare starts using precision-aware sameAs
     final startResult = sameAs(leftStart, rightStart, precision);
-    if (startResult?.valueBoolean == false) return FhirBoolean(false);
+    if (startResult?.valueBoolean == false) return CqlBoolean(false);
 
     // Compare ends using precision-aware sameAs
     final endResult = sameAs(leftEnd, rightEnd, precision);
-    if (endResult?.valueBoolean == false) return FhirBoolean(false);
+    if (endResult?.valueBoolean == false) return CqlBoolean(false);
 
     // If either is null (uncertain), result is null
     if (startResult == null || endResult == null) return null;
 
-    return FhirBoolean(true);
+    return CqlBoolean(true);
   }
 
-  static FhirBoolean? _sameAsDateTime(
-      FhirDateTimeBase left, FhirDateTimeBase right,
+  static CqlBoolean? _sameAsDateTime(
+      CqlDateTimeBase left, CqlDateTimeBase right,
       [CqlDateTimePrecision? precision]) {
     if (precision == null) {
       final result = left.isEqual(right);
-      return result == null ? null : FhirBoolean(result);
+      return result == null ? null : CqlBoolean(result);
     }
 
     // Normalize to UTC when timezone offsets present and precision is hour+
@@ -325,7 +324,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the year,
     /// return the result
     if (!yearsEqual || precision == CqlDateTimePrecision.year) {
-      return FhirBoolean(yearsEqual);
+      return CqlBoolean(yearsEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -340,7 +339,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the month,
     /// return the result
     if (!monthsEqual || precision == CqlDateTimePrecision.month) {
-      return FhirBoolean(monthsEqual);
+      return CqlBoolean(monthsEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -355,7 +354,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the day,
     /// return the result
     if (!daysEqual || precision == CqlDateTimePrecision.day) {
-      return FhirBoolean(daysEqual);
+      return CqlBoolean(daysEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -370,7 +369,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the hour,
     /// return the result
     if (!hoursEqual || precision == CqlDateTimePrecision.hour) {
-      return FhirBoolean(hoursEqual);
+      return CqlBoolean(hoursEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -386,7 +385,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the minute,
     /// return the result
     if (!minutesEqual || precision == CqlDateTimePrecision.minute) {
-      return FhirBoolean(minutesEqual);
+      return CqlBoolean(minutesEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -401,7 +400,7 @@ class SameAs extends BinaryExpression {
     /// If they're not equal, or we're only comparing to the second,
     /// return the result
     if (!secondsEqual || precision == CqlDateTimePrecision.second) {
-      return FhirBoolean(secondsEqual);
+      return CqlBoolean(secondsEqual);
     }
 
     /// if we're supposed to continue to compare, but either one doesn't
@@ -414,7 +413,7 @@ class SameAs extends BinaryExpression {
       final millisecondsEqual = left.millisecond == right.millisecond;
 
       /// We've reached the end of the precision, return the result
-      return FhirBoolean(millisecondsEqual);
+      return CqlBoolean(millisecondsEqual);
     }
   }
 }

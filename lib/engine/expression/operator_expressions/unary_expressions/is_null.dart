@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -72,8 +71,8 @@ class IsNull extends UnaryExpression {
   }
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    return FhirBoolean(operandValue == null);
+    return CqlBoolean(operandValue == null);
   }
 }

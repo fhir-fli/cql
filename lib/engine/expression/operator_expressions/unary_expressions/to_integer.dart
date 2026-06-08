@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to convert the value of its argument to an Integer value.
@@ -67,27 +67,27 @@ class ToInteger extends UnaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Integer'];
 
   @override
-  Future<fhir.FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<fhir.CqlInteger?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     switch (value) {
-      case fhir.FhirInteger _:
+      case fhir.CqlInteger _:
         return value;
       case int _:
-        return fhir.FhirInteger(value);
-      case fhir.FhirBoolean _:
-        return fhir.FhirInteger(value.valueBoolean == true ? 1 : 0);
+        return fhir.CqlInteger(value);
+      case fhir.CqlBoolean _:
+        return fhir.CqlInteger(value.valueBoolean == true ? 1 : 0);
       case bool _:
-        return fhir.FhirInteger(value ? 1 : 0);
-      case fhir.FhirInteger64 _:
+        return fhir.CqlInteger(value ? 1 : 0);
+      case fhir.CqlLong _:
         final bigVal = value.valueBigInt;
         if (bigVal == null) return null;
-        return fhir.FhirInteger(bigVal.toInt());
-      case fhir.FhirDecimal _:
+        return fhir.CqlInteger(bigVal.toInt());
+      case fhir.CqlDecimal _:
         final numVal = value.valueNum;
         if (numVal == null) return null;
-        return fhir.FhirInteger(numVal.truncate());
-      case fhir.FhirString _:
+        return fhir.CqlInteger(numVal.truncate());
+      case fhir.CqlString _:
         return _parseStringToInteger(value.primitiveValue ?? '');
       case String _:
         return _parseStringToInteger(value);
@@ -99,7 +99,7 @@ class ToInteger extends UnaryExpression {
   /// Parse string to integer with 32-bit signed range validation.
   /// CQL Integer is 32-bit signed: -2147483648 to 2147483647.
   /// If the string contains a decimal point, drop the fractional part.
-  static fhir.FhirInteger? _parseStringToInteger(String s) {
+  static fhir.CqlInteger? _parseStringToInteger(String s) {
     // Must match format: (+|-)?#0 or (+|-)?#0.0# (digits with optional decimal)
     if (!RegExp(r'^[+-]?\d+(\.\d+)?$').hasMatch(s)) return null;
     // If it has a decimal point, parse as double and truncate
@@ -108,13 +108,13 @@ class ToInteger extends UnaryExpression {
       if (dbl == null || dbl.isInfinite || dbl.isNaN) return null;
       final truncated = dbl.truncate();
       if (truncated > 2147483647 || truncated < -2147483648) return null;
-      return fhir.FhirInteger(truncated);
+      return fhir.CqlInteger(truncated);
     }
     final bigVal = BigInt.tryParse(s);
     if (bigVal == null) return null;
     if (bigVal > BigInt.from(2147483647) || bigVal < BigInt.from(-2147483648)) {
       return null;
     }
-    return fhir.FhirInteger(bigVal.toInt());
+    return fhir.CqlInteger(bigVal.toInt());
   }
 }

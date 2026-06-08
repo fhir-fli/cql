@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Quantity;
 import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity;
 import 'package:ucum/ucum.dart';
 
@@ -125,16 +124,16 @@ class Multiply extends BinaryExpression {
       return null;
     } else {
       switch (left) {
-        case FhirInteger _:
-          if (right is FhirInteger) {
-            return FhirInteger.tryParse(left.valueNum! * right.valueNum!);
-          } else if (right is FhirDecimal) {
-            return FhirDecimal(double.parse(
+        case CqlInteger _:
+          if (right is CqlInteger) {
+            return CqlInteger.tryParse(left.valueNum! * right.valueNum!);
+          } else if (right is CqlDecimal) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!) *
                         UcumDecimal.fromString(right.valueString!))
                     .asUcumDecimal()));
-          } else if (right is FhirInteger64) {
-            return FhirInteger64(BigInt.from(left.valueInt as int) *
+          } else if (right is CqlLong) {
+            return CqlLong(BigInt.from(left.valueInt as int) *
                 (right.valueBigInt as BigInt));
           } else if (right is ValidatedQuantity && right.isValid()) {
             // Integer * Quantity: scale value, keep unit
@@ -143,29 +142,29 @@ class Multiply extends BinaryExpression {
             return ValidatedQuantity(value: numVal, unit: right.unit);
           }
           break;
-        case FhirInteger64 _:
-          if (right is FhirInteger) {
-            return FhirInteger64(
+        case CqlLong _:
+          if (right is CqlInteger) {
+            return CqlLong(
                 left.valueBigInt! * BigInt.from(right.valueInt as int));
-          } else if (right is FhirInteger64) {
-            return FhirInteger64(left.valueBigInt! * right.valueBigInt!);
-          } else if (right is FhirDecimal) {
-            return FhirDecimal((UcumDecimal.fromString(left.valueString!) *
+          } else if (right is CqlLong) {
+            return CqlLong(left.valueBigInt! * right.valueBigInt!);
+          } else if (right is CqlDecimal) {
+            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
                     UcumDecimal.fromString(right.valueString!))
                 .asUcumDecimal());
           }
           break;
-        case FhirDecimal _:
-          if (right is FhirInteger) {
-            return FhirDecimal((UcumDecimal.fromString(left.valueString!) *
+        case CqlDecimal _:
+          if (right is CqlInteger) {
+            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
                     UcumDecimal.fromString(right.valueString!))
                 .asUcumDecimal());
-          } else if (right is FhirInteger64) {
-            return FhirDecimal((UcumDecimal.fromString(left.valueString!) *
+          } else if (right is CqlLong) {
+            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
                     UcumDecimal.fromString(right.valueString!))
                 .asUcumDecimal());
-          } else if (right is FhirDecimal) {
-            return FhirDecimal(double.parse(
+          } else if (right is CqlDecimal) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!) *
                         UcumDecimal.fromString(right.valueString!))
                     .asUcumDecimal()));
@@ -177,12 +176,12 @@ class Multiply extends BinaryExpression {
           }
           break;
         case ValidatedQuantity _:
-          if (right is FhirDecimal && left.isValid()) {
+          if (right is CqlDecimal && left.isValid()) {
             // Scale value, keep units (avoid UCUM canonicalization)
             final numVal =
                 left.value * UcumDecimal.fromString(right.valueString!);
             return ValidatedQuantity(value: numVal, unit: left.unit);
-          } else if (right is FhirInteger && left.isValid()) {
+          } else if (right is CqlInteger && left.isValid()) {
             final numVal =
                 left.value * UcumDecimal.fromString(right.valueString!);
             return ValidatedQuantity(value: numVal, unit: left.unit);
@@ -213,7 +212,7 @@ class Multiply extends BinaryExpression {
         Multiply._multiply(a, d),
         Multiply._multiply(b, c),
         Multiply._multiply(b, d),
-      ].whereType<FhirInteger>().toList();
+      ].whereType<CqlInteger>().toList();
       if (products.isEmpty) return null;
       products.sort((x, y) => x.valueNum!.compareTo(y.valueNum!));
       return CqlInterval(
@@ -231,10 +230,10 @@ class Multiply extends BinaryExpression {
         '1. $left ${left.runtimeType}\n2. $right ${right.runtimeType}');
   }
 
-  static FhirInteger? _multiply(dynamic a, dynamic b) {
+  static CqlInteger? _multiply(dynamic a, dynamic b) {
     if (a == null || b == null) return null;
-    if (a is FhirInteger && b is FhirInteger) {
-      return FhirInteger(a.valueNum!.toInt() * b.valueNum!.toInt());
+    if (a is CqlInteger && b is CqlInteger) {
+      return CqlInteger(a.valueNum!.toInt() * b.valueNum!.toInt());
     }
     return null;
   }

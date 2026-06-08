@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -93,13 +92,13 @@ class IndexOf extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer'];
 
   @override
-  Future<FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final left = await source.execute(context);
     final right = await element.execute(context);
     return indexOf(left, right);
   }
 
-  static FhirInteger? indexOf(dynamic left, dynamic right) {
+  static CqlInteger? indexOf(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }
@@ -107,9 +106,9 @@ class IndexOf extends OperatorExpression {
     if (left is List) {
       for (int i = 0; i < left.length; i++) {
         final eq = Equal.equal(left[i], right);
-        if (eq?.valueBoolean == true) return FhirInteger(i);
+        if (eq?.valueBoolean == true) return CqlInteger(i);
       }
-      return FhirInteger(-1);
+      return CqlInteger(-1);
     }
 
     return null;

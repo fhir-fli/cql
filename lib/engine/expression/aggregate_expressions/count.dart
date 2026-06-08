@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -99,16 +98,16 @@ class Count extends AggregateExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer'];
 
   @override
-  Future<FhirInteger> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger> execute(Map<String, dynamic> context) async {
     final sourceResult = await source.execute(context);
     return count(sourceResult);
   }
 
-  static FhirInteger count(dynamic sourceResult) {
+  static CqlInteger count(dynamic sourceResult) {
     if (sourceResult == null) {
-      return FhirInteger(0);
+      return CqlInteger(0);
     } else if (sourceResult is List) {
-      return FhirInteger(sourceResult.where((e) => e != null).length);
+      return CqlInteger(sourceResult.where((e) => e != null).length);
     } else {
       throw ArgumentError('Count operator can only be applied to a List, '
           'but found ${sourceResult.runtimeType}');

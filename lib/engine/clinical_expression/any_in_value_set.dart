@@ -1,17 +1,15 @@
-import 'package:fhir_r4/fhir_r4.dart'
-    show CodeableConcept, FhirBoolean, FhirCode;
-
 import 'package:fhir_cql/fhir_cql.dart';
 
-/// The AnyInValueSet operator returns true if any of the given codes are in the
-/// given value set.
+/// The AnyInValueSet operator returns true if any of the given codes are in
+/// the given value set.
 ///
 /// The first argument is expected to be a list of String, Code, or Concept.
 ///
 /// Note that this operator explicitly requires a ValueSetRef as its valueset
 /// argument. This allows for both static analysis of the value set references
-/// within an artifact, as well as the implementation of value set membership by
-/// the target environment as a service call to a terminology server, if desired.
+/// within an artifact, as well as the implementation of value set membership
+/// by the target environment as a service call to a terminology server, if
+/// desired.
 class AnyInValueSet extends OperatorExpression {
   final CqlExpression codes;
   final ValueSetRef? valueset;
@@ -55,35 +53,19 @@ class AnyInValueSet extends OperatorExpression {
       'type': type,
       'codes': codes.toJson(),
     };
-
-    if (valueset != null) {
-      json['valueset'] = valueset!.toJson();
-    }
-
+    if (valueset != null) json['valueset'] = valueset!.toJson();
     if (valuesetExpression != null) {
       json['valuesetExpression'] = valuesetExpression!.toJson();
     }
-
     if (annotation != null) {
       json['annotation'] = annotation!.map((x) => x.toJson()).toList();
     }
-
-    if (localId != null) {
-      json['localId'] = localId;
-    }
-
-    if (locator != null) {
-      json['locator'] = locator;
-    }
-
-    if (resultTypeName != null) {
-      json['resultTypeName'] = resultTypeName;
-    }
-
+    if (localId != null) json['localId'] = localId;
+    if (locator != null) json['locator'] = locator;
+    if (resultTypeName != null) json['resultTypeName'] = resultTypeName;
     if (resultTypeSpecifier != null) {
       json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
-
     return json;
   }
 
@@ -94,7 +76,8 @@ class AnyInValueSet extends OperatorExpression {
   String get type => 'AnyInValueSet';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
+    final mr = requireModelResolver(context);
     final codesValue = await codes.execute(context);
     if (codesValue == null) return null;
     final codesList = codesValue is List ? codesValue : [codesValue];
@@ -103,23 +86,28 @@ class AnyInValueSet extends OperatorExpression {
     valueSetRef ??= await valuesetExpression?.execute(context);
     if (valueSetRef == null) return null;
 
-    // Check context['_valueSets'] first for local value set expansions
+    // Check context['_valueSets'] for local value set expansions.
     final valueSetsMap = context['_valueSets'];
     if (valueSetsMap is Map<String, dynamic>) {
       final expansion = valueSetsMap[valueSetRef.id];
       if (expansion is List) {
-        for (final codeItem in codesList) {
-          if (codeItem == null) continue;
+        for (final raw in codesList) {
+          if (raw == null) continue;
+          // Convert any FHIR-typed code values to CQL System types at the boundary.
+          final codeItem = mr.toCqlSystemType(raw);
           if (_codeInExpansion(codeItem, expansion)) {
-            return FhirBoolean(true);
+            return CqlBoolean(true);
           }
         }
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
     }
     return null;
   }
 
+  /// Tests a single code value against the expansion list. Expects [codeValue]
+  /// to already be a CQL System type (Code/Concept/String) — the resolver
+  /// performs that conversion at the boundary.
   static bool _codeInExpansion(dynamic codeValue, List<dynamic> expansion) {
     bool matches(String? system, String? code) {
       for (final ec in expansion) {
@@ -135,24 +123,18 @@ class AnyInValueSet extends OperatorExpression {
     switch (codeValue) {
       case String _:
         return matches(null, codeValue);
+      case CqlString _:
+        return matches(null, codeValue.valueString);
       case CqlCode _:
         return matches(codeValue.system, codeValue.code);
-      case FhirCode _:
-        return matches(null, codeValue.valueString);
       case CqlConcept _:
         for (final c in codeValue.codes) {
           if (matches(c.system, c.code)) return true;
         }
         return false;
-      case CodeableConcept _:
-        if (codeValue.coding == null) return false;
-        for (final coding in codeValue.coding!) {
-          if (matches(coding.system?.valueString, coding.code?.valueString)) {
-            return true;
-          }
-        }
-        return false;
       default:
+        // Raw FHIR types should have been converted by toCqlSystemType.
+        // If we see one here, surface that as a resolver bug.
         return false;
     }
   }

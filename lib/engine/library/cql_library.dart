@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -304,24 +303,34 @@ class CqlLibrary extends Element {
   }
 
   /// Check if a runtime value matches a CQL type name.
+  ///
+  /// CQL System type checks are inline; FHIR-version-specific types
+  /// (`code`, `dateTime`, `Quantity`, etc.) are not consulted here because
+  /// this helper runs at function-dispatch time without a ModelResolver
+  /// in scope. Returning `true` for unknowns keeps overload resolution
+  /// permissive — the FHIR-aware type check happens later inside the
+  /// operator evaluator (which has the resolver from the execution
+  /// context via [requireModelResolver]).
   static bool _valueMatchesTypeName(dynamic value, String typeName) {
     switch (typeName) {
       case 'Boolean':
-        return value is fhir.FhirBoolean || value is bool;
+        return value is CqlBoolean || value is bool;
       case 'Integer':
-        return value is fhir.FhirInteger || value is int;
+        return value is CqlInteger || value is int;
+      case 'Long':
+        return value is CqlLong;
       case 'Decimal':
-        return value is fhir.FhirDecimal || value is double;
+        return value is CqlDecimal || value is double;
       case 'String':
-        return value is String || value is fhir.FhirString;
+        return value is CqlString || value is String;
       case 'DateTime':
-        return value is fhir.FhirDateTime;
+        return value is CqlDateTime;
       case 'Date':
-        return value is fhir.FhirDate;
+        return value is CqlDate;
       case 'Time':
-        return value is fhir.FhirTime;
+        return value is CqlTime;
       case 'Quantity':
-        return value is ValidatedQuantity || value is fhir.Quantity;
+        return value is ValidatedQuantity;
       case 'Code':
         return value is CqlCode;
       case 'Concept':
@@ -329,7 +338,7 @@ class CqlLibrary extends Element {
       case 'Any':
         return true;
       default:
-        return true; // Unknown type — assume match
+        return true; // Unknown type — assume match for overload resolution.
     }
   }
 
@@ -476,12 +485,29 @@ class CqlLibrary extends Element {
     }
   }
 
-  Future<dynamic> execute([Map<String, dynamic>? executionContext]) async {
+  /// Executes the library's statements with the given [executionContext].
+  ///
+  /// [modelResolver] bridges the engine to FHIR-version-specific data. Pass
+  /// `R4ModelResolver()` / `R5ModelResolver()` / `R6ModelResolver()` as
+  /// appropriate; it gets stored in the context under
+  /// [ContextKey.modelResolver] and retrieved by engine operators via
+  /// [requireModelResolver].
+  ///
+  /// Backward-compatible signature: legacy callers passing a positional
+  /// [Map] context still work — the resolver is then expected to already
+  /// be present in that map (or supplied via the named [modelResolver]).
+  Future<dynamic> execute([
+    Map<String, dynamic>? executionContext,
+    ModelResolver? modelResolver,
+  ]) async {
     final Map<String, dynamic> context =
         executionContext ?? <String, dynamic>{};
-    context['library'] = this;
-    context['startTimestamp'] ??=
-        fhir.FhirDateTime.fromDateTime(DateTime.now());
+    context[ContextKey.library] = this;
+    context[ContextKey.startTimestamp] ??=
+        CqlDateTime.fromDateTime(DateTime.now());
+    if (modelResolver != null) {
+      context[ContextKey.modelResolver] = modelResolver;
+    }
     final statementsExecuted = await statements?.execute(context);
     return statementsExecuted;
   }

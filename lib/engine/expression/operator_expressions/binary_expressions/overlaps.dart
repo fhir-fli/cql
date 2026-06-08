@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -108,7 +107,7 @@ class Overlaps extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Binary expression requires two operands');
     }
@@ -117,7 +116,7 @@ class Overlaps extends BinaryExpression {
     return overlaps(left, right, precision);
   }
 
-  static FhirBoolean? overlaps(dynamic left, dynamic right,
+  static CqlBoolean? overlaps(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
@@ -129,15 +128,15 @@ class Overlaps extends BinaryExpression {
       var rightStart = right.getStart();
       var rightEnd = right.getEnd();
 
-      if (leftStart is FhirDateTimeBase &&
-          rightStart is FhirDateTimeBase &&
+      if (leftStart is CqlDateTimeBase &&
+          rightStart is CqlDateTimeBase &&
           precision != null) {
         return And.and(
           SameOrBefore.sameOrBefore(leftStart, rightEnd, precision),
           SameOrBefore.sameOrBefore(rightStart, leftEnd, precision),
         );
-      } else if (leftStart is FhirTime &&
-          rightStart is FhirTime &&
+      } else if (leftStart is CqlTime &&
+          rightStart is CqlTime &&
           precision != null) {
         return And.and(
           SameOrBefore.sameOrBefore(leftStart, rightEnd, precision),

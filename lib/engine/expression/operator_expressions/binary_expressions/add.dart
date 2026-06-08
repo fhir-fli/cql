@@ -121,42 +121,42 @@ class Add extends BinaryExpression {
 
   static dynamic add(dynamic left, dynamic right) {
     switch (left) {
-      case FhirInteger _:
-        return right is FhirInteger
-            ? FhirInteger((left.valueNum! + right.valueNum!).toInt())
-            : right is FhirDecimal
-                ? FhirDecimal(double.parse(
+      case CqlInteger _:
+        return right is CqlInteger
+            ? CqlInteger((left.valueNum! + right.valueNum!).toInt())
+            : right is CqlDecimal
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .add(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger64
-                    ? FhirInteger64.fromNum(
+                : right is CqlLong
+                    ? CqlLong.fromNum(
                         (left.valueNum as int) + right.valueBigInt!.toInt())
                     : null;
-      case FhirInteger64 _:
-        return right is FhirInteger64
-            ? FhirInteger64(left.valueBigInt! + right.valueBigInt!)
-            : right is FhirDecimal
-                ? FhirDecimal(double.parse(
+      case CqlLong _:
+        return right is CqlLong
+            ? CqlLong(left.valueBigInt! + right.valueBigInt!)
+            : right is CqlDecimal
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .add(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger
-                    ? FhirInteger64.fromNum(
+                : right is CqlInteger
+                    ? CqlLong.fromNum(
                         left.valueBigInt!.toInt() + right.valueNum!.toInt())
                     : null;
-      case FhirDecimal _:
-        return right is FhirDecimal
-            ? FhirDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
+      case CqlDecimal _:
+        return right is CqlDecimal
+            ? CqlDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
                 .add(UcumDecimal.fromString(right.valueString!))
                 .asUcumDecimal()))
-            : right is FhirInteger
-                ? FhirDecimal(double.parse(
+            : right is CqlInteger
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .add(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger64
-                    ? FhirDecimal(double.parse(
+                : right is CqlLong
+                    ? CqlDecimal(double.parse(
                         UcumDecimal.fromString(left.valueString!)
                             .add(UcumDecimal.fromString(right.valueString!))
                             .asUcumDecimal()))
@@ -165,18 +165,18 @@ class Add extends BinaryExpression {
         return right is ValidatedQuantity
             ? left.isValid() && right.isValid()
                 ? left + right
-                : right is FhirDecimal
+                : right is CqlDecimal
                     ? left + right
                     : null
             : null;
-      case FhirDateTimeBase _:
+      case CqlDateTimeBase _:
         {
           if (right is ValidatedQuantity && right.isDuration) {
             return addToDateTime(left, right);
           }
           return null;
         }
-      case FhirTime _:
+      case CqlTime _:
         {
           if (right is ValidatedQuantity && right.isDuration) {
             return left.plus(
@@ -210,7 +210,7 @@ class Add extends BinaryExpression {
                   : null;
           return r != null ? left + r : null;
         }
-      case FhirString _:
+      case CqlString _:
         {
           final l = left.valueString;
           if (l == null) return null;
@@ -231,7 +231,7 @@ class Add extends BinaryExpression {
   /// Handles weeks-to-days conversion, leap year day clamping, and
   /// precision truncation for partial dates.
   static dynamic addToDateTime(
-    FhirDateTimeBase base,
+    CqlDateTimeBase base,
     ValidatedQuantity qty, {
     bool subtract = false,
   }) {
@@ -438,15 +438,15 @@ class Add extends BinaryExpression {
         : DateTime(y, m, d, h, min, s, ms);
 
     // Reconstruct preserving original precision
-    if (base is FhirDate) {
-      return FhirDateTimeBase.fromUnits<FhirDate>(
+    if (base is CqlDate) {
+      return CqlDateTimeBase.fromUnits<CqlDate>(
         year: dt.year,
         month: base.month != null ? dt.month : null,
         day: base.day != null ? dt.day : null,
         isUtc: false,
       );
     }
-    return FhirDateTimeBase.fromUnits<FhirDateTime>(
+    return CqlDateTimeBase.fromUnits<CqlDateTime>(
       year: dt.year,
       month: base.month != null ? dt.month : null,
       day: base.day != null ? dt.day : null,

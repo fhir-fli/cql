@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -137,13 +136,13 @@ class Sum extends AggregateExpression {
         return sourceResult.cast<double>().reduce((a, b) => a + b);
       } else if (sourceResult.every((e) => e is BigInt)) {
         return sourceResult.cast<BigInt>().reduce((a, b) => a + b);
-      } else if (sourceResult.every((e) => e is FhirInteger)) {
-        return sourceResult.cast<FhirInteger>().reduce((a, b) => Add.add(a, b));
-      } else if (sourceResult.every((e) => e is FhirDecimal)) {
-        return sourceResult.cast<FhirDecimal>().reduce((a, b) => Add.add(a, b));
-      } else if (sourceResult.every((e) => e is FhirInteger64)) {
+      } else if (sourceResult.every((e) => e is CqlInteger)) {
+        return sourceResult.cast<CqlInteger>().reduce((a, b) => Add.add(a, b));
+      } else if (sourceResult.every((e) => e is CqlDecimal)) {
+        return sourceResult.cast<CqlDecimal>().reduce((a, b) => Add.add(a, b));
+      } else if (sourceResult.every((e) => e is CqlLong)) {
         return sourceResult
-            .cast<FhirInteger64>()
+            .cast<CqlLong>()
             .reduce((a, b) => Add.add(a, b));
       } else if (sourceResult.every((e) => e is ValidatedQuantity)) {
         return sourceResult

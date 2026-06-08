@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -140,7 +139,7 @@ class OnOrBefore extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('OnOrBefore expression must have 2 operands');
     }
@@ -151,14 +150,14 @@ class OnOrBefore extends BinaryExpression {
   }
 
   @Deprecated('Use SameOrBefore.sameOrBefore instead')
-  static FhirBoolean? sameOrBefore(
+  static CqlBoolean? sameOrBefore(
       dynamic left, dynamic right, CqlDateTimePrecision? precision) {
     if (left == null || right == null) {
       return null;
-    } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
+    } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
       if (precision == null) {
         final result = left.isSameOrBefore(right);
-        return result == null ? null : FhirBoolean(result);
+        return result == null ? null : CqlBoolean(result);
       } else {
         /// Check if years are equal
         final yearsEqual = (left.year ?? 0) <= (right.year ?? 0);
@@ -166,7 +165,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the year,
         /// return the result
         if (!yearsEqual || precision == CqlDateTimePrecision.year) {
-          return FhirBoolean(yearsEqual);
+          return CqlBoolean(yearsEqual);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -181,7 +180,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the month,
         /// return the result
         if (!monthsEqual || precision == CqlDateTimePrecision.month) {
-          return FhirBoolean(monthsEqual);
+          return CqlBoolean(monthsEqual);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -196,7 +195,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the day,
         /// return the result
         if (!daysEqual || precision == CqlDateTimePrecision.day) {
-          return FhirBoolean(daysEqual);
+          return CqlBoolean(daysEqual);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -211,7 +210,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the hour,
         /// return the result
         if (!hoursEqual || precision == CqlDateTimePrecision.hour) {
-          return FhirBoolean(hoursEqual);
+          return CqlBoolean(hoursEqual);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -227,7 +226,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the minute,
         /// return the result
         if (!minutesEqual || precision == CqlDateTimePrecision.minute) {
-          return FhirBoolean(minutesEqual);
+          return CqlBoolean(minutesEqual);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -242,7 +241,7 @@ class OnOrBefore extends BinaryExpression {
         /// If they're not equal, or we're only comparing to the second,
         /// return the result
         if (!secondsEqual || precision == CqlDateTimePrecision.second) {
-          return FhirBoolean(false);
+          return CqlBoolean(false);
         }
 
         /// if we're supposed to continue to compare, but either one doesn't
@@ -256,7 +255,7 @@ class OnOrBefore extends BinaryExpression {
               (left.millisecond ?? 0) <= (right.millisecond ?? 0);
 
           /// We've reached the end of the precision, return the result
-          return FhirBoolean(millisecondsEqual);
+          return CqlBoolean(millisecondsEqual);
         }
       }
     }

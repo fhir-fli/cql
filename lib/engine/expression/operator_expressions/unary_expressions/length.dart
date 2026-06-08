@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -80,7 +79,7 @@ class Length extends UnaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer'];
 
   @override
-  Future<FhirInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final operand = await this.operand.execute(context);
     if (operand == null) {
       // CQL spec: Length has two overloads:
@@ -88,15 +87,15 @@ class Length extends UnaryExpression {
       //   Length(argument List<T>) Integer - returns 0 if argument is null
       // Determine which overload by inspecting the operand's type information.
       if (_operandIsList()) {
-        return FhirInteger(0);
+        return CqlInteger(0);
       }
       return null;
     }
     if (operand is String) {
-      return FhirInteger(operand.length);
+      return CqlInteger(operand.length);
     }
     if (operand is List) {
-      return FhirInteger(operand.length);
+      return CqlInteger(operand.length);
     }
     return null;
   }

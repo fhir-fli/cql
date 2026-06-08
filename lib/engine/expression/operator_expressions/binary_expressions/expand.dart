@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -157,31 +156,31 @@ class Expand extends BinaryExpression {
     // Numeric intervals: per with unit '1' or no unit → convert to matching type
     if (unit == '1' || unit == '') {
       final isIntVal = numVal == numVal.truncateToDouble();
-      if (start is FhirInteger) {
-        if (isIntVal) return FhirInteger(numVal.toInt());
+      if (start is CqlInteger) {
+        if (isIntVal) return CqlInteger(numVal.toInt());
         // Decimal per with integer start: return decimal (triggers int→dec conversion)
-        return FhirDecimal(numVal.toDouble());
+        return CqlDecimal(numVal.toDouble());
       }
-      if (start is FhirInteger64) return FhirInteger64.fromNum(numVal.toInt());
-      if (start is FhirDecimal) {
-        // Integer per with decimal start: keep as FhirInteger for ceiling alignment
-        if (isIntVal) return FhirInteger(numVal.toInt());
-        return FhirDecimal(numVal.toDouble());
+      if (start is CqlLong) return CqlLong.fromNum(numVal.toInt());
+      if (start is CqlDecimal) {
+        // Integer per with decimal start: keep as CqlInteger for ceiling alignment
+        if (isIntVal) return CqlInteger(numVal.toInt());
+        return CqlDecimal(numVal.toDouble());
       }
-      if (start is ValidatedQuantity) return FhirDecimal(numVal.toDouble());
+      if (start is ValidatedQuantity) return CqlDecimal(numVal.toDouble());
       // Temporal start + unitless per → incompatible
-      if (start is FhirDateTimeBase || start is FhirTime) return null;
+      if (start is CqlDateTimeBase || start is CqlTime) return null;
     }
 
     // Temporal per with numeric interval → incompatible
-    if (start is FhirInteger ||
-        start is FhirDecimal ||
-        start is FhirInteger64) {
+    if (start is CqlInteger ||
+        start is CqlDecimal ||
+        start is CqlLong) {
       if (_temporalUnits.contains(unit)) return null;
     }
 
     // Non-temporal, non-unitless per with temporal interval → incompatible
-    if (start is FhirDateTimeBase || start is FhirTime) {
+    if (start is CqlDateTimeBase || start is CqlTime) {
       if (!_temporalUnits.contains(unit)) return null;
     }
 
@@ -246,7 +245,7 @@ class Expand extends BinaryExpression {
     end = adjusted.$2;
 
     // Compute the step size for high boundary calculation
-    final isDecimalPer = per is FhirDecimal;
+    final isDecimalPer = per is CqlDecimal;
     final isQuantityPer =
         per is ValidatedQuantity && !_temporalUnits.contains(per.unit);
 
@@ -261,9 +260,9 @@ class Expand extends BinaryExpression {
       if (nextStart == null) return [];
 
       // Round to avoid floating-point drift for decimal per
-      if (isDecimalPer && nextStart is FhirDecimal) {
+      if (isDecimalPer && nextStart is CqlDecimal) {
         nextStart =
-            FhirDecimal(_roundTo(nextStart.valueNum!.toDouble(), decPlaces));
+            CqlDecimal(_roundTo(nextStart.valueNum!.toDouble(), decPlaces));
       }
 
       // High boundary: predecessor of next start at per's precision
@@ -324,21 +323,21 @@ class Expand extends BinaryExpression {
 
   /// For decimal per, compute the predecessor at the per's decimal precision
   /// rather than using the default decimal predecessor (which subtracts 10^-8).
-  static dynamic _decimalPredecessor(dynamic value, FhirDecimal per) {
-    if (value is! FhirDecimal) return Predecessor.predecessor(value);
+  static dynamic _decimalPredecessor(dynamic value, CqlDecimal per) {
+    if (value is! CqlDecimal) return Predecessor.predecessor(value);
     final step = _decimalStepSize(per);
     final places = _decimalPlaces(per);
     // Round to avoid floating-point drift
     final raw = value.valueNum! - step;
     final factor = math.pow(10, places);
     final rounded = (raw * factor).roundToDouble() / factor;
-    return FhirDecimal(rounded);
+    return CqlDecimal(rounded);
   }
 
   /// Check if ceiling alignment is needed: returns true if the original
   /// date/time has sub-per-precision fields that aren't at their minimum.
   static bool _needsCeilingAlignment(
-      FhirDateTimeBase original, ValidatedQuantity per) {
+      CqlDateTimeBase original, ValidatedQuantity per) {
     final unit = per.unit;
     // Fields to check and their minimums:
     // month→1, day→1, hour→0, minute→0, second→0, millisecond→0
@@ -388,10 +387,10 @@ class Expand extends BinaryExpression {
 
   /// Successor at per's precision for open boundary handling.
   static dynamic _perSuccessor(dynamic value, dynamic per) {
-    if (per is FhirDecimal && value is FhirNumber) {
+    if (per is CqlDecimal && value is CqlNumber) {
       final step = _decimalStepSize(per);
       final places = _decimalPlaces(per);
-      return FhirDecimal(_roundTo(value.valueNum!.toDouble() + step, places));
+      return CqlDecimal(_roundTo(value.valueNum!.toDouble() + step, places));
     }
     // Default: use standard successor
     return Successor.successor(value);
@@ -399,10 +398,10 @@ class Expand extends BinaryExpression {
 
   /// Predecessor at per's precision for open boundary handling.
   static dynamic _perPredecessor(dynamic value, dynamic per) {
-    if (per is FhirDecimal && value is FhirNumber) {
+    if (per is CqlDecimal && value is CqlNumber) {
       final step = _decimalStepSize(per);
       final places = _decimalPlaces(per);
-      return FhirDecimal(_roundTo(value.valueNum!.toDouble() - step, places));
+      return CqlDecimal(_roundTo(value.valueNum!.toDouble() - step, places));
     }
     // Default: use standard predecessor
     return Predecessor.predecessor(value);
@@ -410,12 +409,12 @@ class Expand extends BinaryExpression {
 
   /// Get the step size (minimum unit) at the per's decimal precision.
   /// For per=0.1 → step=0.1, for per=0.01 → step=0.01, etc.
-  static double _decimalStepSize(FhirDecimal per) {
+  static double _decimalStepSize(CqlDecimal per) {
     return math.pow(10, -_decimalPlaces(per)).toDouble();
   }
 
-  /// Count decimal places in a FhirDecimal value.
-  static int _decimalPlaces(FhirDecimal per) {
+  /// Count decimal places in a CqlDecimal value.
+  static int _decimalPlaces(CqlDecimal per) {
     final s = per.valueString ?? per.valueNum.toString();
     final dotIndex = s.indexOf('.');
     if (dotIndex < 0) return 0;
@@ -433,19 +432,19 @@ class Expand extends BinaryExpression {
   static (dynamic, dynamic)? _adjustBoundaries(
       dynamic start, dynamic end, dynamic per) {
     // Integer interval with decimal per: expand integer range to decimal
-    if (start is FhirInteger && per is FhirDecimal) {
+    if (start is CqlInteger && per is CqlDecimal) {
       final step = _decimalStepSize(per);
-      final startDec = FhirDecimal(start.valueNum!.toDouble());
+      final startDec = CqlDecimal(start.valueNum!.toDouble());
       // Only expand integer ends; decimal ends stay as-is
       final endVal = end.valueNum!.toDouble();
-      final endDec = end is FhirInteger
-          ? FhirDecimal(endVal + 1.0 - step)
-          : FhirDecimal(endVal);
+      final endDec = end is CqlInteger
+          ? CqlDecimal(endVal + 1.0 - step)
+          : CqlDecimal(endVal);
       return (startDec, endDec);
     }
 
     // Decimal interval with integer per: convert to integers
-    if (start is FhirDecimal && per is FhirInteger) {
+    if (start is CqlDecimal && per is CqlInteger) {
       final startVal = start.valueNum!.toDouble();
       // Ceiling alignment: if start has fractional part, advance to next int
       final ceilStart = startVal == startVal.truncateToDouble()
@@ -453,13 +452,13 @@ class Expand extends BinaryExpression {
           : startVal.ceil();
       final endVal = end.valueNum!.toDouble();
       return (
-        FhirInteger(ceilStart),
-        FhirInteger(endVal.truncate()),
+        CqlInteger(ceilStart),
+        CqlInteger(endVal.truncate()),
       );
     }
 
     // Time truncation based on quantity unit
-    if (start is FhirTime && per is ValidatedQuantity) {
+    if (start is CqlTime && per is ValidatedQuantity) {
       final s = _truncateTimeToPer(start, per);
       final e = _truncateTimeToPer(end, per);
       if (s == null || e == null) return null;
@@ -467,12 +466,12 @@ class Expand extends BinaryExpression {
     }
 
     // DateTime/Date truncation based on quantity unit
-    if (start is FhirDateTimeBase && per is ValidatedQuantity) {
+    if (start is CqlDateTimeBase && per is ValidatedQuantity) {
       var s = _truncateDateTimeToPer(start, per);
       final e = _truncateDateTimeToPer(end, per);
       if (s == null || e == null) return null;
       // Ceiling alignment: if truncation dropped non-minimum fields, advance
-      if (s is FhirDateTimeBase && _needsCeilingAlignment(start, per)) {
+      if (s is CqlDateTimeBase && _needsCeilingAlignment(start, per)) {
         s = Add.add(s, per);
         if (s == null) return null;
       }
@@ -504,8 +503,8 @@ class Expand extends BinaryExpression {
     return (start, end);
   }
 
-  /// Truncate FhirTime to per precision. Returns null if per is finer.
-  static FhirTime? _truncateTimeToPer(FhirTime value, ValidatedQuantity per) {
+  /// Truncate CqlTime to per precision. Returns null if per is finer.
+  static CqlTime? _truncateTimeToPer(CqlTime value, ValidatedQuantity per) {
     final unit = per.unit;
     final int perPrecision;
     switch (unit) {
@@ -536,7 +535,7 @@ class Expand extends BinaryExpression {
     if (perPrecision > valuePrecision) return null;
 
     // Truncate to per precision
-    return FhirTime.fromUnits(
+    return CqlTime.fromUnits(
       hour: value.hour!,
       minute: perPrecision >= 1 ? value.minute : null,
       second: perPrecision >= 2 ? value.second : null,
@@ -544,9 +543,9 @@ class Expand extends BinaryExpression {
     );
   }
 
-  /// Truncate FhirDateTimeBase to per precision. Returns null if per is finer.
+  /// Truncate CqlDateTimeBase to per precision. Returns null if per is finer.
   static dynamic _truncateDateTimeToPer(
-      FhirDateTimeBase value, ValidatedQuantity per) {
+      CqlDateTimeBase value, ValidatedQuantity per) {
     final unit = per.unit;
     final int perPrecision;
     switch (unit) {
@@ -588,15 +587,15 @@ class Expand extends BinaryExpression {
     // Per more precise than boundary → return null (empty for dates/times)
     if (perPrecision > valuePrecision) return null;
 
-    if (value is FhirDate) {
-      return FhirDateTimeBase.fromUnits<FhirDate>(
+    if (value is CqlDate) {
+      return CqlDateTimeBase.fromUnits<CqlDate>(
         year: value.year!,
         month: perPrecision >= 1 ? value.month : null,
         day: perPrecision >= 2 ? value.day : null,
         isUtc: false,
       );
     }
-    return FhirDateTimeBase.fromUnits<FhirDateTime>(
+    return CqlDateTimeBase.fromUnits<CqlDateTime>(
       year: value.year!,
       month: perPrecision >= 1 ? value.month : null,
       day: perPrecision >= 2 ? value.day : null,
@@ -614,12 +613,12 @@ class Expand extends BinaryExpression {
     if (start is ValidatedQuantity) {
       return ValidatedQuantity.fromNumber(1, unit: start.unit);
     }
-    if (start is FhirInteger) return FhirInteger(1);
-    if (start is FhirInteger64) return FhirInteger64.fromNum(1);
-    if (start is FhirDecimal) {
-      return FhirDecimal(1.0);
+    if (start is CqlInteger) return CqlInteger(1);
+    if (start is CqlLong) return CqlLong.fromNum(1);
+    if (start is CqlDecimal) {
+      return CqlDecimal(1.0);
     }
-    if (start is FhirDate) {
+    if (start is CqlDate) {
       if (start.day != null) {
         return ValidatedQuantity.fromNumber(1, unit: 'day');
       }
@@ -628,7 +627,7 @@ class Expand extends BinaryExpression {
       }
       return ValidatedQuantity.fromNumber(1, unit: 'year');
     }
-    if (start is FhirDateTime) {
+    if (start is CqlDateTime) {
       if (start.millisecond != null) {
         return ValidatedQuantity.fromNumber(1, unit: 'millisecond');
       }
@@ -649,7 +648,7 @@ class Expand extends BinaryExpression {
       }
       return ValidatedQuantity.fromNumber(1, unit: 'year');
     }
-    if (start is FhirTime) {
+    if (start is CqlTime) {
       if (start.millisecond != null) {
         return ValidatedQuantity.fromNumber(1, unit: 'millisecond');
       }
@@ -661,6 +660,6 @@ class Expand extends BinaryExpression {
       }
       return ValidatedQuantity.fromNumber(1, unit: 'hour');
     }
-    return FhirInteger(1);
+    return CqlInteger(1);
   }
 }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to return the starting point of an interval.
@@ -11,24 +10,6 @@ import 'package:fhir_cql/fhir_cql.dart';
 /// Signature:
 ///
 /// start of(argument `Interval<T>`) T
-/// Description:
-///
-/// The Start operator returns the starting point of an interval.
-///
-/// If the low boundary of the interval is open, this operator returns the
-/// successor of the low value of the interval. Note that if the low value of
-/// the interval is null, the result is null.
-///
-/// If the low boundary of the interval is closed and the low value of the
-/// interval is not null, this operator returns the low value of the interval.
-/// Otherwise, the result is the minimum value of the point type of the interval.
-///
-/// If the argument is null, the result is null.
-///
-/// The following examples illustrate the behavior of the Start operator:
-///
-/// define "StartOfInterval": start of Interval[1, 5] // 1
-/// define "StartIsNull": start of (null as `Interval<Integer>`)
 class Start extends UnaryExpression {
   Start({
     required super.operand,
@@ -63,55 +44,40 @@ class Start extends UnaryExpression {
       'type': type,
       'operand': operand.toJson(),
     };
-
     if (annotation != null) {
       data['annotation'] = annotation!.map((e) => e.toJson()).toList();
     }
-
-    if (localId != null) {
-      data['localId'] = localId;
-    }
-
-    if (locator != null) {
-      data['locator'] = locator;
-    }
-
-    if (resultTypeName != null) {
-      data['resultTypeName'] = resultTypeName;
-    }
-
+    if (localId != null) data['localId'] = localId;
+    if (locator != null) data['locator'] = locator;
+    if (resultTypeName != null) data['resultTypeName'] = resultTypeName;
     if (resultTypeSpecifier != null) {
       data['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
-
     return data;
   }
 
   @override
-  List<String> getReturnTypes(CqlLibrary library) {
-    return operand.getReturnTypes(library);
-  }
+  List<String> getReturnTypes(CqlLibrary library) =>
+      operand.getReturnTypes(library);
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    final value = await operand.execute(context);
-    if (value == null) {
-      return null;
-    } else if (value is CqlInterval) {
-      return value.getStart();
-    } else if (value is Period) {
-      if (value.start != null) {
-        return FhirDateTime.fromString(value.start.toString());
-      }
-      return null;
-    } else if (value is FhirDateTime ||
-        value is FhirDate ||
-        value is FhirInstant) {
-      // Point value — start and end are the same
+    final raw = await operand.execute(context);
+    if (raw == null) return null;
+
+    // Convert FHIR-typed values (e.g. Period) to CQL System types at the
+    // boundary. Already-CQL values pass through unchanged.
+    final mr = requireModelResolver(context);
+    final value = mr.toCqlSystemType(raw);
+
+    if (value is CqlInterval) return value.getStart();
+    if (value is CqlDateTime || value is CqlDate) {
+      // Point value — start and end are the same.
       return value;
-    } else {
-      throw Exception(
-          "Cannot perform start operator with argument of type '${value.runtimeType}'.");
     }
+    throw Exception(
+      "Cannot perform start operator with argument of type "
+      "'${value.runtimeType}'.",
+    );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:fhir_r4/fhir_r4.dart' show Resource;
 
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// For structured types, the Children operator returns a list of all the values of the elements of the type.

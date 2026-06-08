@@ -1,5 +1,5 @@
 import 'package:fhir_r4/fhir_r4.dart'
-    show CodeableConcept, FhirBoolean, FhirCode, ValueSet;
+    show CodeableConcept, CqlBoolean, FhirCode, ValueSet;
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:fhir_r4_path/fhir_r4_path.dart'
     show
@@ -108,7 +108,7 @@ class InValueSet extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     // Retrieve the CqlLibrary from the context
     var library = context['library'];
     if (library == null || library is! CqlLibrary) {
@@ -150,14 +150,14 @@ class InValueSet extends OperatorExpression {
 
     switch (codeValue) {
       case String _:
-        return FhirBoolean(
+        return CqlBoolean(
             (await checker.codeInValueSet(null, codeValue, null)) ?? false);
       case CqlCode _:
-        return FhirBoolean((await checker.codeInValueSet(
+        return CqlBoolean((await checker.codeInValueSet(
                 codeValue.system, codeValue.code, null)) ??
             false);
       case FhirCode _:
-        return FhirBoolean(
+        return CqlBoolean(
             (await checker.codeInValueSet(null, codeValue.valueString, null)) ??
                 false);
       case CqlConcept _:
@@ -169,10 +169,10 @@ class InValueSet extends OperatorExpression {
               (await checker.codeInValueSet(code.system, code.code, null)) ??
                   false;
           if (inValueSet) {
-            return FhirBoolean(true);
+            return CqlBoolean(true);
           }
         }
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       case CodeableConcept _:
         if (codeValue.coding == null || codeValue.coding!.isEmpty) {
           return null;
@@ -184,17 +184,17 @@ class InValueSet extends OperatorExpression {
                   null)) ??
               false;
           if (inValueSet) {
-            return FhirBoolean(true);
+            return CqlBoolean(true);
           }
         }
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       default:
         throw ArgumentError('Invalid code type');
     }
   }
 
   /// Checks if a code value is in a local value set expansion list.
-  static FhirBoolean? checkCodeInExpansion(
+  static CqlBoolean? checkCodeInExpansion(
       dynamic codeValue, List<dynamic> expansion) {
     bool matches(String? system, String? code) {
       for (final ec in expansion) {
@@ -209,27 +209,27 @@ class InValueSet extends OperatorExpression {
 
     switch (codeValue) {
       case String _:
-        return FhirBoolean(matches(null, codeValue));
+        return CqlBoolean(matches(null, codeValue));
       case CqlCode _:
-        return FhirBoolean(matches(codeValue.system, codeValue.code));
+        return CqlBoolean(matches(codeValue.system, codeValue.code));
       case FhirCode _:
-        return FhirBoolean(matches(null, codeValue.valueString));
+        return CqlBoolean(matches(null, codeValue.valueString));
       case CqlConcept _:
         if (codeValue.codes.isEmpty) return null;
         for (final c in codeValue.codes) {
-          if (matches(c.system, c.code)) return FhirBoolean(true);
+          if (matches(c.system, c.code)) return CqlBoolean(true);
         }
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       case CodeableConcept _:
         if (codeValue.coding == null || codeValue.coding!.isEmpty) return null;
         for (final coding in codeValue.coding!) {
           if (matches(coding.system?.valueString, coding.code?.valueString)) {
-            return FhirBoolean(true);
+            return CqlBoolean(true);
           }
         }
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       default:
-        return FhirBoolean(false);
+        return CqlBoolean(false);
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -93,29 +92,29 @@ class Implies extends BinaryExpression {
   String get type => 'Implies';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     /// Assuming operand is accessible and contains the operands
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
 
     // Per CQL spec truth table for implies:
     // false implies X = true (for any X)
-    if (left is FhirBoolean && left.valueBoolean == false) {
-      return FhirBoolean(true);
+    if (left is CqlBoolean && left.valueBoolean == false) {
+      return CqlBoolean(true);
     }
 
     // null implies true = true
     // true implies true = true
-    if (right is FhirBoolean && right.valueBoolean == true) {
-      return FhirBoolean(true);
+    if (right is CqlBoolean && right.valueBoolean == true) {
+      return CqlBoolean(true);
     }
 
     // true implies false = false
-    if (left is FhirBoolean &&
+    if (left is CqlBoolean &&
         left.valueBoolean == true &&
-        right is FhirBoolean &&
+        right is CqlBoolean &&
         right.valueBoolean == false) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
 
     // true implies null = null

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -87,14 +86,14 @@ class CalculateAge extends UnaryExpression {
     final birthDateValue = await operand.execute(context);
     if (birthDateValue == null) return null;
 
-    // Convert to FhirDate if needed
-    FhirDateTimeBase birthDate;
-    if (birthDateValue is FhirDate) {
+    // Convert to CqlDate if needed
+    CqlDateTimeBase birthDate;
+    if (birthDateValue is CqlDate) {
       birthDate = birthDateValue;
-    } else if (birthDateValue is FhirDateTime) {
+    } else if (birthDateValue is CqlDateTime) {
       birthDate = birthDateValue;
     } else if (birthDateValue is String) {
-      birthDate = FhirDate.fromString(birthDateValue);
+      birthDate = CqlDate.fromString(birthDateValue);
     } else {
       return null;
     }

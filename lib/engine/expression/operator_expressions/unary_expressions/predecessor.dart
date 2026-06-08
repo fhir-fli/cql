@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -124,18 +123,18 @@ class Predecessor extends UnaryExpression {
   static dynamic predecessor(dynamic value) {
     if (value == null) {
       return null;
-    } else if (value is FhirInteger) {
-      return FhirInteger.tryParse(value.valueNum! - 1);
-    } else if (value is FhirInteger64) {
-      return FhirInteger64(value.valueBigInt! - BigInt.from(1));
-    } else if (value is FhirDecimal) {
+    } else if (value is CqlInteger) {
+      return CqlInteger.tryParse(value.valueNum! - 1);
+    } else if (value is CqlLong) {
+      return CqlLong(value.valueBigInt! - BigInt.from(1));
+    } else if (value is CqlDecimal) {
       // Use string-based arithmetic to avoid floating-point precision errors.
       // E.g., 2.2 - 0.00000001 in doubles = 2.1999999900000002, not 2.19999999.
       final ud = UcumDecimal.fromString(value.valueString!);
       final step = UcumDecimal.fromString('0.00000001');
       final result = ud.subtract(step);
-      return FhirDecimal(double.parse(result.asUcumDecimal()));
-    } else if (value is FhirDateTimeBase) {
+      return CqlDecimal(double.parse(result.asUcumDecimal()));
+    } else if (value is CqlDateTimeBase) {
       if (value.yearsPrecision) {
         return value - ExtendedDuration(years: 1);
       }
@@ -158,7 +157,7 @@ class Predecessor extends UnaryExpression {
       }
 
       return value - ExtendedDuration(milliseconds: 1);
-    } else if (value is FhirTime) {
+    } else if (value is CqlTime) {
       if (value.millisecond != null) {
         return value.subtract(milliseconds: 1);
       } else if (value.second != null) {

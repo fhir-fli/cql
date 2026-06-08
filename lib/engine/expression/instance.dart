@@ -118,8 +118,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is bool || result is String) {
-            return FhirBoolean(result);
-          } else if (result is FhirBoolean) {
+            return CqlBoolean(result);
+          } else if (result is CqlBoolean) {
             return result;
           }
         }
@@ -136,8 +136,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is String) {
-            return FhirDate.fromString(result);
-          } else if (result is FhirDate) {
+            return CqlDate.fromString(result);
+          } else if (result is CqlDate) {
             return result;
           }
         }
@@ -157,8 +157,8 @@ class Instance extends CqlExpression {
             return null;
           }
           if (result is String) {
-            return FhirDateTime.fromString(result);
-          } else if (result is FhirDateTime) {
+            return CqlDateTime.fromString(result);
+          } else if (result is CqlDateTime) {
             return result;
           }
         }
@@ -175,8 +175,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is int) {
-            return FhirInteger(result);
-          } else if (result is FhirInteger) {
+            return CqlInteger(result);
+          } else if (result is CqlInteger) {
             return result;
           }
         }
@@ -193,8 +193,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is int) {
-            return FhirInteger64.fromNum(result);
-          } else if (result is FhirInteger64) {
+            return CqlLong.fromNum(result);
+          } else if (result is CqlLong) {
             return result;
           }
         }
@@ -211,8 +211,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is num) {
-            return FhirDecimal(result);
-          } else if (result is FhirDecimal) {
+            return CqlDecimal(result);
+          } else if (result is CqlDecimal) {
             return result;
           }
         }
@@ -229,8 +229,8 @@ class Instance extends CqlExpression {
           }
           final result = await element!.first.value.execute(context);
           if (result is String) {
-            return FhirTime(result);
-          } else if (result is FhirTime) {
+            return CqlTime(result);
+          } else if (result is CqlTime) {
             return result;
           }
         }
@@ -278,9 +278,9 @@ class Instance extends CqlExpression {
           for (final e in element!) {
             final result = await e.value.execute(context);
             if (e.name == 'value') {
-              if (result is FhirDecimal) {
+              if (result is CqlDecimal) {
                 value = result.valueNum;
-              } else if (result is FhirInteger) {
+              } else if (result is CqlInteger) {
                 value = result.valueNum;
               } else if (result is num) {
                 value = result;
@@ -339,13 +339,13 @@ class Instance extends CqlExpression {
                 case 'high':
                   high = result;
                 case 'lowClosed':
-                  if (result is FhirBoolean) {
+                  if (result is CqlBoolean) {
                     lowClosed = result.valueBoolean ?? true;
                   } else if (result is bool) {
                     lowClosed = result;
                   }
                 case 'highClosed':
-                  if (result is FhirBoolean) {
+                  if (result is CqlBoolean) {
                     highClosed = result.valueBoolean ?? true;
                   } else if (result is bool) {
                     highClosed = result;

@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' show CodeableConcept, Coding;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to convert a value of type Code to a Concept value with the given Code.

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -106,12 +105,12 @@ class DurationBetween extends BinaryExpression {
 
   @override
   List<String> getReturnTypes(CqlLibrary library) =>
-      ['FhirInteger', 'CqlInterval'];
+      ['CqlInteger', 'CqlInterval'];
 
   /// For DurationBetween, uncertainty exists when any sub-precision field is
   /// missing, because sub-fields determine whether a complete period elapsed.
   static bool _needsUncertainty(
-      FhirDateTimeBase date, CqlDateTimePrecision precision) {
+      CqlDateTimeBase date, CqlDateTimePrecision precision) {
     switch (precision) {
       case CqlDateTimePrecision.year:
         // Sub-year fields affect whether a full year has elapsed
@@ -135,7 +134,7 @@ class DurationBetween extends BinaryExpression {
   /// Returns (min, max) DateTime bounds for a partial date.
   /// Expands ALL unknown fields to their extremes so that sub-precision fields
   /// correctly influence whether a complete period has elapsed.
-  static (DateTime, DateTime) _dateBounds(FhirDateTimeBase date) {
+  static (DateTime, DateTime) _dateBounds(CqlDateTimeBase date) {
     final int year = date.year!;
     final int minMonth = date.month ?? 1;
     final int maxMonth = date.month ?? 12;
@@ -220,8 +219,8 @@ class DurationBetween extends BinaryExpression {
     final high = await operand[1].execute(context);
     if (low == null || high == null) {
       return null;
-    } else if (low is FhirDateTimeBase) {
-      if (high is FhirDateTimeBase) {
+    } else if (low is CqlDateTimeBase) {
+      if (high is CqlDateTimeBase) {
         if (low.year == null || high.year == null) {
           return null;
         }
@@ -234,11 +233,11 @@ class DurationBetween extends BinaryExpression {
           final maxResult = _durationBetween(lowMin, highMax, precision);
           // Collapse point intervals to scalar
           if (minResult == maxResult) {
-            return FhirInteger(minResult);
+            return CqlInteger(minResult);
           }
           return CqlInterval(
-            low: FhirInteger(minResult),
-            high: FhirInteger(maxResult),
+            low: CqlInteger(minResult),
+            high: CqlInteger(maxResult),
           ).setUncertain(true);
         }
 
@@ -247,7 +246,7 @@ class DurationBetween extends BinaryExpression {
         // Always normalize to UTC to avoid DST-related day-count errors
         lowDt = _toUtc(low, lowDt);
         highDt = _toUtc(high, highDt);
-        return FhirInteger(_durationBetween(lowDt, highDt, precision));
+        return CqlInteger(_durationBetween(lowDt, highDt, precision));
       } else {
         throw CqlException(
             message: 'DurationBetween must be passed two Dates, DateTimes, or '
@@ -255,8 +254,8 @@ class DurationBetween extends BinaryExpression {
                 'low (${low.runtimeType}) and'
                 'high (${high.runtimeType})');
       }
-    } else if (low is FhirTime) {
-      if (high is FhirTime) {
+    } else if (low is CqlTime) {
+      if (high is CqlTime) {
         final int lowTotalMilliseconds = (low.hour ?? 0) * 3600000 +
             (low.minute ?? 0) * 60000 +
             (low.second ?? 0) * 1000 +
@@ -271,17 +270,17 @@ class DurationBetween extends BinaryExpression {
 
         switch (precision) {
           case CqlDateTimePrecision.hour:
-            return FhirInteger((differenceMilliseconds / 3600000).floor());
+            return CqlInteger((differenceMilliseconds / 3600000).floor());
           case CqlDateTimePrecision.minute:
-            return FhirInteger((differenceMilliseconds / 60000).floor());
+            return CqlInteger((differenceMilliseconds / 60000).floor());
           case CqlDateTimePrecision.second:
-            return FhirInteger((differenceMilliseconds / 1000).floor());
+            return CqlInteger((differenceMilliseconds / 1000).floor());
           case CqlDateTimePrecision.millisecond:
-            return FhirInteger(differenceMilliseconds);
+            return CqlInteger(differenceMilliseconds);
           default:
             throw CqlException(
                 message:
-                    'Unsupported precision for FhirTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.');
+                    'Unsupported precision for CqlTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.');
         }
       } else {
         throw CqlException(
@@ -298,9 +297,9 @@ class DurationBetween extends BinaryExpression {
     }
   }
 
-  /// Convert a FhirDateTimeBase to UTC DateTime using its timezone offset.
+  /// Convert a CqlDateTimeBase to UTC DateTime using its timezone offset.
   /// Uses DateTime.utc() to avoid DST issues with local DateTime arithmetic.
-  static DateTime _toUtc(FhirDateTimeBase fdt, DateTime local) {
+  static DateTime _toUtc(CqlDateTimeBase fdt, DateTime local) {
     final offset = fdt.timeZoneOffset;
     if (offset == null || fdt.isUtc) {
       return DateTime.utc(local.year, local.month, local.day, local.hour,

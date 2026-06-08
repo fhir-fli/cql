@@ -1,4 +1,5 @@
 export 'clinical_expression/clinical_expression.dart';
+export 'context.dart';
 export 'cql_annotations/cql_annotations.dart';
 export 'expression/expression.dart';
 export 'library/library.dart';

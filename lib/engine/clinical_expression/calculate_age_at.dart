@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -96,7 +95,7 @@ class CalculateAgeAt extends BinaryExpression {
 
     // Convert birthDate to a date string
     String birthDateStr;
-    if (birthDateValue is FhirDateTimeBase) {
+    if (birthDateValue is CqlDateTimeBase) {
       birthDateStr = birthDateValue.toIso8601String()!;
     } else if (birthDateValue is String) {
       birthDateStr = birthDateValue;
@@ -106,7 +105,7 @@ class CalculateAgeAt extends BinaryExpression {
 
     // Convert asOf to a date string
     String asOfStr;
-    if (asOfValue is FhirDateTimeBase) {
+    if (asOfValue is CqlDateTimeBase) {
       asOfStr = asOfValue.toIso8601String()!;
     } else if (asOfValue is String) {
       asOfStr = asOfValue;

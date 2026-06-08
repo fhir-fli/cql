@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to take a string and returns a list with one string for each character in the input.
@@ -68,12 +68,12 @@ class ToChars extends UnaryExpression {
     final value = await operand.execute(context);
     if (value == null) return null;
     String? str;
-    if (value is fhir.FhirString) {
+    if (value is fhir.CqlString) {
       str = value.primitiveValue;
     } else if (value is String) {
       str = value;
     }
     if (str == null) return null;
-    return str.split('').map((c) => fhir.FhirString(c)).toList();
+    return str.split('').map((c) => fhir.CqlString(c)).toList();
   }
 }

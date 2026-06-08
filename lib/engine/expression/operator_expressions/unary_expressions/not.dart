@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -89,14 +88,14 @@ class Not extends UnaryExpression {
   }
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
     if (operandValue == null) {
       return null;
-    } else if (operandValue is FhirBoolean) {
-      return FhirBoolean(!operandValue.valueBoolean!);
+    } else if (operandValue is CqlBoolean) {
+      return CqlBoolean(!operandValue.valueBoolean!);
     } else if (operandValue is bool) {
-      return FhirBoolean(!operandValue);
+      return CqlBoolean(!operandValue);
     } else {
       throw ArgumentError('Invalid argument for Not operation');
     }

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -129,22 +128,22 @@ class Exp extends UnaryExpression {
   }
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final first = await operand.execute(context);
     if (first == null) return null;
     // Implicitly convert Integer/Long to Decimal per spec
     final num? value;
-    if (first is FhirDecimal) {
+    if (first is CqlDecimal) {
       value = first.valueNum;
-    } else if (first is FhirInteger) {
+    } else if (first is CqlInteger) {
       value = first.valueNum?.toDouble();
-    } else if (first is FhirInteger64) {
+    } else if (first is CqlLong) {
       value = first.valueBigInt?.toDouble();
     } else {
       return null;
     }
     if (value == null) return null;
-    return FhirDecimal(exp(value));
+    return CqlDecimal(exp(value));
   }
 
   @override

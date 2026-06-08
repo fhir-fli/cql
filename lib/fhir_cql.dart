@@ -12,12 +12,16 @@
 /// from AOT/dart2js builds. See README.md for the full architecture.
 library fhir_cql;
 
-// New: FHIR-version boundary interfaces (fhir_cql additions).
+// FHIR-version boundary interfaces (fhir_cql additions).
 export 'model_resolver.dart';
 export 'retrieve_provider.dart';
 
-// Ported engine + parser (copied wholesale from fhir_r4_cql, will be made
-// FHIR-version-agnostic through surgical edits in subsequent dev releases).
+// CQL System primitive types (Boolean, Integer, Long, Decimal, String,
+// Date, Time, DateTime + base classes). Engine code uses these as the
+// strict input/output types at all internal boundaries.
+export 'cql_primitives/cql_primitives.dart';
+
+// Ported engine + parser.
 export 'cql_to_elm/cql_to_elm.dart';
 export 'engine/engine.dart';
 export 'exceptions/exceptions.dart';

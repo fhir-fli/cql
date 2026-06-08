@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -165,7 +164,7 @@ class DateTimeExpression extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['DateTime'];
 
   @override
-  Future<FhirDateTime?> execute(Map<String, dynamic> context) async {
+  Future<CqlDateTime?> execute(Map<String, dynamic> context) async {
     final yearValue = await year.execute(context);
     if (yearValue == null) return null;
     final monthValue = await month?.execute(context);
@@ -176,7 +175,7 @@ class DateTimeExpression extends OperatorExpression {
     final millisecondValue = await millisecond?.execute(context);
     final timezoneOffsetValue = await timezoneOffset?.execute(context);
 
-    return FhirDateTime.fromUnits(
+    return CqlDateTime.fromUnits(
         year: yearValue?.valueNum,
         month: monthValue?.valueNum,
         day: dayValue?.valueNum,
@@ -184,7 +183,7 @@ class DateTimeExpression extends OperatorExpression {
         minute: minuteValue?.valueNum,
         second: secondValue?.valueNum,
         millisecond: millisecondValue?.valueNum,
-        timeZoneOffset: timezoneOffsetValue is FhirNumber
+        timeZoneOffset: timezoneOffsetValue is CqlNumber
             ? timezoneOffsetValue.valueNum?.toDouble()
             : timezoneOffsetValue is String
                 ? timezoneOffsetValue.stringToTimeZoneOffset

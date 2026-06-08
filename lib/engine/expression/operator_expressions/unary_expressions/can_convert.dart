@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to check if a value can be converted to a specific type.
@@ -87,7 +87,7 @@ class CanConvert extends UnaryExpression {
   String get type => 'CanConvert';
 
   @override
-  Future<fhir.FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<fhir.CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     final targetType = toType?.localPart.toLowerCase() ?? '';
@@ -115,11 +115,11 @@ class CanConvert extends UnaryExpression {
         case 'time':
           result = await ToTime(operand: operand).execute(context);
         default:
-          return fhir.FhirBoolean(false);
+          return fhir.CqlBoolean(false);
       }
-      return fhir.FhirBoolean(result != null);
+      return fhir.CqlBoolean(result != null);
     } catch (_) {
-      return fhir.FhirBoolean(false);
+      return fhir.CqlBoolean(false);
     }
   }
 }

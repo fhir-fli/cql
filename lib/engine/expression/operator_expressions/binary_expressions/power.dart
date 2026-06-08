@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -178,23 +177,23 @@ class Power extends BinaryExpression {
       final second = await operand.last.execute(context);
       if (first == null || second == null) {
         return null;
-      } else if (first is FhirInteger && second is FhirInteger) {
+      } else if (first is CqlInteger && second is CqlInteger) {
         final result = pow(first.valueNum!, second.valueNum!);
         // Negative exponents produce non-integer results
         if (result is double && result != result.roundToDouble()) {
-          return FhirDecimal(result);
+          return CqlDecimal(result);
         }
-        return FhirInteger.tryParse(result) ?? FhirDecimal(result.toDouble());
-      } else if (first is FhirInteger64 && second is FhirInteger64) {
+        return CqlInteger.tryParse(result) ?? CqlDecimal(result.toDouble());
+      } else if (first is CqlLong && second is CqlLong) {
         if (second.valueBigInt! < BigInt.zero) {
-          return FhirDecimal(
+          return CqlDecimal(
               pow(first.valueBigInt!.toDouble(), second.valueBigInt!.toDouble())
                   .toDouble());
         }
-        return FhirInteger64(
+        return CqlLong(
             first.valueBigInt!.pow(second.valueBigInt!.toInt()));
-      } else if (first is FhirDecimal && second is FhirDecimal) {
-        return FhirDecimal(pow(first.valueNum!, second.valueNum!));
+      } else if (first is CqlDecimal && second is CqlDecimal) {
+        return CqlDecimal(pow(first.valueNum!, second.valueNum!));
       } else {
         throw ArgumentError(
             'Power must have two operands of type Integer, Long, or Decimal');

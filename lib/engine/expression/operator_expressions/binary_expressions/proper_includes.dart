@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to check if the first operand includes the second and is strictly larger.
@@ -74,7 +73,7 @@ class ProperIncludes extends BinaryExpression {
   String get type => 'ProperIncludes';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('ProperIncludes expression must have 2 operands');
     }
@@ -83,7 +82,7 @@ class ProperIncludes extends BinaryExpression {
     return properIncludes(left, right, precision);
   }
 
-  static FhirBoolean? properIncludes(dynamic left, dynamic right,
+  static CqlBoolean? properIncludes(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null) return null;
     // When left is a List/Interval and right is a point (not a List or Interval),
@@ -102,15 +101,15 @@ class ProperIncludes extends BinaryExpression {
       if (left.low == null && left.high == null) {
         // Left is unbounded — it properly includes right unless right is also unbounded
         if (right.low == null && right.high == null) {
-          return FhirBoolean(false); // same unbounded range, not proper
+          return CqlBoolean(false); // same unbounded range, not proper
         }
-        return FhirBoolean(true);
+        return CqlBoolean(true);
       }
     }
     // First check includes (right is included in left)
     final included = IncludedIn.includedIn(right, left, precision);
     if (included == null) return null;
-    if (included.valueBoolean != true) return FhirBoolean(false);
+    if (included.valueBoolean != true) return CqlBoolean(false);
     // Then check not equal (proper means strictly larger).
     // If either interval has an unknown boundary (null getStart/getEnd),
     // the equivalence check is uncertain → return null.
@@ -127,13 +126,13 @@ class ProperIncludes extends BinaryExpression {
             SameAs.sameAs(left.getStart(), right.getStart(), precision);
         final endSame = SameAs.sameAs(left.getEnd(), right.getEnd(), precision);
         if (startSame?.valueBoolean == true && endSame?.valueBoolean == true) {
-          return FhirBoolean(false); // same at given precision, not proper
+          return CqlBoolean(false); // same at given precision, not proper
         }
-        return FhirBoolean(true);
+        return CqlBoolean(true);
       }
     }
     final eq = Equivalent.equivalent(left, right);
-    if (eq.valueBoolean == true) return FhirBoolean(false);
-    return FhirBoolean(true);
+    if (eq.valueBoolean == true) return CqlBoolean(false);
+    return CqlBoolean(true);
   }
 }

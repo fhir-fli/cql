@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -113,11 +112,11 @@ class Divide extends BinaryExpression {
 
     if (left == null || right == null) {
       return null;
-    } else if ((left is FhirNumber || left is FhirInteger64) &&
-        (right is FhirNumber || right is FhirInteger64)) {
+    } else if ((left is CqlNumber || left is CqlLong) &&
+        (right is CqlNumber || right is CqlLong)) {
       // Division by zero returns null per the CQL spec
-      if (right is FhirNumber && right.valueNum == 0) return null;
-      if (right is FhirInteger64 && right.valueBigInt == BigInt.zero) {
+      if (right is CqlNumber && right.valueNum == 0) return null;
+      if (right is CqlLong && right.valueBigInt == BigInt.zero) {
         return null;
       }
       try {
@@ -126,14 +125,14 @@ class Divide extends BinaryExpression {
         final rightDecimal =
             UcumDecimal.fromString(_ensureDecimalPrecision(right.valueString));
         final result = leftDecimal / rightDecimal;
-        return FhirDecimal(double.parse(result.asUcumDecimal()));
+        return CqlDecimal(double.parse(result.asUcumDecimal()));
       } catch (_) {
         return null;
       }
-    } else if ((left is ValidatedQuantity || left is FhirDecimal) &&
+    } else if ((left is ValidatedQuantity || left is CqlDecimal) &&
         (right is ValidatedQuantity ||
-            right is FhirDecimal ||
-            right is FhirNumber)) {
+            right is CqlDecimal ||
+            right is CqlNumber)) {
       try {
         final leftQuantity = left is ValidatedQuantity
             ? left

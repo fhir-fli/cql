@@ -1,5 +1,5 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to test for membership in an interval or list.
@@ -213,7 +213,7 @@ class In extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('In expression must have 2 operands');
     }
@@ -222,10 +222,10 @@ class In extends BinaryExpression {
     return in_(left, right, context);
   }
 
-  FhirBoolean? in_(dynamic left, dynamic right, Map<String, dynamic> context) {
+  CqlBoolean? in_(dynamic left, dynamic right, Map<String, dynamic> context) {
     // Per CQL spec: if the second argument is null, the result is false.
     if (right == null) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
     if (right is CqlInterval) {
       if (left == null) {
@@ -235,11 +235,11 @@ class In extends BinaryExpression {
     } else if (right is List) {
       // CQL spec: null elements are considered equal for 'in' operator
       if (left == null) {
-        return FhirBoolean(right.any((e) => e == null));
+        return CqlBoolean(right.any((e) => e == null));
       }
-      return FhirBoolean(IncludedIn.listContains(right, left));
+      return CqlBoolean(IncludedIn.listContains(right, left));
     } else if (right is CqlValueSet) {
-      if (left == null) return FhirBoolean(false);
+      if (left == null) return CqlBoolean(false);
       // Check context['_valueSets'] for expansion
       final valueSets = context['_valueSets'];
       if (valueSets is Map<String, dynamic>) {
@@ -250,14 +250,14 @@ class In extends BinaryExpression {
           return InValueSet.checkCodeInExpansion(codeValue, expansion);
         }
       }
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     } else {
       // CQL spec: scalar right operand is implicitly promoted to a
       // single-element list via ToList. E.g., 5 in 5 → 5 in {5} → true.
       if (left == null) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
-      return FhirBoolean(IncludedIn.listContains([right], left));
+      return CqlBoolean(IncludedIn.listContains([right], left));
     }
   }
 

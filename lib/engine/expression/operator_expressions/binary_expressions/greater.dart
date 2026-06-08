@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -137,13 +136,13 @@ class Greater extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
     return greater(left, right);
   }
 
-  static FhirBoolean? greater(dynamic left, dynamic right) {
+  static CqlBoolean? greater(dynamic left, dynamic right) {
     if (left == null || right == null) {
       return null;
     }
@@ -152,46 +151,46 @@ class Greater extends BinaryExpression {
       final low = left.getStart();
       final high = left.getEnd();
       final lowGt = greater(low, right);
-      if (lowGt?.valueBoolean == true) return FhirBoolean(true);
+      if (lowGt?.valueBoolean == true) return CqlBoolean(true);
       final highGt = greater(high, right);
-      if (highGt?.valueBoolean != true) return FhirBoolean(false);
+      if (highGt?.valueBoolean != true) return CqlBoolean(false);
       return null;
     }
     if (right is CqlInterval) {
       final low = right.getStart();
       final high = right.getEnd();
       final gtHigh = greater(left, high);
-      if (gtHigh?.valueBoolean == true) return FhirBoolean(true);
+      if (gtHigh?.valueBoolean == true) return CqlBoolean(true);
       final gtLow = greater(left, low);
-      if (gtLow?.valueBoolean != true) return FhirBoolean(false);
+      if (gtLow?.valueBoolean != true) return CqlBoolean(false);
       return null;
     }
-    if (left is FhirInteger && right is FhirInteger) {
-      return FhirBoolean(left > right);
-    } else if (left is FhirDecimal && right is FhirDecimal) {
-      return FhirBoolean(left > right);
-    } else if (left is FhirInteger64 && right is FhirInteger64) {
-      return FhirBoolean(left > right);
+    if (left is CqlInteger && right is CqlInteger) {
+      return CqlBoolean(left > right);
+    } else if (left is CqlDecimal && right is CqlDecimal) {
+      return CqlBoolean(left > right);
+    } else if (left is CqlLong && right is CqlLong) {
+      return CqlBoolean(left > right);
     } else if (left is String && right is String) {
-      return FhirBoolean(left.compareTo(right) > 0);
-    } else if (left is FhirDateTime && right is FhirDateTime) {
+      return CqlBoolean(left.compareTo(right) > 0);
+    } else if (left is CqlDateTime && right is CqlDateTime) {
       final result = left > right;
-      return result == null ? null : FhirBoolean(left > right);
-    } else if (left is FhirTime && right is FhirTime) {
-      return FhirBoolean(left > right);
-    } else if (left is FhirDate && right is FhirDate) {
+      return result == null ? null : CqlBoolean(left > right);
+    } else if (left is CqlTime && right is CqlTime) {
+      return CqlBoolean(left > right);
+    } else if (left is CqlDate && right is CqlDate) {
       final result = left > right;
-      return result == null ? null : FhirBoolean(left > right);
+      return result == null ? null : CqlBoolean(left > right);
     } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
       try {
-        return FhirBoolean(left > right);
+        return CqlBoolean(left > right);
       } catch (e) {
         return null;
       }
-    } else if (left is FhirDecimal && right is FhirInteger) {
-      return FhirBoolean(left > FhirDecimal(right.valueNum!.toDouble()));
-    } else if (left is FhirInteger && right is FhirDecimal) {
-      return FhirBoolean(FhirDecimal(left.valueNum!.toDouble()) > right);
+    } else if (left is CqlDecimal && right is CqlInteger) {
+      return CqlBoolean(left > CqlDecimal(right.valueNum!.toDouble()));
+    } else if (left is CqlInteger && right is CqlDecimal) {
+      return CqlBoolean(CqlDecimal(left.valueNum!.toDouble()) > right);
     }
     throw ArgumentError('Invalid operand types for Greater operation: \n'
         'Left: $left (${left.runtimeType})\n'

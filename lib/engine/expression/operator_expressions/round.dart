@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -106,16 +105,16 @@ class Round extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Decimal'];
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) {
       return null;
     }
 
     double? numValue;
-    if (value is FhirDecimal) {
+    if (value is CqlDecimal) {
       numValue = value.valueNum?.toDouble();
-    } else if (value is FhirInteger) {
+    } else if (value is CqlInteger) {
       numValue = value.valueNum?.toDouble();
     }
 
@@ -123,7 +122,7 @@ class Round extends OperatorExpression {
 
     final precisionValue = await precision?.execute(context);
     int precisionInt = 0;
-    if (precisionValue is FhirInteger && precisionValue.valueInt != null) {
+    if (precisionValue is CqlInteger && precisionValue.valueInt != null) {
       precisionInt = precisionValue.valueInt!;
     }
 
@@ -132,6 +131,6 @@ class Round extends OperatorExpression {
     // CQL rounding: round half up (toward positive infinity)
     final int rounded =
         scaled.floor() + (scaled - scaled.floor() >= 0.5 ? 1 : 0);
-    return FhirDecimal(rounded.toDouble() / mod);
+    return CqlDecimal(rounded.toDouble() / mod);
   }
 }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -98,10 +97,10 @@ class TimezoneOffsetFrom extends UnaryExpression {
   }
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    if (operandValue is FhirDateTime) {
-      return FhirDecimal(operandValue.timeZoneOffset);
+    if (operandValue is CqlDateTime) {
+      return CqlDecimal(operandValue.timeZoneOffset);
     }
     return null;
   }

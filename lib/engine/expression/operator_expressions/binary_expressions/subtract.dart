@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -174,42 +173,42 @@ class Subtract extends BinaryExpression {
     }
 
     switch (left) {
-      case FhirInteger _:
-        return right is FhirInteger
-            ? FhirInteger.tryParse(left.valueNum! - right.valueNum!)
-            : right is FhirDecimal
-                ? FhirDecimal(double.parse(
+      case CqlInteger _:
+        return right is CqlInteger
+            ? CqlInteger.tryParse(left.valueNum! - right.valueNum!)
+            : right is CqlDecimal
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .subtract(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger64
-                    ? FhirInteger64.tryParse(
+                : right is CqlLong
+                    ? CqlLong.tryParse(
                         (left.valueInt as int) - right.valueBigInt!.toInt())
                     : null;
-      case FhirInteger64 _:
-        return right is FhirInteger64
-            ? FhirInteger64(left.valueBigInt! - right.valueBigInt!)
-            : right is FhirDecimal
-                ? FhirDecimal(double.parse(
+      case CqlLong _:
+        return right is CqlLong
+            ? CqlLong(left.valueBigInt! - right.valueBigInt!)
+            : right is CqlDecimal
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .subtract(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger
-                    ? FhirInteger64.tryParse(
+                : right is CqlInteger
+                    ? CqlLong.tryParse(
                         left.valueBigInt!.toInt() - right.valueInt!)
                     : null;
-      case FhirDecimal _:
-        return right is FhirDecimal
-            ? FhirDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
+      case CqlDecimal _:
+        return right is CqlDecimal
+            ? CqlDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
                 .subtract(UcumDecimal.fromString(right.valueString!))
                 .asUcumDecimal()))
-            : right is FhirInteger
-                ? FhirDecimal(double.parse(
+            : right is CqlInteger
+                ? CqlDecimal(double.parse(
                     UcumDecimal.fromString(left.valueString!)
                         .subtract(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
-                : right is FhirInteger64
-                    ? FhirDecimal(double.parse(UcumDecimal.fromString(
+                : right is CqlLong
+                    ? CqlDecimal(double.parse(UcumDecimal.fromString(
                             left.valueString!)
                         .subtract(UcumDecimal.fromString(right.valueString!))
                         .asUcumDecimal()))
@@ -218,18 +217,18 @@ class Subtract extends BinaryExpression {
         return right is ValidatedQuantity
             ? left.isValid() && right.isValid()
                 ? left - right
-                : right is FhirDecimal
+                : right is CqlDecimal
                     ? left - right
                     : null
             : null;
-      case FhirDateTimeBase _:
+      case CqlDateTimeBase _:
         {
           if (right is ValidatedQuantity && right.isDuration) {
             return Add.addToDateTime(left, right, subtract: true);
           }
           return null;
         }
-      case FhirTime _:
+      case CqlTime _:
         {
           if (right is ValidatedQuantity && right.isDuration) {
             return left.subtract(

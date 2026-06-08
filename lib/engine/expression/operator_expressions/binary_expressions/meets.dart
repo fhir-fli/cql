@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -121,7 +120,7 @@ class Meets extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Meets expression must have 2 operands');
     }
@@ -131,7 +130,7 @@ class Meets extends BinaryExpression {
     return meets(left, right, precision);
   }
 
-  static FhirBoolean? meets(dynamic left, dynamic right,
+  static CqlBoolean? meets(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
@@ -145,20 +144,20 @@ class Meets extends BinaryExpression {
 
       // If intervals provably overlap, they cannot meet
       if (intervalsOverlap(eLS, eLE, eRS, eRE, precision)) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
 
       // Check meets before: leftEnd = predecessor(rightStart)
       final mb = checkMeetsBefore(eLE, eRS, precision);
-      if (mb?.valueBoolean == true) return FhirBoolean(true);
+      if (mb?.valueBoolean == true) return CqlBoolean(true);
 
       // Check meets after: leftStart = successor(rightEnd)
       final ma = checkMeetsAfter(eLS, eRE, precision);
-      if (ma?.valueBoolean == true) return FhirBoolean(true);
+      if (ma?.valueBoolean == true) return CqlBoolean(true);
 
       // Three-valued Or: if both false → false; if either null → null
       if (mb?.valueBoolean == false && ma?.valueBoolean == false) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
 
       // Try to refine null results using interval bounds:
@@ -168,7 +167,7 @@ class Meets extends BinaryExpression {
         final ge = precision != null
             ? SameOrAfter.sameOrAfter(eLS, eRS, precision)
             : GreaterOrEqual.greaterOrEqual(eLS, eRS);
-        if (ge?.valueBoolean == true) refinedMb = FhirBoolean(false);
+        if (ge?.valueBoolean == true) refinedMb = CqlBoolean(false);
       }
       // If ma is null but leftEnd ≤ rightEnd → leftStart < succ(rightEnd) → ma = false
       var refinedMa = ma;
@@ -176,11 +175,11 @@ class Meets extends BinaryExpression {
         final le = precision != null
             ? SameOrBefore.sameOrBefore(eLE, eRE, precision)
             : LessOrEqual.lessOrEqual(eLE, eRE);
-        if (le?.valueBoolean == true) refinedMa = FhirBoolean(false);
+        if (le?.valueBoolean == true) refinedMa = CqlBoolean(false);
       }
       if (refinedMb?.valueBoolean == false &&
           refinedMa?.valueBoolean == false) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       }
       return null;
     } else {
@@ -191,16 +190,16 @@ class Meets extends BinaryExpression {
   /// Check if leftEnd = predecessor(rightStart).
   /// Returns true/false/null. Null if either input is null or comparison is
   /// uncertain.
-  static FhirBoolean? checkMeetsBefore(
+  static CqlBoolean? checkMeetsBefore(
       dynamic leftEnd, dynamic rightStart, CqlDateTimePrecision? precision) {
     if (leftEnd == null || rightStart == null) return null;
     final pred = precision != null &&
-            (rightStart is FhirDateTimeBase || rightStart is FhirTime)
+            (rightStart is CqlDateTimeBase || rightStart is CqlTime)
         ? safePrecisionPredecessor(rightStart, precision)
         : safePredecessor(rightStart);
     if (pred == null) return null;
     return precision != null &&
-            (leftEnd is FhirDateTimeBase || leftEnd is FhirTime)
+            (leftEnd is CqlDateTimeBase || leftEnd is CqlTime)
         ? SameAs.sameAs(leftEnd, pred, precision)
         : Equal.equal(leftEnd, pred);
   }
@@ -208,16 +207,16 @@ class Meets extends BinaryExpression {
   /// Check if leftStart = successor(rightEnd).
   /// Returns true/false/null. Null if either input is null or comparison is
   /// uncertain.
-  static FhirBoolean? checkMeetsAfter(
+  static CqlBoolean? checkMeetsAfter(
       dynamic leftStart, dynamic rightEnd, CqlDateTimePrecision? precision) {
     if (leftStart == null || rightEnd == null) return null;
     final succ = precision != null &&
-            (rightEnd is FhirDateTimeBase || rightEnd is FhirTime)
+            (rightEnd is CqlDateTimeBase || rightEnd is CqlTime)
         ? safePrecisionSuccessor(rightEnd, precision)
         : safeSuccessor(rightEnd);
     if (succ == null) return null;
     return precision != null &&
-            (leftStart is FhirDateTimeBase || leftStart is FhirTime)
+            (leftStart is CqlDateTimeBase || leftStart is CqlTime)
         ? SameAs.sameAs(leftStart, succ, precision)
         : Equal.equal(leftStart, succ);
   }
@@ -296,9 +295,9 @@ class Meets extends BinaryExpression {
       final unit = _precisionToUnit(precision);
       final qty =
           ValidatedQuantity(value: UcumDecimal.fromString('1'), unit: unit);
-      if (value is FhirDateTimeBase) {
+      if (value is CqlDateTimeBase) {
         return Add.addToDateTime(value, qty);
-      } else if (value is FhirTime) {
+      } else if (value is CqlTime) {
         return Add.add(value, qty);
       }
       return Successor.successor(value);
@@ -314,9 +313,9 @@ class Meets extends BinaryExpression {
       final unit = _precisionToUnit(precision);
       final qty =
           ValidatedQuantity(value: UcumDecimal.fromString('1'), unit: unit);
-      if (value is FhirDateTimeBase) {
+      if (value is CqlDateTimeBase) {
         return Add.addToDateTime(value, qty, subtract: true);
-      } else if (value is FhirTime) {
+      } else if (value is CqlTime) {
         return Subtract.subtract(value, qty);
       }
       return Predecessor.predecessor(value);

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -18,21 +17,21 @@ abstract class LiteralType extends CqlExpression {
 
   static String? typeToLiteral(String type) {
     switch (type) {
-      case 'FhirBoolean':
+      case 'CqlBoolean':
         return 'LiteralBoolean';
-      case 'FhirDate':
+      case 'CqlDate':
         return 'LiteralDate';
-      case 'FhirDateTime':
+      case 'CqlDateTime':
         return 'LiteralDateTime';
-      case 'FhirDecimal':
+      case 'CqlDecimal':
         return 'LiteralDecimal';
-      case 'FhirInteger':
+      case 'CqlInteger':
         return 'LiteralInteger';
-      case 'FhirInteger64':
+      case 'CqlLong':
         return 'LiteralLong';
       case 'String':
         return 'LiteralString';
-      case 'FhirTime':
+      case 'CqlTime':
         return 'LiteralTime';
       case 'ValidatedQuantity':
         return 'LiteralQuantity';
@@ -113,8 +112,8 @@ class LiteralBoolean extends LiteralType {
       };
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async =>
-      FhirBoolean(value);
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async =>
+      CqlBoolean(value);
 
   @override
   String get type => 'Boolean';
@@ -327,7 +326,7 @@ class LiteralDate extends LiteralType {
 
   @override
   Map<String, dynamic> toJson() {
-    final date = FhirDate.fromString(value);
+    final date = CqlDate.fromString(value);
     return {
       'type': type,
       if (date.hasYear) 'year': LiteralInteger(date.year!).toJson(),
@@ -337,8 +336,8 @@ class LiteralDate extends LiteralType {
   }
 
   @override
-  Future<FhirDate> execute(Map<String, dynamic> context) async =>
-      FhirDate.fromString(value);
+  Future<CqlDate> execute(Map<String, dynamic> context) async =>
+      CqlDate.fromString(value);
 
   @override
   String get type => 'Date';
@@ -367,7 +366,7 @@ class LiteralDateTime extends LiteralType {
 
   @override
   Map<String, dynamic> toJson() {
-    final dateTime = FhirDateTime.fromString(value);
+    final dateTime = CqlDateTime.fromString(value);
     return {
       'type': type,
       'year': LiteralInteger(dateTime.year!).toJson(),
@@ -390,8 +389,8 @@ class LiteralDateTime extends LiteralType {
   String toString() => 'LiteralDateTime: $value';
 
   @override
-  Future<FhirDateTime> execute(Map<String, dynamic> context) async =>
-      FhirDateTime.fromString(value);
+  Future<CqlDateTime> execute(Map<String, dynamic> context) async =>
+      CqlDateTime.fromString(value);
 
   @override
   List<String> getReturnTypes(CqlLibrary library) => ['DateTime'];
@@ -457,8 +456,8 @@ class LiteralDecimal extends LiteralType {
       };
 
   @override
-  Future<FhirDecimal> execute(Map<String, dynamic> context) async =>
-      FhirDecimal(value);
+  Future<CqlDecimal> execute(Map<String, dynamic> context) async =>
+      CqlDecimal(value);
 
   @override
   String get type => 'Decimal';
@@ -499,8 +498,8 @@ class LiteralInteger extends LiteralType {
       };
 
   @override
-  Future<FhirInteger> execute(Map<String, dynamic> context) async =>
-      FhirInteger(value);
+  Future<CqlInteger> execute(Map<String, dynamic> context) async =>
+      CqlInteger(value);
 
   @override
   String get type => 'Integer';
@@ -541,8 +540,8 @@ class LiteralLong extends LiteralType {
       };
 
   @override
-  Future<FhirInteger64> execute(Map<String, dynamic> context) async =>
-      FhirInteger64(value);
+  Future<CqlLong> execute(Map<String, dynamic> context) async =>
+      CqlLong(value);
 
   @override
   String get type => 'Long';
@@ -711,12 +710,12 @@ class LiteralTime extends LiteralType {
   }
 
   factory LiteralTime.fromJson(dynamic json) {
-    if (json is String && FhirTime.tryParse(json) != null) {
+    if (json is String && CqlTime.tryParse(json) != null) {
       return LiteralTime(
         json,
       );
     } else if (json is Map<String, dynamic> && json['value'] != null) {
-      if (json['value'] is String && FhirTime.tryParse(json['value']) != null) {
+      if (json['value'] is String && CqlTime.tryParse(json['value']) != null) {
         return LiteralTime(
           json['value'],
         );
@@ -727,7 +726,7 @@ class LiteralTime extends LiteralType {
 
   @override
   Map<String, dynamic> toJson() {
-    final date = FhirTime(value);
+    final date = CqlTime(value);
     final json = <String, dynamic>{'type': type};
     if (date.hour != null) {
       json['hour'] = LiteralInteger(date.hour!).toJson();
@@ -748,8 +747,8 @@ class LiteralTime extends LiteralType {
   String get type => 'Time';
 
   @override
-  Future<FhirTime> execute(Map<String, dynamic> context) async =>
-      FhirTime(value);
+  Future<CqlTime> execute(Map<String, dynamic> context) async =>
+      CqlTime(value);
 
   @override
   List<String> getReturnTypes(CqlLibrary library) => ['Time'];
@@ -821,7 +820,7 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
-      CqlInterval<FhirInteger>(
+      CqlInterval<CqlInteger>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
         high: await high?.execute(context),
@@ -867,7 +866,7 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
-      CqlInterval<FhirDecimal>(
+      CqlInterval<CqlDecimal>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
         high: await high?.execute(context),
@@ -959,7 +958,7 @@ class LiteralDateInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
-      CqlInterval<FhirDate>(
+      CqlInterval<CqlDate>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
         high: await high?.execute(context),
@@ -1005,7 +1004,7 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
-      CqlInterval<FhirDateTime>(
+      CqlInterval<CqlDateTime>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
         high: await high?.execute(context),
@@ -1051,7 +1050,7 @@ class LiteralTimeInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
-      CqlInterval<FhirTime>(
+      CqlInterval<CqlTime>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
         high: await high?.execute(context),

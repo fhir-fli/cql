@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -117,17 +116,17 @@ class Avg extends AggregateExpression {
       if (sourceResult.isEmpty) {
         return null;
       }
-      if (sourceResult.every((element) => element is FhirNumber)) {
+      if (sourceResult.every((element) => element is CqlNumber)) {
         sourceResult =
-            sourceResult.map((e) => FhirDecimal(e.valueNum!)).toList();
-        final sum = sourceResult.fold(FhirDecimal(0),
-            (FhirDecimal previousValue, dynamic element) {
-          return FhirDecimal(
-              previousValue.valueNum! + (element as FhirDecimal).valueNum!);
+            sourceResult.map((e) => CqlDecimal(e.valueNum!)).toList();
+        final sum = sourceResult.fold(CqlDecimal(0),
+            (CqlDecimal previousValue, dynamic element) {
+          return CqlDecimal(
+              previousValue.valueNum! + (element as CqlDecimal).valueNum!);
         });
         return sum.valueNum == null
             ? null
-            : FhirDecimal(sum.valueNum! / sourceResult.length);
+            : CqlDecimal(sum.valueNum! / sourceResult.length);
       } else if (sourceResult
           .every((element) => element is ValidatedQuantity)) {
         ValidatedQuantity? sum;

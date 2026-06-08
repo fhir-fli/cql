@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' show FhirBoolean;
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -63,15 +62,15 @@ class CanConvertQuantity extends BinaryExpression {
   String get type => 'CanConvertQuantity';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
     if (left == null || right == null) return null;
     try {
       final result = await ConvertQuantity(operand: operand).execute(context);
-      return FhirBoolean(result != null);
+      return CqlBoolean(result != null);
     } catch (_) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
   }
 }

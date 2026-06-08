@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -140,7 +139,7 @@ class SameOrAfter extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('SameOrAfter expression must have 2 operands');
     }
@@ -149,66 +148,66 @@ class SameOrAfter extends BinaryExpression {
     return sameOrAfter(left, right, precision);
   }
 
-  static FhirBoolean? sameOrAfter(
+  static CqlBoolean? sameOrAfter(
       dynamic left, dynamic right, CqlDateTimePrecision? precision) {
     if (left == null || right == null) {
       return null;
-    } else if (left is FhirDateTimeBase && right is FhirDateTimeBase) {
+    } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
       return sameOrAfterDateTime(left, right, precision);
-    } else if (left is FhirTime && right is FhirTime) {
+    } else if (left is CqlTime && right is CqlTime) {
       return sameOrAfterTime(left, right, precision);
     } else if (left is CqlInterval && right is CqlInterval) {
       final leftStart = left.getStart();
       final rightEnd = right.getEnd();
       if (leftStart == null || rightEnd == null) {
         return null;
-      } else if (leftStart is FhirDateTimeBase &&
-          rightEnd is FhirDateTimeBase) {
+      } else if (leftStart is CqlDateTimeBase &&
+          rightEnd is CqlDateTimeBase) {
         return sameOrAfterDateTime(leftStart, rightEnd, precision);
-      } else if (leftStart is FhirTime && rightEnd is FhirTime) {
+      } else if (leftStart is CqlTime && rightEnd is CqlTime) {
         return sameOrAfterTime(leftStart, rightEnd, precision);
       } else if (leftStart is Comparable && rightEnd is Comparable) {
-        return FhirBoolean(leftStart.compareTo(rightEnd) >= 0);
+        return CqlBoolean(leftStart.compareTo(rightEnd) >= 0);
       }
       return null;
     } else if (left is CqlInterval) {
       final leftStart = left.getStart();
       if (leftStart == null) {
         return null;
-      } else if (leftStart is FhirDateTimeBase && right is FhirDateTimeBase) {
+      } else if (leftStart is CqlDateTimeBase && right is CqlDateTimeBase) {
         return sameOrAfterDateTime(leftStart, right, precision);
-      } else if (leftStart is FhirTime && right is FhirTime) {
+      } else if (leftStart is CqlTime && right is CqlTime) {
         return sameOrAfterTime(leftStart, right, precision);
       } else if (leftStart is Comparable && right is Comparable) {
-        return FhirBoolean(leftStart.compareTo(right) >= 0);
+        return CqlBoolean(leftStart.compareTo(right) >= 0);
       }
       return null;
     } else if (right is CqlInterval) {
       final rightEnd = right.getEnd();
       if (rightEnd == null) {
         return null;
-      } else if (left is FhirDateTimeBase && rightEnd is FhirDateTimeBase) {
+      } else if (left is CqlDateTimeBase && rightEnd is CqlDateTimeBase) {
         return sameOrAfterDateTime(left, rightEnd, precision);
-      } else if (left is FhirTime && rightEnd is FhirTime) {
+      } else if (left is CqlTime && rightEnd is CqlTime) {
         return sameOrAfterTime(left, rightEnd, precision);
       } else if (left is Comparable && rightEnd is Comparable) {
-        return FhirBoolean(left.compareTo(rightEnd) >= 0);
+        return CqlBoolean(left.compareTo(rightEnd) >= 0);
       }
       return null;
     } else if (left is Comparable && right is Comparable) {
-      return FhirBoolean(left.compareTo(right) >= 0);
+      return CqlBoolean(left.compareTo(right) >= 0);
     }
     return null;
   }
 
-  static FhirBoolean? sameOrAfterTime(
-    FhirTime left,
-    FhirTime right, [
+  static CqlBoolean? sameOrAfterTime(
+    CqlTime left,
+    CqlTime right, [
     CqlDateTimePrecision? precision,
   ]) {
     if (precision == null) {
       final result = left.isSameOrAfter(right);
-      return result == null ? null : FhirBoolean(result);
+      return result == null ? null : CqlBoolean(result);
     } else {
       if (left.hour == null || right.hour == null) {
         return null;
@@ -220,7 +219,7 @@ class SameOrAfter extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the hour,
       /// return the result
       if (!hoursEqual || precision == CqlDateTimePrecision.hour) {
-        return FhirBoolean(hoursEqual);
+        return CqlBoolean(hoursEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -236,7 +235,7 @@ class SameOrAfter extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the minute,
       /// return the result
       if (!minutesEqual || precision == CqlDateTimePrecision.minute) {
-        return FhirBoolean(minutesEqual);
+        return CqlBoolean(minutesEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -251,7 +250,7 @@ class SameOrAfter extends BinaryExpression {
       /// If they're not equal, or we're only comparing to the second,
       /// return the result
       if (!secondsEqual || precision == CqlDateTimePrecision.second) {
-        return FhirBoolean(secondsEqual);
+        return CqlBoolean(secondsEqual);
       }
 
       /// if we're supposed to continue to compare, but either one doesn't
@@ -264,7 +263,7 @@ class SameOrAfter extends BinaryExpression {
         final millisecondsEqual = left.millisecond! >= right.millisecond!;
 
         /// We've reached the end of the precision, return the result
-        return FhirBoolean(millisecondsEqual);
+        return CqlBoolean(millisecondsEqual);
       }
     }
   }
@@ -273,9 +272,9 @@ class SameOrAfter extends BinaryExpression {
   /// "proceed to the finest precision specified in either input."
   /// Returns null when one operand lacks a precision level that the other has
   /// and values are equal at all coarser levels.
-  static FhirBoolean? compareNoPrecision(
-    FhirDateTimeBase left,
-    FhirDateTimeBase right, {
+  static CqlBoolean? compareNoPrecision(
+    CqlDateTimeBase left,
+    CqlDateTimeBase right, {
     required bool isAfter,
   }) {
     // Normalize timezone offsets
@@ -286,59 +285,59 @@ class SameOrAfter extends BinaryExpression {
 
     if (left.year == null || right.year == null) return null;
     if (left.year! != right.year!) {
-      return FhirBoolean(
+      return CqlBoolean(
           isAfter ? left.year! > right.year! : left.year! < right.year!);
     }
 
-    if (!left.hasMonth && !right.hasMonth) return FhirBoolean(true);
+    if (!left.hasMonth && !right.hasMonth) return CqlBoolean(true);
     if (!left.hasMonth || !right.hasMonth) return null;
     if (left.month! != right.month!) {
-      return FhirBoolean(
+      return CqlBoolean(
           isAfter ? left.month! > right.month! : left.month! < right.month!);
     }
 
-    if (!left.hasDay && !right.hasDay) return FhirBoolean(true);
+    if (!left.hasDay && !right.hasDay) return CqlBoolean(true);
     if (!left.hasDay || !right.hasDay) return null;
     if (left.day! != right.day!) {
-      return FhirBoolean(
+      return CqlBoolean(
           isAfter ? left.day! > right.day! : left.day! < right.day!);
     }
 
-    if (!left.hasHours && !right.hasHours) return FhirBoolean(true);
+    if (!left.hasHours && !right.hasHours) return CqlBoolean(true);
     if (!left.hasHours || !right.hasHours) return null;
     if (left.hour! != right.hour!) {
-      return FhirBoolean(
+      return CqlBoolean(
           isAfter ? left.hour! > right.hour! : left.hour! < right.hour!);
     }
 
-    if (!left.hasMinutes && !right.hasMinutes) return FhirBoolean(true);
+    if (!left.hasMinutes && !right.hasMinutes) return CqlBoolean(true);
     if (!left.hasMinutes || !right.hasMinutes) return null;
     if (left.minute! != right.minute!) {
-      return FhirBoolean(isAfter
+      return CqlBoolean(isAfter
           ? left.minute! > right.minute!
           : left.minute! < right.minute!);
     }
 
-    if (!left.hasSeconds && !right.hasSeconds) return FhirBoolean(true);
+    if (!left.hasSeconds && !right.hasSeconds) return CqlBoolean(true);
     if (!left.hasSeconds || !right.hasSeconds) return null;
     if (left.second! != right.second!) {
-      return FhirBoolean(isAfter
+      return CqlBoolean(isAfter
           ? left.second! > right.second!
           : left.second! < right.second!);
     }
 
     if (!left.hasMilliseconds && !right.hasMilliseconds) {
-      return FhirBoolean(true);
+      return CqlBoolean(true);
     }
     if (!left.hasMilliseconds || !right.hasMilliseconds) return null;
-    return FhirBoolean(isAfter
+    return CqlBoolean(isAfter
         ? left.millisecond! >= right.millisecond!
         : left.millisecond! <= right.millisecond!);
   }
 
-  static FhirBoolean? sameOrAfterDateTime(
-    FhirDateTimeBase left,
-    FhirDateTimeBase right, [
+  static CqlBoolean? sameOrAfterDateTime(
+    CqlDateTimeBase left,
+    CqlDateTimeBase right, [
     CqlDateTimePrecision? precision,
   ]) {
     if (precision == null) {
@@ -355,36 +354,36 @@ class SameOrAfter extends BinaryExpression {
     // Compare field by field: if strictly greater → true, strictly less → false,
     // equal → continue to next precision or return true at target precision.
     if (left.year == null || right.year == null) return null;
-    if (left.year! > right.year!) return FhirBoolean(true);
-    if (left.year! < right.year!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.year) return FhirBoolean(true);
+    if (left.year! > right.year!) return CqlBoolean(true);
+    if (left.year! < right.year!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.year) return CqlBoolean(true);
 
     if (!left.hasMonth || !right.hasMonth) return null;
-    if (left.month! > right.month!) return FhirBoolean(true);
-    if (left.month! < right.month!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.month) return FhirBoolean(true);
+    if (left.month! > right.month!) return CqlBoolean(true);
+    if (left.month! < right.month!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.month) return CqlBoolean(true);
 
     if (!left.hasDay || !right.hasDay) return null;
-    if (left.day! > right.day!) return FhirBoolean(true);
-    if (left.day! < right.day!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.day) return FhirBoolean(true);
+    if (left.day! > right.day!) return CqlBoolean(true);
+    if (left.day! < right.day!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.day) return CqlBoolean(true);
 
     if (!left.hasHours || !right.hasHours) return null;
-    if (left.hour! > right.hour!) return FhirBoolean(true);
-    if (left.hour! < right.hour!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.hour) return FhirBoolean(true);
+    if (left.hour! > right.hour!) return CqlBoolean(true);
+    if (left.hour! < right.hour!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.hour) return CqlBoolean(true);
 
     if (!left.hasMinutes || !right.hasMinutes) return null;
-    if (left.minute! > right.minute!) return FhirBoolean(true);
-    if (left.minute! < right.minute!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.minute) return FhirBoolean(true);
+    if (left.minute! > right.minute!) return CqlBoolean(true);
+    if (left.minute! < right.minute!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.minute) return CqlBoolean(true);
 
     if (!left.hasSeconds || !right.hasSeconds) return null;
-    if (left.second! > right.second!) return FhirBoolean(true);
-    if (left.second! < right.second!) return FhirBoolean(false);
-    if (precision == CqlDateTimePrecision.second) return FhirBoolean(true);
+    if (left.second! > right.second!) return CqlBoolean(true);
+    if (left.second! < right.second!) return CqlBoolean(false);
+    if (precision == CqlDateTimePrecision.second) return CqlBoolean(true);
 
     if (!left.hasMilliseconds || !right.hasMilliseconds) return null;
-    return FhirBoolean(left.millisecond! >= right.millisecond!);
+    return CqlBoolean(left.millisecond! >= right.millisecond!);
   }
 }

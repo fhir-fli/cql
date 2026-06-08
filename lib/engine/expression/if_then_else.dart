@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -107,9 +106,9 @@ class IfThenElse extends CqlExpression {
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final conditionResult = await condition.execute(context);
-    if (conditionResult is FhirBoolean || conditionResult == null) {
+    if (conditionResult is CqlBoolean || conditionResult == null) {
       if (conditionResult == null ||
-          !((conditionResult as FhirBoolean).valueBoolean ?? false)) {
+          !((conditionResult as CqlBoolean).valueBoolean ?? false)) {
         return elseExpr.execute(context);
       } else {
         return then.execute(context);

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -74,12 +73,12 @@ class IsTrue extends UnaryExpression {
   }
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
-    if (operandValue is FhirBoolean) {
-      return FhirBoolean(operandValue.valueBoolean == true);
+    if (operandValue is CqlBoolean) {
+      return CqlBoolean(operandValue.valueBoolean == true);
     } else {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
   }
 }

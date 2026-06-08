@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -82,22 +81,22 @@ class AnyTrue extends AggregateExpression {
   String get type => 'AnyTrue';
 
   @override
-  Future<FhirBoolean> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean> execute(Map<String, dynamic> context) async {
     final sourceResult = await source.execute(context);
     return anyTrue(sourceResult);
   }
 
-  FhirBoolean anyTrue(dynamic sourceResult) {
+  CqlBoolean anyTrue(dynamic sourceResult) {
     if (sourceResult == null) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     } else if (sourceResult is List) {
       for (final element in sourceResult) {
-        if ((element is FhirBoolean && (element.valueBoolean ?? true)) ||
+        if ((element is CqlBoolean && (element.valueBoolean ?? true)) ||
             (element is bool && element == true)) {
-          return FhirBoolean(true);
+          return CqlBoolean(true);
         }
       }
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
     throw ArgumentError('AllTrue operator failed to execute');
   }

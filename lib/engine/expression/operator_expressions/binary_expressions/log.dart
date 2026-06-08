@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -62,7 +61,7 @@ class Log extends BinaryExpression {
         if (return1.first == 'LiteralInteger' ||
             return1.first == 'LiteralLong') {
           operand.add(ToDecimal(operand: first));
-        } else if (return1.first == 'FhirDecimal') {
+        } else if (return1.first == 'CqlDecimal') {
           operand.add(first);
         } else if (return1.first == 'Null') {
           operand.add(As(operand: first, asType: QName.fromElmType('Decimal')));
@@ -148,20 +147,20 @@ class Log extends BinaryExpression {
   String get type => 'Log';
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final first = await operand.first.execute(context);
     final second = await operand.last.execute(context);
 
     if (first == null ||
         second == null ||
-        first is! FhirDecimal ||
-        second is! FhirDecimal) {
+        first is! CqlDecimal ||
+        second is! CqlDecimal) {
       return null;
     }
     final result = log(first.valueNum!) / log(second.valueNum!);
     // If the result cannot be represented (NaN, Infinity), return null
     if (result.isNaN || result.isInfinite) return null;
-    return FhirDecimal(result);
+    return CqlDecimal(result);
   }
 
   @override

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:ucum/ucum.dart';
 
@@ -159,7 +158,7 @@ class Collapse extends BinaryExpression {
         final start = interval.getStart();
         final end = interval.getEnd();
         for (final boundary in [start, end]) {
-          if (boundary is FhirDateTimeBase) {
+          if (boundary is CqlDateTimeBase) {
             CqlDateTimePrecision p;
             if (!boundary.hasMonth) {
               p = CqlDateTimePrecision.year;
@@ -227,18 +226,18 @@ class Collapse extends BinaryExpression {
       // Normalize per for gap tolerance calculation.
       // When per is a ValidatedQuantity and endpoints are numeric FHIR types,
       // normalizePer converts to matching FHIR type.
-      // When per is a FhirInteger/FhirDecimal and endpoints are ValidatedQuantity,
+      // When per is a CqlInteger/CqlDecimal and endpoints are ValidatedQuantity,
       // we need to convert per to ValidatedQuantity with unit '1'.
       dynamic effectivePer = per;
       if (per is ValidatedQuantity) {
         effectivePer = Expand.normalizePer(per, source.first.getStart());
       } else if (per != null && source.first.getStart() is ValidatedQuantity) {
         // Endpoints are ValidatedQuantity — convert per to ValidatedQuantity
-        if (per is FhirInteger) {
+        if (per is CqlInteger) {
           effectivePer = ValidatedQuantity(
               value: UcumDecimal.fromString(per.valueInt.toString()),
               unit: '1');
-        } else if (per is FhirDecimal) {
+        } else if (per is CqlDecimal) {
           effectivePer = ValidatedQuantity(
               value: UcumDecimal.fromString(per.valueString!), unit: '1');
         }

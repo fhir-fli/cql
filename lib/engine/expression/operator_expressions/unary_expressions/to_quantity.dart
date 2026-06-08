@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -130,15 +129,15 @@ class ToQuantity extends UnaryExpression {
     switch (result) {
       case null:
         return null;
-      case FhirInteger _:
+      case CqlInteger _:
         return result.valueInt == null
             ? null
             : ValidatedQuantity.fromNumber(result.valueInt!, unit: '1');
-      case FhirInteger64 _:
+      case CqlLong _:
         return result.valueBigInt == null
             ? null
             : ValidatedQuantity.fromBigInt(result.valueBigInt!, unit: '1');
-      case FhirDecimal _:
+      case CqlDecimal _:
         return result.valueDouble == null
             ? null
             : ValidatedQuantity.fromNumber(result.valueDouble!, unit: '1');

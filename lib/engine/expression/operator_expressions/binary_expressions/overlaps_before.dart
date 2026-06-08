@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -112,7 +111,7 @@ class OverlapsBefore extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('Binary expression requires two operands');
     }
@@ -123,7 +122,7 @@ class OverlapsBefore extends BinaryExpression {
 
   /// OverlapsBefore returns true if the first interval overlaps the second and
   /// starts before it: Start(left) < Start(right) AND End(left) >= Start(right)
-  static FhirBoolean? overlapsBefore(dynamic left, dynamic right,
+  static CqlBoolean? overlapsBefore(dynamic left, dynamic right,
       [CqlDateTimePrecision? precision]) {
     if (left == null || right == null) {
       return null;
@@ -134,15 +133,15 @@ class OverlapsBefore extends BinaryExpression {
         final leftStart = left.getStart();
         final rightStart = right.getStart();
 
-        FhirBoolean? beforeResult;
-        FhirBoolean? overlapsResult;
+        CqlBoolean? beforeResult;
+        CqlBoolean? overlapsResult;
 
-        if ((leftStart is FhirDateTimeBase && rightStart is FhirDateTimeBase) ||
-            (leftStart is FhirTime && rightStart is FhirTime)) {
+        if ((leftStart is CqlDateTimeBase && rightStart is CqlDateTimeBase) ||
+            (leftStart is CqlTime && rightStart is CqlTime)) {
           beforeResult = Before.before(leftStart, rightStart, precision);
           overlapsResult = Overlaps.overlaps(left, right, precision);
         } else if (leftStart is Comparable && rightStart is Comparable) {
-          beforeResult = FhirBoolean(leftStart.compareTo(rightStart) < 0);
+          beforeResult = CqlBoolean(leftStart.compareTo(rightStart) < 0);
           overlapsResult = Overlaps.overlaps(left, right);
         }
 

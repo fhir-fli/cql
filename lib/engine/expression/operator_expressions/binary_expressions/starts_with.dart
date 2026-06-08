@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -81,7 +80,7 @@ class StartsWith extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('StartsWith must have 2 operands');
     }
@@ -93,6 +92,6 @@ class StartsWith extends BinaryExpression {
     if (argument is! String || prefix is! String) {
       throw ArgumentError('StartsWith operands must be of type String');
     }
-    return FhirBoolean(argument.startsWith(prefix));
+    return CqlBoolean(argument.startsWith(prefix));
   }
 }

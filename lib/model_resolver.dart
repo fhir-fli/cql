@@ -3,11 +3,13 @@
 /// Implementations of this interface are the **only** place in `fhir_cql`
 /// where `package:fhir_r4` / `package:fhir_r5` / `package:fhir_r6` (and the
 /// matching `_path` packages) may be imported. The engine itself works
-/// exclusively in CQL System types (see `lib/src/engine/types/`) plus raw
+/// exclusively in CQL System types (see `lib/engine/types/`) plus raw
 /// `Map<String, dynamic>` FHIR JSON — never typed FHIR classes.
 ///
 /// This mirrors the `ModelResolver` interface from the canonical Java
-/// reference implementation [`cqframework/cql-engine`](https://github.com/cqframework/cql-engine)
+/// reference implementation
+/// [`cqframework/clinical_quality_language`](https://github.com/cqframework/clinical_quality_language)
+/// (`Src/java/engine/src/commonMain/kotlin/org/opencds/cqf/cql/engine/model/ModelResolver.kt`)
 /// and the `FHIRWrapper` pattern from the JavaScript reference
 /// [`cqframework/cql-exec-fhir`](https://github.com/cqframework/cql-exec-fhir).
 ///
@@ -17,25 +19,79 @@
 ///    `FHIRPathEngine.create(WorkerContext(), hostServices).parse(expr).evaluateWithContext(...)`.
 ///    Never use or reference `walkFhirPath` / `executeFhirPath` — these are
 ///    legacy petitparser-era shims that silently mis-handle host-services
-///    and lazy variable scenarios. See [feedback-no-walkfhirpath] in memory.
+///    and lazy variable scenarios. See `feedback_no_walkfhirpath` in memory.
 ///
 /// 2. Convert FHIR-typed values to CQL System types eagerly at the boundary.
-///    Once a value flows into the engine via [resolvePath] (or back out via
-///    [fromCqlSystemType]), it must be either a CQL System type, a plain
-///    `Map<String, dynamic>` FHIR JSON, or a primitive String/num/bool.
-///    The engine must not see `fhir_r4.FhirDateTime` etc.
+///    Once a value flows into the engine via [resolvePath] or [toCqlSystemType],
+///    it must be either a CQL System type, a plain `Map<String, dynamic>`
+///    FHIR JSON, or a primitive `String`/`num`/`bool`. The engine must not
+///    see `fhir_r4.FhirDateTime` etc.
 ///
 /// 3. Handle FHIR polymorphic field resolution (`effective` →
 ///    `effectiveDateTime` / `effectivePeriod` / `effectiveTiming` /
-///    `effectiveInstant`, `value` → `valueQuantity` / `valueString` / ...,
-///    `onset` → `onsetDateTime` / `onsetAge` / ..., etc.) inside
+///    `effectiveInstant`, `value` → `valueQuantity` / `valueString` / …,
+///    `onset` → `onsetDateTime` / `onsetAge` / …, etc.) inside
 ///    [resolvePath]. The set of polymorphic prefixes is documented per
 ///    FHIR version in the model_info files.
 abstract class ModelResolver {
-  /// The FHIR version this resolver targets, as a string matching the CQL
-  /// `using FHIR version` declaration. Examples: `'4.0.1'`, `'5.0.0'`,
-  /// `'6.0.0-ballot2'`.
+  // ===========================================================================
+  // Version + namespace metadata
+  // ===========================================================================
+
+  /// FHIR version targeted, matching the CQL `using FHIR version` declaration.
+  /// Examples: `'4.0.1'`, `'5.0.0'`, `'6.0.0-ballot2'`.
   String get fhirVersion;
+
+  /// Type-system namespace URI(s) this resolver answers for. CQL type
+  /// specifiers carry a `namespace.namespaceURI`; the engine dispatches to
+  /// the resolver whose [packageNames] includes that URI.
+  ///
+  /// Java equivalent: `ModelResolver.getPackageNames(): Collection<String>`.
+  /// Typical R4 returns: `['http://hl7.org/fhir', 'http://hl7.org/fhir/r4']`.
+  List<String> get packageNames;
+
+  // ===========================================================================
+  // Type checks (the CQL `is` and `as` operators)
+  // ===========================================================================
+
+  /// Returns `true` if [value] is an instance of the FHIR or System type
+  /// named [typeName] in this resolver's package(s).
+  ///
+  /// This is the implementation behind `value is FHIR.code` / `value is
+  /// System.Boolean` etc. when the engine dispatches to this resolver.
+  /// Handles version-specific type aliases and FHIR subtype relationships
+  /// (e.g. `FhirCode is FhirString` → `true` per the FHIR class hierarchy).
+  ///
+  /// Java equivalent: `ModelResolver.is(value: Any?, type: JavaClass<*>): Boolean?`.
+  bool? is_(dynamic value, String typeName);
+
+  /// Returns [value] cast to [typeName] if compatible, otherwise:
+  /// - if [isStrict] is `true`, throws;
+  /// - if `false`, returns `null`.
+  ///
+  /// Java equivalent: `ModelResolver.as(value: Any?, type: JavaClass<*>, isStrict: Boolean): Any?`.
+  dynamic as_(dynamic value, String typeName, {bool isStrict = false});
+
+  // ===========================================================================
+  // Type discovery
+  // ===========================================================================
+
+  /// Resolves [typeName] (in this resolver's namespace) to a Dart `Type`
+  /// suitable for reflection / instance creation. Returns `null` if unknown.
+  ///
+  /// Java equivalent: `ModelResolver.resolveType(typeName: String?): JavaClass<*>?`.
+  Type? resolveType(String typeName);
+
+  /// Returns the type name for [value] in this resolver's namespace,
+  /// e.g. `'Patient'` for a FHIR Patient resource, `'DateTime'` for a
+  /// CqlDateTime. Returns `null` if [value] doesn't map.
+  ///
+  /// Java equivalent: `ModelResolver.resolveType(value: Any?): JavaClass<*>?`.
+  String? resolveTypeOf(dynamic value);
+
+  // ===========================================================================
+  // Property access (the FHIRPath-style path resolution)
+  // ===========================================================================
 
   /// Resolves a single property path on a source object.
   ///
@@ -47,34 +103,78 @@ abstract class ModelResolver {
   ///   `interval.low` / `quantity.value`.
   ///
   /// The returned value is **already converted to a CQL System type** where
-  /// applicable. Resources and complex types remain as `Map<String, dynamic>`
-  /// (the engine treats them opaquely and asks again via [resolvePath] to
-  /// walk further into them).
+  /// applicable (see [toCqlSystemType]). Resources and complex types remain
+  /// as `Map<String, dynamic>`.
   ///
   /// Returns `null` if the path doesn't resolve. Never throws on missing
   /// fields — silent null is the FHIRPath/CQL convention.
+  ///
+  /// Java equivalent: `ModelResolver.resolvePath(target: Any?, path: String): Any?`.
   Future<dynamic> resolvePath(dynamic source, String path);
 
-  /// Returns `true` if [value] is an instance of the FHIR or System type
-  /// named [typeName]. Handles version-specific type aliases.
+  /// Sets the value at [path] on [target] to [value], returning the modified
+  /// target. Used by the engine for `set` / output-parameter scenarios.
   ///
-  /// Examples (R4): `isType(periodMap, 'Period')` → `true`;
-  /// `isType(quantityValue, 'Quantity')` → `true` whether the input is a
-  /// typed `fhir_r4.Quantity`, a raw `Map`, or a `CqlQuantity`.
-  bool isType(dynamic value, String typeName);
+  /// Java equivalent: `ModelResolver.setValue(target: Any?, path: String, value: Any?)`.
+  dynamic setValue(dynamic target, String path, dynamic value);
 
-  /// Converts a FHIR-typed value (or a raw FHIR JSON Map) to its
-  /// corresponding CQL System type at the engine boundary.
+  /// Returns the resource id of [target] if it's a FHIR resource, else `null`.
+  ///
+  /// Java equivalent: `ModelResolver.resolveId(target: Any?): String?`.
+  String? resolveId(dynamic target);
+
+  /// Returns the path on a resource of [targetType] that links it to a
+  /// resource of [contextType] (the CQL `context` declaration's anchor).
+  ///
+  /// Example: for context Patient, `getContextPath('Patient', 'Encounter')`
+  /// returns `'subject'` (Encounter.subject references Patient).
+  ///
+  /// Java equivalent: `ModelResolver.getContextPath(contextType: String?, targetType: String?): String?`.
+  String? getContextPath(String? contextType, String? targetType);
+
+  // ===========================================================================
+  // Instance creation
+  // ===========================================================================
+
+  /// Creates an empty instance of the type named [typeName]. Used by CQL's
+  /// instance-construction expression (`{ field1: ..., field2: ... }` typed
+  /// to a named type) and by the parameter system.
+  ///
+  /// Java equivalent: `ModelResolver.createInstance(typeName: String?): Any?`.
+  dynamic createInstance(String typeName);
+
+  // ===========================================================================
+  // Deep equality (the CQL `=` and `~` operators when not handled inline)
+  // ===========================================================================
+
+  /// Three-valued deep equality. Returns `true`/`false` when comparable;
+  /// `null` when either operand is null and the spec demands propagation.
+  ///
+  /// Java equivalent: `ModelResolver.objectEqual(left: Any?, right: Any?): Boolean?`.
+  bool? objectEqual(dynamic left, dynamic right);
+
+  /// CQL `~` operator on FHIR-typed values. Type-aware equivalence per the
+  /// FHIR datatypes specification (e.g. `Quantity` ignores comparator/unit
+  /// canonicalization; `Period` is start-exclusive/end-inclusive).
+  ///
+  /// Java equivalent: `ModelResolver.objectEquivalent(left: Any?, right: Any?): Boolean?`.
+  bool? objectEquivalent(dynamic left, dynamic right);
+
+  // ===========================================================================
+  // System-type conversion (no direct Java equivalent — this is the boundary
+  // contract that keeps the engine clean of FHIR types)
+  // ===========================================================================
+
+  /// Converts a FHIR-typed value (or raw FHIR JSON Map) to its corresponding
+  /// CQL System type at the engine boundary.
   ///
   /// - `Map { start, end }` with no `resourceType` → `CqlInterval<CqlDateTime>`
   /// - `Map { value, unit, system, code }` → `CqlQuantity`
   /// - `Map { coding: [...], text }` → `CqlConcept`
-  /// - `String` ISO-8601 datetime / `fhir_r*.FhirDateTime` → `CqlDateTime`
+  /// - ISO-8601 [String] / `fhir_r*.FhirDateTime` → `CqlDateTime`
   /// - Lists are mapped recursively.
   ///
-  /// Returns the input unchanged if no conversion applies (e.g. already a
-  /// CQL System type, or a FHIR resource Map the engine will navigate via
-  /// further [resolvePath] calls).
+  /// Returns the input unchanged if no conversion applies.
   dynamic toCqlSystemType(dynamic value);
 
   /// Inverse of [toCqlSystemType]: convert a CQL System value back to a

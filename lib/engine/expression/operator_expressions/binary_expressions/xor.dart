@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -87,7 +86,7 @@ class Xor extends BinaryExpression {
   String get type => 'Xor';
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     /// Assuming operand is accessible and contains the operands
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
@@ -98,22 +97,22 @@ class Xor extends BinaryExpression {
     } else
 
     /// If one operand is true and the other is false
-    if ((left is FhirBoolean &&
+    if ((left is CqlBoolean &&
             left.valueBoolean == true &&
-            right is FhirBoolean &&
+            right is CqlBoolean &&
             right.valueBoolean == false) ||
-        (right is FhirBoolean &&
+        (right is CqlBoolean &&
             right.valueBoolean == true &&
-            left is FhirBoolean &&
+            left is CqlBoolean &&
             left.valueBoolean == false)) {
-      return FhirBoolean(true);
+      return CqlBoolean(true);
     } else
 
     /// If both operands are true or both are false
-    if ((left is FhirBoolean &&
-        right is FhirBoolean &&
+    if ((left is CqlBoolean &&
+        right is CqlBoolean &&
         left.valueBoolean == right.valueBoolean)) {
-      return FhirBoolean(false);
+      return CqlBoolean(false);
     }
 
     /// In all other cases, including when one operand is null and the other is not

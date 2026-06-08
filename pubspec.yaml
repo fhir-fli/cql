@@ -14,12 +14,16 @@ environment:
 dependencies:
   antlr4: ^4.13.2
   collection: ^1.19.1
+  # fhir_r* + fhir_r*_path are imported ONLY by lib/resolvers/{r4,r5,r6}/.
+  # Engine code never imports them — that boundary is enforced by review.
+  # Tree-shaking strips unused resolvers + their transitive deps from
+  # release binaries, so an R4-only consumer pays for R4 only.
   fhir_r4: ^0.5.0
   fhir_r4_path: ^0.5.0
-  fhir_r5: ^0.5.0
-  fhir_r5_path: ^0.5.0
-  fhir_r6: ^0.5.0
-  fhir_r6_path: ^0.5.0
+  # fhir_r5: ^0.5.0       # uncomment when implementing R5ModelResolver
+  # fhir_r5_path: ^0.5.0
+  # fhir_r6: ^0.5.0       # uncomment when implementing R6ModelResolver
+  # fhir_r6_path: ^0.5.0
   http: ^1.6.0
   json_annotation: ^4.12.0
   path: ^1.9.1

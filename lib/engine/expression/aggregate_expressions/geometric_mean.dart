@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -96,8 +95,8 @@ class GeometricMean extends AggregateExpression {
 
     // Convert all to double, compute product, take nth root
     final values = nonNull.map((e) {
-      if (e is FhirDecimal) return e.valueNum?.toDouble() ?? 0.0;
-      if (e is FhirInteger) return (e.valueInt ?? 0).toDouble();
+      if (e is CqlDecimal) return e.valueNum?.toDouble() ?? 0.0;
+      if (e is CqlInteger) return (e.valueInt ?? 0).toDouble();
       if (e is int) return e.toDouble();
       if (e is double) return e;
       if (e is num) return e.toDouble();
@@ -107,7 +106,7 @@ class GeometricMean extends AggregateExpression {
     final product = values.reduce((a, b) => a * b);
     final result = math.pow(product, 1.0 / values.length);
     // CQL Decimal: at most 8 digits of scale
-    return FhirDecimal(double.parse(result.toStringAsFixed(8)));
+    return CqlDecimal(double.parse(result.toStringAsFixed(8)));
   }
 
   @override

@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to convert the given string with all characters converted to their lowercase equivalents.
@@ -64,11 +64,11 @@ class Lower extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.FhirString) {
-      return fhir.FhirString(value.primitiveValue?.toLowerCase());
+    if (value is fhir.CqlString) {
+      return fhir.CqlString(value.primitiveValue?.toLowerCase());
     }
     if (value is String) {
-      return fhir.FhirString(value.toLowerCase());
+      return fhir.CqlString(value.toLowerCase());
     }
     return null;
   }

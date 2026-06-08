@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -111,50 +110,50 @@ class Modulo extends BinaryExpression {
     }
 
     // Modulo by zero returns null per the CQL spec
-    if (right is FhirNumber && right.valueNum == 0) return null;
-    if (right is FhirInteger64 && right.valueBigInt == BigInt.zero) return null;
+    if (right is CqlNumber && right.valueNum == 0) return null;
+    if (right is CqlLong && right.valueBigInt == BigInt.zero) return null;
 
     try {
       switch (left) {
-        case FhirInteger _:
-          if (right is FhirInteger) {
-            return FhirInteger.tryParse(left.valueNum! % right.valueNum!);
-          } else if (right is FhirDecimal) {
-            return FhirDecimal(double.parse(
+        case CqlInteger _:
+          if (right is CqlInteger) {
+            return CqlInteger.tryParse(left.valueNum! % right.valueNum!);
+          } else if (right is CqlDecimal) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!)
                         .modulo(UcumDecimal.fromString(right.valueString!)))
                     .asUcumDecimal()));
-          } else if (right is FhirInteger64) {
-            return FhirInteger64(BigInt.from(left.valueInt as int) %
+          } else if (right is CqlLong) {
+            return CqlLong(BigInt.from(left.valueInt as int) %
                 (right.valueBigInt as BigInt));
           }
           break;
-        case FhirInteger64 _:
-          if (right is FhirInteger) {
-            return FhirInteger64(
+        case CqlLong _:
+          if (right is CqlInteger) {
+            return CqlLong(
                 left.valueBigInt! % BigInt.from(right.valueInt as int));
-          } else if (right is FhirInteger64) {
-            return FhirInteger64(left.valueBigInt! % right.valueBigInt!);
-          } else if (right is FhirDecimal) {
-            return FhirDecimal(double.parse(
+          } else if (right is CqlLong) {
+            return CqlLong(left.valueBigInt! % right.valueBigInt!);
+          } else if (right is CqlDecimal) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!)
                         .modulo(UcumDecimal.fromString(right.valueString!)))
                     .asUcumDecimal()));
           }
           break;
-        case FhirDecimal _:
-          if (right is FhirInteger) {
-            return FhirDecimal(double.parse(
+        case CqlDecimal _:
+          if (right is CqlInteger) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!)
                         .modulo(UcumDecimal.fromString(right.valueString!)))
                     .asUcumDecimal()));
-          } else if (right is FhirInteger64) {
-            return FhirDecimal(double.parse(
+          } else if (right is CqlLong) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!)
                         .modulo(UcumDecimal.fromString(right.valueString!)))
                     .asUcumDecimal()));
-          } else if (right is FhirDecimal) {
-            return FhirDecimal(double.parse(
+          } else if (right is CqlDecimal) {
+            return CqlDecimal(double.parse(
                 (UcumDecimal.fromString(left.valueString!)
                         .modulo(UcumDecimal.fromString(right.valueString!)))
                     .asUcumDecimal()));
@@ -163,7 +162,7 @@ class Modulo extends BinaryExpression {
           }
           break;
         case ValidatedQuantity _:
-          if (right is FhirDecimal && left.isValid()) {
+          if (right is CqlDecimal && left.isValid()) {
             return left % ValidatedQuantity.fromString(right.valueString!);
           } else if (right is ValidatedQuantity) {
             return left % right;

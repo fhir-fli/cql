@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -99,17 +98,17 @@ class ToDecimal extends UnaryExpression {
   }
 
   @override
-  Future<FhirDecimal?> execute(Map<String, dynamic> context) async {
+  Future<CqlDecimal?> execute(Map<String, dynamic> context) async {
     final result = await operand.execute(context);
     switch (result) {
       case null:
         return null;
-      case FhirBoolean _:
+      case CqlBoolean _:
         {
           if (result.valueBoolean == null) {
             return null;
           } else {
-            return result.valueBoolean! ? FhirDecimal(1.0) : FhirDecimal(0.0);
+            return result.valueBoolean! ? CqlDecimal(1.0) : CqlDecimal(0.0);
           }
         }
       case String _:
@@ -138,25 +137,25 @@ class ToDecimal extends UnaryExpression {
               final truncated = result.substring(0, dotIndex + 9);
               final truncVal = double.tryParse(truncated);
               if (truncVal == null) return null;
-              return FhirDecimal(truncVal);
+              return CqlDecimal(truncVal);
             }
           }
-          return FhirDecimal(value);
+          return CqlDecimal(value);
         }
-      case FhirInteger _:
+      case CqlInteger _:
         {
-          return result.valueInt == null ? null : FhirDecimal(result.valueInt!);
+          return result.valueInt == null ? null : CqlDecimal(result.valueInt!);
         }
-      case FhirInteger64 _:
+      case CqlLong _:
         {
           final value = result.valueBigInt;
           if (value == null) {
             return null;
           } else {
-            return FhirDecimal(value.toDouble());
+            return CqlDecimal(value.toDouble());
           }
         }
-      case FhirDecimal _:
+      case CqlDecimal _:
         {
           return result;
         }

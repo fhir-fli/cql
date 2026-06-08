@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -164,7 +163,7 @@ class Max extends AggregateExpression {
         if (value is int) {
           return value > element ? value : element;
         }
-        if (value is FhirInteger) {
+        if (value is CqlInteger) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -172,7 +171,7 @@ class Max extends AggregateExpression {
         if (value is double) {
           return value > element ? value : element;
         }
-        if (value is FhirDecimal) {
+        if (value is CqlDecimal) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -180,7 +179,7 @@ class Max extends AggregateExpression {
         if (value is BigInt) {
           return value > element ? value : element;
         }
-        if (value is FhirInteger64) {
+        if (value is CqlLong) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;
@@ -188,17 +187,17 @@ class Max extends AggregateExpression {
         if (value is DateTime) {
           return value.isBefore(element) ? value : element;
         }
-        if (value is FhirDateTime) {
+        if (value is CqlDateTime) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;
         }
-        if (value is FhirDate) {
+        if (value is CqlDate) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;
         }
-        if (value is FhirTime) {
+        if (value is CqlTime) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
               ? value
               : element;

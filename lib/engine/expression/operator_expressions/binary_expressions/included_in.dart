@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -141,7 +140,7 @@ class IncludedIn extends BinaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<FhirBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw ArgumentError('IncludedIn expression must have 2 operands');
     }
@@ -150,7 +149,7 @@ class IncludedIn extends BinaryExpression {
     return includedIn(left, right, precision);
   }
 
-  static FhirBoolean? includedIn(
+  static CqlBoolean? includedIn(
       dynamic left, dynamic right, CqlDateTimePrecision? precision) {
     /// For all variations, if left is null, then return null
     if (left == null) {
@@ -165,14 +164,14 @@ class IncludedIn extends BinaryExpression {
       /// operator, and will return null if the first argument is null, and
       /// false if the second argument is null.
 
-      else if (left is FhirDate ||
-          left is FhirDateTime ||
-          left is FhirTime ||
-          left is FhirInteger ||
-          left is FhirDecimal ||
-          left is FhirInteger64 ||
+      else if (left is CqlDate ||
+          left is CqlDateTime ||
+          left is CqlTime ||
+          left is CqlInteger ||
+          left is CqlDecimal ||
+          left is CqlLong ||
           left is ValidatedQuantity) {
-        return FhirBoolean(false);
+        return CqlBoolean(false);
       } else {
         return null;
       }
@@ -187,12 +186,12 @@ class IncludedIn extends BinaryExpression {
         if (left is List) {
           for (final element in left) {
             if (!listContains(right, element)) {
-              return FhirBoolean(false);
+              return CqlBoolean(false);
             }
           }
-          return FhirBoolean(true);
+          return CqlBoolean(true);
         } else {
-          return FhirBoolean(listContains(right, left));
+          return CqlBoolean(listContains(right, left));
         }
       } catch (e) {
         return null;
@@ -221,7 +220,7 @@ class IncludedIn extends BinaryExpression {
   /// Handles unknown boundaries (null getStart/getEnd) by returning null for
   /// uncertain cases. When the left interval is entirely at the known boundary
   /// of the right interval, the result is true.
-  static FhirBoolean? _intervalIncludedIn(
+  static CqlBoolean? _intervalIncludedIn(
       CqlInterval left, CqlInterval right, CqlDateTimePrecision? precision) {
     final leftStart = left.getStart();
     final leftEnd = left.getEnd();
@@ -229,28 +228,28 @@ class IncludedIn extends BinaryExpression {
     final rightEnd = right.getEnd();
 
     // Compute start check: left.start >= right.start
-    FhirBoolean? startCheck;
+    CqlBoolean? startCheck;
     if (rightStart == null) {
       startCheck = null; // unknown boundary → uncertain
     } else if (leftStart == null) {
       startCheck = null; // unknown boundary → uncertain
     } else if (precision != null ||
-        leftStart is FhirDateTimeBase ||
-        leftStart is FhirTime) {
+        leftStart is CqlDateTimeBase ||
+        leftStart is CqlTime) {
       startCheck = SameOrAfter.sameOrAfter(leftStart, rightStart, precision);
     } else {
       startCheck = GreaterOrEqual.greaterOrEqual(leftStart, rightStart);
     }
 
     // Compute end check: left.end <= right.end
-    FhirBoolean? endCheck;
+    CqlBoolean? endCheck;
     if (rightEnd == null) {
       endCheck = null; // unknown boundary → uncertain
     } else if (leftEnd == null) {
       endCheck = null; // unknown boundary → uncertain
     } else if (precision != null ||
-        leftEnd is FhirDateTimeBase ||
-        leftEnd is FhirTime) {
+        leftEnd is CqlDateTimeBase ||
+        leftEnd is CqlTime) {
       endCheck = SameOrBefore.sameOrBefore(leftEnd, rightEnd, precision);
     } else {
       endCheck = LessOrEqual.lessOrEqual(leftEnd, rightEnd);
@@ -269,11 +268,11 @@ class IncludedIn extends BinaryExpression {
         // Unknown start in container. If leftStart >= rightEnd, then since
         // rightStart < rightEnd (valid interval), rightStart < leftStart.
         final ge = precision != null ||
-                leftStart is FhirDateTimeBase ||
-                leftStart is FhirTime
+                leftStart is CqlDateTimeBase ||
+                leftStart is CqlTime
             ? SameOrAfter.sameOrAfter(leftStart, rightEnd, precision)
             : GreaterOrEqual.greaterOrEqual(leftStart, rightEnd);
-        if (ge?.valueBoolean == true) return FhirBoolean(true);
+        if (ge?.valueBoolean == true) return CqlBoolean(true);
       }
       if (rightEnd == null &&
           startCheck?.valueBoolean == true &&
@@ -282,11 +281,11 @@ class IncludedIn extends BinaryExpression {
         // Unknown end in container. If leftEnd <= rightStart, then since
         // rightEnd > rightStart (valid interval), leftEnd < rightEnd.
         final le = precision != null ||
-                leftEnd is FhirDateTimeBase ||
-                leftEnd is FhirTime
+                leftEnd is CqlDateTimeBase ||
+                leftEnd is CqlTime
             ? SameOrBefore.sameOrBefore(leftEnd, rightStart, precision)
             : LessOrEqual.lessOrEqual(leftEnd, rightStart);
-        if (le?.valueBoolean == true) return FhirBoolean(true);
+        if (le?.valueBoolean == true) return CqlBoolean(true);
       }
     }
 

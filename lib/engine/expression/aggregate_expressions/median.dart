@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -133,12 +132,12 @@ class Median extends AggregateExpression {
         return null;
       }
 
-      // Handle FhirNumber or FhirDecimal
-      if (sourceResult.every((element) => element is FhirNumber)) {
+      // Handle CqlNumber or CqlDecimal
+      if (sourceResult.every((element) => element is CqlNumber)) {
         var decimals =
-            sourceResult.map((e) => FhirDecimal(e.valueNum!)).toList();
+            sourceResult.map((e) => CqlDecimal(e.valueNum!)).toList();
         decimals.sort((a, b) => a.valueNum!.compareTo(
-            b.valueNum!)); // Ensure FhirDecimal has a comparable implementation
+            b.valueNum!)); // Ensure CqlDecimal has a comparable implementation
 
         int middleIndex = decimals.length ~/ 2;
         if (decimals.length % 2 == 1) {
@@ -146,7 +145,7 @@ class Median extends AggregateExpression {
               middleIndex]; // return the middle element for odd length
         } else {
           // Average the two middle elements for even length
-          return FhirDecimal((decimals[middleIndex - 1].valueNum! +
+          return CqlDecimal((decimals[middleIndex - 1].valueNum! +
                   decimals[middleIndex].valueNum!) /
               2);
         }

@@ -1,4 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart' as fhir;
+import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to split a string into a list of strings using matches of a regex pattern.
@@ -77,7 +77,7 @@ class SplitOnMatches extends OperatorExpression {
     if (pattern == null) return null;
 
     String? s;
-    if (str is fhir.FhirString) {
+    if (str is fhir.CqlString) {
       s = str.primitiveValue;
     } else if (str is String) {
       s = str;
@@ -85,13 +85,13 @@ class SplitOnMatches extends OperatorExpression {
     if (s == null) return null;
 
     String? p;
-    if (pattern is fhir.FhirString) {
+    if (pattern is fhir.CqlString) {
       p = pattern.primitiveValue;
     } else if (pattern is String) {
       p = pattern;
     }
     if (p == null) return null;
 
-    return s.split(RegExp(p)).map((e) => fhir.FhirString(e)).toList();
+    return s.split(RegExp(p)).map((e) => fhir.CqlString(e)).toList();
   }
 }

@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Quantity, SortDirection;
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -157,7 +156,7 @@ class Query extends CqlExpression {
                 ..[rel.alias] = relElement;
               final cond = await rel.suchThat!.execute(execCtx);
               if (cond == true ||
-                  (cond is FhirBoolean && cond.valueBoolean == true)) {
+                  (cond is CqlBoolean && cond.valueBoolean == true)) {
                 hasMatch = true;
                 break;
               }
@@ -186,7 +185,7 @@ class Query extends CqlExpression {
           ..addAll(row);
         final dynamic cond = await where!.execute(execCtx);
         if (cond == true ||
-            (cond is FhirBoolean && cond.valueBoolean == true)) {
+            (cond is CqlBoolean && cond.valueBoolean == true)) {
           filtered.add(row);
         }
       }

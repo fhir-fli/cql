@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
 
@@ -90,13 +89,13 @@ class Indexer extends BinaryExpression {
     if (result == null || index == null) {
       return null;
     }
-    if (result is String && index is FhirInteger) {
+    if (result is String && index is CqlInteger) {
       if (index < 0 || index >= result.length) {
         return null;
       }
       return result[index.valueInt!];
     }
-    if (result is List && index is FhirInteger) {
+    if (result is List && index is CqlInteger) {
       if (index < 0 || index >= result.length) {
         return null;
       }
