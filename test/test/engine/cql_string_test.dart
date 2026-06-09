@@ -80,7 +80,7 @@ void main() {
         element: LiteralInteger(5),
       );
       final result = await indexof.execute({});
-      expect(result, FhirInteger(2));
+      expect(result, CqlInteger(2));
     });
     test('define "IndexOfNotFound": IndexOf({ 1, 3, 5, 7 }, 4) // -1',
         () async {
@@ -94,7 +94,7 @@ void main() {
         element: LiteralInteger(4),
       );
       final result = await indexof.execute({});
-      expect(result, FhirInteger(-1));
+      expect(result, CqlInteger(-1));
     });
     test('define "IndexOfIsNull": IndexOf(null, 4)', () async {
       final indexof =
@@ -110,14 +110,14 @@ void main() {
       final pattern = LiteralString('B');
       final argument = LiteralString('ABCDEDCBA');
       final positionOf = PositionOf(pattern: pattern, string: argument);
-      expect(await positionOf.execute({}), equals(FhirInteger(1)));
+      expect(await positionOf.execute({}), equals(CqlInteger(1)));
     });
     test("""define "PositionOfNotFound": PositionOf('Z', 'ABCDE') // -1""",
         () async {
       final pattern = LiteralString('Z');
       final argument = LiteralString('ABCDE');
       final positionOf = PositionOf(pattern: pattern, string: argument);
-      expect(await positionOf.execute({}), equals(FhirInteger(-1)));
+      expect(await positionOf.execute({}), equals(CqlInteger(-1)));
     });
     test("""define "PositionOfIsNull": PositionOf(null, 'ABCDE') // null""",
         () async {
@@ -135,7 +135,7 @@ void main() {
       final pattern = LiteralString('B');
       final argument = LiteralString('ABCDEDCBA');
       final lastPositionOf = LastPositionOf(pattern: pattern, string: argument);
-      expect(await lastPositionOf.execute({}), equals(FhirInteger(7)));
+      expect(await lastPositionOf.execute({}), equals(CqlInteger(7)));
     });
     test(
         """define "LastPositionOfNotFound": LastPositionOf('XYZ', 'ABCDE') // -1""",
@@ -143,7 +143,7 @@ void main() {
       final pattern = LiteralString('XYZ');
       final argument = LiteralString('ABCDE');
       final lastPositionOf = LastPositionOf(pattern: pattern, string: argument);
-      expect(await lastPositionOf.execute({}), equals(FhirInteger(-1)));
+      expect(await lastPositionOf.execute({}), equals(CqlInteger(-1)));
     });
     test(
         """define "LastPositionOfIsNull": LastPositionOf(null, 'ABCDE') // null""",
@@ -198,7 +198,7 @@ void main() {
       final prefix = LiteralString('ABC');
       final startsWith = StartsWith(operand: [argument, prefix]);
       final result = await startsWith.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
     test("""define "StartsWithIsFalse": StartsWith('ABCDE', 'XYZ') // false""",
         () async {
@@ -206,7 +206,7 @@ void main() {
       final prefix = LiteralString('XYZ');
       final startsWith = StartsWith(operand: [argument, prefix]);
       final result = await startsWith.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
     test("""define "StartsWithIsNull": StartsWith('ABCDE', null) // null""",
         () async {
@@ -223,7 +223,7 @@ void main() {
       final suffix = LiteralString('C');
       final endsWith = EndsWith(operand: [argument, suffix]);
       final result = await endsWith.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
     test("""define "EndsWithIsFalse": EndsWith('ABC', 'Z') // false""",
         () async {
@@ -231,7 +231,7 @@ void main() {
       final suffix = LiteralString('Z');
       final endsWith = EndsWith(operand: [argument, suffix]);
       final result = await endsWith.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
     test("""define "EndsWithIsNull": EndsWith('ABC', null) // null""",
         () async {
@@ -248,13 +248,13 @@ void main() {
       final argument = LiteralString('1,2three');
       final pattern = LiteralString('\\d,\\d\\w+');
       final matches = Matches(operand: [argument, pattern]);
-      expect(await matches.execute({}), FhirBoolean(true));
+      expect(await matches.execute({}), CqlBoolean(true));
     });
     test(""""define "MatchesFalse": Matches('1,2three', '\\w+')""", () async {
       final argument = LiteralString('1,2three');
       final pattern = LiteralString('\\w+');
       final matches = Matches(operand: [argument, pattern]);
-      expect(await matches.execute({}), FhirBoolean(false));
+      expect(await matches.execute({}), CqlBoolean(false));
     });
     test(""""define "MatchesIsNull": Matches('12three', null)""", () async {
       final argument = LiteralString('12three');
@@ -267,7 +267,7 @@ void main() {
     test("""define "Length14": Length('ABCDE') // 5""", () async {
       final input = LiteralString('ABCDE');
       final output = Length(operand: input);
-      expect(await output.execute({}), equals(FhirInteger(5)));
+      expect(await output.execute({}), equals(CqlInteger(5)));
     });
     test("""define "LengthIsNull": Length(null as String) // null""", () async {
       final input = As(resultTypeName: 'String', operand: LiteralNull());
@@ -280,7 +280,7 @@ void main() {
     test("""define "LowerHello": Lower('HELLO') // 'hello'""", () async {
       final lower = Lower(operand: LiteralString('HELLO'));
       final result = await lower.execute({});
-      expect(result, FhirString('hello'));
+      expect(result, CqlString('hello'));
     });
     test("""define "LowerIsNull": Lower(null) // null""", () async {
       final lower = Lower(operand: LiteralNull());
@@ -291,7 +291,7 @@ void main() {
         () async {
       final lower = Lower(operand: LiteralString('Hello123World'));
       final result = await lower.execute({});
-      expect(result, FhirString('hello123world'));
+      expect(result, CqlString('hello123world'));
     });
   });
 
@@ -299,7 +299,7 @@ void main() {
     test("""define "UpperHello": Upper('hello') // 'HELLO'""", () async {
       final upper = Upper(operand: LiteralString('hello'));
       final result = await upper.execute({});
-      expect(result, FhirString('HELLO'));
+      expect(result, CqlString('HELLO'));
     });
     test("""define "UpperIsNull": Upper(null) // null""", () async {
       final upper = Upper(operand: LiteralNull());
@@ -310,7 +310,7 @@ void main() {
         () async {
       final upper = Upper(operand: LiteralString('Hello123World'));
       final result = await upper.execute({});
-      expect(result, FhirString('HELLO123WORLD'));
+      expect(result, CqlString('HELLO123WORLD'));
     });
   });
 
@@ -319,7 +319,7 @@ void main() {
         () async {
       final toChars = ToChars(operand: LiteralString('ABC'));
       final result = await toChars.execute({});
-      expect(result, [FhirString('A'), FhirString('B'), FhirString('C')]);
+      expect(result, [CqlString('A'), CqlString('B'), CqlString('C')]);
     });
     test("""define "ToCharsIsNull": ToChars(null) // null""", () async {
       final toChars = ToChars(operand: LiteralNull());
@@ -329,12 +329,12 @@ void main() {
     test("""define "ToCharsTwo": ToChars('AB') // { 'A', 'B' }""", () async {
       final toChars = ToChars(operand: LiteralString('AB'));
       final result = await toChars.execute({});
-      expect(result, [FhirString('A'), FhirString('B')]);
+      expect(result, [CqlString('A'), CqlString('B')]);
     });
     test("""define "ToCharsSingle": ToChars('X') // { 'X' }""", () async {
       final toChars = ToChars(operand: LiteralString('X'));
       final result = await toChars.execute({});
-      expect(result, [FhirString('X')]);
+      expect(result, [CqlString('X')]);
     });
   });
 
@@ -346,7 +346,7 @@ void main() {
         startIndex: LiteralInteger(2),
       );
       final result = await substring.execute({});
-      expect(result, FhirString('CDE'));
+      expect(result, CqlString('CDE'));
     });
     test("""define "SubstringWithLength": Substring('ABCDE', 2, 3) // 'CDE'""",
         () async {
@@ -356,7 +356,7 @@ void main() {
         length: LiteralInteger(3),
       );
       final result = await substring.execute({});
-      expect(result, FhirString('CDE'));
+      expect(result, CqlString('CDE'));
     });
     test("""define "SubstringIsNull": Substring(null, 2) // null""", () async {
       final substring = Substring(
@@ -387,10 +387,10 @@ void main() {
       );
       final result = await splitOnMatches.execute({});
       expect(result, [
-        FhirString('A'),
-        FhirString('B'),
-        FhirString('C'),
-        FhirString(''),
+        CqlString('A'),
+        CqlString('B'),
+        CqlString('C'),
+        CqlString(''),
       ]);
     });
     test(
@@ -411,7 +411,7 @@ void main() {
         separatorPattern: LiteralString('\\d'),
       );
       final result = await splitOnMatches.execute({});
-      expect(result, [FhirString('ABC')]);
+      expect(result, [CqlString('ABC')]);
     });
     test(
         """define "SplitOnMatchesNullPattern": SplitOnMatches('ABC', null) // null""",

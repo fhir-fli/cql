@@ -2,6 +2,8 @@ import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:test/test.dart';
 
+Map<String, dynamic> _ctx() => {ContextKey.modelResolver: const R4ModelResolver()};
+
 void main() {
   group('Contains', () {
     test("""define "ContainsIsTrue": Interval[1, 5] contains 4""", () async {
@@ -13,8 +15,8 @@ void main() {
       final contains = Contains(
         operand: [interval, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "ContainsIsFalse": Interval[1, 5] contains 6""", () async {
       final interval = IntervalExpression(
@@ -25,8 +27,8 @@ void main() {
       final contains = Contains(
         operand: [interval, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "ContainsIsNull": Interval[1, 5] contains null""", () async {
       final interval = IntervalExpression(
@@ -37,7 +39,7 @@ void main() {
       final contains = Contains(
         operand: [interval, value],
       );
-      final result = await contains.execute({});
+      final result = await contains.execute(_ctx());
       expect(result, null);
     });
     test("""define "ContainsIsTrue": { 1, 3, 5, 7 } contains 5""", () async {
@@ -53,8 +55,8 @@ void main() {
       final contains = Contains(
         operand: [list, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "ContainsIsFalse": { 1, 3, 5, 7 } contains 4""", () async {
       final list = ListExpression(
@@ -69,8 +71,8 @@ void main() {
       final contains = Contains(
         operand: [list, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "ContainsIsAlsoFalse": null contains 4""", () async {
       final list = LiteralNull();
@@ -78,8 +80,8 @@ void main() {
       final contains = Contains(
         operand: [list, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "ContainsNullIsFalse": { 1, 3, 5, 7 } contains null""",
         () async {
@@ -95,8 +97,8 @@ void main() {
       final contains = Contains(
         operand: [list, value],
       );
-      final result = await contains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await contains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -106,16 +108,16 @@ void main() {
       final interval =
           IntervalExpression(low: LiteralInteger(0), high: LiteralInteger(5));
       final inValue = In(operand: [value, interval]);
-      final result = await inValue.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await inValue.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "InIsFalse": -1 in Interval[0, 7]""", () async {
       final value = LiteralInteger(-1);
       final interval =
           IntervalExpression(low: LiteralInteger(0), high: LiteralInteger(7));
       final inValue = In(operand: [value, interval]);
-      final result = await inValue.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await inValue.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "InIsAlsoFalse": 3 in (null as Interval<Integer>)""",
         () async {
@@ -124,7 +126,7 @@ void main() {
           As(operand: LiteralNull(), asType: QName.parse('Interval'));
       final inValue = In(operand: [value, interval]);
       final result = await inValue.execute({'library': CqlLibrary()});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
     test("""define "InIsTrue": 5 in { 1, 3, 5, 7 }""", () async {
       final value = LiteralInteger(3);
@@ -135,8 +137,8 @@ void main() {
         LiteralInteger(7),
       ]);
       final inValue = In(operand: [value, interval]);
-      final result = await inValue.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await inValue.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "InIsFalse": 5 in { 1, 3 }""", () async {
       final value = LiteralInteger(5);
@@ -145,15 +147,15 @@ void main() {
         LiteralInteger(3),
       ]);
       final inValue = In(operand: [value, interval]);
-      final result = await inValue.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await inValue.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "InIsAlsoFalse": 5 in null""", () async {
       final value = LiteralInteger(3);
       final interval = As(operand: LiteralNull(), asType: QName.parse('List'));
       final inValue = In(operand: [value, interval]);
       final result = await inValue.execute({'library': CqlLibrary()});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
     test("""define "NullInIsTrue": null in { 1, 3, 5, null }""", () async {
       final value = LiteralNull();
@@ -164,8 +166,8 @@ void main() {
         LiteralNull(),
       ]);
       final inValue = In(operand: [value, interval]);
-      final result = await inValue.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await inValue.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
   });
 
@@ -181,8 +183,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await includedIn.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
     test('define "IncludedInIsFalse": -1 during Interval[0, 7]', () async {
       final left = LiteralInteger(-1);
@@ -191,8 +193,8 @@ void main() {
         high: LiteralInteger(7),
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      final result = await includedIn.execute(_ctx());
+      expect(result, equals(CqlBoolean(false)));
     });
     test('define "IncludedInIsNull": 3 included in (null as Interval<Integer>)',
         () async {
@@ -200,8 +202,8 @@ void main() {
       final right =
           As(operand: LiteralNull(), asType: QName(localPart: 'Interval'));
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await includedIn.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test('define "IncludedInIsTrue": 5 included in { 1, 3, 5, 7 }', () async {
       final left = LiteralInteger(5);
@@ -214,8 +216,8 @@ void main() {
         ],
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await includedIn.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
     test('define "IncludedInIsNull": null included in { 1, 3, 5 }', () async {
       final left = LiteralNull();
@@ -227,7 +229,7 @@ void main() {
         ],
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
+      final result = await includedIn.execute(_ctx());
       expect(result, isNull);
     });
     test('define "IncludedInIsFalse": { 1, 3, 5 } included in { 1, 3 }',
@@ -246,8 +248,8 @@ void main() {
         ],
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      final result = await includedIn.execute(_ctx());
+      expect(result, equals(CqlBoolean(false)));
     });
     test('define "IncludedInIsFalse": { 1, 3 } included in { 1, 3, 5 }',
         () async {
@@ -265,8 +267,8 @@ void main() {
         ],
       );
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await includedIn.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
 
     test('define "IncludedInIsAlsoNull": { 1, 3, 5, null } included in null',
@@ -281,7 +283,7 @@ void main() {
       );
       final right = LiteralNull();
       final includedIn = IncludedIn(operand: [left, right]);
-      final result = await includedIn.execute({});
+      final result = await includedIn.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -298,8 +300,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await includes.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
     test('define "IncludesIsFalse": Interval[-1, 5] includes 6', () async {
       final left = LiteralIntegerInterval(
@@ -308,8 +310,8 @@ void main() {
       );
       final right = LiteralInteger(6);
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      final result = await includes.execute(_ctx());
+      expect(result, equals(CqlBoolean(false)));
     });
     test('define "IncludesIsNull": Interval[-1, 5] includes null', () async {
       final left = LiteralIntegerInterval(
@@ -318,7 +320,7 @@ void main() {
       );
       final right = LiteralNull();
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
+      final result = await includes.execute(_ctx());
       expect(result, isNull);
     });
     test('define "IncludesIsTrue": { 1, 3, 5, 7 } includes 5', () async {
@@ -330,8 +332,8 @@ void main() {
       ]);
       final right = LiteralInteger(5);
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await includes.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
     test('define "IncludesIsNull": { 1, 3, 5, null } includes null', () async {
       final left = ListExpression(element: [
@@ -342,7 +344,7 @@ void main() {
       ]);
       final right = LiteralNull();
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
+      final result = await includes.execute(_ctx());
       expect(result, isNull);
     });
     test('define "IncludesIsFalse": { 1, 3 } includes { 1, 3, 5 }', () async {
@@ -356,8 +358,8 @@ void main() {
         LiteralInteger(5),
       ]);
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      final result = await includes.execute(_ctx());
+      expect(result, equals(CqlBoolean(false)));
     });
     test('define "IncludesIsAlsoNull": null includes { 1, 3, 5 }', () async {
       final left = LiteralNull();
@@ -367,7 +369,7 @@ void main() {
         LiteralInteger(5),
       ]);
       final includes = Includes(operand: [left, right]);
-      final result = await includes.execute({});
+      final result = await includes.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -383,8 +385,8 @@ void main() {
       final high2 = LiteralTime('@T06');
       final interval2 = IntervalExpression(low: low2, high: high2);
       final meets = Meets(operand: [interval1, interval2]);
-      final result = await meets.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await meets.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "MeetsIsTrue": Interval[6, 10] meets Interval[0, 5]""",
         () async {
@@ -395,8 +397,8 @@ void main() {
       final high2 = LiteralInteger(5);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final meets = Meets(operand: [interval1, interval2]);
-      final result = await meets.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await meets.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         """define "MeetsIsNull": Interval[6, 10] meets (null as Interval<Integer>)""",
@@ -407,7 +409,7 @@ void main() {
       final interval2 =
           As(operand: LiteralNull(), asType: QName.fromElmType('Interval'));
       final meets = Meets(operand: [interval1, interval2]);
-      final result = await meets.execute({});
+      final result = await meets.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -423,8 +425,8 @@ void main() {
       final high2 = LiteralInteger(7);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final meetsBefore = MeetsAfter(operand: [interval1, interval2]);
-      final result = await meetsBefore.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await meetsBefore.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -439,8 +441,8 @@ void main() {
       final high2 = LiteralInteger(5);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final meetsBefore = MeetsBefore(operand: [interval1, interval2]);
-      final result = await meetsBefore.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await meetsBefore.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
   });
 
@@ -453,7 +455,7 @@ void main() {
       final right = LiteralIntegerInterval(
           low: LiteralInteger(1), high: LiteralInteger(4));
       final result = Overlaps(operand: [left, right]);
-      expect(await result.execute({}), equals(FhirBoolean(true)));
+      expect(await result.execute(_ctx()), equals(CqlBoolean(true)));
     });
     test(
         """define "OverlapsIsNull": Interval[6, 10] overlaps (null as Interval<Integer>) // null""",
@@ -463,7 +465,7 @@ void main() {
       final right =
           As(operand: LiteralNull(), resultTypeName: 'Interval<Integer>');
       final result = Overlaps(operand: [left, right]);
-      expect(await result.execute({}), equals(null));
+      expect(await result.execute(_ctx()), equals(null));
     });
   });
 
@@ -476,7 +478,7 @@ void main() {
       final right = LiteralIntegerInterval(
           low: LiteralInteger(1), high: LiteralInteger(4));
       final result = OverlapsAfter(operand: [left, right]);
-      expect(await result.execute({}), equals(FhirBoolean(false)));
+      expect(await result.execute(_ctx()), equals(CqlBoolean(false)));
     });
   });
 
@@ -489,7 +491,7 @@ void main() {
       final right = LiteralIntegerInterval(
           low: LiteralInteger(1), high: LiteralInteger(4));
       final result = OverlapsBefore(operand: [left, right]);
-      expect(await result.execute({}), equals(FhirBoolean(true)));
+      expect(await result.execute(_ctx()), equals(CqlBoolean(true)));
     });
   });
 
@@ -503,8 +505,8 @@ void main() {
       final high2 = LiteralInteger(7);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final starts = Starts(operand: [interval1, interval2]);
-      final result = await starts.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await starts.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "StartsIsFalse": Interval[0, 7] starts Interval[0, 6]""",
         () async {
@@ -515,8 +517,8 @@ void main() {
       final high2 = LiteralInteger(6);
       final interval2 = IntervalExpression(low: low2, high: high2);
       final starts = Starts(operand: [interval1, interval2]);
-      final result = await starts.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await starts.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "StartsIsNull": Interval[1, 5] starts null""", () async {
       final low1 = LiteralInteger(0);
@@ -525,7 +527,7 @@ void main() {
       final interval2 =
           As(operand: LiteralNull(), asType: QName.fromElmType('Interval'));
       final starts = Starts(operand: [interval1, interval2]);
-      final result = await starts.execute({});
+      final result = await starts.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -537,8 +539,8 @@ void main() {
       final right = LiteralIntegerInterval(
           low: LiteralInteger(-1), high: LiteralInteger(5));
       final ends = Ends(operand: [left, right]);
-      final result = await ends.execute({});
-      expect(result, equals(FhirBoolean(true)));
+      final result = await ends.execute(_ctx());
+      expect(result, equals(CqlBoolean(true)));
     });
     test('define "EndsIsFalse": Interval[-1, 7] ends Interval[0, 7]', () async {
       final left = LiteralIntegerInterval(
@@ -546,14 +548,14 @@ void main() {
       final right = LiteralIntegerInterval(
           low: LiteralInteger(0), high: LiteralInteger(7));
       final ends = Ends(operand: [left, right]);
-      final result = await ends.execute({});
-      expect(result, equals(FhirBoolean(false)));
+      final result = await ends.execute(_ctx());
+      expect(result, equals(CqlBoolean(false)));
     });
     test('define "EndsIsNull": Interval[1, 5] ends null', () async {
       final left = LiteralIntegerInterval(
           low: LiteralInteger(1), high: LiteralInteger(5));
       final ends = Ends(operand: [left, LiteralNull()]);
-      final result = await ends.execute({});
+      final result = await ends.execute(_ctx());
       expect(result, equals(null));
     });
   });
@@ -579,12 +581,12 @@ void main() {
           high: LiteralInteger(9));
       final list = ListExpression(element: [interval1, interval2, interval3]);
       final collapse = Collapse(operand: [list]);
-      final result = await collapse.execute({});
-      expect(result, [CqlInterval(low: FhirInteger(1), high: FhirInteger(9))]);
+      final result = await collapse.execute(_ctx());
+      expect(result, [CqlInterval(low: CqlInteger(1), high: CqlInteger(9))]);
     });
     test('define "CollapseIsNull": collapse null', () async {
       final collapse = Collapse(operand: [LiteralNull()]);
-      final result = await collapse.execute({});
+      final result = await collapse.execute(_ctx());
       expect(result, null);
     });
   });
@@ -597,19 +599,19 @@ void main() {
       );
       final list = ListExpression(element: [interval1]);
       final expand = Expand(operand: [list]);
-      final result = await expand.execute({});
+      final result = await expand.execute(_ctx());
       final interval2 = CqlInterval(
-          low: FhirDate.fromString('2018-01-01'),
-          high: FhirDate.fromString('2018-01-01'));
+          low: CqlDate.fromString('2018-01-01'),
+          high: CqlDate.fromString('2018-01-01'));
       final interval3 = CqlInterval(
-          low: FhirDate.fromString('2018-01-02'),
-          high: FhirDate.fromString('2018-01-02'));
+          low: CqlDate.fromString('2018-01-02'),
+          high: CqlDate.fromString('2018-01-02'));
       final interval4 = CqlInterval(
-          low: FhirDate.fromString('2018-01-03'),
-          high: FhirDate.fromString('2018-01-03'));
+          low: CqlDate.fromString('2018-01-03'),
+          high: CqlDate.fromString('2018-01-03'));
       final interval5 = CqlInterval(
-          low: FhirDate.fromString('2018-01-04'),
-          high: FhirDate.fromString('2018-01-04'));
+          low: CqlDate.fromString('2018-01-04'),
+          high: CqlDate.fromString('2018-01-04'));
       expect(result, [interval2, interval3, interval4, interval5]);
     });
     test('// expand { Interval[@T10:00, @T12:30] } per hour', () async {
@@ -618,18 +620,18 @@ void main() {
         high: LiteralInteger(10),
       );
       final expand = Expand(operand: [interval1]);
-      final result = await expand.execute({});
+      final result = await expand.execute(_ctx());
       expect(result, [
-        FhirInteger(1),
-        FhirInteger(2),
-        FhirInteger(3),
-        FhirInteger(4),
-        FhirInteger(5),
-        FhirInteger(6),
-        FhirInteger(7),
-        FhirInteger(8),
-        FhirInteger(9),
-        FhirInteger(10)
+        CqlInteger(1),
+        CqlInteger(2),
+        CqlInteger(3),
+        CqlInteger(4),
+        CqlInteger(5),
+        CqlInteger(6),
+        CqlInteger(7),
+        CqlInteger(8),
+        CqlInteger(9),
+        CqlInteger(10)
       ]);
     });
   });
@@ -643,15 +645,15 @@ void main() {
           highClosed: true,
           high: LiteralInteger(5));
       final start = Start(operand: interval);
-      final result = await start.execute({});
-      expect(result, FhirInteger(1));
+      final result = await start.execute(_ctx());
+      expect(result, CqlInteger(1));
     });
     test("""define "StartIsNull": start of (null as Interval<Integer>)""",
         () async {
       final interval =
           As(operand: LiteralNull(), asType: QName.fromElmType('Interval'));
       final start = Start(operand: interval);
-      final result = await start.execute({});
+      final result = await start.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -661,15 +663,15 @@ void main() {
       final interval =
           IntervalExpression(low: LiteralInteger(1), high: LiteralInteger(5));
       final end = End(operand: interval);
-      final result = await end.execute({});
-      expect(result, equals(FhirInteger(5)));
+      final result = await end.execute(_ctx());
+      expect(result, equals(CqlInteger(5)));
     });
     test("""define "EndIsNull": end of (null as Interval<Integer>)""",
         () async {
       final interval =
           As(operand: LiteralNull(), asType: QName.fromElmType('Interval'));
       final end = End(operand: interval);
-      final result = await end.execute({});
+      final result = await end.execute(_ctx());
       expect(result, equals(null));
     });
   });
@@ -679,8 +681,8 @@ void main() {
       final interval =
           IntervalExpression(low: LiteralInteger(3), high: LiteralInteger(7));
       final width = Width(operand: interval);
-      final result = await width.execute({});
-      expect(result, equals(FhirInteger(4)));
+      final result = await width.execute(_ctx());
+      expect(result, equals(CqlInteger(4)));
     });
     test(
         """define "WidthIsNull": width of (null as Interval<Integer>) // null""",
@@ -688,7 +690,7 @@ void main() {
       final interval =
           As(operand: LiteralNull(), asType: QName.fromElmType('Interval'));
       final width = Width(operand: interval);
-      final result = await width.execute({});
+      final result = await width.execute(_ctx());
       expect(result, equals(null));
     });
     test("""define "NullInterval": width of Interval[0, null) //null""",
@@ -696,7 +698,7 @@ void main() {
       final interval = IntervalExpression(
           low: LiteralInteger(0), high: LiteralNull(), highClosed: false);
       final width = Width(operand: interval);
-      final result = await width.execute({});
+      final result = await width.execute(_ctx());
       expect(result, equals(null));
     });
   });
@@ -711,8 +713,8 @@ void main() {
           highClosed: true,
           high: LiteralInteger(7));
       final size = Size(operand: interval);
-      final result = await size.execute({});
-      expect(result, equals(FhirInteger(5)));
+      final result = await size.execute(_ctx());
+      expect(result, equals(CqlInteger(5)));
     });
     test(
         """define "SizeTestEquivalent": Size(Interval[3, 8)) // 5, i.e. the interval contains 5 points""",
@@ -723,15 +725,15 @@ void main() {
           highClosed: false,
           high: LiteralInteger(8));
       final size = Size(operand: interval);
-      final result = await size.execute({});
-      expect(result, equals(FhirInteger(5)));
+      final result = await size.execute(_ctx());
+      expect(result, equals(CqlInteger(5)));
     });
     test("""define "SizeIsNull": Size(null as Interval<Integer>) // null""",
         () async {
       final size = Size(
           operand: As(
               operand: LiteralNull(), asType: QName.fromElmType('Interval')));
-      final result = await size.execute({});
+      final result = await size.execute(_ctx());
       expect(result, equals(null));
     });
   });
@@ -744,8 +746,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final pointFrom = PointFrom(operand: interval);
-      final result = await pointFrom.execute({});
-      expect(result, FhirInteger(5));
+      final result = await pointFrom.execute(_ctx());
+      expect(result, CqlInteger(5));
     });
     test("""define "PointFromNonUnit": point from Interval[1, 5] // throws""",
         () async {
@@ -754,13 +756,13 @@ void main() {
         high: LiteralInteger(5),
       );
       final pointFrom = PointFrom(operand: interval);
-      expect(() async => await pointFrom.execute({}), throwsArgumentError);
+      expect(() async => await pointFrom.execute(_ctx()), throwsArgumentError);
     });
     test("""define "PointFromIsNull": point from null // null""", () async {
       final pointFrom = PointFrom(
           operand: As(
               operand: LiteralNull(), asType: QName.fromElmType('Interval')));
-      final result = await pointFrom.execute({});
+      final result = await pointFrom.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -775,8 +777,8 @@ void main() {
       final properContains = ProperContains(
         operand: [interval, LiteralInteger(3)],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         """define "ProperContainsAtLow": Interval[1, 5] properly contains 1 // false""",
@@ -788,8 +790,8 @@ void main() {
       final properContains = ProperContains(
         operand: [interval, LiteralInteger(1)],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         """define "ProperContainsAtHigh": Interval[1, 5] properly contains 5 // false""",
@@ -801,8 +803,8 @@ void main() {
       final properContains = ProperContains(
         operand: [interval, LiteralInteger(5)],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         """define "ProperContainsUnitPoint": Interval[5, 5] properly contains 5 // false""",
@@ -814,8 +816,8 @@ void main() {
       final properContains = ProperContains(
         operand: [interval, LiteralInteger(5)],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         """define "ProperContainsIsNull": Interval[1, 5] properly contains null // null""",
@@ -827,7 +829,7 @@ void main() {
       final properContains = ProperContains(
         operand: [interval, LiteralNull()],
       );
-      final result = await properContains.execute({});
+      final result = await properContains.execute(_ctx());
       expect(result, isNull);
     });
     test(
@@ -843,8 +845,8 @@ void main() {
       final properContains = ProperContains(
         operand: [list, LiteralNull()],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         """define "ProperContainsNullRightTrue": {'s', 'u', 'n', null} properly contains null // true""",
@@ -860,8 +862,8 @@ void main() {
       final properContains = ProperContains(
         operand: [list, LiteralNull()],
       );
-      final result = await properContains.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properContains.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         """define "ProperContainsTimeNull": { @T15:59:59.999, @T20:59:59.999, @T20:59:49.999 } properly contains @T15:59:59 // null""",
@@ -876,7 +878,7 @@ void main() {
       final properContains = ProperContains(
         operand: [list, LiteralTime('@T15:59:59')],
       );
-      final result = await properContains.execute({});
+      final result = await properContains.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -890,8 +892,8 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralInteger(3), interval],
       );
-      final result = await properIn.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properIn.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test("""define "ProperInBoundary": 1 properly in Interval[1, 5] // false""",
         () async {
@@ -902,8 +904,8 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralInteger(1), interval],
       );
-      final result = await properIn.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properIn.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test("""define "ProperInIsNull": null properly in Interval[1, 5]""",
         () async {
@@ -914,7 +916,7 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralNull(), interval],
       );
-      final result = await properIn.execute({});
+      final result = await properIn.execute(_ctx());
       expect(result, isNull);
     });
     test(
@@ -930,8 +932,8 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralNull(), list],
       );
-      final result = await properIn.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properIn.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         """define "ProperInNullRightTrue": null properly in {'s', 'u', 'n', null} // true""",
@@ -947,8 +949,8 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralNull(), list],
       );
-      final result = await properIn.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properIn.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         """define "ProperInTimeNull": @T15:59:59 properly in { @T15:59:59.999, @T20:59:59.999, @T20:59:49.999 } // null""",
@@ -963,7 +965,7 @@ void main() {
       final properIn = ProperIn(
         operand: [LiteralTime('@T15:59:59'), list],
       );
-      final result = await properIn.execute({});
+      final result = await properIn.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -981,8 +983,8 @@ void main() {
         high: LiteralInteger(4),
       );
       final properIncludes = ProperIncludes(operand: [left, right]);
-      final result = await properIncludes.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properIncludes.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         'define "ProperIncludesEqualFalse": Interval[1, 5] properly includes Interval[1, 5] // false',
@@ -996,8 +998,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludes = ProperIncludes(operand: [left, right]);
-      final result = await properIncludes.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properIncludes.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         'define "ProperIncludesListTrue": { 1, 3, 5, 7 } properly includes { 1, 3 }',
@@ -1013,8 +1015,8 @@ void main() {
         LiteralInteger(3),
       ]);
       final properIncludes = ProperIncludes(operand: [left, right]);
-      final result = await properIncludes.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properIncludes.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test('define "ProperIncludesIsNull": Interval[1, 5] properly includes null',
         () async {
@@ -1023,7 +1025,7 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludes = ProperIncludes(operand: [left, LiteralNull()]);
-      final result = await properIncludes.execute({});
+      final result = await properIncludes.execute(_ctx());
       expect(result, isNull);
     });
     test(
@@ -1034,7 +1036,7 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludes = ProperIncludes(operand: [LiteralNull(), right]);
-      final result = await properIncludes.execute({});
+      final result = await properIncludes.execute(_ctx());
       expect(result, isNull);
     });
   });
@@ -1052,8 +1054,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludedIn = ProperIncludedIn(operand: [left, right]);
-      final result = await properIncludedIn.execute({});
-      expect(result, FhirBoolean(true));
+      final result = await properIncludedIn.execute(_ctx());
+      expect(result, CqlBoolean(true));
     });
     test(
         'define "ProperIncludedInEqualFalse": Interval[1, 5] properly included in Interval[1, 5] // false',
@@ -1067,8 +1069,8 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludedIn = ProperIncludedIn(operand: [left, right]);
-      final result = await properIncludedIn.execute({});
-      expect(result, FhirBoolean(false));
+      final result = await properIncludedIn.execute(_ctx());
+      expect(result, CqlBoolean(false));
     });
     test(
         'define "ProperIncludedInIsNull": null properly included in Interval[1, 5]',
@@ -1079,7 +1081,7 @@ void main() {
       );
       final properIncludedIn =
           ProperIncludedIn(operand: [LiteralNull(), right]);
-      final result = await properIncludedIn.execute({});
+      final result = await properIncludedIn.execute(_ctx());
       expect(result, isNull);
     });
     test(
@@ -1090,7 +1092,7 @@ void main() {
         high: LiteralInteger(5),
       );
       final properIncludedIn = ProperIncludedIn(operand: [left, LiteralNull()]);
-      final result = await properIncludedIn.execute({});
+      final result = await properIncludedIn.execute(_ctx());
       expect(result, isNull);
     });
   });

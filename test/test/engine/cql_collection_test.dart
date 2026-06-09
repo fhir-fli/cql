@@ -18,8 +18,8 @@ void main() {
   group('OperandRef', () {
     test('returns value found in context by name', () async {
       final ref = OperandRef(name: 'x');
-      final result = await ref.execute({'x': fhir.FhirInteger(42)});
-      expect(result, equals(fhir.FhirInteger(42)));
+      final result = await ref.execute({'x': CqlInteger(42)});
+      expect(result, equals(CqlInteger(42)));
     });
 
     test('returns null when key is missing from context', () async {
@@ -38,8 +38,8 @@ void main() {
   group('Current', () {
     test('reads from scope key in context', () async {
       final current = Current(scope: 'X');
-      final result = await current.execute({'X': fhir.FhirInteger(7)});
-      expect(result, equals(fhir.FhirInteger(7)));
+      final result = await current.execute({'X': CqlInteger(7)});
+      expect(result, equals(CqlInteger(7)));
     });
 
     test('reads from \$current when scope is empty', () async {
@@ -58,14 +58,14 @@ void main() {
   group('Total', () {
     test('reads from scope key in context', () async {
       final total = Total(scope: 'X');
-      final result = await total.execute({'X': fhir.FhirDecimal(100.0)});
-      expect(result, equals(fhir.FhirDecimal(100.0)));
+      final result = await total.execute({'X': CqlDecimal(100.0)});
+      expect(result, equals(CqlDecimal(100.0)));
     });
 
     test('reads from \$total when scope is empty', () async {
       final total = Total(scope: '');
-      final result = await total.execute({'\$total': fhir.FhirInteger(50)});
-      expect(result, equals(fhir.FhirInteger(50)));
+      final result = await total.execute({'\$total': CqlInteger(50)});
+      expect(result, equals(CqlInteger(50)));
     });
 
     test('returns null when scope key is missing', () async {
@@ -78,15 +78,15 @@ void main() {
   group('Iteration', () {
     test('reads from scope key in context', () async {
       final iteration = Iteration(scope: 'idx');
-      final result = await iteration.execute({'idx': fhir.FhirInteger(3)});
-      expect(result, equals(fhir.FhirInteger(3)));
+      final result = await iteration.execute({'idx': CqlInteger(3)});
+      expect(result, equals(CqlInteger(3)));
     });
 
     test('reads from \$iteration when scope is empty', () async {
       final iteration = Iteration(scope: '');
       final result =
-          await iteration.execute({'\$iteration': fhir.FhirInteger(0)});
-      expect(result, equals(fhir.FhirInteger(0)));
+          await iteration.execute({'\$iteration': CqlInteger(0)});
+      expect(result, equals(CqlInteger(0)));
     });
 
     test('returns null when scope key is missing', () async {
@@ -111,9 +111,9 @@ void main() {
       expect(
           result,
           equals([
-            fhir.FhirInteger(1),
-            fhir.FhirInteger(2),
-            fhir.FhirInteger(3),
+            CqlInteger(1),
+            CqlInteger(2),
+            CqlInteger(3),
           ]));
     });
 
@@ -159,7 +159,7 @@ void main() {
         scope: 'item',
       );
       final result = await forEach.execute({});
-      expect(result, equals([fhir.FhirInteger(42)]));
+      expect(result, equals([CqlInteger(42)]));
     });
   });
 
@@ -178,9 +178,9 @@ void main() {
       expect(
           result,
           equals([
-            fhir.FhirInteger(1),
-            fhir.FhirInteger(2),
-            fhir.FhirInteger(3),
+            CqlInteger(1),
+            CqlInteger(2),
+            CqlInteger(3),
           ]));
     });
 
@@ -216,16 +216,16 @@ void main() {
       expect(result, equals([]));
     });
 
-    test('condition with FhirBoolean true keeps element', () async {
+    test('condition with CqlBoolean true keeps element', () async {
       final source = ListExpression(element: [
         LiteralInteger(10),
       ]);
-      // Use a _ConstExpr that returns FhirBoolean(true)
-      final condition = _ConstExpr(fhir.FhirBoolean(true));
+      // Use a _ConstExpr that returns CqlBoolean(true)
+      final condition = _ConstExpr(CqlBoolean(true));
       final filter =
           Filter(source: source, condition: condition, scope: '\$this');
       final result = await filter.execute({});
-      expect(result, equals([fhir.FhirInteger(10)]));
+      expect(result, equals([CqlInteger(10)]));
     });
   });
 

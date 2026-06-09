@@ -75,11 +75,11 @@ void main() {
       final library =
           parseAndBuildLibrary(source, libraryManager: libraryManager);
       final context = <String, dynamic>{
-        'Measurement Period': FhirInteger(42),
+        'Measurement Period': CqlInteger(42),
       };
       final results = (await library.execute(context)) as Map<String, dynamic>;
 
-      expect(results['Local Parameter'], equals(FhirInteger(42)));
+      expect(results['Local Parameter'], equals(CqlInteger(42)));
       // Included parameter from IncludedParameterTestCommon — should be null
       // (no value provided for the included library's parameter)
       // or the same as the local if parameters propagate
@@ -114,8 +114,8 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: libraryManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['TestOverload'], equals(FhirInteger(5)));
-      expect(results['TestOverloadOneInt'], equals(FhirInteger(1)));
+      expect(results['TestOverload'], equals(CqlInteger(5)));
+      expect(results['TestOverloadOneInt'], equals(CqlInteger(1)));
     });
   });
 
@@ -129,8 +129,8 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: libraryManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['TestOverload'], equals(FhirInteger(5)));
-      expect(results['TestOverloadOneInt'], equals(FhirInteger(1)));
+      expect(results['TestOverload'], equals(CqlInteger(5)));
+      expect(results['TestOverloadOneInt'], equals(CqlInteger(1)));
     });
   });
 
@@ -191,7 +191,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: multilibManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Number'], equals(FhirInteger(1)));
+      expect(results['Number'], equals(CqlInteger(1)));
       expect(results['Name'], equals('Uno'));
       expect(results['MultiLibraryIdent1'], equals('MultiLibrary1'));
       expect(results['MultiLibraryValue1'], equals('One'));
@@ -204,7 +204,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: multilibManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Number'], equals(FhirInteger(2)));
+      expect(results['Number'], equals(CqlInteger(2)));
       expect(results['Name'], equals('Dos'));
     });
 
@@ -215,7 +215,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: multilibManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Number'], equals(FhirInteger(3)));
+      expect(results['Number'], equals(CqlInteger(3)));
       expect(results['Name'], equals('Tres'));
     });
 
@@ -227,7 +227,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: multilibManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Number'], equals(FhirInteger(1)));
+      expect(results['Number'], equals(CqlInteger(1)));
     });
 
     test('LibraryWithVersion evaluates correctly', () async {
@@ -237,7 +237,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: multilibManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Number'], equals(FhirInteger(5)));
+      expect(results['Number'], equals(CqlInteger(5)));
     });
   });
 }

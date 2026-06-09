@@ -2,13 +2,13 @@ import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 final exercises01 = {
-  "This is a quoted identifier": FhirDate.fromString("2021-04-01"),
+  "This is a quoted identifier": CqlDate.fromString("2021-04-01"),
   "_1MoreIdentifier": ValidatedQuantity.fromString("0.0 'g'"),
-  "Inequality Expression": FhirBoolean(true),
-  "Relative Comparison Expression": FhirBoolean(true),
+  "Inequality Expression": CqlBoolean(true),
+  "Relative Comparison Expression": CqlBoolean(true),
   "Quantity Expression": ValidatedQuantity.fromString("5 'g/dL'"),
   "Reference Expression": ValidatedQuantity.fromString("5 'g/dL'"),
   "String Concatenation": "1John",
-  "Warning Message": FhirInteger(1),
-  "Nested Warning Message": FhirInteger(3),
+  "Warning Message": CqlInteger(1),
+  "Nested Warning Message": CqlInteger(3),
 };

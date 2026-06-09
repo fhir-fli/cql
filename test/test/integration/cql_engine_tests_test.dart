@@ -30,7 +30,7 @@ void main() {
       'FunctionTestStringArg': 'hello',
       'FunctionTestNullStringArg': null,
       'FunctionTestMultipleArgs': 'hell0',
-      'FunctionTestTupleArg': FhirInteger(3),
+      'FunctionTestTupleArg': CqlInteger(3),
       'FunctionTestNullTupleArg': null,
       'FunctionTestNullMultipleArgs': null,
       'FunctionTestOverload': 'hell00.000',
@@ -61,11 +61,11 @@ void main() {
     'FunctionOverloadTest',
     libraryManager,
     {
-      'TestAnyFunctionWithInteger': FhirInteger(1),
+      'TestAnyFunctionWithInteger': CqlInteger(1),
       'TestAnyFunctionWithString': 'joe',
-      'TestAnyFunctionWithDecimal': FhirDecimal(12.3),
+      'TestAnyFunctionWithDecimal': CqlDecimal(12.3),
       'TestAnyFunctionWithNoArgs': 'any',
-      'TestAnyFunctionWith2Args': FhirInteger(3),
+      'TestAnyFunctionWith2Args': CqlInteger(3),
     },
   );
 
@@ -86,16 +86,16 @@ void main() {
     libraryManager,
     {
       'list of numbers': [
-        FhirInteger(2),
-        FhirInteger(4),
-        FhirInteger(1),
-        FhirInteger(9),
+        CqlInteger(2),
+        CqlInteger(4),
+        CqlInteger(1),
+        CqlInteger(9),
       ],
       'sorted list of numbers descending': [
-        FhirInteger(9),
-        FhirInteger(4),
-        FhirInteger(2),
-        FhirInteger(1),
+        CqlInteger(9),
+        CqlInteger(4),
+        CqlInteger(2),
+        CqlInteger(1),
       ],
     },
   );
@@ -109,8 +109,8 @@ void main() {
       'NullAndNullUntyped': null,
       'NullAndEmpty': <dynamic>[],
       'EmptyAndNull': <dynamic>[],
-      'NullAndSingle': [FhirInteger(1)],
-      'SingleAndNull': [FhirInteger(1)],
+      'NullAndSingle': [CqlInteger(1)],
+      'SingleAndNull': [CqlInteger(1)],
     },
     knownFailures: {
       'NullAndNullList': 'Null list union returns null instead of empty list',
@@ -122,8 +122,8 @@ void main() {
     'DateComparatorTest',
     libraryManager,
     {
-      'Date 1': FhirDate.fromString('2018-01-01'),
-      'Date 2': FhirDate.fromString('2018-02-01'),
+      'Date 1': CqlDate.fromString('2018-01-01'),
+      'Date 2': CqlDate.fromString('2018-02-01'),
       'Date Comparator Test': true,
     },
   );
@@ -147,16 +147,16 @@ void main() {
     libraryManager,
     {
       'First Position of list': [
-        FhirInteger(1),
-        FhirInteger(1),
-        FhirInteger(1),
-        FhirInteger(1)
+        CqlInteger(1),
+        CqlInteger(1),
+        CqlInteger(1),
+        CqlInteger(1)
       ],
       'Third Position of list With Same Name of Let As First': [
-        FhirInteger(3),
-        FhirInteger(3),
-        FhirInteger(3),
-        FhirInteger(3)
+        CqlInteger(3),
+        CqlInteger(3),
+        CqlInteger(3),
+        CqlInteger(3)
       ],
     },
   );
@@ -184,8 +184,8 @@ void main() {
     'Issue208',
     libraryManager,
     {
-      'List 1': [FhirInteger(1), FhirInteger(2), FhirInteger(3)],
-      'List 2': [FhirInteger(4), FhirInteger(5), FhirInteger(6)],
+      'List 1': [CqlInteger(1), CqlInteger(2), CqlInteger(3)],
+      'List 2': [CqlInteger(4), CqlInteger(5), CqlInteger(6)],
     },
   );
 
@@ -223,13 +223,13 @@ void main() {
     libraryManager,
     {
       'ReturnAll': [
-        FhirInteger(1),
-        FhirInteger(1),
-        FhirInteger(1),
-        FhirInteger(2),
-        FhirInteger(2),
+        CqlInteger(1),
+        CqlInteger(1),
+        CqlInteger(1),
+        CqlInteger(2),
+        CqlInteger(2),
       ],
-      'ReturnDistinct': [FhirInteger(1), FhirInteger(2)],
+      'ReturnDistinct': [CqlInteger(1), CqlInteger(2)],
     },
   );
 
@@ -242,7 +242,7 @@ void main() {
           parseAndBuildLibrary(source, libraryManager: libraryManager);
       final results = (await library.execute(null)) as Map<String, dynamic>;
 
-      expect(results['Simple Expression'], equals(FhirInteger(42)));
+      expect(results['Simple Expression'], equals(CqlInteger(42)));
     });
   }, skip: 'Parameter default resolution not yet implemented');
 
@@ -254,7 +254,7 @@ void main() {
       'Test': '1, 2, 3, 4, 5',
     },
     knownFailures: {
-      'Test': 'Combine operator fails with List<FhirInteger> argument',
+      'Test': 'Combine operator fails with List<CqlInteger> argument',
     },
   );
 
@@ -263,12 +263,12 @@ void main() {
     'SignatureOutputTests',
     libraryManager,
     {
-      'TestAdd': FhirInteger(10),
-      'TestDateAdd': FhirDate.fromString('2012-02-01'),
-      'TestDateTime': FhirDateTime.fromString('2012-01-01T00:00:00.000'),
-      'TestAvg': FhirDecimal(3.0),
-      'TestDivide': FhirDecimal(0.8),
-      'TestMultipleOverload': FhirInteger(5),
+      'TestAdd': CqlInteger(10),
+      'TestDateAdd': CqlDate.fromString('2012-02-01'),
+      'TestDateTime': CqlDateTime.fromString('2012-01-01T00:00:00.000'),
+      'TestAvg': CqlDecimal(3.0),
+      'TestDivide': CqlDecimal(0.8),
+      'TestMultipleOverload': CqlInteger(5),
     },
   );
 
@@ -277,15 +277,15 @@ void main() {
     'CqlErrorsAndMessagingOperatorsTest',
     libraryManager,
     {
-      'TestMessageInfo': FhirInteger(1),
-      'TestMessageWarn': FhirInteger(2),
-      'TestMessageTrace': [FhirInteger(3), FhirInteger(4), FhirInteger(5)],
+      'TestMessageInfo': CqlInteger(1),
+      'TestMessageWarn': CqlInteger(2),
+      'TestMessageTrace': [CqlInteger(3), CqlInteger(4), CqlInteger(5)],
       'TestMessageWithNullSource': null,
-      'TestMessageWithNullCondition': FhirInteger(1),
+      'TestMessageWithNullCondition': CqlInteger(1),
       'TestWarningWithNullSource': null,
-      'TestWarningWithNullCondition': FhirInteger(1),
+      'TestWarningWithNullCondition': CqlInteger(1),
       'TestTraceWithNullSource': null,
-      'TestTraceWithNullCondition': FhirInteger(1),
+      'TestTraceWithNullCondition': CqlInteger(1),
     },
   );
 
@@ -296,8 +296,8 @@ void main() {
     {
       'BoolTrue': true,
       'BoolFalse': false,
-      'IntOne': FhirInteger(1),
-      'DecimalTenth': FhirDecimal(0.1),
+      'IntOne': CqlInteger(1),
+      'DecimalTenth': CqlDecimal(0.1),
       'StringTrue': 'true',
     },
   );
@@ -328,7 +328,7 @@ void _testFile(
           parseAndBuildLibrary(source, libraryManager: libraryManager);
       final context = <String, dynamic>{
         'startTimestamp':
-            FhirDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
+            CqlDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
       };
       results = (await library.execute(context)) as Map<String, dynamic>;
     });

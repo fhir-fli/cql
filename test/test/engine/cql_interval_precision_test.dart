@@ -20,7 +20,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meets.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test(
@@ -39,7 +39,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await meets.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Integer intervals with no precision (existing behavior)', () async {
@@ -53,7 +53,7 @@ void main() {
       );
       final meets = Meets(operand: [interval1, interval2]);
       final result = await meets.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Non-meeting datetime intervals with day precision', () async {
@@ -70,7 +70,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meets.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -89,7 +89,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meetsBefore.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('DateTime intervals at month precision', () async {
@@ -106,7 +106,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await meetsBefore.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('MeetsBefore false at day precision when gap exists', () async {
@@ -123,7 +123,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meetsBefore.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -142,7 +142,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meetsAfter.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('MeetsAfter false at day precision when gap exists', () async {
@@ -159,7 +159,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await meetsAfter.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -175,7 +175,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await includedIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Interval included in interval at month precision', () async {
@@ -192,7 +192,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await includedIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Point included in interval at year precision', () async {
@@ -206,7 +206,7 @@ void main() {
         precision: CqlDateTimePrecision.year,
       );
       final result = await includedIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Interval not included at month precision', () async {
@@ -223,7 +223,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await includedIn.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
 
     test('Integer interval without precision (existing behavior)', () async {
@@ -237,7 +237,7 @@ void main() {
       );
       final includedIn = IncludedIn(operand: [inner, outer]);
       final result = await includedIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
   });
 
@@ -259,11 +259,11 @@ void main() {
       expect(result, hasLength(1));
       expect(
         result!.first.getStart(),
-        FhirDate.fromString('2024-01'),
+        CqlDate.fromString('2024-01'),
       );
       expect(
         result.first.getEnd(),
-        FhirDate.fromString('2024-06'),
+        CqlDate.fromString('2024-06'),
       );
     });
 
@@ -305,7 +305,7 @@ void main() {
       final list = ListExpression(element: [interval1, interval2, interval3]);
       final collapse = Collapse(operand: [list]);
       final result = await collapse.execute({});
-      expect(result, [CqlInterval(low: FhirInteger(1), high: FhirInteger(9))]);
+      expect(result, [CqlInterval(low: CqlInteger(1), high: CqlInteger(9))]);
     });
   });
 
@@ -321,7 +321,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Interval does not contain point at day precision', () async {
@@ -335,7 +335,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await contains.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
 
     test('Interval contains point at year precision', () async {
@@ -349,7 +349,7 @@ void main() {
         precision: CqlDateTimePrecision.year,
       );
       final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Contains at boundary with day precision', () async {
@@ -363,7 +363,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Integer interval without precision (existing behavior)', () async {
@@ -374,7 +374,7 @@ void main() {
       final point = LiteralInteger(4);
       final contains = Contains(operand: [interval, point]);
       final result = await contains.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
   });
 
@@ -390,7 +390,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await inOp.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Point not in interval at day precision', () async {
@@ -404,7 +404,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await inOp.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
 
     test('Point in interval at month precision', () async {
@@ -418,7 +418,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await inOp.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
   });
 
@@ -434,7 +434,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await properContains.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Interval does not properly contain boundary point at day precision',
@@ -449,7 +449,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
 
     test('Interval does not properly contain end boundary at day precision',
@@ -464,7 +464,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await properContains.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -480,7 +480,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await properIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Boundary point not properly in interval at day precision', () async {
@@ -494,7 +494,7 @@ void main() {
         precision: CqlDateTimePrecision.day,
       );
       final result = await properIn.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -514,7 +514,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await properIncludes.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Equal intervals not properly included at month precision', () async {
@@ -531,7 +531,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await properIncludes.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -551,7 +551,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await properIncludedIn.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
 
     test('Equal intervals not properly included in at month precision',
@@ -569,7 +569,7 @@ void main() {
         precision: CqlDateTimePrecision.month,
       );
       final result = await properIncludedIn.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 }

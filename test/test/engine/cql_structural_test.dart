@@ -27,7 +27,7 @@ void main() {
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
       expect(result['name'], equals('Alice'));
-      expect(result['age'], equals(fhir.FhirInteger(30)));
+      expect(result['age'], equals(CqlInteger(30)));
     });
 
     test('empty tuple returns empty map', () async {
@@ -43,7 +43,7 @@ void main() {
       ]);
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
-      expect(result['x'], equals(fhir.FhirBoolean(true)));
+      expect(result['x'], equals(CqlBoolean(true)));
     });
 
     test('tuple with null element value', () async {
@@ -63,7 +63,7 @@ void main() {
         ),
       ]);
       final result = await tuple.execute({});
-      expect(result['sum'], equals(fhir.FhirInteger(5)));
+      expect(result['sum'], equals(CqlInteger(5)));
     });
 
     test('Tuple() with no element arg throws on execute', () async {
@@ -85,7 +85,7 @@ void main() {
         message: LiteralString('Test message'),
       );
       final result = await message.execute({});
-      expect(result, equals(fhir.FhirInteger(42)));
+      expect(result, equals(CqlInteger(42)));
     });
 
     test('returns null source as null', () async {
@@ -119,8 +119,8 @@ void main() {
       expect(
           (result as List),
           equals([
-            fhir.FhirInteger(1),
-            fhir.FhirInteger(2),
+            CqlInteger(1),
+            CqlInteger(2),
           ]));
     });
 
@@ -133,7 +133,7 @@ void main() {
         message: LiteralString('This warning is not triggered'),
       );
       final result = await message.execute({});
-      expect(result, equals(fhir.FhirInteger(99)));
+      expect(result, equals(CqlInteger(99)));
     });
 
     test('boolean source returned unchanged', () async {
@@ -142,7 +142,7 @@ void main() {
         message: LiteralString('Bool check'),
       );
       final result = await message.execute({});
-      expect(result, equals(fhir.FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
   });
 
@@ -167,8 +167,8 @@ void main() {
       expect(
           result,
           equals([
-            fhir.FhirInteger(20),
-            fhir.FhirInteger(30),
+            CqlInteger(20),
+            CqlInteger(30),
           ]));
     });
 
@@ -197,9 +197,9 @@ void main() {
       expect(
           result,
           equals([
-            fhir.FhirInteger(1),
-            fhir.FhirInteger(2),
-            fhir.FhirInteger(3),
+            CqlInteger(1),
+            CqlInteger(2),
+            CqlInteger(3),
           ]));
     });
 
@@ -263,7 +263,7 @@ void main() {
   group('CalculateAge', () {
     // CalculateAge calls Today() internally, which requires startTimestamp
     final startTimestamp =
-        fhir.FhirDateTime.fromString(DateTime.now().toIso8601String());
+        CqlDateTime.fromString(DateTime.now().toIso8601String());
 
     test('calculates age in years from birthdate', () async {
       // Use a birthdate that yields a predictable age
@@ -272,10 +272,10 @@ void main() {
           '${birthDate.year}-${birthDate.month.toString().padLeft(2, '0')}-${birthDate.day.toString().padLeft(2, '0')}';
       final calcAge = CalculateAge(
         precision: CqlDateTimePrecision.year,
-        operand: _ConstExpr(fhir.FhirDate.fromString(birthDateStr)),
+        operand: _ConstExpr(CqlDate.fromString(birthDateStr)),
       );
       final result = await calcAge.execute({'startTimestamp': startTimestamp});
-      expect(result, equals(fhir.FhirInteger(30)));
+      expect(result, equals(CqlInteger(30)));
     });
 
     test('null birthdate returns null', () async {
@@ -300,12 +300,12 @@ void main() {
           '$targetYear-${targetMonth.toString().padLeft(2, '0')}-01';
       final calcAge = CalculateAge(
         precision: CqlDateTimePrecision.month,
-        operand: _ConstExpr(fhir.FhirDate.fromString(birthDateStr)),
+        operand: _ConstExpr(CqlDate.fromString(birthDateStr)),
       );
       final result = await calcAge.execute({'startTimestamp': startTimestamp});
-      expect(result, isA<fhir.FhirInteger>());
+      expect(result, isA<CqlInteger>());
       // Should be approximately 6 months (may vary by ±1)
-      final months = (result as fhir.FhirInteger).valueNum!.toInt();
+      final months = (result as CqlInteger).valueNum!.toInt();
       expect(months, greaterThanOrEqualTo(5));
       expect(months, lessThanOrEqualTo(7));
     });
@@ -319,26 +319,26 @@ void main() {
       final calcAgeAt = CalculateAgeAt(
         precision: CqlDateTimePrecision.year,
         operand: [
-          _ConstExpr(fhir.FhirDate.fromString('1990-06-15')),
-          _ConstExpr(fhir.FhirDate.fromString('2024-06-15')),
+          _ConstExpr(CqlDate.fromString('1990-06-15')),
+          _ConstExpr(CqlDate.fromString('2024-06-15')),
         ],
       );
       final result = await calcAgeAt.execute({});
-      expect(result, isA<fhir.FhirInteger>());
-      expect(result, equals(fhir.FhirInteger(34)));
+      expect(result, isA<CqlInteger>());
+      expect(result, equals(CqlInteger(34)));
     });
 
     test('birthday not yet reached in target year', () async {
       final calcAgeAt = CalculateAgeAt(
         precision: CqlDateTimePrecision.year,
         operand: [
-          _ConstExpr(fhir.FhirDate.fromString('1990-12-25')),
-          _ConstExpr(fhir.FhirDate.fromString('2024-06-15')),
+          _ConstExpr(CqlDate.fromString('1990-12-25')),
+          _ConstExpr(CqlDate.fromString('2024-06-15')),
         ],
       );
       final result = await calcAgeAt.execute({});
-      expect(result, isA<fhir.FhirInteger>());
-      expect(result, equals(fhir.FhirInteger(33)));
+      expect(result, isA<CqlInteger>());
+      expect(result, equals(CqlInteger(33)));
     });
 
     test('null birthdate returns null', () async {
@@ -346,7 +346,7 @@ void main() {
         precision: CqlDateTimePrecision.year,
         operand: [
           LiteralNull(),
-          _ConstExpr(fhir.FhirDate.fromString('2024-06-15')),
+          _ConstExpr(CqlDate.fromString('2024-06-15')),
         ],
       );
       final result = await calcAgeAt.execute({});
@@ -357,7 +357,7 @@ void main() {
       final calcAgeAt = CalculateAgeAt(
         precision: CqlDateTimePrecision.year,
         operand: [
-          _ConstExpr(fhir.FhirDate.fromString('1990-06-15')),
+          _ConstExpr(CqlDate.fromString('1990-06-15')),
           LiteralNull(),
         ],
       );
@@ -369,13 +369,13 @@ void main() {
       final calcAgeAt = CalculateAgeAt(
         precision: CqlDateTimePrecision.day,
         operand: [
-          _ConstExpr(fhir.FhirDate.fromString('2024-01-01')),
-          _ConstExpr(fhir.FhirDate.fromString('2024-01-11')),
+          _ConstExpr(CqlDate.fromString('2024-01-01')),
+          _ConstExpr(CqlDate.fromString('2024-01-11')),
         ],
       );
       final result = await calcAgeAt.execute({});
-      expect(result, isA<fhir.FhirInteger>());
-      expect(result, equals(fhir.FhirInteger(10)));
+      expect(result, isA<CqlInteger>());
+      expect(result, equals(CqlInteger(10)));
     });
   });
 }

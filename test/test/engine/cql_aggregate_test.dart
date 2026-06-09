@@ -15,7 +15,7 @@ void main() {
       ]);
       final count = Count(source: list);
       final result = await count.execute({});
-      expect(result, equals(FhirInteger(5)));
+      expect(result, equals(CqlInteger(5)));
     });
     test('define "Count0": Count({ null, null, null }) // 0', () async {
       final list = ListExpression(element: [
@@ -25,12 +25,12 @@ void main() {
       ]);
       final count = Count(source: list);
       final result = await count.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(CqlInteger(0)));
     });
     test('define "CountNull0": Count(null as List<Decimal>) // 0', () async {
       final count = Count(source: LiteralNull());
       final result = await count.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(CqlInteger(0)));
     });
   });
 
@@ -46,7 +46,7 @@ void main() {
       ]);
       final sum = Sum(source: list);
       final result = await sum.execute({});
-      expect(result, equals(FhirDecimal(15.0)));
+      expect(result, equals(CqlDecimal(15.0)));
     });
     test(
         """define "QuantitySum": Sum({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 15.0 'mg'""",
@@ -93,7 +93,7 @@ void main() {
       ]);
       final avg = Avg(source: list);
       final result = await avg.execute({});
-      expect(result, equals(FhirDecimal(5.0)));
+      expect(result, equals(CqlDecimal(5.0)));
     });
     test(
         """define "QuantityAvg": Avg({ 5.5 'cm', 4.7 'cm', 4.8 'cm' }) // 5.0 'cm'""",
@@ -128,7 +128,7 @@ void main() {
       ]);
       final min = Min(source: list);
       final result = await min.execute({});
-      expect(result, equals(FhirInteger(2)));
+      expect(result, equals(CqlInteger(2)));
     });
     test('define "LongMin": Min({ 2L, 4L, 8L, 6L }) // 2L', () async {
       final list = ListExpression(element: [
@@ -139,7 +139,7 @@ void main() {
       ]);
       final min = Min(source: list);
       final result = await min.execute({});
-      expect(result, equals(FhirInteger64(BigInt.from(2))));
+      expect(result, equals(CqlLong(BigInt.from(2))));
     });
     test(
         'define "DateMin": Min({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2012-01-01',
@@ -151,7 +151,7 @@ void main() {
       ]);
       final min = Min(source: list);
       final result = await min.execute({});
-      expect(result, equals(FhirDate.fromString('2012-01-01')));
+      expect(result, equals(CqlDate.fromString('2012-01-01')));
     });
     test(
         'define "MinIsNull": Min({ null as Quantity, null as Quantity, null as Quantity })',
@@ -179,7 +179,7 @@ void main() {
       ]);
       final max = Max(source: list);
       final result = await max.execute({});
-      expect(result, equals(FhirInteger(8)));
+      expect(result, equals(CqlInteger(8)));
     });
     test('define "LongMax": Max({ 2L, 4L, 8L, 6L }) // 8L', () async {
       final list = ListExpression(element: [
@@ -190,7 +190,7 @@ void main() {
       ]);
       final max = Max(source: list);
       final result = await max.execute({});
-      expect(result, equals(FhirInteger64(BigInt.from(8))));
+      expect(result, equals(CqlLong(BigInt.from(8))));
     });
     test(
         'define "DateMax": Max({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2013-01-01',
@@ -202,7 +202,7 @@ void main() {
       ]);
       final max = Max(source: list);
       final result = await max.execute({});
-      expect(result, equals(FhirDate.fromString('2013-01-01')));
+      expect(result, equals(CqlDate.fromString('2013-01-01')));
     });
     test(
         'define "MaxIsNull": Max({ null as Quantity, null as Quantity, null as Quantity })',
@@ -233,7 +233,7 @@ void main() {
       );
       final median = Median(source: list);
       final result = await median.execute({});
-      expect(result, equals(FhirDecimal(5.0)));
+      expect(result, equals(CqlDecimal(5.0)));
     });
     test(
         """define "QuantityMedian": Median({ 1.0 'mg', 2.0 'mg', 3.0 'mg' }) // 2.0 'mg'""",
@@ -288,7 +288,7 @@ void main() {
       );
       final mode = Mode(source: list);
       final result = await mode.execute({});
-      expect(result, equals(FhirDecimal(8.0)));
+      expect(result, equals(CqlDecimal(8.0)));
     });
     test(
         """define "QuantityMode": Mode({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 2.0 'mg' }) // 2.0 'mg'""",
@@ -344,7 +344,7 @@ void main() {
       );
       final variance = Variance(source: list);
       final result = await variance.execute({});
-      expect(result, equals(FhirDecimal(2.5)));
+      expect(result, equals(CqlDecimal(2.5)));
     });
     test(
         """define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
@@ -400,7 +400,7 @@ void main() {
         LiteralDecimal(5.0)
       ]);
       final result = await PopulationVariance(source: list).execute({});
-      expect(result, equals(FhirDecimal(2.0)));
+      expect(result, equals(CqlDecimal(2.0)));
     });
     test(
         """define "QuantityPopulationVariance": PopulationVariance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
@@ -445,7 +445,7 @@ void main() {
         LiteralNull(),
       ]);
       final result = await PopulationVariance(source: list).execute({});
-      expect(result, equals(FhirDecimal(0.66666667)));
+      expect(result, equals(CqlDecimal(0.66666667)));
     });
     test('PopulationStdDev({ 1, 2, 3, null }) = 0.816496580927726', () async {
       final list = ListExpression(element: [
@@ -455,7 +455,7 @@ void main() {
         LiteralNull(),
       ]);
       final result = await PopulationStdDev(source: list).execute({});
-      expect(result, equals(FhirDecimal(0.81649658)));
+      expect(result, equals(CqlDecimal(0.81649658)));
     });
   });
 
@@ -474,7 +474,7 @@ void main() {
       );
       final stddev = StdDev(source: list);
       final result = await stddev.execute({});
-      expect(result, equals(FhirDecimal(1.58113883)));
+      expect(result, equals(CqlDecimal(1.58113883)));
     });
     test(
         """define "QuantityStdDev": StdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.58113883 'mg'""",
@@ -529,7 +529,7 @@ void main() {
         LiteralDecimal(5.0)
       ]);
       final result = await PopulationStdDev(source: list).execute({});
-      expect(result, equals(FhirDecimal(1.41421356)));
+      expect(result, equals(CqlDecimal(1.41421356)));
     });
     test(
         """define "QuantityPopulationStdDev": PopulationStdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.41421356 'mg'""",
@@ -576,7 +576,7 @@ void main() {
       ]);
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
     test('define "AllTrueIsAlsoTrue": AllTrue({ null, null, null })', () async {
       final list = ListExpression(element: [
@@ -586,12 +586,12 @@ void main() {
       ]);
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
     test('define "AllTrueIsTrueWhenNull": AllTrue(null)', () async {
       final allTrue = AllTrue(source: LiteralNull());
       final result = await allTrue.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
     test('define "AllTrueIsFalse": AllTrue({ true, false, null })', () async {
       final list = ListExpression(element: [
@@ -601,7 +601,7 @@ void main() {
       ]);
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -614,7 +614,7 @@ void main() {
       ]);
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
-      expect(result, FhirBoolean(true));
+      expect(result, CqlBoolean(true));
     });
     test('define "AnyTrueIsFalse": AnyTrue({ false, false, null })', () async {
       final list = ListExpression(element: [
@@ -624,7 +624,7 @@ void main() {
       ]);
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
     test('define "AnyTrueIsAlsoFalse": AnyTrue({ null, null, null })',
         () async {
@@ -635,12 +635,12 @@ void main() {
       ]);
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
     test('define "AnyTrueIsFalseWhenNull": AnyTrue(null)', () async {
       final anyTrue = AnyTrue(source: LiteralNull());
       final result = await anyTrue.execute({});
-      expect(result, FhirBoolean(false));
+      expect(result, CqlBoolean(false));
     });
   });
 
@@ -653,7 +653,7 @@ void main() {
       ]);
       final product = Product(source: list);
       final result = await product.execute({});
-      expect(result, equals(FhirInteger(24)));
+      expect(result, equals(CqlInteger(24)));
     });
     test('define "DecimalProduct": Product({ 2.0, 3.0, 4.0 }) // 24.0',
         () async {
@@ -664,7 +664,7 @@ void main() {
       ]);
       final product = Product(source: list);
       final result = await product.execute({});
-      expect(result, equals(FhirDecimal(24.0)));
+      expect(result, equals(CqlDecimal(24.0)));
     });
     test('define "ProductEmpty": Product({ }) // null', () async {
       final list = ListExpression(element: []);
@@ -683,7 +683,7 @@ void main() {
       ]);
       final product = Product(source: list);
       final result = await product.execute({});
-      expect(result, equals(FhirInteger(7)));
+      expect(result, equals(CqlInteger(7)));
     });
   });
 
@@ -696,7 +696,7 @@ void main() {
       ]);
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
-      expect(result, equals(FhirDecimal(4.0)));
+      expect(result, equals(CqlDecimal(4.0)));
     });
     test('define "GeometricMeanFourNine": GeometricMean({ 4.0, 9.0 }) // 6.0',
         () async {
@@ -706,7 +706,7 @@ void main() {
       ]);
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
-      expect(result, equals(FhirDecimal(6.0)));
+      expect(result, equals(CqlDecimal(6.0)));
     });
     test('define "GeometricMeanSingle": GeometricMean({ 5.0 }) // 5.0',
         () async {
@@ -715,7 +715,7 @@ void main() {
       ]);
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
-      expect(result, equals(FhirDecimal(5.0)));
+      expect(result, equals(CqlDecimal(5.0)));
     });
     test('define "GeometricMeanIsNull": GeometricMean(null) // null', () async {
       final gm = GeometricMean(source: LiteralNull());

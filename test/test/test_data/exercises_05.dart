@@ -3,7 +3,7 @@ import 'package:fhir_r4/fhir_r4.dart';
 final exercises05 = <String, dynamic>{
   'Patient': Patient.fromJson(context05['Patient']),
   'Patient Gender': AdministrativeGender.male,
-  'Patient Gender is Male': FhirBoolean(true),
+  'Patient Gender is Male': CqlBoolean(true),
   'Patient Marital Status': CodeableConcept.fromJson({
     'coding': [
       {
@@ -12,9 +12,9 @@ final exercises05 = <String, dynamic>{
       }
     ]
   }),
-  'Patient is Married (=)': FhirBoolean(true),
-  'Patient is Married (~)': FhirBoolean(true),
-  'Married in Marital Status': FhirBoolean(true),
+  'Patient is Married (=)': CqlBoolean(true),
+  'Patient is Married (~)': CqlBoolean(true),
+  'Married in Marital Status': CqlBoolean(true),
 };
 
 final context05 = <String, dynamic>{

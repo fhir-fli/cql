@@ -2,6 +2,8 @@ import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:test/test.dart';
 
+Map<String, dynamic> _ctx() => {ContextKey.modelResolver: const R4ModelResolver()};
+
 /// Helper to build a Query with an aggregate clause.
 ///
 /// [elements] - the source list elements
@@ -48,8 +50,8 @@ void main() {
         starting: LiteralInteger(0),
         expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(6)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(6)));
     });
 
     test('product: aggregate p starting 1 : p * N over {2,3,4} => 24',
@@ -61,8 +63,8 @@ void main() {
         expression:
             Multiply(operand: [AliasRef(name: 'p'), AliasRef(name: 'N')]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(24)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(24)));
     });
 
     test('count via aggregate: aggregate c starting 0 : c + 1 => 3', () async {
@@ -72,8 +74,8 @@ void main() {
         starting: LiteralInteger(0),
         expression: Add(operand: [AliasRef(name: 'c'), LiteralInteger(1)]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(3)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(3)));
     });
 
     test('string concatenation: aggregate acc starting "" : acc + N', () async {
@@ -88,8 +90,8 @@ void main() {
         expression:
             Concatenate(operand: [AliasRef(name: 'acc'), AliasRef(name: 'N')]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirString('abc')));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlString('abc')));
     });
 
     test('no starting clause: accumulator starts as null', () async {
@@ -104,9 +106,9 @@ void main() {
         expression:
             Coalesce(operand: [AliasRef(name: 'acc'), AliasRef(name: 'N')]),
       );
-      final result = await query.execute({});
+      final result = await query.execute(_ctx());
       // First (and only) iteration: Coalesce(null, 5) = 5
-      expect(result, equals(FhirInteger(5)));
+      expect(result, equals(CqlInteger(5)));
     });
 
     test('with WHERE filter: aggregate only applies to filtered rows',
@@ -126,8 +128,8 @@ void main() {
         expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
         where: Greater(operand: [AliasRef(name: 'N'), LiteralInteger(3)]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(9)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(9)));
     });
 
     test('distinct aggregate: deduplicates before aggregating', () async {
@@ -147,8 +149,8 @@ void main() {
         expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
         distinct: true,
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(6)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(6)));
     });
 
     test('empty source after filter: returns starting value', () async {
@@ -161,8 +163,8 @@ void main() {
         expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
         where: Greater(operand: [AliasRef(name: 'N'), LiteralInteger(10)]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(42)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(42)));
     });
 
     test('null source: returns null', () async {
@@ -181,7 +183,7 @@ void main() {
           expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
         ),
       );
-      final result = await query.execute({});
+      final result = await query.execute(_ctx());
       expect(result, isNull);
     });
 
@@ -193,8 +195,8 @@ void main() {
         starting: LiteralInteger(0),
         expression: Add(operand: [AliasRef(name: 's'), AliasRef(name: 'N')]),
       );
-      final result = await query.execute({});
-      expect(result, equals(FhirInteger(7)));
+      final result = await query.execute(_ctx());
+      expect(result, equals(CqlInteger(7)));
     });
   });
 }

@@ -24,7 +24,7 @@ void main() {
         day: LiteralInteger(15),
       );
       final result = await dateExpr.execute({});
-      expect(result, equals(fhir.FhirDate.fromString('2024-03-15')));
+      expect(result, equals(CqlDate.fromString('2024-03-15')));
     });
 
     test('year and month only (no day)', () async {
@@ -33,7 +33,7 @@ void main() {
         month: LiteralInteger(6),
       );
       final result = await dateExpr.execute({});
-      expect(result, equals(fhir.FhirDate.fromString('2024-06')));
+      expect(result, equals(CqlDate.fromString('2024-06')));
     });
 
     test('year only', () async {
@@ -41,7 +41,7 @@ void main() {
         year: LiteralInteger(2024),
       );
       final result = await dateExpr.execute({});
-      expect(result, equals(fhir.FhirDate.fromString('2024')));
+      expect(result, equals(CqlDate.fromString('2024')));
     });
 
     test('null year returns null', () async {
@@ -59,37 +59,37 @@ void main() {
         day: LiteralInteger(5),
       );
       final result = await dateExpr.execute({});
-      expect(result, equals(fhir.FhirDate.fromString('2024-01-05')));
+      expect(result, equals(CqlDate.fromString('2024-01-05')));
     });
   });
 
   group('Precision', () {
-    test('FhirDecimal with decimal places returns digit count', () async {
+    test('CqlDecimal with decimal places returns digit count', () async {
       // 1.25 has 2 decimal places
-      final precision = Precision(operand: _ConstExpr(fhir.FhirDecimal(1.25)));
+      final precision = Precision(operand: _ConstExpr(CqlDecimal(1.25)));
       final result = await precision.execute({});
-      expect(result, equals(fhir.FhirInteger(2)));
+      expect(result, equals(CqlInteger(2)));
     });
 
-    test('FhirTime with HH:MM:SS returns 6 (total digits)', () async {
+    test('CqlTime with HH:MM:SS returns 6 (total digits)', () async {
       final precision =
-          Precision(operand: _ConstExpr(fhir.FhirTime('10:30:45')));
+          Precision(operand: _ConstExpr(CqlTime('10:30:45')));
       final result = await precision.execute({});
-      expect(result, equals(fhir.FhirInteger(6)));
+      expect(result, equals(CqlInteger(6)));
     });
 
-    test('FhirDate with YYYY-MM-DD returns 8 (total digits)', () async {
+    test('CqlDate with YYYY-MM-DD returns 8 (total digits)', () async {
       final precision = Precision(
-          operand: _ConstExpr(fhir.FhirDate.fromString('2024-03-15')));
+          operand: _ConstExpr(CqlDate.fromString('2024-03-15')));
       final result = await precision.execute({});
-      expect(result, equals(fhir.FhirInteger(8)));
+      expect(result, equals(CqlInteger(8)));
     });
 
-    test('FhirDate with YYYY-MM returns 6 (total digits)', () async {
+    test('CqlDate with YYYY-MM returns 6 (total digits)', () async {
       final precision =
-          Precision(operand: _ConstExpr(fhir.FhirDate.fromString('2024-03')));
+          Precision(operand: _ConstExpr(CqlDate.fromString('2024-03')));
       final result = await precision.execute({});
-      expect(result, equals(fhir.FhirInteger(6)));
+      expect(result, equals(CqlInteger(6)));
     });
 
     test('null operand returns null', () async {
@@ -100,13 +100,13 @@ void main() {
   });
 
   group('HighBoundary', () {
-    test('FhirDecimal pads with 9s to target precision', () async {
+    test('CqlDecimal pads with 9s to target precision', () async {
       final highBoundary = HighBoundary(operand: [
-        _ConstExpr(fhir.FhirDecimal(1.5)),
+        _ConstExpr(CqlDecimal(1.5)),
         LiteralInteger(8),
       ]);
       final result = await highBoundary.execute({});
-      expect(result, equals(fhir.FhirDecimal(1.59999999)));
+      expect(result, equals(CqlDecimal(1.59999999)));
     });
 
     test('null value returns null', () async {
@@ -122,12 +122,12 @@ void main() {
   group('LowBoundary', () {
     test('returns value passthrough (stub implementation)', () async {
       final lowBoundary = LowBoundary(operand: [
-        _ConstExpr(fhir.FhirDecimal(1.5)),
+        _ConstExpr(CqlDecimal(1.5)),
         LiteralInteger(8),
       ]);
       final result = await lowBoundary.execute({});
       // Stub implementation returns the value itself
-      expect(result, equals(fhir.FhirDecimal(1.5)));
+      expect(result, equals(CqlDecimal(1.5)));
     });
 
     test('null value returns null', () async {
@@ -209,8 +209,8 @@ void main() {
         millisecond: LiteralInteger(500),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('14:30:15.500')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('14:30:15.500')));
     });
 
     test('hour and minute only', () async {
@@ -219,8 +219,8 @@ void main() {
         minute: LiteralInteger(5),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('09:05')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('09:05')));
     });
 
     test('hour only', () async {
@@ -228,8 +228,8 @@ void main() {
         hour: LiteralInteger(23),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('23')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('23')));
     });
 
     test('midnight (hour=0)', () async {
@@ -237,8 +237,8 @@ void main() {
         hour: LiteralInteger(0),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('00')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('00')));
     });
 
     test('end-of-day 23:59:59.999', () async {
@@ -249,8 +249,8 @@ void main() {
         millisecond: LiteralInteger(999),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('23:59:59.999')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('23:59:59.999')));
     });
 
     test('hour, minute, second without millisecond', () async {
@@ -260,8 +260,8 @@ void main() {
         second: LiteralInteger(45),
       );
       final result = await timeExpr.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      expect(result, equals(fhir.FhirTime('10:30:45')));
+      expect(result, isA<CqlTime>());
+      expect(result, equals(CqlTime('10:30:45')));
     });
   });
 
@@ -280,7 +280,7 @@ void main() {
         millisecond: LiteralInteger(0),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
+      expect(result, isA<CqlDateTime>());
     });
 
     test('date-only datetime (year, month, day)', () async {
@@ -290,7 +290,7 @@ void main() {
         day: LiteralInteger(1),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
+      expect(result, isA<CqlDateTime>());
     });
 
     test('year-only datetime', () async {
@@ -298,7 +298,7 @@ void main() {
         year: LiteralInteger(2024),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
+      expect(result, isA<CqlDateTime>());
     });
 
     test('null year returns null', () async {
@@ -320,8 +320,8 @@ void main() {
         millisecond: LiteralInteger(500),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
-      final dt = result as fhir.FhirDateTime;
+      expect(result, isA<CqlDateTime>());
+      final dt = result as CqlDateTime;
       expect(dt.year, equals(2024));
       expect(dt.month, equals(3));
       expect(dt.day, equals(15));
@@ -338,11 +338,11 @@ void main() {
         hour: LiteralInteger(12),
         minute: LiteralInteger(0),
         second: LiteralInteger(0),
-        timezoneOffset: _ConstExpr(fhir.FhirDecimal(-7.0)),
+        timezoneOffset: _ConstExpr(CqlDecimal(-7.0)),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
-      final dt = result as fhir.FhirDateTime;
+      expect(result, isA<CqlDateTime>());
+      final dt = result as CqlDateTime;
       expect(dt.timeZoneOffset, equals(-7.0));
     });
 
@@ -352,8 +352,8 @@ void main() {
         month: LiteralInteger(6),
       );
       final result = await dtExpr.execute({});
-      expect(result, isA<fhir.FhirDateTime>());
-      final dt = result as fhir.FhirDateTime;
+      expect(result, isA<CqlDateTime>());
+      final dt = result as CqlDateTime;
       expect(dt.year, equals(2024));
       expect(dt.month, equals(6));
       expect(dt.day, isNull);
@@ -367,11 +367,11 @@ void main() {
     test('returns current time from startTimestamp', () async {
       final now = DateTime.now();
       final context = <String, dynamic>{
-        'startTimestamp': fhir.FhirDateTime.fromString(now.toIso8601String()),
+        'startTimestamp': CqlDateTime.fromString(now.toIso8601String()),
       };
       final timeOfDay = TimeOfDay();
       final result = await timeOfDay.execute(context);
-      expect(result, isA<fhir.FhirTime>());
+      expect(result, isA<CqlTime>());
       // Verify hour is reasonable
       final time = result;
       expect(time.hour, isNotNull);
@@ -380,11 +380,11 @@ void main() {
     test('deterministic extraction from fixed timestamp', () async {
       final context = <String, dynamic>{
         'startTimestamp':
-            fhir.FhirDateTime.fromString('2024-06-15T14:30:45.123Z'),
+            CqlDateTime.fromString('2024-06-15T14:30:45.123Z'),
       };
       final timeOfDay = TimeOfDay();
       final result = await timeOfDay.execute(context);
-      expect(result, isA<fhir.FhirTime>());
+      expect(result, isA<CqlTime>());
       final time = result;
       expect(time.hour, equals(14));
       expect(time.minute, equals(30));
@@ -394,11 +394,11 @@ void main() {
     test('midnight timestamp returns hour 0', () async {
       final context = <String, dynamic>{
         'startTimestamp':
-            fhir.FhirDateTime.fromString('2024-01-01T00:00:00.000Z'),
+            CqlDateTime.fromString('2024-01-01T00:00:00.000Z'),
       };
       final timeOfDay = TimeOfDay();
       final result = await timeOfDay.execute(context);
-      expect(result, isA<fhir.FhirTime>());
+      expect(result, isA<CqlTime>());
       final time = result;
       expect(time.hour, equals(0));
       expect(time.minute, equals(0));
@@ -409,23 +409,23 @@ void main() {
   // DateFrom
   // ───────────────────────────────────────────────────────────────────────────
   group('DateFrom', () {
-    test('extracts date from FhirDateTime', () async {
+    test('extracts date from CqlDateTime', () async {
       final dateFrom = DateFrom(
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await dateFrom.execute({});
-      expect(result, isA<fhir.FhirDate>());
-      expect(result, equals(fhir.FhirDate.fromString('2024-03-15')));
+      expect(result, isA<CqlDate>());
+      expect(result, equals(CqlDate.fromString('2024-03-15')));
     });
 
     test('extracts partial date (year-month)', () async {
       final dateFrom = DateFrom(
-        operand: _ConstExpr(fhir.FhirDateTime.fromString('2024-03')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03')),
       );
       final result = await dateFrom.execute({});
-      expect(result, isA<fhir.FhirDate>());
-      expect(result, equals(fhir.FhirDate.fromString('2024-03')));
+      expect(result, isA<CqlDate>());
+      expect(result, equals(CqlDate.fromString('2024-03')));
     });
 
     test('null operand returns null', () async {
@@ -436,22 +436,22 @@ void main() {
 
     test('year-only DateTime returns year-only date', () async {
       final dateFrom = DateFrom(
-        operand: _ConstExpr(fhir.FhirDateTime.fromString('2024')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024')),
       );
       final result = await dateFrom.execute({});
-      expect(result, isA<fhir.FhirDate>());
-      final date = result as fhir.FhirDate;
+      expect(result, isA<CqlDate>());
+      final date = result as CqlDate;
       expect(date.year, equals(2024));
       expect(date.month, isNull);
     });
 
-    test('FhirDate passthrough returns equivalent FhirDate', () async {
+    test('CqlDate passthrough returns equivalent CqlDate', () async {
       final dateFrom = DateFrom(
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-07-04')),
+        operand: _ConstExpr(CqlDate.fromString('2024-07-04')),
       );
       final result = await dateFrom.execute({});
-      expect(result, isA<fhir.FhirDate>());
-      expect(result, equals(fhir.FhirDate.fromString('2024-07-04')));
+      expect(result, isA<CqlDate>());
+      expect(result, equals(CqlDate.fromString('2024-07-04')));
     });
   });
 
@@ -459,14 +459,14 @@ void main() {
   // TimeFrom
   // ───────────────────────────────────────────────────────────────────────────
   group('TimeFrom', () {
-    test('extracts time from FhirDateTime', () async {
+    test('extracts time from CqlDateTime', () async {
       final timeFrom = TimeFrom(
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:45Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
       );
       final result = await timeFrom.execute({});
-      expect(result, isA<fhir.FhirTime>());
-      final time = result as fhir.FhirTime;
+      expect(result, isA<CqlTime>());
+      final time = result as CqlTime;
       expect(time.hour, equals(10));
       expect(time.minute, equals(30));
       expect(time.second, equals(45));
@@ -478,9 +478,9 @@ void main() {
       expect(result, isNull);
     });
 
-    test('FhirDate (no time component) returns null', () async {
+    test('CqlDate (no time component) returns null', () async {
       final timeFrom = TimeFrom(
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-03-15')),
+        operand: _ConstExpr(CqlDate.fromString('2024-03-15')),
       );
       final result = await timeFrom.execute({});
       expect(result, isNull);
@@ -494,31 +494,31 @@ void main() {
     test('extracts positive timezone offset', () async {
       final tzFrom = TimezoneOffsetFrom(
         operand: _ConstExpr(
-            fhir.FhirDateTime.fromString('2024-03-15T10:30:00+05:00')),
+            CqlDateTime.fromString('2024-03-15T10:30:00+05:00')),
       );
       final result = await tzFrom.execute({});
-      expect(result, isA<fhir.FhirDecimal>());
-      expect(result, equals(fhir.FhirDecimal(5.0)));
+      expect(result, isA<CqlDecimal>());
+      expect(result, equals(CqlDecimal(5.0)));
     });
 
     test('extracts negative timezone offset', () async {
       final tzFrom = TimezoneOffsetFrom(
         operand: _ConstExpr(
-            fhir.FhirDateTime.fromString('2024-01-01T12:30:00-07:00')),
+            CqlDateTime.fromString('2024-01-01T12:30:00-07:00')),
       );
       final result = await tzFrom.execute({});
-      expect(result, isA<fhir.FhirDecimal>());
-      expect(result, equals(fhir.FhirDecimal(-7.0)));
+      expect(result, isA<CqlDecimal>());
+      expect(result, equals(CqlDecimal(-7.0)));
     });
 
     test('explicit +00:00 offset returns 0', () async {
       final tzFrom = TimezoneOffsetFrom(
         operand: _ConstExpr(
-            fhir.FhirDateTime.fromString('2024-03-15T10:30:00+00:00')),
+            CqlDateTime.fromString('2024-03-15T10:30:00+00:00')),
       );
       final result = await tzFrom.execute({});
-      expect(result, isA<fhir.FhirDecimal>());
-      expect(result, equals(fhir.FhirDecimal(0.0)));
+      expect(result, isA<CqlDecimal>());
+      expect(result, equals(CqlDecimal(0.0)));
     });
 
     test('null operand returns null', () async {
@@ -527,9 +527,9 @@ void main() {
       expect(result, isNull);
     });
 
-    test('non-DateTime (FhirDate) returns null', () async {
+    test('non-DateTime (CqlDate) returns null', () async {
       final tzFrom = TimezoneOffsetFrom(
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-03-15')),
+        operand: _ConstExpr(CqlDate.fromString('2024-03-15')),
       );
       final result = await tzFrom.execute({});
       expect(result, isNull);
@@ -540,91 +540,91 @@ void main() {
   // DateTimeComponentFrom
   // ───────────────────────────────────────────────────────────────────────────
   group('DateTimeComponentFrom', () {
-    test('extracts year from FhirDateTime', () async {
+    test('extracts year from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.year,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(2024)));
+      expect(result, equals(CqlInteger(2024)));
     });
 
-    test('extracts month from FhirDateTime', () async {
+    test('extracts month from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.month,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(3)));
+      expect(result, equals(CqlInteger(3)));
     });
 
-    test('extracts day from FhirDateTime', () async {
+    test('extracts day from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.day,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(15)));
+      expect(result, equals(CqlInteger(15)));
     });
 
-    test('extracts hour from FhirDateTime', () async {
+    test('extracts hour from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.hour,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(10)));
+      expect(result, equals(CqlInteger(10)));
     });
 
-    test('extracts minute from FhirDateTime', () async {
+    test('extracts minute from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.minute,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:00Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(30)));
+      expect(result, equals(CqlInteger(30)));
     });
 
-    test('extracts year from FhirDate', () async {
+    test('extracts year from CqlDate', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.year,
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-06')),
+        operand: _ConstExpr(CqlDate.fromString('2024-06')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(2024)));
+      expect(result, equals(CqlInteger(2024)));
     });
 
-    test('extracts month from FhirDate', () async {
+    test('extracts month from CqlDate', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.month,
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-06-15')),
+        operand: _ConstExpr(CqlDate.fromString('2024-06-15')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(6)));
+      expect(result, equals(CqlInteger(6)));
     });
 
     test('returns null for unavailable component (day from year-only date)',
         () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.day,
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024')),
+        operand: _ConstExpr(CqlDate.fromString('2024')),
       );
       final result = await comp.execute({});
       expect(result, isNull);
     });
 
-    test('extracts hour from FhirTime', () async {
+    test('extracts hour from CqlTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.hour,
-        operand: _ConstExpr(fhir.FhirTime('14:30:15')),
+        operand: _ConstExpr(CqlTime('14:30:15')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(14)));
+      expect(result, equals(CqlInteger(14)));
     });
 
     test('null operand returns null', () async {
@@ -636,42 +636,42 @@ void main() {
       expect(result, isNull);
     });
 
-    test('extracts second from FhirDateTime', () async {
+    test('extracts second from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.second,
         operand:
-            _ConstExpr(fhir.FhirDateTime.fromString('2024-03-15T10:30:45Z')),
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(45)));
+      expect(result, equals(CqlInteger(45)));
     });
 
-    test('extracts millisecond from FhirDateTime', () async {
+    test('extracts millisecond from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.millisecond,
         operand: _ConstExpr(
-            fhir.FhirDateTime.fromString('2024-03-15T10:30:45.123Z')),
+            CqlDateTime.fromString('2024-03-15T10:30:45.123Z')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(123)));
+      expect(result, equals(CqlInteger(123)));
     });
 
-    test('extracts minute from FhirTime', () async {
+    test('extracts minute from CqlTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.minute,
-        operand: _ConstExpr(fhir.FhirTime('14:30:15')),
+        operand: _ConstExpr(CqlTime('14:30:15')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(30)));
+      expect(result, equals(CqlInteger(30)));
     });
 
-    test('extracts day from FhirDate', () async {
+    test('extracts day from CqlDate', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.day,
-        operand: _ConstExpr(fhir.FhirDate.fromString('2024-06-15')),
+        operand: _ConstExpr(CqlDate.fromString('2024-06-15')),
       );
       final result = await comp.execute({});
-      expect(result, equals(fhir.FhirInteger(15)));
+      expect(result, equals(CqlInteger(15)));
     });
   });
 
@@ -724,7 +724,7 @@ void main() {
         LiteralString('m'),
       ]);
       final result = await canConvert.execute({});
-      expect(result, equals(fhir.FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
     test('invalid conversion returns false', () async {
@@ -733,7 +733,7 @@ void main() {
         LiteralString('g'),
       ]);
       final result = await canConvert.execute({});
-      expect(result, equals(fhir.FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
 
     test('null quantity returns null', () async {

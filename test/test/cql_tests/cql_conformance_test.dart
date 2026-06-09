@@ -145,12 +145,12 @@ void _createTest(XmlElement testElement) {
 /// tuples, quantities) are parsed as CQL expressions and executed.
 Future<dynamic> _parseExpectedOutput(String output) async {
   if (output == 'null') return null;
-  if (output == 'true') return fhir.FhirBoolean(true);
-  if (output == 'false') return fhir.FhirBoolean(false);
+  if (output == 'true') return CqlBoolean(true);
+  if (output == 'false') return CqlBoolean(false);
 
   // Time: @Thh:mm:ss.fff
   if (output.startsWith('@T')) {
-    return fhir.FhirTime(output.substring(2));
+    return CqlTime(output.substring(2));
   }
 
   // DateTime: @YYYY...T... (has T after the date portion)
@@ -160,34 +160,34 @@ Future<dynamic> _parseExpectedOutput(String output) async {
     if (value.endsWith('T')) {
       value = value.substring(0, value.length - 1);
     }
-    return fhir.FhirDateTime.fromString(value);
+    return CqlDateTime.fromString(value);
   }
 
   // Date: @YYYY-MM-DD (no T)
   if (output.startsWith('@')) {
-    return fhir.FhirDate.fromString(output.substring(1));
+    return CqlDate.fromString(output.substring(1));
   }
 
   // String: 'value'
   if (output.startsWith("'") && output.endsWith("'") && output.length >= 2) {
     final inner = output.substring(1, output.length - 1);
-    return fhir.FhirString(_unescapeCqlString(inner));
+    return CqlString(_unescapeCqlString(inner));
   }
 
   // Long: -?digits followed by L
   if (RegExp(r'^-?\d+L$').hasMatch(output)) {
-    return fhir.FhirInteger64(
+    return CqlLong(
         BigInt.parse(output.substring(0, output.length - 1)));
   }
 
   // Integer: -?digits
   if (RegExp(r'^-?\d+$').hasMatch(output)) {
-    return fhir.FhirInteger(int.parse(output));
+    return CqlInteger(int.parse(output));
   }
 
   // Decimal: -?digits.digits
   if (RegExp(r'^-?\d+\.\d+$').hasMatch(output)) {
-    return fhir.FhirDecimal(double.parse(output));
+    return CqlDecimal(double.parse(output));
   }
 
   // Complex types: Interval, List, Tuple, Quantity
@@ -291,29 +291,29 @@ bool _valuesEqual(dynamic actual, dynamic expected) {
         actual.highClosed == expected.highClosed;
   }
 
-  // FhirDateTimeBase — exact comparison (no tolerance)
-  if (actual is fhir.FhirDateTimeBase && expected is fhir.FhirDateTimeBase) {
+  // CqlDateTimeBase — exact comparison (no tolerance)
+  if (actual is CqlDateTimeBase && expected is CqlDateTimeBase) {
     return actual == expected;
   }
 
-  // FhirTime
-  if (actual is fhir.FhirTime && expected is fhir.FhirTime) {
+  // CqlTime
+  if (actual is CqlTime && expected is CqlTime) {
     return actual == expected;
   }
 
-  // FhirInteger vs FhirInteger64 — cross-type integer comparison
-  if (actual is fhir.FhirInteger && expected is fhir.FhirInteger64) {
+  // CqlInteger vs CqlLong — cross-type integer comparison
+  if (actual is CqlInteger && expected is CqlLong) {
     return BigInt.from(actual.valueNum!) == expected.valueBigInt;
   }
-  if (actual is fhir.FhirInteger64 && expected is fhir.FhirInteger) {
+  if (actual is CqlLong && expected is CqlInteger) {
     return actual.valueBigInt == BigInt.from(expected.valueNum!);
   }
 
-  // String vs FhirString — CQL engine uses raw strings internally
-  if (actual is String && expected is fhir.FhirString) {
+  // String vs CqlString — CQL engine uses raw strings internally
+  if (actual is String && expected is CqlString) {
     return actual == expected.valueString;
   }
-  if (actual is fhir.FhirString && expected is String) {
+  if (actual is CqlString && expected is String) {
     return actual.valueString == expected;
   }
 

@@ -14,7 +14,7 @@ void main() {
       final union = cql.Union(operand: [interval1, interval2]);
       final result = await union.execute({});
       expect(result,
-          equals(cql.CqlInterval(low: FhirInteger(1), high: FhirInteger(7))));
+          equals(cql.CqlInterval(low: cql.CqlInteger(1), high: cql.CqlInteger(7))));
     });
     test(
         'define "UnionIsNull": Interval[3, 5] union (null as Interval<Integer>)',
@@ -42,11 +42,11 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(1),
-            FhirInteger(2),
-            FhirInteger(3),
-            FhirInteger(4),
-            FhirInteger(5),
+            cql.CqlInteger(1),
+            cql.CqlInteger(2),
+            cql.CqlInteger(3),
+            cql.CqlInteger(4),
+            cql.CqlInteger(5),
           ]));
     });
     test(
@@ -66,11 +66,11 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(1),
-            FhirInteger(2),
-            FhirInteger(3),
-            FhirInteger(4),
-            FhirInteger(5),
+            cql.CqlInteger(1),
+            cql.CqlInteger(2),
+            cql.CqlInteger(3),
+            cql.CqlInteger(4),
+            cql.CqlInteger(5),
           ]));
     });
     test('define "UnionWithNull": null union { 4, 5 } // { 4, 5 }', () async {
@@ -84,8 +84,8 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(4),
-            FhirInteger(5),
+            cql.CqlInteger(4),
+            cql.CqlInteger(5),
           ]));
     });
   });
@@ -109,10 +109,10 @@ void main() {
       final result = cql.Intersect(operand: [left, right]);
       expect(
           await result.execute({}),
-          equals(cql.CqlInterval<FhirInteger>(
-            low: FhirInteger(3),
+          equals(cql.CqlInterval<cql.CqlInteger>(
+            low: cql.CqlInteger(3),
             lowClosed: true,
-            high: FhirInteger(5),
+            high: cql.CqlInteger(5),
             highClosed: true,
           )));
     });
@@ -148,7 +148,7 @@ void main() {
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(result,
-          equals(cql.CqlInterval(low: FhirInteger(0), high: FhirInteger(2))));
+          equals(cql.CqlInterval(low: cql.CqlInteger(0), high: cql.CqlInteger(2))));
     });
     test('define "ExceptIsNull": null except Interval[-1, 7]', () async {
       final left = cql.LiteralNull();
@@ -177,8 +177,8 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(5),
-            FhirInteger(7),
+            cql.CqlInteger(5),
+            cql.CqlInteger(7),
           ]));
     });
     test('define "ExceptLeft": { 1, 3, 5, 7 } except null // { 1, 3, 5, 7 }',
@@ -195,10 +195,10 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(1),
-            FhirInteger(3),
-            FhirInteger(5),
-            FhirInteger(7),
+            cql.CqlInteger(1),
+            cql.CqlInteger(3),
+            cql.CqlInteger(5),
+            cql.CqlInteger(7),
           ]));
     });
     test(
@@ -221,8 +221,8 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(5),
-            FhirInteger(7),
+            cql.CqlInteger(5),
+            cql.CqlInteger(7),
           ]));
     });
     test('define "ExceptIsNull": null except { 1, 3, 5 }', () async {
@@ -251,9 +251,9 @@ void main() {
       final distinct = cql.Distinct(operand: list);
       final result = await distinct.execute({});
       expect(result, [
-        FhirInteger(1),
-        FhirInteger(3),
-        FhirInteger(5),
+        cql.CqlInteger(1),
+        cql.CqlInteger(3),
+        cql.CqlInteger(5),
       ]);
     });
     test('define "DistinctIsNull": distinct null // null', () async {
@@ -282,11 +282,11 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(1),
-            FhirInteger(2),
-            FhirInteger(3),
-            FhirInteger(4),
-            FhirInteger(5)
+            cql.CqlInteger(1),
+            cql.CqlInteger(2),
+            cql.CqlInteger(3),
+            cql.CqlInteger(4),
+            cql.CqlInteger(5)
           ]));
     });
     test('define "FlattenIsNull": flatten null', () async {
@@ -301,7 +301,7 @@ void main() {
       final list = cql.ListExpression(element: [cql.LiteralInteger(1)]);
       final singletonFrom = cql.SingletonFrom(operand: list);
       final result = await singletonFrom.execute({});
-      expect(result, equals(FhirInteger(1)));
+      expect(result, equals(cql.CqlInteger(1)));
     });
     test('define "SingletonFromError": singleton from { 1, 3, 5 }', () async {
       final list = cql.ListExpression(element: [
@@ -334,9 +334,9 @@ void main() {
       expect(
           result,
           equals([
-            FhirInteger(2),
-            FhirInteger(3),
-            FhirInteger(4),
+            cql.CqlInteger(2),
+            cql.CqlInteger(3),
+            cql.CqlInteger(4),
           ]));
     });
 
@@ -364,7 +364,7 @@ void main() {
       ]);
       final first = cql.First(source: list);
       final result = await first.execute({});
-      expect(result, equals(FhirInteger(1)));
+      expect(result, equals(cql.CqlInteger(1)));
     });
     test('define "FirstIsNull": First(null)', () async {
       final first = cql.First(source: cql.LiteralNull());
@@ -384,7 +384,7 @@ void main() {
       );
       final cql.Last last = cql.Last(source: source);
       final result = await last.execute({});
-      expect(result, equals(FhirInteger(5)));
+      expect(result, equals(cql.CqlInteger(5)));
     });
     test('define "LastIsNull": Last(null)', () async {
       final cql.Last last = cql.Last(source: cql.LiteralNull());
@@ -409,7 +409,7 @@ void main() {
       ]);
 
       final result = await skipExpr.execute({});
-      expect(result, equals([FhirInteger(3), FhirInteger(4), FhirInteger(5)]));
+      expect(result, equals([cql.CqlInteger(3), cql.CqlInteger(4), cql.CqlInteger(5)]));
     });
 
     test('define "SkipNull": Skip({ 1, 3, 5 }, null) // { 1, 3, 5 }', () async {
@@ -425,7 +425,7 @@ void main() {
       ]);
 
       final result = await skipExpr.execute({});
-      expect(result, equals([FhirInteger(1), FhirInteger(3), FhirInteger(5)]));
+      expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(3), cql.CqlInteger(5)]));
     });
 
     test('define "SkipEmpty": Skip({ 1, 3, 5 }, -1) // { }', () async {
@@ -470,7 +470,7 @@ void main() {
       ]);
 
       final result = await takeExpr.execute({});
-      expect(result, equals([FhirInteger(1), FhirInteger(2)]));
+      expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(2)]));
     });
 
     test('define "TakeTooMany": Take({ 1, 2 }, 3) // { 1, 2 }', () async {
@@ -485,7 +485,7 @@ void main() {
       ]);
 
       final result = await takeExpr.execute({});
-      expect(result, equals([FhirInteger(1), FhirInteger(2)]));
+      expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(2)]));
     });
 
     test('define "TakeEmpty": Take({ 1, 2, 3, 4 }, null) // { }', () async {
@@ -549,7 +549,7 @@ void main() {
       expect(result, isA<List>());
       expect((result as List).length, equals(1));
       expect(result[0],
-          equals(FhirDateTime.fromUnits(year: 2012, month: 5, day: 10)));
+          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
     });
   });
 
@@ -590,9 +590,9 @@ void main() {
       expect(result, isA<List>());
       expect((result as List).length, equals(2));
       expect(result[0],
-          equals(FhirDateTime.fromUnits(year: 2012, month: 5, day: 10)));
+          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
       expect(result[1],
-          equals(FhirDateTime.fromUnits(year: 2014, month: 12, day: 10)));
+          equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)));
     });
   });
 
@@ -621,11 +621,11 @@ void main() {
       expect(result, isA<List>());
       expect((result as List).length, equals(3));
       expect(result[0],
-          equals(FhirDateTime.fromUnits(year: 2001, month: 9, day: 11)));
+          equals(cql.CqlDateTime.fromUnits(year: 2001, month: 9, day: 11)));
       expect(result[1],
-          equals(FhirDateTime.fromUnits(year: 2012, month: 5, day: 10)));
+          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
       expect(result[2],
-          equals(FhirDateTime.fromUnits(year: 2014, month: 12, day: 10)));
+          equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)));
     });
   });
 
@@ -649,7 +649,7 @@ void main() {
           operand:
               cql.As(operand: cql.LiteralNull(), resultTypeName: 'List<Any>'));
       final result = await lengthExpr.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(cql.CqlInteger(0)));
     });
 
     test('define "LengthIsNull": Length(null as String) // null', () async {
@@ -663,7 +663,7 @@ void main() {
     test('define "LengthEmptyList": Length({}) // 0', () async {
       final lengthExpr = cql.Length(operand: cql.ListExpression(element: []));
       final result = await lengthExpr.execute({});
-      expect(result, equals(FhirInteger(0)));
+      expect(result, equals(cql.CqlInteger(0)));
     });
 
     test(
@@ -685,7 +685,7 @@ void main() {
             day: cql.LiteralInteger(10)),
       ]));
       final result = await lengthExpr.execute({});
-      expect(result, equals(FhirInteger(3)));
+      expect(result, equals(cql.CqlInteger(3)));
     });
   });
 }

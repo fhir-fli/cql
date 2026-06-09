@@ -50,8 +50,8 @@ final context11 = <String, dynamic>{
   'Condition': <Map<String, dynamic>>[],
   // Measurement Period parameter: Interval[@2019-01-01T00:00:00.0, @2020-01-01T00:00:00.0)
   'Measurement Period': CqlInterval(
-    low: FhirDateTime.fromString('2019-01-01T00:00:00.0'),
-    high: FhirDateTime.fromString('2020-01-01T00:00:00.0'),
+    low: CqlDateTime.fromString('2019-01-01T00:00:00.0'),
+    high: CqlDateTime.fromString('2020-01-01T00:00:00.0'),
     lowClosed: true,
     highClosed: false,
   ),
@@ -91,13 +91,13 @@ final context11 = <String, dynamic>{
 final exercises11 = <String, dynamic>{
   // Patient.gender = 'female' AND AgeInYearsAt(start of MP) in [23, 64]
   // AgeInYearsAt(2019-01-01) for birthDate 1984-06-15 = 34 → in [23,64] → true
-  'Initial Population': FhirBoolean(true),
-  'Denominator': FhirBoolean(true),
+  'Initial Population': CqlBoolean(true),
+  'Denominator': CqlBoolean(true),
   // No hysterectomy, no congenital absence → empty list → exists = false
-  'Denominator Exclusion': FhirBoolean(false),
+  'Denominator Exclusion': CqlBoolean(false),
   'Absence of Cervix': <dynamic>[],
   // Pap test on 2019-03-15 ends within 3 years of MP end (2020-01-01) → true
-  'Numerator': FhirBoolean(true),
+  'Numerator': CqlBoolean(true),
   'Cervical Cytology Within 3 Years': [_papTest],
   // No HPV test
   'HPV Test Within 5 Years for Women Age 30 and Older': <dynamic>[],

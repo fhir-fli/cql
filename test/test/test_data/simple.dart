@@ -1,3 +1,3 @@
 import 'package:fhir_r4/fhir_r4.dart';
 
-final simple = {"TwoPlusTwo": FhirInteger(4)};
+final simple = {"TwoPlusTwo": CqlInteger(4)};

@@ -35,6 +35,7 @@ Map<String, dynamic> _buildContext({
   );
   final context = <String, dynamic>{
     'library': library,
+    ContextKey.modelResolver: const R4ModelResolver(),
   };
   if (valueSetsExpansion != null) {
     context['_valueSets'] = valueSetsExpansion;
@@ -229,7 +230,7 @@ void main() {
         codesystem: CodeSystemRef(name: 'LOINC'),
       );
       final result = await inCS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
     test('returns false when code system does not match', () async {
@@ -242,7 +243,7 @@ void main() {
         codesystem: CodeSystemRef(name: 'LOINC'),
       );
       final result = await inCS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
 
     test('returns null when code is null', () async {
@@ -280,7 +281,7 @@ void main() {
         codesystem: CodeSystemRef(name: 'LOINC'),
       );
       final result = await anyInCS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
     test('returns false when no codes match', () async {
@@ -293,7 +294,7 @@ void main() {
         codesystem: CodeSystemRef(name: 'LOINC'),
       );
       final result = await anyInCS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
 
     test('returns null when codes is null', () async {
@@ -313,7 +314,7 @@ void main() {
         codesystem: CodeSystemRef(name: 'LOINC'),
       );
       final result = await anyInCS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
   });
 
@@ -340,7 +341,7 @@ void main() {
         valueset: ValueSetRef(name: 'Diabetes'),
       );
       final result = await anyInVS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
     test('returns false when code is not in value set expansion', () async {
@@ -364,7 +365,7 @@ void main() {
         valueset: ValueSetRef(name: 'Diabetes'),
       );
       final result = await anyInVS.execute(context);
-      expect(result, equals(fhir.FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
 
     test('returns null when codes is null', () async {

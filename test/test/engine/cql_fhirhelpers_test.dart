@@ -27,11 +27,11 @@ void main() {
   // ToString
   // ---------------------------------------------------------------------------
   group('ToString', () {
-    test('FhirString returns plain String', () async {
+    test('CqlString returns plain String', () async {
       final ref = FunctionRef(
         name: 'ToString',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirString('hello'))],
+        operand: [_Literal(CqlString('hello'))],
       );
       final result = await ref.execute(ctx());
       expect(result, equals('hello'));
@@ -62,24 +62,24 @@ void main() {
   // ToBoolean
   // ---------------------------------------------------------------------------
   group('ToBoolean', () {
-    test('FhirBoolean passthrough', () async {
+    test('CqlBoolean passthrough', () async {
       final ref = FunctionRef(
         name: 'ToBoolean',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirBoolean(true))],
+        operand: [_Literal(CqlBoolean(true))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
-    test('bool to FhirBoolean', () async {
+    test('bool to CqlBoolean', () async {
       final ref = FunctionRef(
         name: 'ToBoolean',
         libraryName: 'FHIRHelpers',
         operand: [_Literal(false)],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirBoolean(false)));
+      expect(result, equals(CqlBoolean(false)));
     });
 
     test('null returns null', () async {
@@ -97,34 +97,34 @@ void main() {
   // ToInteger
   // ---------------------------------------------------------------------------
   group('ToInteger', () {
-    test('FhirInteger passthrough', () async {
+    test('CqlInteger passthrough', () async {
       final ref = FunctionRef(
         name: 'ToInteger',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirInteger(42))],
+        operand: [_Literal(CqlInteger(42))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirInteger(42)));
+      expect(result, equals(CqlInteger(42)));
     });
 
-    test('FhirPositiveInt to FhirInteger', () async {
+    test('FhirPositiveInt to CqlInteger', () async {
       final ref = FunctionRef(
         name: 'ToInteger',
         libraryName: 'FHIRHelpers',
         operand: [_Literal(FhirPositiveInt(5))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirInteger(5)));
+      expect(result, equals(CqlInteger(5)));
     });
 
-    test('FhirUnsignedInt to FhirInteger', () async {
+    test('FhirUnsignedInt to CqlInteger', () async {
       final ref = FunctionRef(
         name: 'ToInteger',
         libraryName: 'FHIRHelpers',
         operand: [_Literal(FhirUnsignedInt(10))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirInteger(10)));
+      expect(result, equals(CqlInteger(10)));
     });
 
     test('null returns null', () async {
@@ -142,24 +142,24 @@ void main() {
   // ToDecimal
   // ---------------------------------------------------------------------------
   group('ToDecimal', () {
-    test('FhirDecimal passthrough', () async {
+    test('CqlDecimal passthrough', () async {
       final ref = FunctionRef(
         name: 'ToDecimal',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirDecimal(3.14))],
+        operand: [_Literal(CqlDecimal(3.14))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirDecimal(3.14)));
+      expect(result, equals(CqlDecimal(3.14)));
     });
 
-    test('double to FhirDecimal', () async {
+    test('double to CqlDecimal', () async {
       final ref = FunctionRef(
         name: 'ToDecimal',
         libraryName: 'FHIRHelpers',
         operand: [_Literal(2.5)],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirDecimal(2.5)));
+      expect(result, equals(CqlDecimal(2.5)));
     });
 
     test('null returns null', () async {
@@ -177,35 +177,35 @@ void main() {
   // ToDateTime
   // ---------------------------------------------------------------------------
   group('ToDateTime', () {
-    test('FhirDateTime passthrough', () async {
+    test('CqlDateTime passthrough', () async {
       final ref = FunctionRef(
         name: 'ToDateTime',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirDateTime.fromString('2024-01-01'))],
+        operand: [_Literal(CqlDateTime.fromString('2024-01-01'))],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDateTime>());
-      expect((result as FhirDateTime).valueString, equals('2024-01-01'));
+      expect(result, isA<CqlDateTime>());
+      expect((result as CqlDateTime).valueString, equals('2024-01-01'));
     });
 
-    test('FhirDate to FhirDateTime', () async {
+    test('CqlDate to CqlDateTime', () async {
       final ref = FunctionRef(
         name: 'ToDateTime',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirDate.fromString('2024-06-15'))],
+        operand: [_Literal(CqlDate.fromString('2024-06-15'))],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDateTime>());
+      expect(result, isA<CqlDateTime>());
     });
 
-    test('String to FhirDateTime', () async {
+    test('String to CqlDateTime', () async {
       final ref = FunctionRef(
         name: 'ToDateTime',
         libraryName: 'FHIRHelpers',
         operand: [_Literal('2024-03-20T10:30:00')],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDateTime>());
+      expect(result, isA<CqlDateTime>());
     });
 
     test('null returns null', () async {
@@ -223,36 +223,36 @@ void main() {
   // ToDate
   // ---------------------------------------------------------------------------
   group('ToDate', () {
-    test('FhirDate passthrough', () async {
+    test('CqlDate passthrough', () async {
       final ref = FunctionRef(
         name: 'ToDate',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirDate.fromString('2024-01-01'))],
+        operand: [_Literal(CqlDate.fromString('2024-01-01'))],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDate>());
-      expect((result as FhirDate).valueString, equals('2024-01-01'));
+      expect(result, isA<CqlDate>());
+      expect((result as CqlDate).valueString, equals('2024-01-01'));
     });
 
-    test('FhirDateTime to FhirDate', () async {
+    test('CqlDateTime to CqlDate', () async {
       final ref = FunctionRef(
         name: 'ToDate',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirDateTime.fromString('2024-06-15T10:30:00'))],
+        operand: [_Literal(CqlDateTime.fromString('2024-06-15T10:30:00'))],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDate>());
-      expect((result as FhirDate).valueString, equals('2024-06-15'));
+      expect(result, isA<CqlDate>());
+      expect((result as CqlDate).valueString, equals('2024-06-15'));
     });
 
-    test('String to FhirDate', () async {
+    test('String to CqlDate', () async {
       final ref = FunctionRef(
         name: 'ToDate',
         libraryName: 'FHIRHelpers',
         operand: [_Literal('2024-03-20')],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirDate>());
+      expect(result, isA<CqlDate>());
     });
 
     test('null returns null', () async {
@@ -270,24 +270,24 @@ void main() {
   // ToTime
   // ---------------------------------------------------------------------------
   group('ToTime', () {
-    test('FhirTime passthrough', () async {
+    test('CqlTime passthrough', () async {
       final ref = FunctionRef(
         name: 'ToTime',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirTime('14:30:00'))],
+        operand: [_Literal(CqlTime('14:30:00'))],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirTime>());
+      expect(result, isA<CqlTime>());
     });
 
-    test('String to FhirTime', () async {
+    test('String to CqlTime', () async {
       final ref = FunctionRef(
         name: 'ToTime',
         libraryName: 'FHIRHelpers',
         operand: [_Literal('10:15:00')],
       );
       final result = await ref.execute(ctx());
-      expect(result, isA<FhirTime>());
+      expect(result, isA<CqlTime>());
     });
 
     test('null returns null', () async {
@@ -459,8 +459,8 @@ void main() {
 
     test('CqlInterval passthrough', () async {
       final interval = CqlInterval(
-        low: FhirInteger(1),
-        high: FhirInteger(10),
+        low: CqlInteger(1),
+        high: CqlInteger(10),
         lowClosed: true,
         highClosed: true,
       );
@@ -712,34 +712,34 @@ void main() {
   // ToValue
   // ---------------------------------------------------------------------------
   group('ToValue', () {
-    test('FhirBoolean passthrough', () async {
+    test('CqlBoolean passthrough', () async {
       final ref = FunctionRef(
         name: 'ToValue',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirBoolean(true))],
+        operand: [_Literal(CqlBoolean(true))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirBoolean(true)));
+      expect(result, equals(CqlBoolean(true)));
     });
 
-    test('FhirString unwraps to String', () async {
+    test('CqlString unwraps to String', () async {
       final ref = FunctionRef(
         name: 'ToValue',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirString('hello'))],
+        operand: [_Literal(CqlString('hello'))],
       );
       final result = await ref.execute(ctx());
       expect(result, equals('hello'));
     });
 
-    test('FhirInteger passthrough', () async {
+    test('CqlInteger passthrough', () async {
       final ref = FunctionRef(
         name: 'ToValue',
         libraryName: 'FHIRHelpers',
-        operand: [_Literal(FhirInteger(42))],
+        operand: [_Literal(CqlInteger(42))],
       );
       final result = await ref.execute(ctx());
-      expect(result, equals(FhirInteger(42)));
+      expect(result, equals(CqlInteger(42)));
     });
 
     test('FHIR Quantity to ValidatedQuantity', () async {
@@ -885,7 +885,7 @@ void main() {
         final ref = FunctionRef(
           name: funcName,
           libraryName: 'FHIRHelpers',
-          operand: [_Literal(FhirDateTime.fromString('2024-01-01'))],
+          operand: [_Literal(CqlDateTime.fromString('2024-01-01'))],
         );
         final result = await ref.execute(ctx());
         expect(result, isNull, reason: '$funcName should return null');

@@ -39,7 +39,7 @@ void main() {
       test('$name should throw at runtime', () async {
         final context = <String, dynamic>{
           'startTimestamp':
-              FhirDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
+              CqlDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
         };
         final results =
             (await library.execute(context)) as Map<String, dynamic>;

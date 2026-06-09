@@ -147,21 +147,21 @@ int _expectedPackYears() {
 }
 
 final exercises10 = <String, dynamic>{
-  'Patient age in years based on date of birth': FhirInteger(_expectedAge()),
+  'Patient age in years based on date of birth': CqlInteger(_expectedAge()),
   'Smoking status observation': [_smokingObs],
   'Lung cancer diagnosis': <dynamic>[],
   'Chest CT procedure': <dynamic>[],
-  '55 through 80': FhirBoolean(true),
+  '55 through 80': CqlBoolean(true),
   'Most recent smoking status observation': _smokingObs,
   'Current smoker observation': null,
   'Former smoker observation': _smokingObs,
-  'Is current smoker': FhirBoolean(false),
-  'Is former smoker who quit within past 15 years': FhirBoolean(true),
+  'Is current smoker': CqlBoolean(false),
+  'Is former smoker who quit within past 15 years': CqlBoolean(true),
   'Pack-years':
       ValidatedQuantity.fromNumber(_expectedPackYears(), unit: '{Pack-years}'),
-  'Has 30 pack-year smoking history': FhirBoolean(true),
-  'Has lung cancer': FhirBoolean(false),
-  'Had chest CT in past year': FhirBoolean(false),
-  'Inclusion Criteria': FhirBoolean(true),
-  'Exclusion Criteria': FhirBoolean(false),
+  'Has 30 pack-year smoking history': CqlBoolean(true),
+  'Has lung cancer': CqlBoolean(false),
+  'Had chest CT in past year': CqlBoolean(false),
+  'Inclusion Criteria': CqlBoolean(true),
+  'Exclusion Criteria': CqlBoolean(false),
 };

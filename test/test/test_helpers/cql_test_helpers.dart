@@ -76,7 +76,7 @@ bool areValuesEqual(dynamic result, dynamic answer) {
     return const DeepCollectionEquality().equals(result, answer);
   } else if (result is Map && answer is Map) {
     return _areMapsEqual(result, answer);
-  } else if (result is FhirDateTimeBase && answer is FhirDateTimeBase) {
+  } else if (result is CqlDateTimeBase && answer is CqlDateTimeBase) {
     // Allow a 1-minute tolerance for time-sensitive expressions like Now()
     final resultDt = result.valueDateTime;
     final answerDt = answer.valueDateTime;
@@ -84,7 +84,7 @@ bool areValuesEqual(dynamic result, dynamic answer) {
       return resultDt.difference(answerDt).inSeconds.abs() < 60;
     }
     return result == answer;
-  } else if (result is FhirTime && answer is FhirTime) {
+  } else if (result is CqlTime && answer is CqlTime) {
     // Allow a 1-minute tolerance for time-sensitive expressions like TimeOfDay()
     return (_calculateSeconds(result) - _calculateSeconds(answer)).abs() < 60;
   } else if (result is FhirBase && answer is FhirBase) {
@@ -110,6 +110,6 @@ bool _areMapsEqual(Map result, Map answer) {
   return equal;
 }
 
-int _calculateSeconds(FhirTime time) {
+int _calculateSeconds(CqlTime time) {
   return (time.hour ?? 0) * 3600 + (time.minute ?? 0) * 60 + (time.second ?? 0);
 }

@@ -17,8 +17,8 @@ define function AddOne(x Integer): x + 1
 define TestAddOne: AddOne(5)
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestAddOne'], equals(FhirInteger(6)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestAddOne'], equals(CqlInteger(6)));
     });
 
     test('same-library function with two params: Add(3, 4) = 7', () async {
@@ -32,8 +32,8 @@ define function Add(a Integer, b Integer): a + b
 define TestAdd: Add(3, 4)
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestAdd'], equals(FhirInteger(7)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestAdd'], equals(CqlInteger(7)));
     });
   });
 
@@ -49,8 +49,8 @@ define fluent function double(x Integer): x * 2
 define TestDouble: 5.double()
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestDouble'], equals(FhirInteger(10)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestDouble'], equals(CqlInteger(10)));
     });
 
     test('fluent function on expression: (2 + 3).double() = 10', () async {
@@ -64,8 +64,8 @@ define fluent function double(x Integer): x * 2
 define TestExprDouble: (2 + 3).double()
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestExprDouble'], equals(FhirInteger(10)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestExprDouble'], equals(CqlInteger(10)));
     });
 
     test('fluent function chained: 3.double().double() = 12', () async {
@@ -79,8 +79,8 @@ define fluent function double(x Integer): x * 2
 define TestChain: 3.double().double()
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestChain'], equals(FhirInteger(12)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestChain'], equals(CqlInteger(12)));
     });
 
     test('fluent function serializes fluent flag in JSON', () {
@@ -116,7 +116,7 @@ define TestOne: Greet('World')
 define TestTwo: Greet('John', 'Doe')
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
+      final result = await library.execute({}, const R4ModelResolver());
       expect(result['TestOne'], equals('Hello World'));
       expect(result['TestTwo'], equals('Hello John Doe'));
     });
@@ -134,7 +134,7 @@ define TestOne: (42).describe()
 define TestTwo: (42).describe('Value')
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
+      final result = await library.execute({}, const R4ModelResolver());
       expect(result['TestOne'], equals('Number: 42'));
       expect(result['TestTwo'], equals('Value: 42'));
     });
@@ -150,8 +150,8 @@ define function AddOne(x Integer): x + 1
 define TestResult: AddOne(10)
 ''';
       final library = parseAndBuildLibrary(cql);
-      final result = await library.execute();
-      expect(result['TestResult'], equals(FhirInteger(11)));
+      final result = await library.execute({}, const R4ModelResolver());
+      expect(result['TestResult'], equals(CqlInteger(11)));
     });
   });
 }

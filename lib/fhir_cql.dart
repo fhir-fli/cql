@@ -16,6 +16,10 @@ library fhir_cql;
 export 'model_resolver.dart';
 export 'retrieve_provider.dart';
 
+// Concrete per-FHIR-version resolvers. Tree-shaking strips the ones a
+// consumer doesn't construct. (R5/R6 added as they land.)
+export 'resolvers/r4/r4_model_resolver.dart';
+
 // CQL System primitive types (Boolean, Integer, Long, Decimal, String,
 // Date, Time, DateTime + base classes). Engine code uses these as the
 // strict input/output types at all internal boundaries.
