@@ -77,21 +77,21 @@ class SplitOnMatches extends OperatorExpression {
     if (pattern == null) return null;
 
     String? s;
-    if (str is fhir.CqlString) {
-      s = str.primitiveValue;
+    if (str is CqlString) {
+      s = str.valueString;
     } else if (str is String) {
       s = str;
     }
     if (s == null) return null;
 
     String? p;
-    if (pattern is fhir.CqlString) {
-      p = pattern.primitiveValue;
+    if (pattern is CqlString) {
+      p = pattern.valueString;
     } else if (pattern is String) {
       p = pattern;
     }
     if (p == null) return null;
 
-    return s.split(RegExp(p)).map((e) => fhir.CqlString(e)).toList();
+    return s.split(RegExp(p)).map((e) => CqlString(e)).toList();
   }
 }

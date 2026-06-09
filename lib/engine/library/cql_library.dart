@@ -43,6 +43,12 @@ class CqlLibrary extends Element {
   /// Internal list of libraries referenced by this library, or available.
   LibraryManager libraryManager = LibraryManager();
 
+  /// The active [ModelResolver] for this run, captured at [execute] time so
+  /// non-execution analysis paths (e.g. [CqlExpression.getReturnTypes], which
+  /// receive only the library) can reach FHIR-version-specific type metadata.
+  /// `null` before [execute] is called.
+  ModelResolver? modelResolver;
+
   CqlLibrary({
     this.type,
     this.identifier,
@@ -507,6 +513,7 @@ class CqlLibrary extends Element {
         CqlDateTime.fromDateTime(DateTime.now());
     if (modelResolver != null) {
       context[ContextKey.modelResolver] = modelResolver;
+      this.modelResolver = modelResolver;
     }
     final statementsExecuted = await statements?.execute(context);
     return statementsExecuted;

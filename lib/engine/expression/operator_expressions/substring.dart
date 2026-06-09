@@ -87,15 +87,15 @@ class Substring extends OperatorExpression {
     if (str == null || start == null) return null;
 
     String? s;
-    if (str is fhir.CqlString) {
-      s = str.primitiveValue;
+    if (str is CqlString) {
+      s = str.valueString;
     } else if (str is String) {
       s = str;
     }
     if (s == null) return null;
 
     int? startIdx;
-    if (start is fhir.CqlInteger) {
+    if (start is CqlInteger) {
       startIdx = start.valueInt;
     } else if (start is int) {
       startIdx = start;
@@ -105,7 +105,7 @@ class Substring extends OperatorExpression {
     int? len;
     if (length != null) {
       final lengthVal = await length!.execute(context);
-      if (lengthVal is fhir.CqlInteger) {
+      if (lengthVal is CqlInteger) {
         len = lengthVal.valueInt;
       } else if (lengthVal is int) {
         len = lengthVal;
@@ -114,9 +114,9 @@ class Substring extends OperatorExpression {
 
     if (len != null) {
       final end = startIdx + len;
-      return fhir.CqlString(
+      return CqlString(
           s.substring(startIdx, end > s.length ? s.length : end));
     }
-    return fhir.CqlString(s.substring(startIdx));
+    return CqlString(s.substring(startIdx));
   }
 }

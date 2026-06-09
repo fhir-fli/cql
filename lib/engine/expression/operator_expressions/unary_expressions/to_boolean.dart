@@ -66,38 +66,38 @@ class ToBoolean extends UnaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Boolean'];
 
   @override
-  Future<fhir.CqlBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     switch (value) {
-      case fhir.CqlBoolean _:
+      case CqlBoolean _:
         return value;
       case bool _:
-        return fhir.CqlBoolean(value);
-      case fhir.CqlInteger _:
-        if (value.valueInt == 1) return fhir.CqlBoolean(true);
-        if (value.valueInt == 0) return fhir.CqlBoolean(false);
+        return CqlBoolean(value);
+      case CqlInteger _:
+        if (value.valueInt == 1) return CqlBoolean(true);
+        if (value.valueInt == 0) return CqlBoolean(false);
         return null;
-      case fhir.CqlDecimal _:
-        if (value.valueNum == 1.0) return fhir.CqlBoolean(true);
-        if (value.valueNum == 0.0) return fhir.CqlBoolean(false);
+      case CqlDecimal _:
+        if (value.valueNum == 1.0) return CqlBoolean(true);
+        if (value.valueNum == 0.0) return CqlBoolean(false);
         return null;
-      case fhir.CqlString _:
-        final s = value.primitiveValue?.toLowerCase();
+      case CqlString _:
+        final s = value.valueString?.toLowerCase();
         if (s == 'true' || s == 't' || s == 'yes' || s == 'y' || s == '1') {
-          return fhir.CqlBoolean(true);
+          return CqlBoolean(true);
         }
         if (s == 'false' || s == 'f' || s == 'no' || s == 'n' || s == '0') {
-          return fhir.CqlBoolean(false);
+          return CqlBoolean(false);
         }
         return null;
       case String _:
         final s = value.toLowerCase();
         if (s == 'true' || s == 't' || s == 'yes' || s == 'y' || s == '1') {
-          return fhir.CqlBoolean(true);
+          return CqlBoolean(true);
         }
         if (s == 'false' || s == 'f' || s == 'no' || s == 'n' || s == '0') {
-          return fhir.CqlBoolean(false);
+          return CqlBoolean(false);
         }
         return null;
       default:

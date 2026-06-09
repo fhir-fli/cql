@@ -87,7 +87,7 @@ class CanConvert extends UnaryExpression {
   String get type => 'CanConvert';
 
   @override
-  Future<fhir.CqlBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     final targetType = toType?.localPart.toLowerCase() ?? '';
@@ -115,11 +115,11 @@ class CanConvert extends UnaryExpression {
         case 'time':
           result = await ToTime(operand: operand).execute(context);
         default:
-          return fhir.CqlBoolean(false);
+          return CqlBoolean(false);
       }
-      return fhir.CqlBoolean(result != null);
+      return CqlBoolean(result != null);
     } catch (_) {
-      return fhir.CqlBoolean(false);
+      return CqlBoolean(false);
     }
   }
 }

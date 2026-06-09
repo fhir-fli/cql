@@ -68,12 +68,12 @@ class ToChars extends UnaryExpression {
     final value = await operand.execute(context);
     if (value == null) return null;
     String? str;
-    if (value is fhir.CqlString) {
-      str = value.primitiveValue;
+    if (value is CqlString) {
+      str = value.valueString;
     } else if (value is String) {
       str = value;
     }
     if (str == null) return null;
-    return str.split('').map((c) => fhir.CqlString(c)).toList();
+    return str.split('').map((c) => CqlString(c)).toList();
   }
 }

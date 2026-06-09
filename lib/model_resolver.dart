@@ -89,6 +89,16 @@ abstract class ModelResolver {
   /// Java equivalent: `ModelResolver.resolveType(value: Any?): JavaClass<*>?`.
   String? resolveTypeOf(dynamic value);
 
+  /// Resolves the *static* type of a dotted model path such as
+  /// `Observation.value` or `Patient.name`, for return-type inference (used by
+  /// the engine's `Property.getReturnTypes`).
+  ///
+  /// Returns the leaf field's model type name and whether it is a collection,
+  /// or `null` if the path can't be resolved in this model. Type names are in
+  /// the resolver's own namespace (e.g. FHIR `'CodeableConcept'`); callers map
+  /// them to ELM/System types as needed.
+  ({String type, bool isList})? resolveTypePath(String path);
+
   // ===========================================================================
   // Property access (the FHIRPath-style path resolution)
   // ===========================================================================

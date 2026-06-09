@@ -64,11 +64,11 @@ class Upper extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.CqlString) {
-      return fhir.CqlString(value.primitiveValue?.toUpperCase());
+    if (value is CqlString) {
+      return CqlString(value.valueString?.toUpperCase());
     }
     if (value is String) {
-      return fhir.CqlString(value.toUpperCase());
+      return CqlString(value.toUpperCase());
     }
     return null;
   }

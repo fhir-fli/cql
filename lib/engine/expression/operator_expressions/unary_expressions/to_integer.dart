@@ -67,28 +67,28 @@ class ToInteger extends UnaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Integer'];
 
   @override
-  Future<fhir.CqlInteger?> execute(Map<String, dynamic> context) async {
+  Future<CqlInteger?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     switch (value) {
-      case fhir.CqlInteger _:
+      case CqlInteger _:
         return value;
       case int _:
-        return fhir.CqlInteger(value);
-      case fhir.CqlBoolean _:
-        return fhir.CqlInteger(value.valueBoolean == true ? 1 : 0);
+        return CqlInteger(value);
+      case CqlBoolean _:
+        return CqlInteger(value.valueBoolean == true ? 1 : 0);
       case bool _:
-        return fhir.CqlInteger(value ? 1 : 0);
-      case fhir.CqlLong _:
+        return CqlInteger(value ? 1 : 0);
+      case CqlLong _:
         final bigVal = value.valueBigInt;
         if (bigVal == null) return null;
-        return fhir.CqlInteger(bigVal.toInt());
-      case fhir.CqlDecimal _:
+        return CqlInteger(bigVal.toInt());
+      case CqlDecimal _:
         final numVal = value.valueNum;
         if (numVal == null) return null;
-        return fhir.CqlInteger(numVal.truncate());
-      case fhir.CqlString _:
-        return _parseStringToInteger(value.primitiveValue ?? '');
+        return CqlInteger(numVal.truncate());
+      case CqlString _:
+        return _parseStringToInteger(value.valueString ?? '');
       case String _:
         return _parseStringToInteger(value);
       default:
@@ -99,7 +99,7 @@ class ToInteger extends UnaryExpression {
   /// Parse string to integer with 32-bit signed range validation.
   /// CQL Integer is 32-bit signed: -2147483648 to 2147483647.
   /// If the string contains a decimal point, drop the fractional part.
-  static fhir.CqlInteger? _parseStringToInteger(String s) {
+  static CqlInteger? _parseStringToInteger(String s) {
     // Must match format: (+|-)?#0 or (+|-)?#0.0# (digits with optional decimal)
     if (!RegExp(r'^[+-]?\d+(\.\d+)?$').hasMatch(s)) return null;
     // If it has a decimal point, parse as double and truncate
@@ -108,13 +108,13 @@ class ToInteger extends UnaryExpression {
       if (dbl == null || dbl.isInfinite || dbl.isNaN) return null;
       final truncated = dbl.truncate();
       if (truncated > 2147483647 || truncated < -2147483648) return null;
-      return fhir.CqlInteger(truncated);
+      return CqlInteger(truncated);
     }
     final bigVal = BigInt.tryParse(s);
     if (bigVal == null) return null;
     if (bigVal > BigInt.from(2147483647) || bigVal < BigInt.from(-2147483648)) {
       return null;
     }
-    return fhir.CqlInteger(bigVal.toInt());
+    return CqlInteger(bigVal.toInt());
   }
 }

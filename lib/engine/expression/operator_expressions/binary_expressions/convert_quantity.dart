@@ -85,7 +85,7 @@ class ConvertQuantity extends BinaryExpression {
 
     String? targetUnit;
     if (right is CqlString) {
-      targetUnit = right.primitiveValue;
+      targetUnit = right.valueString;
     } else if (right is String) {
       targetUnit = right;
     } else if (right is ValidatedQuantity) {

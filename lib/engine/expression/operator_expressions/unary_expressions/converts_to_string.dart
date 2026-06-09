@@ -34,14 +34,14 @@ class ConvertsToString extends UnaryExpression {
   String get type => 'ConvertsToString';
 
   @override
-  Future<fhir.CqlBoolean?> execute(Map<String, dynamic> context) async {
+  Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
     try {
       final result = await ToString(operand: operand).execute(context);
-      return fhir.CqlBoolean(result != null);
+      return CqlBoolean(result != null);
     } catch (_) {
-      return fhir.CqlBoolean(false);
+      return CqlBoolean(false);
     }
   }
 }

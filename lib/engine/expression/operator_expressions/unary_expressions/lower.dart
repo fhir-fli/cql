@@ -64,11 +64,11 @@ class Lower extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.CqlString) {
-      return fhir.CqlString(value.primitiveValue?.toLowerCase());
+    if (value is CqlString) {
+      return CqlString(value.valueString?.toLowerCase());
     }
     if (value is String) {
-      return fhir.CqlString(value.toLowerCase());
+      return CqlString(value.toLowerCase());
     }
     return null;
   }

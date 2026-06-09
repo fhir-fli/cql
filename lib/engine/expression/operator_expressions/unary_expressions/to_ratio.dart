@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:ucum/ucum.dart';
 
@@ -74,8 +73,8 @@ class ToRatio extends UnaryExpression {
     String? str;
     if (value is String) {
       str = value;
-    } else if (value is fhir.CqlString) {
-      str = value.primitiveValue;
+    } else if (value is CqlString) {
+      str = value.valueString;
     }
     if (str == null) return null;
     final parts = str.split(':');

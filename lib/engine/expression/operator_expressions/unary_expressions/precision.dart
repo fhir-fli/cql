@@ -66,7 +66,7 @@ class Precision extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.CqlDecimal) {
+    if (value is CqlDecimal) {
       // Use the original literal string if available (preserves trailing zeros)
       String str;
       if (operand is LiteralDecimal) {
@@ -76,42 +76,42 @@ class Precision extends UnaryExpression {
         str = value.valueString ?? '';
       }
       final dotIdx = str.indexOf('.');
-      if (dotIdx == -1) return fhir.CqlInteger(0);
-      return fhir.CqlInteger(str.length - dotIdx - 1);
+      if (dotIdx == -1) return CqlInteger(0);
+      return CqlInteger(str.length - dotIdx - 1);
     }
-    if (value is fhir.CqlDate) {
+    if (value is CqlDate) {
       // Count total significant digits: YYYY=4, YYYY-MM=6, YYYY-MM-DD=8
       final str = value.valueString ?? '';
-      if (str.length >= 10) return fhir.CqlInteger(8); // day: 4+2+2
-      if (str.length >= 7) return fhir.CqlInteger(6); // month: 4+2
-      return fhir.CqlInteger(4); // year: 4
+      if (str.length >= 10) return CqlInteger(8); // day: 4+2+2
+      if (str.length >= 7) return CqlInteger(6); // month: 4+2
+      return CqlInteger(4); // year: 4
     }
-    if (value is fhir.CqlDateTime) {
+    if (value is CqlDateTime) {
       // Count total significant digits (excluding separators):
       // YYYY=4, +MM=6, +DD=8, +HH=10, +MM=12, +SS=14, +mmm=17
       final str = value.valueString ?? '';
-      if (str.contains('.')) return fhir.CqlInteger(17); // millisecond
+      if (str.contains('.')) return CqlInteger(17); // millisecond
       if (str.contains('T')) {
         final timePart = str.split('T')[1];
         final timeOnly =
             timePart.replaceAll(RegExp(r'[+-].*'), '').replaceAll('Z', '');
         final parts = timeOnly.split(':');
-        if (parts.length >= 3) return fhir.CqlInteger(14); // second
-        if (parts.length >= 2) return fhir.CqlInteger(12); // minute
-        return fhir.CqlInteger(10); // hour
+        if (parts.length >= 3) return CqlInteger(14); // second
+        if (parts.length >= 2) return CqlInteger(12); // minute
+        return CqlInteger(10); // hour
       }
-      if (str.length >= 10) return fhir.CqlInteger(8);
-      if (str.length >= 7) return fhir.CqlInteger(6);
-      return fhir.CqlInteger(4);
+      if (str.length >= 10) return CqlInteger(8);
+      if (str.length >= 7) return CqlInteger(6);
+      return CqlInteger(4);
     }
-    if (value is fhir.CqlTime) {
+    if (value is CqlTime) {
       // Count total significant digits: HH=2, +MM=4, +SS=6, +mmm=9
       final str = value.valueString ?? '';
-      if (str.contains('.')) return fhir.CqlInteger(9); // millisecond
+      if (str.contains('.')) return CqlInteger(9); // millisecond
       final parts = str.split(':');
-      if (parts.length >= 3) return fhir.CqlInteger(6); // second
-      if (parts.length >= 2) return fhir.CqlInteger(4); // minute
-      return fhir.CqlInteger(2); // hour
+      if (parts.length >= 3) return CqlInteger(6); // second
+      if (parts.length >= 2) return CqlInteger(4); // minute
+      return CqlInteger(2); // hour
     }
     return null;
   }

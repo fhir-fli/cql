@@ -8,6 +8,8 @@
 /// Mirrors the canonical pattern from
 /// [cqframework R4FhirModelResolver](https://github.com/cqframework/clinical_quality_language/blob/main/Src/java/engine-fhir/src/main/kotlin/org/opencds/cqf/cql/engine/fhir/model/R4FhirModelResolver.kt).
 import 'package:fhir_r4/fhir_r4.dart' as r4;
+import 'package:fhir_r4_path/fhir_r4_path.dart' show FHIRPathEngine, WorkerContext;
+import 'package:ucum/fhir/validated_quantity.dart' show ValidatedQuantity;
 
 import '../../cql_primitives/cql_primitives.dart';
 import '../../engine/types/cql_type.dart';
@@ -255,21 +257,59 @@ class R4ModelResolver implements ModelResolver {
     return null;
   }
 
+  @override
+  ({String type, bool isList})? resolveTypePath(String path) {
+    final field = r4.resolveSimplePath(path);
+    if (field == null) return null;
+    return (type: field.type, isList: field.isList);
+  }
+
   // ===========================================================================
-  // Property access — stub. Engine code currently does FHIRPath via the
-  // FHIRPathEngine; this method will eventually wrap that with version-aware
-  // polymorphic-prefix handling.
+  // Property access — runtime FHIRPath resolution against R4 data. This is the
+  // single place the engine's `Property` operator routes FHIR navigation; it
+  // uses the modern FHIRPathEngine entry point (never the legacy walkFhirPath).
   // ===========================================================================
 
   @override
   Future<dynamic> resolvePath(dynamic source, String path) async {
-    // TODO(r4-resolver): implement polymorphic field resolution
-    // (effectiveDateTime/effectivePeriod, valueQuantity/valueString, etc.)
-    // For now, delegate to a simple JSON-shaped walk for Map sources.
-    if (source is Map<String, dynamic>) {
-      return source[path];
+    if (source == null) return null;
+
+    // Coerce the source into a FHIR object the FHIRPathEngine can walk.
+    final r4.FhirBase? fhirContext;
+    if (source is r4.FhirBase) {
+      fhirContext = source;
+    } else if (source is Map<String, dynamic>) {
+      fhirContext = r4.Resource.fromJson(source);
+    } else if (source is List &&
+        source.length == 1 &&
+        source.first is Map<String, dynamic>) {
+      fhirContext = r4.Resource.fromJson(source.first as Map<String, dynamic>);
+    } else if (source is ValidatedQuantity) {
+      fhirContext = r4.Quantity(
+        value: r4.FhirDecimal.tryParse(source.value.asUcumDecimal()),
+        unit: r4.FhirString(source.unit),
+      );
+    } else {
+      fhirContext = null;
     }
-    return null;
+    if (fhirContext == null) return null;
+
+    try {
+      final engine = await FHIRPathEngine.create(WorkerContext());
+      final ast = engine.parse(path);
+      var result = await engine.evaluate(fhirContext, ast);
+      // Fallback for choice types (e.g. value[x]) the path didn't resolve.
+      if (result.isEmpty) {
+        final child = fhirContext.getChildByName(path);
+        if (child != null) {
+          result = [child];
+        }
+      }
+      if (result.length == 1) return result.first;
+      return result;
+    } catch (_) {
+      return null;
+    }
   }
 
   @override

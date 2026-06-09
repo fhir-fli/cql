@@ -1,7 +1,5 @@
 
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
-import 'package:ucum/fhir/validated_quantity.dart' show ValidatedQuantity;
 
 /// The Property operator returns the value of the property on source specified
 /// by the path attribute.
@@ -88,7 +86,7 @@ class Property extends CqlExpression {
       final sourceReturnTypes = source!.getReturnTypes(library);
       final returnTypes = <String>[];
       for (final type in sourceReturnTypes) {
-        final endType = fhir.resolveSimplePath('$type.$path');
+        final endType = library.modelResolver?.resolveTypePath('$type.$path');
         if (endType != null) {
           final resolvedType = QName.fhirToElmTypes(endType.type);
           returnTypes
@@ -137,39 +135,8 @@ class Property extends CqlExpression {
         !sourceResult.containsKey('resourceType')) {
       return sourceResult[path];
     }
-    try {
-      final fhirContext = sourceResult is fhir.FhirBase
-          ? sourceResult
-          : sourceResult is Map<String, dynamic>
-              ? fhir.Resource.fromJson(sourceResult)
-              : sourceResult is List &&
-                      sourceResult.length == 1 &&
-                      sourceResult.first is Map<String, dynamic>
-                  ? fhir.Resource.fromJson(sourceResult.first)
-                  : sourceResult is ValidatedQuantity
-                      ? fhir.Quantity(
-                          value: fhir.CqlDecimal.tryParse(
-                              sourceResult.value.asUcumDecimal()),
-                          unit: fhir.CqlString(sourceResult.unit),
-                        )
-                      : null;
-      var result =
-          await walkFhirPath(context: fhirContext, pathExpression: path);
-      // Fallback for choice types (e.g., value[x]) where walkFhirPath may
-      // not resolve the polymorphic property name.
-      if (result.isEmpty && fhirContext is fhir.FhirBase) {
-        final child = fhirContext.getChildByName(path);
-        if (child != null) {
-          result = [child];
-        }
-      }
-      if (result.length == 1) {
-        return result.first;
-      } else {
-        return result;
-      }
-    } catch (e) {
-      return null;
-    }
+    // All FHIR-shaped navigation is delegated to the version-specific
+    // ModelResolver, keeping the engine free of any fhir_r* dependency.
+    return requireModelResolver(context).resolvePath(sourceResult, path);
   }
 }

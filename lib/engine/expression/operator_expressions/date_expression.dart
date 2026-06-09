@@ -101,7 +101,7 @@ class DateExpression extends OperatorExpression {
     if (yearVal == null) return null;
 
     int? y;
-    if (yearVal is fhir.CqlInteger) {
+    if (yearVal is CqlInteger) {
       y = yearVal.valueInt;
     } else if (yearVal is int) {
       y = yearVal;
@@ -111,7 +111,7 @@ class DateExpression extends OperatorExpression {
     int? m;
     if (month != null) {
       final monthVal = await month!.execute(context);
-      if (monthVal is fhir.CqlInteger) {
+      if (monthVal is CqlInteger) {
         m = monthVal.valueInt;
       } else if (monthVal is int) {
         m = monthVal;
@@ -121,7 +121,7 @@ class DateExpression extends OperatorExpression {
     int? d;
     if (day != null) {
       final dayVal = await day!.execute(context);
-      if (dayVal is fhir.CqlInteger) {
+      if (dayVal is CqlInteger) {
         d = dayVal.valueInt;
       } else if (dayVal is int) {
         d = dayVal;
@@ -129,10 +129,10 @@ class DateExpression extends OperatorExpression {
     }
 
     final yStr = y.toString().padLeft(4, '0');
-    if (m == null) return fhir.CqlDate.fromString(yStr);
+    if (m == null) return CqlDate.fromString(yStr);
     final mStr = m.toString().padLeft(2, '0');
-    if (d == null) return fhir.CqlDate.fromString('$yStr-$mStr');
+    if (d == null) return CqlDate.fromString('$yStr-$mStr');
     final dStr = d.toString().padLeft(2, '0');
-    return fhir.CqlDate.fromString('$yStr-$mStr-$dStr');
+    return CqlDate.fromString('$yStr-$mStr-$dStr');
   }
 }

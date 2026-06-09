@@ -70,19 +70,19 @@ class ToTime extends UnaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    if (value is fhir.CqlTime) return value;
+    if (value is CqlTime) return value;
     if (value is String) {
       return _parseTime(value);
     }
-    if (value is fhir.CqlString) {
-      final str = value.primitiveValue;
+    if (value is CqlString) {
+      final str = value.valueString;
       if (str == null) return null;
       return _parseTime(str);
     }
     return null;
   }
 
-  static fhir.CqlTime? _parseTime(String input) {
+  static CqlTime? _parseTime(String input) {
     // Remove leading 'T' if present
     var str = input.startsWith('T') ? input.substring(1) : input;
     // Validate basic format: must start with digits (time portion)
@@ -109,7 +109,7 @@ class ToTime extends UnaryExpression {
       }
     }
     try {
-      return fhir.CqlTime(str);
+      return CqlTime(str);
     } catch (_) {
       return null;
     }
