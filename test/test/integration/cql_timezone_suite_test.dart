@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_cql/fhir_cql.dart' show CqlDateTime;
+import 'package:fhir_cql/fhir_cql.dart' show CqlDateTime, R4ModelResolver;
 import 'package:test/test.dart';
 
 import '../test_helpers/cql_test_helpers.dart';
@@ -33,7 +33,7 @@ void main() {
         'startTimestamp':
             CqlDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
       };
-      results = (await library.execute(context)) as Map<String, dynamic>;
+      results = (await library.execute(context, const R4ModelResolver())) as Map<String, dynamic>;
     });
 
     for (final name in testNames) {

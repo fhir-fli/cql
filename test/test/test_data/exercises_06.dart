@@ -1,4 +1,5 @@
 import 'package:fhir_r4/fhir_r4.dart';
+import 'package:fhir_cql/fhir_cql.dart';
 
 // -- Sample FHIR resources for Exercise 06 (Data Access) --
 

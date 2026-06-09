@@ -42,7 +42,7 @@ void main() {
               CqlDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
         };
         final results =
-            (await library.execute(context)) as Map<String, dynamic>;
+            (await library.execute(context, const R4ModelResolver())) as Map<String, dynamic>;
 
         // The define should either throw during execution or produce
         // a CqlException/error value. Since we execute the whole library,

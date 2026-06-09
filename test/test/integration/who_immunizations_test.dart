@@ -39,7 +39,7 @@ void main() {
       final bundleContext =
           loadBundle('cql/who/tests/tests-Measles22.1-bundle.json');
       final context = buildContext(bundleContext, valueSets);
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Client is not due for MCV1 Case 1'], isTrue,
           reason: 'Patient < 12 months should trigger not-due case 1');
@@ -52,7 +52,7 @@ void main() {
       final bundleContext =
           loadBundle('cql/who/tests/tests-Measles23.3-bundle.json');
       final context = buildContext(bundleContext, valueSets);
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Client is due for MCV1'], isTrue,
           reason: 'Patient >= 12 months with no doses should be due for MCV1');
@@ -67,7 +67,7 @@ void main() {
           loadBundle('cql/who/tests/tests-Measles25.2-bundle.json');
       final context =
           buildContext(bundleContext, valueSets, evaluationDate: '2025-12-01');
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Client is not due for MCV2 Case 1'], isTrue,
           reason:
@@ -85,7 +85,7 @@ void main() {
       }
       final bundleContext = loadBundle(bundleFile.path);
       final context = buildContext(bundleContext, valueSets);
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Measles primary series is complete'], isTrue,
           reason: 'Patient with MCV2 should have complete primary series');
@@ -97,7 +97,7 @@ void main() {
       final bundleContext =
           loadBundle('cql/who/tests/tests-Measles22.1-bundle.json');
       final context = buildContext(bundleContext, valueSets);
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Test Validation'], isTrue,
           reason: 'CQL Test Validation define should evaluate to true');
@@ -107,7 +107,7 @@ void main() {
       final bundleContext =
           loadBundle('cql/who/tests/tests-Measles23.3-bundle.json');
       final context = buildContext(bundleContext, valueSets);
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Test Validation'], isTrue,
           reason: 'CQL Test Validation define should evaluate to true');
@@ -118,7 +118,7 @@ void main() {
           loadBundle('cql/who/tests/tests-Measles25.2-bundle.json');
       final context =
           buildContext(bundleContext, valueSets, evaluationDate: '2025-12-01');
-      final result = await measlesLogic.execute(context);
+      final result = await measlesLogic.execute(context, const R4ModelResolver());
 
       expect(result['Test Validation'], isTrue,
           reason: 'CQL Test Validation define should evaluate to true');

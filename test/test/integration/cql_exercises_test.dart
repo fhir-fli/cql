@@ -49,7 +49,7 @@ void main() {
         final library =
             parseAndBuildLibrary(cqlSource, libraryManager: libraryManager);
         final executionResults = await library
-            .execute(context is Map<String, dynamic> ? context : null);
+            .execute(context is Map<String, dynamic> ? context : null, const R4ModelResolver());
 
         if (executionResults is Map<String, dynamic> &&
             expectedResults is Map<String, dynamic>) {

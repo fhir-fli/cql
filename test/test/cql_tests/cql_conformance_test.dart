@@ -100,7 +100,7 @@ void _createTest(XmlElement testElement) {
         final library = parseAndBuildLibrary(
           'library TestLib\ndefine "Test": $expression',
         );
-        await library.execute();
+        await library.execute(null, const R4ModelResolver());
       } catch (_) {
         // Error is expected — test passes
       }
@@ -111,7 +111,7 @@ void _createTest(XmlElement testElement) {
     final library = parseAndBuildLibrary(
       'library TestLib\ndefine "Test": $expression',
     );
-    final result = await library.execute();
+    final result = await library.execute(null, const R4ModelResolver());
     final actual = result['Test'];
 
     // Handle expected null
@@ -205,7 +205,7 @@ Future<dynamic> _parseExpectedOutput(String output) async {
     final library = parseAndBuildLibrary(
       'library TestOutput\ndefine "Output": $normalized',
     );
-    final result = await library.execute();
+    final result = await library.execute(null, const R4ModelResolver());
     return result['Output'];
   } catch (e) {
     // If CQL parsing fails for the expected output, return the raw string

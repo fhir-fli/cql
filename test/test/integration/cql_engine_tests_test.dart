@@ -240,7 +240,7 @@ void main() {
           .readAsStringSync();
       final library =
           parseAndBuildLibrary(source, libraryManager: libraryManager);
-      final results = (await library.execute(null)) as Map<String, dynamic>;
+      final results = (await library.execute(null, const R4ModelResolver())) as Map<String, dynamic>;
 
       expect(results['Simple Expression'], equals(CqlInteger(42)));
     });
@@ -330,7 +330,7 @@ void _testFile(
         'startTimestamp':
             CqlDateTime.fromString('2018-01-01T07:00:00.0-07:00'),
       };
-      results = (await library.execute(context)) as Map<String, dynamic>;
+      results = (await library.execute(context, const R4ModelResolver())) as Map<String, dynamic>;
     });
 
     for (final entry in expectedResults.entries) {
