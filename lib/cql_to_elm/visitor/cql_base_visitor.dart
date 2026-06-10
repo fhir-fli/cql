@@ -1129,10 +1129,36 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     );
   }
 
-  /// Wrap a Property access with a FHIRHelpers function call based on
-  /// the known FHIR type of the property path.
+  /// Conversions that comparison/membership visitors insert at their own
+  /// binding sites (`~`, `in valueset`, equality over concepts). Property
+  /// sites must not insert these — doing so double-converts the operand.
+  static const Set<String> _bindingOwnedConversions = {
+    'FHIRHelpers.ToCode',
+    'FHIRHelpers.ToConcept',
+  };
+
+  /// Wrap a Property access with its FHIRHelpers conversion.
+  ///
+  /// When the property carries a translator-inferred result type and a
+  /// [model] is available, the decision is model-driven: the modelinfo's
+  /// declared implicit conversion for that type (skipping conversions owned
+  /// by comparison binding sites). Untyped properties fall back to the
+  /// legacy name-based lookup until every Property creation path carries
+  /// inference.
   static CqlExpression wrapPropertyWithFhirHelper(
-      CqlExpression property, String path) {
+    CqlExpression property,
+    String path, {
+    Model? model,
+  }) {
+    final type = property.knownResultType;
+    if (model != null && type != null) {
+      final conversion = model.findConversionFrom(type);
+      if (conversion == null ||
+          _bindingOwnedConversions.contains(conversion.functionName)) {
+        return property;
+      }
+      return applyImplicitConversion(property, model);
+    }
     final helperName = _fhirHelperForPropertyPath(path);
     if (helperName == null) return property;
     return FunctionRef(

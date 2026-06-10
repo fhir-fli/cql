@@ -77,7 +77,8 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       // For non-choice properties, apply standard FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
+          model: currentModel);
     }
     return expr;
   }

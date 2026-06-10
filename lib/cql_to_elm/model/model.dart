@@ -127,8 +127,7 @@ class Model {
   /// walking `baseType` inheritance (e.g. `Observation.id` resolves via
   /// `DomainResource` → `Resource`). Returns `null` when the class or
   /// element is unknown to this model.
-  ResolvedElementType? resolveElementType(
-      String typeName, String elementName) {
+  ResolvedElementType? resolveElementType(String typeName, String elementName) {
     final visited = <String>{};
     TypeInfo? current = resolveTypeName(typeName);
     while (current is ClassInfo) {

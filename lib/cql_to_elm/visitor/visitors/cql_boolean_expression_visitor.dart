@@ -73,7 +73,8 @@ class CqlBooleanExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       // For non-choice boolean properties, apply FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
+          model: currentModel);
     }
     return expr;
   }

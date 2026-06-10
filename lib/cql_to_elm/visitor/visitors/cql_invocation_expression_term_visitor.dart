@@ -91,7 +91,8 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
         }
         // Legacy name-based wrapping — migrates to model-driven binding-site
         // conversion site by site.
-        return CqlBaseVisitor.wrapPropertyWithFhirHelper(prop, memberName);
+        return CqlBaseVisitor.wrapPropertyWithFhirHelper(prop, memberName,
+            model: model);
       }
 
       return Property(source: expressionTerm, path: memberName);

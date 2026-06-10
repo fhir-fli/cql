@@ -124,7 +124,8 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         }
       }
       // For non-choice date/dateTime properties, apply FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
+          model: currentModel);
     }
     return expr;
   }
