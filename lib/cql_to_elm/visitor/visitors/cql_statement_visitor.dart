@@ -21,6 +21,14 @@ class CqlStatementVisitor extends CqlBaseVisitor<void> {
     if (statement != null) {
       library.statements ??= ExpressionDefs();
       library.statements!.def.add(statement);
+      // Record the define's result type so later expressions referencing it
+      // (e.g. as a query source) infer their types model-driven.
+      final model = currentModel;
+      final expression = statement.expression;
+      if (model != null && expression != null) {
+        CqlBaseVisitor.registerDefineType(
+            library, statement.name, inferType(expression, model));
+      }
     }
   }
 }

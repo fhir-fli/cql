@@ -21,11 +21,13 @@ class CqlQuerySourceVisitor extends CqlBaseVisitor<CqlExpression> {
           // Check let identifiers first — they take precedence over query aliases
           // because visitLetClause adds to both scopes but should use QueryLetRef.
           if (CqlBaseVisitor.isLetIdentifier(qualifier)) {
-            return Property(
-                source: QueryLetRef(name: qualifier), path: ref.name);
+            return _typed(
+                Property(source: QueryLetRef(name: qualifier), path: ref.name),
+                qualifier);
           }
           if (CqlBaseVisitor.isQueryAlias(qualifier)) {
-            return Property(scope: qualifier, path: ref.name);
+            return _typed(
+                Property(scope: qualifier, path: ref.name), qualifier);
           }
         }
         return ref;
@@ -37,5 +39,16 @@ class CqlQuerySourceVisitor extends CqlBaseVisitor<CqlExpression> {
       }
     }
     throw ArgumentError('$thisNode Invalid QuerySource');
+  }
+
+  /// Records the property's declared element type (e.g. `P.extension` →
+  /// `List<FHIR.Extension>`) so the query alias over it infers its type.
+  Property _typed(Property property, String qualifier) {
+    final model = currentModel;
+    final sourceType = CqlBaseVisitor.aliasType(qualifier);
+    if (model != null && sourceType != null) {
+      typeProperty(property, sourceType, model);
+    }
+    return property;
   }
 }

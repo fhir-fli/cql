@@ -24,9 +24,8 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
       if (child is SourceClauseContext) {
         source.addAll(visitSourceClause(child));
         for (final s in source) {
-          aliases[s.alias] = model == null
-              ? null
-              : inferSourceElementType(s.expression, model);
+          aliases[s.alias] =
+              model == null ? null : inferSourceElement(s.expression, model);
         }
       }
     }

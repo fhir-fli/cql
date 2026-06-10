@@ -50,6 +50,11 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                   ),
                 ),
               );
+              // The context define yields a single instance of the context
+              // type (e.g. `Patient` → FHIR.Patient), so queries over it
+              // (`Patient P`) infer their alias type.
+              CqlBaseVisitor.registerDefineType(library, name,
+                  Model.of(modelInfo).normalizeTypeName(name));
             }
           }
         }

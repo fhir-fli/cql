@@ -10,25 +10,113 @@ import 'package:fhir_cql/fhir_cql.dart';
 /// function. All conversion decisions are driven by the loaded [Model] —
 /// never by property-name heuristics.
 
-/// The element type of [source] when used as a query source (the type the
-/// query alias ranges over), or `null` when it can't be statically inferred.
+/// Infers the static result type of [expression], as a normalized type name
+/// (`List<...>` for collections), or `null` when it can't be determined.
 ///
-/// A [Retrieve] yields `List<dataType>`, so the alias ranges over the
-/// retrieve's data type.
-String? inferSourceElementType(CqlExpression source, Model model) {
-  if (source is Retrieve) {
-    final dataType = source.dataType;
-    return model.normalizeTypeName(dataType.toString());
+/// [scopeType] resolves a query alias or let identifier to the type it
+/// ranges over; [defineType] resolves a local expression-definition name to
+/// its recorded result type. Both look-ups are supplied by the visitor layer
+/// (which owns scope tracking) — see `CqlBaseVisitor.inferType`.
+String? inferResultType(
+  CqlExpression expression,
+  Model model, {
+  String? Function(String name)? scopeType,
+  String? Function(String name)? defineType,
+}) {
+  if (expression is Retrieve) {
+    return 'List<${model.normalizeTypeName(expression.dataType.toString())}>';
   }
-  if (source is Query) {
-    // A nested query without a return clause ranges over its (single)
-    // source's element type.
-    if (source.returnClause == null && source.source.length == 1) {
-      return inferSourceElementType(source.source.first.expression, model);
+  if (expression is ExpressionRef && expression.libraryName == null) {
+    final recorded = defineType?.call(expression.name);
+    if (recorded != null) return recorded;
+  }
+  if (expression is AliasRef) return scopeType?.call(expression.name);
+  if (expression is QueryLetRef) return scopeType?.call(expression.name);
+  if (expression is OperandRef) return scopeType?.call(expression.name);
+  if (expression is IdentifierRef) {
+    final qualifier = expression.libraryName;
+    // Unqualified: a query alias, let identifier, or function operand.
+    if (qualifier == null) return scopeType?.call(expression.name);
+    // Qualified (`immz.extension`): a property access on a scoped name —
+    // resolve the element's declared type on the qualifier's type.
+    final qualifierType = scopeType?.call(qualifier);
+    if (qualifierType != null && !qualifierType.startsWith('List<')) {
+      final resolved = model.resolveElementType(qualifierType, expression.name);
+      if (resolved != null && !resolved.isChoice) {
+        return resolved.isList ? 'List<${resolved.single}>' : resolved.single;
+      }
     }
     return null;
   }
+  if (expression is SingletonFrom) {
+    final operandType = inferResultType(expression.operand, model,
+        scopeType: scopeType, defineType: defineType);
+    return operandType == null ? null : elementTypeName(operandType);
+  }
+  if (expression is First) {
+    final sourceType = inferResultType(expression.source, model,
+        scopeType: scopeType, defineType: defineType);
+    return sourceType == null ? null : elementTypeName(sourceType);
+  }
+  if (expression is Last) {
+    final sourceType = inferResultType(expression.source, model,
+        scopeType: scopeType, defineType: defineType);
+    return sourceType == null ? null : elementTypeName(sourceType);
+  }
+  if (expression is Query) {
+    // A query without a return or aggregate clause yields its (single)
+    // source's type: filtering/sorting don't change it.
+    if (expression.returnClause == null &&
+        expression.aggregate == null &&
+        expression.source.length == 1) {
+      return inferResultType(expression.source.first.expression, model,
+          scopeType: scopeType, defineType: defineType);
+    }
+    return null;
+  }
+  return expression.knownResultType;
+}
+
+/// The normalized type name declared by [specifier] (e.g. a function
+/// operand's `List<Identifier>` → `List<FHIR.Identifier>`), or `null` for
+/// specifier shapes that don't map to a single name (choice, tuple).
+String? typeSpecifierTypeName(TypeSpecifierExpression specifier, Model model) {
+  if (specifier is NamedTypeSpecifier) {
+    return model.normalizeTypeName(specifier.namespace.toString());
+  }
+  if (specifier is ListTypeSpecifier) {
+    final element = specifier.elementType == null
+        ? null
+        : typeSpecifierTypeName(specifier.elementType!, model);
+    return element == null ? null : 'List<$element>';
+  }
+  if (specifier is IntervalTypeSpecifier) {
+    final point = specifier.pointType == null
+        ? null
+        : typeSpecifierTypeName(specifier.pointType!, model);
+    return point == null ? null : 'Interval<$point>';
+  }
   return null;
+}
+
+/// `List<T>` → `T`; any other type name is its own element type (a query
+/// over a non-list source ranges over that single value).
+String elementTypeName(String typeName) =>
+    typeName.startsWith('List<') && typeName.endsWith('>')
+        ? typeName.substring(5, typeName.length - 1)
+        : typeName;
+
+/// The element type of [source] when used as a query source (the type the
+/// query alias ranges over), or `null` when it can't be statically inferred.
+String? inferSourceElementType(
+  CqlExpression source,
+  Model model, {
+  String? Function(String name)? scopeType,
+  String? Function(String name)? defineType,
+}) {
+  final type = inferResultType(source, model,
+      scopeType: scopeType, defineType: defineType);
+  return type == null ? null : elementTypeName(type);
 }
 
 /// Resolves the declared element type of `<sourceType>.<path>` and records

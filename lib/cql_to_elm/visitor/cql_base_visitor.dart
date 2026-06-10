@@ -74,6 +74,63 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   static bool isLetIdentifier(String name) =>
       _letScopes.any((scope) => scope.contains(name));
 
+  /// Stack of function operand scopes: each maps an operand name to its
+  /// declared type while the function body is being visited.
+  static final List<Map<String, String?>> _operandScopes = [];
+
+  /// Push the operands (with their declared types) for a function body.
+  static void pushOperandScope(Map<String, String?> operands) =>
+      _operandScopes.add(operands);
+
+  /// Pop the most recent function operand scope.
+  static void popOperandScope() {
+    if (_operandScopes.isNotEmpty) _operandScopes.removeLast();
+  }
+
+  /// The declared type of the function operand [name], looking from the
+  /// innermost scope outward.
+  static String? operandTypeOf(String name) {
+    for (final scope in _operandScopes.reversed) {
+      if (scope.containsKey(name)) return scope[name];
+    }
+    return null;
+  }
+
+  /// Result types of expression definitions, recorded as each define is
+  /// visited (so later defines — and context-introduced defines like
+  /// `Patient` — resolve through [ExpressionRef]). Keyed per [CqlLibrary]
+  /// since visitors share one library per translation.
+  static final Expando<Map<String, String?>> _defineTypes =
+      Expando<Map<String, String?>>();
+
+  /// Record the inferred result type of the define [name] on [library].
+  static void registerDefineType(
+      CqlLibrary library, String name, String? type) {
+    (_defineTypes[library] ??= <String, String?>{})[name] = type;
+  }
+
+  /// The recorded result type of the define [name] on [library], if any.
+  static String? defineResultType(CqlLibrary library, String name) =>
+      _defineTypes[library]?[name];
+
+  /// Infers [expression]'s static result type against [model], resolving
+  /// query aliases / let identifiers through the active scopes and define
+  /// references through this library's recorded define types.
+  String? inferType(CqlExpression expression, Model model) =>
+      inferResultType(
+        expression,
+        model,
+        scopeType: (name) => aliasType(name) ?? operandTypeOf(name),
+        defineType: (name) => defineResultType(library, name),
+      );
+
+  /// The element type a query alias ranges over when its source is
+  /// [source] — [inferType] with `List<...>` unwrapped.
+  String? inferSourceElement(CqlExpression source, Model model) {
+    final type = inferType(source, model);
+    return type == null ? null : elementTypeName(type);
+  }
+
   /// Whether we're currently inside a sort clause (suppresses FHIRHelpers wrapping).
   static bool _inSortClause = false;
 
@@ -460,7 +517,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         items.add(item);
         // Register each let identifier immediately so subsequent let items
         // can reference it (e.g. race.extension where race is a prior let).
-        addAliasToCurrentScope(item.identifier);
+        // The identifier carries its expression's inferred result type so
+        // properties on it (race.url) resolve model-driven.
+        final model = currentModel;
+        addAliasToCurrentScope(item.identifier,
+            model == null ? null : inferType(item.expression, model));
         addLetIdentifier(item.identifier);
       }
     }
@@ -1139,81 +1200,25 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// Wrap a Property access with its FHIRHelpers conversion.
   ///
-  /// When the property carries a translator-inferred result type and a
-  /// [model] is available, the decision is model-driven: the modelinfo's
-  /// declared implicit conversion for that type (skipping conversions owned
-  /// by comparison binding sites). Untyped properties fall back to the
-  /// legacy name-based lookup until every Property creation path carries
-  /// inference.
+  /// Model-driven only: when the property carries a translator-inferred
+  /// result type, the modelinfo's declared implicit conversion for that type
+  /// is inserted (skipping conversions owned by comparison binding sites).
+  /// Untyped properties — choice elements (selected via `As` at their
+  /// binding sites) and types with no declared conversion — pass through
+  /// unchanged.
   static CqlExpression wrapPropertyWithFhirHelper(
     CqlExpression property,
     String path, {
     Model? model,
   }) {
     final type = property.knownResultType;
-    if (model != null && type != null) {
-      final conversion = model.findConversionFrom(type);
-      if (conversion == null ||
-          _bindingOwnedConversions.contains(conversion.functionName)) {
-        return property;
-      }
-      return applyImplicitConversion(property, model);
+    if (model == null || type == null) return property;
+    final conversion = model.findConversionFrom(type);
+    if (conversion == null ||
+        _bindingOwnedConversions.contains(conversion.functionName)) {
+      return property;
     }
-    final helperName = _fhirHelperForPropertyPath(path);
-    if (helperName == null) return property;
-    return FunctionRef(
-      name: helperName,
-      libraryName: 'FHIRHelpers',
-      operand: [property],
-    );
-  }
-
-  /// Map known FHIR property paths to their FHIRHelpers conversion functions.
-  /// This is a simplified lookup — a full implementation would use model info.
-  static String? _fhirHelperForPropertyPath(String path) {
-    switch (path) {
-      // Code/string properties
-      case 'status':
-      case 'intent':
-      case 'priority':
-      case 'gender':
-      case 'language':
-      case 'use':
-      case 'system':
-      case 'version':
-      case 'display':
-      case 'text':
-      case 'url':
-        return 'ToString';
-      // Period properties
-      case 'period':
-      case 'performedPeriod':
-        return 'ToInterval';
-      // CodeableConcept properties — handled by equality visitor for comparisons
-      // case 'code':
-      // case 'category':
-      // case 'type':
-      // case 'medicationCodeableConcept':
-      // case 'vaccineCode':
-      //   return 'ToConcept';
-      // Boolean properties
-      case 'active':
-        return 'ToBoolean';
-      // Date properties
-      case 'birthDate':
-        return 'ToDate';
-      // DateTime properties
-      case 'authoredOn':
-      case 'issued':
-      case 'effectiveDateTime':
-      case 'recordedDate':
-        return 'ToDateTime';
-      // Quantity properties
-      case 'valueQuantity':
-        return 'ToQuantity';
-      default:
-        return null;
-    }
+    return applyImplicitConversion(property, model);
   }
 
   /// The [Model] for this library's data-model `using` declaration (e.g.

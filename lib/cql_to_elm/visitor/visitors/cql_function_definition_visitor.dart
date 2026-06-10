@@ -27,7 +27,22 @@ class CqlFunctionDefinitionVisitor extends CqlBaseVisitor<FunctionDef> {
       } else if (child is TypeSpecifierContext) {
         returnType = visitTypeSpecifier(child);
       } else if (child is FunctionBodyContext) {
-        expression = visitFunctionBody(child);
+        // Operand declarations precede the body in the grammar, so the full
+        // operand list is known here. Their declared types are in scope
+        // while the body is visited, so expressions over operands
+        // (`identifiers I where I.use = ...`) infer their types.
+        final model = currentModel;
+        CqlBaseVisitor.pushOperandScope({
+          for (final o in operand ?? <OperandDef>[])
+            o.name: model == null || o.operandTypeSpecifier == null
+                ? null
+                : typeSpecifierTypeName(o.operandTypeSpecifier!, model),
+        });
+        try {
+          expression = visitFunctionBody(child);
+        } finally {
+          CqlBaseVisitor.popOperandScope();
+        }
       }
     }
     if (name != null) {

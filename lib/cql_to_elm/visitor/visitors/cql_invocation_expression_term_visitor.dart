@@ -95,7 +95,17 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
             model: model);
       }
 
-      return Property(source: expressionTerm, path: memberName);
+      final prop = Property(source: expressionTerm, path: memberName);
+      // Source-chain member access (e.g. `(singleton from ...).url`): infer
+      // the source's type and record the property's declared element type.
+      final model = currentModel;
+      if (model != null && expressionTerm is CqlExpression) {
+        final sourceType = inferType(expressionTerm, model);
+        if (sourceType != null && !sourceType.startsWith('List<')) {
+          typeProperty(prop, sourceType, model);
+        }
+      }
+      return prop;
     }
 
     throw ArgumentError('$thisNode Invalid InvocationExpressionTerm');
