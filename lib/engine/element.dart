@@ -32,6 +32,17 @@ class Element {
   // named types, and this resultTypeSpecifier element for non-named types.
   TypeSpecifierExpression? resultTypeSpecifier;
 
+  /// Translator-inferred result type (normalized `Qualifier.LocalName`, e.g.
+  /// `FHIR.date`, `List<FHIR.HumanName>`). Translator-internal metadata used
+  /// for modelinfo-driven implicit conversion — never serialized to ELM JSON
+  /// (the serialized slot is [resultTypeName], which the reference
+  /// translators only emit behind an option).
+  String? inferredResultType;
+
+  /// The best-known result type of this node: the explicit ELM
+  /// [resultTypeName] when present, else the translator-inferred type.
+  String? get knownResultType => resultTypeName ?? inferredResultType;
+
   Element({
     this.annotation,
     this.resultTypeSpecifier,

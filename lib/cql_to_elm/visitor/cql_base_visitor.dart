@@ -22,16 +22,19 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   int nodeNumber = 0;
   final shouldPrint = false;
 
-  /// Stack of active query alias scopes. Each set contains the aliases
-  /// defined in that query level (source aliases + relationship aliases).
-  static final List<Set<String>> _queryScopes = [];
+  /// Stack of active query alias scopes. Each map holds the aliases defined
+  /// in that query level (source aliases + relationship aliases) mapped to
+  /// the normalized element type the alias ranges over (e.g. `FHIR.Patient`
+  /// for `[Patient] p`), or `null` when the type isn't statically known.
+  static final List<Map<String, String?>> _queryScopes = [];
 
   /// Stack of let identifier scopes. Each set contains the let identifiers
   /// defined in that query level.
   static final List<Set<String>> _letScopes = [];
 
-  /// Push a set of aliases for a new query scope.
-  static void pushQueryScope(Set<String> aliases) {
+  /// Push the aliases (with their inferred element types) for a new query
+  /// scope.
+  static void pushQueryScope(Map<String, String?> aliases) {
     _queryScopes.add(aliases);
     _letScopes.add(<String>{});
   }
@@ -49,11 +52,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// Check if an identifier is a known query alias in any active scope.
   static bool isQueryAlias(String name) =>
-      _queryScopes.any((scope) => scope.contains(name));
+      _queryScopes.any((scope) => scope.containsKey(name));
 
-  /// Add an alias to the current (topmost) query scope.
-  static void addAliasToCurrentScope(String alias) {
-    if (_queryScopes.isNotEmpty) _queryScopes.last.add(alias);
+  /// The inferred element type the alias [name] ranges over, looking from
+  /// the innermost scope outward. `null` when the alias is unknown or its
+  /// source type couldn't be inferred.
+  static String? aliasType(String name) {
+    for (final scope in _queryScopes.reversed) {
+      if (scope.containsKey(name)) return scope[name];
+    }
+    return null;
+  }
+
+  /// Add an alias (with its inferred element type, when known) to the
+  /// current (topmost) query scope.
+  static void addAliasToCurrentScope(String alias, [String? elementType]) {
+    if (_queryScopes.isNotEmpty) _queryScopes.last[alias] = elementType;
   }
 
   /// Check if an identifier is a let-introduced name in any active scope.
@@ -1174,6 +1188,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       default:
         return null;
     }
+  }
+
+  /// The [Model] for this library's data-model `using` declaration (e.g.
+  /// FHIR 4.0.1), or `null` when none is declared or loadable. This is the
+  /// single source for translator type inference and implicit-conversion
+  /// decisions.
+  Model? get currentModel {
+    for (final using in library.usings?.def ?? <UsingDef>[]) {
+      final id = using.localIdentifier;
+      if (id == null || id == 'System') continue;
+      final modelInfo = modelInfoProvider
+          .load(ModelIdentifier(id: id, version: using.version));
+      if (modelInfo != null) return Model.of(modelInfo);
+    }
+    return null;
   }
 
   /// Look up the [ClassInfoElement] for a given FHIR class and property path

@@ -15,14 +15,18 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
     ReturnClause? returnClause;
     SortClause? sort;
 
-    // First pass: collect source aliases so they're available for scope
-    // tracking during the rest of the query processing.
-    final aliases = <String>{};
+    // First pass: collect source aliases (with the element type each alias
+    // ranges over, inferred from its source expression) so they're available
+    // for scope tracking during the rest of the query processing.
+    final model = currentModel;
+    final aliases = <String, String?>{};
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is SourceClauseContext) {
         source.addAll(visitSourceClause(child));
         for (final s in source) {
-          aliases.add(s.alias);
+          aliases[s.alias] = model == null
+              ? null
+              : inferSourceElementType(s.expression, model);
         }
       }
     }
@@ -38,10 +42,11 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
           // so later let items can reference earlier ones.
           let.addAll(visitLetClause(child));
         } else if (child is QueryInclusionClauseContext) {
-          // With/without introduce their own alias into scope
+          // With/without register their own alias (and type) into the
+          // current scope as they're visited.
           final rel = visitQueryInclusionClause(child);
           relationship.add(rel);
-          if (rel.alias != null) aliases.add(rel.alias!);
+          if (rel.alias != null) aliases.putIfAbsent(rel.alias!, () => null);
         } else if (child is WhereClauseContext) {
           where = visitWhereClause(child);
         } else if (child is AggregateClauseContext) {

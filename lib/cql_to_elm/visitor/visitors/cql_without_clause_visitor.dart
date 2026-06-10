@@ -10,8 +10,16 @@ class CqlWithoutClauseVisitor extends CqlBaseVisitor<Without> {
     if (ctx.getChild(1) is AliasedQuerySourceContext) {
       final RelationshipClause source =
           visitAliasedQuerySource(ctx.getChild(1) as AliasedQuerySourceContext);
-      // Add the Without alias to the current query scope so suchThat can see it
-      CqlBaseVisitor.addAliasToCurrentScope(source.alias);
+      // Add the Without alias (typed when inferable) to the current query
+      // scope so suchThat can see it.
+      final model = currentModel;
+      final sourceExpr = source.expression;
+      CqlBaseVisitor.addAliasToCurrentScope(
+        source.alias,
+        model != null && sourceExpr != null
+            ? inferSourceElementType(sourceExpr, model)
+            : null,
+      );
       final suchThat =
           ctx.getChild(3) == null ? null : byContext(ctx.getChild(3)!);
       return Without(

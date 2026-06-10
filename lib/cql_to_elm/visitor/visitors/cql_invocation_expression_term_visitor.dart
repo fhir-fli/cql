@@ -70,7 +70,7 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
       // Check if the left side is a query alias or let identifier
       if (scopeName != null && CqlBaseVisitor.isQueryAlias(scopeName)) {
-        CqlExpression prop;
+        Property prop;
         // Let-introduced identifiers use QueryLetRef as source
         if (CqlBaseVisitor.isLetIdentifier(scopeName)) {
           prop =
@@ -79,7 +79,18 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
           // Source/relationship aliases use scope
           prop = Property(scope: scopeName, path: memberName);
         }
-        // Wrap FHIR property accesses with implicit FHIRHelpers conversion
+        // Model-driven type inference: record the property's declared type
+        // (translator-internal). Conversion insertion happens at operand
+        // *binding* sites, not here — converting at property creation
+        // double-wraps operands whose binding site inserts its own
+        // conversion (e.g. `O.code ~ ...` via the equality visitor).
+        final model = currentModel;
+        final sourceType = CqlBaseVisitor.aliasType(scopeName);
+        if (model != null && sourceType != null) {
+          typeProperty(prop, sourceType, model);
+        }
+        // Legacy name-based wrapping — migrates to model-driven binding-site
+        // conversion site by site.
         return CqlBaseVisitor.wrapPropertyWithFhirHelper(prop, memberName);
       }
 
