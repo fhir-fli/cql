@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The QueryLetRef expression allows for the reference of a specific let definition within the scope of a query.
 class QueryLetRef extends CqlExpression {

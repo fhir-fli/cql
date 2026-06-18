@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The SingletonFrom expression extracts a single element from the source list.
 /// If the source list is empty, the result is null.

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 import 'cql_test_helpers.dart';
 

@@ -1,5 +1,5 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class CqlNotExpressionVisitor extends CqlBaseVisitor<Not> {
   CqlNotExpressionVisitor(super.library);

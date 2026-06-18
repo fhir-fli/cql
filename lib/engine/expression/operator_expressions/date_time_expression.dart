@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to construct a DateTime value from the given components.
 /// At least one component other than timezoneOffset must be specified,

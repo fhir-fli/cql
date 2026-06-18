@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ByDirection element specifies that the sort should be performed using the given direction.
 /// This approach is used when the result of the query is a list of non-tuple elements and only the sort direction needs to be specified.

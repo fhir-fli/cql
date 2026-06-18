@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 // -- Exercise 11: Cervical Cancer Screening Quality Measure --
 //

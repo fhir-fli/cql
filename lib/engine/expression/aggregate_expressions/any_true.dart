@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The AnyTrue operator returns true if any non-null element in source is true.
 /// If a path is specified, elements with no value for the property specified

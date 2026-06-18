@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet this criterion typically address non-immune
 /// adverse reactions that are not determined or perceived to be allergic or

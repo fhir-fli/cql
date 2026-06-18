@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Abstract base class for expressions that take three arguments.
 abstract class TernaryExpression extends OperatorExpression {

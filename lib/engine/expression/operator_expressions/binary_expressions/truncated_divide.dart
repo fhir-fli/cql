@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to perform integer division of its arguments.
 /// If either argument is null, the result is null.

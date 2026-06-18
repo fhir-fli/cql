@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to convert a Quantity to an equivalent Quantity with the given unit.
 /// If the unit of the input quantity can be converted to the target unit,

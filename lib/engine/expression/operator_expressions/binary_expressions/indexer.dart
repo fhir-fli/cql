@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the indexth element in a string or list.
 /// Indexes in strings and lists are defined to be 0-based.

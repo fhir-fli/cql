@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Repeat expression performs successive ForEach until no new elements are returned.
 /// It uses equality comparison semantics as defined in the Equal operator.

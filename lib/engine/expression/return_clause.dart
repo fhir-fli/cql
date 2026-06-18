@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ReturnClause element defines the shape of the result set of the query.
 class ReturnClause extends Element {

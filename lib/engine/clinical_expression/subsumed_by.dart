@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The SubsumedBy operator returns true if the given codes are equivalent, or
 /// if the first code is subsumed by the second code (i.e. the first code is a

@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to determine if the first interval ends immediately before the
 /// second interval starts

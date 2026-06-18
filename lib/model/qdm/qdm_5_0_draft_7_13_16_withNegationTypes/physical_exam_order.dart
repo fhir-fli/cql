@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// a request for the physical exam indicated by the QDM category and its corresponding

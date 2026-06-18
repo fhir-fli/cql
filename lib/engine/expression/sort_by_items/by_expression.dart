@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ByExpression element specifies that the sort should be performed using the given expression and direction.
 /// This approach is used to specify the sort order as a calculated expression.

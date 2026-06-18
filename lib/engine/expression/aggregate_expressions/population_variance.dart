@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The PopulationVariance operator returns the statistical population variance of the elements in source.
 /// If a path is specified, elements with no value for the property specified by the path are ignored.

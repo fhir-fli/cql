@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// a person that is related to the care of a patient, but who is not the
 /// direct target of care

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Represents an interval type specifier, extending [TypeSpecifier].
 ///

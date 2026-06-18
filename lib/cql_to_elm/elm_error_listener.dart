@@ -1,7 +1,7 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:antlr4/src/util/bit_set.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class ElmErrorListener implements ErrorListener {
   final List<ErrorAnnotation> errors = [];

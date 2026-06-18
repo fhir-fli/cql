@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return true if the given string starts with the given prefix.
 /// If the prefix is the empty string, the result is true.

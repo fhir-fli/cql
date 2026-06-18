@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator returns the set of intervals of size per for all the ranges present
 /// in the given list of intervals, or a list of points covering the range

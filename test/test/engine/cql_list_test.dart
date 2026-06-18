@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart' as cql;
+import 'package:cql/cql.dart' as cql;
 import 'package:test/test.dart';
 
 void main() {

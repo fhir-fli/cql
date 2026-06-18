@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Distinct operator returns a list containing only the unique elements
 /// within the input list.

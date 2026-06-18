@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Modelinfo-driven implicit conversion — the translator-side mechanism the
 /// reference implementations use to keep engines model-free.

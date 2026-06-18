@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet criteria using this data type should document
 /// the type of plan or program in which the patient is expected to be enrolled. The

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The SortClause element defines the sort order for the query.
 class SortClause extends Element {

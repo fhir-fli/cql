@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to split a string into a list of strings using a separator.
 /// If the stringToSplit argument is null, the result is null.

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Flatten operator flattens a list of lists into a single list.
 /// If the argument is null, the result is null.

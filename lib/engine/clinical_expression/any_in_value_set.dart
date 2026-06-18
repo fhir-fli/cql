@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The AnyInValueSet operator returns true if any of the given codes are in
 /// the given value set.

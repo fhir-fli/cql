@@ -1,7 +1,7 @@
 import 'dart:math';
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to compute the logarithm of its first argument, using the second
 /// argument as the base.

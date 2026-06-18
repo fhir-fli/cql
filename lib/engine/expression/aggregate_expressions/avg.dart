@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Avg operator returns the average of the non-null elements in source.
 /// If a path is specified, elements with no value for the property specified

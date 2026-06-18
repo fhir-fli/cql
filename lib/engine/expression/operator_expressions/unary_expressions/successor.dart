@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the successor of the argument.
 /// The Successor operator is defined for the Integer, Decimal, Date, DateTime,

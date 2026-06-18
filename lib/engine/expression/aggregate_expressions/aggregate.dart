@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Aggregate operator performs custom aggregation by evaluating an expression for each element of the source.
 /// If a path is specified, the aggregation is performed for the value of the property specified by the path for each element of the source.

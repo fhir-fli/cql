@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet criteria using this datatype should document
 /// a reaction in specific patients who have a low threshold to the normal reported or

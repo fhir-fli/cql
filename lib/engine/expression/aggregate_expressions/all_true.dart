@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The AllTrue operator returns true if all the non-null elements in source
 /// are true.

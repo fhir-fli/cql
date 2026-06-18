@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// a person with a formal responsibility in the provisioning of
 /// healthcare or related services

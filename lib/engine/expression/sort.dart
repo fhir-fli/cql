@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Sort operator returns a list with all the elements in source, sorted as described by the by element.
 /// When the sort elements do not provide a unique ordering, the order of duplicates is unspecified.

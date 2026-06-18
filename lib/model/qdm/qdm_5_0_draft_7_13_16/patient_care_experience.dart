@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet this criterion indicate the patient’s care
 /// experience, usually measured with a validated survey tool. The most common tool is

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The DateFilterElement type specifies a date-valued filter criteria for use
 /// within a retrieve, specified as either a date-valued [property], a

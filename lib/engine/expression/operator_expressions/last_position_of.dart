@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the 0-based index of the beginning of the last
 /// appearance of the given pattern in the given string.

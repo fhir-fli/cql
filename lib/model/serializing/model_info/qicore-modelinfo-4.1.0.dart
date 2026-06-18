@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final qicoremodelinfo410 = ModelInfo.fromJson({
   "name": "QICore",

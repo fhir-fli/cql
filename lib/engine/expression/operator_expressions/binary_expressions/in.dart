@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to test for membership in an interval or list.
 /// Returns true if the given point is greater than or equal to the starting

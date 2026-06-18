@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// If operator evaluating a condition and returning the appropriate argument.
 /// If : Expression

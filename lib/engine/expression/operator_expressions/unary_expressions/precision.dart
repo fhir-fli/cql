@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the number of digits of precision in the input value.
 /// The operator can be used with Decimal, Date, DateTime, and Time values.

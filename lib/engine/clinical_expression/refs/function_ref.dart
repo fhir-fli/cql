@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {

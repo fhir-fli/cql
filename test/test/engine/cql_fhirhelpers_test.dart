@@ -1,6 +1,6 @@
 import 'package:fhir_r4/fhir_r4.dart' hide Count, Quantity, Ratio;
 import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity, Ratio;
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 import 'package:test/test.dart';
 import 'package:ucum/ucum.dart';
 

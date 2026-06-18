@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to compare two Date, DateTime, or Time values to the specified
 /// precision to determine if the first argument is the same or after the

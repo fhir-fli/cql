@@ -3,7 +3,7 @@
 // Source: official-modelinfo-4.0.1.xml
 import 'dart:convert';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final fhirmodelinfo401 =
     ModelInfo.fromJson(jsonDecode(_json) as Map<String, dynamic>);

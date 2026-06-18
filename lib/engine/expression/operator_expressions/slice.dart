@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Slice operator returns a portion of the elements in a list, beginning at the start index and ending just before the ending index.
 /// If the source list is null, the result is null.

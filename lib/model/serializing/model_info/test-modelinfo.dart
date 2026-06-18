@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final testmodelinfo = ModelInfo.fromJson({
   "name": "Test",

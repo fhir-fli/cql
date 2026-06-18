@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The AliasRef expression allows for the reference of a specific source within the scope of a query.
 class AliasRef extends Ref {

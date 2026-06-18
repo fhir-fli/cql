@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ForEach expression iterates over the list of elements in the source element.
 /// It returns a list with the same number of elements, where each element in the new list is the result of evaluating the element expression for each element in the source list.

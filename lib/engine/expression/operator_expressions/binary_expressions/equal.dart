@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if the arguments are equal.
 /// Returns true if the arguments are equal, false if they are known unequal, and null otherwise.

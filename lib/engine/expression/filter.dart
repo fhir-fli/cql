@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Filter operator returns a list with only those elements in the source list for which the condition element evaluates to true.
 /// If the source argument is null, the result is null.

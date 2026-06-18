@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Null operator returning a null or missing information marker.
 class NullExpression extends Literal {

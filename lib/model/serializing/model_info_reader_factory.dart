@@ -1,5 +1,5 @@
 // Create a registry of providers
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final List<ModelInfoReaderProvider> modelInfoReaderProviders = [
   StandardModelInfoReaderProvider(),

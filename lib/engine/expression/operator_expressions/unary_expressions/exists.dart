@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Exists operator returns true if the list contains any elements.
 /// If the argument is null, the result is false.

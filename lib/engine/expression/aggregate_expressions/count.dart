@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Count operator returns the number of non-null elements in the source.
 /// If a path is specified, the count returns the number of elements that have

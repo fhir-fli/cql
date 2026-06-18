@@ -1,4 +1,4 @@
-name: fhir_cql
+name: cql
 description: Clinical Quality Language (CQL) implementation in Dart. FHIR-version-independent engine with R4/R5/R6 ModelResolvers in a single package.
 version: 0.1.0-dev.1
 homepage: https://www.fhirfli.dev/

@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to convert the value of its argument to a Quantity value.
 /// The operator may be used with Integer, Decimal, Ratio, or String values.

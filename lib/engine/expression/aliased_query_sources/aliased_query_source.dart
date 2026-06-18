@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The AliasedQuerySource element defines a single source for inclusion in a query scope.
 /// The type of the source is determined by the expression element, and the source can be accessed within the query scope by the given alias.

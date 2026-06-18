@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Unlike other QDM datatypes, the Care Goal datatype does not indicate
 /// a specific context of use. Instead, to meet this criterion, there must be

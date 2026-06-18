@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Interval selector defining an interval value.
 /// The Interval selector defines an interval value. An interval must be

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Expression allowing the value of an operand to be referenced within the body of a function definition.
 class OperandRef extends CqlExpression {

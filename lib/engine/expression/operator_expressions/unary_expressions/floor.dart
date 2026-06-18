@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the first integer less than or equal to the argument.
 /// If the argument is null, the result is null.

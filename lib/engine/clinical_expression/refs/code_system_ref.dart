@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The CodeSystemRef expression allows a previously defined named code system to
 /// be referenced within an expression. Conceptually, referencing a code system

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the size of an interval (End(i) - Start(i) + point-size),
 /// where point-size is determined by: Successor(Minimum_T) - Minimum_T.

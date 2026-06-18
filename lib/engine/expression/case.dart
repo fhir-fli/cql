@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Represents a case operator allowing multiple conditional expressions to be
 /// chained together.

@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Ratio type defines a ratio between two quantities. For example, the
 /// titre 1:128, or the concentration ratio 5 mg/10 mL. The numerator and

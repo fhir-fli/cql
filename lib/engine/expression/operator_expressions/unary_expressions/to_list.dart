@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return its argument as a List value.
 /// The operator accepts a singleton value of any type and returns a list with the value as the single element.

@@ -1,5 +1,5 @@
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final exercises05 = <String, dynamic>{
   'Patient': Patient.fromJson(context05['Patient']),

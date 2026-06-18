@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the width of an interval (End(i) - Start(i)).
 /// Note: This operator is not defined for intervals of type Date, DateTime,

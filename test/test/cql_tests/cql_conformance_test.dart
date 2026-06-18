@@ -13,7 +13,7 @@ library;
 import 'dart:io';
 
 import 'package:fhir_r4/fhir_r4.dart' as fhir;
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 import 'package:test/test.dart';
 import 'package:xml/xml.dart';
 

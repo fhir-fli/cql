@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Literal expression defining a single scalar value.
 class Literal extends CqlExpression {

@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Library represents a serialized library of CQL-Expression Logic Model.
 class CqlLibrary extends Element {

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {

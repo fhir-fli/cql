@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet this criteria using this datatype should
 /// document a recommendation for a request by a clinician or appropriately licensed

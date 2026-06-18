@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to determine if the first interval overlaps the second interval.
 /// Returns true if End(i1) >= Start(i2) and Start(i1) <= End(i2).

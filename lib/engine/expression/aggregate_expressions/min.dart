@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Min operator returns the minimum element in the source.
 /// Comparison semantics are defined by the comparison operators for the type

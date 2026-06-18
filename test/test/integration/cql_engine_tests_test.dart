@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 import 'package:test/test.dart';
 
 import '../test_helpers/cql_test_helpers.dart';

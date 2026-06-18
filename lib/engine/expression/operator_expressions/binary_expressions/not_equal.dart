@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if its arguments are not the same value.
 /// Returns true if its arguments are not the same value.

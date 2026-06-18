@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The PopulationStdDev operator returns the statistical standard deviation of
 /// the elements in source.

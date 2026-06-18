@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if the Quantity can be converted to an equivalent Quantity with the given Unit.
 /// Returns true if the conversion is valid according to the UCUM conversion.

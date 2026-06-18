@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Last operator returns the last element in a list.
 /// If the order by attribute is specified, the list is sorted by that ordering

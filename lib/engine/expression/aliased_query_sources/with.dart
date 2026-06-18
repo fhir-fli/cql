@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The With clause restricts the elements of a given source to only those elements that have elements in the related source that satisfy the suchThat condition.
 /// This operation is known as a semi-join in database languages.

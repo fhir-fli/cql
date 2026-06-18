@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 abstract class ModelInfoProvider {
   /// Loads the model information for the given model identifier.

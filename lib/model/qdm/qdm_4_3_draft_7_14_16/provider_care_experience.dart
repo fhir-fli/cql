@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Data elements that meet this criterion indicate the provider's
 /// experience with availability of resources (e.g., scheduling, equipment, space, and

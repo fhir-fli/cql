@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// For structured types, the Descendents operator returns a list of all the values of the elements of the type, recursively.
 /// For list types, the result is the same as invoking Descendents on each element in the list and flattening the resulting lists into a single result.

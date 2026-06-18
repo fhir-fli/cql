@@ -1,7 +1,7 @@
 import 'dart:math';
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the nearest integer to its argument.
 /// The semantics of round are defined as a traditional round, meaning that a

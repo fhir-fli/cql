@@ -1,7 +1,7 @@
 import 'dart:math';
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to raise the first argument to the power given by the second argument.
 /// If either argument is null, the result is null.

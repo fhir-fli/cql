@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Defines metadata associated with a specific model for use by the CQL translator.
 ///

@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Expression that references a previously defined NamedExpression.
 class ExpressionRef extends Ref {

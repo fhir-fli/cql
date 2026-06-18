@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class CqlParsersAndErrors {
   final ElmErrorListener errorListener;

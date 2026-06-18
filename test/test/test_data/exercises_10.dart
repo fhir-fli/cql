@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 import 'package:ucum/ucum.dart' show ValidatedQuantity;
 
 // -- Exercise 10: Lung Cancer Screening Decision Support --

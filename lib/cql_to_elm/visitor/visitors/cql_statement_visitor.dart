@@ -1,5 +1,5 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class CqlStatementVisitor extends CqlBaseVisitor<void> {
   CqlStatementVisitor(super.library);

@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The IndexOf operator returns the 0-based index of the given element in the
 /// given source list.

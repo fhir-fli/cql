@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 ///
 /// This attribute type is new to QDM 5.0. It represents a component of a panel

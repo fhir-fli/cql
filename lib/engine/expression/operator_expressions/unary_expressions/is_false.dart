@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// IsFalse operator determining whether its argument evaluates to false.
 /// Signature:

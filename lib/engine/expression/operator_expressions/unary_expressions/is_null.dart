@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// IsNull operator determining whether its argument evaluates to null.
 /// Signature:

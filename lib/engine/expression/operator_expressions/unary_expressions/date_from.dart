@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the date (with no time components specified) of the argument.
 /// If the argument is null, the result is null.

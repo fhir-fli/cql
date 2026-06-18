@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Concept type represents a literal concept selector.
 class Concept extends CqlExpression {

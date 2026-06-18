@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to match the given string using the regular expression pattern,
 /// replacing each match with the given substitution.

@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:antlr4/antlr4.dart';
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// This class provides an empty implementation of [CqlVisitor],
 /// which can be extended to create a visitor which only needs to handle

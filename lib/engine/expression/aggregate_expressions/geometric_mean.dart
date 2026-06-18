@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The GeometricMean operator returns the geometric mean of the non-null elements in source.
 /// If a path is specified, elements with no value for the property specified by the path are ignored.

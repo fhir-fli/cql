@@ -1,5 +1,5 @@
 // Terminology resolution for CQL membership operators.
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class TerminologyProviderException implements Exception {
   String message;

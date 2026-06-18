@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 import 'qdm_5_0_1_draft_7_13_16.dart';
 

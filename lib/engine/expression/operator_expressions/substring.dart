@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the string within stringToSub, starting at the 0-based index startIndex, and consisting of length characters.
 /// If length is omitted, the substring returned starts at startIndex and continues to the end of stringToSub.

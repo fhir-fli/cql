@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Union operator returns the union of its arguments.
 /// This operator has two overloads: List, Interval.

@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:xml2json/xml2json.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class StandardModelInfoReader implements ModelInfoReader {
   /// Replace this method with your actual XML parsing logic.

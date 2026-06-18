@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The InCodeSystem operator returns true if the given code is in the given
 /// code system.

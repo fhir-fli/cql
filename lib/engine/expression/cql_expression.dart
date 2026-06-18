@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
 class CqlExpression extends Element {

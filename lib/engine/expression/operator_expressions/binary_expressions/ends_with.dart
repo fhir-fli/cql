@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return true if the given string ends with the given suffix.
 /// If the suffix is the empty string, the result is true.

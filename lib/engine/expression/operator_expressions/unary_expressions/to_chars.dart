@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to take a string and returns a list with one string for each character in the input.
 /// If the argument is null, the result is null.

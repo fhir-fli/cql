@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Not operator returning the logical negation of its argument.
 /// not (argument Boolean) Boolean

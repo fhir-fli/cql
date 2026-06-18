@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Coalesce operator returning the first non-null result in a list of arguments.
 /// Signature:

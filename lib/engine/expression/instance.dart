@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Expression allowing class instances to be built up.
 /// Instance : Expression

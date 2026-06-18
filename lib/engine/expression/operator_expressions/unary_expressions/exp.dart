@@ -1,7 +1,7 @@
 import 'dart:math';
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return e raised to the given power.
 /// If the argument is null, the result is null.

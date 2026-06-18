@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if the first operand completely includes the second operand.
 /// Returns true if the starting point of the first interval is less than or

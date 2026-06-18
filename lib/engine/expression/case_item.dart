@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Represents an element within a case operator, specifying conditions and their corresponding actions.
 class CaseItem extends Element {

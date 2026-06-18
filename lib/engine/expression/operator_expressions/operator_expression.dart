@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Abstract base class for all built-in operators used in the ELM expression
 /// language.

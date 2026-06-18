@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The LetClause element allows any number of expression definitions to be introduced within a query scope.
 /// Defined expressions can be referenced by name within the query scope.

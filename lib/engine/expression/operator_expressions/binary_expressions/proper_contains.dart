@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if the first operand properly contains the second operand.
 /// Returns true if the given point is greater than the starting point of the interval and less than the ending point of the interval.

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to convert the value of its argument to a Date value.
 /// The operator expects the string to be formatted using the ISO-8601 date representation: YYYY-MM-DD.

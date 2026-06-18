@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if the first operand is included in the second and is strictly smaller.
 /// Returns true if every element of the first interval is included in the second interval,

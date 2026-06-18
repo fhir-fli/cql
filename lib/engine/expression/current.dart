@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Current expression returns the value of the object currently in scope.
 /// It's an error to invoke the Current operator outside of a scoped operation.

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Except operator returns the set difference of the two arguments.
 /// This operator has two overloads: List, List and Interval, Interval.

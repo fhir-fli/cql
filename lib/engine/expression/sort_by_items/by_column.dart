@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ByColumn element specifies that the sort should be performed using the given column and direction.
 /// This approach is used to specify the sort order for a query when the result is a list of tuples.

@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to convert the value of its argument to a Decimal value.
 /// The operator accepts strings using the following format: (+|-)?#0(.0#)?

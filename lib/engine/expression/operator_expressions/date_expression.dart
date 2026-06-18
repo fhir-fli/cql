@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to construct a date value from the given components.
 /// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.

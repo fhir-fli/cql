@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to check if a value can be converted to a specific type.
 /// Returns true if the given value can be converted to a specific type,

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 ///
 /// The Patient Characteristic Expired data element should document that the patient is deceased.

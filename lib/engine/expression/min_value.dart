@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the minimum representable value for the given type.
 /// The MinValue operator is defined for the Integer, Decimal, Date, DateTime,

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 class ValueSetDefs {
   String? type;

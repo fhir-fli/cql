@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to extract the single point from the source interval.
 /// The source interval must be a unit interval (an interval with the same starting and ending boundary), otherwise, a run-time error is thrown.

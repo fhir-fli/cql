@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Expression allowing tuples of any type to be built up as an expression.
 class Tuple extends CqlExpression {

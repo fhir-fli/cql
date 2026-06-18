@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The operation exoects a single argument of type ValueSet. This may be a
 /// static reference to a value set (i.e. a ValueSetRef), or a ValueSet value

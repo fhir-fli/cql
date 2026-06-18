@@ -1,7 +1,7 @@
 import 'dart:math';
 
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to compute the natural logarithm of its argument.
 /// If the argument is null, the result is null.

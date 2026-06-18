@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 import 'package:ucum/ucum.dart';
 
 /// Operator to convert the value of its argument to a Ratio value.

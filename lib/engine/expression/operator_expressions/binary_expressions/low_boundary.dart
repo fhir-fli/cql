@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the least possible value of the input to the specified precision.
 /// The operator can be used with Decimal, Date, DateTime, and Time values.

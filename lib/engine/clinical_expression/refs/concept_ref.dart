@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The ConceptRef expression allows a previously defined concept to be
 /// referenced within an expression.

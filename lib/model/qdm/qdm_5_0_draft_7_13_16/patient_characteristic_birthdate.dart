@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Patient Characteristic Birthdate data element should document the
 /// patient’s date of birth. Note: Patient Characteristic Birthdate is fixed to LOINC

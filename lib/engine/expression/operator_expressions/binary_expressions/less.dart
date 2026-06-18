@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart' hide Quantity;
+import 'package:cql/cql.dart' hide Quantity;
 
 /// Operator to check if the first argument is less than the second argument.
 /// Returns true if the first argument is less than the second argument.

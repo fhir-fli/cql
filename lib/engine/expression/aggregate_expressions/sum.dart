@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Sum operator returns the sum of non-null elements in the source.
 /// If a path is specified, elements with no value for the property specified

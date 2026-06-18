@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to convert the value of its argument to an Integer value.
 /// The operator accepts strings using the format: (+|-)?#0, meaning an optional polarity indicator,

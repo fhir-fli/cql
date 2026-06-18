@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// To meet criteria using this datatype, the communication indicated by
 /// the Communication QDM category and its corresponding value set must not have been

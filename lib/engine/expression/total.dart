@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Total expression returns the current value of the total aggregation accumulator in an aggregate operation.
 class Total extends CqlExpression {

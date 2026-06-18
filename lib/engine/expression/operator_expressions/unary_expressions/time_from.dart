@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to return the Time of the argument.
 /// When extracting the time from a DateTime value, implementations should

@@ -1,5 +1,5 @@
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to perform string concatenation of its arguments.
 /// If any argument is null, the result is null.

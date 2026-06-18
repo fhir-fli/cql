@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 final qdmmodelinfo50_withNegationTypes = ModelInfo.fromJson({
   "name": "QDM",

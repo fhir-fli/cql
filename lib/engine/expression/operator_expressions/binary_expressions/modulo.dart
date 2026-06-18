@@ -1,6 +1,6 @@
 import 'package:ucum/ucum.dart';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Operator to compute the remainder of the division of its arguments.
 /// The Modulo operator is defined for the Integer and Decimal types.

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// Intersect operator returns the intersection of its arguments.
 /// This operator has two overloads: List, Interval.

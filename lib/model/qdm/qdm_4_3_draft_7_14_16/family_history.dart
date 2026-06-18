@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// To meet criteria using this datatype, the diagnosis/problem indicated
 /// by the FamilyHistory QDM category and its corresponding value set should reflect a

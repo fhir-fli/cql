@@ -1,5 +1,5 @@
 // Vocabulary type
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 abstract class CqlVocabulary implements CqlType {
   String id;

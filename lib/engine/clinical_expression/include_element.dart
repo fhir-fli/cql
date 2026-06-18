@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The IncludeElement type specifies include information for an include within
 /// a retrieve.

@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 /// The Message operator is used to support errors, warnings, messages, and
 /// tracing in an ELM evaluation environment.

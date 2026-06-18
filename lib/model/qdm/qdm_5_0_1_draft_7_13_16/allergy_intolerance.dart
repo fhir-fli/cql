@@ -1,4 +1,4 @@
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 ///
 /// Data elements that meet this criterion address immune-mediated reactions to a
