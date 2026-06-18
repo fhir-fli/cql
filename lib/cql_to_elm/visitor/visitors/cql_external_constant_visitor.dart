@@ -1,5 +1,4 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_r4/fhir_r4.dart' show R4ResourceType;
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Visits constructs like `%String`, `%FhirDateTime`, or
@@ -26,11 +25,20 @@ class CqlExternalConstantVisitor extends CqlBaseVisitor<CqlExpression> {
       return NamedTypeSpecifier(namespace: qn);
     }
 
-    // 3) FHIR primitives or resource types, e.g. %FhirDecimal, %Patient, etc.
-    if (QName.fhirTypes.contains(raw) ||
-        R4ResourceType.typesAsStrings.contains(raw)) {
-      final qn = QName.fromFhirType(raw);
-      return NamedTypeSpecifier(namespace: qn);
+    // 3a) FHIR primitive / complex datatype, e.g. %FhirDecimal, %Period.
+    if (QName.fhirTypes.contains(raw.toLowerCase())) {
+      return NamedTypeSpecifier(namespace: QName.fromFhirType(raw));
+    }
+
+    // 3b) A resource (or other class) type known to the active model, e.g.
+    // %Patient. Resource recognition is model-driven — the namespace comes
+    // from the model itself, not a hardcoded FHIR type list.
+    final model = currentModel;
+    if (model != null && model.resolveTypeName(raw) != null) {
+      return NamedTypeSpecifier(
+        namespace:
+            QName(namespaceURI: model.modelInfo.url.toString(), localPart: raw),
+      );
     }
 
     // 4) Fully‐qualified QName syntax `{ns}LocalPart}`

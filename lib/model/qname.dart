@@ -1,8 +1,3 @@
-// TODO(translator-decoupling): `fhirFieldMap` (the set of FHIR type/field
-// names backing `fhirTypes`) is FHIR model data — it should come from the
-// loaded modelinfo, not a compiled fhir_r4 export. This is the last fhir_r4
-// coupling in the model/translator layer.
-import 'package:fhir_r4/fhir_r4.dart' show fhirFieldMap;
 import 'package:fhir_cql/fhir_cql.dart';
 
 class QName {
@@ -37,8 +32,12 @@ class QName {
   /// Known FHIR primitive and complex type names (lowercase for matching).
   /// Includes both resource field names from fhirFieldMap and FHIR primitive
   /// type names that appear in type specifiers (e.g., `as dateTime`).
+  /// FHIR primitive and complex *datatype* names (lowercase). These are
+  /// fixed, spec-defined, and small — safe to carry as data in this
+  /// model-independent util. FHIR *resource* type names are NOT here:
+  /// recognizing a resource is a model question, answered by the loaded
+  /// modelinfo (`Model.resolveTypeName`) in the model-aware translator layer.
   static final fhirTypes = {
-    ...fhirFieldMap.keys.map((key) => key.toLowerCase()),
     // FHIR primitive types
     'base64binary', 'boolean', 'canonical', 'code', 'date', 'datetime',
     'decimal', 'id', 'instant', 'integer', 'markdown', 'oid',

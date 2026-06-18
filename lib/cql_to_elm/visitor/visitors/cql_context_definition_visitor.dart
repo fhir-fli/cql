@@ -1,5 +1,4 @@
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
@@ -33,6 +32,11 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                         element.name == name ||
                         element.identifier == name)));
             if (index != -1) {
+              // A retrievable ClassInfo is a model resource type (the
+              // model-driven answer to "is `name` a FHIR resource?"), so it
+              // gets a StructureDefinition templateId.
+              final typeInfo = modelInfo.typeInfo[index];
+              final isResource = typeInfo is ClassInfo && typeInfo.retrievable;
               library.statements ??= ExpressionDefs();
               library.statements!.def.add(
                 ExpressionDef(
@@ -40,7 +44,7 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                   context: name,
                   expression: SingletonFrom(
                     operand: Retrieve(
-                      templateId: R4ResourceType.typesAsStrings.contains(name)
+                      templateId: isResource
                           ? 'http://hl7.org/fhir/StructureDefinition/$name'
                           : name,
                       dataType: QName(
