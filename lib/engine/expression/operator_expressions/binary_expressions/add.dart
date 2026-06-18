@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -205,7 +204,7 @@ class Add extends BinaryExpression {
         {
           final r = right is String
               ? right
-              : right is PrimitiveType
+              : right is CqlPrimitive
                   ? right.valueString
                   : null;
           return r != null ? left + r : null;
@@ -216,7 +215,7 @@ class Add extends BinaryExpression {
           if (l == null) return null;
           final r = right is String
               ? right
-              : right is PrimitiveType
+              : right is CqlPrimitive
                   ? right.valueString
                   : null;
           return r != null ? l + r : null;

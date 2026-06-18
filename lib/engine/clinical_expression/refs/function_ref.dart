@@ -1,5 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity, Ratio;
 import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -226,7 +224,8 @@ class FunctionRef extends ExpressionRef {
           final value = await operand![0].execute(context);
           if (value == null) return null;
           final results = <dynamic>[];
-          Descendents.collectDescendants(value, results);
+          Descendents.collectDescendants(
+              value, results, getModelResolver(context));
           return results;
         }
         return null;
@@ -298,7 +297,7 @@ class FunctionRef extends ExpressionRef {
       case 'ToInterval':
         if (operand == null || operand!.isEmpty) return null;
         final value = await operand![0].execute(context);
-        return _toInterval(value);
+        return _toInterval(value, getModelResolver(context));
       case 'ToString':
         return _helperToString(context);
       case 'ToConcept':
@@ -319,20 +318,29 @@ class FunctionRef extends ExpressionRef {
     }
   }
 
+  /// The string carried by [value]: raw strings and CQL System primitives
+  /// directly; model types (e.g. FHIR string-flavored primitives) via the
+  /// resolver's boundary conversion. `null` when [value] carries no string.
+  static String? _stringValueOf(dynamic value, ModelResolver? mr) {
+    if (value == null) return null;
+    if (value is String) return value;
+    if (value is CqlPrimitive) return value.valueString;
+    final converted = mr?.toCqlSystemType(value);
+    if (converted is CqlPrimitive) return converted.valueString;
+    return null;
+  }
+
   Future<dynamic> _helperToString(Map<String, dynamic> context) async {
     if (operand == null || operand!.isEmpty) {
       return null;
     }
+    final mr = getModelResolver(context);
     final results = <String>[];
     for (final op in operand!) {
       final value = await op.execute(context);
       if (value == null) continue;
-      final str = value is String
-          ? value
-          : value is PrimitiveType
-              ? value.valueString
-              : value.toString();
-      if (str != null) results.add(str);
+      final str = _stringValueOf(value, mr) ?? value.toString();
+      results.add(str);
     }
     if (results.isEmpty) return null;
     return results.length == 1 ? results.first : results;
@@ -353,59 +361,17 @@ class FunctionRef extends ExpressionRef {
   Future<dynamic> _helperToInterval(Map<String, dynamic> context) async {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
-    return _toInterval(value);
+    return _toInterval(value, getModelResolver(context));
   }
 
-  dynamic _toInterval(dynamic value) {
+  dynamic _toInterval(dynamic value, ModelResolver? mr) {
     if (value == null) return null;
     if (value is CqlInterval) return value;
-    // FHIR Period → CQL Interval<DateTime>
-    if (value is Period) {
-      return CqlInterval(
-        low: value.start != null
-            ? CqlDateTime.fromString(value.start.toString())
-            : null,
-        high: value.end != null
-            ? CqlDateTime.fromString(value.end.toString())
-            : null,
-        lowClosed: true,
-        highClosed: true,
-      );
-    }
-    // FHIR Range → CQL Interval<Quantity>
-    if (value is Range) {
-      ValidatedQuantity? low;
-      ValidatedQuantity? high;
-      if (value.low != null) {
-        final numVal = value.low!.value?.valueNum;
-        final unit =
-            value.low!.unit?.valueString ?? value.low!.code?.valueString ?? '1';
-        if (numVal != null) {
-          low = ValidatedQuantity.fromNumber(numVal, unit: unit);
-        }
-      }
-      if (value.high != null) {
-        final numVal = value.high!.value?.valueNum;
-        final unit = value.high!.unit?.valueString ??
-            value.high!.code?.valueString ??
-            '1';
-        if (numVal != null) {
-          high = ValidatedQuantity.fromNumber(numVal, unit: unit);
-        }
-      }
-      return CqlInterval(
-          low: low, high: high, lowClosed: true, highClosed: true);
-    }
-    // FHIR dateTime or instant → point interval
-    if (value is CqlDateTime || value is FhirInstant) {
+    if (value is CqlDateTime || value is CqlDate) {
       return CqlInterval(
           low: value, high: value, lowClosed: true, highClosed: true);
     }
-    if (value is CqlDate) {
-      return CqlInterval(
-          low: value, high: value, lowClosed: true, highClosed: true);
-    }
-    // Map with start/end (e.g. from walkFhirPath)
+    // Map with start/end or low/high (period/range-shaped raw data)
     if (value is Map<String, dynamic>) {
       final start = value['start'];
       final end = value['end'];
@@ -417,14 +383,33 @@ class FunctionRef extends ExpressionRef {
           highClosed: true,
         );
       }
-      // Map with low/high (Range-like from walkFhirPath)
       final low = value['low'];
       final high = value['high'];
       if (low != null || high != null) {
-        return _toInterval(Range.fromJson(value));
+        return CqlInterval(
+          low: _quantityFromMap(low),
+          high: _quantityFromMap(high),
+          lowClosed: true,
+          highClosed: true,
+        );
       }
+      return null;
     }
-    return null;
+    // Model types (FHIR Period → Interval<DateTime>, Range →
+    // Interval<Quantity>, instant → point interval) convert at the
+    // resolver boundary.
+    final converted = mr?.toCqlSystemType(value);
+    if (identical(converted, value)) return null;
+    return _toInterval(converted, null);
+  }
+
+  ValidatedQuantity? _quantityFromMap(dynamic value) {
+    if (value is! Map<String, dynamic>) return null;
+    final raw = value['value'];
+    final num? numVal = raw is num ? raw : num.tryParse(raw?.toString() ?? '');
+    if (numVal == null) return null;
+    final unit = value['code']?.toString() ?? value['unit']?.toString() ?? '1';
+    return ValidatedQuantity.fromNumber(numVal, unit: unit);
   }
 
   Future<dynamic> _helperToQuantity(Map<String, dynamic> context) async {
@@ -432,18 +417,8 @@ class FunctionRef extends ExpressionRef {
     final value = await operand![0].execute(context);
     if (value == null) return null;
     if (value is ValidatedQuantity) return value;
-    if (value is fhir.Quantity) return _fhirQuantityToValidated(value);
-    return null;
-  }
-
-  ValidatedQuantity? _fhirQuantityToValidated(fhir.Quantity? q) {
-    if (q == null) return null;
-    final num? numVal = q.value?.valueNum;
-    final unit = q.unit?.valueString ?? q.code?.valueString ?? '1';
-    if (numVal != null) {
-      return ValidatedQuantity.fromNumber(numVal, unit: unit);
-    }
-    return null;
+    final converted = getModelResolver(context)?.toCqlSystemType(value);
+    return converted is ValidatedQuantity ? converted : null;
   }
 
   Future<dynamic> _helperToBoolean(Map<String, dynamic> context) async {
@@ -475,13 +450,6 @@ class FunctionRef extends ExpressionRef {
     final value = await operand![0].execute(context);
     if (value == null) return null;
     if (value is CqlCode) return value;
-    if (value is Coding) {
-      return CqlCode(
-        code: value.code?.valueString ?? '',
-        system: value.system?.valueString ?? '',
-        display: value.display?.valueString,
-      );
-    }
     if (value is Map<String, dynamic>) {
       return CqlCode(
         code: value['code']?.toString() ?? '',
@@ -489,7 +457,8 @@ class FunctionRef extends ExpressionRef {
         display: value['display']?.toString(),
       );
     }
-    return null;
+    final converted = getModelResolver(context)?.toCqlSystemType(value);
+    return converted is CqlCode ? converted : null;
   }
 
   Future<dynamic> _helperToInteger(Map<String, dynamic> context) async {
@@ -497,14 +466,9 @@ class FunctionRef extends ExpressionRef {
     final value = await operand![0].execute(context);
     if (value == null) return null;
     if (value is CqlInteger) return value;
-    if (value is FhirPositiveInt) {
-      return CqlInteger(value.valueInt);
-    }
-    if (value is FhirUnsignedInt) {
-      return CqlInteger(value.valueInt);
-    }
     if (value is int) return CqlInteger(value);
-    return null;
+    final converted = getModelResolver(context)?.toCqlSystemType(value);
+    return converted is CqlInteger ? converted : null;
   }
 
   Future<dynamic> _helperToDecimal(Map<String, dynamic> context) async {
@@ -530,12 +494,8 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    final str = value is String
-        ? value
-        : value is PrimitiveType
-            ? value.valueString
-            : value.toString();
-    if (str == null) return null;
+    final str =
+        _stringValueOf(value, getModelResolver(context)) ?? value.toString();
     const ucumToCql = {
       'ms': 'millisecond',
       's': 'second',
@@ -554,26 +514,15 @@ class FunctionRef extends ExpressionRef {
     final value = await operand![0].execute(context);
     if (value == null) return null;
     if (value is ValidatedRatio) return value;
-    if (value is fhir.Ratio) {
-      final num = _fhirQuantityToValidated(value.numerator);
-      final den = _fhirQuantityToValidated(value.denominator);
-      if (num != null && den != null) {
-        return ValidatedRatio(numerator: num, denominator: den);
-      }
-    }
-    return null;
+    final converted = getModelResolver(context)?.toCqlSystemType(value);
+    return converted is ValidatedRatio ? converted : null;
   }
 
   Future<dynamic> _helperToValueSet(Map<String, dynamic> context) async {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    String? uri;
-    if (value is String) {
-      uri = value;
-    } else if (value is PrimitiveType) {
-      uri = value.valueString;
-    }
+    final uri = _stringValueOf(value, getModelResolver(context));
     if (uri != null) {
       return CqlValueSet(id: uri, version: null, name: '');
     }
@@ -584,36 +533,15 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) return null;
     final value = await operand![0].execute(context);
     if (value == null) return null;
-    // Primitive unwrapping
-    if (value is CqlBoolean) return value;
-    if (value is CqlInteger) return value;
-    if (value is CqlDecimal) return value;
+    // CQL System values pass through (strings unwrap to raw String).
     if (value is CqlString) return value.valueString;
-    if (value is CqlDate) return value;
-    if (value is CqlDateTime) return value;
-    if (value is CqlTime) return value;
-    if (value is FhirUri) return value.valueString;
-    if (value is FhirId) return value.valueString;
-    if (value is FhirPositiveInt) return CqlInteger(value.valueInt);
-    if (value is FhirUnsignedInt) return CqlInteger(value.valueInt);
-    // Complex types
-    if (value is CodeableConcept) {
-      return await _helperToConcept(context);
-    }
-    if (value is Coding) {
-      return await _helperToCode(context);
-    }
-    if (value is fhir.Quantity) {
-      return _fhirQuantityToValidated(value);
-    }
-    if (value is Period) return _toInterval(value);
-    if (value is Range) return _toInterval(value);
-    if (value is fhir.Ratio) {
-      final num = _fhirQuantityToValidated(value.numerator);
-      final den = _fhirQuantityToValidated(value.denominator);
-      if (num != null && den != null) {
-        return ValidatedRatio(numerator: num, denominator: den);
-      }
+    if (value is CqlType || value is CqlInterval) return value;
+    // Model values convert at the resolver boundary (FHIR primitives to
+    // System primitives, Coding → Code, CodeableConcept → Concept,
+    // Quantity/Ratio → System Quantity/Ratio, Period/Range → Interval).
+    final converted = getModelResolver(context)?.toCqlSystemType(value);
+    if (converted != null && !identical(converted, value)) {
+      return converted is CqlString ? converted.valueString : converted;
     }
     // Everything else passthrough
     return value;

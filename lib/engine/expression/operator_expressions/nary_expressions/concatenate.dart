@@ -1,5 +1,4 @@
 
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to perform string concatenation of its arguments.
@@ -136,11 +135,11 @@ class Concatenate extends NaryExpression {
     return data;
   }
 
-  /// Coerces a value to a plain Dart [String], handling [CqlString] and
-  /// other [PrimitiveType]s that carry string values.
+  /// Coerces a value to a plain Dart [String], handling raw strings and CQL
+  /// System primitives that carry string values.
   static String? _coerceToString(dynamic value) {
     if (value is String) return value;
-    if (value is PrimitiveType) return value.valueString;
+    if (value is CqlPrimitive) return value.valueString;
     return null;
   }
 

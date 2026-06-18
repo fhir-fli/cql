@@ -193,4 +193,15 @@ abstract class ModelResolver {
   /// [fhirTypeName] specifies the target FHIR type (e.g. `'Period'`,
   /// `'Quantity'`). When unspecified or unknown, falls back to a JSON Map.
   dynamic fromCqlSystemType(dynamic value, [String? fhirTypeName]);
+
+  /// Decomposes a model object into its child elements as a FHIR-JSON
+  /// `name → value` map, or returns `null` if [value] is not a model object.
+  ///
+  /// This is the model operation behind CQL's `Children` / `Descendents`
+  /// and implicit identifier resolution: enumerating the elements of a
+  /// structured value requires model knowledge (which fields the type has),
+  /// so it belongs on the resolver. A raw FHIR JSON `Map` is already in this
+  /// form and is the caller's responsibility — this method exists to bring
+  /// *typed* model objects (e.g. `fhir_r4.Patient`) into the same shape.
+  Map<String, dynamic>? toElementMap(dynamic value);
 }

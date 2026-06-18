@@ -1,5 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
 
 // -- Sample FHIR resources for Exercise 06 (Data Access) --
 
@@ -231,7 +229,10 @@ final context06 = <String, dynamic>{
 // -- Expected results --
 
 final exercises06 = <String, dynamic>{
-  'Patient': Patient.fromJson(_patient06),
+  // The engine keeps FHIR data in the form it arrived (raw JSON here);
+  // SingletonFrom no longer type-ifies the context resource. Consistent
+  // with every other expected value below, which are raw Maps too.
+  'Patient': _patient06,
   'Encounters': [_encounter1, _encounter2],
   'Inpatient Encounters': [_encounter1],
   'Medication Requests': [_medrq1, _medrq2],

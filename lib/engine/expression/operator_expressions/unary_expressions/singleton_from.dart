@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// The SingletonFrom expression extracts a single element from the source list.
@@ -89,11 +88,9 @@ class SingletonFrom extends UnaryExpression {
       if (list.isEmpty) {
         return null;
       } else if (list.length == 1) {
-        if (list.first is Map<String, dynamic> &&
-            list.first['resourceType'] is String &&
-            (list.first['resourceType'] as String).isFhirResourceType) {
-          return Resource.fromJson(list.first);
-        }
+        // SingletonFrom is type-agnostic: it yields the single element as-is.
+        // FHIR data stays in whatever form it arrived (raw JSON Map or typed
+        // object); property access on it goes through the resolver.
         return list.first;
       } else {
         throw CqlException(

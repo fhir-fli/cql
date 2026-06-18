@@ -1,5 +1,3 @@
-
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// For structured types, the Children operator returns a list of all the values of the elements of the type.
@@ -68,24 +66,25 @@ class Children extends OperatorExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     final value = await source.execute(context);
     if (value == null) return null;
+    final mr = getModelResolver(context);
     if (value is List) {
       final results = [];
       for (final item in value) {
-        final children = _getChildren(item);
-        results.addAll(children);
+        results.addAll(_getChildren(item, mr));
       }
       return results;
     }
-    return _getChildren(value);
+    return _getChildren(value, mr);
   }
 
-  static List<dynamic> _getChildren(dynamic value) {
+  static List<dynamic> _getChildren(dynamic value, ModelResolver? mr) {
     if (value == null) return [];
-    if (value is Resource) {
-      return value.toJson().values.where((v) => v != null).toList();
-    }
-    if (value is Map<String, dynamic>) {
-      return value.values.where((v) => v != null).toList();
+    // A structured value's children are the values of its elements. Raw FHIR
+    // JSON is already a name→value map; typed model objects decompose to one
+    // via the resolver.
+    final map = value is Map<String, dynamic> ? value : mr?.toElementMap(value);
+    if (map != null) {
+      return map.values.where((v) => v != null).toList();
     }
     return [value];
   }

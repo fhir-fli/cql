@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -109,20 +108,18 @@ class IdentifierRef extends Ref {
       }
     }
 
-    // In sort/return clauses, identifiers implicitly resolve against source elements.
-    // The context has aliased entries like {'O': <observation>}.
-    // Try each aliased value that's a Map and see if it has the property.
+    // In sort/return clauses, identifiers implicitly resolve against source
+    // elements. The context has aliased entries like {'O': <observation>}.
+    // Try each aliased resource (raw FHIR JSON or a typed model object) and
+    // see if it carries the property.
+    final mr = getModelResolver(context);
     for (final entry in context.entries) {
       final val = entry.value;
-      if (val is Map<String, dynamic> && val.containsKey('resourceType')) {
-        if (val.containsKey(name)) {
-          return val[name];
-        }
-      } else if (val is Resource) {
-        final json = val.toJson();
-        if (json.containsKey(name)) {
-          return json[name];
-        }
+      final map = val is Map<String, dynamic> && val.containsKey('resourceType')
+          ? val
+          : mr?.toElementMap(val);
+      if (map != null && map.containsKey(name)) {
+        return map[name];
       }
     }
 

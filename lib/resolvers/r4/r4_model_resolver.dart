@@ -10,8 +10,12 @@
 import 'package:fhir_r4/fhir_r4.dart' as r4;
 import 'package:fhir_r4_path/fhir_r4_path.dart' show FHIRPathEngine, WorkerContext;
 import 'package:ucum/fhir/validated_quantity.dart' show ValidatedQuantity;
+import 'package:ucum/fhir/validated_ratio.dart' show ValidatedRatio;
 
 import '../../cql_primitives/cql_primitives.dart';
+import '../../engine/types/cql_code.dart';
+import '../../engine/types/cql_concept.dart';
+import '../../engine/types/cql_interval.dart';
 import '../../engine/types/cql_type.dart';
 import '../../model_resolver.dart';
 
@@ -404,6 +408,8 @@ class R4ModelResolver implements ModelResolver {
     // R4 primitives → CQL System primitives
     if (value is r4.FhirBoolean) return CqlBoolean(value.valueBoolean);
     if (value is r4.FhirInteger) return CqlInteger(value.valueInt);
+    if (value is r4.FhirPositiveInt) return CqlInteger(value.valueInt);
+    if (value is r4.FhirUnsignedInt) return CqlInteger(value.valueInt);
     if (value is r4.FhirInteger64) return CqlLong(value.valueString);
     if (value is r4.FhirDecimal) return CqlDecimal(value.valueString);
     // All FHIR string-flavored primitives (code, markdown, id, oid, uuid,
@@ -430,10 +436,67 @@ class R4ModelResolver implements ModelResolver {
       return value.valueString == null ? null : CqlTime(value.valueString);
     }
 
-    // Composite conversions (Period → CqlInterval<CqlDateTime>, etc.) are
-    // handled by the engine via dedicated type modules in lib/engine/types/.
-    // Pass through opaquely.
+    // R4 composites → CQL System composites (the boundary conversions the
+    // reference implementations declare in the modelinfo: Coding →
+    // System.Code, CodeableConcept → System.Concept, Quantity →
+    // System.Quantity, Ratio → System.Ratio, Period →
+    // Interval<System.DateTime>, Range → Interval<System.Quantity>).
+    if (value is r4.Coding) return _codingToCqlCode(value);
+    if (value is r4.CodeableConcept) {
+      return CqlConcept(
+        codes: [
+          for (final coding in value.coding ?? <r4.Coding>[])
+            _codingToCqlCode(coding),
+        ],
+        display: value.text?.valueString,
+      );
+    }
+    if (value is r4.Quantity) return _quantityToValidated(value);
+    if (value is r4.Ratio) {
+      final numerator = _quantityToValidated(value.numerator);
+      final denominator = _quantityToValidated(value.denominator);
+      if (numerator == null || denominator == null) return null;
+      return ValidatedRatio(numerator: numerator, denominator: denominator);
+    }
+    if (value is r4.Period) {
+      return CqlInterval<CqlDateTime>(
+        low: value.start?.valueString == null
+            ? null
+            : CqlDateTime.fromString(value.start!.valueString!),
+        high: value.end?.valueString == null
+            ? null
+            : CqlDateTime.fromString(value.end!.valueString!),
+        lowClosed: true,
+        highClosed: true,
+      );
+    }
+    if (value is r4.Range) {
+      return CqlInterval<ValidatedQuantity>(
+        low: _quantityToValidated(value.low),
+        high: _quantityToValidated(value.high),
+        lowClosed: true,
+        highClosed: true,
+      );
+    }
+
+    // No System equivalent — pass through opaquely.
     return value;
+  }
+
+  CqlCode _codingToCqlCode(r4.Coding coding) => CqlCode(
+        code: coding.code?.valueString,
+        system: coding.system?.valueString,
+        version: coding.version?.valueString,
+        display: coding.display?.valueString,
+      );
+
+  ValidatedQuantity? _quantityToValidated(r4.Quantity? quantity) {
+    if (quantity == null) return null;
+    final num? value = quantity.value?.valueNum;
+    if (value == null) return null;
+    final unit =
+        quantity.code?.valueString ?? quantity.unit?.valueString ?? '1';
+    return ValidatedQuantity.fromNumber(value, unit: unit);
   }
 
   @override
@@ -477,5 +540,14 @@ class R4ModelResolver implements ModelResolver {
     }
     if (value is CqlTime) return r4.FhirTime(value.valueString);
     return value;
+  }
+
+  @override
+  Map<String, dynamic>? toElementMap(dynamic value) {
+    // Typed FHIR objects (resources, datatypes, backbone elements) decompose
+    // to their FHIR-JSON element map. Raw Maps are already in this form and
+    // are handled by the caller, not here.
+    if (value is r4.FhirBase) return value.toJson();
+    return null;
   }
 }

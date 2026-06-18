@@ -20,8 +20,12 @@ class _Literal extends CqlExpression {
 }
 
 void main() {
-  /// Helper to build a context with a CqlLibrary.
-  Map<String, dynamic> ctx() => {'library': CqlLibrary()};
+  /// Helper to build a context with a CqlLibrary and the R4 resolver
+  /// (FHIR-typed inputs convert at the resolver boundary).
+  Map<String, dynamic> ctx() => {
+        'library': CqlLibrary(),
+        ContextKey.modelResolver: const R4ModelResolver(),
+      };
 
   // ---------------------------------------------------------------------------
   // ToString

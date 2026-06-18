@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart' hide Quantity;
@@ -191,23 +190,6 @@ class Less extends BinaryExpression {
       return CqlBoolean(left < CqlDecimal(right.valueNum!.toDouble()));
     } else if (left is CqlInteger && right is CqlDecimal) {
       return CqlBoolean(CqlDecimal(left.valueNum!.toDouble()) < right);
-    } else if (left is Quantity && right is ValidatedQuantity) {
-      // Convert FHIR Quantity to ValidatedQuantity for comparison
-      final leftQty = ValidatedQuantity.fromString(
-          '${left.value?.valueNum ?? 0} \'${left.unit?.valueString ?? '1'}\'');
-      try {
-        return CqlBoolean(leftQty < right);
-      } catch (e) {
-        return null;
-      }
-    } else if (left is ValidatedQuantity && right is Quantity) {
-      final rightQty = ValidatedQuantity.fromString(
-          '${right.value?.valueNum ?? 0} \'${right.unit?.valueString ?? '1'}\'');
-      try {
-        return CqlBoolean(left < rightQty);
-      } catch (e) {
-        return null;
-      }
     }
     throw ArgumentError('Invalid operand types for Less operation: \n'
         'Left: $left (${left.runtimeType})\n'

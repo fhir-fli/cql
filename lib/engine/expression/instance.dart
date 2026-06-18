@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -288,7 +287,7 @@ class Instance extends CqlExpression {
             } else if (e.name == 'unit') {
               if (result is String) {
                 unit = result;
-              } else if (result is PrimitiveType) {
+              } else if (result is CqlPrimitive) {
                 unit = result.valueString ?? '1';
               }
             }

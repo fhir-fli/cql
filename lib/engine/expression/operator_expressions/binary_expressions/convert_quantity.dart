@@ -1,5 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity;
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -72,15 +70,9 @@ class ConvertQuantity extends BinaryExpression {
     final right = await operand[1].execute(context);
     if (left == null || right == null) return null;
 
-    // Convert FHIR Quantity to ValidatedQuantity if needed
-    if (left is fhir.Quantity) {
-      final num? numVal = left.value?.valueNum;
-      final unit = left.unit?.valueString ?? left.code?.valueString ?? '1';
-      if (numVal != null) {
-        left = ValidatedQuantity.fromNumber(numVal, unit: unit);
-      } else {
-        return null;
-      }
+    // A FHIR Quantity converts to a System Quantity at the resolver boundary.
+    if (left is! ValidatedQuantity) {
+      left = getModelResolver(context)?.toCqlSystemType(left);
     }
 
     String? targetUnit;

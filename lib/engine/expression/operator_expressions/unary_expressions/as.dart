@@ -1,5 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_r4/fhir_r4.dart' as fhir show Quantity;
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
@@ -150,100 +148,26 @@ class As extends UnaryExpression {
       return null;
     }
 
+    final mr = getModelResolver(context);
+
     // 3) If there's an asTypeSpecifier, we must cast _each_ element of a list
     if (asTypeSpecifier != null) {
       // 1) If the operand evaluated to a List, cast every element
       if (value is List) {
         return value
-            .map((e) => _applySpecifier(e, asTypeSpecifier!))
+            .map((e) => _applySpecifier(e, asTypeSpecifier!, mr))
             .where((e) => e != _notMatched)
             .toList();
       }
       // 2) Otherwise, cast the single value
-      final result = _applySpecifier(value, asTypeSpecifier!);
+      final result = _applySpecifier(value, asTypeSpecifier!, mr);
       return result == _notMatched ? null : result;
     }
 
-    // 4) If there's a simple asType, run your atomic‐cast logic
+    // 4) If there's a simple asType, run the atomic-cast logic
     if (asType != null) {
-      switch (asType!.localPart) {
-        case 'Integer':
-        case 'integer':
-          return value is CqlInteger ? value : null;
-        case 'Decimal':
-        case 'decimal':
-          return value is CqlDecimal ? value : null;
-        case 'String':
-          return value is String ? value : null;
-        case 'string':
-          // FHIR string: accept CqlString and subtypes (FhirCode, etc.)
-          return (value is String || value is CqlString) ? value : null;
-        case 'Boolean':
-        case 'boolean':
-          return value is CqlBoolean ? value : null;
-        case 'Quantity':
-          if (value is ValidatedQuantity) return value;
-          if (value is fhir.Quantity) return _fhirQuantityToValidated(value);
-          return null;
-        case 'Ratio':
-          return value is ValidatedRatio ? value : null;
-        case 'DateTime':
-        case 'dateTime':
-          return value is CqlDateTime ? value : null;
-        case 'Date':
-        case 'date':
-          return value is CqlDate ? value : null;
-        case 'Time':
-        case 'time':
-          return value is CqlTime ? value : null;
-        case 'Code':
-          return value is Code ? value : null;
-        case 'code':
-          return value is FhirCode ? value : null;
-        case 'Concept':
-          return value is Concept ? value : null;
-        case 'Interval':
-        case 'CqlInterval':
-          return value is CqlInterval ? value : null;
-        case 'Interval<Integer>':
-        case 'CqlInterval<Integer>':
-          return value is CqlInterval ? value : null;
-        case 'Interval<Long>':
-        case 'CqlInterval<Long>':
-          return value is CqlInterval<CqlLong> ? value : null;
-        case 'Interval<Decimal>':
-        case 'CqlInterval<Decimal>':
-          return value is CqlInterval ? value : null;
-        case 'Interval<CqlDate>':
-        case 'CqlInterval<CqlDate>':
-        case 'CqlInterval<Date>':
-          return value is CqlInterval ? value : null;
-        case 'Interval<CqlDateTime>':
-        case 'CqlInterval<CqlDateTime>':
-        case 'CqlInterval<DateTime>':
-          return value is CqlInterval ? value : null;
-        case 'Interval<CqlTime>':
-        case 'CqlInterval<CqlTime>':
-        case 'CqlInterval<Time>':
-          return value is CqlInterval ? value : null;
-        case 'Interval<Quantity>':
-        case 'CqlInterval<Quantity>':
-          return value is CqlInterval ? value : null;
-        case 'ValueSet':
-          return value is ValueSet ? value : null;
-        case 'uri':
-          return value is FhirUri ? value : null;
-        case 'base64Binary':
-          return value is FhirBase64Binary ? value : null;
-        case 'Coding':
-        case 'coding':
-          return value is Coding ? value : null;
-        case 'CodeableConcept':
-        case 'codeableConcept':
-          return value is CodeableConcept ? value : null;
-        default:
-          return null;
-      }
+      final result = _castNamed(value, asType!.localPart, mr);
+      return result == _notMatched ? null : result;
     }
 
     // 5) No specifier or asType: just pass the value through
@@ -258,16 +182,17 @@ class As extends UnaryExpression {
   /// Recursively applies a TypeSpecifierExpression to a single element,
   /// returning the element if it matches, or [_notMatched] if it doesn't.
   /// A null element that passes through validly will remain null.
-  dynamic _applySpecifier(dynamic element, TypeSpecifierExpression spec) {
+  dynamic _applySpecifier(
+      dynamic element, TypeSpecifierExpression spec, ModelResolver? mr) {
     // 1) ListTypeSpecifier: unwrap and reapply to the same element
     if (spec is ListTypeSpecifier && spec.elementType != null) {
-      return _applySpecifier(element, spec.elementType!);
+      return _applySpecifier(element, spec.elementType!, mr);
     }
 
     // 2) ChoiceTypeSpecifier: succeed if ANY choice matches
     if (spec is ChoiceTypeSpecifier) {
       for (final choice in spec.choice ?? <TypeSpecifierExpression>[]) {
-        final matched = _applySpecifier(element, choice);
+        final matched = _applySpecifier(element, choice, mr);
         if (matched != _notMatched) return matched;
       }
       return _notMatched;
@@ -275,110 +200,80 @@ class As extends UnaryExpression {
 
     // 3) NamedTypeSpecifier: atomic check
     if (spec is NamedTypeSpecifier) {
-      final name = spec.namespace.localPart;
-      switch (name) {
-        // Null type: only match null elements
-        case 'Null':
-          return element == null ? null : _notMatched;
-        // Any/Unknown: match any element (pass through)
-        case 'Any':
-        case 'Unknown':
-          return element;
-        case 'Integer':
-        case 'integer':
-          return element is CqlInteger ? element : _notMatched;
-        case 'Decimal':
-        case 'decimal':
-          return element is CqlDecimal ? element : _notMatched;
-        case 'String':
-          return element is String ? element : _notMatched;
-        case 'string':
-          return (element is String || element is CqlString)
-              ? element
-              : _notMatched;
-        case 'Boolean':
-        case 'boolean':
-          return element is CqlBoolean ? element : _notMatched;
-        case 'Quantity':
-          if (element is ValidatedQuantity) return element;
-          if (element is fhir.Quantity) {
-            return _fhirQuantityToValidated(element) ?? _notMatched;
-          }
-          return _notMatched;
-        case 'Ratio':
-          return element is ValidatedRatio ? element : _notMatched;
-        case 'DateTime':
-        case 'dateTime':
-          return element is CqlDateTime ? element : _notMatched;
-        case 'Date':
-        case 'date':
-          return element is CqlDate ? element : _notMatched;
-        case 'Time':
-        case 'time':
-          return element is CqlTime ? element : _notMatched;
-        case 'Code':
-          return element is Code ? element : _notMatched;
-        case 'code':
-          return element is FhirCode ? element : _notMatched;
-        case 'Concept':
-          return element is Concept ? element : _notMatched;
-        case 'Interval':
-        case 'CqlInterval':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<Integer>':
-        case 'CqlInterval<Integer>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<Long>':
-        case 'CqlInterval<Long>':
-          return element is CqlInterval<CqlLong> ? element : _notMatched;
-        case 'Interval<Decimal>':
-        case 'CqlInterval<Decimal>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<CqlDate>':
-        case 'CqlInterval<CqlDate>':
-        case 'CqlInterval<Date>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<CqlDateTime>':
-        case 'CqlInterval<CqlDateTime>':
-        case 'CqlInterval<DateTime>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<CqlTime>':
-        case 'CqlInterval<CqlTime>':
-        case 'CqlInterval<Time>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'Interval<Quantity>':
-        case 'CqlInterval<Quantity>':
-          return element is CqlInterval ? element : _notMatched;
-        case 'ValueSet':
-          return element is ValueSet ? element : _notMatched;
-        case 'uri':
-          return element is FhirUri ? element : _notMatched;
-        case 'base64Binary':
-          return element is FhirBase64Binary ? element : _notMatched;
-        case 'Coding':
-        case 'coding':
-          return element is Coding ? element : _notMatched;
-        case 'CodeableConcept':
-        case 'codeableConcept':
-          return element is CodeableConcept ? element : _notMatched;
-        default:
-          return _notMatched;
-      }
+      return _castNamed(element, spec.namespace.localPart, mr);
     }
 
     // Unknown specifier type → not matched
     return _notMatched;
   }
 
-  /// Converts a FHIR Quantity to a CQL ValidatedQuantity.
-  static ValidatedQuantity? _fhirQuantityToValidated(fhir.Quantity fhirQty) {
-    final num? value = fhirQty.value?.valueNum;
-    final unit = fhirQty.unit?.valueString ?? fhirQty.code?.valueString ?? '1';
-    if (value != null) {
-      return ValidatedQuantity.fromNumber(value, unit: unit);
+  /// Casts [value] to the type named [name]: the value itself when it is of
+  /// that type, [_notMatched] otherwise. A cast never converts — `as
+  /// FHIR.Quantity` returns the model value unchanged for a following
+  /// `FHIRHelpers.ToQuantity` to convert.
+  ///
+  /// CQL System types are checked natively; model type membership (FHIR
+  /// primitives, composites, resources) is the [ModelResolver]'s call.
+  dynamic _castNamed(dynamic value, String name, ModelResolver? mr) {
+    switch (name) {
+      // Null type: only match null values
+      case 'Null':
+        return value == null ? null : _notMatched;
+      // Any/Unknown: match anything (pass through)
+      case 'Any':
+      case 'Unknown':
+        return value;
+      case 'Integer':
+        return value is CqlInteger ? value : _notMatched;
+      case 'Long':
+        return value is CqlLong ? value : _notMatched;
+      case 'Decimal':
+        return value is CqlDecimal ? value : _notMatched;
+      case 'String':
+        return value is String ? value : _notMatched;
+      case 'string':
+        // FHIR string and subtypes via the resolver; raw/System strings
+        // (already-converted values) also satisfy the cast.
+        if (value is String || value is CqlString) return value;
+        return _modelCast(value, name, mr);
+      case 'Boolean':
+        return value is CqlBoolean ? value : _notMatched;
+      case 'DateTime':
+        return value is CqlDateTime ? value : _notMatched;
+      case 'Date':
+        return value is CqlDate ? value : _notMatched;
+      case 'Time':
+        return value is CqlTime ? value : _notMatched;
+      case 'Quantity':
+        if (value is ValidatedQuantity) return value;
+        return _modelCast(value, name, mr);
+      case 'Ratio':
+        if (value is ValidatedRatio) return value;
+        return _modelCast(value, name, mr);
+      case 'Code':
+        return value is Code ? value : _notMatched;
+      case 'Concept':
+        return value is Concept ? value : _notMatched;
+      case 'Interval<Long>':
+      case 'CqlInterval<Long>':
+        return value is CqlInterval<CqlLong> ? value : _notMatched;
+      default:
+        // Any Interval<...> spelling: a runtime CqlInterval matches.
+        if (name == 'Interval' ||
+            name == 'CqlInterval' ||
+            name.startsWith('Interval<') ||
+            name.startsWith('CqlInterval<')) {
+          return value is CqlInterval ? value : _notMatched;
+        }
+        // Model types: FHIR primitives (boolean, code, uri, ...),
+        // composites (Coding, CodeableConcept, Period, ...), resources.
+        return _modelCast(value, name, mr);
     }
-    return null;
   }
+
+  /// Model-type cast: membership decided by the [ModelResolver].
+  dynamic _modelCast(dynamic value, String name, ModelResolver? mr) =>
+      (mr?.is_(value, name) ?? false) ? value : _notMatched;
 
   @override
   String toString() {
