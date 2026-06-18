@@ -1,5 +1,8 @@
-import 'package:fhir_r4/fhir_r4.dart';
-import 'package:ucum/ucum.dart';
+// TODO(translator-decoupling): `fhirFieldMap` (the set of FHIR type/field
+// names backing `fhirTypes`) is FHIR model data — it should come from the
+// loaded modelinfo, not a compiled fhir_r4 export. This is the last fhir_r4
+// coupling in the model/translator layer.
+import 'package:fhir_r4/fhir_r4.dart' show fhirFieldMap;
 import 'package:fhir_cql/fhir_cql.dart';
 
 class QName {
@@ -115,44 +118,6 @@ class QName {
   /// Returns the CQL‐ELM return types for this QName
   List<String> getReturnTypes(CqlLibrary library) {
     return [localPart];
-  }
-
-  /// Maps QName.localPart to a Dart Type, if known
-  Type? get type {
-    switch (localPart) {
-      case 'Boolean':
-        return FhirBoolean;
-      case 'Code':
-        return CqlCode;
-      case 'Concept':
-        return CqlConcept;
-      case 'ValueSet':
-        return CqlValueSet;
-      case 'CodeSystem':
-        return CqlCodeSystem;
-      case 'Interval':
-        return CqlInterval;
-      case 'Date':
-        return FhirDate;
-      case 'DateTime':
-        return FhirDateTime;
-      case 'Decimal':
-        return FhirDecimal;
-      case 'Integer':
-        return FhirInteger;
-      case 'Long':
-        return FhirInteger64;
-      case 'Quantity':
-        return ValidatedQuantity;
-      case 'Ratio':
-        return ValidatedRatio;
-      case 'String':
-        return String;
-      case 'Time':
-        return FhirTime;
-      default:
-        return null;
-    }
   }
 
   static String fhirToElmTypes(String fhirType) {

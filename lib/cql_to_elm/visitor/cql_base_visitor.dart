@@ -3,7 +3,6 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
-import 'package:fhir_r4/fhir_r4.dart' hide SortDirection;
 import 'package:ucum/ucum.dart';
 
 import 'package:fhir_cql/fhir_cql.dart';
