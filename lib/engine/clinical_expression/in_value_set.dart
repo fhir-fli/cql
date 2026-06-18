@@ -1,13 +1,4 @@
-import 'package:fhir_r4/fhir_r4.dart'
-    show CodeableConcept, CqlBoolean, FhirCode, ValueSet;
 import 'package:fhir_cql/fhir_cql.dart';
-import 'package:fhir_r4_path/fhir_r4_path.dart'
-    show
-        CanonicalResourceCache,
-        OnlineResourceCache,
-        ValidationOptions,
-        ValueSetChecker,
-        WorkerContext;
 
 /// The InValueSet operator returns true if the given code is in the given value
 /// set.
@@ -120,9 +111,15 @@ class InValueSet extends OperatorExpression {
       throw ArgumentError('ValueSet not found in context');
     }
 
-    final codeValue = await code.execute(context);
+    // Code values arrive as CQL System types — the translator inserts
+    // FHIRHelpers.ToCode/ToConcept at the membership binding site — but a
+    // raw FHIR value can still reach here, so convert at the resolver
+    // boundary as well (consistent with AnyInValueSet).
+    final codeValue = requireModelResolver(context)
+        .toCqlSystemType(await code.execute(context));
 
-    // Check context['_valueSets'] first for local value set expansions
+    // Local value-set expansions supplied directly in context are the fast,
+    // terminology-server-free path.
     final valueSets = context['_valueSets'];
     if (valueSets is Map<String, dynamic>) {
       final expansion = valueSets[valueSetRef.id];
@@ -131,59 +128,37 @@ class InValueSet extends OperatorExpression {
       }
     }
 
-    // Fallback to canonical resource cache (may involve network)
-    final resourceCache = context['resourceCache'] ?? OnlineResourceCache();
-    final valueSet = await (resourceCache as CanonicalResourceCache)
-        .getCanonicalResource<ValueSet>(valueSetRef.id, valueSetRef.version);
+    // Otherwise resolve membership through the terminology provider (which
+    // owns the FHIR ValueSet fetch + checking). Absent a provider, membership
+    // is undetermined (CQL null).
+    final terminology = getTerminologyProvider(context);
+    if (terminology == null) return null;
+    return _checkViaProvider(codeValue, valueSetRef, terminology);
+  }
 
-    if (valueSet == null) {
-      throw ArgumentError('ValueSet ${valueSetRef.id} not found');
-    }
-
-    final workerContext = WorkerContext(resourceCache: resourceCache);
-    context['workerContext'] = workerContext;
-    final checker = ValueSetChecker(
-      context: workerContext,
-      options: ValidationOptions(),
-      valueSet: valueSet,
-    );
+  /// Resolves membership of a System code value against [valueSet] via the
+  /// [terminology] provider, dispatching on the System code shape.
+  static Future<CqlBoolean?> _checkViaProvider(
+    dynamic codeValue,
+    CqlValueSet valueSet,
+    TerminologyProvider terminology,
+  ) async {
+    Future<bool?> member(String? system, String? code) =>
+        terminology.codeInValueSet(
+            system: system, code: code, valueSet: valueSet);
 
     switch (codeValue) {
       case String _:
-        return CqlBoolean(
-            (await checker.codeInValueSet(null, codeValue, null)) ?? false);
+        return CqlBoolean((await member(null, codeValue)) ?? false);
+      case CqlString _:
+        return CqlBoolean((await member(null, codeValue.valueString)) ?? false);
       case CqlCode _:
-        return CqlBoolean((await checker.codeInValueSet(
-                codeValue.system, codeValue.code, null)) ??
-            false);
-      case FhirCode _:
         return CqlBoolean(
-            (await checker.codeInValueSet(null, codeValue.valueString, null)) ??
-                false);
+            (await member(codeValue.system, codeValue.code)) ?? false);
       case CqlConcept _:
-        if (codeValue.codes.isEmpty) {
-          return null;
-        }
+        if (codeValue.codes.isEmpty) return null;
         for (final code in codeValue.codes) {
-          final inValueSet =
-              (await checker.codeInValueSet(code.system, code.code, null)) ??
-                  false;
-          if (inValueSet) {
-            return CqlBoolean(true);
-          }
-        }
-        return CqlBoolean(false);
-      case CodeableConcept _:
-        if (codeValue.coding == null || codeValue.coding!.isEmpty) {
-          return null;
-        }
-        for (final coding in codeValue.coding!) {
-          final inValueSet = (await checker.codeInValueSet(
-                  coding.system?.valueString,
-                  coding.code?.valueString,
-                  null)) ??
-              false;
-          if (inValueSet) {
+          if ((await member(code.system, code.code)) ?? false) {
             return CqlBoolean(true);
           }
         }
@@ -212,20 +187,10 @@ class InValueSet extends OperatorExpression {
         return CqlBoolean(matches(null, codeValue));
       case CqlCode _:
         return CqlBoolean(matches(codeValue.system, codeValue.code));
-      case FhirCode _:
-        return CqlBoolean(matches(null, codeValue.valueString));
       case CqlConcept _:
         if (codeValue.codes.isEmpty) return null;
         for (final c in codeValue.codes) {
           if (matches(c.system, c.code)) return CqlBoolean(true);
-        }
-        return CqlBoolean(false);
-      case CodeableConcept _:
-        if (codeValue.coding == null || codeValue.coding!.isEmpty) return null;
-        for (final coding in codeValue.coding!) {
-          if (matches(coding.system?.valueString, coding.code?.valueString)) {
-            return CqlBoolean(true);
-          }
         }
         return CqlBoolean(false);
       default:

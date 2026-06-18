@@ -16,7 +16,7 @@ class CqlWithoutClauseVisitor extends CqlBaseVisitor<Without> {
       final sourceExpr = source.expression;
       CqlBaseVisitor.addAliasToCurrentScope(
         source.alias,
-        model != null && sourceExpr != null
+        model != null
             ? inferSourceElement(sourceExpr, model)
             : null,
       );

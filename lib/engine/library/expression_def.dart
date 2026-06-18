@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:fhir_cql/fhir_cql.dart';
 

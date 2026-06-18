@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart' show CqlDateTime, R4ModelResolver;
 import 'package:test/test.dart';
 

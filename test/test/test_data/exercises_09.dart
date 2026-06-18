@@ -1,5 +1,4 @@
 import 'package:fhir_r4/fhir_r4.dart';
-import 'package:fhir_cql/fhir_cql.dart';
 
 // -- Patient data with extensions for Exercises09 --
 // Reuses the same patient structure as exercises_05 (us-core extensions).

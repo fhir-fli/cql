@@ -1,5 +1,3 @@
-
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:fhir_cql/fhir_cql.dart';
 
 /// Operator to test for membership in an interval or list.
@@ -261,13 +259,13 @@ class In extends BinaryExpression {
     }
   }
 
-  /// Convert FHIR Map-based types to CQL types for ValueSet membership checking.
+  /// Normalize a membership operand to a CQL code value for ValueSet
+  /// checking. System code types pass through; raw FHIR JSON
+  /// (CodeableConcept / Coding shapes) is converted to CQL codes. Typed
+  /// FHIR values arrive already converted via the translator-inserted
+  /// FHIRHelpers.ToConcept/ToCode at the membership binding site.
   static dynamic _toCqlCodeValue(dynamic value) {
-    if (value is CqlCode ||
-        value is CqlConcept ||
-        value is CodeableConcept ||
-        value is String ||
-        value is FhirCode) {
+    if (value is CqlCode || value is CqlConcept || value is String) {
       return value;
     }
     // Handle Map-based CodeableConcept from FHIR data

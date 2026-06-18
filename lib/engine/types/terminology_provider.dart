@@ -1,4 +1,4 @@
-// Exception specific to terminology provider operations
+// Terminology resolution for CQL membership operators.
 import 'package:fhir_cql/fhir_cql.dart';
 
 class TerminologyProviderException implements Exception {
@@ -9,16 +9,32 @@ class TerminologyProviderException implements Exception {
   String toString() => "TerminologyProviderException: $message";
 }
 
+/// Resolves value-set membership against a terminology source (a canonical
+/// resource cache, a terminology server, or similar).
+///
+/// This is the model-independent terminology contract: the engine's
+/// membership operators (`in ValueSet`, `InValueSet`, `AnyInValueSet`) work
+/// in CQL System terms (a code's `system`/`code` and a [CqlValueSet]); the
+/// FHIR-specific resolution — fetching a FHIR `ValueSet` resource and
+/// checking its expansion/compose rules — lives in a FHIR binding
+/// implementation (`fhir_r*`), never in the engine. Mirrors the
+/// `TerminologyProvider` / `CodeService` of the Java and JS reference engines.
+///
+/// The engine reaches an implementation through the execution context (see
+/// `getTerminologyProvider`); it is optional — a library that only uses
+/// locally-supplied value-set expansions (`context['_valueSets']`) needs no
+/// provider at all.
 abstract class TerminologyProvider {
-  /// Checks if a given [Code] is a member of a given [ValueSetInfo]
-  /// Throws [TerminologyProviderException] if there's an exception during the membership check
-  bool inValueSet(Code code, CqlValueSet valueSet);
-
-  /// Expands the set of [Code]s for a given [ValueSetInfo]
-  /// Throws [TerminologyProviderException] if there's an error during expansion
-  Iterable<Code> expand(CqlValueSet valueSet);
-
-  /// Looks up the display value for a given [Code] from a given [CodeSystemInfo]
-  /// Throws [TerminologyProviderException] if there's an error during lookup
-  Code lookup(Code code, CqlCodeSystem codeSystem);
+  /// Whether the code identified by [system]/[code] is a member of
+  /// [valueSet], resolving the value set from the terminology source as
+  /// needed.
+  ///
+  /// Returns `null` when membership cannot be determined (e.g. the value set
+  /// can't be resolved) — the CQL "unknown" result. Throws
+  /// [TerminologyProviderException] only on an actual resolution error.
+  Future<bool?> codeInValueSet({
+    String? system,
+    required String? code,
+    required CqlValueSet valueSet,
+  });
 }

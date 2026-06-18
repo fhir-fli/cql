@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart' hide Count;
 import 'package:fhir_cql/fhir_cql.dart';
 import 'package:test/test.dart';
 import 'package:ucum/ucum.dart';

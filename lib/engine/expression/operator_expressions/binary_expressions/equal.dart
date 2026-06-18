@@ -1,4 +1,3 @@
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:collection/collection.dart';
 import 'package:ucum/ucum.dart';
 
@@ -166,9 +165,7 @@ class Equal extends BinaryExpression {
       case String _:
         if (right is String) {
           result = left == right;
-        } else if (right is CqlString) {
-          result = left == right.valueString;
-        } else if (right is PrimitiveType) {
+        } else if (right is CqlPrimitive) {
           result = left == right.valueString;
         } else {
           result = false;
@@ -203,9 +200,6 @@ class Equal extends BinaryExpression {
       case CqlConcept _:
         result = left.equal(right);
         break;
-      case FhirCode _:
-        result = (right is FhirCode && left.equalsDeep(right)) ||
-            (right is String && left.valueString == right);
       case num _:
         {
           if (right is num) {
@@ -393,10 +387,10 @@ class Equal extends BinaryExpression {
           }
         }
         break;
-      case PrimitiveType _:
+      case CqlPrimitive _:
         if (right is String) {
           result = left.valueString == right;
-        } else if (right is PrimitiveType) {
+        } else if (right is CqlPrimitive) {
           result = left.valueString == right.valueString;
         } else {
           result = left == right;

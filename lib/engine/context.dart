@@ -1,4 +1,5 @@
 import '../model_resolver.dart';
+import 'types/terminology_provider.dart';
 
 /// Reserved context keys used by the engine.
 ///
@@ -18,6 +19,11 @@ abstract final class ContextKey {
   /// Set by [CqlLibrary.execute]; accessed via [getModelResolver] /
   /// [requireModelResolver].
   static const String modelResolver = 'modelResolver';
+
+  /// The optional [TerminologyProvider] for value-set membership that needs
+  /// resolution beyond locally-supplied expansions. Accessed via
+  /// [getTerminologyProvider].
+  static const String terminologyProvider = 'terminologyProvider';
 }
 
 /// Returns the [ModelResolver] from the execution [context], or `null` if
@@ -47,3 +53,10 @@ ModelResolver requireModelResolver(Map<String, dynamic> context) {
   }
   return mr;
 }
+
+/// Returns the optional [TerminologyProvider] from the execution [context],
+/// or `null` if none was supplied. Terminology is optional: libraries that
+/// only rely on locally-supplied value-set expansions
+/// (`context['_valueSets']`) run without a provider.
+TerminologyProvider? getTerminologyProvider(Map<String, dynamic> context) =>
+    context[ContextKey.terminologyProvider] as TerminologyProvider?;
