@@ -21,7 +21,7 @@ import '../test_helpers/cql_test_helpers.dart';
 /// 4. Expression types — do top-level expression types match?
 /// 5. Expression node types — do all expression node types in the tree match?
 void main() {
-  final testDir = Directory('test/cql_to_elm_tests');
+  final testDir = Directory('test/test/cql_to_elm_tests');
   final cqlFiles = testDir
       .listSync()
       .whereType<File>()

@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
-import 'package:fhir_r4/fhir_r4.dart';
 import 'package:cql/cql.dart';
 
 class CqlParsersAndErrors {
@@ -87,8 +86,6 @@ bool areValuesEqual(dynamic result, dynamic answer) {
   } else if (result is CqlTime && answer is CqlTime) {
     // Allow a 1-minute tolerance for time-sensitive expressions like TimeOfDay()
     return (_calculateSeconds(result) - _calculateSeconds(answer)).abs() < 60;
-  } else if (result is FhirBase && answer is FhirBase) {
-    return result.equalsDeep(answer);
   }
   return result == answer;
 }

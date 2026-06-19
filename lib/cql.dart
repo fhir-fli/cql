@@ -1,24 +1,22 @@
 /// Clinical Quality Language (CQL) translator + execution engine for Dart.
 ///
-/// The engine, translator, ELM, and CQL System types are model-independent;
-/// a data model is supplied at the boundary through the [ModelResolver] /
-/// [TerminologyProvider] interfaces. (The R4 binding is being extracted into
-/// a separate `fhir_r4_cql` package; until then it is bundled here.)
+/// Model-independent: the engine, translator, ELM, and CQL System types here
+/// have **no** dependency on any FHIR version. A data model is supplied at
+/// the boundary through the [ModelResolver] / [TerminologyProvider]
+/// interfaces; FHIR implementations live in separate binding packages (e.g.
+/// `fhir_r4_cql`), the analogue of `cql-exec-fhir` / `engine.fhir`.
 ///
 /// ```dart
 /// import 'package:cql/cql.dart';
+/// import 'package:fhir_r4_cql/fhir_r4_cql.dart'; // supplies R4ModelResolver
 /// final result = await library.execute(context, const R4ModelResolver());
 /// ```
 library cql;
 
-// FHIR-version boundary interfaces.
+// The data-model boundary interfaces. Concrete FHIR implementations live in
+// the `fhir_r*_cql` binding packages.
 export 'model_resolver.dart';
 export 'retrieve_provider.dart';
-
-// Concrete resolvers — TRANSITIONAL: moving to the `fhir_r4_cql` binding
-// package (phase 2 of the rename/extract).
-export 'resolvers/r4/r4_model_resolver.dart';
-export 'resolvers/r4/r4_terminology_provider.dart';
 
 // CQL System primitive types (Boolean, Integer, Long, Decimal, String,
 // Date, Time, DateTime + base classes). Engine code uses these as the

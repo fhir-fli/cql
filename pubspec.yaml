@@ -1,29 +1,22 @@
 name: cql
-description: Clinical Quality Language (CQL) implementation in Dart. FHIR-version-independent engine with R4/R5/R6 ModelResolvers in a single package.
+description: >-
+  Model-independent Clinical Quality Language (CQL) translator + execution
+  engine in Dart. No FHIR dependency — a data model is supplied at the
+  boundary via the ModelResolver / TerminologyProvider interfaces (FHIR
+  bindings live in the fhir_r*_cql packages).
 version: 0.1.0-dev.1
 homepage: https://www.fhirfli.dev/
-repository: https://github.com/fhir-fli/fhir_cql
+repository: https://github.com/fhir-fli/cql
 
 environment:
   sdk: ^3.5.0
 
-# fhir_cql depends on all maintained FHIR version packages — users construct
-# the matching ModelResolver (R4/R5/R6) at engine instantiation. Tree-shaking
-# strips unused resolvers + their transitive fhir_rN deps from AOT binaries,
-# so an R4-only consumer ships R4-only code.
+# Model-independent core: NO fhir_r* dependency. FHIR is supplied at runtime
+# through the ModelResolver / TerminologyProvider interfaces, implemented in
+# the separate fhir_r4_cql / fhir_r5_cql / fhir_r6_cql binding packages.
 dependencies:
   antlr4: ^4.13.2
   collection: ^1.19.1
-  # fhir_r* + fhir_r*_path are imported ONLY by lib/resolvers/{r4,r5,r6}/.
-  # Engine code never imports them — that boundary is enforced by review.
-  # Tree-shaking strips unused resolvers + their transitive deps from
-  # release binaries, so an R4-only consumer pays for R4 only.
-  fhir_r4: ^0.5.0
-  fhir_r4_path: ^0.5.0
-  # fhir_r5: ^0.5.0       # uncomment when implementing R5ModelResolver
-  # fhir_r5_path: ^0.5.0
-  # fhir_r6: ^0.5.0       # uncomment when implementing R6ModelResolver
-  # fhir_r6_path: ^0.5.0
   http: ^1.6.0
   json_annotation: ^4.12.0
   path: ^1.9.1
