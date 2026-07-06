@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
 import 'package:cql/cql.dart';
+// The ANTLR-generated lexer/parser is internal API; the package's own
+// tests may reach it directly.
+import 'package:cql/src/cql_to_elm/antlr/antlr.dart';
 
 class CqlParsersAndErrors {
   final ElmErrorListener errorListener;

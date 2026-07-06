@@ -12,8 +12,10 @@ void main() {
           low: cql.LiteralInteger(3), high: cql.LiteralInteger(7));
       final union = cql.Union(operand: [interval1, interval2]);
       final result = await union.execute({});
-      expect(result,
-          equals(cql.CqlInterval(low: cql.CqlInteger(1), high: cql.CqlInteger(7))));
+      expect(
+          result,
+          equals(cql.CqlInterval(
+              low: cql.CqlInteger(1), high: cql.CqlInteger(7))));
     });
     test(
         'define "UnionIsNull": Interval[3, 5] union (null as Interval<Integer>)',
@@ -146,8 +148,10 @@ void main() {
       );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
-      expect(result,
-          equals(cql.CqlInterval(low: cql.CqlInteger(0), high: cql.CqlInteger(2))));
+      expect(
+          result,
+          equals(cql.CqlInterval(
+              low: cql.CqlInteger(0), high: cql.CqlInteger(2))));
     });
     test('define "ExceptIsNull": null except Interval[-1, 7]', () async {
       final left = cql.LiteralNull();
@@ -408,7 +412,8 @@ void main() {
       ]);
 
       final result = await skipExpr.execute({});
-      expect(result, equals([cql.CqlInteger(3), cql.CqlInteger(4), cql.CqlInteger(5)]));
+      expect(result,
+          equals([cql.CqlInteger(3), cql.CqlInteger(4), cql.CqlInteger(5)]));
     });
 
     test('define "SkipNull": Skip({ 1, 3, 5 }, null) // { 1, 3, 5 }', () async {
@@ -424,7 +429,8 @@ void main() {
       ]);
 
       final result = await skipExpr.execute({});
-      expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(3), cql.CqlInteger(5)]));
+      expect(result,
+          equals([cql.CqlInteger(1), cql.CqlInteger(3), cql.CqlInteger(5)]));
     });
 
     test('define "SkipEmpty": Skip({ 1, 3, 5 }, -1) // { }', () async {

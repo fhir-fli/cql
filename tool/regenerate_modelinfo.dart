@@ -15,12 +15,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:fhir_cql/fhir_cql.dart';
+import 'package:cql/cql.dart';
 
 void main(List<String> args) {
   if (args.length != 3) {
-    stderr.writeln(
-        'usage: regenerate_modelinfo.dart <xml> <out.dart> <symbol>');
+    stderr
+        .writeln('usage: regenerate_modelinfo.dart <xml> <out.dart> <symbol>');
     exit(2);
   }
   final xmlPath = args[0];
@@ -45,8 +45,7 @@ void main(List<String> args) {
   // Round-trip validation: fromJson(toJson(x)) must preserve the structures
   // the translator depends on.
   log('round-trip validating ...');
-  final rt = ModelInfo.fromJson(
-      jsonDecode(jsonText) as Map<String, dynamic>);
+  final rt = ModelInfo.fromJson(jsonDecode(jsonText) as Map<String, dynamic>);
   final failures = <String>[];
   if (rt.typeInfo.length != mi.typeInfo.length) {
     failures.add('typeInfo count ${rt.typeInfo.length} != '
@@ -57,8 +56,10 @@ void main(List<String> args) {
         '${mi.conversionInfo.length}');
   }
 
-  ClassInfo? classOf(ModelInfo m, String name) =>
-      m.typeInfo.whereType<ClassInfo>().where((c) => c.name == name).firstOrNull;
+  ClassInfo? classOf(ModelInfo m, String name) => m.typeInfo
+      .whereType<ClassInfo>()
+      .where((c) => c.name == name)
+      .firstOrNull;
   ClassInfoElement? elementOf(ClassInfo? c, String name) =>
       c?.element?.where((e) => e.name == name).firstOrNull;
 
@@ -89,7 +90,8 @@ void main(List<String> args) {
   final toQty = rt.conversionInfo
       .where((c) => c.functionName == 'FHIRHelpers.ToQuantity')
       .firstOrNull;
-  if (toQty == null || toQty.fromType != 'Quantity' ||
+  if (toQty == null ||
+      toQty.fromType != 'Quantity' ||
       toQty.toType != 'System.Quantity') {
     failures.add('ToQuantity conversion lost: $toQty');
   }
@@ -113,10 +115,11 @@ void main(List<String> args) {
     ..writeln('// Source: ${xmlPath.split('/').last}')
     ..writeln("import 'dart:convert';")
     ..writeln()
-    ..writeln("import 'package:fhir_cql/fhir_cql.dart';")
+    ..writeln("import 'package:cql/cql.dart';")
     ..writeln()
     ..writeln('final $symbol =')
-    ..writeln('    ModelInfo.fromJson(jsonDecode(_json) as Map<String, dynamic>);')
+    ..writeln(
+        '    ModelInfo.fromJson(jsonDecode(_json) as Map<String, dynamic>);')
     ..writeln()
     ..writeln("const _json = r'''")
     ..writeln(jsonText)

@@ -71,15 +71,14 @@ void main() {
     });
 
     test('CqlTime with HH:MM:SS returns 6 (total digits)', () async {
-      final precision =
-          Precision(operand: _ConstExpr(CqlTime('10:30:45')));
+      final precision = Precision(operand: _ConstExpr(CqlTime('10:30:45')));
       final result = await precision.execute({});
       expect(result, equals(CqlInteger(6)));
     });
 
     test('CqlDate with YYYY-MM-DD returns 8 (total digits)', () async {
-      final precision = Precision(
-          operand: _ConstExpr(CqlDate.fromString('2024-03-15')));
+      final precision =
+          Precision(operand: _ConstExpr(CqlDate.fromString('2024-03-15')));
       final result = await precision.execute({});
       expect(result, equals(CqlInteger(8)));
     });
@@ -378,8 +377,7 @@ void main() {
 
     test('deterministic extraction from fixed timestamp', () async {
       final context = <String, dynamic>{
-        'startTimestamp':
-            CqlDateTime.fromString('2024-06-15T14:30:45.123Z'),
+        'startTimestamp': CqlDateTime.fromString('2024-06-15T14:30:45.123Z'),
       };
       final timeOfDay = TimeOfDay();
       final result = await timeOfDay.execute(context);
@@ -392,8 +390,7 @@ void main() {
 
     test('midnight timestamp returns hour 0', () async {
       final context = <String, dynamic>{
-        'startTimestamp':
-            CqlDateTime.fromString('2024-01-01T00:00:00.000Z'),
+        'startTimestamp': CqlDateTime.fromString('2024-01-01T00:00:00.000Z'),
       };
       final timeOfDay = TimeOfDay();
       final result = await timeOfDay.execute(context);
@@ -410,8 +407,7 @@ void main() {
   group('DateFrom', () {
     test('extracts date from CqlDateTime', () async {
       final dateFrom = DateFrom(
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await dateFrom.execute({});
       expect(result, isA<CqlDate>());
@@ -460,8 +456,7 @@ void main() {
   group('TimeFrom', () {
     test('extracts time from CqlDateTime', () async {
       final timeFrom = TimeFrom(
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
       );
       final result = await timeFrom.execute({});
       expect(result, isA<CqlTime>());
@@ -492,8 +487,8 @@ void main() {
   group('TimezoneOffsetFrom', () {
     test('extracts positive timezone offset', () async {
       final tzFrom = TimezoneOffsetFrom(
-        operand: _ConstExpr(
-            CqlDateTime.fromString('2024-03-15T10:30:00+05:00')),
+        operand:
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00+05:00')),
       );
       final result = await tzFrom.execute({});
       expect(result, isA<CqlDecimal>());
@@ -502,8 +497,8 @@ void main() {
 
     test('extracts negative timezone offset', () async {
       final tzFrom = TimezoneOffsetFrom(
-        operand: _ConstExpr(
-            CqlDateTime.fromString('2024-01-01T12:30:00-07:00')),
+        operand:
+            _ConstExpr(CqlDateTime.fromString('2024-01-01T12:30:00-07:00')),
       );
       final result = await tzFrom.execute({});
       expect(result, isA<CqlDecimal>());
@@ -512,8 +507,8 @@ void main() {
 
     test('explicit +00:00 offset returns 0', () async {
       final tzFrom = TimezoneOffsetFrom(
-        operand: _ConstExpr(
-            CqlDateTime.fromString('2024-03-15T10:30:00+00:00')),
+        operand:
+            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00+00:00')),
       );
       final result = await tzFrom.execute({});
       expect(result, isA<CqlDecimal>());
@@ -542,8 +537,7 @@ void main() {
     test('extracts year from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.year,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(2024)));
@@ -552,8 +546,7 @@ void main() {
     test('extracts month from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.month,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(3)));
@@ -562,8 +555,7 @@ void main() {
     test('extracts day from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.day,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(15)));
@@ -572,8 +564,7 @@ void main() {
     test('extracts hour from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.hour,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(10)));
@@ -582,8 +573,7 @@ void main() {
     test('extracts minute from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.minute,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:00Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(30)));
@@ -638,8 +628,7 @@ void main() {
     test('extracts second from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.second,
-        operand:
-            _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(45)));
@@ -648,8 +637,7 @@ void main() {
     test('extracts millisecond from CqlDateTime', () async {
       final comp = DateTimeComponentFrom(
         precision: CqlDateTimePrecision.millisecond,
-        operand: _ConstExpr(
-            CqlDateTime.fromString('2024-03-15T10:30:45.123Z')),
+        operand: _ConstExpr(CqlDateTime.fromString('2024-03-15T10:30:45.123Z')),
       );
       final result = await comp.execute({});
       expect(result, equals(CqlInteger(123)));

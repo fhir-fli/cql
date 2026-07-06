@@ -1,12 +1,18 @@
 name: cql
 description: >-
-  Model-independent Clinical Quality Language (CQL) translator + execution
-  engine in Dart. No FHIR dependency — a data model is supplied at the
-  boundary via the ModelResolver / TerminologyProvider interfaces (FHIR
-  bindings live in the fhir_r*_cql packages).
-version: 0.1.0-dev.1
+  Model-independent CQL (Clinical Quality Language) translator and execution
+  engine. FHIR-free — data access via ModelResolver; bindings are
+  fhir_r4/r5/r6_cql.
+version: 0.6.0
 homepage: https://www.fhirfli.dev/
 repository: https://github.com/fhir-fli/cql
+
+topics:
+  - cql
+  - fhir
+  - hl7
+  - healthcare
+  - interoperability
 
 environment:
   sdk: ^3.5.0
@@ -17,14 +23,16 @@ environment:
 dependencies:
   antlr4: ^4.13.2
   collection: ^1.19.1
-  http: ^1.6.0
   json_annotation: ^4.12.0
-  path: ^1.9.1
+  # 0.9.0 minimum: affine temperature fixes, strict validation, curated
+  # barrel.
   ucum: ^0.9.0
-  uuid: ^4.5.3
-  xml: ^6.6.1
   xml2json: ^6.2.7
+  yaml: ^3.1.3
 
 dev_dependencies:
+  http: ^1.6.0
   lints: ^5.1.1
+  path: ^1.9.1
   test: ^1.29.0
+  xml: ^6.6.1

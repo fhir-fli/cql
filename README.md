@@ -1,45 +1,62 @@
-# fhir_cql
+# cql
 
-A Clinical Quality Language (CQL) execution engine for Dart. **FHIR-version-independent** engine with bundled `R4ModelResolver`, `R5ModelResolver`, and `R6ModelResolver` in a single package.
+Model-independent CQL ([Clinical Quality Language](https://cql.hl7.org/))
+translator and execution engine in Dart — a port of the reference
+[cqframework](https://github.com/cqframework/clinical_quality_language)
+Java engine, part of the [fhir-fli](https://github.com/fhir-fli)
+ecosystem.
 
-Replaces the three drifting mirror packages `fhir_r4_cql`, `fhir_r5_cql`, `fhir_r6_cql`. One engine; one place to fix bugs; per-version FHIR coupling confined to thin `ModelResolver` adapters.
+**FHIR-free by design**: the engine knows nothing about any FHIR version.
+Concrete data access enters through the `ModelResolver` /
+`RetrieveProvider` boundary interfaces, implemented by the thin
+`fhir_r4_cql` / `fhir_r5_cql` / `fhir_r6_cql` binding packages — which is
+what applications normally depend on.
 
-> Status: **early development.** Initial port from `fhir_r4_cql` in progress.
-
-## Quick start
-
-```dart
-import 'package:fhir_cql/fhir_cql.dart';
-
-// Pick the resolver matching your FHIR data version.
-final engine = CqlEngine(modelResolver: R4ModelResolver());
-
-final library = await engine.parse(cqlSource);
-final results = await engine.execute(
-  library,
-  context: <String, dynamic>{ /* your FHIR data */ },
-);
+```
+CQL source ──(cql_to_elm translator)──▶ ELM ──(engine)──▶ results
+                                              ▲
+                              ModelResolver / RetrieveProvider
+                              (fhir_r*_cql bindings supply FHIR)
 ```
 
-`R5ModelResolver()` and `R6ModelResolver()` are drop-in alternatives. Tree-shaking (`dart compile` / `flutter build` release / `dart2js`) strips the unused resolvers and their transitive `fhir_r*` deps from the final binary, so an R4-only consumer ships R4-only code despite the package importing all three.
+## Usage (through a binding)
 
-## Architecture
+```dart
+import 'package:fhir_r4_cql/fhir_r4_cql.dart';
 
-The engine talks to data exclusively through two interfaces:
+// Translate CQL to an executable library (CQL -> ELM), then run it
+// against your data via the version binding's ModelResolver.
+final library = libraryFromCql(cqlSource);
+final result = await library.execute(context, const R4ModelResolver());
+```
 
-- **`ModelResolver`** — resolves property paths on FHIR resources (handling polymorphic `[x]` fields like `effective` → `effectiveDateTime`/`effectivePeriod`/…) and converts between FHIR-typed values and CQL System types at the boundary.
-- **`RetrieveProvider`** — fetches resources by type/code/date filters from a data context.
+## Design notes
 
-Each FHIR version provides its own resolver implementation. The engine itself has zero version-specific imports — it never directly touches `fhir_r4` / `fhir_r5` / `fhir_r6` types. This mirrors the canonical pattern from [`cqframework/cql-engine`](https://github.com/cqframework/cql-engine) (Java reference) and [`cqframework/cql-exec-fhir`](https://github.com/cqframework/cql-exec-fhir) (JavaScript reference).
+- **CQL System primitives are deliberately wrapped** (`CqlBoolean`,
+  `CqlInteger`, `CqlLong`, `CqlDecimal`, `CqlString`, dates/times):
+  `CqlLong` is BigInt-backed because Dart `int` is a JS double on the web
+  and loses precision past 2^53, and `CqlDecimal` preserves source scale
+  (`"1.00"`) as `equivalent` requires. The Java/JS reference engines went
+  native because *their* native types fit CQL's precision rules — Dart's
+  don't.
+- **Modelinfo ships as data**, served by `StandardModelInfoProvider`
+  (FHIR 1.0.2–4.0.1, QDM 4.1.2–5.6, QUICK, QICore, US Core) and
+  regenerable from the official HL7 modelinfo XML via
+  `tool/regenerate_modelinfo.dart`.
+- The ANTLR-generated lexer/parser is internal (`lib/src`); the public
+  barrel exposes the engine, translator API, ELM model, System
+  primitives, boundary interfaces, and exceptions.
 
-## CQL spec compliance
+## Testing
 
-Target: [CQL Specification v2.0+](https://cql.hl7.org/). The engine implements CQL System types (`System.Decimal`, `System.Integer`, `System.DateTime`, `System.Date`, `System.Time`, `System.Quantity`, etc.) as its own pure-Dart classes — precision and equality semantics follow the CQL spec, not any specific FHIR primitive.
+595 tests including the ported CQL conformance suites:
 
-## FHIRPath
-
-This package uses [`fhir_r*_path`](https://github.com/fhir-fli) (the modern `FHIRPathEngine.create/parse/evaluate` API — never the legacy `walkFhirPath` shim). FHIRPath calls live exclusively inside `ModelResolver` implementations; when [`fhir_path`](https://github.com/fhir-fli) is eventually unified into a single model-independent package per the FHIRPath spec, only the resolvers need updating — the engine stays put.
+```bash
+dart test
+```
 
 ## License
 
-BSD-3-Clause. See `LICENSE`.
+MIT © FHIR-FLI. Ported from
+[cqframework](https://github.com/cqframework/clinical_quality_language)
+(Apache-2.0) — see the upstream project for the reference implementation.

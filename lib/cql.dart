@@ -1,30 +1,24 @@
-/// Clinical Quality Language (CQL) translator + execution engine for Dart.
-///
-/// Model-independent: the engine, translator, ELM, and CQL System types here
-/// have **no** dependency on any FHIR version. A data model is supplied at
-/// the boundary through the [ModelResolver] / [TerminologyProvider]
-/// interfaces; FHIR implementations live in separate binding packages (e.g.
-/// `fhir_r4_cql`), the analogue of `cql-exec-fhir` / `engine.fhir`.
-///
-/// ```dart
-/// import 'package:cql/cql.dart';
-/// import 'package:fhir_r4_cql/fhir_r4_cql.dart'; // supplies R4ModelResolver
-/// final result = await library.execute(context, const R4ModelResolver());
-/// ```
-library cql;
+/// Model-independent CQL (Clinical Quality Language) engine and
+/// CQL-to-ELM translator. FHIR-free: concrete data access is supplied via
+/// [ModelResolver] / [RetrieveProvider], implemented by the
+/// `fhir_r4_cql` / `fhir_r5_cql` / `fhir_r6_cql` binding packages.
+library;
 
-// The data-model boundary interfaces. Concrete FHIR implementations live in
-// the `fhir_r*_cql` binding packages.
-export 'model_resolver.dart';
-export 'retrieve_provider.dart';
+// The data-model boundary interfaces.
+export 'src/model_resolver.dart';
+export 'src/retrieve_provider.dart';
 
 // CQL System primitive types (Boolean, Integer, Long, Decimal, String,
 // Date, Time, DateTime + base classes). Engine code uses these as the
 // strict input/output types at all internal boundaries.
-export 'cql_primitives/cql_primitives.dart';
+export 'src/cql_primitives/cql_primitives.dart';
 
-// Ported engine + parser.
-export 'cql_to_elm/cql_to_elm.dart';
-export 'engine/engine.dart';
-export 'exceptions/exceptions.dart';
-export 'model/model.dart';
+// Translator (CQL -> ELM), engine, ELM model, and exceptions. The
+// ANTLR-generated lexer/parser stays internal (src-only).
+export 'src/cql_to_elm/elm_error_listener.dart';
+export 'src/cql_to_elm/library_from_cql.dart';
+export 'src/cql_to_elm/model/model.dart';
+export 'src/cql_to_elm/visitor/visitor.dart';
+export 'src/engine/engine.dart';
+export 'src/exceptions/exceptions.dart';
+export 'src/model/model.dart';

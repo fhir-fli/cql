@@ -55,15 +55,14 @@ void main() {
         final referenceJson =
             jsonDecode(jsonFile.readAsStringSync()) as Map<String, dynamic>;
         // Reference wraps content in {"library": {...}}
-        referenceLib =
-            (referenceJson['library'] as Map<String, dynamic>?) ?? referenceJson;
+        referenceLib = (referenceJson['library'] as Map<String, dynamic>?) ??
+            referenceJson;
 
         try {
           final library = parseAndBuildLibrary(cqlSource);
           final json = library.toJson();
           // Dart translator returns library content directly (no wrapper)
-          actualLib = (json['library'] as Map<String, dynamic>?) ??
-              (json);
+          actualLib = (json['library'] as Map<String, dynamic>?) ?? (json);
           parseSucceeded = true;
         } catch (e) {
           if (!knownParseFailures.contains(name)) {
@@ -129,8 +128,7 @@ void main() {
           if (actualStmt == null) continue;
 
           final refExpr = refStmt['expression'] as Map<String, dynamic>?;
-          final actualExpr =
-              actualStmt['expression'] as Map<String, dynamic>?;
+          final actualExpr = actualStmt['expression'] as Map<String, dynamic>?;
 
           if (refExpr != null &&
               actualExpr != null &&
@@ -176,7 +174,8 @@ void main() {
 
         if (totalTypes > 0) {
           final pct = (matchedTypes * 100 / totalTypes).round();
-          print('  $name: $matchedTypes/$totalTypes node types present ($pct%)');
+          print(
+              '  $name: $matchedTypes/$totalTypes node types present ($pct%)');
           expect(matchedTypes / totalTypes, greaterThan(0.5),
               reason: '$name: fewer than 50% of node types matched');
         }

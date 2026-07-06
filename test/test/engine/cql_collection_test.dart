@@ -83,8 +83,7 @@ void main() {
 
     test('reads from \$iteration when scope is empty', () async {
       final iteration = Iteration(scope: '');
-      final result =
-          await iteration.execute({'\$iteration': CqlInteger(0)});
+      final result = await iteration.execute({'\$iteration': CqlInteger(0)});
       expect(result, equals(CqlInteger(0)));
     });
 

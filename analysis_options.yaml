@@ -2,4 +2,5 @@ include: package:lints/recommended.yaml
 
 analyzer:
   exclude:
-    - lib/src/cql_to_elm/antlr/**  # ANTLR-generated lexer/parser
+    - lib/src/cql_to_elm/antlr/**   # ANTLR-generated lexer/parser
+    - lib/src/cql_to_elm/antlr4/**  # grammar sources / generated artifacts
