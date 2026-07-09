@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to perform numeric multiplication of its arguments.
 /// For multiplication operations involving quantities, the resulting quantity
@@ -73,7 +72,7 @@ class Multiply extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -111,62 +110,73 @@ class Multiply extends BinaryExpression {
           if (right is CqlInteger) {
             return CqlInteger.tryParse(left.valueNum! * right.valueNum!);
           } else if (right is CqlDecimal) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!) *
-                        UcumDecimal.fromString(right.valueString!))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                (UcumDecimal.fromString(left.valueString) *
+                        UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is CqlLong) {
-            return CqlLong(BigInt.from(left.valueInt as int) *
-                (right.valueBigInt as BigInt));
+            return CqlLong(
+              BigInt.from(left.valueInt!) * (right.valueBigInt!),
+            );
           } else if (right is ValidatedQuantity && right.isValid()) {
             // Integer * Quantity: scale value, keep unit
             final numVal =
-                right.value * UcumDecimal.fromString(left.valueString!);
+                right.value * UcumDecimal.fromString(left.valueString);
             return ValidatedQuantity(value: numVal, unit: right.unit);
           }
-          break;
         case CqlLong _:
           if (right is CqlInteger) {
             return CqlLong(
-                left.valueBigInt! * BigInt.from(right.valueInt as int));
+              left.valueBigInt! * BigInt.from(right.valueInt!),
+            );
           } else if (right is CqlLong) {
             return CqlLong(left.valueBigInt! * right.valueBigInt!);
           } else if (right is CqlDecimal) {
-            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
-                    UcumDecimal.fromString(right.valueString!))
-                .asUcumDecimal());
+            return CqlDecimal(
+              (UcumDecimal.fromString(left.valueString) *
+                      UcumDecimal.fromString(right.valueString))
+                  .asUcumDecimal(),
+            );
           }
-          break;
         case CqlDecimal _:
           if (right is CqlInteger) {
-            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
-                    UcumDecimal.fromString(right.valueString!))
-                .asUcumDecimal());
+            return CqlDecimal(
+              (UcumDecimal.fromString(left.valueString) *
+                      UcumDecimal.fromString(right.valueString))
+                  .asUcumDecimal(),
+            );
           } else if (right is CqlLong) {
-            return CqlDecimal((UcumDecimal.fromString(left.valueString!) *
-                    UcumDecimal.fromString(right.valueString!))
-                .asUcumDecimal());
+            return CqlDecimal(
+              (UcumDecimal.fromString(left.valueString) *
+                      UcumDecimal.fromString(right.valueString))
+                  .asUcumDecimal(),
+            );
           } else if (right is CqlDecimal) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!) *
-                        UcumDecimal.fromString(right.valueString!))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                (UcumDecimal.fromString(left.valueString) *
+                        UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is ValidatedQuantity) {
             // Scale value, keep units (avoid UCUM canonicalization)
             final numVal =
-                right.value * UcumDecimal.fromString(left.valueString!);
+                right.value * UcumDecimal.fromString(left.valueString);
             return ValidatedQuantity(value: numVal, unit: right.unit);
           }
-          break;
         case ValidatedQuantity _:
           if (right is CqlDecimal && left.isValid()) {
             // Scale value, keep units (avoid UCUM canonicalization)
             final numVal =
-                left.value * UcumDecimal.fromString(right.valueString!);
+                left.value * UcumDecimal.fromString(right.valueString);
             return ValidatedQuantity(value: numVal, unit: left.unit);
           } else if (right is CqlInteger && left.isValid()) {
             final numVal =
-                left.value * UcumDecimal.fromString(right.valueString!);
+                left.value * UcumDecimal.fromString(right.valueString);
             return ValidatedQuantity(value: numVal, unit: left.unit);
           } else if (right is ValidatedQuantity) {
             final result = left * right;
@@ -180,7 +190,6 @@ class Multiply extends BinaryExpression {
             }
             return result;
           }
-          break;
       }
     }
 

@@ -7,7 +7,7 @@ class CqlNotExpressionVisitor extends CqlBaseVisitor<Not> {
   @override
   Not visitNotExpression(NotExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);

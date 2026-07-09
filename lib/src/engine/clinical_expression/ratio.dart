@@ -1,14 +1,10 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Ratio type defines a ratio between two quantities. For example, the
 /// titre 1:128, or the concentration ratio 5 mg/10 mL. The numerator and
 /// denominator are both quantities.
 class Ratio extends CqlExpression {
-  final Quantity denominator;
-  final Quantity numerator;
-
   Ratio({
     required this.numerator,
     required this.denominator,
@@ -34,10 +30,12 @@ class Ratio extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final Quantity denominator;
+  final Quantity numerator;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
+    final json = <String, dynamic>{};
     json['type'] = type;
     json['numerator'] = numerator.toJson();
     json['denominator'] = denominator.toJson();

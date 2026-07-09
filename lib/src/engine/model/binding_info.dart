@@ -2,18 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Specifies binding information for an element
 class BindingInfo {
-  // Optional attribute - User-friendly description of the binding
-  final String? description;
-
-  // Optional attribute - Formal name for the binding
-  final String? name;
-
-  // Required attribute - Strength of the binding
-  final BindingStrength strength;
-
-  // Required attribute - Target value set for the binding
-  final Uri valueSet;
-
   BindingInfo({
     required this.strength,
     required this.valueSet,
@@ -30,6 +18,17 @@ class BindingInfo {
       valueSet: json['valueSet'] == null ? Uri() : Uri.parse(json['valueSet']),
     );
   }
+  // Optional attribute - User-friendly description of the binding
+  final String? description;
+
+  // Optional attribute - Formal name for the binding
+  final String? name;
+
+  // Required attribute - Strength of the binding
+  final BindingStrength strength;
+
+  // Required attribute - Target value set for the binding
+  final Uri valueSet;
 
   @override
   String toString() {

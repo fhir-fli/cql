@@ -1,19 +1,12 @@
-import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
 /// Expression that invokes a previously defined function.
 class FunctionRef extends ExpressionRef {
-  /// Operands passed to the function.
-  List<CqlExpression>? operand;
-
-  /// Declared signature of the function being called.
-  List<TypeSpecifierExpression>? signature;
-
   FunctionRef({
+    required super.name,
     this.operand,
     this.signature,
-    required super.name,
     super.libraryName,
     super.annotation,
     super.localId,
@@ -25,11 +18,14 @@ class FunctionRef extends ExpressionRef {
   factory FunctionRef.fromJson(Map<String, dynamic> json) => FunctionRef(
         operand: json['operand'] != null
             ? List<CqlExpression>.from(
-                json['operand'].map((x) => CqlExpression.fromJson(x)))
+                json['operand'].map((x) => CqlExpression.fromJson(x)),
+              )
             : null,
         signature: json['signature'] != null
-            ? List<TypeSpecifierExpression>.from(json['signature']
-                .map((x) => TypeSpecifierExpression.fromJson(x)))
+            ? List<TypeSpecifierExpression>.from(
+                json['signature']
+                    .map((x) => TypeSpecifierExpression.fromJson(x)),
+              )
             : null,
         name: json['name']!,
         libraryName: json['libraryName'],
@@ -46,9 +42,15 @@ class FunctionRef extends ExpressionRef {
             : null,
       );
 
+  /// Operands passed to the function.
+  List<CqlExpression>? operand;
+
+  /// Declared signature of the function being called.
+  List<TypeSpecifierExpression>? signature;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'name': name,
     };
 
@@ -95,7 +97,7 @@ class FunctionRef extends ExpressionRef {
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
     // Retrieve the CqlLibrary from the context
-    var library = context['library'];
+    final library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
@@ -115,14 +117,16 @@ class FunctionRef extends ExpressionRef {
       }
 
       // Try resolving as a local (same-library) function, including fluent functions
-      final localFuncDef = library.resolveLocalFunctionDef(name,
-          operandCount: operand?.length ?? 0,
-          signature: signature,
-          operandValues: evaluatedOperands);
+      final localFuncDef = library.resolveLocalFunctionDef(
+        name,
+        operandCount: operand?.length ?? 0,
+        signature: signature,
+        operandValues: evaluatedOperands,
+      );
       if (localFuncDef != null) {
         final functionContext = Map<String, dynamic>.from(context);
         if (operand != null && localFuncDef.operand != null) {
-          for (int i = 0;
+          for (var i = 0;
               i < operand!.length && i < localFuncDef.operand!.length;
               i++) {
             final paramName = localFuncDef.operand![i].name;
@@ -132,20 +136,22 @@ class FunctionRef extends ExpressionRef {
             functionContext[paramName] = operandValue;
           }
         }
-        return await localFuncDef.execute(functionContext);
+        return localFuncDef.execute(functionContext);
       }
 
       // Search included libraries for fluent function definitions
-      final fluentResult = await library.resolveFluentFunction(name,
-          operandCount: operand?.length ?? 0,
-          signature: signature,
-          operandValues: evaluatedOperands);
+      final fluentResult = await library.resolveFluentFunction(
+        name,
+        operandCount: operand?.length ?? 0,
+        signature: signature,
+        operandValues: evaluatedOperands,
+      );
       if (fluentResult != null) {
         final (funcDef, funcLib) = fluentResult;
         final functionContext = Map<String, dynamic>.from(context);
         functionContext['library'] = funcLib;
         if (operand != null && funcDef.operand != null) {
-          for (int i = 0;
+          for (var i = 0;
               i < operand!.length && i < funcDef.operand!.length;
               i++) {
             final paramName = funcDef.operand![i].name;
@@ -174,8 +180,12 @@ class FunctionRef extends ExpressionRef {
     }
 
     // Generic resolution: resolve function from included library
-    final functionDef = await library.resolveFunctionRef(name, libraryName!,
-        operandCount: operand?.length ?? 0, signature: signature);
+    final functionDef = await library.resolveFunctionRef(
+      name,
+      libraryName!,
+      operandCount: operand?.length ?? 0,
+      signature: signature,
+    );
 
     if (functionDef == null) {
       // For FHIRHelpers, many functions are external stubs — return null
@@ -196,7 +206,7 @@ class FunctionRef extends ExpressionRef {
 
     // Evaluate operands and add them to the function context with parameter names
     if (operand != null && functionDef.operand != null) {
-      for (int i = 0;
+      for (var i = 0;
           i < operand!.length && i < functionDef.operand!.length;
           i++) {
         final paramName = functionDef.operand![i].name;
@@ -225,7 +235,10 @@ class FunctionRef extends ExpressionRef {
           if (value == null) return null;
           final results = <dynamic>[];
           Descendents.collectDescendants(
-              value, results, getModelResolver(context));
+            value,
+            results,
+            getModelResolver(context),
+          );
           return results;
         }
         return null;
@@ -314,7 +327,7 @@ class FunctionRef extends ExpressionRef {
         return _helperToBoolean(context);
       default:
         // Fall through to FHIRHelpers for unrecognized functions
-        return await _fhirHelpers(context);
+        return _fhirHelpers(context);
     }
   }
 
@@ -369,7 +382,11 @@ class FunctionRef extends ExpressionRef {
     if (value is CqlInterval) return value;
     if (value is CqlDateTime || value is CqlDate) {
       return CqlInterval(
-          low: value, high: value, lowClosed: true, highClosed: true);
+        low: value,
+        high: value,
+        lowClosed: true,
+        highClosed: true,
+      );
     }
     // Map with start/end or low/high (period/range-shaped raw data)
     if (value is Map<String, dynamic>) {
@@ -406,7 +423,7 @@ class FunctionRef extends ExpressionRef {
   ValidatedQuantity? _quantityFromMap(dynamic value) {
     if (value is! Map<String, dynamic>) return null;
     final raw = value['value'];
-    final num? numVal = raw is num ? raw : num.tryParse(raw?.toString() ?? '');
+    final numVal = raw is num ? raw : num.tryParse(raw?.toString() ?? '');
     if (numVal == null) return null;
     final unit = value['code']?.toString() ?? value['unit']?.toString() ?? '1';
     return ValidatedQuantity.fromNumber(numVal, unit: unit);
@@ -551,9 +568,9 @@ class FunctionRef extends ExpressionRef {
     if (operand == null || operand!.isEmpty) {
       return null;
     } else if (operand!.length == 1) {
-      return await ToConcept(operand: operand![0]).execute(context);
+      return ToConcept(operand: operand![0]).execute(context);
     } else {
-      final List<dynamic> results = [];
+      final results = <dynamic>[];
       for (final operand in this.operand!) {
         final result = await ToConcept(operand: operand).execute(context);
         if (result != null) {

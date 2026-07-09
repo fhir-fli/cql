@@ -4,9 +4,6 @@ import 'package:cql/src/internal.dart';
 /// If a path is specified, the aggregation is performed for the value of the property specified by the path for each element of the source.
 /// If the list is null, the result is null.
 class Aggregate extends AggregateExpression {
-  final CqlExpression? initialValue;
-  final CqlExpression iteration;
-
   Aggregate({
     required this.iteration,
     required super.source,
@@ -42,10 +39,12 @@ class Aggregate extends AggregateExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression? initialValue;
+  final CqlExpression iteration;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'iteration': iteration.toJson(),
       'source': source.toJson(),

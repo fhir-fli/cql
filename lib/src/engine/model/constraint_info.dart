@@ -1,23 +1,7 @@
+import 'package:cql/src/internal.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:cql/src/internal.dart';
-
 class ConstraintInfo {
-  // Optional attribute - Description of the constraint
-  final String? description;
-
-  // List of expressions for the constraint in different languages
-  final List<ExpressionInfo> expressions;
-
-  // Optional attribute - Message returned on constraint violation (templatable)
-  final String? message;
-
-  // Required attribute - Unique name of the constraint
-  final String name;
-
-  // Required attribute - Severity of the constraint (Info, Warning, Error)
-  final ConstraintSeverity severity;
-
   ConstraintInfo({
     required this.name,
     required this.severity,
@@ -43,6 +27,20 @@ class ConstraintInfo {
       message: json['message'],
     );
   }
+  // Optional attribute - Description of the constraint
+  final String? description;
+
+  // List of expressions for the constraint in different languages
+  final List<ExpressionInfo> expressions;
+
+  // Optional attribute - Message returned on constraint violation (templatable)
+  final String? message;
+
+  // Required attribute - Unique name of the constraint
+  final String name;
+
+  // Required attribute - Severity of the constraint (Info, Warning, Error)
+  final ConstraintSeverity severity;
 
   @override
   String toString() {

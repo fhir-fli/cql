@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to convert the value of its argument to a Quantity value.
 /// The operator may be used with Integer, Decimal, Ratio, or String values.
@@ -148,7 +147,7 @@ class ToQuantity extends UnaryExpression {
           // CQL Decimal values support at least 28 digits of precision.
           // Reject quantities whose numeric part exceeds this.
           final numStr =
-              q.value.asUcumDecimal().replaceAll(RegExp(r'[^0-9]'), '');
+              q.value.asUcumDecimal().replaceAll(RegExp('[^0-9]'), '');
           if (numStr.length > 28) return null;
           return q;
         } catch (e) {

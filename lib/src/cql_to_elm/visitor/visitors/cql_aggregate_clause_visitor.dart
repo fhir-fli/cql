@@ -7,8 +7,8 @@ class CqlAggregateClauseVisitor extends CqlBaseVisitor<AggregateClause> {
   @override
   AggregateClause visitAggregateClause(AggregateClauseContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    bool distinct = false;
+    final thisNode = getNextNode();
+    var distinct = false;
     String? identifier;
     CqlExpression? startingClause;
     CqlExpression? expression;

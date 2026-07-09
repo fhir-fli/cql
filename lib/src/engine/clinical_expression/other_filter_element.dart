@@ -4,26 +4,11 @@ import 'package:cql/src/internal.dart';
 /// for use within a retrieve, specified as either
 /// [property] [comparator] [value] or [search] [comparator] [value].
 class OtherFilterElement extends Element {
-  /// The comparator attribute specifies the comparison operation for the filter.
-  String comparator;
-
-  /// The property attribute specifies which property the filter applies to.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? property;
-
-  /// The search attribute specifies the name of a search path for the filter.
-  String? search;
-
-  /// An expression that provides the comparison value for the filter.
-  CqlExpression value;
-
   OtherFilterElement({
     required this.value,
+    required this.comparator,
     this.property,
     this.search,
-    required this.comparator,
     super.annotation,
     super.localId,
     super.locator,
@@ -34,7 +19,7 @@ class OtherFilterElement extends Element {
   factory OtherFilterElement.fromJson(Map<String, dynamic> json) {
     final valueJson = json['value'];
     if (valueJson == null) {
-      throw ArgumentError("JSON value cannot be null");
+      throw ArgumentError('JSON value cannot be null');
     }
 
     return OtherFilterElement(
@@ -56,9 +41,24 @@ class OtherFilterElement extends Element {
     );
   }
 
+  /// The comparator attribute specifies the comparison operation for the filter.
+  String comparator;
+
+  /// The property attribute specifies which property the filter applies to.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? property;
+
+  /// The search attribute specifies the name of a search path for the filter.
+  String? search;
+
+  /// An expression that provides the comparison value for the filter.
+  CqlExpression value;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'comparator': comparator,
       'value': value.toJson(),
     };

@@ -3,19 +3,10 @@ import 'package:cql/src/internal.dart';
 /// Represents a case operator allowing multiple conditional expressions to be
 /// chained together.
 class Case extends CqlExpression {
-  /// List of case items specifying conditions and actions.
-  final List<CaseItem> caseItem;
-
-  /// CqlExpression to compare against.
-  CqlExpression? comparand;
-
-  /// Action to perform if none of the conditions are met.
-  final CqlExpression elseExpr;
-
   Case({
-    this.comparand,
     required this.caseItem,
     required this.elseExpr,
+    this.comparand,
     super.annotation,
     super.localId,
     super.locator,
@@ -43,6 +34,15 @@ class Case extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+
+  /// List of case items specifying conditions and actions.
+  final List<CaseItem> caseItem;
+
+  /// CqlExpression to compare against.
+  CqlExpression? comparand;
+
+  /// Action to perform if none of the conditions are met.
+  final CqlExpression elseExpr;
 
   @override
   Map<String, dynamic> toJson() {
@@ -86,7 +86,7 @@ class Case extends CqlExpression {
 
   @override
   List<String> getReturnTypes(CqlLibrary library) {
-    List<String> types = [];
+    final types = <String>[];
     for (final item in caseItem) {
       final newTypes = item.then.getReturnTypes(library);
       types.addAll(newTypes);
@@ -113,8 +113,8 @@ class Case extends CqlExpression {
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
     if (comparand == null) {
-      int index = -1;
-      for (int i = 0; i < caseItem.length; i++) {
+      var index = -1;
+      for (var i = 0; i < caseItem.length; i++) {
         final result = await caseItem[i].when_.execute(context);
         if (result is CqlBoolean && (result.valueBoolean ?? false)) {
           index = i;
@@ -128,8 +128,8 @@ class Case extends CqlExpression {
       }
     } else {
       final comparandResult = await comparand!.execute(context);
-      int index = -1;
-      for (int i = 0; i < caseItem.length; i++) {
+      var index = -1;
+      for (var i = 0; i < caseItem.length; i++) {
         final whenResult = await caseItem[i].when_.execute(context);
         if (Equal.equal(comparandResult, whenResult)?.valueBoolean ?? false) {
           index = i;

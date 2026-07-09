@@ -76,7 +76,7 @@ class Start extends UnaryExpression {
       return value;
     }
     throw Exception(
-      "Cannot perform start operator with argument of type "
+      'Cannot perform start operator with argument of type '
       "'${value.runtimeType}'.",
     );
   }

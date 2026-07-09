@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// List selector returning a List value.
 class ListExpression extends CqlExpression {
-  /// Elements of the list evaluated in order.
-  List<CqlExpression>? element;
-
-  /// Type specifier for the list, if provided.
-  TypeSpecifierExpression? typeSpecifier;
-
   ListExpression({
     this.typeSpecifier,
     this.element,
@@ -25,7 +19,8 @@ class ListExpression extends CqlExpression {
           : null,
       element: json['element'] != null
           ? List<CqlExpression>.from(
-              json['element'].map((x) => CqlExpression.fromJson(x)))
+              json['element'].map((x) => CqlExpression.fromJson(x)),
+            )
           : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
@@ -41,9 +36,15 @@ class ListExpression extends CqlExpression {
     );
   }
 
+  /// Elements of the list evaluated in order.
+  List<CqlExpression>? element;
+
+  /// Type specifier for the list, if provided.
+  TypeSpecifierExpression? typeSpecifier;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = <String, dynamic>{'type': type};
+    final val = <String, dynamic>{'type': type};
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
         val[key] = value;

@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 
 /// Helper that returns a constant value from execute().
 class _ConstExpr extends CqlExpression {
-  final dynamic value;
   _ConstExpr(this.value);
+  final dynamic value;
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async => value;
@@ -41,9 +41,9 @@ void main() {
       expect(result, equals(CqlInteger(7)));
     });
 
-    test('reads from \$current when scope is empty', () async {
+    test(r'reads from $current when scope is empty', () async {
       final current = Current(scope: '');
-      final result = await current.execute({'\$current': 'hello'});
+      final result = await current.execute({r'$current': 'hello'});
       expect(result, equals('hello'));
     });
 
@@ -61,9 +61,9 @@ void main() {
       expect(result, equals(CqlDecimal(100.0)));
     });
 
-    test('reads from \$total when scope is empty', () async {
+    test(r'reads from $total when scope is empty', () async {
       final total = Total(scope: '');
-      final result = await total.execute({'\$total': CqlInteger(50)});
+      final result = await total.execute({r'$total': CqlInteger(50)});
       expect(result, equals(CqlInteger(50)));
     });
 
@@ -81,9 +81,9 @@ void main() {
       expect(result, equals(CqlInteger(3)));
     });
 
-    test('reads from \$iteration when scope is empty', () async {
+    test(r'reads from $iteration when scope is empty', () async {
       final iteration = Iteration(scope: '');
-      final result = await iteration.execute({'\$iteration': CqlInteger(0)});
+      final result = await iteration.execute({r'$iteration': CqlInteger(0)});
       expect(result, equals(CqlInteger(0)));
     });
 
@@ -96,30 +96,33 @@ void main() {
 
   group('ForEach', () {
     test('identity map returns same elements', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-        LiteralInteger(3),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+          LiteralInteger(3),
+        ],
+      );
       // The element expression reads the current scope variable
-      final element = Current(scope: '\$this');
+      final element = Current(scope: r'$this');
       final forEach =
-          ForEach(source: source, element: element, scope: '\$this');
+          ForEach(source: source, element: element, scope: r'$this');
       final result = await forEach.execute({});
       expect(
-          result,
-          equals([
-            CqlInteger(1),
-            CqlInteger(2),
-            CqlInteger(3),
-          ]));
+        result,
+        equals([
+          CqlInteger(1),
+          CqlInteger(2),
+          CqlInteger(3),
+        ]),
+      );
     });
 
     test('null source returns null', () async {
       final forEach = ForEach(
         source: LiteralNull(),
-        element: Current(scope: '\$this'),
-        scope: '\$this',
+        element: Current(scope: r'$this'),
+        scope: r'$this',
       );
       final result = await forEach.execute({});
       expect(result, isNull);
@@ -128,8 +131,8 @@ void main() {
     test('empty list source returns empty list', () async {
       final forEach = ForEach(
         source: ListExpression(element: []),
-        element: Current(scope: '\$this'),
-        scope: '\$this',
+        element: Current(scope: r'$this'),
+        scope: r'$this',
       );
       final result = await forEach.execute({});
       expect(result, equals([]));
@@ -137,14 +140,16 @@ void main() {
 
     test('maps transformation over list elements', () async {
       // ForEach with a constant element expression to verify iteration
-      final source = ListExpression(element: [
-        LiteralInteger(10),
-        LiteralInteger(20),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(10),
+          LiteralInteger(20),
+        ],
+      );
       // Element expression always returns a fixed value
       final element = LiteralString('mapped');
       final forEach =
-          ForEach(source: source, element: element, scope: '\$this');
+          ForEach(source: source, element: element, scope: r'$this');
       final result = await forEach.execute({});
       expect(result, equals(['mapped', 'mapped']));
     });
@@ -164,42 +169,47 @@ void main() {
   group('Filter', () {
     test('filters elements where condition is true', () async {
       // Source: [1, 2, 3, 4, 5], condition always true -> all pass
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-        LiteralInteger(3),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+          LiteralInteger(3),
+        ],
+      );
       final condition = LiteralBoolean(true);
       final filter =
-          Filter(source: source, condition: condition, scope: '\$this');
+          Filter(source: source, condition: condition, scope: r'$this');
       final result = await filter.execute({});
       expect(
-          result,
-          equals([
-            CqlInteger(1),
-            CqlInteger(2),
-            CqlInteger(3),
-          ]));
+        result,
+        equals([
+          CqlInteger(1),
+          CqlInteger(2),
+          CqlInteger(3),
+        ]),
+      );
     });
 
     test('null source returns null', () async {
       final filter = Filter(
         source: LiteralNull(),
         condition: LiteralBoolean(true),
-        scope: '\$this',
+        scope: r'$this',
       );
       final result = await filter.execute({});
       expect(result, isNull);
     });
 
     test('condition false filters out all elements', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+        ],
+      );
       final condition = LiteralBoolean(false);
       final filter =
-          Filter(source: source, condition: condition, scope: '\$this');
+          Filter(source: source, condition: condition, scope: r'$this');
       final result = await filter.execute({});
       expect(result, equals([]));
     });
@@ -208,20 +218,22 @@ void main() {
       final filter = Filter(
         source: ListExpression(element: []),
         condition: LiteralBoolean(true),
-        scope: '\$this',
+        scope: r'$this',
       );
       final result = await filter.execute({});
       expect(result, equals([]));
     });
 
     test('condition with CqlBoolean true keeps element', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(10),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(10),
+        ],
+      );
       // Use a _ConstExpr that returns CqlBoolean(true)
       final condition = _ConstExpr(CqlBoolean(true));
       final filter =
-          Filter(source: source, condition: condition, scope: '\$this');
+          Filter(source: source, condition: condition, scope: r'$this');
       final result = await filter.execute({});
       expect(result, equals([CqlInteger(10)]));
     });
@@ -231,8 +243,8 @@ void main() {
     test('null source returns null', () async {
       final repeat = Repeat(
         source: LiteralNull(),
-        element: Current(scope: '\$this'),
-        scope: '\$this',
+        element: Current(scope: r'$this'),
+        scope: r'$this',
       );
       final result = await repeat.execute({});
       expect(result, isNull);
@@ -241,8 +253,8 @@ void main() {
     test('empty source returns empty list', () async {
       final repeat = Repeat(
         source: ListExpression(element: []),
-        element: Current(scope: '\$this'),
-        scope: '\$this',
+        element: Current(scope: r'$this'),
+        scope: r'$this',
       );
       final result = await repeat.execute({});
       expect(result, equals([]));
@@ -252,12 +264,14 @@ void main() {
       // Source: [1, 2], element expression returns null (no new elements)
       // The repeat should terminate immediately since null results are not added
       final repeat = Repeat(
-        source: ListExpression(element: [
-          LiteralInteger(1),
-          LiteralInteger(2),
-        ]),
+        source: ListExpression(
+          element: [
+            LiteralInteger(1),
+            LiteralInteger(2),
+          ],
+        ),
         element: LiteralNull(),
-        scope: '\$this',
+        scope: r'$this',
       );
       final result = await repeat.execute({});
       expect(result, equals([]));
@@ -300,20 +314,21 @@ void main() {
     test('recursively collects descendants of a map', () async {
       final source = _ConstExpr({
         'a': 1,
-        'b': {'c': 2}
+        'b': {'c': 2},
       });
       final descendents = Descendents(source: source);
       final result = await descendents.execute({});
       // Map values added then recursed: 1 added + recurse(1)→1, {'c':2} added + recurse→2 added + recurse(2)→2
       expect(
-          result,
-          equals([
-            1,
-            1,
-            {'c': 2},
-            2,
-            2
-          ]));
+        result,
+        equals([
+          1,
+          1,
+          {'c': 2},
+          2,
+          2,
+        ]),
+      );
     });
 
     test('null source returns null', () async {

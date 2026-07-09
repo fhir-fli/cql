@@ -7,7 +7,7 @@ class CqlTermExpressionVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitTermExpression(TermExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       return byContext(child);
     }

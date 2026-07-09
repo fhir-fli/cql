@@ -7,7 +7,7 @@ class CqlCodeSelectorVisitor extends CqlBaseVisitor<Code> {
   @override
   Code visitCodeSelector(CodeSelectorContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? code;
     CodeSystemRef? codeSystem;
     String? display;

@@ -1,10 +1,9 @@
 class Location {
+  Location(this.startLine, this.startChar, this.endLine, this.endChar);
   final int startLine;
   final int startChar;
   final int endLine;
   final int endChar;
-
-  Location(this.startLine, this.startChar, this.endLine, this.endChar);
 
   int getStartLine() => startLine;
   int getStartChar() => startChar;
@@ -43,26 +42,29 @@ class Location {
 
   @override
   String toString() =>
-      "Location{ startLine=$startLine, startChar=$startChar, endLine=$endLine, endChar=$endChar }";
+      'Location{ startLine=$startLine, startChar=$startChar, endLine=$endLine, endChar=$endChar }';
 
   String toLocator() {
     return startLine == endLine && startChar == endChar
-        ? "$startLine:$startChar"
-        : "$startLine:$startChar-$endLine:$endChar";
+        ? '$startLine:$startChar'
+        : '$startLine:$startChar-$endLine:$endChar';
   }
 
   static Location fromLocator(String? locator) {
     if (locator == null || locator.isEmpty) {
-      throw ArgumentError("locator required");
+      throw ArgumentError('locator required');
     }
 
-    final locations = locator.split("-");
-    int startLine = 0, startChar = 0, endLine = 0, endChar = 0;
+    final locations = locator.split('-');
+    var startLine = 0;
+    var startChar = 0;
+    var endLine = 0;
+    var endChar = 0;
 
     for (var i = 0; i < locations.length; i++) {
-      final ranges = locations[i].split(":");
+      final ranges = locations[i].split(':');
       if (ranges.length != 2) {
-        throw FormatException("Invalid locator format: $locator");
+        throw FormatException('Invalid locator format: $locator');
       }
       final line = int.parse(ranges[0]);
       final char = int.parse(ranges[1]);

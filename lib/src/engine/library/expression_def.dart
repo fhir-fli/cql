@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class ExpressionDefs {
-  String? type;
-  List<ExpressionDef> def = <ExpressionDef>[];
-
   ExpressionDefs();
 
   factory ExpressionDefs.fromJson(Map<String, dynamic> json) {
@@ -13,6 +10,8 @@ class ExpressionDefs {
           ? (json['def'] as List).map((i) => ExpressionDef.fromJson(i)).toList()
           : <ExpressionDef>[];
   }
+  String? type;
+  List<ExpressionDef> def = <ExpressionDef>[];
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -40,24 +39,10 @@ class ExpressionDefs {
 /// Expression definition with an associated name that can be referenced by any
 /// expression in the artifact.
 class ExpressionDef extends Element {
-  String? type;
-
-  /// Access level, defaults to Public.
-  AccessModifier? accessLevel;
-
-  /// Execution context.
-  String? context;
-
-  /// Expression associated with the definition.
-  CqlExpression? expression;
-
-  /// Name of the expression.
-  String name;
-
   ExpressionDef({
+    required this.name,
     this.type,
     this.expression,
-    required this.name,
     this.context,
     this.accessLevel,
     super.annotation,
@@ -68,11 +53,11 @@ class ExpressionDef extends Element {
   });
 
   factory ExpressionDef.context({
+    required String name,
+    required CqlExpression expression,
     String? type,
     String? locator,
-    required String name,
     String? context,
-    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -114,11 +99,11 @@ class ExpressionDef extends Element {
   }
 
   factory ExpressionDef.private({
+    required String name,
+    required CqlExpression expression,
     String? type,
     String? locator,
-    required String name,
     String? context,
-    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -130,11 +115,11 @@ class ExpressionDef extends Element {
       );
 
   factory ExpressionDef.public({
+    required String name,
+    required CqlExpression expression,
     String? type,
     String? locator,
-    required String name,
     String? context,
-    required CqlExpression expression,
   }) =>
       ExpressionDef(
         type: type,
@@ -144,6 +129,19 @@ class ExpressionDef extends Element {
         accessLevel: AccessModifier.public,
         expression: expression,
       );
+  String? type;
+
+  /// Access level, defaults to Public.
+  AccessModifier? accessLevel;
+
+  /// Execution context.
+  String? context;
+
+  /// Expression associated with the definition.
+  CqlExpression? expression;
+
+  /// Name of the expression.
+  String name;
 
   @override
   Map<String, dynamic> toJson() {
@@ -180,7 +178,7 @@ class ExpressionDef extends Element {
     return data;
   }
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };

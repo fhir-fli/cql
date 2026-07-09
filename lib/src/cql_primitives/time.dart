@@ -12,13 +12,12 @@ extension CqlTimeExtension on String {
 /// Unlike [CqlDateTime], does not inherit from [CqlDateTimeBase]; comparison
 /// is component-wise on the string segments rather than calendar-aware.
 class CqlTime extends CqlPrimitive implements Comparable<CqlTime> {
-  const CqlTime._(super.valueString) : super();
-
   /// Creates a [CqlTime] from a string matching `HH[:MM[:SS[.fff]]]`.
   factory CqlTime(dynamic rawValue) {
     final validated = _validateTime(rawValue);
     return CqlTime._(validated);
   }
+  const CqlTime._(super.valueString) : super();
 
   /// Creates a [CqlTime] from individual components.
   factory CqlTime.fromUnits({

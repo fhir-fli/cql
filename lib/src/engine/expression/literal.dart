@@ -2,11 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Literal expression defining a single scalar value.
 class Literal extends CqlExpression {
-  /// Qualified name of the value type.
-  QName valueType;
-
-  LiteralType? value;
-
   Literal({
     required this.valueType,
     this.value,
@@ -26,102 +21,81 @@ class Literal extends CqlExpression {
         value = json['value'] == null
             ? null
             : LiteralBoolean.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Boolean':
         value = json['value'] == null
             ? null
             : LiteralBoolean.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Code':
         value =
             json['value'] == null ? null : LiteralCode.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Concept':
         value = json['value'] == null
             ? null
             : LiteralConcept.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}ValueSet':
         value = json['value'] == null
             ? null
             : LiteralValueSet.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}CodeSystem':
         value = json['value'] == null
             ? null
             : LiteralCodeSystem.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Date':
         value =
             json['value'] == null ? null : LiteralDate.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}DateTime':
         value = json['value'] == null
             ? null
             : LiteralDateTime.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Decimal':
         value = json['value'] == null
             ? null
             : LiteralDecimal.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Integer':
         value = json['value'] == null
             ? null
             : LiteralInteger.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Long':
         value =
             json['value'] == null ? null : LiteralLong.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Quantity':
         value = json['value'] == null
             ? null
             : LiteralQuantity.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Ratio':
         value =
             json['value'] == null ? null : LiteralRatio.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}String':
         value = json['value'] == null
             ? null
             : LiteralString.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}Time':
         value =
             json['value'] == null ? null : LiteralTime.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}IntegerInterval':
         value = json['value'] == null
             ? null
             : LiteralIntegerInterval.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}DecimalInterval':
         value = json['value'] == null
             ? null
             : LiteralDecimalInterval.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}QuantityInterval':
         value = json['value'] == null
             ? null
             : LiteralQuantityInterval.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}DateTimeInterval':
         value = json['value'] == null
             ? null
             : LiteralDateTimeInterval.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}DateInterval':
         value = json['value'] == null
             ? null
             : LiteralDateInterval.fromJson(json['value']);
-        break;
       case '{urn:hl7-org:elm-types:r1}TimeInterval':
         value = json['value'] == null
             ? null
             : LiteralTimeInterval.fromJson(json['value']);
-        break;
     }
     return Literal(
       valueType: QName.parse(valueType),
@@ -240,8 +214,14 @@ class Literal extends CqlExpression {
         );
     }
     throw ArgumentError(
-        'Invalid LiteralType, was passed $type (${type.runtimeType})');
+      'Invalid LiteralType, was passed $type (${type.runtimeType})',
+    );
   }
+
+  /// Qualified name of the value type.
+  QName valueType;
+
+  LiteralType? value;
 
   @override
   Map<String, dynamic> toJson() {

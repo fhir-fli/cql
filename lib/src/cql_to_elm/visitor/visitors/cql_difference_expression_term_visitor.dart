@@ -8,8 +8,9 @@ class CqlDifferenceExpressionTermVisitor
 
   @override
   DifferenceBetween visitDifferenceExpressionTerm(
-      DifferenceExpressionTermContext ctx) {
-    final int thisNode = getNextNode();
+    DifferenceExpressionTermContext ctx,
+  ) {
+    final thisNode = getNextNode();
 
     CqlDateTimePrecision? precision;
     CqlExpression? expression;
@@ -17,7 +18,8 @@ class CqlDifferenceExpressionTermVisitor
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is PluralDateTimePrecisionContext) {
         precision = CqlDateTimePrecisionExtension.fromJson(
-            visitPluralDateTimePrecision(child));
+          visitPluralDateTimePrecision(child),
+        );
       } else if (child is ExpressionTermContext) {
         expression = byContext(child) as CqlExpression;
       }
@@ -25,7 +27,8 @@ class CqlDifferenceExpressionTermVisitor
 
     if (precision == null || expression == null) {
       throw ArgumentError(
-          '$thisNode Invalid DifferenceExpressionTerm: missing components');
+        '$thisNode Invalid DifferenceExpressionTerm: missing components',
+      );
     }
 
     // TODO(Dokotela): fill in standard value later

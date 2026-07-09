@@ -10,10 +10,6 @@ import 'package:cql/src/internal.dart';
 /// within an artifact, as well as the implementation of value set membership by
 /// the target environment as a service call to a terminology server, if desired.
 class InValueSet extends OperatorExpression {
-  final CqlExpression code;
-  final ValueSetRef? valueset;
-  final CqlExpression? valuesetExpression;
-
   InValueSet({
     required this.code,
     this.valueset,
@@ -47,10 +43,13 @@ class InValueSet extends OperatorExpression {
           : null,
     );
   }
+  final CqlExpression code;
+  final ValueSetRef? valueset;
+  final CqlExpression? valuesetExpression;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'code': code.toJson(),
     };
@@ -101,11 +100,11 @@ class InValueSet extends OperatorExpression {
   @override
   Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     // Retrieve the CqlLibrary from the context
-    var library = context['library'];
+    final library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
-    CqlValueSet? valueSetRef = await valueset?.execute(context);
+    var valueSetRef = await valueset?.execute(context);
     valueSetRef ??= await valuesetExpression?.execute(context);
     if (valueSetRef == null) {
       throw ArgumentError('ValueSet not found in context');
@@ -153,7 +152,8 @@ class InValueSet extends OperatorExpression {
         return CqlBoolean((await member(null, codeValue.valueString)) ?? false);
       case CqlCode _:
         return CqlBoolean(
-            (await member(codeValue.system, codeValue.code)) ?? false);
+          (await member(codeValue.system, codeValue.code)) ?? false,
+        );
       case CqlConcept _:
         if (codeValue.codes.isEmpty) return null;
         for (final code in codeValue.codes) {
@@ -169,7 +169,9 @@ class InValueSet extends OperatorExpression {
 
   /// Checks if a code value is in a local value set expansion list.
   static CqlBoolean? checkCodeInExpansion(
-      dynamic codeValue, List<dynamic> expansion) {
+    dynamic codeValue,
+    List<dynamic> expansion,
+  ) {
     bool matches(String? system, String? code) {
       for (final ec in expansion) {
         if (ec is Map<String, dynamic> &&

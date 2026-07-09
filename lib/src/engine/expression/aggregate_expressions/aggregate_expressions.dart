@@ -1,5 +1,5 @@
-export 'aggregate_expression.dart';
 export 'aggregate.dart';
+export 'aggregate_expression.dart';
 export 'all_true.dart';
 export 'any_true.dart';
 export 'avg.dart';

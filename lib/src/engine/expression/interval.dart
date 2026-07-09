@@ -34,20 +34,6 @@ import 'package:cql/src/internal.dart';
 /// interpreted to end at the maximum value of the point type, and computations
 /// involving the high boundary will be performed with that interpretation.
 class IntervalExpression extends CqlExpression {
-  dynamic defaultPointType;
-
-  /// High bound expression of the interval.
-  CqlExpression? high;
-
-  /// High bound closed status, defaults to true.
-  bool highClosed = true;
-
-  /// Low bound expression of the interval.
-  CqlExpression? low;
-
-  /// Low bound closed status, defaults to true.
-  bool lowClosed = true;
-
   IntervalExpression({
     this.lowClosed = true,
     this.highClosed = true,
@@ -79,6 +65,19 @@ class IntervalExpression extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  dynamic defaultPointType;
+
+  /// High bound expression of the interval.
+  CqlExpression? high;
+
+  /// High bound closed status, defaults to true.
+  bool highClosed = true;
+
+  /// Low bound expression of the interval.
+  CqlExpression? low;
+
+  /// Low bound closed status, defaults to true.
+  bool lowClosed = true;
 
   @override
   Map<String, dynamic> toJson() {

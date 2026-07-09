@@ -1,14 +1,14 @@
 class ResultWithPossibleError<T> {
-  final T? underlyingThingOrNull;
-
   ResultWithPossibleError(this.underlyingThingOrNull);
+  final T? underlyingThingOrNull;
 
   static ResultWithPossibleError<T> withError<T>() {
     return ResultWithPossibleError<T>(null);
   }
 
   static ResultWithPossibleError<T> withTypeSpecifier<T>(
-      T underlyingThingOrNull) {
+    T underlyingThingOrNull,
+  ) {
     return ResultWithPossibleError<T>(underlyingThingOrNull);
   }
 

@@ -1,9 +1,9 @@
 export 'clinical_expression/clinical_expression.dart';
 export 'context.dart';
 export 'cql_annotations/cql_annotations.dart';
+export 'element.dart';
 export 'expression/expression.dart';
 export 'library/library.dart';
 export 'model/model.dart';
 export 'retrieve/retrieve.dart';
 export 'types/types.dart';
-export 'element.dart';

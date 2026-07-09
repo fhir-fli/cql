@@ -1,11 +1,5 @@
 /// Represents the Narrative type with mixed content
 class Narrative {
-  /// r attribute
-  String? r;
-
-  /// Nested Narrative elements
-  List<Narrative>? s;
-
   Narrative({this.r, this.s});
 
   factory Narrative.fromJson(Map<String, dynamic> json) {
@@ -16,6 +10,12 @@ class Narrative {
           : null,
     );
   }
+
+  /// r attribute
+  String? r;
+
+  /// Nested Narrative elements
+  List<Narrative>? s;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

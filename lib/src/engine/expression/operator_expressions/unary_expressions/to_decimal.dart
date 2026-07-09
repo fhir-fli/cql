@@ -123,9 +123,11 @@ class ToDecimal extends UnaryExpression {
           final intPart = dotIndex >= 0
               ? result.substring(
                   result.startsWith('-') || result.startsWith('+') ? 1 : 0,
-                  dotIndex)
+                  dotIndex,
+                )
               : result.substring(
-                  result.startsWith('-') || result.startsWith('+') ? 1 : 0);
+                  result.startsWith('-') || result.startsWith('+') ? 1 : 0,
+                );
           if (intPart.length > 28) return null;
           final value = double.tryParse(result);
           if (value == null || value.isInfinite || value.isNaN) return null;
@@ -143,7 +145,7 @@ class ToDecimal extends UnaryExpression {
         }
       case CqlInteger _:
         {
-          return result.valueInt == null ? null : CqlDecimal(result.valueInt!);
+          return result.valueInt == null ? null : CqlDecimal(result.valueInt);
         }
       case CqlLong _:
         {

@@ -12,26 +12,26 @@ library;
 
 // imports
 import 'dart:convert';
-import 'package:yaml/yaml.dart';
 
+import 'package:cql/cql.dart' show CqlCode, ModelResolver;
 // The CqlType contract (equal / equivalent) — single canonical definition.
-import '../engine/types/cql_type.dart';
-
-// Base
-part 'primitive_type.dart';
+import 'package:cql/src/engine/types/cql_type.dart';
+import 'package:cql/src/internal.dart' show CqlCode, ModelResolver;
+import 'package:yaml/yaml.dart';
 
 // CQL System primitives
 part 'boolean.dart';
+// CQL-internal helpers used by the date/time math
+part 'comparator.dart';
 part 'date.dart';
 part 'date_time.dart';
 part 'date_time_base.dart';
 part 'decimal.dart';
+part 'extended_duration.dart';
 part 'integer.dart';
 part 'integer64.dart';
 part 'number.dart';
+// Base
+part 'primitive_type.dart';
 part 'string.dart';
 part 'time.dart';
-
-// CQL-internal helpers used by the date/time math
-part 'comparator.dart';
-part 'extended_duration.dart';

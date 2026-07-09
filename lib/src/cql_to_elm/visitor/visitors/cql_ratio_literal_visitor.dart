@@ -7,7 +7,7 @@ class CqlRatioLiteralVisitor extends CqlBaseVisitor<LiteralRatio> {
   @override
   LiteralRatio visitRatioLiteral(RatioLiteralContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is RatioContext) {
         return visitRatio(child);

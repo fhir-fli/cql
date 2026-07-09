@@ -108,9 +108,9 @@ class Xor extends BinaryExpression {
     } else
 
     /// If both operands are true or both are false
-    if ((left is CqlBoolean &&
+    if (left is CqlBoolean &&
         right is CqlBoolean &&
-        left.valueBoolean == right.valueBoolean)) {
+        left.valueBoolean == right.valueBoolean) {
       return CqlBoolean(false);
     }
 

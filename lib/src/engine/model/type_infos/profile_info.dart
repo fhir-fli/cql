@@ -6,8 +6,8 @@ import 'package:cql/src/internal.dart';
 /// inheriting from ClassInfo.
 class ProfileInfo extends ClassInfo {
   ProfileInfo({
-    super.namespace,
     required super.name,
+    super.namespace,
     super.baseType,
     super.identifier,
     super.label,

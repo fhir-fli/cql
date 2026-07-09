@@ -7,7 +7,7 @@ class CqlConceptSelectorTermVisitor extends CqlBaseVisitor<Concept> {
   @override
   Concept visitConceptSelectorTerm(ConceptSelectorTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ConceptSelectorContext) {
         return visitConceptSelector(child);

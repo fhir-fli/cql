@@ -13,7 +13,8 @@ void main() {
     });
     test('define "LongAdd": 25L + 5L // 30L', () async {
       final add = Add(
-          operand: [LiteralLong(BigInt.from(25)), LiteralLong(BigInt.from(5))]);
+        operand: [LiteralLong(BigInt.from(25)), LiteralLong(BigInt.from(5))],
+      );
       expect(await add.execute({}), CqlLong.fromNum(30));
     });
     test('define "DecimalAdd": 2.5 + 5.0 // 7.5', () async {
@@ -22,10 +23,12 @@ void main() {
     });
     test('define "QuantityAdd": -5.5 \'mg\' + 2 \'mg\' // -3.5 \'mg\'',
         () async {
-      final add = Add(operand: [
-        LiteralQuantity(LiteralDecimal(-5.5), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(2), unit: 'mg'),
-      ]);
+      final add = Add(
+        operand: [
+          LiteralQuantity(LiteralDecimal(-5.5), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(2), unit: 'mg'),
+        ],
+      );
       expect(await add.execute({}), ValidatedQuantity.fromString("-3.5 'mg'"));
     });
     test('define "IntegerAddIsNull": 2 + null', () async {
@@ -52,7 +55,8 @@ void main() {
     });
     test('define "LongSubtract": 25L - 5L // 20L', () async {
       final sub = Subtract(
-          operand: [LiteralLong(BigInt.from(25)), LiteralLong(BigInt.from(5))]);
+        operand: [LiteralLong(BigInt.from(25)), LiteralLong(BigInt.from(5))],
+      );
       expect(await sub.execute({}), CqlLong.fromNum(20));
     });
     test('define "DecimalSubtract": 3.14 - 3.12 // 0.02', () async {
@@ -60,14 +64,16 @@ void main() {
           Subtract(operand: [LiteralDecimal(3.14), LiteralDecimal(3.12)]);
       final result = await sub.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(0.02, 0.0001));
+      expect((result as CqlDecimal).valueNum, closeTo(0.02, 0.0001));
     });
     test('define "QuantitySubtract": 3.14 \'mg\' - 3.12 \'mg\' // 0.02 \'mg\'',
         () async {
-      final sub = Subtract(operand: [
-        LiteralQuantity(LiteralDecimal(3.14), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(3.12), unit: 'mg'),
-      ]);
+      final sub = Subtract(
+        operand: [
+          LiteralQuantity(LiteralDecimal(3.14), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(3.12), unit: 'mg'),
+        ],
+      );
       final result = await sub.execute({});
       expect(result, isA<ValidatedQuantity>());
     });
@@ -91,7 +97,8 @@ void main() {
     });
     test('define "LongMultiply": 5L * 3L // 15L', () async {
       final mul = Multiply(
-          operand: [LiteralLong(BigInt.from(5)), LiteralLong(BigInt.from(3))]);
+        operand: [LiteralLong(BigInt.from(5)), LiteralLong(BigInt.from(3))],
+      );
       expect(await mul.execute({}), CqlLong.fromNum(15));
     });
     test('define "DecimalMultiply": 2.5 * 4.0 // 10.0', () async {
@@ -124,7 +131,7 @@ void main() {
       final div = Divide(operand: [LiteralDecimal(9.9), LiteralDecimal(3.0)]);
       final result = await div.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(3.3, 0.0001));
+      expect((result as CqlDecimal).valueNum, closeTo(3.3, 0.0001));
     });
     test('define "DivideIsNull": 2.2 / null', () async {
       final div = Divide(operand: [LiteralDecimal(2.2), LiteralNull()]);
@@ -134,13 +141,13 @@ void main() {
       final div = Divide(operand: [LiteralInteger(10), LiteralInteger(4)]);
       final result = await div.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(2.5, 0.0001));
+      expect((result as CqlDecimal).valueNum, closeTo(2.5, 0.0001));
     });
     test('define "NegativeDivide": -10.0 / 3.0', () async {
       final div = Divide(operand: [LiteralDecimal(-10.0), LiteralDecimal(3.0)]);
       final result = await div.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(-3.33333, 0.001));
+      expect((result as CqlDecimal).valueNum, closeTo(-3.33333, 0.001));
     });
   });
 
@@ -177,7 +184,7 @@ void main() {
       final mod = Modulo(operand: [LiteralDecimal(2.5), LiteralDecimal(2.0)]);
       final result = await mod.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(0.5, 0.0001));
+      expect((result as CqlDecimal).valueNum, closeTo(0.5, 0.0001));
     });
     test('define "ModuloIsNull": 10 mod null', () async {
       final mod = Modulo(operand: [LiteralInteger(10), LiteralNull()]);
@@ -197,7 +204,7 @@ void main() {
       final pow = Power(operand: [LiteralDecimal(2.5), LiteralDecimal(2.0)]);
       final result = await pow.execute({});
       expect(result, isA<CqlDecimal>());
-      expect((result as CqlDecimal).valueNum!, closeTo(6.25, 0.0001));
+      expect((result as CqlDecimal).valueNum, closeTo(6.25, 0.0001));
     });
     test('define "PowerIsNull": 2 ^ null', () async {
       final pow = Power(operand: [LiteralInteger(2), LiteralNull()]);
@@ -219,7 +226,8 @@ void main() {
     });
     test('define "LongEqualIsTrue": 4L = 4L', () async {
       final equal = Equal(
-          operand: [LiteralLong(BigInt.from(4)), LiteralLong(BigInt.from(4))]);
+        operand: [LiteralLong(BigInt.from(4)), LiteralLong(BigInt.from(4))],
+      );
       expect(await equal.execute({}), CqlBoolean(true));
     });
     test('define "DecimalEqualIsTrue": 3.5 = 3.5', () async {
@@ -237,7 +245,8 @@ void main() {
     });
     test('define "StringEqualIsFalse": \'John Doe\' = \'john doe\'', () async {
       final equal = Equal(
-          operand: [LiteralString('John Doe'), LiteralString('john doe')]);
+        operand: [LiteralString('John Doe'), LiteralString('john doe')],
+      );
       expect(await equal.execute({}), CqlBoolean(false));
     });
     test('define "NullEqualIsNull": null = null', () async {
@@ -249,18 +258,22 @@ void main() {
       expect(await equal.execute({}), isNull);
     });
     test('define "DateTimeEqualIsTrue": @2012-01-01 = @2012-01-01', () async {
-      final equal = Equal(operand: [
-        LiteralDateTime('2012-01-01'),
-        LiteralDateTime('2012-01-01')
-      ]);
+      final equal = Equal(
+        operand: [
+          LiteralDateTime('2012-01-01'),
+          LiteralDateTime('2012-01-01'),
+        ],
+      );
       expect(await equal.execute({}), CqlBoolean(true));
     });
     test('define "DateTimeEqualIsNull": @2012-01-01 = @2012-01-01T12',
         () async {
-      final equal = Equal(operand: [
-        LiteralDateTime('2012-01-01'),
-        LiteralDateTime('2012-01-01T12')
-      ]);
+      final equal = Equal(
+        operand: [
+          LiteralDateTime('2012-01-01'),
+          LiteralDateTime('2012-01-01T12'),
+        ],
+      );
       expect(await equal.execute({}), isNull);
     });
   });

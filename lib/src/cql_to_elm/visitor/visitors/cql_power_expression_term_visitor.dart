@@ -29,7 +29,6 @@ class CqlPowerExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
             } else if (right is LiteralDecimal) {
               return Power(operand: [ToDecimal(operand: left), right]);
             }
-            break;
           case LiteralLong _:
             if (right is LiteralInteger) {
               return Power(operand: [left, ToLong(operand: right)]);
@@ -38,14 +37,12 @@ class CqlPowerExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
             } else if (right is LiteralDecimal) {
               return Power(operand: [ToDecimal(operand: left), right]);
             }
-            break;
           case LiteralDecimal _:
             if (right is LiteralInteger || right is LiteralLong) {
               return Power(operand: [left, ToDecimal(operand: right)]);
             } else if (right is LiteralDecimal) {
               return Power(operand: [left, right]);
             }
-            break;
           default:
             return Power(operand: [left, right]);
         }

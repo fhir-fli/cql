@@ -7,7 +7,7 @@ class CqlQualifierVisitor extends CqlBaseVisitor<String> {
   @override
   String visitQualifier(QualifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         return visitIdentifier(child);

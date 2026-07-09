@@ -48,8 +48,6 @@ import 'package:cql/src/internal.dart';
 /// define "UncertainDifferenceInMonths": difference in months between @2012-01-02 and @2012 // [0, 11]
 /// define "DifferenceIsNull": difference in months between @2012-01-01 and null
 class DifferenceBetween extends BinaryExpression {
-  final CqlDateTimePrecision precision;
-
   DifferenceBetween({
     required this.precision,
     required super.operand,
@@ -80,10 +78,11 @@ class DifferenceBetween extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'precision': precision.toJson(),
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -115,7 +114,9 @@ class DifferenceBetween extends BinaryExpression {
 
   /// Returns true when the date lacks the precision requested.
   static bool _needsUncertainty(
-      CqlDateTimeBase date, CqlDateTimePrecision precision) {
+    CqlDateTimeBase date,
+    CqlDateTimePrecision precision,
+  ) {
     switch (precision) {
       case CqlDateTimePrecision.year:
         return !date.hasYear;
@@ -139,26 +140,40 @@ class DifferenceBetween extends BinaryExpression {
   /// Returns (min, max) DateTime bounds for a partial date by filling missing
   /// fields with floor/ceiling values.
   static (DateTime, DateTime) _dateBounds(CqlDateTimeBase date) {
-    final int year = date.year!;
-    final int minMonth = date.month ?? 1;
-    final int maxMonth = date.month ?? 12;
-    final int minDay = date.day ?? 1;
-    final int maxDay =
+    final year = date.year!;
+    final minMonth = date.month ?? 1;
+    final maxMonth = date.month ?? 12;
+    final minDay = date.day ?? 1;
+    final maxDay =
         date.day ?? DateTime(year, maxMonth + 1, 0).day; // last day of month
-    final int minHour = date.hour ?? 0;
-    final int maxHour = date.hour ?? 23;
-    final int minMinute = date.minute ?? 0;
-    final int maxMinute = date.minute ?? 59;
-    final int minSecond = date.second ?? 0;
-    final int maxSecond = date.second ?? 59;
-    final int minMs = date.millisecond ?? 0;
-    final int maxMs = date.millisecond ?? 999;
+    final minHour = date.hour ?? 0;
+    final maxHour = date.hour ?? 23;
+    final minMinute = date.minute ?? 0;
+    final maxMinute = date.minute ?? 59;
+    final minSecond = date.second ?? 0;
+    final maxSecond = date.second ?? 59;
+    final minMs = date.millisecond ?? 0;
+    final maxMs = date.millisecond ?? 999;
 
     return (
       DateTime.utc(
-          year, minMonth, minDay, minHour, minMinute, minSecond, minMs),
+        year,
+        minMonth,
+        minDay,
+        minHour,
+        minMinute,
+        minSecond,
+        minMs,
+      ),
       DateTime.utc(
-          year, maxMonth, maxDay, maxHour, maxMinute, maxSecond, maxMs),
+        year,
+        maxMonth,
+        maxDay,
+        maxHour,
+        maxMinute,
+        maxSecond,
+        maxMs,
+      ),
     );
   }
 
@@ -166,7 +181,10 @@ class DifferenceBetween extends BinaryExpression {
   /// For day/week: truncate to calendar day boundaries (not 24h periods).
   /// For sub-day: use actual time difference (caller should normalize timezone).
   static int _differenceBetween(
-      DateTime low, DateTime high, CqlDateTimePrecision precision) {
+    DateTime low,
+    DateTime high,
+    CqlDateTimePrecision precision,
+  ) {
     switch (precision) {
       case CqlDateTimePrecision.year:
         return high.year - low.year;
@@ -236,24 +254,24 @@ class DifferenceBetween extends BinaryExpression {
         return CqlInteger(_differenceBetween(lowDt, highDt, precision));
       } else {
         throw CqlException(
-            message:
-                'DifferenceBetween must be passed two Dates, DateTimes, or '
-                'Times, it was instead passed: '
-                'low (${low.runtimeType}) and'
-                'high (${high.runtimeType})');
+          message: 'DifferenceBetween must be passed two Dates, DateTimes, or '
+              'Times, it was instead passed: '
+              'low (${low.runtimeType}) and'
+              'high (${high.runtimeType})',
+        );
       }
     } else if (low is CqlTime) {
       if (high is CqlTime) {
-        final int lowTotalMilliseconds = (low.hour ?? 0) * 3600000 +
+        final lowTotalMilliseconds = (low.hour ?? 0) * 3600000 +
             (low.minute ?? 0) * 60000 +
             (low.second ?? 0) * 1000 +
             (low.millisecond ?? 0);
-        final int highTotalMilliseconds = (high.hour ?? 0) * 3600000 +
+        final highTotalMilliseconds = (high.hour ?? 0) * 3600000 +
             (high.minute ?? 0) * 60000 +
             (high.second ?? 0) * 1000 +
             (high.millisecond ?? 0);
 
-        final int differenceMilliseconds =
+        final differenceMilliseconds =
             highTotalMilliseconds - lowTotalMilliseconds;
 
         switch (precision) {
@@ -267,23 +285,24 @@ class DifferenceBetween extends BinaryExpression {
             return CqlInteger(differenceMilliseconds);
           default:
             throw CqlException(
-                message:
-                    'Unsupported precision for CqlTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.');
+              message:
+                  'Unsupported precision for CqlTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.',
+            );
         }
       } else {
         throw CqlException(
-            message:
-                'DifferenceBetween must be passed two Dates, DateTimes, or '
-                'Times, it was instead passed: '
-                'low (${low.runtimeType}) and'
-                'high (${high.runtimeType})');
+          message: 'DifferenceBetween must be passed two Dates, DateTimes, or '
+              'Times, it was instead passed: '
+              'low (${low.runtimeType}) and'
+              'high (${high.runtimeType})',
+        );
       }
     } else {
       throw CqlException(
-          message:
-              'DifferenceBetween must be either Dates, DateTimes, or Times,'
-              'but was instead passed low (${low.runtimeType}) and '
-              'high (${high.runtimeType}).');
+        message: 'DifferenceBetween must be either Dates, DateTimes, or Times,'
+            'but was instead passed low (${low.runtimeType}) and '
+            'high (${high.runtimeType}).',
+      );
     }
   }
 
@@ -298,19 +317,27 @@ class DifferenceBetween extends BinaryExpression {
   static DateTime _toUtc(CqlDateTimeBase fdt, DateTime local) {
     final offset = fdt.timeZoneOffset;
     if (offset == null || fdt.isUtc) {
-      return DateTime.utc(local.year, local.month, local.day, local.hour,
-          local.minute, local.second, local.millisecond);
+      return DateTime.utc(
+        local.year,
+        local.month,
+        local.day,
+        local.hour,
+        local.minute,
+        local.second,
+        local.millisecond,
+      );
     }
     // timeZoneOffset is signed: -6.0 means UTC-6, so UTC = local + 6h
     final offsetHours = offset.truncate();
     final offsetMinutes = ((offset - offsetHours) * 60).truncate();
     return DateTime.utc(
-        local.year,
-        local.month,
-        local.day,
-        local.hour - offsetHours,
-        local.minute - offsetMinutes,
-        local.second,
-        local.millisecond);
+      local.year,
+      local.month,
+      local.day,
+      local.hour - offsetHours,
+      local.minute - offsetMinutes,
+      local.second,
+      local.millisecond,
+    );
   }
 }

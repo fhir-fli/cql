@@ -1,14 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class Locator extends CqlToElmBase {
-  final int? endChar;
-  final int? endLine;
-  final String? libraryId;
-  final String? librarySystem;
-  final String? libraryVersion;
-  final int? startChar;
-  final int? startLine;
-
   Locator({
     this.librarySystem,
     this.libraryId,
@@ -28,6 +20,13 @@ class Locator extends CqlToElmBase {
         endLine: json['endLine'],
         endChar: json['endChar'],
       );
+  final int? endChar;
+  final int? endLine;
+  final String? libraryId;
+  final String? librarySystem;
+  final String? libraryVersion;
+  final int? startChar;
+  final int? startLine;
 
   @override
   String toString() {

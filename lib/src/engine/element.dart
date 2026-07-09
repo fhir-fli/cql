@@ -1,6 +1,27 @@
 import 'package:cql/src/internal.dart';
 
 class Element {
+  Element({
+    this.annotation,
+    this.resultTypeSpecifier,
+    this.resultTypeName,
+    this.localId,
+    this.locator,
+  });
+
+  factory Element.fromJson(Map<String, dynamic> json) => Element(
+        annotation: (json['annotation'] as List<dynamic>?)
+            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        resultTypeSpecifier: json['resultTypeSpecifier'] == null
+            ? null
+            : TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              ),
+        resultTypeName: json['resultTypeName'] as String?,
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+      );
   // The annotation element provides a mechanism for decorating expressions
   // with application-specific information such as translation hints, visual
   // designer information, or debug symbols.
@@ -42,27 +63,6 @@ class Element {
   /// The best-known result type of this node: the explicit ELM
   /// [resultTypeName] when present, else the translator-inferred type.
   String? get knownResultType => resultTypeName ?? inferredResultType;
-
-  Element({
-    this.annotation,
-    this.resultTypeSpecifier,
-    this.resultTypeName,
-    this.localId,
-    this.locator,
-  });
-
-  factory Element.fromJson(Map<String, dynamic> json) => Element(
-        annotation: (json['annotation'] as List<dynamic>?)
-            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        resultTypeSpecifier: json['resultTypeSpecifier'] == null
-            ? null
-            : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>),
-        resultTypeName: json['resultTypeName'] as String?,
-        localId: json['localId'] as String?,
-        locator: json['locator'] as String?,
-      );
 
   dynamic toJson() {
     final val = <String, dynamic>{};

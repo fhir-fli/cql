@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Variance operator returns the statistical variance of the elements in
 /// source.
@@ -61,7 +60,7 @@ class Variance extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -132,20 +131,20 @@ class Variance extends AggregateExpression {
       return null;
     }
 
-    var mean = Avg.avg(sourceResult);
+    final mean = Avg.avg(sourceResult);
 
     // For CqlDecimal — sample variance uses (N-1) denominator
     if (mean is CqlDecimal) {
-      CqlDecimal sumOfSquaredDiffs = CqlDecimal(0.0);
+      var sumOfSquaredDiffs = CqlDecimal(0.0);
       for (final val in sourceResult as List<dynamic>) {
         if (val is CqlNumber) {
-          var diff = CqlDecimal(val.valueNum! - mean.valueNum!);
-          var squaredDiff = CqlDecimal(diff.valueNum! * diff.valueNum!);
+          final diff = CqlDecimal(val.valueNum! - mean.valueNum!);
+          final squaredDiff = CqlDecimal(diff.valueNum! * diff.valueNum!);
           sumOfSquaredDiffs =
               CqlDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
         }
       }
-      var variance = sumOfSquaredDiffs.valueNum! / (sourceResult.length - 1);
+      final variance = sumOfSquaredDiffs.valueNum! / (sourceResult.length - 1);
       return CqlDecimal(variance);
     }
 
@@ -163,10 +162,11 @@ class Variance extends AggregateExpression {
             ? val
             : ValidatedQuantity(
                 value: svc.convert(val.value, val.unit, meanUnit),
-                unit: meanUnit);
-        ValidatedQuantity? diffValue = converted - mean;
+                unit: meanUnit,
+              );
+        final diffValue = converted - mean;
         if (diffValue != null) {
-          ValidatedQuantity squaredDiff = diffValue * diffValue;
+          final squaredDiff = diffValue * diffValue;
           sumOfSquaredValues = sumOfSquaredValues == null
               ? squaredDiff
               : sumOfSquaredValues + squaredDiff;
@@ -182,12 +182,15 @@ class Variance extends AggregateExpression {
           varianceValue = UcumDecimal.fromString(truncated.toStringAsFixed(8));
         }
         return ValidatedQuantity(
-            value: varianceValue, unit: sumOfSquaredValues.unit);
+          value: varianceValue,
+          unit: sumOfSquaredValues.unit,
+        );
       }
     }
 
     throw ArgumentError(
-        'Unsupported type for Variance: ${sourceResult.runtimeType}');
+      'Unsupported type for Variance: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

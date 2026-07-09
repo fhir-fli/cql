@@ -4,6 +4,39 @@ import 'package:cql/src/internal.dart';
 /// within a retrieve, specified as either [property] [comparator] [value] or
 /// [search] [comparator] [value].
 class CodeFilterElement extends Element {
+  CodeFilterElement({
+    required this.value,
+    required this.comparator,
+    this.property,
+    this.valueSetProperty,
+    this.search,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
+
+  factory CodeFilterElement.fromJson(Map<String, dynamic> json) =>
+      CodeFilterElement(
+        value: CqlExpression.fromJson(json['value']),
+        property: json['property'],
+        valueSetProperty: json['valueSetProperty'],
+        search: json['search'],
+        comparator: json['comparator'],
+        annotation: json['annotation'] != null
+            ? (json['annotation'] as List)
+                .map((e) => CqlToElmBase.fromJson(e))
+                .toList()
+            : null,
+        localId: json['localId'],
+        locator: json['locator'],
+        resultTypeName: json['resultTypeName'],
+        resultTypeSpecifier: json['resultTypeSpecifier'] != null
+            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            : null,
+      );
+
   /// The codeComparator attribute specifies how elements of the code
   /// property should be matched to the terminology. One of 'in', '=', or '~'.
   /// Note that 'in' will resolve to the appropriate terminology matching
@@ -49,42 +82,9 @@ class CodeFilterElement extends Element {
   /// in the CQL grammar provides the formal semantics for this path.
   String? valueSetProperty;
 
-  CodeFilterElement({
-    required this.value,
-    this.property,
-    this.valueSetProperty,
-    this.search,
-    required this.comparator,
-    super.annotation,
-    super.localId,
-    super.locator,
-    super.resultTypeName,
-    super.resultTypeSpecifier,
-  });
-
-  factory CodeFilterElement.fromJson(Map<String, dynamic> json) =>
-      CodeFilterElement(
-        value: CqlExpression.fromJson(json['value']),
-        property: json['property'],
-        valueSetProperty: json['valueSetProperty'],
-        search: json['search'],
-        comparator: json['comparator'],
-        annotation: json['annotation'] != null
-            ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
-                .toList()
-            : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
-        resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
-            : null,
-      );
-
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'value': value.toJson(),
       'comparator': comparator,
     };

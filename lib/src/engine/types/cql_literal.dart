@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 abstract class LiteralType extends CqlExpression {
   LiteralType({
@@ -89,8 +88,6 @@ class LiteralNull extends LiteralType {
 }
 
 class LiteralBoolean extends LiteralType {
-  final bool value;
-
   LiteralBoolean(this.value);
 
   factory LiteralBoolean.fromJson(dynamic json) {
@@ -103,6 +100,7 @@ class LiteralBoolean extends LiteralType {
     }
     throw ArgumentError('LiteralBoolean: Invalid json type');
   }
+  final bool value;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -126,11 +124,6 @@ class LiteralBoolean extends LiteralType {
 }
 
 class LiteralCode extends LiteralType {
-  final String code;
-  final String? display;
-  final String? system;
-  final String? version;
-
   LiteralCode(
     this.code, {
     this.display,
@@ -146,6 +139,10 @@ class LiteralCode extends LiteralType {
       version: json['version'],
     );
   }
+  final String code;
+  final String? display;
+  final String? system;
+  final String? version;
 
   @override
   Map<String, dynamic> toJson() {
@@ -173,9 +170,6 @@ class LiteralCode extends LiteralType {
 }
 
 class LiteralConcept extends LiteralType {
-  final List<LiteralCode> codes;
-  final String? display;
-
   LiteralConcept(
     this.codes, {
     this.display,
@@ -189,6 +183,8 @@ class LiteralConcept extends LiteralType {
       display: json['display'],
     );
   }
+  final List<LiteralCode> codes;
+  final String? display;
 
   @override
   Map<String, dynamic> toJson() {
@@ -216,10 +212,6 @@ class LiteralConcept extends LiteralType {
 }
 
 abstract class LiteralVocabularyType extends LiteralType {
-  final String id;
-  final String? version;
-  final String? name;
-
   LiteralVocabularyType(
     this.id, {
     this.version,
@@ -233,14 +225,15 @@ abstract class LiteralVocabularyType extends LiteralType {
       return LiteralCodeSystem.fromJson(json);
     }
   }
+  final String id;
+  final String? version;
+  final String? name;
 
   @override
   Map<String, dynamic> toJson();
 }
 
 class LiteralValueSet extends LiteralVocabularyType {
-  final List<LiteralCodeSystem>? codesystem;
-
   LiteralValueSet(
     super.id, {
     super.version,
@@ -258,10 +251,11 @@ class LiteralValueSet extends LiteralVocabularyType {
           .toList(),
     );
   }
+  final List<LiteralCodeSystem>? codesystem;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'id': id};
+    final json = <String, dynamic>{'id': id};
     if (version != null) {
       json['version'] = version;
     }
@@ -295,7 +289,7 @@ class LiteralCodeSystem extends LiteralVocabularyType {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'id': id};
+    final json = <String, dynamic>{'id': id};
     if (version != null) {
       json['version'] = version;
     }
@@ -310,8 +304,6 @@ class LiteralCodeSystem extends LiteralVocabularyType {
 }
 
 class LiteralDate extends LiteralType {
-  final String value;
-
   LiteralDate(this.value);
 
   factory LiteralDate.fromJson(dynamic json) {
@@ -323,6 +315,7 @@ class LiteralDate extends LiteralType {
     }
     throw ArgumentError('LiteralDate: Invalid json type');
   }
+  final String value;
 
   @override
   Map<String, dynamic> toJson() {
@@ -350,8 +343,6 @@ class LiteralDate extends LiteralType {
 }
 
 class LiteralDateTime extends LiteralType {
-  final String value;
-
   LiteralDateTime(this.value);
 
   factory LiteralDateTime.fromJson(dynamic json) {
@@ -363,6 +354,7 @@ class LiteralDateTime extends LiteralType {
     }
     throw ArgumentError('LiteralDateTime: Invalid json type');
   }
+  final String value;
 
   @override
   Map<String, dynamic> toJson() {
@@ -397,22 +389,18 @@ class LiteralDateTime extends LiteralType {
 }
 
 class LiteralDecimal extends LiteralType {
-  // TODO(Dokotela): in order to properly match decimal places
-  final num value;
-  final int? sigFigs;
-
   LiteralDecimal(this.value, {this.sigFigs});
 
   factory LiteralDecimal.fromString(String stringValue) {
     if (num.tryParse(stringValue) != null) {
       /// Remove any leading and trailing whitespaces
-      String number = stringValue.trim();
+      var number = stringValue.trim();
 
       /// Check if the number includes a decimal point
-      bool isDecimal = number.contains('.');
+      final isDecimal = number.contains('.');
 
       /// Remove leading zeros, they are not significant
-      number = number.replaceFirst(RegExp(r'^0+'), '');
+      number = number.replaceFirst(RegExp('^0+'), '');
 
       /// If the number is in decimal form, remove the decimal point for simplicity
       if (isDecimal) {
@@ -445,6 +433,9 @@ class LiteralDecimal extends LiteralType {
     }
     throw ArgumentError('LiteralDecimal: Invalid json type');
   }
+  // TODO(Dokotela): in order to properly match decimal places
+  final num value;
+  final int? sigFigs;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -470,8 +461,6 @@ class LiteralDecimal extends LiteralType {
 }
 
 class LiteralInteger extends LiteralType {
-  final int value;
-
   LiteralInteger(this.value);
 
   factory LiteralInteger.fromJson(dynamic json) {
@@ -489,6 +478,7 @@ class LiteralInteger extends LiteralType {
     }
     throw ArgumentError('LiteralInteger: Invalid json type');
   }
+  final int value;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -512,8 +502,6 @@ class LiteralInteger extends LiteralType {
 }
 
 class LiteralLong extends LiteralType {
-  final BigInt value;
-
   LiteralLong(this.value);
 
   factory LiteralLong.fromJson(dynamic json) {
@@ -531,6 +519,7 @@ class LiteralLong extends LiteralType {
     }
     throw ArgumentError('LiteralLong: Invalid json type');
   }
+  final BigInt value;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -553,9 +542,6 @@ class LiteralLong extends LiteralType {
 }
 
 class LiteralQuantity extends LiteralType {
-  final LiteralDecimal value;
-  final String? unit;
-
   LiteralQuantity(this.value, {this.unit});
 
   factory LiteralQuantity.fromJson(Map<String, dynamic> json) {
@@ -564,6 +550,8 @@ class LiteralQuantity extends LiteralType {
       unit: json['unit'],
     );
   }
+  final LiteralDecimal value;
+  final String? unit;
 
   @override
   Map<String, dynamic> toJson() {
@@ -593,9 +581,6 @@ class LiteralQuantity extends LiteralType {
 }
 
 class LiteralRatio extends LiteralType {
-  final LiteralQuantity numerator;
-  final LiteralQuantity denominator;
-
   LiteralRatio(this.numerator, this.denominator);
 
   factory LiteralRatio.fromJson(Map<String, dynamic> json) {
@@ -604,6 +589,8 @@ class LiteralRatio extends LiteralType {
       LiteralQuantity.fromJson(json['denominator']),
     );
   }
+  final LiteralQuantity numerator;
+  final LiteralQuantity denominator;
 
   @override
   Map<String, dynamic> toJson() {
@@ -631,9 +618,19 @@ class LiteralRatio extends LiteralType {
 }
 
 class LiteralString extends LiteralType {
-  final String value;
-
   LiteralString(String value) : value = _unescape(value);
+
+  factory LiteralString.fromJson(dynamic json) {
+    if (json is String) {
+      return LiteralString(json);
+    } else if (json is Map<String, dynamic> && json['value'] != null) {
+      if (json['value'] is String) {
+        return LiteralString(json['value']);
+      }
+    }
+    throw ArgumentError('LiteralString: Invalid json type');
+  }
+  final String value;
 
   static String _unescape(String s) {
     // Process Unicode escapes first (\uXXXX)
@@ -646,20 +643,9 @@ class LiteralString extends LiteralType {
         .replaceAll(r'\t', '\t')
         .replaceAll(r'\b', '\b')
         .replaceAll(r'\r', '\r')
-        .replaceAll(r'\\', '\\')
+        .replaceAll(r'\\', r'\')
         .replaceAll(r"\'", "'")
         .replaceAll(r'\"', '"');
-  }
-
-  factory LiteralString.fromJson(dynamic json) {
-    if (json is String) {
-      return LiteralString(json);
-    } else if (json is Map<String, dynamic> && json['value'] != null) {
-      if (json['value'] is String) {
-        return LiteralString(json['value']);
-      }
-    }
-    throw ArgumentError('LiteralString: Invalid json type');
   }
 
   @override
@@ -683,13 +669,11 @@ class LiteralString extends LiteralType {
 }
 
 class LiteralTime extends LiteralType {
-  final String value;
-
   LiteralTime(String value)
       : value = value.replaceFirst('@', '').replaceFirst('T', '');
 
   factory LiteralTime.fromOperandList({required List<CqlExpression> operand}) {
-    String value = '';
+    var value = '';
     if (operand.isNotEmpty) {
       value = (operand[0] as LiteralInteger).value.toString().padLeft(2, '0');
       if (operand.length > 1) {
@@ -722,6 +706,7 @@ class LiteralTime extends LiteralType {
     }
     throw ArgumentError('LiteralTime: Invalid json type');
   }
+  final String value;
 
   @override
   Map<String, dynamic> toJson() {
@@ -753,9 +738,6 @@ class LiteralTime extends LiteralType {
 }
 
 abstract class LiteralCqlInterval extends LiteralType {
-  final LiteralBoolean? lowClosed;
-  final LiteralBoolean? highClosed;
-
   LiteralCqlInterval({this.lowClosed, this.highClosed});
 
   factory LiteralCqlInterval.fromJson(Map<String, dynamic> json) {
@@ -775,15 +757,14 @@ abstract class LiteralCqlInterval extends LiteralType {
       throw ArgumentError('Invalid interval type');
     }
   }
+  final LiteralBoolean? lowClosed;
+  final LiteralBoolean? highClosed;
 
   @override
   Map<String, dynamic> toJson();
 }
 
 class LiteralIntegerInterval extends LiteralCqlInterval {
-  final LiteralInteger? low;
-  final LiteralInteger? high;
-
   LiteralIntegerInterval({
     super.lowClosed,
     super.highClosed,
@@ -799,6 +780,8 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
       high: LiteralInteger.fromJson(json['high']),
     );
   }
+  final LiteralInteger? low;
+  final LiteralInteger? high;
 
   @override
   Map<String, dynamic> toJson() {
@@ -827,9 +810,6 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
 }
 
 class LiteralDecimalInterval extends LiteralCqlInterval {
-  final LiteralDecimal? low;
-  final LiteralDecimal? high;
-
   LiteralDecimalInterval({
     super.lowClosed,
     super.highClosed,
@@ -845,6 +825,8 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
       high: LiteralDecimal.fromJson(json['high']),
     );
   }
+  final LiteralDecimal? low;
+  final LiteralDecimal? high;
 
   @override
   Map<String, dynamic> toJson() {
@@ -873,9 +855,6 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
 }
 
 class LiteralQuantityInterval extends LiteralCqlInterval {
-  final LiteralQuantity? low;
-  final LiteralQuantity? high;
-
   LiteralQuantityInterval({
     super.lowClosed,
     super.highClosed,
@@ -891,6 +870,8 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
       high: LiteralQuantity.fromJson(json['high']),
     );
   }
+  final LiteralQuantity? low;
+  final LiteralQuantity? high;
 
   @override
   Map<String, dynamic> toJson() {
@@ -919,9 +900,6 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
 }
 
 class LiteralDateInterval extends LiteralCqlInterval {
-  final LiteralDate? low;
-  final LiteralDate? high;
-
   LiteralDateInterval({
     super.lowClosed,
     super.highClosed,
@@ -937,6 +915,8 @@ class LiteralDateInterval extends LiteralCqlInterval {
       high: LiteralDate.fromJson(json['high']),
     );
   }
+  final LiteralDate? low;
+  final LiteralDate? high;
 
   @override
   Map<String, dynamic> toJson() {
@@ -965,9 +945,6 @@ class LiteralDateInterval extends LiteralCqlInterval {
 }
 
 class LiteralDateTimeInterval extends LiteralCqlInterval {
-  final LiteralDateTime? low;
-  final LiteralDateTime? high;
-
   LiteralDateTimeInterval({
     super.lowClosed,
     super.highClosed,
@@ -983,6 +960,8 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
       high: LiteralDateTime.fromJson(json['high']),
     );
   }
+  final LiteralDateTime? low;
+  final LiteralDateTime? high;
 
   @override
   Map<String, dynamic> toJson() {
@@ -1011,9 +990,6 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
 }
 
 class LiteralTimeInterval extends LiteralCqlInterval {
-  final LiteralTime? low;
-  final LiteralTime? high;
-
   LiteralTimeInterval({
     super.lowClosed,
     super.highClosed,
@@ -1029,6 +1005,8 @@ class LiteralTimeInterval extends LiteralCqlInterval {
       high: LiteralTime.fromJson(json['high']),
     );
   }
+  final LiteralTime? low;
+  final LiteralTime? high;
 
   @override
   Map<String, dynamic> toJson() {

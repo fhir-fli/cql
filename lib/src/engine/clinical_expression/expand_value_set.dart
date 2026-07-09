@@ -33,7 +33,7 @@ class ExpandValueSet extends UnaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.toJson(),
     };

@@ -77,7 +77,8 @@ class ToConcept extends UnaryExpression {
 
     // If not a recognized type, return null or throw an exception
     throw ArgumentError(
-        'Cannot convert value of type ${value.runtimeType} to Concept');
+      'Cannot convert value of type ${value.runtimeType} to Concept',
+    );
   }
 
   /// Converts [value] to a [CqlConcept]: System Concept/Code directly, a

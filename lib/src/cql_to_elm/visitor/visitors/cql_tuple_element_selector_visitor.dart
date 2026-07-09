@@ -7,7 +7,7 @@ class CqlTupleElementSelectorVisitor extends CqlBaseVisitor<TupleElement> {
   @override
   TupleElement visitTupleElementSelector(TupleElementSelectorContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? referentialIdentifier;
     CqlExpression? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {

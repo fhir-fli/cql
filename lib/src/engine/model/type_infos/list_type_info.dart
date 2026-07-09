@@ -5,14 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ListTypeInfo] type represents a list type, extending [TypeInfo],
 /// including an elementTypeSpecifier element and elementType attribute.
 class ListTypeInfo extends TypeInfo {
-  /// Element type as a string.
-  String? elementType;
-
-  /// Element type specifier element.
-  TypeSpecifierModel? elementTypeSpecifier;
-
-  final String type = 'ListTypeInfo';
-
   ListTypeInfo({
     this.elementTypeSpecifier,
     this.elementType,
@@ -28,6 +20,14 @@ class ListTypeInfo extends TypeInfo {
       baseType: json['baseType'] as String?,
     );
   }
+
+  /// Element type as a string.
+  String? elementType;
+
+  /// Element type specifier element.
+  TypeSpecifierModel? elementTypeSpecifier;
+
+  final String type = 'ListTypeInfo';
 
   @override
   Map<String, dynamic> toJson() {

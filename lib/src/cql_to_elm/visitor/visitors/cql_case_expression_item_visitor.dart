@@ -7,7 +7,7 @@ class CqlCaseExpressionItemVisitor extends CqlBaseVisitor<CaseItem> {
   @override
   CaseItem visitCaseExpressionItem(CaseExpressionItemContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? when_;
     CqlExpression? then;
     for (final child in ctx.children ?? <ParseTree>[]) {

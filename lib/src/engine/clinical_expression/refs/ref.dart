@@ -3,12 +3,6 @@ import 'package:cql/src/internal.dart';
 /// The CodeRef expression allows a previously defined code to be referenced
 /// within an expression.
 abstract class Ref extends CqlExpression {
-  /// The name of the code.
-  String name;
-
-  /// The library name.
-  String? libraryName;
-
   Ref({
     required this.name,
     this.libraryName,
@@ -42,9 +36,15 @@ abstract class Ref extends CqlExpression {
     }
   }
 
+  /// The name of the code.
+  String name;
+
+  /// The library name.
+  String? libraryName;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'name': name,
       'type': type,
       if (resultTypeSpecifier != null)

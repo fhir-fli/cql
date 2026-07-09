@@ -27,7 +27,10 @@ class CqlStatementVisitor extends CqlBaseVisitor<void> {
       final expression = statement.expression;
       if (model != null && expression != null) {
         CqlBaseVisitor.registerDefineType(
-            library, statement.name, inferType(expression, model));
+          library,
+          statement.name,
+          inferType(expression, model),
+        );
       }
     }
   }

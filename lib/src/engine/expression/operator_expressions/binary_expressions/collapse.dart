@@ -73,10 +73,11 @@ class Collapse extends BinaryExpression {
   });
 
   factory Collapse.fromJson(Map<String, dynamic> json) {
-    List<CqlExpression> operand = [];
+    var operand = <CqlExpression>[];
     if (json['operand'] is List) {
       operand = List<CqlExpression>.from(
-          json['operand'].map((x) => CqlExpression.fromJson(x)));
+        json['operand'].map((x) => CqlExpression.fromJson(x)),
+      );
     } else if (json['operand'] is Map) {
       operand = [CqlExpression.fromJson(json['operand'])];
     }
@@ -98,7 +99,7 @@ class Collapse extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'type': type};
+    final json = <String, dynamic>{'type': type};
     if (operand.length > 1) {
       json['operand'] = operand.map((x) => x.toJson()).toList();
     } else {
@@ -220,7 +221,7 @@ class Collapse extends BinaryExpression {
       // Sort the source by their start points
       source.sort((a, b) => a.compareTo(b));
 
-      final List<CqlInterval> collapsedSource = [];
+      final collapsedSource = <CqlInterval>[];
       CqlInterval? currentInterval = source.first;
 
       // Normalize per for gap tolerance calculation.
@@ -235,11 +236,14 @@ class Collapse extends BinaryExpression {
         // Endpoints are ValidatedQuantity — convert per to ValidatedQuantity
         if (per is CqlInteger) {
           effectivePer = ValidatedQuantity(
-              value: UcumDecimal.fromString(per.valueInt.toString()),
-              unit: '1');
+            value: UcumDecimal.fromString(per.valueInt.toString()),
+            unit: '1',
+          );
         } else if (per is CqlDecimal) {
           effectivePer = ValidatedQuantity(
-              value: UcumDecimal.fromString(per.valueString!), unit: '1');
+            value: UcumDecimal.fromString(per.valueString),
+            unit: '1',
+          );
         }
       }
 
@@ -258,7 +262,7 @@ class Collapse extends BinaryExpression {
         // Check per-based gap tolerance: merge if gap ≤ per.
         // For DateTime intervals, Subtract(DateTime, DateTime) returns null,
         // so instead check if curEnd + per >= nextStart.
-        bool withinPer = false;
+        var withinPer = false;
         if (!overlaps && !meets && effectivePer != null) {
           final curEnd = currentInterval?.getEnd();
           final nextStart = nextInterval.getStart();

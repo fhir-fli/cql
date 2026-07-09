@@ -461,12 +461,18 @@ class CqlExpression extends Element {
     if (json.isEmpty) {
       return CqlExpression();
     }
-    throw ArgumentError.value(json.toString(), 'json',
-        'Could not parse fromJson unknown Expression type');
+    throw ArgumentError.value(
+      json.toString(),
+      'json',
+      'Could not parse fromJson unknown Expression type',
+    );
   }
 
   factory CqlExpression.byName(
-      String type, List<CqlExpression> operand, CqlLibrary library) {
+    String type,
+    List<CqlExpression> operand,
+    CqlLibrary library,
+  ) {
     switch (type) {
       case 'Abs':
         return Abs(operand: operand.first);
@@ -504,43 +510,57 @@ class CqlExpression extends Element {
         return CalculateAge(
           precision: CqlDateTimePrecision.year,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInMonths':
         return CalculateAge(
           precision: CqlDateTimePrecision.month,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInWeeks':
         return CalculateAge(
           precision: CqlDateTimePrecision.week,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInDays':
         return CalculateAge(
           precision: CqlDateTimePrecision.day,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInHours':
         return CalculateAge(
           precision: CqlDateTimePrecision.hour,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInMinutes':
         return CalculateAge(
           precision: CqlDateTimePrecision.minute,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInSeconds':
         return CalculateAge(
           precision: CqlDateTimePrecision.second,
           operand: Property(
-              path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            path: 'birthDate',
+            source: ExpressionRef(name: 'Patient'),
+          ),
         );
       case 'AgeInYearsAt':
         return CalculateAgeAt(
@@ -596,8 +616,9 @@ class CqlExpression extends Element {
         {
           if (operand.isNotEmpty) {
             return Combine(
-                source: operand.first,
-                separator: operand.length > 1 ? operand.last : null);
+              source: operand.first,
+              separator: operand.length > 1 ? operand.last : null,
+            );
           }
         }
       case 'Concatenate':
@@ -758,7 +779,6 @@ class CqlExpression extends Element {
             return LastPositionOf(pattern: operand.first, string: operand.last);
           }
         }
-        break;
       case 'Length':
         return Length(operand: operand.first);
       case 'Less':
@@ -781,7 +801,10 @@ class CqlExpression extends Element {
         {
           if (operand.length == 2) {
             return Log.compareFirst(
-                first: operand.first, second: operand.last, library: library);
+              first: operand.first,
+              second: operand.last,
+              library: library,
+            );
           }
         }
       case 'LowBoundary':
@@ -804,11 +827,12 @@ class CqlExpression extends Element {
         return MeetsBefore(operand: operand);
       case 'Message':
         return Message(
-            source: operand.first,
-            condition: operand.length > 1 ? operand[1] : null,
-            code: operand.length > 2 ? operand[2] : null,
-            severity: operand.length > 3 ? operand[3] : null,
-            message: operand.length > 4 ? operand[4] : null);
+          source: operand.first,
+          condition: operand.length > 1 ? operand[1] : null,
+          code: operand.length > 2 ? operand[2] : null,
+          severity: operand.length > 3 ? operand[3] : null,
+          message: operand.length > 4 ? operand[4] : null,
+        );
       case 'Min':
         return Min(source: operand.first);
       // case 'MinValue':
@@ -865,15 +889,15 @@ class CqlExpression extends Element {
             return PositionOf(pattern: operand.first, string: operand.last);
           }
         }
-        break;
       case 'Power':
         {
           if (operand.length == 2) {
             return Power.compareFirst(
-                first: operand.first, second: operand.last);
+              first: operand.first,
+              second: operand.last,
+            );
           }
         }
-        break;
       case 'Precision':
         return Precision(operand: operand.first);
       case 'Predecessor':
@@ -910,8 +934,9 @@ class CqlExpression extends Element {
       //   return Retrieve(operand: operand);
       case 'Round':
         return Round(
-            operand: operand.first,
-            precision: operand.length > 1 ? operand[1] : null);
+          operand: operand.first,
+          precision: operand.length > 1 ? operand[1] : null,
+        );
       case 'SameAs':
         return SameAs(operand: operand);
       case 'SameOrAfter':
@@ -928,9 +953,10 @@ class CqlExpression extends Element {
             throw ArgumentError.value(operand, 'Skip must have 2 operands');
           }
           return Slice(
-              source: operand[0],
-              startIndex: operand[1],
-              endIndex: LiteralNull());
+            source: operand[0],
+            startIndex: operand[1],
+            endIndex: LiteralNull(),
+          );
         }
       // return Skip(operand: operand);
       // case 'Slice':
@@ -941,7 +967,10 @@ class CqlExpression extends Element {
         {
           if (operand.length != 2) {
             throw ArgumentError.value(
-                operand, 'operand', 'Split must have 2 operands');
+              operand,
+              'operand',
+              'Split must have 2 operands',
+            );
           } else {
             if (operand.isNotEmpty) {
               return Split(stringToSplit: operand.first, separator: operand[1]);
@@ -962,12 +991,15 @@ class CqlExpression extends Element {
         {
           if (operand.length == 2) {
             return Substring(
-                stringToSub: operand.first, startIndex: operand.last);
+              stringToSub: operand.first,
+              startIndex: operand.last,
+            );
           } else if (operand.length == 3) {
             return Substring(
-                stringToSub: operand[0],
-                startIndex: operand[1],
-                length: operand[2]);
+              stringToSub: operand[0],
+              startIndex: operand[1],
+              length: operand[2],
+            );
           }
         }
       case 'SubsumedBy':
@@ -986,9 +1018,10 @@ class CqlExpression extends Element {
             throw ArgumentError.value(operand, 'Tail must have 1 operand');
           }
           return Slice(
-              source: operand[0],
-              startIndex: LiteralInteger(1),
-              endIndex: LiteralNull());
+            source: operand[0],
+            startIndex: LiteralInteger(1),
+            endIndex: LiteralNull(),
+          );
         }
       case 'Take':
         {
@@ -996,9 +1029,10 @@ class CqlExpression extends Element {
             throw ArgumentError.value(operand, 'Take must have 2 operands');
           }
           return Slice(
-              source: operand[0],
-              startIndex: LiteralInteger(0),
-              endIndex: Coalesce(operand: [operand[1], LiteralInteger(0)]));
+            source: operand[0],
+            startIndex: LiteralInteger(0),
+            endIndex: Coalesce(operand: [operand[1], LiteralInteger(0)]),
+          );
         }
       // case 'TernaryExpression':
       //   return TernaryExpression(operands: operand);
@@ -1070,7 +1104,10 @@ class CqlExpression extends Element {
         return Xor(operand: operand);
     }
     throw ArgumentError.value(
-        type, type, 'Could not parse by name unknown Expression type');
+      type,
+      type,
+      'Could not parse by name unknown Expression type',
+    );
   }
 
   @override

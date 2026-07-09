@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the maximum representable value for the given type.
 /// The MaxValue operator is defined for the Integer, Decimal, Date, DateTime,
@@ -56,8 +55,6 @@ import 'package:cql/src/internal.dart';
 /// define "ErrorMaximum": maximum Quantity
 ///
 class MaxValue extends CqlExpression {
-  final QName valueType;
-
   MaxValue({
     required this.valueType,
     super.annotation,
@@ -81,10 +78,11 @@ class MaxValue extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final QName valueType;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'valueType': valueType.toJson(),
       'type': type,
     };
@@ -158,7 +156,11 @@ class MaxValue extends CqlExpression {
       case 'CqlTime':
       case 'Time':
         return CqlTime.fromUnits(
-            hour: 23, minute: 59, second: 59, millisecond: 999);
+          hour: 23,
+          minute: 59,
+          second: 59,
+          millisecond: 999,
+        );
       default:
         throw UnimplementedError();
     }

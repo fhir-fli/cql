@@ -119,7 +119,8 @@ void main(List<String> args) {
     ..writeln()
     ..writeln('final $symbol =')
     ..writeln(
-        '    ModelInfo.fromJson(jsonDecode(_json) as Map<String, dynamic>);')
+      '    ModelInfo.fromJson(jsonDecode(_json) as Map<String, dynamic>);',
+    )
     ..writeln()
     ..writeln("const _json = r'''")
     ..writeln(jsonText)

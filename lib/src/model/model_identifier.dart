@@ -1,13 +1,12 @@
 class ModelIdentifier {
-  String id;
-  String? system;
-  String? version;
-
   ModelIdentifier({
     required this.id,
     this.system,
     this.version,
   });
+  String id;
+  String? system;
+  String? version;
 
   @override
   bool operator ==(Object other) {

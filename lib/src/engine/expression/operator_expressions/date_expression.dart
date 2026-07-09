@@ -4,10 +4,6 @@ import 'package:cql/src/internal.dart';
 /// At least one component must be specified, and no component may be specified at a precision below an unspecified precision.
 /// For example, month may be null, but if it is, day must be null as well.
 class DateExpression extends OperatorExpression {
-  final CqlExpression? day;
-  final CqlExpression? month;
-  final CqlExpression year;
-
   DateExpression({
     required this.year,
     this.month,
@@ -19,8 +15,9 @@ class DateExpression extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
-  factory DateExpression.fromOperandList(
-      {required List<CqlExpression> operand}) {
+  factory DateExpression.fromOperandList({
+    required List<CqlExpression> operand,
+  }) {
     if (operand.isEmpty) {
       throw ArgumentError('DateExpression must have at least one operand');
     }
@@ -49,6 +46,9 @@ class DateExpression extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression? day;
+  final CqlExpression? month;
+  final CqlExpression year;
 
   @override
   Map<String, dynamic> toJson() {

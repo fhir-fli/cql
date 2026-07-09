@@ -7,7 +7,7 @@ class CqlCodePathVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitCodePath(CodePathContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is SimplePathReferentialIdentifierContext) {
         return visitSimplePathReferentialIdentifier(child);

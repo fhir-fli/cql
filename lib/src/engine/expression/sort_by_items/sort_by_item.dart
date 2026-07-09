@@ -2,8 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The SortByItem element specifies the direction for sorting.
 abstract class SortByItem extends Element {
-  final SortDirection direction;
-
   SortByItem({
     required this.direction,
     super.annotation,
@@ -25,6 +23,7 @@ abstract class SortByItem extends Element {
         throw ArgumentError('Unknown SortByItem type: ${json['type']}');
     }
   }
+  final SortDirection direction;
 
   @override
   Map<String, dynamic> toJson() {

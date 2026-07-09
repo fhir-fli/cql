@@ -7,7 +7,7 @@ class CqlOperandDefinitionVisitor extends CqlBaseVisitor<OperandDef> {
   @override
   OperandDef visitOperandDefinition(OperandDefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? referentialIdentifier;
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {

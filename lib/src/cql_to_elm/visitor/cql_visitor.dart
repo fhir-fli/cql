@@ -1,8 +1,11 @@
 // Generated from cql.g4 by ANTLR 4.13.1
-// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
 import 'package:antlr4/antlr4.dart';
+import 'package:cql/src/cql_to_elm/antlr/antlr.dart' show cqlParser;
+import 'package:cql/src/cql_to_elm/antlr/cql_parser.dart' show cqlParser;
+import 'package:cql/src/cql_to_elm/cql_to_elm.dart' show cqlParser;
+import 'package:cql/src/internal.dart' show cqlParser;
 
-import '../antlr/cql_parser.dart';
+import 'package:cql/src/cql_to_elm/antlr/cql_parser.dart';
 
 /// This abstract class defines a complete generic visitor for a parse tree
 /// produced by [cqlParser].
@@ -304,7 +307,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitQualifiedIdentifierExpression(
-      QualifiedIdentifierExpressionContext ctx);
+    QualifiedIdentifierExpressionContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.qualifierExpression].
   /// [ctx] the parse tree.
@@ -322,14 +326,16 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitSimplePathQualifiedIdentifier(
-      SimplePathQualifiedIdentifierContext ctx);
+    SimplePathQualifiedIdentifierContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code simplePathReferentialIdentifier}
   /// labeled alternative in {@link cqlParser#simplePath}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitSimplePathReferentialIdentifier(
-      SimplePathReferentialIdentifierContext ctx);
+    SimplePathReferentialIdentifierContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code simpleStringLiteral}
   /// labeled alternative in {@link cqlParser#simpleLiteral}.
@@ -420,7 +426,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitDifferenceBetweenExpression(
-      DifferenceBetweenExpressionContext ctx);
+    DifferenceBetweenExpressionContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code inequalityExpression}
   /// labeled alternative in {@link cqlParser#expression}.
@@ -496,7 +503,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitSetAggregateExpressionTerm(
-      SetAggregateExpressionTermContext ctx);
+    SetAggregateExpressionTermContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code timeUnitExpressionTerm}
   /// labeled alternative in {@link cqlParser#expressionTerm}.
@@ -515,14 +523,16 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitTimeBoundaryExpressionTerm(
-      TimeBoundaryExpressionTermContext ctx);
+    TimeBoundaryExpressionTermContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code elementExtractorExpressionTerm}
   /// labeled alternative in {@link cqlParser#expressionTerm}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitElementExtractorExpressionTerm(
-      ElementExtractorExpressionTermContext ctx);
+    ElementExtractorExpressionTermContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code conversionExpressionTerm}
   /// labeled alternative in {@link cqlParser#expressionTerm}.
@@ -547,14 +557,16 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitPointExtractorExpressionTerm(
-      PointExtractorExpressionTermContext ctx);
+    PointExtractorExpressionTermContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code multiplicationExpressionTerm}
   /// labeled alternative in {@link cqlParser#expressionTerm}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitMultiplicationExpressionTerm(
-      MultiplicationExpressionTermContext ctx);
+    MultiplicationExpressionTermContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code aggregateExpressionTerm}
   /// labeled alternative in {@link cqlParser#expressionTerm}.
@@ -619,7 +631,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitDateTimePrecisionSpecifier(
-      DateTimePrecisionSpecifierContext ctx);
+    DateTimePrecisionSpecifierContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.relativeQualifier].
   /// [ctx] the parse tree.
@@ -635,7 +648,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitExclusiveRelativeQualifier(
-      ExclusiveRelativeQualifierContext ctx);
+    ExclusiveRelativeQualifierContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.quantityOffset].
   /// [ctx] the parse tree.
@@ -652,63 +666,72 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitConcurrentWithIntervalOperatorPhrase(
-      ConcurrentWithIntervalOperatorPhraseContext ctx);
+    ConcurrentWithIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code includesIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitIncludesIntervalOperatorPhrase(
-      IncludesIntervalOperatorPhraseContext ctx);
+    IncludesIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code includedInIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitIncludedInIntervalOperatorPhrase(
-      IncludedInIntervalOperatorPhraseContext ctx);
+    IncludedInIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code beforeOrAfterIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitBeforeOrAfterIntervalOperatorPhrase(
-      BeforeOrAfterIntervalOperatorPhraseContext ctx);
+    BeforeOrAfterIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code withinIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitWithinIntervalOperatorPhrase(
-      WithinIntervalOperatorPhraseContext ctx);
+    WithinIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code meetsIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitMeetsIntervalOperatorPhrase(
-      MeetsIntervalOperatorPhraseContext ctx);
+    MeetsIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code overlapsIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitOverlapsIntervalOperatorPhrase(
-      OverlapsIntervalOperatorPhraseContext ctx);
+    OverlapsIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code startsIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitStartsIntervalOperatorPhrase(
-      StartsIntervalOperatorPhraseContext ctx);
+    StartsIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code endsIntervalOperatorPhrase}
   /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitEndsIntervalOperatorPhrase(
-      EndsIntervalOperatorPhraseContext ctx);
+    EndsIntervalOperatorPhraseContext ctx,
+  );
 
   /// Visit a parse tree produced by the {@code invocationTerm}
   /// labeled alternative in {@link cqlParser#term}.
@@ -781,7 +804,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitQualifiedFunctionInvocation(
-      QualifiedFunctionInvocationContext ctx);
+    QualifiedFunctionInvocationContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.qualifiedFunction].
   /// [ctx] the parse tree.
@@ -972,13 +996,15 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitReferentialOrTypeNameIdentifier(
-      ReferentialOrTypeNameIdentifierContext ctx);
+    ReferentialOrTypeNameIdentifierContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.identifierOrFunctionIdentifier].
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitIdentifierOrFunctionIdentifier(
-      IdentifierOrFunctionIdentifierContext ctx);
+    IdentifierOrFunctionIdentifierContext ctx,
+  );
 
   /// Visit a parse tree produced by [cqlParser.identifier].
   /// [ctx] the parse tree.

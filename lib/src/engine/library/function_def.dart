@@ -3,14 +3,6 @@ import 'package:cql/src/internal.dart';
 /// Named function definition that can be invoked by any expression in the
 /// artifact.
 class FunctionDef extends ExpressionDef {
-  /// Specifies if the function is external.
-  bool? external;
-
-  bool? fluent;
-
-  /// List of operand definitions.
-  List<OperandDef>? operand;
-
   FunctionDef({
     String? name,
     super.context,
@@ -47,6 +39,14 @@ class FunctionDef extends ExpressionDef {
       fluent: json['fluent'] as bool?,
     );
   }
+
+  /// Specifies if the function is external.
+  bool? external;
+
+  bool? fluent;
+
+  /// List of operand definitions.
+  List<OperandDef>? operand;
 
   @override
   Map<String, dynamic> toJson() {
@@ -92,7 +92,7 @@ class FunctionDef extends ExpressionDef {
   @override
   String get type => 'FunctionDef';
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };
@@ -102,15 +102,16 @@ class FunctionDef extends ExpressionDef {
     // If the function is external or has no expression, throw an error
     if (external == true || expression == null) {
       throw ArgumentError(
-          'Cannot execute external function or function without expression: $name');
+        'Cannot execute external function or function without expression: $name',
+      );
     }
 
     // Create a new context for function execution
-    final Map<String, dynamic> functionContext = Map.from(context);
+    final functionContext = Map<String, dynamic>.from(context);
 
     // If the function has operands defined in the context, make them available to the function expression
     if (operand != null && operand!.isNotEmpty) {
-      for (var param in operand!) {
+      for (final param in operand!) {
         // Check if this parameter is in the context (should have been provided by the caller)
         if (context.containsKey(param.name)) {
           // Maps the operand name to the value provided in the context
@@ -123,6 +124,6 @@ class FunctionDef extends ExpressionDef {
     }
 
     // Execute the function body with the function context
-    return await expression!.execute(functionContext);
+    return expression!.execute(functionContext);
   }
 }

@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Avg operator returns the average of the non-null elements in source.
 /// If a path is specified, elements with no value for the property specified
@@ -59,7 +58,7 @@ class Avg extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -117,12 +116,12 @@ class Avg extends AggregateExpression {
         return null;
       }
       if (sourceResult.every((element) => element is CqlNumber)) {
-        sourceResult =
-            sourceResult.map((e) => CqlDecimal(e.valueNum!)).toList();
-        final sum = sourceResult.fold(CqlDecimal(0),
-            (CqlDecimal previousValue, dynamic element) {
+        sourceResult = sourceResult.map((e) => CqlDecimal(e.valueNum)).toList();
+        final sum =
+            sourceResult.fold(CqlDecimal(0), (previousValue, dynamic element) {
           return CqlDecimal(
-              previousValue.valueNum! + (element as CqlDecimal).valueNum!);
+            previousValue.valueNum! + (element as CqlDecimal).valueNum!,
+          );
         });
         return sum.valueNum == null
             ? null
@@ -141,12 +140,14 @@ class Avg extends AggregateExpression {
         return sum == null
             ? null
             : ValidatedQuantity(
-                value: (sum.value / UcumDecimal.fromNum(sourceResult.length)),
-                unit: sum.unit);
+                value: sum.value / UcumDecimal.fromNum(sourceResult.length),
+                unit: sum.unit,
+              );
       }
     }
     throw ArgumentError(
-        'Invalid source type for Avg: ${sourceResult.runtimeType}');
+      'Invalid source type for Avg: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

@@ -7,7 +7,7 @@ class CqlListTypeSpecifierVisitor extends CqlBaseVisitor<ListTypeSpecifier> {
   @override
   ListTypeSpecifier visitListTypeSpecifier(ListTypeSpecifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         return ListTypeSpecifier(elementType: visitTypeSpecifier(child));

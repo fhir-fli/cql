@@ -1,7 +1,4 @@
 class NamespaceInfo {
-  final String name;
-  final String uri;
-
   NamespaceInfo({
     required this.name,
     required this.uri,
@@ -9,6 +6,8 @@ class NamespaceInfo {
     assert(name.isNotEmpty, 'Name cannot be empty.');
     assert(uri.isNotEmpty, 'Uri cannot be empty.');
   }
+  final String name;
+  final String uri;
 
   @override
   bool operator ==(Object other) {

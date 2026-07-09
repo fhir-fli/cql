@@ -7,9 +7,9 @@ class CqlInstanceSelectorVisitor extends CqlBaseVisitor<Instance> {
   @override
   Instance visitInstanceSelector(InstanceSelectorContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     NamedTypeSpecifier? classType;
-    List<InstanceElement> element = <InstanceElement>[];
+    final element = <InstanceElement>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is NamedTypeSpecifierContext) {
         classType = visitNamedTypeSpecifier(child);
@@ -21,8 +21,9 @@ class CqlInstanceSelectorVisitor extends CqlBaseVisitor<Instance> {
 
     if (classType != null) {
       return Instance(
-          classType: classType.namespace,
-          element: element.isEmpty ? null : element);
+        classType: classType.namespace,
+        element: element.isEmpty ? null : element,
+      );
     }
 
     throw ArgumentError('$thisNode Invalid InstanceSelector');

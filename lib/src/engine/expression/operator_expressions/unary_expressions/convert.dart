@@ -13,16 +13,10 @@ import 'package:cql/src/internal.dart';
 /// Conversion between String and Date/DateTime/Time is performed using the
 /// ISO-8601 standard format: YYYY-MM-DDThh:mm:ss(+|-)hh:mm.
 class Convert extends UnaryExpression {
-  /// Target type to convert to.
-  QName? toType;
-
-  /// Type specifier for the target type.
-  TypeSpecifierExpression? toTypeSpecifier;
-
   Convert({
+    required super.operand,
     this.toTypeSpecifier,
     this.toType,
-    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -47,6 +41,12 @@ class Convert extends UnaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+
+  /// Target type to convert to.
+  QName? toType;
+
+  /// Type specifier for the target type.
+  TypeSpecifierExpression? toTypeSpecifier;
 
   @override
   Map<String, dynamic> toJson() {
@@ -96,27 +96,27 @@ class Convert extends UnaryExpression {
     final targetType = toType?.localPart.toLowerCase() ?? '';
     switch (targetType) {
       case 'boolean':
-        return await ToBoolean(operand: operand).execute(context);
+        return ToBoolean(operand: operand).execute(context);
       case 'integer':
-        return await ToInteger(operand: operand).execute(context);
+        return ToInteger(operand: operand).execute(context);
       case 'long':
-        return await ToLong(operand: operand).execute(context);
+        return ToLong(operand: operand).execute(context);
       case 'decimal':
-        return await ToDecimal(operand: operand).execute(context);
+        return ToDecimal(operand: operand).execute(context);
       case 'string':
-        return await ToString(operand: operand).execute(context);
+        return ToString(operand: operand).execute(context);
       case 'quantity':
-        return await ToQuantity(operand: operand).execute(context);
+        return ToQuantity(operand: operand).execute(context);
       case 'ratio':
-        return await ToRatio(operand: operand).execute(context);
+        return ToRatio(operand: operand).execute(context);
       case 'date':
-        return await ToDate(operand: operand).execute(context);
+        return ToDate(operand: operand).execute(context);
       case 'datetime':
-        return await ToDateTime(operand: operand).execute(context);
+        return ToDateTime(operand: operand).execute(context);
       case 'time':
-        return await ToTime(operand: operand).execute(context);
+        return ToTime(operand: operand).execute(context);
       case 'concept':
-        return await ToConcept(operand: operand).execute(context);
+        return ToConcept(operand: operand).execute(context);
       default:
         return null;
     }

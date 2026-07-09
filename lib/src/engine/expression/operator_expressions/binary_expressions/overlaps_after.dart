@@ -41,11 +41,9 @@ import 'package:cql/src/internal.dart';
 /// define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4]
 /// define "OverlapsIsNull": Interval[6, 10] overlaps (null as `Interval<Integer>`)
 class OverlapsAfter extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   OverlapsAfter({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -74,10 +72,11 @@ class OverlapsAfter extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -116,8 +115,11 @@ class OverlapsAfter extends BinaryExpression {
     return overlapsAfter(left, right, precision);
   }
 
-  static CqlBoolean? overlapsAfter(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? overlapsAfter(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null || right == null) {
       return null;
     }

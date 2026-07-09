@@ -2,8 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The Total expression returns the current value of the total aggregation accumulator in an aggregate operation.
 class Total extends CqlExpression {
-  final String scope;
-
   Total({
     required this.scope,
     super.annotation,
@@ -27,10 +25,11 @@ class Total extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String scope;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'scope': scope,
     };
@@ -57,6 +56,6 @@ class Total extends CqlExpression {
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    return context[scope.isEmpty ? '\$total' : scope];
+    return context[scope.isEmpty ? r'$total' : scope];
   }
 }

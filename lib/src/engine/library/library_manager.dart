@@ -9,9 +9,8 @@ abstract class LibrarySourceProvider {
 
 /// Looks in a configurable base directory for `<path>.cql` files.
 class FileSystemLibrarySourceProvider implements LibrarySourceProvider {
-  final String basePath;
-
   FileSystemLibrarySourceProvider({required this.basePath});
+  final String basePath;
 
   @override
   Future<String?> getLibrarySource(String path, String? version) async {
@@ -32,6 +31,7 @@ class FileSystemLibrarySourceProvider implements LibrarySourceProvider {
 }
 
 class LibraryManager {
+  LibraryManager({this.sourceProvider, this.parseLibrary});
   // Cache of loaded libraries by name and version
   final Map<String, Map<String, CqlLibrary>> _libraryCache = {};
 
@@ -45,8 +45,6 @@ class LibraryManager {
   /// Set this to enable auto-loading.
   CqlLibrary Function(String cqlSource)? parseLibrary;
 
-  LibraryManager({this.sourceProvider, this.parseLibrary});
-
   void addLibrary(String libraryName, String version, CqlLibrary library) {
     if (_libraryCache.containsKey(libraryName)) {
       _libraryCache[libraryName]![version] = library;
@@ -56,7 +54,9 @@ class LibraryManager {
   }
 
   Future<CqlLibrary?> resolveLibrary(
-      String libraryName, String? version) async {
+    String libraryName,
+    String? version,
+  ) async {
     version = version ?? '';
     final cached = _libraryCache[libraryName]?[version];
     if (cached != null) return cached;

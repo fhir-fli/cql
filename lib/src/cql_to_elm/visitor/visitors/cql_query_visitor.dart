@@ -7,9 +7,9 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
   @override
   Query visitQuery(QueryContext ctx) {
     printIf(ctx);
-    List<AliasedQuerySource> source = [];
-    List<LetClause> let = [];
-    List<RelationshipClause> relationship = [];
+    final source = <AliasedQuerySource>[];
+    final let = <LetClause>[];
+    final relationship = <RelationshipClause>[];
     CqlExpression? where;
     AggregateClause? aggregateClause;
     ReturnClause? returnClause;

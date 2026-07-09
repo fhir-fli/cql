@@ -7,9 +7,10 @@ class CqlInstanceElementSelectorVisitor
 
   @override
   InstanceElement visitInstanceElementSelector(
-      InstanceElementSelectorContext ctx) {
+    InstanceElementSelectorContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? name;
     CqlExpression? value;
     for (final child in ctx.children ?? <ParseTree>[]) {

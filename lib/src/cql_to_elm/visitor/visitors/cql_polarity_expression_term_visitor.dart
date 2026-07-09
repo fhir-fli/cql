@@ -7,7 +7,7 @@ class CqlPolarityExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitPolarityExpressionTerm(PolarityExpressionTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     bool? isPositive;
     CqlExpression? expressionTerm;
     for (final child in ctx.children ?? <ParseTree>[]) {

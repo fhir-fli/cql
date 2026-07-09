@@ -7,7 +7,7 @@ class CqlCodesystemIdentifierVisitor extends CqlBaseVisitor<CodeSystemRef> {
   @override
   CodeSystemRef visitCodesystemIdentifier(CodesystemIdentifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? name;
     String? libraryName;
 

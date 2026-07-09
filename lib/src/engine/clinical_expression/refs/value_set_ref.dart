@@ -4,8 +4,6 @@ import 'package:cql/src/internal.dart';
 /// referenced within an expression. Conceptually, referencing a value set
 /// returns the expansion set for the value set as a list of codes.
 class ValueSetRef extends Ref {
-  bool? preserve;
-
   ValueSetRef({
     required super.name,
     super.libraryName,
@@ -20,7 +18,7 @@ class ValueSetRef extends Ref {
   factory ValueSetRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];
     if (name == null) {
-      throw ArgumentError("JSON name cannot be null");
+      throw ArgumentError('JSON name cannot be null');
     }
 
     return ValueSetRef(
@@ -40,10 +38,11 @@ class ValueSetRef extends Ref {
           : null,
     );
   }
+  bool? preserve;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'name': name,
       if (libraryName != null) 'libraryName': libraryName,
       if (preserve != null) 'preserve': preserve,
@@ -78,7 +77,7 @@ class ValueSetRef extends Ref {
   @override
   Future<CqlValueSet?> execute(Map<String, dynamic> context) async {
     // Retrieve the CqlLibrary from the context
-    var library = context['library'];
+    final library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
@@ -88,7 +87,7 @@ class ValueSetRef extends Ref {
       return library.resolveValueSetRefFromLibrary(name, libraryName!);
     }
 
-    final CqlValueSet? valueSet = library.resolveValueSetRef(name);
+    final valueSet = library.resolveValueSetRef(name);
 
     return valueSet;
   }

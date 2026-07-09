@@ -1,8 +1,8 @@
 import 'package:cql/src/internal.dart';
 
 abstract class TypeSpecifierModel {
-  final String? type;
   TypeSpecifierModel({this.type});
+  final String? type;
 
   static TypeSpecifierModel fromJson(Map<String, dynamic> map) {
     final type = map['type'];

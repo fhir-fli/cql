@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Instance element used within an Instance expression.
 class InstanceElement extends Element {
-  /// Required name of the instance element.
-  String name;
-
-  /// Value expression of the instance element.
-  CqlExpression value;
-
   InstanceElement({
     required this.name,
     required this.value,
@@ -35,9 +29,15 @@ class InstanceElement extends Element {
             : null,
       );
 
+  /// Required name of the instance element.
+  String name;
+
+  /// Value expression of the instance element.
+  CqlExpression value;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'name': name,
       'value': value.toJson(),
     };

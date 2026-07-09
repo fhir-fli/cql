@@ -286,7 +286,7 @@ abstract class CqlDateTimeBase extends CqlPrimitive
 
   /// CQL `~` on temporals.
   ///
-  /// TODO(cql-spec): per CQL spec §3.4.6, equivalent should truncate both
+  // TODO(cql-spec): per CQL spec §3.4.6, equivalent should truncate both
   /// operands to the lower precision before comparing (so `@2012 ~ @2012-01-01`
   /// is true). Current behavior mirrors the original engine and treats
   /// equivalent identically to equal, returning false on precision mismatch.
@@ -957,14 +957,35 @@ enum TemporalPrecisionEnum {
   DateTime add(DateTime input, int amount) {
     switch (this) {
       case TemporalPrecisionEnum.year:
-        return DateTime(input.year + amount, input.month, input.day, input.hour,
-            input.minute, input.second, input.millisecond);
+        return DateTime(
+          input.year + amount,
+          input.month,
+          input.day,
+          input.hour,
+          input.minute,
+          input.second,
+          input.millisecond,
+        );
       case TemporalPrecisionEnum.month:
-        return DateTime(input.year, input.month + amount, input.day, input.hour,
-            input.minute, input.second, input.millisecond);
+        return DateTime(
+          input.year,
+          input.month + amount,
+          input.day,
+          input.hour,
+          input.minute,
+          input.second,
+          input.millisecond,
+        );
       case TemporalPrecisionEnum.day:
-        return DateTime(input.year, input.month, input.day + amount, input.hour,
-            input.minute, input.second, input.millisecond);
+        return DateTime(
+          input.year,
+          input.month,
+          input.day + amount,
+          input.hour,
+          input.minute,
+          input.second,
+          input.millisecond,
+        );
       case TemporalPrecisionEnum.hour:
         return input.add(Duration(hours: amount));
       case TemporalPrecisionEnum.minute:

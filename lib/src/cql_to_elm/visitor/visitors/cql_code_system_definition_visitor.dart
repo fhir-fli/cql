@@ -7,7 +7,7 @@ class CqlCodesystemDefinitionVisitor extends CqlBaseVisitor<void> {
   @override
   void visitCodesystemDefinition(CodesystemDefinitionContext ctx) {
     printIf(ctx);
-    AccessModifier accessLevel = AccessModifier.public;
+    var accessLevel = AccessModifier.public;
     String? name;
     String? id;
     String? version;
@@ -24,12 +24,14 @@ class CqlCodesystemDefinitionVisitor extends CqlBaseVisitor<void> {
     }
     if (name != null || id != null || version != null) {
       library.codeSystems ??= CodeSystemDefs();
-      library.codeSystems!.def.add(CodeSystemDef(
-        name: name,
-        id: id,
-        version: version,
-        accessLevel: accessLevel,
-      ));
+      library.codeSystems!.def.add(
+        CodeSystemDef(
+          name: name,
+          id: id,
+          version: version,
+          accessLevel: accessLevel,
+        ),
+      );
     }
   }
 }

@@ -5,23 +5,27 @@ import 'package:ucum/ucum.dart';
 void main() {
   group('count', () {
     test('define "Count5": Count({ 1, 2, 3, 4, 5 }) // 5', () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1),
-        LiteralDecimal(2),
-        LiteralDecimal(3),
-        LiteralDecimal(4),
-        LiteralDecimal(5),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1),
+          LiteralDecimal(2),
+          LiteralDecimal(3),
+          LiteralDecimal(4),
+          LiteralDecimal(5),
+        ],
+      );
       final count = Count(source: list);
       final result = await count.execute({});
       expect(result, equals(CqlInteger(5)));
     });
     test('define "Count0": Count({ null, null, null }) // 0', () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final count = Count(source: list);
       final result = await count.execute({});
       expect(result, equals(CqlInteger(0)));
@@ -36,13 +40,15 @@ void main() {
   group('sum', () {
     test('define "DecimalSum": Sum({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 15.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1.0),
-        LiteralDecimal(2.0),
-        LiteralDecimal(3.0),
-        LiteralDecimal(4.0),
-        LiteralDecimal(5.0),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1.0),
+          LiteralDecimal(2.0),
+          LiteralDecimal(3.0),
+          LiteralDecimal(4.0),
+          LiteralDecimal(5.0),
+        ],
+      );
       final sum = Sum(source: list);
       final result = await sum.execute({});
       expect(result, equals(CqlDecimal(15.0)));
@@ -50,28 +56,34 @@ void main() {
     test(
         """define "QuantitySum": Sum({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 15.0 'mg'""",
         () async {
-      final list = ListExpression(element: [
-        LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(5.0), unit: 'mg'),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(5.0), unit: 'mg'),
+        ],
+      );
       final sum = Sum(source: list);
       final result = await sum.execute({});
       expect(
-          result,
-          equals(
-              ValidatedQuantity(value: UcumDecimal.fromNum(15.0), unit: 'mg')));
+        result,
+        equals(
+          ValidatedQuantity(value: UcumDecimal.fromNum(15.0), unit: 'mg'),
+        ),
+      );
     });
     test(
         'define "SumIsNull": Sum({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final sum = Sum(source: list);
       final result = await sum.execute({});
       expect(result, equals(null));
@@ -85,11 +97,13 @@ void main() {
 
   group('avg', () {
     test('define "DecimalAvg": Avg({ 5.5, 4.7, 4.8 }) // 5.0', () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(5.5),
-        LiteralDecimal(4.7),
-        LiteralDecimal(4.8)
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(5.5),
+          LiteralDecimal(4.7),
+          LiteralDecimal(4.8),
+        ],
+      );
       final avg = Avg(source: list);
       final result = await avg.execute({});
       expect(result, equals(CqlDecimal(5.0)));
@@ -97,17 +111,21 @@ void main() {
     test(
         """define "QuantityAvg": Avg({ 5.5 'cm', 4.7 'cm', 4.8 'cm' }) // 5.0 'cm'""",
         () async {
-      final list = ListExpression(element: [
-        LiteralQuantity(LiteralDecimal(5.5), unit: 'cm'),
-        LiteralQuantity(LiteralDecimal(4.7), unit: 'cm'),
-        LiteralQuantity(LiteralDecimal(4.8), unit: 'cm')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralQuantity(LiteralDecimal(5.5), unit: 'cm'),
+          LiteralQuantity(LiteralDecimal(4.7), unit: 'cm'),
+          LiteralQuantity(LiteralDecimal(4.8), unit: 'cm'),
+        ],
+      );
       final avg = Avg(source: list);
       final result = await avg.execute({});
       expect(
-          result,
-          equals(
-              ValidatedQuantity(value: UcumDecimal.fromNum(5.0), unit: 'cm')));
+        result,
+        equals(
+          ValidatedQuantity(value: UcumDecimal.fromNum(5.0), unit: 'cm'),
+        ),
+      );
     });
     test('define "AvgIsNull": Avg(null as List<Decimal>)', () async {
       final list = ListExpression(element: [LiteralNull()]);
@@ -119,23 +137,27 @@ void main() {
 
   group('Min', () {
     test('define "IntegerMin": Min({ 2, 4, 8, 6 }) // 2', () async {
-      final list = ListExpression(element: [
-        LiteralInteger(2),
-        LiteralInteger(4),
-        LiteralInteger(8),
-        LiteralInteger(6)
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralInteger(2),
+          LiteralInteger(4),
+          LiteralInteger(8),
+          LiteralInteger(6),
+        ],
+      );
       final min = Min(source: list);
       final result = await min.execute({});
       expect(result, equals(CqlInteger(2)));
     });
     test('define "LongMin": Min({ 2L, 4L, 8L, 6L }) // 2L', () async {
-      final list = ListExpression(element: [
-        LiteralLong(BigInt.from(2)),
-        LiteralLong(BigInt.from(4)),
-        LiteralLong(BigInt.from(8)),
-        LiteralLong(BigInt.from(6))
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralLong(BigInt.from(2)),
+          LiteralLong(BigInt.from(4)),
+          LiteralLong(BigInt.from(8)),
+          LiteralLong(BigInt.from(6)),
+        ],
+      );
       final min = Min(source: list);
       final result = await min.execute({});
       expect(result, equals(CqlLong(BigInt.from(2))));
@@ -143,11 +165,13 @@ void main() {
     test(
         'define "DateMin": Min({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2012-01-01',
         () async {
-      final list = ListExpression(element: [
-        LiteralDate('2012-12-31'),
-        LiteralDate('2013-01-01'),
-        LiteralDate('2012-01-01')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDate('2012-12-31'),
+          LiteralDate('2013-01-01'),
+          LiteralDate('2012-01-01'),
+        ],
+      );
       final min = Min(source: list);
       final result = await min.execute({});
       expect(result, equals(CqlDate.fromString('2012-01-01')));
@@ -156,7 +180,8 @@ void main() {
         'define "MinIsNull": Min({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
-          element: [LiteralNull(), LiteralNull(), LiteralNull()]);
+        element: [LiteralNull(), LiteralNull(), LiteralNull()],
+      );
       final min = Min(source: list);
       final result = await min.execute({});
       expect(result, equals(null));
@@ -170,23 +195,27 @@ void main() {
 
   group('max', () {
     test('define "IntegerMax": Max({ 2, 4, 8, 6 }) // 8', () async {
-      final list = ListExpression(element: [
-        LiteralInteger(2),
-        LiteralInteger(4),
-        LiteralInteger(8),
-        LiteralInteger(6)
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralInteger(2),
+          LiteralInteger(4),
+          LiteralInteger(8),
+          LiteralInteger(6),
+        ],
+      );
       final max = Max(source: list);
       final result = await max.execute({});
       expect(result, equals(CqlInteger(8)));
     });
     test('define "LongMax": Max({ 2L, 4L, 8L, 6L }) // 8L', () async {
-      final list = ListExpression(element: [
-        LiteralLong(BigInt.from(2)),
-        LiteralLong(BigInt.from(4)),
-        LiteralLong(BigInt.from(8)),
-        LiteralLong(BigInt.from(6))
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralLong(BigInt.from(2)),
+          LiteralLong(BigInt.from(4)),
+          LiteralLong(BigInt.from(8)),
+          LiteralLong(BigInt.from(6)),
+        ],
+      );
       final max = Max(source: list);
       final result = await max.execute({});
       expect(result, equals(CqlLong(BigInt.from(8))));
@@ -194,11 +223,13 @@ void main() {
     test(
         'define "DateMax": Max({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2013-01-01',
         () async {
-      final list = ListExpression(element: [
-        LiteralDate('2012-12-31'),
-        LiteralDate('2013-01-01'),
-        LiteralDate('2012-01-01')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDate('2012-12-31'),
+          LiteralDate('2013-01-01'),
+          LiteralDate('2012-01-01'),
+        ],
+      );
       final max = Max(source: list);
       final result = await max.execute({});
       expect(result, equals(CqlDate.fromString('2013-01-01')));
@@ -207,7 +238,8 @@ void main() {
         'define "MaxIsNull": Max({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
-          element: [LiteralNull(), LiteralNull(), LiteralNull()]);
+        element: [LiteralNull(), LiteralNull(), LiteralNull()],
+      );
       final max = Max(source: list);
       final result = await max.execute({});
       expect(result, equals(null));
@@ -227,7 +259,7 @@ void main() {
           LiteralDecimal(2.0),
           LiteralDecimal(4.0),
           LiteralDecimal(8.0),
-          LiteralDecimal(6.0)
+          LiteralDecimal(6.0),
         ],
       );
       final median = Median(source: list);
@@ -247,9 +279,11 @@ void main() {
       final median = Median(source: list);
       final result = await median.execute({});
       expect(
-          result,
-          equals(
-              ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')));
+        result,
+        equals(
+          ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg'),
+        ),
+      );
     });
     test(
         'define "MedianIsNull": Median({ null as Quantity, null as Quantity, null as Quantity })',
@@ -303,9 +337,11 @@ void main() {
       final mode = Mode(source: list);
       final result = await mode.execute({});
       expect(
-          result,
-          equals(
-              ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')));
+        result,
+        equals(
+          ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg'),
+        ),
+      );
     });
     test(
         'define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })',
@@ -361,9 +397,14 @@ void main() {
       final variance = Variance(source: list);
       final result = await variance.execute({});
       expect(
-          result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromString('0.00000250'), unit: 'g2')));
+        result,
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000250'),
+            unit: 'g2',
+          ),
+        ),
+      );
     });
     test(
         'define "VarianceIsNull": Variance({ null as Quantity, null as Quantity, null as Quantity })',
@@ -391,13 +432,15 @@ void main() {
     test(
         'define "DecimalPopulationVariance": PopulationVariance({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 2.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1.0),
-        LiteralDecimal(2.0),
-        LiteralDecimal(3.0),
-        LiteralDecimal(4.0),
-        LiteralDecimal(5.0)
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1.0),
+          LiteralDecimal(2.0),
+          LiteralDecimal(3.0),
+          LiteralDecimal(4.0),
+          LiteralDecimal(5.0),
+        ],
+      );
       final result = await PopulationVariance(source: list).execute({});
       expect(result, equals(CqlDecimal(2.0)));
     });
@@ -405,27 +448,36 @@ void main() {
         """define "QuantityPopulationVariance": PopulationVariance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
       // UCUM multiplication canonicalizes mg*mg → g2 (gram-squared)
-      final list = ListExpression(element: [
-        LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(5.0), unit: 'mg')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(5.0), unit: 'mg'),
+        ],
+      );
       final result = await PopulationVariance(source: list).execute({});
       expect(
-          result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromString('0.00000200'), unit: 'g2')));
+        result,
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000200'),
+            unit: 'g2',
+          ),
+        ),
+      );
     });
     test(
         'define "PopulationVarianceIsNull": PopulationVariance({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final result = await PopulationVariance(source: list).execute({});
       expect(result, equals(null));
     });
@@ -437,22 +489,26 @@ void main() {
       expect(result, equals(null));
     });
     test('PopulationVariance({ 1, 2, 3, null }) = 0.66666666', () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1),
-        LiteralDecimal(2),
-        LiteralDecimal(3),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1),
+          LiteralDecimal(2),
+          LiteralDecimal(3),
+          LiteralNull(),
+        ],
+      );
       final result = await PopulationVariance(source: list).execute({});
       expect(result, equals(CqlDecimal(0.66666667)));
     });
     test('PopulationStdDev({ 1, 2, 3, null }) = 0.816496580927726', () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1),
-        LiteralDecimal(2),
-        LiteralDecimal(3),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1),
+          LiteralDecimal(2),
+          LiteralDecimal(3),
+          LiteralNull(),
+        ],
+      );
       final result = await PopulationStdDev(source: list).execute({});
       expect(result, equals(CqlDecimal(0.81649658)));
     });
@@ -468,7 +524,7 @@ void main() {
           LiteralDecimal(2.0),
           LiteralDecimal(3.0),
           LiteralDecimal(4.0),
-          LiteralDecimal(5.0)
+          LiteralDecimal(5.0),
         ],
       );
       final stddev = StdDev(source: list);
@@ -491,9 +547,14 @@ void main() {
       final stddev = StdDev(source: list);
       final result = await stddev.execute({});
       expect(
-          result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromString('1.58113883'), unit: 'mg')));
+        result,
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('1.58113883'),
+            unit: 'mg',
+          ),
+        ),
+      );
     });
     test(
         'define "StdDevIsNull": StdDev({ null as Quantity, null as Quantity, null as Quantity })',
@@ -520,13 +581,15 @@ void main() {
     test(
         'define "DecimalPopulationStdDev": PopulationStdDev({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 1.4142135623730951',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(1.0),
-        LiteralDecimal(2.0),
-        LiteralDecimal(3.0),
-        LiteralDecimal(4.0),
-        LiteralDecimal(5.0)
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(1.0),
+          LiteralDecimal(2.0),
+          LiteralDecimal(3.0),
+          LiteralDecimal(4.0),
+          LiteralDecimal(5.0),
+        ],
+      );
       final result = await PopulationStdDev(source: list).execute({});
       expect(result, equals(CqlDecimal(1.41421356)));
     });
@@ -534,27 +597,36 @@ void main() {
         """define "QuantityPopulationStdDev": PopulationStdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.41421356 'mg'""",
         () async {
       // Truncated to 8 decimal places to match CQF reference precision
-      final list = ListExpression(element: [
-        LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
-        LiteralQuantity(LiteralDecimal(5.0), unit: 'mg')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(2.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(3.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(4.0), unit: 'mg'),
+          LiteralQuantity(LiteralDecimal(5.0), unit: 'mg'),
+        ],
+      );
       final result = await PopulationStdDev(source: list).execute({});
       expect(
-          result,
-          equals(ValidatedQuantity(
-              value: UcumDecimal.fromString('1.41421356'), unit: 'mg')));
+        result,
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('1.41421356'),
+            unit: 'mg',
+          ),
+        ),
+      );
     });
     test(
         'define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final result = await PopulationStdDev(source: list).execute({});
       expect(result, equals(null));
     });
@@ -568,21 +640,25 @@ void main() {
 
   group('allTrue', () {
     test('define "AllTrueIsTrue": AllTrue({ true, null, true })', () async {
-      final list = ListExpression(element: [
-        LiteralBoolean(true),
-        LiteralNull(),
-        LiteralBoolean(true),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralBoolean(true),
+          LiteralNull(),
+          LiteralBoolean(true),
+        ],
+      );
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
       expect(result, CqlBoolean(true));
     });
     test('define "AllTrueIsAlsoTrue": AllTrue({ null, null, null })', () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
       expect(result, CqlBoolean(true));
@@ -593,11 +669,13 @@ void main() {
       expect(result, CqlBoolean(true));
     });
     test('define "AllTrueIsFalse": AllTrue({ true, false, null })', () async {
-      final list = ListExpression(element: [
-        LiteralBoolean(true),
-        LiteralBoolean(false),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralBoolean(true),
+          LiteralBoolean(false),
+          LiteralNull(),
+        ],
+      );
       final allTrue = AllTrue(source: list);
       final result = await allTrue.execute({});
       expect(result, CqlBoolean(false));
@@ -606,32 +684,38 @@ void main() {
 
   group('anyTrue', () {
     test('define "AnyTrueIsTrue": AnyTrue({ true, false, null })', () async {
-      final list = ListExpression(element: [
-        LiteralBoolean(true),
-        LiteralBoolean(false),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralBoolean(true),
+          LiteralBoolean(false),
+          LiteralNull(),
+        ],
+      );
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
       expect(result, CqlBoolean(true));
     });
     test('define "AnyTrueIsFalse": AnyTrue({ false, false, null })', () async {
-      final list = ListExpression(element: [
-        LiteralBoolean(false),
-        LiteralBoolean(false),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralBoolean(false),
+          LiteralBoolean(false),
+          LiteralNull(),
+        ],
+      );
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
       expect(result, CqlBoolean(false));
     });
     test('define "AnyTrueIsAlsoFalse": AnyTrue({ null, null, null })',
         () async {
-      final list = ListExpression(element: [
-        LiteralNull(),
-        LiteralNull(),
-        LiteralNull(),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralNull(),
+          LiteralNull(),
+          LiteralNull(),
+        ],
+      );
       final anyTrue = AnyTrue(source: list);
       final result = await anyTrue.execute({});
       expect(result, CqlBoolean(false));
@@ -645,22 +729,26 @@ void main() {
 
   group('product', () {
     test('define "IntegerProduct": Product({ 2, 3, 4 }) // 24', () async {
-      final list = ListExpression(element: [
-        LiteralInteger(2),
-        LiteralInteger(3),
-        LiteralInteger(4),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralInteger(2),
+          LiteralInteger(3),
+          LiteralInteger(4),
+        ],
+      );
       final product = Product(source: list);
       final result = await product.execute({});
       expect(result, equals(CqlInteger(24)));
     });
     test('define "DecimalProduct": Product({ 2.0, 3.0, 4.0 }) // 24.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(2.0),
-        LiteralDecimal(3.0),
-        LiteralDecimal(4.0),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(2.0),
+          LiteralDecimal(3.0),
+          LiteralDecimal(4.0),
+        ],
+      );
       final product = Product(source: list);
       final result = await product.execute({});
       expect(result, equals(CqlDecimal(24.0)));
@@ -677,9 +765,11 @@ void main() {
       expect(result, isNull);
     });
     test('define "ProductSingle": Product({ 7 }) // 7', () async {
-      final list = ListExpression(element: [
-        LiteralInteger(7),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralInteger(7),
+        ],
+      );
       final product = Product(source: list);
       final result = await product.execute({});
       expect(result, equals(CqlInteger(7)));
@@ -689,29 +779,35 @@ void main() {
   group('geometricMean', () {
     test('define "GeometricMeanTwo": GeometricMean({ 2.0, 8.0 }) // 4.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(2.0),
-        LiteralDecimal(8.0),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(2.0),
+          LiteralDecimal(8.0),
+        ],
+      );
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
       expect(result, equals(CqlDecimal(4.0)));
     });
     test('define "GeometricMeanFourNine": GeometricMean({ 4.0, 9.0 }) // 6.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(4.0),
-        LiteralDecimal(9.0),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(4.0),
+          LiteralDecimal(9.0),
+        ],
+      );
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
       expect(result, equals(CqlDecimal(6.0)));
     });
     test('define "GeometricMeanSingle": GeometricMean({ 5.0 }) // 5.0',
         () async {
-      final list = ListExpression(element: [
-        LiteralDecimal(5.0),
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralDecimal(5.0),
+        ],
+      );
       final gm = GeometricMean(source: list);
       final result = await gm.execute({});
       expect(result, equals(CqlDecimal(5.0)));

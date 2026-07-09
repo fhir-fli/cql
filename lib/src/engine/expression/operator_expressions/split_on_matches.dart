@@ -5,9 +5,6 @@ import 'package:cql/src/internal.dart';
 /// If the stringToSplit argument does not contain any appearances of the separator pattern,
 /// the result is a list of strings containing one element that is the input value of the stringToSplit argument.
 class SplitOnMatches extends OperatorExpression {
-  final CqlExpression separatorPattern;
-  final CqlExpression stringToSplit;
-
   SplitOnMatches({
     required this.stringToSplit,
     required this.separatorPattern,
@@ -33,6 +30,8 @@ class SplitOnMatches extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression separatorPattern;
+  final CqlExpression stringToSplit;
 
   @override
   Map<String, dynamic> toJson() {
@@ -91,6 +90,6 @@ class SplitOnMatches extends OperatorExpression {
     }
     if (p == null) return null;
 
-    return s.split(RegExp(p)).map((e) => CqlString(e)).toList();
+    return s.split(RegExp(p)).map(CqlString.new).toList();
   }
 }

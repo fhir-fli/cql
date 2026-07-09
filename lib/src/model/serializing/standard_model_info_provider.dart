@@ -6,128 +6,128 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
   @override
   ModelInfo? load(ModelIdentifier modelIdentifier) {
     if (isQDMModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "4.1.2":
+          case '4.1.2':
             return qdmmodelinfo;
-          case "4.2":
+          case '4.2':
             return qdmmodelinfo42;
-          case "4.3":
+          case '4.3':
             return qdmmodelinfo43;
-          case "5.0":
+          case '5.0':
             return qdmmodelinfo50;
-          case "5.0.1":
+          case '5.0.1':
             return qdmmodelinfo501;
-          case "5.0.2":
+          case '5.0.2':
             return qdmmodelinfo502;
-          case "5.3":
+          case '5.3':
             return qdmmodelinfo53;
-          case "5.4":
+          case '5.4':
             return qdmmodelinfo54;
-          case "5.5":
+          case '5.5':
             return qdmmodelinfo55;
-          case "5.6":
-          case "":
+          case '5.6':
+          case '':
             return qdmmodelinfo56;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isFhirModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "1.0.0":
+          case '1.0.0':
             return systemmodelinfo;
-          case "1.0.2":
+          case '1.0.2':
             return fhirmodelinfo102;
-          case "1.6":
+          case '1.6':
             return fhirmodelinfo16;
-          case "1.4":
+          case '1.4':
             return fhirmodelinfo14;
-          case "1.8":
+          case '1.8':
             return fhirmodelinfo18;
-          case "3.0.0":
+          case '3.0.0':
             return fhirmodelinfo300;
-          case "3.0.1":
+          case '3.0.1':
             return fhirmodelinfo301;
-          case "3.2.0":
+          case '3.2.0':
             return fhirmodelinfo320;
-          case "4.0.0":
+          case '4.0.0':
             return fhirmodelinfo400;
-          case "4.0.1":
+          case '4.0.1':
             {
               return fhirmodelinfo401;
             }
-          case "4.0.1-1.5.1":
+          case '4.0.1-1.5.1':
             return fhirmodelinfo401151;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isQuickModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "0.3.0":
+          case '0.3.0':
             return quickmodelinfo030;
-          case "3.0.0":
+          case '3.0.0':
             return quickmodelinfo300;
-          case "3.0.1":
+          case '3.0.1':
             return quickfhirmodelinfo301;
-          case "3.3.0":
+          case '3.3.0':
             return quickmodelinfo330;
-          case "null":
+          case 'null':
             return quickmodelinfo;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isQICoreModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "4.0.0":
+          case '4.0.0':
             return qicoremodelinfo400;
-          case "4.1.0":
+          case '4.1.0':
             return qicoremodelinfo410;
-          case "4.1.1":
+          case '4.1.1':
             return qicoremodelinfo411;
-          case "5.0.0":
+          case '5.0.0':
             return qicoremodelinfo500;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isUsCoreModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "3.1.1":
+          case '3.1.1':
             return uscoremodelinfo311;
-          case "3.1.0":
+          case '3.1.0':
             return uscoremodelinfo310;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isTestModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "null":
+          case 'null':
             return testmodelinfo;
         }
       } catch (e) {
         // Do not throw, allow other providers to resolve
       }
     } else if (isSimpleModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "1.0.0":
-          case "":
+          case '1.0.0':
+          case '':
           default:
             return simplemodelinfo;
         }
@@ -135,11 +135,11 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
         // Do not throw, allow other providers to resolve
       }
     } else if (isSystemModelIdentifier(modelIdentifier)) {
-      final localVersion = modelIdentifier.version ?? "";
+      final localVersion = modelIdentifier.version ?? '';
       try {
         switch (localVersion) {
-          case "1.0.0":
-          case "":
+          case '1.0.0':
+          case '':
           default:
             return systemmodelinfo;
         }
@@ -157,77 +157,77 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
 
   bool isQDMModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QDM" &&
+      return modelIdentifier.id == 'QDM' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "urn:healthit-gov");
+              modelIdentifier.system == 'urn:healthit-gov');
     }
-    return modelIdentifier.id == "QDM";
+    return modelIdentifier.id == 'QDM';
   }
 
   bool isFhirModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "FHIR" &&
+      return modelIdentifier.id == 'FHIR' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir");
+              modelIdentifier.system == 'http://hl7.org/fhir');
     }
-    return modelIdentifier.id == "FHIR";
+    return modelIdentifier.id == 'FHIR';
   }
 
   bool isQuickModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QUICK" &&
+      return modelIdentifier.id == 'QUICK' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir");
+              modelIdentifier.system == 'http://hl7.org/fhir');
     }
-    return modelIdentifier.id == "QUICK";
+    return modelIdentifier.id == 'QUICK';
   }
 
   bool isQICoreModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "QICORE" &&
+      return modelIdentifier.id == 'QICORE' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir/us/qicore");
+              modelIdentifier.system == 'http://hl7.org/fhir/us/qicore');
     }
-    return modelIdentifier.id == "QICORE";
+    return modelIdentifier.id == 'QICORE';
   }
 
   bool isUsCoreModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id.toLowerCase() == "uscore" &&
+      return modelIdentifier.id.toLowerCase() == 'uscore' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://hl7.org/fhir/us/core");
+              modelIdentifier.system == 'http://hl7.org/fhir/us/core');
     }
-    return modelIdentifier.id.toLowerCase() == "uscore";
+    return modelIdentifier.id.toLowerCase() == 'uscore';
   }
 
   bool isTestModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return (modelIdentifier.id == "GENTEST" ||
+      return (modelIdentifier.id == 'GENTEST' ||
               modelIdentifier.id == 'Test') &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "http://example.com/gentest" ||
-              modelIdentifier.system == "http://cqframework.org/test");
+              modelIdentifier.system == 'http://example.com/gentest' ||
+              modelIdentifier.system == 'http://cqframework.org/test');
     }
-    return modelIdentifier.id == "GENTEST" || modelIdentifier.id == 'Test';
+    return modelIdentifier.id == 'GENTEST' || modelIdentifier.id == 'Test';
   }
 
   bool isSimpleModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "Simple" &&
+      return modelIdentifier.id == 'Simple' &&
           (modelIdentifier.system == null ||
               modelIdentifier.system ==
-                  "https://github.com/cqframework/cql-execution/simple");
+                  'https://github.com/cqframework/cql-execution/simple');
     }
-    return modelIdentifier.id == "Simple";
+    return modelIdentifier.id == 'Simple';
   }
 
   bool isSystemModelIdentifier(ModelIdentifier modelIdentifier) {
     if (namespaceManager != null && namespaceManager!.hasNamespaces) {
-      return modelIdentifier.id == "System" &&
+      return modelIdentifier.id == 'System' &&
           (modelIdentifier.system == null ||
-              modelIdentifier.system == "urn:hl7-org:elm-types:r1");
+              modelIdentifier.system == 'urn:hl7-org:elm-types:r1');
     }
-    return modelIdentifier.id == "System";
+    return modelIdentifier.id == 'System';
   }
 
   @override

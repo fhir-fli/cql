@@ -7,8 +7,8 @@ class CqlParamListVisitor extends CqlBaseVisitor<List<CqlExpression>> {
   @override
   List<CqlExpression> visitParamList(ParamListContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    final List<CqlExpression> operand = <CqlExpression>[];
+    final thisNode = getNextNode();
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       final result = byContext(child);
       if (result is CqlExpression) {

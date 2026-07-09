@@ -24,9 +24,6 @@ import 'package:cql/src/internal.dart';
 /// define "SplitNotFound": Split('A B C', ',') // { 'A B C' }
 /// define "SplitIsNull": Split(null, ' ') // null
 class Split extends OperatorExpression {
-  final CqlExpression separator;
-  final CqlExpression stringToSplit;
-
   Split({
     required this.stringToSplit,
     required this.separator,
@@ -52,6 +49,8 @@ class Split extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression separator;
+  final CqlExpression stringToSplit;
 
   @override
   Map<String, dynamic> toJson() {

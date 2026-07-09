@@ -28,7 +28,10 @@ abstract class TypeSpecifierExpression extends CqlExpression {
         return TupleTypeSpecifier.fromJson(json);
       default:
         throw ArgumentError.value(
-            json['type'], 'json', 'Invalid  TypeSpecifierExpression type');
+          json['type'],
+          'json',
+          'Invalid  TypeSpecifierExpression type',
+        );
     }
   }
 

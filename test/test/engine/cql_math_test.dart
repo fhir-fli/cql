@@ -4,8 +4,8 @@ import 'package:ucum/ucum.dart';
 
 /// Helper that returns a constant value from execute().
 class _ConstExpr extends CqlExpression {
-  final dynamic value;
   _ConstExpr(this.value);
+  final dynamic value;
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async => value;
@@ -99,19 +99,23 @@ void main() {
 
   group('HighBoundary', () {
     test('CqlDecimal pads with 9s to target precision', () async {
-      final highBoundary = HighBoundary(operand: [
-        _ConstExpr(CqlDecimal(1.5)),
-        LiteralInteger(8),
-      ]);
+      final highBoundary = HighBoundary(
+        operand: [
+          _ConstExpr(CqlDecimal(1.5)),
+          LiteralInteger(8),
+        ],
+      );
       final result = await highBoundary.execute({});
       expect(result, equals(CqlDecimal(1.59999999)));
     });
 
     test('null value returns null', () async {
-      final highBoundary = HighBoundary(operand: [
-        LiteralNull(),
-        LiteralInteger(8),
-      ]);
+      final highBoundary = HighBoundary(
+        operand: [
+          LiteralNull(),
+          LiteralInteger(8),
+        ],
+      );
       final result = await highBoundary.execute({});
       expect(result, isNull);
     });
@@ -119,20 +123,24 @@ void main() {
 
   group('LowBoundary', () {
     test('returns value passthrough (stub implementation)', () async {
-      final lowBoundary = LowBoundary(operand: [
-        _ConstExpr(CqlDecimal(1.5)),
-        LiteralInteger(8),
-      ]);
+      final lowBoundary = LowBoundary(
+        operand: [
+          _ConstExpr(CqlDecimal(1.5)),
+          LiteralInteger(8),
+        ],
+      );
       final result = await lowBoundary.execute({});
       // Stub implementation returns the value itself
       expect(result, equals(CqlDecimal(1.5)));
     });
 
     test('null value returns null', () async {
-      final lowBoundary = LowBoundary(operand: [
-        LiteralNull(),
-        LiteralInteger(8),
-      ]);
+      final lowBoundary = LowBoundary(
+        operand: [
+          LiteralNull(),
+          LiteralInteger(8),
+        ],
+      );
       final result = await lowBoundary.execute({});
       expect(result, isNull);
     });
@@ -152,44 +160,51 @@ void main() {
       final times = Times(operand: [left, right]);
       final result = await times.execute({});
       expect(
-          result,
-          equals([
-            {'a': 1, 'b': 'x'},
-            {'a': 1, 'b': 'y'},
-            {'a': 2, 'b': 'x'},
-            {'a': 2, 'b': 'y'},
-          ]));
+        result,
+        equals([
+          {'a': 1, 'b': 'x'},
+          {'a': 1, 'b': 'y'},
+          {'a': 2, 'b': 'x'},
+          {'a': 2, 'b': 'y'},
+        ]),
+      );
     });
 
     test('null left operand returns null', () async {
-      final times = Times(operand: [
-        LiteralNull(),
-        _ConstExpr([
-          {'b': 1}
-        ]),
-      ]);
+      final times = Times(
+        operand: [
+          LiteralNull(),
+          _ConstExpr([
+            {'b': 1},
+          ]),
+        ],
+      );
       final result = await times.execute({});
       expect(result, isNull);
     });
 
     test('null right operand returns null', () async {
-      final times = Times(operand: [
-        _ConstExpr([
-          {'a': 1}
-        ]),
-        LiteralNull(),
-      ]);
+      final times = Times(
+        operand: [
+          _ConstExpr([
+            {'a': 1},
+          ]),
+          LiteralNull(),
+        ],
+      );
       final result = await times.execute({});
       expect(result, isNull);
     });
 
     test('empty list produces empty result', () async {
-      final times = Times(operand: [
-        _ConstExpr(<Map<String, dynamic>>[]),
-        _ConstExpr([
-          {'b': 1}
-        ]),
-      ]);
+      final times = Times(
+        operand: [
+          _ConstExpr(<Map<String, dynamic>>[]),
+          _ConstExpr([
+            {'b': 1},
+          ]),
+        ],
+      );
       final result = await times.execute({});
       expect(result, equals([]));
     });
@@ -319,7 +334,7 @@ void main() {
       );
       final result = await dtExpr.execute({});
       expect(result, isA<CqlDateTime>());
-      final dt = result as CqlDateTime;
+      final dt = result!;
       expect(dt.year, equals(2024));
       expect(dt.month, equals(3));
       expect(dt.day, equals(15));
@@ -340,7 +355,7 @@ void main() {
       );
       final result = await dtExpr.execute({});
       expect(result, isA<CqlDateTime>());
-      final dt = result as CqlDateTime;
+      final dt = result!;
       expect(dt.timeZoneOffset, equals(-7.0));
     });
 
@@ -351,7 +366,7 @@ void main() {
       );
       final result = await dtExpr.execute({});
       expect(result, isA<CqlDateTime>());
-      final dt = result as CqlDateTime;
+      final dt = result!;
       expect(dt.year, equals(2024));
       expect(dt.month, equals(6));
       expect(dt.day, isNull);
@@ -435,7 +450,7 @@ void main() {
       );
       final result = await dateFrom.execute({});
       expect(result, isA<CqlDate>());
-      final date = result as CqlDate;
+      final date = result!;
       expect(date.year, equals(2024));
       expect(date.month, isNull);
     });
@@ -460,7 +475,7 @@ void main() {
       );
       final result = await timeFrom.execute({});
       expect(result, isA<CqlTime>());
-      final time = result as CqlTime;
+      final time = result!;
       expect(time.hour, equals(10));
       expect(time.minute, equals(30));
       expect(time.second, equals(45));
@@ -664,79 +679,95 @@ void main() {
 
   group('ConvertQuantity', () {
     test('converts mg to g', () async {
-      final convertQuantity = ConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(1000.0), unit: 'mg'),
-        LiteralString('g'),
-      ]);
+      final convertQuantity = ConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(1000.0), unit: 'mg'),
+          LiteralString('g'),
+        ],
+      );
       final result = await convertQuantity.execute({});
       expect(result, isA<ValidatedQuantity>());
       final qty = result as ValidatedQuantity;
-      expect(qty.unit.toString(), equals('g'));
+      expect(qty.unit, equals('g'));
     });
 
     test('null quantity returns null', () async {
-      final convertQuantity = ConvertQuantity(operand: [
-        LiteralNull(),
-        LiteralString('g'),
-      ]);
+      final convertQuantity = ConvertQuantity(
+        operand: [
+          LiteralNull(),
+          LiteralString('g'),
+        ],
+      );
       final result = await convertQuantity.execute({});
       expect(result, isNull);
     });
 
     test('null target unit returns null', () async {
-      final convertQuantity = ConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(100.0), unit: 'mg'),
-        LiteralNull(),
-      ]);
+      final convertQuantity = ConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(100.0), unit: 'mg'),
+          LiteralNull(),
+        ],
+      );
       final result = await convertQuantity.execute({});
       expect(result, isNull);
     });
 
     test('converts cm to m', () async {
-      final convertQuantity = ConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
-        LiteralString('m'),
-      ]);
+      final convertQuantity = ConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
+          LiteralString('m'),
+        ],
+      );
       final result = await convertQuantity.execute({});
       expect(result, isA<ValidatedQuantity>());
       final qty = result as ValidatedQuantity;
-      expect(qty.unit.toString(), equals('m'));
+      expect(qty.unit, equals('m'));
     });
   });
 
   group('CanConvertQuantity', () {
     test('valid conversion returns true', () async {
-      final canConvert = CanConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
-        LiteralString('m'),
-      ]);
+      final canConvert = CanConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
+          LiteralString('m'),
+        ],
+      );
       final result = await canConvert.execute({});
       expect(result, equals(CqlBoolean(true)));
     });
 
     test('invalid conversion returns false', () async {
-      final canConvert = CanConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
-        LiteralString('g'),
-      ]);
+      final canConvert = CanConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
+          LiteralString('g'),
+        ],
+      );
       final result = await canConvert.execute({});
       expect(result, equals(CqlBoolean(false)));
     });
 
     test('null quantity returns null', () async {
-      final canConvert = CanConvertQuantity(operand: [
-        LiteralNull(),
-        LiteralString('m'),
-      ]);
+      final canConvert = CanConvertQuantity(
+        operand: [
+          LiteralNull(),
+          LiteralString('m'),
+        ],
+      );
       final result = await canConvert.execute({});
       expect(result, isNull);
     });
 
     test('null target unit returns null', () async {
-      final canConvert = CanConvertQuantity(operand: [
-        LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
-        LiteralNull(),
-      ]);
+      final canConvert = CanConvertQuantity(
+        operand: [
+          LiteralQuantity(LiteralDecimal(100.0), unit: 'cm'),
+          LiteralNull(),
+        ],
+      );
       final result = await canConvert.execute({});
       expect(result, isNull);
     });

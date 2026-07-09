@@ -10,16 +10,10 @@ import 'package:cql/src/internal.dart';
 /// Conversion between String and Date/DateTime/Time is checked using the
 /// ISO-8601 standard format: YYYY-MM-DDThh:mm:ss(+|-)hh:mm.
 class CanConvert extends UnaryExpression {
-  /// Target type to convert to.
-  QName? toType;
-
-  /// Type specifier for the target type.
-  TypeSpecifierExpression? toTypeSpecifier;
-
   CanConvert({
+    required super.operand,
     this.toTypeSpecifier,
     this.toType,
-    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -43,6 +37,12 @@ class CanConvert extends UnaryExpression {
       )
         ..toTypeSpecifier = json['toTypeSpecifier']
         ..toType = json['toType'];
+
+  /// Target type to convert to.
+  QName? toType;
+
+  /// Type specifier for the target type.
+  TypeSpecifierExpression? toTypeSpecifier;
 
   @override
   Map<String, dynamic> toJson() {

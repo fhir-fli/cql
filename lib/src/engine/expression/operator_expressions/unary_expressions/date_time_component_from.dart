@@ -39,8 +39,6 @@ import 'package:cql/src/internal.dart';
 /// define "TimeFrom": time from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // @T12:30:00.000-07:00
 /// define "MonthFromIsNull": month from DateTime(2012)
 class DateTimeComponentFrom extends UnaryExpression {
-  final CqlDateTimePrecision precision;
-
   DateTimeComponentFrom({
     required this.precision,
     required super.operand,
@@ -67,6 +65,7 @@ class DateTimeComponentFrom extends UnaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision precision;
 
   @override
   Map<String, dynamic> toJson() {

@@ -6,7 +6,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitEqualityExpression(EqualityExpressionContext ctx) {
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? equalityOperator;
     final operands = <CqlExpression>[];
 
@@ -31,11 +31,13 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
           final typeName =
               declaredTypes.isNotEmpty ? declaredTypes.first : null;
 
-          operands.add(ExpressionRef(
-            name: result,
-            libraryName: library.identifier?.id,
-            resultTypeName: typeName,
-          ));
+          operands.add(
+            ExpressionRef(
+              name: result,
+              libraryName: library.identifier?.id,
+              resultTypeName: typeName,
+            ),
+          );
         }
       }
     }
@@ -47,8 +49,8 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         if (expr is ListExpression) {
           // ───── Inject ToList for implicit flatten ─────
           final elements = expr.element ?? [];
-          bool isOnlyLists = true;
-          bool isSingletonReturn = false;
+          var isOnlyLists = true;
+          var isSingletonReturn = false;
           if (elements.length > 1) {
             final newElements = <CqlExpression>[];
             if (elements.first is ListExpression) {
@@ -77,7 +79,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
           // 2) setOpCast: sibling is a UNION that truly mixes element types
           final sibling = operands[1 - i];
-          bool setOpCast = false;
+          var setOpCast = false;
           if (sibling is Union) {
             final seen = <String>{};
             for (final opNode in sibling.operand!) {
@@ -115,7 +117,9 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
               _addDemoteWarning(ctx);
             }
             operands[i] = _buildQueryFromOperand(
-                expr, flattenNeeded && isSingletonReturn);
+              expr,
+              flattenNeeded && isSingletonReturn,
+            );
           }
         }
       }
@@ -139,7 +143,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     // string-convertible choice alternative.
     if (operands.length == 2 &&
         (equalityOperator == '=' || equalityOperator == '!=')) {
-      for (int i = 0; i < 2; i++) {
+      for (var i = 0; i < 2; i++) {
         final other = operands[1 - i];
         if (other is LiteralString && operands[i] is Property) {
           final caseExpr = _buildChoiceCaseForString(operands[i] as Property);
@@ -193,7 +197,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       //    When both sides are FHIR concept properties, no wrapping needed.
       final leftIsFhirConceptProp = _isFhirConceptProperty(left);
       final rightIsFhirConceptProp = _isFhirConceptProperty(right);
-      bool conceptHandled = false;
+      var conceptHandled = false;
 
       if (leftIsFhirConceptProp &&
           !rightIsFhirConceptProp &&
@@ -250,16 +254,20 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
           return Not(operand: Equal(operand: translateOperand(operands)));
         case '~':
           return Equivalent(
-              operand: translateOperand(_wrapCodeRefsAsConcept(operands)));
+            operand: translateOperand(_wrapCodeRefsAsConcept(operands)),
+          );
         case '!~':
           return Not(
-              operand: Equivalent(
-                  operand: translateOperand(_wrapCodeRefsAsConcept(operands))));
+            operand: Equivalent(
+              operand: translateOperand(_wrapCodeRefsAsConcept(operands)),
+            ),
+          );
       }
     }
 
     throw ArgumentError(
-        '$thisNode Invalid EqualityExpression: operands=${operands.length}, operator=$equalityOperator');
+      '$thisNode Invalid EqualityExpression: operands=${operands.length}, operator=$equalityOperator',
+    );
   }
 
   /// Wrap any CodeRef operands in ToConcept for equivalence comparisons.
@@ -421,10 +429,12 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     final matchingTypes = <(String, String)>[];
     for (final (choiceName, baseType) in _stringConvertibleTypes) {
       // Check if this choice type or its FHIR-prefixed version exists
-      if (choiceTypes.any((c) =>
-          c == choiceName ||
-          c == 'FHIR.$choiceName' ||
-          c == '{http://hl7.org/fhir}$choiceName')) {
+      if (choiceTypes.any(
+        (c) =>
+            c == choiceName ||
+            c == 'FHIR.$choiceName' ||
+            c == '{http://hl7.org/fhir}$choiceName',
+      )) {
         matchingTypes.add((choiceName, baseType));
       }
     }
@@ -439,22 +449,24 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         localPart: baseType,
       );
 
-      caseItems.add(CaseItem(
-        when_: Is(
-          isType: fhirQName,
-          operand: property,
+      caseItems.add(
+        CaseItem(
+          when_: Is(
+            isType: fhirQName,
+            operand: property,
+          ),
+          then: FunctionRef(
+            name: 'ToString',
+            libraryName: 'FHIRHelpers',
+            operand: [
+              As(
+                asType: fhirQName,
+                operand: property,
+              ),
+            ],
+          ),
         ),
-        then: FunctionRef(
-          name: 'ToString',
-          libraryName: 'FHIRHelpers',
-          operand: [
-            As(
-              asType: fhirQName,
-              operand: property,
-            ),
-          ],
-        ),
-      ));
+      );
     }
 
     return Case(
@@ -502,7 +514,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         }
       }
       if (refDef?.expression is SingletonFrom) {
-        final sf = refDef!.expression as SingletonFrom;
+        final sf = refDef!.expression! as SingletonFrom;
         if (sf.operand is Retrieve) {
           return (sf.operand as Retrieve).dataType.localPart;
         }
@@ -516,11 +528,12 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// choice alternatives (to prefer Extension over narrower types).
   ClassInfoElement? _findChoiceElementByPath(String path) {
     ClassInfoElement? best;
-    int bestCount = 0;
+    var bestCount = 0;
     for (final model in library.usings?.def ?? <UsingDef>[]) {
       if (model.localIdentifier == null) continue;
       final modelInfo = modelInfoProvider.load(
-          ModelIdentifier(id: model.localIdentifier!, version: model.version));
+        ModelIdentifier(id: model.localIdentifier!, version: model.version),
+      );
       if (modelInfo == null) continue;
       for (final ti in modelInfo.typeInfo) {
         if (ti is ClassInfo) {

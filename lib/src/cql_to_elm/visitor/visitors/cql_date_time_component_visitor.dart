@@ -7,7 +7,7 @@ class CqlDateTimeComponentVisitor extends CqlBaseVisitor<String> {
   @override
   String visitDateTimeComponent(DateTimeComponentContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         return child.text ?? '';

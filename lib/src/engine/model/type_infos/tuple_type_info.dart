@@ -5,9 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [TupleTypeInfo] type extends TypeInfo and consists of elements
 /// representing TupleTypeInfoElement.
 class TupleTypeInfo extends TypeInfo {
-  /// Elements within TupleTypeInfo.
-  List<TupleTypeInfoElement>? element;
-
   TupleTypeInfo({
     this.element,
     super.baseType,
@@ -23,6 +20,9 @@ class TupleTypeInfo extends TypeInfo {
       baseType: json['baseType'] as String?,
     );
   }
+
+  /// Elements within TupleTypeInfo.
+  List<TupleTypeInfoElement>? element;
 
   @override
   Map<String, dynamic> toJson() {

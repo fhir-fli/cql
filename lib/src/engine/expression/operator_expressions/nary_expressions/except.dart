@@ -149,18 +149,22 @@ class Except extends NaryExpression {
         // Use CQL equivalence semantics for comparison
         final result = <dynamic>[];
         for (final item in left) {
-          final inRight = right.any((r) =>
-              (item == null && r == null) ||
-              (item != null &&
-                  r != null &&
-                  (Equivalent.equivalent(item, r).valueBoolean ?? false)));
-          if (!inRight) {
-            // Also deduplicate within the result (set semantics)
-            final inResult = result.any((r) =>
+          final inRight = right.any(
+            (r) =>
                 (item == null && r == null) ||
                 (item != null &&
                     r != null &&
-                    (Equivalent.equivalent(item, r).valueBoolean ?? false)));
+                    (Equivalent.equivalent(item, r).valueBoolean ?? false)),
+          );
+          if (!inRight) {
+            // Also deduplicate within the result (set semantics)
+            final inResult = result.any(
+              (r) =>
+                  (item == null && r == null) ||
+                  (item != null &&
+                      r != null &&
+                      (Equivalent.equivalent(item, r).valueBoolean ?? false)),
+            );
             if (!inResult) {
               result.add(item);
             }

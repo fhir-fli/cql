@@ -5,15 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [BoundParameterTypeSpecifier] type defines a type replacing a class parameter,
 /// including the parameter name, bound type, and elementTypeSpecifier.
 class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
-  /// Type bound to the parameter.
-  String boundType;
-
-  /// Element type specifier.
-  TypeSpecifierExpression? elementTypeSpecifier;
-
-  /// Name of the parameter bound to a valid type.
-  String parameterName;
-
   BoundParameterTypeSpecifier({
     required this.parameterName,
     required this.boundType,
@@ -45,6 +36,15 @@ class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
           : null,
     );
   }
+
+  /// Type bound to the parameter.
+  String boundType;
+
+  /// Element type specifier.
+  TypeSpecifierExpression? elementTypeSpecifier;
+
+  /// Name of the parameter bound to a valid type.
+  String parameterName;
 
   @override
   Map<String, dynamic> toJson() {

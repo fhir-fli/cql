@@ -3,9 +3,6 @@ import 'package:cql/src/internal.dart';
 /// Abstract base class for an expression that takes any number of arguments,
 /// including zero.
 abstract class NaryExpression extends OperatorExpression {
-  /// List of expressions as operands, can be zero or more.
-  List<CqlExpression>? operand;
-
   NaryExpression({
     this.operand,
     super.annotation,
@@ -27,6 +24,9 @@ abstract class NaryExpression extends OperatorExpression {
                       : json['type'] == 'Coalesce'
                           ? Coalesce.fromJson(json)
                           : throw StateError('Invalid type for NaryExpression');
+
+  /// List of expressions as operands, can be zero or more.
+  List<CqlExpression>? operand;
 
   @override
   Map<String, dynamic> toJson() {

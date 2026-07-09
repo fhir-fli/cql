@@ -7,11 +7,11 @@ class CqlConceptDefinitionVisitor extends CqlBaseVisitor<void> {
   @override
   dynamic visitConceptDefinition(ConceptDefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    AccessModifier accessLevel = AccessModifier.public;
+    final thisNode = getNextNode();
+    var accessLevel = AccessModifier.public;
     String? name;
     String? display;
-    List<CodeRef> code = [];
+    final code = <CodeRef>[];
 
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is AccessModifierContext) {
@@ -26,12 +26,14 @@ class CqlConceptDefinitionVisitor extends CqlBaseVisitor<void> {
     }
     if (name != null) {
       library.concepts ??= ConceptDefs();
-      library.concepts!.def.add(ConceptDef(
-        name: name,
-        display: display,
-        code: code,
-        accessLevel: accessLevel,
-      ));
+      library.concepts!.def.add(
+        ConceptDef(
+          name: name,
+          display: display,
+          code: code,
+          accessLevel: accessLevel,
+        ),
+      );
     } else {
       throw ArgumentError('$thisNode Invalid ConceptDefinition');
     }

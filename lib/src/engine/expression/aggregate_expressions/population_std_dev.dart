@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The PopulationStdDev operator returns the statistical standard deviation of
 /// the elements in source.
@@ -66,7 +65,7 @@ class PopulationStdDev extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -135,11 +134,11 @@ class PopulationStdDev extends AggregateExpression {
 
     /// For CqlDecimal — use PopulationVariance, then sqrt
     if (mean is CqlDecimal) {
-      var popVarianceResult =
+      final popVarianceResult =
           PopulationVariance.populationVariance(sourceResult);
       if (popVarianceResult == null) return null;
       if (popVarianceResult is CqlDecimal) {
-        double stdDevValue = math.sqrt(popVarianceResult.valueNum!);
+        final stdDevValue = math.sqrt(popVarianceResult.valueNum!);
         return CqlDecimal(stdDevValue.toStringAsFixed(8));
       }
     }
@@ -149,14 +148,15 @@ class PopulationStdDev extends AggregateExpression {
     else if (mean is ValidatedQuantity) {
       final svc = UcumService();
       final meanUnit = mean.unit;
-      double sumOfSquaredDiffs = 0.0;
+      var sumOfSquaredDiffs = 0.0;
       for (final val in filtered) {
         if (val is! ValidatedQuantity) continue;
         final converted = val.unit == meanUnit
             ? val
             : ValidatedQuantity(
                 value: svc.convert(val.value, val.unit, meanUnit),
-                unit: meanUnit);
+                unit: meanUnit,
+              );
         final diff = converted - mean;
         if (diff != null) {
           final d = double.tryParse(diff.value.asUcumDecimal()) ?? 0.0;
@@ -171,7 +171,8 @@ class PopulationStdDev extends AggregateExpression {
     }
 
     throw ArgumentError(
-        'Unsupported type for Population Standard Deviation: ${sourceResult.runtimeType}');
+      'Unsupported type for Population Standard Deviation: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

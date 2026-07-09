@@ -141,11 +141,9 @@ import 'package:cql/src/internal.dart';
 /// in code systems and value sets is potentially problematic and should be
 /// used with caution, if at all
 class In extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   In({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -174,10 +172,11 @@ class In extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
+    final json = <String, dynamic>{};
     if (precision != null) {
       json['precision'] = precision!.toJson();
     }
@@ -274,11 +273,13 @@ class In extends BinaryExpression {
       if (coding is List && coding.isNotEmpty) {
         final codes = coding
             .whereType<Map<String, dynamic>>()
-            .map((c) => CqlCode(
-                  code: c['code']?.toString() ?? '',
-                  system: c['system']?.toString() ?? '',
-                  display: c['display']?.toString(),
-                ))
+            .map(
+              (c) => CqlCode(
+                code: c['code']?.toString() ?? '',
+                system: c['system']?.toString() ?? '',
+                display: c['display']?.toString(),
+              ),
+            )
             .toList();
         if (codes.length == 1) return codes.first;
         return CqlConcept(codes: codes);

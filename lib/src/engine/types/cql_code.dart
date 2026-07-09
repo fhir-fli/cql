@@ -1,11 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class CqlCode implements CqlType {
-  String? code;
-  String? display;
-  String? system;
-  String? version;
-
   CqlCode({this.code, this.display, this.system, this.version});
 
   factory CqlCode.fromJson(Map<String, dynamic> json) {
@@ -16,6 +11,18 @@ class CqlCode implements CqlType {
       version: json['version'],
     );
   }
+
+  factory CqlCode.fromCodeDef(CodeDef codeDef, String? codeSystemDef) {
+    return CqlCode(
+      code: codeDef.id,
+      display: codeDef.display,
+      system: codeSystemDef ?? codeDef.codeSystem?.name,
+    );
+  }
+  String? code;
+  String? display;
+  String? system;
+  String? version;
 
   @override
   bool equivalent(Object other) {
@@ -57,7 +64,7 @@ class CqlCode implements CqlType {
 
   @override
   String toString() {
-    return "CqlCode{ code: $code, system: $system, version: $version, display: $display }";
+    return 'CqlCode{ code: $code, system: $system, version: $version, display: $display }';
   }
 
   @override
@@ -79,13 +86,5 @@ class CqlCode implements CqlType {
         display.hashCode ^
         system.hashCode ^
         version.hashCode;
-  }
-
-  factory CqlCode.fromCodeDef(CodeDef codeDef, String? codeSystemDef) {
-    return CqlCode(
-      code: codeDef.id,
-      display: codeDef.display,
-      system: codeSystemDef ?? codeDef.codeSystem?.name,
-    );
   }
 }

@@ -21,7 +21,7 @@ enum CqlDateTimePrecision {
 }
 
 extension CqlDateTimePrecisionExtension on CqlDateTimePrecision {
-  static const _jsonValues = {
+  static const Map<CqlDateTimePrecision, String> _jsonValues = {
     CqlDateTimePrecision.year: 'Year',
     CqlDateTimePrecision.month: 'Month',
     CqlDateTimePrecision.week: 'Week',
@@ -32,7 +32,7 @@ extension CqlDateTimePrecisionExtension on CqlDateTimePrecision {
     CqlDateTimePrecision.millisecond: 'Millisecond',
   };
 
-  static const _jsonValuesReversed = {
+  static const Map<String, CqlDateTimePrecision> _jsonValuesReversed = {
     'year': CqlDateTimePrecision.year,
     'month': CqlDateTimePrecision.month,
     'week': CqlDateTimePrecision.week,

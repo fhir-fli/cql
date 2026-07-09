@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to check if the first argument is less than or equal to the second argument.
 /// Returns true if the first argument is less than or equal to the second argument.
@@ -88,7 +87,7 @@ class LessOrEqual extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };

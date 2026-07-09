@@ -6,10 +6,10 @@ class CqlWithClauseVisitor extends CqlBaseVisitor<With> {
   @override
   With visitWithClause(WithClauseContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     if (ctx.getChild(1) is AliasedQuerySourceContext) {
-      final RelationshipClause source =
-          visitAliasedQuerySource(ctx.getChild(1) as AliasedQuerySourceContext);
+      final source = visitAliasedQuerySource(
+          ctx.getChild(1)! as AliasedQuerySourceContext);
       // Add the With alias (typed when inferable) to the current query
       // scope so suchThat can see it.
       final model = currentModel;
@@ -21,10 +21,11 @@ class CqlWithClauseVisitor extends CqlBaseVisitor<With> {
       final suchThat =
           ctx.getChild(3) == null ? null : byContext(ctx.getChild(3)!);
       return With(
-          type: 'With',
-          alias: source.alias,
-          expression: source.expression,
-          suchThat: suchThat is CqlExpression ? suchThat : null);
+        type: 'With',
+        alias: source.alias,
+        expression: source.expression,
+        suchThat: suchThat is CqlExpression ? suchThat : null,
+      );
     }
     throw ArgumentError('$thisNode Invalid WithClause');
   }

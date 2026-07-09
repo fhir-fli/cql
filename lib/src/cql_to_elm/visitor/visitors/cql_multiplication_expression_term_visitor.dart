@@ -7,11 +7,12 @@ class CqlMultiplicationExpressionTermVisitor
 
   @override
   CqlExpression visitMultiplicationExpressionTerm(
-      MultiplicationExpressionTermContext ctx) {
+    MultiplicationExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? operator;
-    final List<CqlExpression> operand = <CqlExpression>[];
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         operator = child.text;
@@ -36,7 +37,8 @@ class CqlMultiplicationExpressionTermVisitor
           return handleModulo(left, right);
         default:
           throw ArgumentError(
-              'Unsupported operator $operator in MultiplicationExpressionTerm');
+            'Unsupported operator $operator in MultiplicationExpressionTerm',
+          );
       }
     }
     throw ArgumentError('$thisNode Invalid MultiplicationExpressionTerm');

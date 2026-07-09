@@ -1,5 +1,14 @@
 /// This file defines the root library type and element.
 class VersionedIdentifier {
+  VersionedIdentifier({this.type, this.id, this.system, this.version});
+
+  factory VersionedIdentifier.fromJson(Map<String, dynamic> json) =>
+      VersionedIdentifier(
+        type: json['type'] as String?,
+        id: json['id'] as String?,
+        system: json['system'] as String?,
+        version: json['version'] as String?,
+      );
   String? type;
 
   /// VersionedIdentifier is composed of three parts:
@@ -16,16 +25,6 @@ class VersionedIdentifier {
 
   /// The actual version of the instance of interest in this set.
   String? version;
-
-  VersionedIdentifier({this.type, this.id, this.system, this.version});
-
-  factory VersionedIdentifier.fromJson(Map<String, dynamic> json) =>
-      VersionedIdentifier(
-        type: json['type'] as String?,
-        id: json['id'] as String?,
-        system: json['system'] as String?,
-        version: json['version'] as String?,
-      );
 
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{};

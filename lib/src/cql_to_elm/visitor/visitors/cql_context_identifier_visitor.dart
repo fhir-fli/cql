@@ -7,7 +7,7 @@ class CqlContextIdentifierVisitor extends CqlBaseVisitor<Ref> {
   @override
   Ref visitContextIdentifier(ContextIdentifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedIdentifierExpressionContext) {
         return visitQualifiedIdentifierExpression(child);

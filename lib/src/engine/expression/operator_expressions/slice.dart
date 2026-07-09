@@ -6,10 +6,6 @@ import 'package:cql/src/internal.dart';
 /// If the endIndex is null, the slice continues to the last element of the list.
 /// If the startIndex or endIndex is less than 0, or if the endIndex is less than the startIndex, the result is an empty list.
 class Slice extends OperatorExpression {
-  final CqlExpression endIndex;
-  final CqlExpression source;
-  final CqlExpression startIndex;
-
   Slice({
     required this.source,
     required this.startIndex,
@@ -37,6 +33,9 @@ class Slice extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression endIndex;
+  final CqlExpression source;
+  final CqlExpression startIndex;
 
   @override
   Map<String, dynamic> toJson() {
@@ -107,7 +106,8 @@ class Slice extends OperatorExpression {
               : null;
       if (startIndex == null) {
         throw ArgumentError(
-            'Slices must have a start argument that is an integer');
+          'Slices must have a start argument that is an integer',
+        );
       }
       // Clamp startIndex to list bounds to avoid RangeError
       if (startIndex >= src.length) {
@@ -119,12 +119,13 @@ class Slice extends OperatorExpression {
               ? end.valueNum! as int
               : null;
       return src.sublist(
-          startIndex,
-          endIndex != null
-              ? endIndex > src.length
-                  ? src.length
-                  : endIndex
-              : null);
+        startIndex,
+        endIndex != null
+            ? endIndex > src.length
+                ? src.length
+                : endIndex
+            : null,
+      );
     }
   }
 }

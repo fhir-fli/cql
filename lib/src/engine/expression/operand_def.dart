@@ -1,8 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class OperandDefs {
-  List<OperandDef>? operands;
-
   OperandDefs({this.operands});
 
   factory OperandDefs.fromJson(Map<String, dynamic> json) {
@@ -14,6 +12,7 @@ class OperandDefs {
           : null,
     );
   }
+  List<OperandDef>? operands;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -26,16 +25,7 @@ class OperandDefs {
 
 /// Operand definition to a function within the body of a function definition.
 class OperandDef extends Element {
-  /// Name of the operand.
-  String name;
-
-  /// Qualified name of the operand type, optional.
-  QName? operandType;
-
-  /// Type specifier for the operand.
-  TypeSpecifierExpression? operandTypeSpecifier;
-
-  OperandDef({this.operandTypeSpecifier, required this.name, this.operandType});
+  OperandDef({required this.name, this.operandTypeSpecifier, this.operandType});
 
   factory OperandDef.fromJson(Map<String, dynamic> json) {
     return OperandDef(
@@ -48,6 +38,15 @@ class OperandDef extends Element {
           : null,
     );
   }
+
+  /// Name of the operand.
+  String name;
+
+  /// Qualified name of the operand type, optional.
+  QName? operandType;
+
+  /// Type specifier for the operand.
+  TypeSpecifierExpression? operandTypeSpecifier;
 
   @override
   Map<String, dynamic> toJson() {

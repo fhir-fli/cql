@@ -5,9 +5,10 @@ class CqlSimplePathQualifiedIdentifierVisitor extends CqlBaseVisitor<String> {
 
   @override
   Retrieve visitSimplePathQualifiedIdentifier(
-      SimplePathQualifiedIdentifierContext ctx) {
+    SimplePathQualifiedIdentifierContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     // for (final child in ctx.children ?? <ParseTree>[]) {
     // }
     throw ArgumentError('$thisNode Invalid SimplePathQualifiedIdentifier');

@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to perform numeric addition of its arguments.
 /// When adding quantities, the dimensions of each quantity must be the same,
@@ -82,7 +81,7 @@ class Add extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -124,41 +123,59 @@ class Add extends BinaryExpression {
         return right is CqlInteger
             ? CqlInteger((left.valueNum! + right.valueNum!).toInt())
             : right is CqlDecimal
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .add(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .add(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlLong
                     ? CqlLong.fromNum(
-                        (left.valueNum as int) + right.valueBigInt!.toInt())
+                        (left.valueNum! as int) + right.valueBigInt!.toInt(),
+                      )
                     : null;
       case CqlLong _:
         return right is CqlLong
             ? CqlLong(left.valueBigInt! + right.valueBigInt!)
             : right is CqlDecimal
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .add(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .add(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlInteger
                     ? CqlLong.fromNum(
-                        left.valueBigInt!.toInt() + right.valueNum!.toInt())
+                        left.valueBigInt!.toInt() + right.valueNum!.toInt(),
+                      )
                     : null;
       case CqlDecimal _:
         return right is CqlDecimal
-            ? CqlDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
-                .add(UcumDecimal.fromString(right.valueString!))
-                .asUcumDecimal()))
+            ? CqlDecimal(
+                double.parse(
+                  UcumDecimal.fromString(left.valueString)
+                      .add(UcumDecimal.fromString(right.valueString))
+                      .asUcumDecimal(),
+                ),
+              )
             : right is CqlInteger
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .add(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .add(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlLong
-                    ? CqlDecimal(double.parse(
-                        UcumDecimal.fromString(left.valueString!)
-                            .add(UcumDecimal.fromString(right.valueString!))
-                            .asUcumDecimal()))
+                    ? CqlDecimal(
+                        double.parse(
+                          UcumDecimal.fromString(left.valueString)
+                              .add(UcumDecimal.fromString(right.valueString))
+                              .asUcumDecimal(),
+                        ),
+                      )
                     : null;
       case ValidatedQuantity _:
         return right is ValidatedQuantity
@@ -309,8 +326,11 @@ class Add extends BinaryExpression {
     }
 
     // Prepare the add components
-    int addYears = 0, addMonths = 0, addDays = 0;
-    int addHours = 0, addMinutes = 0, addSeconds = 0, addMs = 0;
+    var addYears = 0, addMonths = 0, addDays = 0;
+    var addHours = 0;
+    var addMinutes = 0;
+    var addSeconds = 0;
+    var addMs = 0;
 
     if (unitPrecision <= basePrecision) {
       // Quantity precision is same or coarser than base — apply directly
@@ -403,8 +423,8 @@ class Add extends BinaryExpression {
     }
 
     // Step 1: Add years and months with day clamping
-    int y = (base.year ?? 0) + addYears;
-    int m = (base.month ?? 1) + addMonths;
+    var y = (base.year ?? 0) + addYears;
+    var m = (base.month ?? 1) + addMonths;
 
     // Normalize months
     if (m > 12) {
@@ -418,7 +438,7 @@ class Add extends BinaryExpression {
     }
 
     // Clamp day to last day of target month (handles leap year)
-    int d = base.day ?? 1;
+    var d = base.day ?? 1;
     if (addYears != 0 || addMonths != 0) {
       final maxDay = DateTime(y, m + 1, 0).day;
       if (d > maxDay) d = maxDay;
@@ -426,10 +446,10 @@ class Add extends BinaryExpression {
 
     // Step 2: Add definite duration (days + sub-day)
     d += addDays;
-    int h = (base.hour ?? 0) + addHours;
-    int min = (base.minute ?? 0) + addMinutes;
-    int s = (base.second ?? 0) + addSeconds;
-    int ms = (base.millisecond ?? 0) + addMs;
+    final h = (base.hour ?? 0) + addHours;
+    final min = (base.minute ?? 0) + addMinutes;
+    final s = (base.second ?? 0) + addSeconds;
+    final ms = (base.millisecond ?? 0) + addMs;
 
     // Let Dart's DateTime handle day/time overflow/underflow
     final dt = base.isUtc

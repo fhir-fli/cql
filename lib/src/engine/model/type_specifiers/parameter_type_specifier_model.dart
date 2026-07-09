@@ -5,9 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ParameterTypeSpecifier] type specifies a generic class parameter,
 /// including its parameter name.
 class ParameterTypeSpecifierModel extends TypeSpecifierModel {
-  /// Name of the parameter.
-  QName parameterName;
-
   ParameterTypeSpecifierModel({
     required String parameterName,
   }) : parameterName = QName.parse(parameterName);
@@ -15,6 +12,9 @@ class ParameterTypeSpecifierModel extends TypeSpecifierModel {
   ParameterTypeSpecifierModel.fromJson(Map<String, dynamic> map)
       : parameterName = QName.parse(map['parameterName']),
         super(type: 'ParameterTypeSpecifier');
+
+  /// Name of the parameter.
+  QName parameterName;
 
   @override
   Map<String, dynamic> toJson() {

@@ -6,6 +6,45 @@ import 'package:cql/src/internal.dart';
 /// that evaluates to a date or time type, an interval of a date or time type,
 /// or a time-valued Quantity.
 class DateFilterElement extends Element {
+  DateFilterElement({
+    required this.value,
+    this.property,
+    this.lowProperty,
+    this.highProperty,
+    this.search,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
+
+  factory DateFilterElement.fromJson(Map<String, dynamic> json) {
+    final valueJson = json['value'];
+    if (valueJson == null) {
+      throw ArgumentError('JSON value cannot be null');
+    }
+
+    return DateFilterElement(
+      value: CqlExpression.fromJson(valueJson),
+      property: json['property'],
+      lowProperty: json['lowProperty'],
+      highProperty: json['highProperty'],
+      search: json['search'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          : null,
+    );
+  }
+
   /// The highProperty attribute optionally specifies which property of the
   /// model contains the high component of the clinically relevant date for the
   /// clinical statement.
@@ -60,48 +99,9 @@ class DateFilterElement extends Element {
   /// returned.
   CqlExpression value;
 
-  DateFilterElement({
-    required this.value,
-    this.property,
-    this.lowProperty,
-    this.highProperty,
-    this.search,
-    super.annotation,
-    super.localId,
-    super.locator,
-    super.resultTypeName,
-    super.resultTypeSpecifier,
-  });
-
-  factory DateFilterElement.fromJson(Map<String, dynamic> json) {
-    final valueJson = json['value'];
-    if (valueJson == null) {
-      throw ArgumentError("JSON value cannot be null");
-    }
-
-    return DateFilterElement(
-      value: CqlExpression.fromJson(valueJson),
-      property: json['property'],
-      lowProperty: json['lowProperty'],
-      highProperty: json['highProperty'],
-      search: json['search'],
-      annotation: json['annotation'] != null
-          ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
-              .toList()
-          : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
-      resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
-          : null,
-    );
-  }
-
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'value': value.toJson(),
     };
 

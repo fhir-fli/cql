@@ -88,12 +88,13 @@ class Truncate extends UnaryExpression {
     } else if (value is CqlInteger) {
       return value;
     } else if (value is CqlLong) {
-      return CqlInteger.tryParse(value.valueString!);
+      return CqlInteger.tryParse(value.valueString);
     } else if (value is CqlDecimal) {
       return CqlInteger(value.valueDouble!.truncate());
     } else {
       throw ArgumentError(
-          'Truncate operator can only be used with Decimal or Integer');
+        'Truncate operator can only be used with Decimal or Integer',
+      );
     }
   }
 }

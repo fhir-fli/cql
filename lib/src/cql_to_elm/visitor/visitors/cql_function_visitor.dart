@@ -7,7 +7,7 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitFunction(FunctionContext ctx) {
     String? ref;
-    List<CqlExpression> operand = [];
+    var operand = <CqlExpression>[];
 
     // 1) Extract the function name and its operands
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -80,7 +80,9 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
 
   /// Wraps any `Null` elements in the list with `As(…, <aggType>)`.
   ListExpression _processAggregateOperand(
-      ListExpression listExpr, String aggType) {
+    ListExpression listExpr,
+    String aggType,
+  ) {
     final wrapperType = QName.fromElmType(aggType);
     final transformed = listExpr.element?.map((e) {
       if (e is LiteralNull) {
@@ -142,7 +144,7 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     // For Quantity lists, pass elements through unchanged — ToDecimal would
     // destroy the quantity values (it returns null for ValidatedQuantity).
     // For Integer/Decimal lists, promote to Decimal for aggregate accuracy.
-    final CqlExpression returnExpr = wrapType == 'Quantity'
+    final returnExpr = wrapType == 'Quantity'
         ? AliasRef(name: aliasName)
         : ToDecimal(operand: AliasRef(name: aliasName));
     final returnClause = ReturnClause(

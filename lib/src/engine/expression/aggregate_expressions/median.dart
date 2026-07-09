@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Median operator returns the median of the elements in source.
 /// If a path is specified, elements with no value for the property specified
@@ -60,7 +59,7 @@ class Median extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -134,41 +133,52 @@ class Median extends AggregateExpression {
 
       // Handle CqlNumber or CqlDecimal
       if (sourceResult.every((element) => element is CqlNumber)) {
-        var decimals =
-            sourceResult.map((e) => CqlDecimal(e.valueNum!)).toList();
-        decimals.sort((a, b) => a.valueNum!.compareTo(
-            b.valueNum!)); // Ensure CqlDecimal has a comparable implementation
+        final decimals =
+            sourceResult.map((e) => CqlDecimal(e.valueNum)).toList();
+        decimals.sort(
+          (a, b) => a.valueNum!.compareTo(
+            b.valueNum!,
+          ),
+        ); // Ensure CqlDecimal has a comparable implementation
 
-        int middleIndex = decimals.length ~/ 2;
+        final middleIndex = decimals.length ~/ 2;
         if (decimals.length % 2 == 1) {
           return decimals[
               middleIndex]; // return the middle element for odd length
         } else {
           // Average the two middle elements for even length
-          return CqlDecimal((decimals[middleIndex - 1].valueNum! +
-                  decimals[middleIndex].valueNum!) /
-              2);
+          return CqlDecimal(
+            (decimals[middleIndex - 1].valueNum! +
+                    decimals[middleIndex].valueNum!) /
+                2,
+          );
         }
       }
       // Handle ValidatedQuantity
       else if (sourceResult.every((element) => element is ValidatedQuantity)) {
-        sourceResult.sort((a, b) => a.compareTo(
-            b)); // Ensure ValidatedQuantity can be compared based on value
+        sourceResult.sort(
+          (a, b) => a.compareTo(
+            b,
+          ),
+        ); // Ensure ValidatedQuantity can be compared based on value
 
-        int middleIndex = sourceResult.length ~/ 2;
+        final middleIndex = sourceResult.length ~/ 2;
         if (sourceResult.length % 2 == 1) {
           return sourceResult[
               middleIndex]; // return the middle element for odd length
         } else {
           // Calculate the average of the two middle quantities
-          var sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
+          final sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
           return ValidatedQuantity(
-              value: sum.value / UcumDecimal.fromNum(2), unit: sum.unit);
+            value: sum.value / UcumDecimal.fromNum(2),
+            unit: sum.unit,
+          );
         }
       }
     }
     throw ArgumentError(
-        'Invalid source type for Median: ${sourceResult.runtimeType}');
+      'Invalid source type for Median: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

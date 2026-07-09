@@ -14,8 +14,6 @@ import 'package:cql/src/internal.dart';
 /// result is the number of whole calendar periods that have elapsed between the
 /// given datetime and now.
 class CalculateAge extends UnaryExpression {
-  final CqlDateTimePrecision precision;
-
   CalculateAge({
     required this.precision,
     required super.operand,
@@ -41,10 +39,11 @@ class CalculateAge extends UnaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'precision': precision.toJson(),
       'type': type,
       'operand': operand.toJson(),
@@ -100,7 +99,7 @@ class CalculateAge extends UnaryExpression {
     // Use Today() for Date-based calculation
     final today = await Today().execute(context);
 
-    return await DurationBetween(
+    return DurationBetween(
       precision: precision,
       operand: [
         LiteralDate(birthDate.toIso8601String()!),

@@ -7,16 +7,18 @@ class CqlDifferenceBetweenExpressionVisitor
 
   @override
   DifferenceBetween visitDifferenceBetweenExpression(
-      DifferenceBetweenExpressionContext ctx) {
+    DifferenceBetweenExpressionContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlDateTimePrecision? pluralDateTimePrecision;
     CqlExpression? left;
     CqlExpression? right;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is PluralDateTimePrecisionContext) {
         pluralDateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
-            visitPluralDateTimePrecision(child));
+          visitPluralDateTimePrecision(child),
+        );
       } else {
         final result = byContext(child);
         if (result is CqlExpression) {
@@ -30,7 +32,9 @@ class CqlDifferenceBetweenExpressionVisitor
     }
     if (pluralDateTimePrecision != null && left != null && right != null) {
       return DifferenceBetween(
-          precision: pluralDateTimePrecision, operand: [left, right]);
+        precision: pluralDateTimePrecision,
+        operand: [left, right],
+      );
     }
     throw ArgumentError('$thisNode Invalid DifferenceBetweenExpression');
   }

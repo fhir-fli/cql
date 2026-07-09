@@ -69,6 +69,7 @@ class Today extends OperatorExpression {
   Future<CqlDate> execute(Map<String, dynamic> context) async {
     final startTimestamp = context['startTimestamp'] as CqlDateTime;
     return CqlDate.fromString(
-        startTimestamp.toIso8601String()!.substring(0, 10));
+      startTimestamp.toIso8601String()!.substring(0, 10),
+    );
   }
 }

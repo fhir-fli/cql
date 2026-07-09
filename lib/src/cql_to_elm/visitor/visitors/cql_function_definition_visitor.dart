@@ -7,10 +7,10 @@ class CqlFunctionDefinitionVisitor extends CqlBaseVisitor<FunctionDef> {
   @override
   FunctionDef visitFunctionDefinition(FunctionDefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    AccessModifier accessLevel = AccessModifier.public;
+    final thisNode = getNextNode();
+    var accessLevel = AccessModifier.public;
     String? name;
-    bool fluent = false;
+    var fluent = false;
     List<OperandDef>? operand;
     TypeSpecifierExpression? returnType;
     CqlExpression? expression;
@@ -47,8 +47,8 @@ class CqlFunctionDefinitionVisitor extends CqlBaseVisitor<FunctionDef> {
     }
     if (name != null) {
       if (expression is Ref) {
-        final index = operand
-            ?.indexWhere((element) => element.name == (expression as Ref).name);
+        final index = operand?.indexWhere(
+            (element) => element.name == (expression! as Ref).name);
         if (index != null && index != -1) {
           expression = OperandRef.fromRef(expression);
         }

@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the minimum representable value for the given type.
 /// The MinValue operator is defined for the Integer, Decimal, Date, DateTime,
@@ -55,8 +54,6 @@ import 'package:cql/src/internal.dart';
 /// define "DateTimeMinimum": minimum DateTime // @0001-01-01T00:00:00.000
 /// define "ErrorMinimum": minimum Quantity
 class MinValue extends CqlExpression {
-  final QName valueType;
-
   MinValue({
     required this.valueType,
     super.annotation,
@@ -80,10 +77,11 @@ class MinValue extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final QName valueType;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'valueType': valueType.toJson(),
       'type': type,
     };

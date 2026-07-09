@@ -9,12 +9,12 @@ class CqlValuesetDefinitionVisitor extends CqlBaseVisitor<void> {
     library.valueSets ??= ValueSetDefs();
 
     List<CodeSystemRef>? codeSystem;
-    AccessModifier accessModifier = AccessModifier.public;
+    var accessModifier = AccessModifier.public;
     String? name;
     String? id;
     String? version;
 
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is AccessModifierContext) {
         accessModifier = visitAccessModifier(child);
       } else if (child is IdentifierContext) {
@@ -28,13 +28,15 @@ class CqlValuesetDefinitionVisitor extends CqlBaseVisitor<void> {
       }
     }
     if (name != null || id != null) {
-      library.valueSets!.def.add(ValueSetDef(
-        codeSystem: codeSystem,
-        accessLevel: accessModifier,
-        id: id,
-        name: name,
-        version: version,
-      ));
+      library.valueSets!.def.add(
+        ValueSetDef(
+          codeSystem: codeSystem,
+          accessLevel: accessModifier,
+          id: id,
+          name: name,
+          version: version,
+        ),
+      );
     }
   }
 }

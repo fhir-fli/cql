@@ -37,12 +37,12 @@ class Ln extends UnaryExpression {
 
   factory Ln.compareFirst({
     required CqlExpression first,
+    required CqlLibrary library,
     List<CqlToElmBase>? annotation,
     String? localId,
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required CqlLibrary library,
   }) {
     CqlExpression? operand;
     if (first is LiteralInteger || first is LiteralLong) {

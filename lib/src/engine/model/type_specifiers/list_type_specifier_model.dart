@@ -6,11 +6,6 @@ import 'package:cql/src/internal.dart';
 /// including an elementType element and elementType attribute.
 
 class ListTypeSpecifierModel extends TypeSpecifierModel {
-  /// Element type specifier.
-  TypeSpecifierModel? elementTypeSpecifier;
-
-  String? elementType;
-
   ListTypeSpecifierModel({
     this.elementTypeSpecifier,
     this.elementType,
@@ -22,6 +17,11 @@ class ListTypeSpecifierModel extends TypeSpecifierModel {
             : null,
         elementType = map['elementType'],
         super(type: 'ListTypeSpecifier');
+
+  /// Element type specifier.
+  TypeSpecifierModel? elementTypeSpecifier;
+
+  String? elementType;
 
   @override
   Map<String, dynamic> toJson() {

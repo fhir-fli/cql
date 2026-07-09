@@ -11,10 +11,6 @@ import 'package:cql/src/internal.dart';
 /// by the target environment as a service call to a terminology server, if
 /// desired.
 class AnyInValueSet extends OperatorExpression {
-  final CqlExpression codes;
-  final ValueSetRef? valueset;
-  final CqlExpression? valuesetExpression;
-
   AnyInValueSet({
     required this.codes,
     this.valueset,
@@ -46,10 +42,13 @@ class AnyInValueSet extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression codes;
+  final ValueSetRef? valueset;
+  final CqlExpression? valuesetExpression;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'codes': codes.toJson(),
     };
@@ -82,7 +81,7 @@ class AnyInValueSet extends OperatorExpression {
     if (codesValue == null) return null;
     final codesList = codesValue is List ? codesValue : [codesValue];
 
-    CqlValueSet? valueSetRef = await valueset?.execute(context);
+    var valueSetRef = await valueset?.execute(context);
     valueSetRef ??= await valuesetExpression?.execute(context);
     if (valueSetRef == null) return null;
 

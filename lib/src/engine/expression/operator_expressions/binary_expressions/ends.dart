@@ -30,11 +30,9 @@ import 'package:cql/src/internal.dart';
 /// define "EndsIsFalse": Interval[-1, 7] ends Interval[0, 7]
 /// define "EndsIsNull": Interval[1, 5] ends null
 class Ends extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Ends({
-    this.precision,
     required super.operand,
+    this.precision,
     super.isList = true,
     super.annotation,
     super.localId,
@@ -50,15 +48,17 @@ class Ends extends BinaryExpression {
         operand: json['operand'] != null
             ? json['operand'] is List
                 ? (json['operand'] as List)
-                    .map((e) =>
-                        CqlExpression.fromJson(e as Map<String, dynamic>))
+                    .map(
+                      (e) => CqlExpression.fromJson(e as Map<String, dynamic>),
+                    )
                     .toList()
                 : [
                     CqlExpression.fromJson(
-                        json['operand'] as Map<String, dynamic>)
+                      json['operand'] as Map<String, dynamic>,
+                    ),
                   ]
             : <CqlExpression>[],
-        isList: json['operand'] == null ? false : json['operand'] is List,
+        isList: !(json['operand'] == null) && json['operand'] is List,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
@@ -71,15 +71,16 @@ class Ends extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
     };
-    if (isList != true) {
+    if (!isList) {
       json['isList'] = isList;
     }
     if (annotation != null) {
@@ -138,7 +139,8 @@ class Ends extends BinaryExpression {
         return null;
       } else {
         return CqlBoolean(
-            leftStart.compareTo(rightStart) >= 0 && leftEnd == rightEnd);
+          leftStart.compareTo(rightStart) >= 0 && leftEnd == rightEnd,
+        );
       }
     } else {
       throw ArgumentError(

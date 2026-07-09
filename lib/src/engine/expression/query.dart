@@ -2,14 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The Query operator represents a clause-based query.
 class Query extends CqlExpression {
-  List<LetClause>? let;
-  List<RelationshipClause>? relationship;
-  ReturnClause? returnClause;
-  SortClause? sort;
-  AggregateClause? aggregate;
-  List<AliasedQuerySource> source;
-  CqlExpression? where;
-
   Query({
     required this.source,
     this.let,
@@ -27,15 +19,18 @@ class Query extends CqlExpression {
 
   factory Query.fromJson(Map<String, dynamic> json) => Query(
         source: List<AliasedQuerySource>.from(
-            json['source'].map((x) => AliasedQuerySource.fromJson(x))),
+          json['source'].map((x) => AliasedQuerySource.fromJson(x)),
+        ),
         let: json['let'] == null
             ? null
             : List<LetClause>.from(
-                json['let'].map((x) => LetClause.fromJson(x))),
+                json['let'].map((x) => LetClause.fromJson(x)),
+              ),
         relationship: json['relationship'] == null
             ? null
-            : List<RelationshipClause>.from(json['relationship']
-                .map((x) => RelationshipClause.fromJson(x))),
+            : List<RelationshipClause>.from(
+                json['relationship'].map((x) => RelationshipClause.fromJson(x)),
+              ),
         where: json['where'] == null
             ? null
             : CqlExpression.fromJson(json['where']),
@@ -58,10 +53,17 @@ class Query extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  List<LetClause>? let;
+  List<RelationshipClause>? relationship;
+  ReturnClause? returnClause;
+  SortClause? sort;
+  AggregateClause? aggregate;
+  List<AliasedQuerySource> source;
+  CqlExpression? where;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'source': source.map((x) => x.toJson()).toList(),
     };
@@ -100,16 +102,16 @@ class Query extends CqlExpression {
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
     // 1) Build the Cartesian product of all sources
-    List<Map<String, dynamic>> rows = [{}]; // ← start with a single, empty map
+    var rows = <Map<String, dynamic>>[{}]; // ← start with a single, empty map
     // Track if source was originally a singleton (non-list) value
-    bool singletonSource = false;
+    var singletonSource = false;
     for (final src in source) {
       final dynamic rawValue = await src.expression.execute(context);
       if (rawValue == null) return null;
       if (rawValue is! Iterable) singletonSource = true;
-      final Iterable listValue = rawValue is Iterable ? rawValue : [rawValue];
+      final listValue = rawValue is Iterable ? rawValue : [rawValue];
 
-      final List<Map<String, dynamic>> newRows = [];
+      final newRows = <Map<String, dynamic>>[];
       for (final row in rows) {
         for (final element in listValue) {
           // clone the existing row and add this source's alias → element
@@ -144,9 +146,9 @@ class Query extends CqlExpression {
           continue;
         }
 
-        final List<Map<String, dynamic>> filtered = [];
+        final filtered = <Map<String, dynamic>>[];
         for (final row in rows) {
-          bool hasMatch = false;
+          var hasMatch = false;
           for (final relElement in relList) {
             if (rel.suchThat != null) {
               final execCtx = <String, dynamic>{}
@@ -177,7 +179,7 @@ class Query extends CqlExpression {
 
     // 4) WHERE filter
     if (where != null) {
-      final List<Map<String, dynamic>> filtered = [];
+      final filtered = <Map<String, dynamic>>[];
       for (final row in rows) {
         final execCtx = <String, dynamic>{}
           ..addAll(context)
@@ -193,18 +195,20 @@ class Query extends CqlExpression {
     // 5) SORT
     if (sort != null && sort!.by.isNotEmpty) {
       // Precompute sort keys for each row
-      final List<List<Comparable?>> keyLists = [];
-      final List<bool> descending = sort!.by
-          .map((spec) =>
-              spec.direction == SortDirection.desc ||
-              spec.direction == SortDirection.descending)
+      final keyLists = <List<Comparable?>>[];
+      final descending = sort!.by
+          .map(
+            (spec) =>
+                spec.direction == SortDirection.desc ||
+                spec.direction == SortDirection.descending,
+          )
           .toList();
 
       for (final row in rows) {
         final execCtx = <String, dynamic>{}
           ..addAll(context)
           ..addAll(row);
-        final List<Comparable?> keys = [];
+        final keys = <Comparable?>[];
         for (final spec in sort!.by) {
           dynamic rawKey;
           if (spec is ByExpression) {
@@ -230,12 +234,14 @@ class Query extends CqlExpression {
       }
 
       // Sort rows using the precomputed keys
-      final List<int> indices = List<int>.generate(rows.length, (i) => i);
+      final indices = List<int>.generate(rows.length, (i) => i);
       indices.sort((i, j) {
-        final k1 = keyLists[i], k2 = keyLists[j];
+        final k1 = keyLists[i];
+        final k2 = keyLists[j];
         for (var idx = 0; idx < k1.length; idx++) {
-          final a = k1[idx], b = k2[idx];
-          final int cmp = (a == null && b == null)
+          final a = k1[idx];
+          final b = k2[idx];
+          final cmp = (a == null && b == null)
               ? 0
               : (a == null ? -1 : (b == null ? 1 : a.compareTo(b)));
           if (cmp != 0) {
@@ -276,7 +282,7 @@ class Query extends CqlExpression {
     }
 
     // 5b) RETURN projection + DISTINCT
-    final List<dynamic> result = [];
+    final result = <dynamic>[];
     if (returnClause != null) {
       for (final row in rows) {
         final execCtx = <String, dynamic>{}

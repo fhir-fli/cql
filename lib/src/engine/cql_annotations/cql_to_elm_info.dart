@@ -2,14 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Represents the CqlToElmInfo type
 class CqlToElmInfo extends CqlToElmBase {
-  /// translatorOptions attribute
-  String? translatorOptions;
-
-  /// translatorVersion attribute
-  String? translatorVersion;
-
-  String? signatureLevel;
-
   CqlToElmInfo({
     this.translatorVersion = '2.11.0', //'0.0.0-dev1
     this.translatorOptions,
@@ -23,6 +15,14 @@ class CqlToElmInfo extends CqlToElmBase {
       signatureLevel: json['signatureLevel'],
     );
   }
+
+  /// translatorOptions attribute
+  String? translatorOptions;
+
+  /// translatorVersion attribute
+  String? translatorVersion;
+
+  String? signatureLevel;
 
   @override
   Map<String, dynamic> toJson() => {

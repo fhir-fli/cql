@@ -33,7 +33,7 @@ class HighBoundary extends BinaryExpression {
       );
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -63,7 +63,7 @@ class HighBoundary extends BinaryExpression {
     final value = await operand[0].execute(context);
     final precisionValue = await operand[1].execute(context);
     if (value == null) return null;
-    final int targetPrecision =
+    final targetPrecision =
         (precisionValue is CqlInteger) ? precisionValue.valueNum!.toInt() : 8;
 
     if (value is CqlDecimal) {
@@ -85,7 +85,9 @@ class HighBoundary extends BinaryExpression {
     if (currentDigits >= precision) return value;
     final base = dotIdx == -1 ? '$str.' : str;
     final padded = base.padRight(
-        (dotIdx == -1 ? str.length + 1 : dotIdx + 1) + precision, '9');
+      (dotIdx == -1 ? str.length + 1 : dotIdx + 1) + precision,
+      '9',
+    );
     return CqlDecimal(double.parse(padded));
   }
 

@@ -7,7 +7,7 @@ class CqlQueryExpressionVisitor extends CqlBaseVisitor<Query> {
   @override
   Query visitQueryExpression(QueryExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QueryContext) {
         return visitQuery(child);

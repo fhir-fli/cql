@@ -16,15 +16,6 @@ import 'package:cql/src/internal.dart';
 /// argument determines the result type of the conditional, and the else
 /// argument must be of that same type.
 class IfThenElse extends CqlExpression {
-  /// Condition expression.
-  CqlExpression condition;
-
-  /// Else expression.
-  CqlExpression elseExpr;
-
-  /// Then expression.
-  CqlExpression then;
-
   IfThenElse({
     required this.condition,
     required this.then,
@@ -53,9 +44,18 @@ class IfThenElse extends CqlExpression {
             : null,
       );
 
+  /// Condition expression.
+  CqlExpression condition;
+
+  /// Else expression.
+  CqlExpression elseExpr;
+
+  /// Then expression.
+  CqlExpression then;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'condition': condition.toJson(),
       'then': then.toJson(),
@@ -115,8 +115,9 @@ class IfThenElse extends CqlExpression {
       }
     } else {
       throw CqlException(
-          message: 'For If..Then..Else statements, the If '
-              'econditionResult (Type: ${conditionResult.runtimeType}');
+        message: 'For If..Then..Else statements, the If '
+            'econditionResult (Type: ${conditionResult.runtimeType}',
+      );
     }
   }
 }

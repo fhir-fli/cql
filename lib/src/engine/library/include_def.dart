@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class IncludeDefs {
-  String? type;
-  List<IncludeDef> def = [];
-
   IncludeDefs();
 
   factory IncludeDefs.fromJson(Map<String, dynamic> json) => IncludeDefs()
@@ -11,6 +8,8 @@ class IncludeDefs {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => IncludeDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<IncludeDef> def = [];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (type != null) 'type': type,
@@ -22,23 +21,6 @@ class IncludeDefs {
 
 /// Includes a library for use within the artifact.
 class IncludeDef extends Element {
-  String? type;
-
-  /// A unique name within this artifact for the library reference.
-  ///
-  /// This name is used within this artifact to reference components of this library.
-  String? localIdentifier;
-
-  /// Defines the type of the library. If this attribute is omitted, the library
-  /// is assumed to be an ELM library artifact.
-  String? mediaType;
-
-  /// Defines the path to the library.
-  String? path;
-
-  /// Optionally defines the required version number of the referenced library.
-  String? version;
-
   IncludeDef({
     this.type,
     this.localIdentifier,
@@ -68,7 +50,24 @@ class IncludeDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              );
+  String? type;
+
+  /// A unique name within this artifact for the library reference.
+  ///
+  /// This name is used within this artifact to reference components of this library.
+  String? localIdentifier;
+
+  /// Defines the type of the library. If this attribute is omitted, the library
+  /// is assumed to be an ELM library artifact.
+  String? mediaType;
+
+  /// Defines the path to the library.
+  String? path;
+
+  /// Optionally defines the required version number of the referenced library.
+  String? version;
 
   @override
   Map<String, dynamic> toJson() {

@@ -30,11 +30,9 @@ import 'package:cql/src/internal.dart';
 ///define "StartsIsFalse": Interval[0, 7] starts Interval[0, 6]
 ///define "StartsIsNull": Interval[1, 5] starts null
 class Starts extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Starts({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -63,6 +61,7 @@ class Starts extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {

@@ -90,36 +90,44 @@ class ElmErrorListener implements ErrorListener {
 
   @override
   void syntaxError(
-      Recognizer<ATNSimulator> recognizer,
-      Object? offendingSymbol,
-      int? line,
-      int charPositionInLine,
-      String msg,
-      RecognitionException<IntStream>? e) {
-    errors.add(ErrorAnnotation(
+    Recognizer<ATNSimulator> recognizer,
+    Object? offendingSymbol,
+    int? line,
+    int charPositionInLine,
+    String msg,
+    RecognitionException<IntStream>? e,
+  ) {
+    errors.add(
+      ErrorAnnotation(
         startLine: line,
         startChar: charPositionInLine,
         endLine: line,
         endChar: charPositionInLine + 1,
         message: msg,
         errorType: 'SyntaxError',
-        errorSeverity: 'Error'));
+        errorSeverity: 'Error',
+      ),
+    );
   }
 
   void semanticError(
-      Recognizer<ATNSimulator> recognizer,
-      Object? offendingSymbol,
-      int? line,
-      int charPositionInLine,
-      String msg,
-      RecognitionException<IntStream>? e) {
-    errors.add(ErrorAnnotation(
+    Recognizer<ATNSimulator> recognizer,
+    Object? offendingSymbol,
+    int? line,
+    int charPositionInLine,
+    String msg,
+    RecognitionException<IntStream>? e,
+  ) {
+    errors.add(
+      ErrorAnnotation(
         startLine: line,
         startChar: charPositionInLine,
         endLine: line,
         endChar: charPositionInLine + 1,
         message: msg,
         errorType: 'SemanticError',
-        errorSeverity: 'Error'));
+        errorSeverity: 'Error',
+      ),
+    );
   }
 }

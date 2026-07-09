@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to perform numeric division of its arguments.
 /// Note that the result type of Divide is Decimal, even if its arguments are
@@ -80,7 +79,7 @@ class Divide extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -137,11 +136,15 @@ class Divide extends BinaryExpression {
         final leftQuantity = left is ValidatedQuantity
             ? left
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(left.valueString!), unit: '1');
+                value: UcumDecimal.fromString(left.valueString),
+                unit: '1',
+              );
         final rightQuantity = right is ValidatedQuantity
             ? right
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(right.valueString!), unit: '1');
+                value: UcumDecimal.fromString(right.valueString),
+                unit: '1',
+              );
         final result = leftQuantity / rightQuantity;
         return result;
       } catch (_) {

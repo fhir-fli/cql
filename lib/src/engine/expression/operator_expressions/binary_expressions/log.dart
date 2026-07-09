@@ -40,12 +40,12 @@ class Log extends BinaryExpression {
   factory Log.compareFirst({
     required CqlExpression first,
     required CqlExpression second,
+    required CqlLibrary library,
     List<CqlToElmBase>? annotation,
     String? localId,
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required CqlLibrary library,
   }) {
     final operand = <CqlExpression>[];
     if (first is LiteralInteger || first is LiteralLong) {
@@ -120,7 +120,7 @@ class Log extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };

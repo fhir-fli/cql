@@ -7,9 +7,9 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitInequalityExpression(InequalityExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? inequality;
-    final List<CqlExpression> operand = <CqlExpression>[];
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
         if (child.text == '!=' ||
@@ -29,7 +29,7 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
     }
     if (inequality != null && operand.length == 2) {
       // Wrap choice-type properties based on the other operand's type
-      for (int i = 0; i < 2; i++) {
+      for (var i = 0; i < 2; i++) {
         final other = operand[1 - i];
         operand[i] = _wrapChoiceForInequality(operand[i], other);
       }
@@ -54,9 +54,11 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
   /// If the expression is a Property on a FHIR choice field, infer the
   /// target type from the other operand and wrap with As + FHIRHelpers.
   CqlExpression _wrapChoiceForInequality(
-      CqlExpression expr, CqlExpression other) {
+    CqlExpression expr,
+    CqlExpression other,
+  ) {
     if (expr is Property) {
-      final String? className = _resolvePropertyClassName(expr);
+      final className = _resolvePropertyClassName(expr);
       if (className != null) {
         final element = getElementInfo(className, expr.path);
         if (element != null && CqlBaseVisitor.isChoiceType(element)) {
@@ -77,8 +79,11 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       // For non-choice properties, apply standard FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
-          model: currentModel);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(
+        expr,
+        expr.path,
+        model: currentModel,
+      );
     }
     return expr;
   }
@@ -88,11 +93,12 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
   /// choice alternatives (to prefer broader types).
   ClassInfoElement? _findChoiceElementByPath(String path) {
     ClassInfoElement? best;
-    int bestCount = 0;
+    var bestCount = 0;
     for (final model in library.usings?.def ?? <UsingDef>[]) {
       if (model.localIdentifier == null) continue;
       final modelInfo = modelInfoProvider.load(
-          ModelIdentifier(id: model.localIdentifier!, version: model.version));
+        ModelIdentifier(id: model.localIdentifier!, version: model.version),
+      );
       if (modelInfo == null) continue;
       for (final ti in modelInfo.typeInfo) {
         if (ti is ClassInfo) {
@@ -171,7 +177,7 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       if (refDef?.expression is SingletonFrom) {
-        final sf = refDef!.expression as SingletonFrom;
+        final sf = refDef!.expression! as SingletonFrom;
         if (sf.operand is Retrieve) {
           return (sf.operand as Retrieve).dataType.localPart;
         }

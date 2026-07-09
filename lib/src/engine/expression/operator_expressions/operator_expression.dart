@@ -3,9 +3,6 @@ import 'package:cql/src/internal.dart';
 /// Abstract base class for all built-in operators used in the ELM expression
 /// language.
 abstract class OperatorExpression extends CqlExpression {
-  /// Declared signature of the operator or function being called.
-  List<TypeSpecifierExpression>? signature;
-
   OperatorExpression({
     this.signature,
     super.annotation,
@@ -303,6 +300,9 @@ abstract class OperatorExpression extends CqlExpression {
         throw StateError('Invalid type for OperatorExpression');
     }
   }
+
+  /// Declared signature of the operator or function being called.
+  List<TypeSpecifierExpression>? signature;
 
   @override
   Map<String, dynamic> toJson() {

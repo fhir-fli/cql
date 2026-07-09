@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:xml2json/xml2json.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:xml2json/xml2json.dart';
 
 class StandardModelInfoReader implements ModelInfoReader {
   /// Replace this method with your actual XML parsing logic.
@@ -47,16 +46,16 @@ class StandardModelInfoReader implements ModelInfoReader {
   }
 
   ModelInfo _modelInfo(String modelContents) {
-    final Xml2Json myTransformer = Xml2Json();
+    final myTransformer = Xml2Json();
     myTransformer.parse(modelContents);
-    final String json = myTransformer.toBadgerfish();
-    final Map<String, dynamic> map = jsonDecode(json) as Map<String, dynamic>;
+    final json = myTransformer.toBadgerfish();
+    final map = jsonDecode(json) as Map<String, dynamic>;
     var newMap = ModelInfoReader.removeAts(map);
     newMap =
         ModelInfoReader.removeModelName(newMap, newMap['modelInfo']['name']);
 
     if (newMap['modelInfo'] is Map) {
-      final properMap = jsonDecode(jsonEncode((newMap['modelInfo'] as Map)));
+      final properMap = jsonDecode(jsonEncode(newMap['modelInfo'] as Map));
       try {
         final modelInfo = ModelInfo.fromJson(properMap);
         return modelInfo;

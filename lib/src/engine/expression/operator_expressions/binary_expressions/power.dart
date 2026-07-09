@@ -69,7 +69,6 @@ class Power extends BinaryExpression {
             operand.add(second);
           }
         }
-        break;
       case LiteralLong _:
         {
           if (second is LiteralInteger) {
@@ -83,7 +82,6 @@ class Power extends BinaryExpression {
             operand.add(second);
           }
         }
-        break;
       case LiteralDecimal _:
         {
           if (second is LiteralInteger) {
@@ -97,7 +95,6 @@ class Power extends BinaryExpression {
             operand.add(second);
           }
         }
-        break;
       default:
         // Non-literal operand — let execution handle type checking
         operand.add(first);
@@ -142,7 +139,7 @@ class Power extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -186,15 +183,17 @@ class Power extends BinaryExpression {
       } else if (first is CqlLong && second is CqlLong) {
         if (second.valueBigInt! < BigInt.zero) {
           return CqlDecimal(
-              pow(first.valueBigInt!.toDouble(), second.valueBigInt!.toDouble())
-                  .toDouble());
+            pow(first.valueBigInt!.toDouble(), second.valueBigInt!.toDouble())
+                .toDouble(),
+          );
         }
         return CqlLong(first.valueBigInt!.pow(second.valueBigInt!.toInt()));
       } else if (first is CqlDecimal && second is CqlDecimal) {
         return CqlDecimal(pow(first.valueNum!, second.valueNum!));
       } else {
         throw ArgumentError(
-            'Power must have two operands of type Integer, Long, or Decimal');
+          'Power must have two operands of type Integer, Long, or Decimal',
+        );
       }
     }
   }

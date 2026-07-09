@@ -2,8 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The SortClause element defines the sort order for the query.
 class SortClause extends Element {
-  final List<SortByItem> by;
-
   SortClause({
     required this.by,
     super.annotation,
@@ -15,7 +13,8 @@ class SortClause extends Element {
 
   factory SortClause.fromJson(Map<String, dynamic> json) => SortClause(
         by: List<SortByItem>.from(
-            json['by'].map((x) => SortByItem.fromJson(x))),
+          json['by'].map((x) => SortByItem.fromJson(x)),
+        ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e))
@@ -28,10 +27,11 @@ class SortClause extends Element {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final List<SortByItem> by;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'by': List<dynamic>.from(by.map((x) => x.toJson())),
     };
     void writeNotNull(String key, dynamic value) {

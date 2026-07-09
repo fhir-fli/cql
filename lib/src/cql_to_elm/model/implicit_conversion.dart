@@ -49,18 +49,30 @@ String? inferResultType(
     return null;
   }
   if (expression is SingletonFrom) {
-    final operandType = inferResultType(expression.operand, model,
-        scopeType: scopeType, defineType: defineType);
+    final operandType = inferResultType(
+      expression.operand,
+      model,
+      scopeType: scopeType,
+      defineType: defineType,
+    );
     return operandType == null ? null : elementTypeName(operandType);
   }
   if (expression is First) {
-    final sourceType = inferResultType(expression.source, model,
-        scopeType: scopeType, defineType: defineType);
+    final sourceType = inferResultType(
+      expression.source,
+      model,
+      scopeType: scopeType,
+      defineType: defineType,
+    );
     return sourceType == null ? null : elementTypeName(sourceType);
   }
   if (expression is Last) {
-    final sourceType = inferResultType(expression.source, model,
-        scopeType: scopeType, defineType: defineType);
+    final sourceType = inferResultType(
+      expression.source,
+      model,
+      scopeType: scopeType,
+      defineType: defineType,
+    );
     return sourceType == null ? null : elementTypeName(sourceType);
   }
   if (expression is Query) {
@@ -69,8 +81,12 @@ String? inferResultType(
     if (expression.returnClause == null &&
         expression.aggregate == null &&
         expression.source.length == 1) {
-      return inferResultType(expression.source.first.expression, model,
-          scopeType: scopeType, defineType: defineType);
+      return inferResultType(
+        expression.source.first.expression,
+        model,
+        scopeType: scopeType,
+        defineType: defineType,
+      );
     }
     return null;
   }
@@ -114,8 +130,12 @@ String? inferSourceElementType(
   String? Function(String name)? scopeType,
   String? Function(String name)? defineType,
 }) {
-  final type = inferResultType(source, model,
-      scopeType: scopeType, defineType: defineType);
+  final type = inferResultType(
+    source,
+    model,
+    scopeType: scopeType,
+    defineType: defineType,
+  );
   return type == null ? null : elementTypeName(type);
 }
 

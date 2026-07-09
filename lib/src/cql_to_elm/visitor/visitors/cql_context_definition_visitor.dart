@@ -7,7 +7,7 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
   @override
   void visitContextDefinition(ContextDefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? name;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
@@ -19,18 +19,24 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
       library.contexts!.def.add(ContextDef(name: name));
       for (final model in library.usings?.def ?? <UsingDef>[]) {
         if (model.localIdentifier != null) {
-          final modelInfo = modelInfoProvider.load(ModelIdentifier(
-              id: model.localIdentifier!, version: model.version));
+          final modelInfo = modelInfoProvider.load(
+            ModelIdentifier(
+              id: model.localIdentifier!,
+              version: model.version,
+            ),
+          );
           if (modelInfo != null) {
-            final index = modelInfo.typeInfo.indexWhere((element) =>
-                (element is ClassInfo &&
-                    (element.label == name ||
-                        element.name == name ||
-                        element.identifier == name)) ||
-                (element is ProfileInfo &&
-                    (element.label == name ||
-                        element.name == name ||
-                        element.identifier == name)));
+            final index = modelInfo.typeInfo.indexWhere(
+              (element) =>
+                  (element is ClassInfo &&
+                      (element.label == name ||
+                          element.name == name ||
+                          element.identifier == name)) ||
+                  (element is ProfileInfo &&
+                      (element.label == name ||
+                          element.name == name ||
+                          element.identifier == name)),
+            );
             if (index != -1) {
               // A retrievable ClassInfo is a model resource type (the
               // model-driven answer to "is `name` a FHIR resource?"), so it
@@ -48,8 +54,9 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                           ? 'http://hl7.org/fhir/StructureDefinition/$name'
                           : name,
                       dataType: QName(
-                          namespaceURI: modelInfo.url.toString(),
-                          localPart: name),
+                        namespaceURI: modelInfo.url.toString(),
+                        localPart: name,
+                      ),
                     ),
                   ),
                 ),
@@ -58,7 +65,10 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
               // type (e.g. `Patient` → FHIR.Patient), so queries over it
               // (`Patient P`) infer their alias type.
               CqlBaseVisitor.registerDefineType(
-                  library, name, Model.of(modelInfo).normalizeTypeName(name));
+                library,
+                name,
+                Model.of(modelInfo).normalizeTypeName(name),
+              );
             }
           }
         }

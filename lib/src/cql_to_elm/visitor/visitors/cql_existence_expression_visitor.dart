@@ -7,7 +7,7 @@ class CqlExistenceExpressionVisitor extends CqlBaseVisitor<Exists> {
   @override
   Exists visitExistenceExpression(ExistenceExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);

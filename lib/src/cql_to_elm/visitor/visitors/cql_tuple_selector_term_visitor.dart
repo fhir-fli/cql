@@ -7,7 +7,7 @@ class CqlTupleSelectorTermVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitTupleSelectorTerm(TupleSelectorTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TupleSelectorContext) {
         return visitTupleSelector(child);

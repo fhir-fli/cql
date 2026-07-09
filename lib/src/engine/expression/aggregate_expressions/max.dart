@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Max operator returns the maximum element in the source.
 /// Comparison semantics are defined by the comparison operators for the type
@@ -87,7 +86,7 @@ class Max extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };

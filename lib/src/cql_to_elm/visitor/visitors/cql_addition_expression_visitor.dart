@@ -7,8 +7,8 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitAdditionExpressionTerm(AdditionExpressionTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    final List<CqlExpression> operand = <CqlExpression>[];
+    final thisNode = getNextNode();
+    final operand = <CqlExpression>[];
     String? additionOperator;
 
     // Parse children and separate out operators
@@ -25,8 +25,8 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
     // Ensure we have two operands for addition/subtraction
     if (operand.length == 2) {
-      final CqlExpression left = operand[0];
-      final CqlExpression right = operand[1];
+      final left = operand[0];
+      final right = operand[1];
 
       // Handle subtraction operator
       if (additionOperator == '-') {
@@ -43,15 +43,19 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   // Helper function to handle subtraction, including null checks and casting
   CqlExpression handleSubtraction(CqlExpression left, CqlExpression right) {
     if (left is LiteralType && right is LiteralNull) {
-      return Subtract(operand: [
-        left,
-        As(operand: right, asType: QName.parse(left.valueType))
-      ]);
+      return Subtract(
+        operand: [
+          left,
+          As(operand: right, asType: QName.parse(left.valueType)),
+        ],
+      );
     } else if (left is LiteralNull && right is LiteralType) {
-      return Subtract(operand: [
-        As(operand: left, asType: QName.parse(right.valueType)),
-        right
-      ]);
+      return Subtract(
+        operand: [
+          As(operand: left, asType: QName.parse(right.valueType)),
+          right,
+        ],
+      );
     } else {
       return Subtract(operand: [left, right]);
     }
@@ -59,40 +63,49 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   // Determine whether to use Add or Concatenate based on operand types
   CqlExpression handleConcatenationOrAddition(
-      CqlExpression left, CqlExpression right, String? operator) {
-    final bool isAddition = operator == '+';
+    CqlExpression left,
+    CqlExpression right,
+    String? operator,
+  ) {
+    final isAddition = operator == '+';
 
     // Check for string concatenation
     if (isAddition && (left is LiteralString || right is LiteralString)) {
       return Concatenate(
         operand: [
-          left is LiteralNull
-              ? As(operand: left, asType: QName.fromElmType('String'))
-              : left,
-          right is LiteralNull
-              ? As(operand: right, asType: QName.fromElmType('String'))
-              : right
+          if (left is LiteralNull)
+            As(operand: left, asType: QName.fromElmType('String'))
+          else
+            left,
+          if (right is LiteralNull)
+            As(operand: right, asType: QName.fromElmType('String'))
+          else
+            right,
         ],
-        plus: true,
       );
     } else if (!isAddition &&
         (left is LiteralString || right is LiteralString)) {
       return Concatenate(
         operand: [
-          Coalesce(operand: [
-            left is LiteralNull
-                ? As(operand: left, asType: QName.fromElmType('String'))
-                : left,
-            LiteralString(''),
-          ]),
-          Coalesce(operand: [
-            right is LiteralNull
-                ? As(operand: right, asType: QName.fromElmType('String'))
-                : right,
-            LiteralString(''),
-          ]),
+          Coalesce(
+            operand: [
+              if (left is LiteralNull)
+                As(operand: left, asType: QName.fromElmType('String'))
+              else
+                left,
+              LiteralString(''),
+            ],
+          ),
+          Coalesce(
+            operand: [
+              if (right is LiteralNull)
+                As(operand: right, asType: QName.fromElmType('String'))
+              else
+                right,
+              LiteralString(''),
+            ],
+          ),
         ],
-        plus: true,
       );
     } else if (left is LiteralInteger ||
         left is LiteralLong ||
@@ -111,7 +124,9 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
   // Numeric addition with null handling for specific types
   CqlExpression handleNumericConcatenationOrAddition(
-      CqlExpression left, CqlExpression right) {
+    CqlExpression left,
+    CqlExpression right,
+  ) {
     switch (left) {
       case LiteralInteger _:
         return handleIntegerAddition(left, right);
@@ -135,12 +150,15 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     } else if (right is LiteralDecimal) {
       return Add(operand: [ToDecimal(operand: left), right]);
     } else if (right is LiteralNull) {
-      return Add(operand: [
-        left,
-        As(
+      return Add(
+        operand: [
+          left,
+          As(
             operand: right,
-            asType: left.type == null ? null : QName.parse(left.type!))
-      ]);
+            asType: left.type == null ? null : QName.parse(left.type!),
+          ),
+        ],
+      );
     }
     return Add(operand: [left, right]);
   }
@@ -153,12 +171,15 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     } else if (right is LiteralDecimal) {
       return Add(operand: [ToDecimal(operand: left), right]);
     } else if (right is LiteralNull) {
-      return Add(operand: [
-        left,
-        As(
+      return Add(
+        operand: [
+          left,
+          As(
             operand: right,
-            asType: left.type == null ? null : QName.parse(left.type!))
-      ]);
+            asType: left.type == null ? null : QName.parse(left.type!),
+          ),
+        ],
+      );
     }
     return Add(operand: [left, right]);
   }
@@ -169,27 +190,35 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     } else if (right is LiteralLong) {
       return Add(operand: [left, ToDecimal(operand: right)]);
     } else if (right is LiteralNull) {
-      return Add(operand: [
-        left,
-        As(
+      return Add(
+        operand: [
+          left,
+          As(
             operand: right,
-            asType: left.type == null ? null : QName.parse(left.type!))
-      ]);
+            asType: left.type == null ? null : QName.parse(left.type!),
+          ),
+        ],
+      );
     }
     return Add(operand: [left, right]);
   }
 
   CqlExpression handleQuantityAddition(
-      CqlExpression left, CqlExpression right) {
+    CqlExpression left,
+    CqlExpression right,
+  ) {
     if (right is LiteralDecimal) {
       return Add(operand: [left, ToQuantity(operand: right)]);
     } else if (right is LiteralNull) {
-      return Add(operand: [
-        left,
-        As(
+      return Add(
+        operand: [
+          left,
+          As(
             operand: right,
-            asType: left.type == null ? null : QName.parse(left.type!))
-      ]);
+            asType: left.type == null ? null : QName.parse(left.type!),
+          ),
+        ],
+      );
     }
     return Add(operand: [left, right]);
   }

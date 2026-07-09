@@ -1,9 +1,4 @@
 class CqlIncludeException implements Exception {
-  final String libraryId;
-  final String librarySystem;
-  final String message;
-  final String versionId;
-
   CqlIncludeException(
     this.message,
     this.librarySystem,
@@ -17,6 +12,10 @@ class CqlIncludeException implements Exception {
     this.libraryId,
     this.versionId,
   );
+  final String libraryId;
+  final String librarySystem;
+  final String message;
+  final String versionId;
 
   @override
   String toString() {

@@ -1,36 +1,9 @@
 import 'package:cql/src/internal.dart';
 
 class ClassInfo extends TypeInfo {
-  final String? comment;
-  final List<ConstraintInfo>? constraint;
-  final List<RelationshipInfo>? contextRelationship;
-  final String? definition;
-  final String? description;
-  final List<ClassInfoElement>? element;
-  final String? identifier;
-  final List<ExpressionInfo>? inferenceExpression;
-  final String? label;
-  final String name;
-  final String? namespace;
-  final List<TypeParameterInfo>? parameter;
-  final String? primaryCodePath;
-  final String? primaryValueSetPath;
-  final bool retrievable;
-  final List<SearchInfo>? search;
-  final bool? singleConstraint;
-  final bool? singleContextRelationship;
-  final bool? singleElement;
-  final bool? singleInferenceExpression;
-  final bool? singleParameter;
-  final bool? singleSearch;
-  final bool? singleTargetContextRelationship;
-  final String? target;
-  final List<RelationshipInfo>? targetContextRelationship;
-  final String type = 'ClassInfo';
-
   ClassInfo({
-    this.namespace,
     required this.name,
+    this.namespace,
     super.baseType,
     this.identifier,
     this.label,
@@ -112,7 +85,8 @@ class ClassInfo extends TypeInfo {
               : json['targetContextRelationship'] is Map
                   ? [
                       RelationshipInfo.fromJson(
-                          json['targetContextRelationship'])
+                        json['targetContextRelationship'],
+                      ),
                     ]
                   : null,
       singleTargetContextRelationship: json['targetContextRelationship'] is Map,
@@ -148,6 +122,32 @@ class ClassInfo extends TypeInfo {
       singleConstraint: json['constraint'] is Map,
     );
   }
+  final String? comment;
+  final List<ConstraintInfo>? constraint;
+  final List<RelationshipInfo>? contextRelationship;
+  final String? definition;
+  final String? description;
+  final List<ClassInfoElement>? element;
+  final String? identifier;
+  final List<ExpressionInfo>? inferenceExpression;
+  final String? label;
+  final String name;
+  final String? namespace;
+  final List<TypeParameterInfo>? parameter;
+  final String? primaryCodePath;
+  final String? primaryValueSetPath;
+  final bool retrievable;
+  final List<SearchInfo>? search;
+  final bool? singleConstraint;
+  final bool? singleContextRelationship;
+  final bool? singleElement;
+  final bool? singleInferenceExpression;
+  final bool? singleParameter;
+  final bool? singleSearch;
+  final bool? singleTargetContextRelationship;
+  final String? target;
+  final List<RelationshipInfo>? targetContextRelationship;
+  final String type = 'ClassInfo';
 
   @override
   Map<String, dynamic> toJson() {

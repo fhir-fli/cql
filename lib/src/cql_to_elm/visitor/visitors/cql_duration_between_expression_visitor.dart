@@ -7,9 +7,10 @@ class CqlDurationBetweenExpressionVisitor
 
   @override
   DurationBetween visitDurationBetweenExpression(
-      DurationBetweenExpressionContext ctx) {
+    DurationBetweenExpressionContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     // bool durationIn = false;
     CqlDateTimePrecision? pluralDateTimePrecision;
     CqlExpression? left;
@@ -21,7 +22,8 @@ class CqlDurationBetweenExpressionVisitor
         }
       } else if (child is PluralDateTimePrecisionContext) {
         pluralDateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
-            visitPluralDateTimePrecision(child));
+          visitPluralDateTimePrecision(child),
+        );
       } else {
         final result = byContext(child);
         if (result is CqlExpression) {
@@ -35,7 +37,9 @@ class CqlDurationBetweenExpressionVisitor
     }
     if (pluralDateTimePrecision != null && left != null && right != null) {
       return DurationBetween(
-          precision: pluralDateTimePrecision, operand: [left, right]);
+        precision: pluralDateTimePrecision,
+        operand: [left, right],
+      );
     }
     throw ArgumentError('$thisNode Invalid DurationBetweenExpression');
   }

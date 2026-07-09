@@ -25,8 +25,6 @@ extension CqlLongBigIntExtension on BigInt {
 /// web (JS numbers are doubles, so a Dart `int` cast on JS would lose
 /// precision past 2^53).
 class CqlLong extends CqlPrimitive implements Comparable<CqlLong> {
-  const CqlLong._(super.valueString) : super();
-
   /// Creates a [CqlLong] from a [BigInt], [int], [num], or numeric [String].
   factory CqlLong(dynamic rawValue) {
     if (rawValue == null) return const CqlLong._(null);
@@ -40,6 +38,7 @@ class CqlLong extends CqlPrimitive implements Comparable<CqlLong> {
       'CqlLong only supports BigInt, int, or numeric String. Got: $rawValue',
     );
   }
+  const CqlLong._(super.valueString) : super();
 
   /// Creates a [CqlLong] from a [num], via `BigInt.from(...)`.
   factory CqlLong.fromNum(num input) => CqlLong(BigInt.from(input));

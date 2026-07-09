@@ -9,10 +9,9 @@ import 'package:cql/cql.dart';
 import 'package:cql/src/cql_to_elm/antlr/antlr.dart';
 
 class CqlParsersAndErrors {
+  CqlParsersAndErrors(this.parser, this.errorListener);
   final ElmErrorListener errorListener;
   final cqlParser parser;
-
-  CqlParsersAndErrors(this.parser, this.errorListener);
 }
 
 CqlParsersAndErrors parseCql(String pathExpression) {
@@ -35,8 +34,10 @@ Map<String, dynamic> loadJsonFile(String filename) {
   return jsonDecode(content) as Map<String, dynamic>;
 }
 
-CqlLibrary parseAndBuildLibrary(String cqlSource,
-    {LibraryManager? libraryManager}) {
+CqlLibrary parseAndBuildLibrary(
+  String cqlSource, {
+  LibraryManager? libraryManager,
+}) {
   final parserAndErrors = parseCql(cqlSource);
   final parser = parserAndErrors.parser;
 

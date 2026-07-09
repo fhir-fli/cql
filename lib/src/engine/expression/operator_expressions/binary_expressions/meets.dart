@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to determine if the first interval ends immediately before the
 /// second interval starts
@@ -54,11 +53,9 @@ import 'package:cql/src/internal.dart';
 /// define "MeetsAfterIsFalse": Interval[6, 10] meets after Interval[0, 7]
 /// define "MeetsIsNull": Interval[6, 10] meets (null as `Interval<Integer>`)
 class Meets extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Meets({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -87,10 +84,11 @@ class Meets extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -130,8 +128,11 @@ class Meets extends BinaryExpression {
     return meets(left, right, precision);
   }
 
-  static CqlBoolean? meets(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? meets(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null || right == null) {
       return null;
     } else if (left is CqlInterval && right is CqlInterval) {
@@ -191,7 +192,10 @@ class Meets extends BinaryExpression {
   /// Returns true/false/null. Null if either input is null or comparison is
   /// uncertain.
   static CqlBoolean? checkMeetsBefore(
-      dynamic leftEnd, dynamic rightStart, CqlDateTimePrecision? precision) {
+    dynamic leftEnd,
+    dynamic rightStart,
+    CqlDateTimePrecision? precision,
+  ) {
     if (leftEnd == null || rightStart == null) return null;
     final pred = precision != null &&
             (rightStart is CqlDateTimeBase || rightStart is CqlTime)
@@ -208,7 +212,10 @@ class Meets extends BinaryExpression {
   /// Returns true/false/null. Null if either input is null or comparison is
   /// uncertain.
   static CqlBoolean? checkMeetsAfter(
-      dynamic leftStart, dynamic rightEnd, CqlDateTimePrecision? precision) {
+    dynamic leftStart,
+    dynamic rightEnd,
+    CqlDateTimePrecision? precision,
+  ) {
     if (leftStart == null || rightEnd == null) return null;
     final succ = precision != null &&
             (rightEnd is CqlDateTimeBase || rightEnd is CqlTime)
@@ -226,8 +233,12 @@ class Meets extends BinaryExpression {
   /// falls within the other interval (whose boundaries are both known),
   /// overlap is proven.
   static bool intervalsOverlap(
-      dynamic leftStart, dynamic leftEnd, dynamic rightStart, dynamic rightEnd,
-      [CqlDateTimePrecision? precision]) {
+    dynamic leftStart,
+    dynamic leftEnd,
+    dynamic rightStart,
+    dynamic rightEnd, [
+    CqlDateTimePrecision? precision,
+  ]) {
     // Full check: all 4 known — leftStart <= rightEnd AND rightStart <= leftEnd
     if (leftStart != null &&
         rightEnd != null &&
@@ -256,8 +267,12 @@ class Meets extends BinaryExpression {
   }
 
   /// Check if point ∈ [ivlStart, ivlEnd]. All three must be non-null.
-  static bool _pointInInterval(dynamic point, dynamic ivlStart, dynamic ivlEnd,
-      [CqlDateTimePrecision? precision]) {
+  static bool _pointInInterval(
+    dynamic point,
+    dynamic ivlStart,
+    dynamic ivlEnd, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (point == null || ivlStart == null || ivlEnd == null) return false;
     final ge = precision != null
         ? SameOrAfter.sameOrAfter(point, ivlStart, precision)
@@ -290,7 +305,9 @@ class Meets extends BinaryExpression {
   /// Precision-based successor: add 1 unit at the specified precision.
   /// E.g., successor at day of 2012-03-01 = 2012-03-02 (not 2012-03-01.001).
   static dynamic safePrecisionSuccessor(
-      dynamic value, CqlDateTimePrecision precision) {
+    dynamic value,
+    CqlDateTimePrecision precision,
+  ) {
     try {
       final unit = _precisionToUnit(precision);
       final qty =
@@ -308,7 +325,9 @@ class Meets extends BinaryExpression {
 
   /// Precision-based predecessor: subtract 1 unit at the specified precision.
   static dynamic safePrecisionPredecessor(
-      dynamic value, CqlDateTimePrecision precision) {
+    dynamic value,
+    CqlDateTimePrecision precision,
+  ) {
     try {
       final unit = _precisionToUnit(precision);
       final qty =

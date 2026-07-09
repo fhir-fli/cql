@@ -7,16 +7,17 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitMembershipExpression(MembershipExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    bool inContains = true;
+    final thisNode = getNextNode();
+    var inContains = true;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
-    final List<CqlExpression> operand = <CqlExpression>[];
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
-        inContains = child.text == 'in' ? true : false;
+        inContains = (child.text == 'in');
       } else if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecisionSpecifier = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecisionSpecifier(child));
+          visitDateTimePrecisionSpecifier(child),
+        );
       } else {
         final result = byContext(child);
         if (result is CqlExpression) {
@@ -32,7 +33,9 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
             _handleContainsWithChoiceType(operand, dateTimePrecisionSpecifier);
         if (containsResult != null) return containsResult;
         return Contains(
-            operand: operand, precision: dateTimePrecisionSpecifier);
+          operand: operand,
+          precision: dateTimePrecisionSpecifier,
+        );
       } else {
         if (operand[1] is ValueSetRef) {
           // For InValueSet, wrap CodeableConcept properties with
@@ -117,7 +120,7 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       if (refDef?.expression is SingletonFrom) {
-        final sf = refDef!.expression as SingletonFrom;
+        final sf = refDef!.expression! as SingletonFrom;
         if (sf.operand is Retrieve) {
           return (sf.operand as Retrieve).dataType.localPart;
         }
@@ -142,7 +145,9 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
   /// )
   /// ```
   CqlExpression? _handleContainsWithChoiceType(
-      List<CqlExpression> operand, CqlDateTimePrecision? precision) {
+    List<CqlExpression> operand,
+    CqlDateTimePrecision? precision,
+  ) {
     // The collection is operand[0], the element is operand[1]
     final collection = operand[0];
     final element = operand[1];
@@ -243,11 +248,12 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
   /// Returns the element with the most choice alternatives.
   ClassInfoElement? _findChoiceElementByPath(String path) {
     ClassInfoElement? best;
-    int bestCount = 0;
+    var bestCount = 0;
     for (final model in library.usings?.def ?? <UsingDef>[]) {
       if (model.localIdentifier == null) continue;
       final modelInfo = modelInfoProvider.load(
-          ModelIdentifier(id: model.localIdentifier!, version: model.version));
+        ModelIdentifier(id: model.localIdentifier!, version: model.version),
+      );
       if (modelInfo == null) continue;
       for (final ti in modelInfo.typeInfo) {
         if (ti is ClassInfo) {

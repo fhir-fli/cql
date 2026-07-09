@@ -4,9 +4,6 @@ import 'package:cql/src/internal.dart';
 ///
 /// The [TupleTypeSpecifier] type defines the possible elements of a tuple.
 class TupleTypeSpecifier extends TypeSpecifierExpression {
-  /// Elements within TupleTypeSpecifier.
-  List<TupleElementDefinition>? element;
-
   TupleTypeSpecifier({
     this.element,
     super.annotation,
@@ -36,6 +33,9 @@ class TupleTypeSpecifier extends TypeSpecifierExpression {
           : null,
     );
   }
+
+  /// Elements within TupleTypeSpecifier.
+  List<TupleElementDefinition>? element;
 
   @override
   Map<String, dynamic> toJson() {

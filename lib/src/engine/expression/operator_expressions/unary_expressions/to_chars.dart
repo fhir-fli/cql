@@ -31,7 +31,7 @@ class ToChars extends UnaryExpression {
   String get type => 'ToChars';
 
   @override
-  String toString() => 'ToChars(${operand.toString()})';
+  String toString() => 'ToChars($operand)';
   @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
@@ -73,6 +73,6 @@ class ToChars extends UnaryExpression {
       str = value;
     }
     if (str == null) return null;
-    return str.split('').map((c) => CqlString(c)).toList();
+    return str.split('').map(CqlString.new).toList();
   }
 }

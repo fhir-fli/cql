@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Is operator allowing testing the type of a result.
 ///
@@ -9,16 +8,10 @@ import 'package:cql/src/internal.dart';
 /// System type checks are handled inline; FHIR-namespaced checks delegate
 /// to the [ModelResolver] from the execution context.
 class Is extends UnaryExpression {
-  /// Type to test against.
-  QName? isType;
-
-  /// Type specifier for testing.
-  TypeSpecifierExpression? isTypeSpecifier;
-
   Is({
+    required super.operand,
     this.isTypeSpecifier,
     this.isType,
-    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -44,6 +37,12 @@ class Is extends UnaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+
+  /// Type to test against.
+  QName? isType;
+
+  /// Type specifier for testing.
+  TypeSpecifierExpression? isTypeSpecifier;
 
   @override
   Map<String, dynamic> toJson() {
@@ -78,7 +77,8 @@ class Is extends UnaryExpression {
 
     if (isTypeSpecifier != null) {
       return CqlBoolean(
-          _matchesSpecifier(value, isTypeSpecifier!, modelResolver));
+        _matchesSpecifier(value, isTypeSpecifier!, modelResolver),
+      );
     }
     if (isType != null) {
       return CqlBoolean(_matchesType(value, isType!, modelResolver));

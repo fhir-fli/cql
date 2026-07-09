@@ -7,7 +7,7 @@ class CqlTupleTypeSpecifierVisitor extends CqlBaseVisitor<TupleTypeSpecifier> {
   @override
   TupleTypeSpecifier visitTupleTypeSpecifier(TupleTypeSpecifierContext ctx) {
     printIf(ctx);
-    List<TupleElementDefinition> element = <TupleElementDefinition>[];
+    final element = <TupleElementDefinition>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TupleElementDefinitionContext) {
         element.add(visitTupleElementDefinition(child));

@@ -38,7 +38,7 @@ abstract class ModelInfoReader {
       }
       return newValue;
     } else if (value is List) {
-      return value.map((e) => removeAts(e)).toList();
+      return value.map(removeAts).toList();
     } else if (value is Map) {
       return value
           .map((key, value) => MapEntry(removeAts(key), removeAts(value)));
@@ -57,8 +57,12 @@ abstract class ModelInfoReader {
     } else if (value is List) {
       return value.map((e) => removeModelName(e, modelName)).toList();
     } else if (value is Map) {
-      return value.map((key, value) => MapEntry(
-          removeModelName(key, modelName), removeModelName(value, modelName)));
+      return value.map(
+        (key, value) => MapEntry(
+          removeModelName(key, modelName),
+          removeModelName(value, modelName),
+        ),
+      );
     } else {
       return value;
     }

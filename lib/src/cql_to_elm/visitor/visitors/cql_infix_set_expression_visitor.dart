@@ -7,7 +7,7 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
   NaryExpression visitInFixSetExpression(InFixSetExpressionContext ctx) {
     printIf(ctx);
 
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
 
     if (ctx.childCount == 3) {
       final left = byContext(ctx.getChild(0)!);
@@ -64,11 +64,13 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
       final choiceType = _buildChoiceType(combinedTypes);
       return [
         As(
-            operand: left,
-            asTypeSpecifier: ListTypeSpecifier(elementType: choiceType)),
+          operand: left,
+          asTypeSpecifier: ListTypeSpecifier(elementType: choiceType),
+        ),
         As(
-            operand: right,
-            asTypeSpecifier: ListTypeSpecifier(elementType: choiceType)),
+          operand: right,
+          asTypeSpecifier: ListTypeSpecifier(elementType: choiceType),
+        ),
       ];
     }
 
@@ -113,11 +115,12 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     final choiceType = ChoiceTypeSpecifier(
       choice: combinedTypes.map((type) {
         return NamedTypeSpecifier(
-            namespace: QName.elmCoreTypes.contains(type)
-                ? QName.fromElmType(type)
-                : QName.fhirTypes.contains(type)
-                    ? QName.fromFhirType(type)
-                    : QName(localPart: type));
+          namespace: QName.elmCoreTypes.contains(type)
+              ? QName.fromElmType(type)
+              : QName.fhirTypes.contains(type)
+                  ? QName.fromFhirType(type)
+                  : QName(localPart: type),
+        );
       }).toList(),
     );
 

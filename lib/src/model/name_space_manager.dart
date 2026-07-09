@@ -1,14 +1,13 @@
 import 'package:cql/src/internal.dart';
 
 class NamespaceManager {
-  final Map<String, String> namespaces;
-  final Map<String, String> reverseNamespaces;
-
   NamespaceManager({
     Map<String, String>? namespaces,
     Map<String, String>? reverseNamespaces,
   })  : namespaces = namespaces ?? <String, String>{},
         reverseNamespaces = reverseNamespaces ?? <String, String>{};
+  final Map<String, String> namespaces;
+  final Map<String, String> reverseNamespaces;
 
   bool get hasNamespaces => namespaces.isNotEmpty;
 
@@ -34,7 +33,8 @@ class NamespaceManager {
     }
     if (reverseNamespaces.containsKey(namespaceUri)) {
       throw ArgumentError(
-          'Namespace name for URI "$namespaceUri" already defined');
+        'Namespace name for URI "$namespaceUri" already defined',
+      );
     }
     namespaces[namespaceName] = namespaceUri;
     reverseNamespaces[namespaceUri] = namespaceName;

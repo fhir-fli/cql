@@ -7,7 +7,7 @@ class CqlQuantityOffsetVisitor extends CqlBaseVisitor<LiteralQuantity> {
   @override
   LiteralQuantity visitQuantityOffset(QuantityOffsetContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     LiteralQuantity? quantity;
     // String? relativeQualifier;
     for (final child in ctx.children ?? <ParseTree>[]) {

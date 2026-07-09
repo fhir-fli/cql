@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the predecessor of the argument.
 /// The Predecessor operator is defined for the Integer, Decimal, Date,
@@ -130,7 +129,7 @@ class Predecessor extends UnaryExpression {
     } else if (value is CqlDecimal) {
       // Use string-based arithmetic to avoid floating-point precision errors.
       // E.g., 2.2 - 0.00000001 in doubles = 2.1999999900000002, not 2.19999999.
-      final ud = UcumDecimal.fromString(value.valueString!);
+      final ud = UcumDecimal.fromString(value.valueString);
       final step = UcumDecimal.fromString('0.00000001');
       final result = ud.subtract(step);
       return CqlDecimal(double.parse(result.asUcumDecimal()));
@@ -173,7 +172,8 @@ class Predecessor extends UnaryExpression {
       final newValue =
           value.value.subtract(UcumDecimal.fromString('0.00000001'));
       return ValidatedQuantity.fromString(
-          '${newValue.asUcumDecimal()} \'${value.unit}\'');
+        "${newValue.asUcumDecimal()} '${value.unit}'",
+      );
     }
     throw ArgumentError('Invalid type for Successor: ${value.runtimeType}');
   }

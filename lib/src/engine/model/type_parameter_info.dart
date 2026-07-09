@@ -5,18 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [TypeParameterInfo] type specifies details regarding a generic class parameter,
 /// including its name, constraint, and optional constraint type.
 class TypeParameterInfo {
-  /// Parameter constraint (NONE, CLASS, VALUE, TUPLE, INTERVAL, CHOICE, TYPE).
-  String constraint;
-
-  /// Type this parameter should be assignable from.
-  String? constraintType;
-
-  /// Name of the parameter.
-  String name;
-
-  /// Type specifier.
-  TypeSpecifierModel? typeSpecifier;
-
   TypeParameterInfo({
     required this.name,
     required this.constraint,
@@ -34,6 +22,18 @@ class TypeParameterInfo {
           : null,
     );
   }
+
+  /// Parameter constraint (NONE, CLASS, VALUE, TUPLE, INTERVAL, CHOICE, TYPE).
+  String constraint;
+
+  /// Type this parameter should be assignable from.
+  String? constraintType;
+
+  /// Name of the parameter.
+  String name;
+
+  /// Type specifier.
+  TypeSpecifierModel? typeSpecifier;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

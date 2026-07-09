@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class CqlConcept implements CqlType {
-  String? display;
-  List<CqlCode> codes = <CqlCode>[];
-
   CqlConcept({this.display, List<CqlCode>? codes})
       : codes = codes ?? <CqlCode>[];
 
@@ -17,6 +14,8 @@ class CqlConcept implements CqlType {
           : null,
     );
   }
+  String? display;
+  List<CqlCode> codes = <CqlCode>[];
 
   CqlConcept copyWith({
     String? display,
@@ -28,7 +27,7 @@ class CqlConcept implements CqlType {
   bool equivalent(Object other) {
     if (other is CqlConcept) {
       final otherCodes = other.codes.toList();
-      for (CqlCode code in codes) {
+      for (final code in codes) {
         final index =
             otherCodes.indexWhere((element) => element.equivalent(code));
         if (index == -1) {
@@ -49,11 +48,11 @@ class CqlConcept implements CqlType {
       // Check codes using three-valued code equality
       bool? codeResult = true;
       final otherCodes = other.codes.toList();
-      for (CqlCode code in codes) {
+      for (final code in codes) {
         // Find matching code using three-valued equal
-        int matchIdx = -1;
-        bool hasNull = false;
-        for (int i = 0; i < otherCodes.length; i++) {
+        var matchIdx = -1;
+        var hasNull = false;
+        for (var i = 0; i < otherCodes.length; i++) {
           final eq = otherCodes[i].equal(code);
           if (eq == true) {
             matchIdx = i;

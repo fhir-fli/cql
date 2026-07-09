@@ -4,10 +4,6 @@ import 'package:cql/src/internal.dart';
 /// If length is omitted, the substring returned starts at startIndex and continues to the end of stringToSub.
 /// If stringToSub or startIndex is null, or startIndex is out of range, the result is null.
 class Substring extends OperatorExpression {
-  final CqlExpression? length;
-  final CqlExpression startIndex;
-  final CqlExpression stringToSub;
-
   Substring({
     required this.stringToSub,
     required this.startIndex,
@@ -37,6 +33,9 @@ class Substring extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression? length;
+  final CqlExpression startIndex;
+  final CqlExpression stringToSub;
 
   @override
   Map<String, dynamic> toJson() {

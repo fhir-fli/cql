@@ -2,8 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The QueryLetRef expression allows for the reference of a specific let definition within the scope of a query.
 class QueryLetRef extends CqlExpression {
-  final String name;
-
   QueryLetRef({
     required this.name,
     super.annotation,
@@ -27,10 +25,11 @@ class QueryLetRef extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String name;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'name': name,
     };

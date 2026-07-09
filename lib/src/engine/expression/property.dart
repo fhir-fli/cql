@@ -15,10 +15,6 @@ import 'package:cql/src/internal.dart';
 /// closed indicators for interval types using the property names low, high,
 /// lowClosed, and highClosed.
 class Property extends CqlExpression {
-  final String path;
-  final String? scope;
-  final CqlExpression? source;
-
   Property({
     required this.path,
     this.source,
@@ -50,10 +46,13 @@ class Property extends CqlExpression {
           : null,
     );
   }
+  final String path;
+  final String? scope;
+  final CqlExpression? source;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {};
+    final val = <String, dynamic>{};
 
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
@@ -127,7 +126,9 @@ class Property extends CqlExpression {
   }
 
   Future<dynamic> _resolveProperty(
-      dynamic sourceResult, Map<String, dynamic> context) async {
+    dynamic sourceResult,
+    Map<String, dynamic> context,
+  ) async {
     // For plain Maps (CQL tuples), directly access the property
     if (sourceResult is Map<String, dynamic> &&
         sourceResult.containsKey(path) &&

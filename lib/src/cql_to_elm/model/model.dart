@@ -129,7 +129,7 @@ class Model {
   /// element is unknown to this model.
   ResolvedElementType? resolveElementType(String typeName, String elementName) {
     final visited = <String>{};
-    TypeInfo? current = resolveTypeName(typeName);
+    var current = resolveTypeName(typeName);
     while (current is ClassInfo) {
       final element = current.element
           ?.firstWhereOrNull((e) => _casify(e.name) == _casify(elementName));

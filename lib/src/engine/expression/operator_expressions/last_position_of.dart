@@ -23,9 +23,6 @@ import 'package:cql/src/internal.dart';
 ///define "LastPositionOfNotFound": LastPositionOf('XYZ', 'ABCDE') // -1
 ///define "LastPositionOfIsNull": LastPositionOf(null, 'ABCDE') // null
 class LastPositionOf extends OperatorExpression {
-  final CqlExpression pattern;
-  final CqlExpression string;
-
   LastPositionOf({
     required this.pattern,
     required this.string,
@@ -51,6 +48,8 @@ class LastPositionOf extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression pattern;
+  final CqlExpression string;
 
   @override
   Map<String, dynamic> toJson() {

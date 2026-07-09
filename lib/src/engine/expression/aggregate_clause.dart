@@ -2,16 +2,11 @@ import 'package:cql/src/internal.dart';
 
 /// The SortClause element defines the sort order for the query.
 class AggregateClause extends Element {
-  CqlExpression expression;
-  CqlExpression? starting; // Optional, can be null
-  String identifier;
-  bool distinct;
-
   AggregateClause({
     required this.expression,
-    this.starting,
     required this.identifier,
     required this.distinct,
+    this.starting,
     super.annotation,
     super.localId,
     super.locator,
@@ -39,10 +34,14 @@ class AggregateClause extends Element {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  CqlExpression expression;
+  CqlExpression? starting; // Optional, can be null
+  String identifier;
+  bool distinct;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'expression': expression.toJson(),
       'identifier': identifier,

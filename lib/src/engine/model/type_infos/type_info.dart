@@ -5,12 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [TypeInfo] abstract type serves as a base for other types,
 /// containing a baseTypeSpecifier element and baseType attribute.
 abstract class TypeInfo {
-  /// Base type as a string.
-  String? baseType;
-
-  /// Base type specifier element.
-  TypeSpecifierModel? baseTypeSpecifier;
-
   TypeInfo({
     this.baseTypeSpecifier,
     this.baseType,
@@ -37,6 +31,12 @@ abstract class TypeInfo {
         throw ArgumentError('Unknown type: $type');
     }
   }
+
+  /// Base type as a string.
+  String? baseType;
+
+  /// Base type specifier element.
+  TypeSpecifierModel? baseTypeSpecifier;
 
   Map<String, dynamic> toJson() => {
         if (baseTypeSpecifier != null)

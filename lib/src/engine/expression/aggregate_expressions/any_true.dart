@@ -40,7 +40,7 @@ class AnyTrue extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -91,7 +91,7 @@ class AnyTrue extends AggregateExpression {
     } else if (sourceResult is List) {
       for (final element in sourceResult) {
         if ((element is CqlBoolean && (element.valueBoolean ?? true)) ||
-            (element is bool && element == true)) {
+            (element is bool && element)) {
           return CqlBoolean(true);
         }
       }

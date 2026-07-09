@@ -22,9 +22,6 @@ import 'package:cql/src/internal.dart';
 ///define "PositionOfNotFound": PositionOf('Z', 'ABCDE') // -1
 ///define "PositionOfIsNull": PositionOf(null, 'ABCDE') // null
 class PositionOf extends OperatorExpression {
-  final CqlExpression pattern;
-  final CqlExpression string;
-
   PositionOf({
     required this.pattern,
     required this.string,
@@ -50,6 +47,8 @@ class PositionOf extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression pattern;
+  final CqlExpression string;
 
   @override
   Map<String, dynamic> toJson() {

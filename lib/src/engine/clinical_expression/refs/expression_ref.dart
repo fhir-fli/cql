@@ -3,8 +3,6 @@ import 'package:cql/src/internal.dart';
 
 /// Expression that references a previously defined NamedExpression.
 class ExpressionRef extends Ref {
-  /// Guard against infinite recursion in [getReturnTypes].
-  static final Set<String> _resolvingTypes = {};
   ExpressionRef({
     required super.name,
     super.libraryName,
@@ -18,7 +16,7 @@ class ExpressionRef extends Ref {
   factory ExpressionRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];
     if (name == null) {
-      throw ArgumentError("JSON name cannot be null");
+      throw ArgumentError('JSON name cannot be null');
     }
 
     return ExpressionRef(
@@ -38,12 +36,15 @@ class ExpressionRef extends Ref {
     );
   }
 
+  /// Guard against infinite recursion in [getReturnTypes].
+  static final Set<String> _resolvingTypes = {};
+
   @override
   String get type => 'ExpressionRef';
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {};
+    final val = <String, dynamic>{};
 
     void writeNotNull(String key, dynamic value) {
       if (value != null) {

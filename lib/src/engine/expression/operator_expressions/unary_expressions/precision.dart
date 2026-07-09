@@ -92,7 +92,7 @@ class Precision extends UnaryExpression {
       if (str.contains('T')) {
         final timePart = str.split('T')[1];
         final timeOnly =
-            timePart.replaceAll(RegExp(r'[+-].*'), '').replaceAll('Z', '');
+            timePart.replaceAll(RegExp('[+-].*'), '').replaceAll('Z', '');
         final parts = timeOnly.split(':');
         if (parts.length >= 3) return CqlInteger(14); // second
         if (parts.length >= 2) return CqlInteger(12); // minute

@@ -60,11 +60,9 @@ import 'package:cql/src/internal.dart';
 /// define "IncludesIsFalse": { 1, 3 } includes { 1, 3, 5 }
 /// define "IncludesIsAlsoNull": null includes { 1, 3, 5 }
 class Includes extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Includes({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -93,10 +91,11 @@ class Includes extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };

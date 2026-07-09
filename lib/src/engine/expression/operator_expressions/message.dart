@@ -15,12 +15,6 @@ import 'package:cql/src/internal.dart';
 /// If the severity is Message, the operator is expected to provide the message
 /// as information to the calling environment.
 class Message extends OperatorExpression {
-  final CqlExpression source;
-  final CqlExpression? code;
-  final CqlExpression? condition;
-  final CqlExpression? message;
-  final CqlExpression? severity;
-
   Message({
     required this.source,
     this.condition,
@@ -59,6 +53,11 @@ class Message extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression source;
+  final CqlExpression? code;
+  final CqlExpression? condition;
+  final CqlExpression? message;
+  final CqlExpression? severity;
 
   @override
   Map<String, dynamic> toJson() {

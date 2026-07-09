@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Abstract base class for expressions that take two arguments.
 abstract class BinaryExpression extends OperatorExpression {
-  /// Because XML doesn't always directly translate lists to maps
-  final bool isList;
-
-  /// List of expressions as operand.
-  List<CqlExpression> operand;
-
   BinaryExpression({
     required this.operand,
     this.isList = true,
@@ -138,9 +132,15 @@ abstract class BinaryExpression extends OperatorExpression {
     }
   }
 
+  /// Because XML doesn't always directly translate lists to maps
+  final bool isList;
+
+  /// List of expressions as operand.
+  List<CqlExpression> operand;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'isList': isList,
       'operand': operand.map((x) => x.toJson()).toList(),
     };

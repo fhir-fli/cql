@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// As operator allowing casting the result of an expression to a given target
 /// type.
@@ -48,19 +47,10 @@ import 'package:cql/src/internal.dart';
 ///   ImagingProcedures P
 ///     return cast P as Observation
 class As extends UnaryExpression {
-  /// Target type for casting.
-  QName? asType;
-
-  /// Type specifier for casting.
-  TypeSpecifierExpression? asTypeSpecifier;
-
-  /// Determines if strict type checking should be enforced.
-  bool? strict;
-
   As({
+    required super.operand,
     this.asType,
     this.asTypeSpecifier,
-    required super.operand,
     super.annotation,
     super.localId,
     super.locator,
@@ -87,6 +77,15 @@ class As extends UnaryExpression {
             : TypeSpecifierExpression.fromJson(json['asTypeSpecifier'])
         ..asType = json['asType'] == null ? null : QName.parse(json['asType'])
         ..strict = json['strict'];
+
+  /// Target type for casting.
+  QName? asType;
+
+  /// Type specifier for casting.
+  TypeSpecifierExpression? asTypeSpecifier;
+
+  /// Determines if strict type checking should be enforced.
+  bool? strict;
 
   @override
   String get type => 'As';
@@ -183,7 +182,10 @@ class As extends UnaryExpression {
   /// returning the element if it matches, or [_notMatched] if it doesn't.
   /// A null element that passes through validly will remain null.
   dynamic _applySpecifier(
-      dynamic element, TypeSpecifierExpression spec, ModelResolver? mr) {
+    dynamic element,
+    TypeSpecifierExpression spec,
+    ModelResolver? mr,
+  ) {
     // 1) ListTypeSpecifier: unwrap and reapply to the same element
     if (spec is ListTypeSpecifier && spec.elementType != null) {
       return _applySpecifier(element, spec.elementType!, mr);

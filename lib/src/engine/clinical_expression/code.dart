@@ -2,19 +2,10 @@ import 'package:cql/src/internal.dart';
 
 /// The Code type represents a literal code selector.
 class Code extends CqlExpression {
-  /// The code.
-  String code;
-
-  /// An optional display string for the code.
-  String? display;
-
-  /// The system of the code.
-  CodeSystemRef system;
-
   Code({
     required this.code,
-    this.display,
     required this.system,
+    this.display,
     super.annotation,
     super.localId,
     super.locator,
@@ -41,9 +32,18 @@ class Code extends CqlExpression {
     );
   }
 
+  /// The code.
+  String code;
+
+  /// An optional display string for the code.
+  String? display;
+
+  /// The system of the code.
+  CodeSystemRef system;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'code': code,
       'system': system.toJson(),
     };

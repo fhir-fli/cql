@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the negative of its argument.
 /// When negating quantities, the unit is unchanged.
@@ -108,8 +107,9 @@ class Negate extends UnaryExpression {
       return CqlDecimal(value.valueNum! * -1);
     } else if (value is ValidatedQuantity && value.isValid()) {
       return ValidatedQuantity(
-          value: value.value.multiply(UcumDecimal.fromNum(-1)),
-          unit: value.unit);
+        value: value.value.multiply(UcumDecimal.fromNum(-1)),
+        unit: value.unit,
+      );
     }
     return null;
   }

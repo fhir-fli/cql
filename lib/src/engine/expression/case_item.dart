@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Represents an element within a case operator, specifying conditions and their corresponding actions.
 class CaseItem extends Element {
-  /// Action to perform if the condition is met.
-  final CqlExpression then;
-
-  /// Condition to evaluate.
-  final CqlExpression when_;
-
   CaseItem({
     required this.when_,
     required this.then,
@@ -33,6 +27,12 @@ class CaseItem extends Element {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+
+  /// Action to perform if the condition is met.
+  final CqlExpression then;
+
+  /// Condition to evaluate.
+  final CqlExpression when_;
 
   @override
   Map<String, dynamic> toJson() {

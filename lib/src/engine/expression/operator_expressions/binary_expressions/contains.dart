@@ -57,11 +57,9 @@ import 'package:cql/src/internal.dart';
 /// define "ContainsIsAlsoFalse": null contains 4
 /// define "ContainsNullIsFalse": { 1, 3, 5, 7 } contains null
 class Contains extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Contains({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -90,10 +88,11 @@ class Contains extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -132,8 +131,11 @@ class Contains extends BinaryExpression {
     return contains(left, right, precision);
   }
 
-  static CqlBoolean? contains(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? contains(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null) {
       return CqlBoolean(false);
     } else if (left is CqlInterval) {
@@ -151,7 +153,8 @@ class Contains extends BinaryExpression {
       return CqlBoolean(false);
     } else {
       throw ArgumentError(
-          'Contains: Left operand must be of type Interval or List');
+        'Contains: Left operand must be of type Interval or List',
+      );
     }
   }
 
@@ -162,7 +165,10 @@ class Contains extends BinaryExpression {
   /// with one unknown boundary, the result is true (the interval must be
   /// valid, so the point is definitely contained).
   static CqlBoolean? _intervalContains(
-      CqlInterval interval, dynamic point, CqlDateTimePrecision? precision) {
+    CqlInterval interval,
+    dynamic point,
+    CqlDateTimePrecision? precision,
+  ) {
     final start = interval.getStart();
     final end = interval.getEnd();
 

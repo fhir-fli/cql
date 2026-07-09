@@ -1,6 +1,5 @@
-import 'package:cql/src/internal.dart';
-
 import 'package:antlr4/antlr4.dart';
+import 'package:cql/src/internal.dart';
 
 // Visitor for handling 'within' expressions, like 'starts within 3 days of start'
 class CqlWithinIntervalOperatorPhraseVisitor
@@ -9,11 +8,12 @@ class CqlWithinIntervalOperatorPhraseVisitor
 
   @override
   CqlExpression visitWithinIntervalOperatorPhrase(
-      WithinIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left,
-      CqlExpression? right]) {
+    WithinIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? startsEndsOccurs;
     String? startEnd;
     LiteralQuantity? quantity;
@@ -34,15 +34,15 @@ class CqlWithinIntervalOperatorPhraseVisitor
       final effectiveLeft = startsOrEnds(left, startsEndsOccurs);
       final effectiveRight = startOrEnd(right, startEnd);
 
-      return In(operand: [
-        effectiveLeft,
-        IntervalExpression(
-          low: Subtract(operand: [effectiveRight, quantity]),
-          high: Add(operand: [effectiveRight, quantity]),
-          lowClosed: true,
-          highClosed: true,
-        ),
-      ]);
+      return In(
+        operand: [
+          effectiveLeft,
+          IntervalExpression(
+            low: Subtract(operand: [effectiveRight, quantity]),
+            high: Add(operand: [effectiveRight, quantity]),
+          ),
+        ],
+      );
     }
 
     throw ArgumentError('$thisNode Invalid WithinIntervalOperatorPhrase');

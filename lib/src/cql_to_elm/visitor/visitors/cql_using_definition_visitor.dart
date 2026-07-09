@@ -22,11 +22,13 @@ class CqlUsingDefinitionVisitor extends CqlBaseVisitor<dynamic> {
       final modelInfoProvider = StandardModelInfoProvider();
       final modelInfo = modelInfoProvider
           .load(ModelIdentifier(id: localIdentifier!, version: version));
-      library.usings!.def.add(UsingDef(
-        localIdentifier: localIdentifier,
-        version: version,
-        uri: modelInfo?.url.toString(),
-      ));
+      library.usings!.def.add(
+        UsingDef(
+          localIdentifier: localIdentifier,
+          version: version,
+          uri: modelInfo?.url.toString(),
+        ),
+      );
     }
   }
 }

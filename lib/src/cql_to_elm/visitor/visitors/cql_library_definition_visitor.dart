@@ -10,7 +10,7 @@ class CqlLibraryDefinitionVisitor extends CqlBaseVisitor<void> {
     String? id;
     String? version;
 
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedIdentifierContext) {
         id = visitQualifiedIdentifier(child);
       } else if (child is VersionSpecifierContext) {

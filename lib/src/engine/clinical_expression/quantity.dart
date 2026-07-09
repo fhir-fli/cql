@@ -1,14 +1,10 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Quantity type defines a clinical quantity. For example, the quantity 10
 /// days or 30 mmHg. The value is a decimal, while the unit is expected to be a
 /// valid UCUM unit.
 class Quantity extends CqlExpression {
-  final String unit;
-  final num value;
-
   Quantity({
     required this.value,
     required this.unit,
@@ -38,10 +34,12 @@ class Quantity extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String unit;
+  final num value;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {};
+    final json = <String, dynamic>{};
     json['value'] = value;
     json['unit'] = unit;
     json['type'] = type;
@@ -73,7 +71,9 @@ class Quantity extends CqlExpression {
   List<String> getReturnTypes(CqlLibrary library) => const ['Quantity'];
 
   ValidatedQuantity get validatedQuantity => ValidatedQuantity(
-      value: UcumDecimal.fromString(value.toString()), unit: unit);
+        value: UcumDecimal.fromString(value.toString()),
+        unit: unit,
+      );
 
   @override
   bool operator ==(Object other) {

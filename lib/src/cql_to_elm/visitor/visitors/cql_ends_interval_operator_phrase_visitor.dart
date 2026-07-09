@@ -5,15 +5,19 @@ class CqlEndsIntervalOperatorPhraseVisitor extends CqlBaseVisitor<Ends> {
   CqlEndsIntervalOperatorPhraseVisitor(super.library);
 
   @override
-  Ends visitEndsIntervalOperatorPhrase(EndsIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left, CqlExpression? right]) {
+  Ends visitEndsIntervalOperatorPhrase(
+    EndsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlDateTimePrecision? dateTimePrecision;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecisionSpecifier(child));
+          visitDateTimePrecisionSpecifier(child),
+        );
       }
     }
     if (left != null && right != null) {

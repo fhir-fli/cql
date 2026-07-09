@@ -7,7 +7,7 @@ class CqlTupleSelectorVisitor extends CqlBaseVisitor<Tuple> {
   @override
   Tuple visitTupleSelector(TupleSelectorContext ctx) {
     printIf(ctx);
-    final List<TupleElement> elements = <TupleElement>[];
+    final elements = <TupleElement>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TupleElementSelectorContext) {
         elements.add(visitTupleElementSelector(child));

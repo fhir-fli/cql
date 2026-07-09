@@ -7,8 +7,9 @@ class CqlDurationExpressionTermVisitor extends CqlBaseVisitor<DurationBetween> {
 
   @override
   DurationBetween visitDurationExpressionTerm(
-      DurationExpressionTermContext ctx) {
-    final int thisNode = getNextNode();
+    DurationExpressionTermContext ctx,
+  ) {
+    final thisNode = getNextNode();
 
     CqlDateTimePrecision? precision;
     CqlExpression? expression;
@@ -16,7 +17,8 @@ class CqlDurationExpressionTermVisitor extends CqlBaseVisitor<DurationBetween> {
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is PluralDateTimePrecisionContext) {
         precision = CqlDateTimePrecisionExtension.fromJson(
-            visitPluralDateTimePrecision(child));
+          visitPluralDateTimePrecision(child),
+        );
       } else if (child is ExpressionTermContext) {
         expression = byContext(child) as CqlExpression;
       }
@@ -25,7 +27,8 @@ class CqlDurationExpressionTermVisitor extends CqlBaseVisitor<DurationBetween> {
     // Ensure that precision and expression are assigned, as per the ANTLR rule
     if (precision == null || expression == null) {
       throw ArgumentError(
-          '$thisNode Invalid DurationExpressionTerm: missing components');
+        '$thisNode Invalid DurationExpressionTerm: missing components',
+      );
     }
 
     // "duration in <precision> of <expression>" means

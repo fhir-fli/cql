@@ -7,12 +7,13 @@ class CqlIncludedInIntervalOperatorPhraseVisitor
 
   @override
   CqlExpression visitIncludedInIntervalOperatorPhrase(
-      IncludedInIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left,
-      CqlExpression? right]) {
+    IncludedInIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    bool properly = false;
+    final thisNode = getNextNode();
+    var properly = false;
     String? duringIncludedIn;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -24,7 +25,8 @@ class CqlIncludedInIntervalOperatorPhraseVisitor
         }
       } else if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecisionSpecifier = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecisionSpecifier(child));
+          visitDateTimePrecisionSpecifier(child),
+        );
       }
     }
     if (duringIncludedIn != null && left != null && right != null) {

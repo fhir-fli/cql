@@ -6,15 +6,15 @@ class CqlIntervalSelectorVisitor extends CqlBaseVisitor<IntervalExpression> {
   @override
   IntervalExpression visitIntervalSelector(IntervalSelectorContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? low;
     CqlExpression? high;
-    bool lowClosed = true;
-    bool highClosed = true;
+    var lowClosed = true;
+    var highClosed = true;
 
     if (ctx.childCount == 6) {
-      lowClosed = ctx.getChild(1)?.text == '(' ? false : true;
-      highClosed = ctx.getChild(5)?.text == ')' ? false : true;
+      lowClosed = ctx.getChild(1)?.text != '(';
+      highClosed = ctx.getChild(5)?.text != ')';
       final child2 = ctx.getChild(2);
       final child5 = ctx.getChild(4);
       if (child2 != null) {

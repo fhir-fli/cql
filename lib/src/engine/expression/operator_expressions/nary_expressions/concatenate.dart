@@ -22,7 +22,6 @@ import 'package:cql/src/internal.dart';
 /// define "ConcatenateFunction": Concatenate('John', ' Doe') // 'John Doe'
 /// define "ConcatenateIsNull": 'John' + null + 'Doe' // null
 class Concatenate extends NaryExpression {
-  final bool plus;
   Concatenate({
     this.plus = true,
     super.operand,
@@ -36,14 +35,14 @@ class Concatenate extends NaryExpression {
   factory Concatenate.compareFirst({
     required CqlExpression first,
     required CqlExpression second,
+    required CqlLibrary library,
     List<CqlToElmBase>? annotation,
     String? localId,
     String? locator,
     String? resultTypeName,
     TypeSpecifierExpression? resultTypeSpecifier,
-    required CqlLibrary library,
   }) {
-    List<CqlExpression> operand = [];
+    final operand = <CqlExpression>[];
     if (first is LiteralString) {
       operand.add(first);
     } else if (first is LiteralNull) {
@@ -106,6 +105,7 @@ class Concatenate extends NaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final bool plus;
   @override
   String get type => 'Concatenate';
 

@@ -1,17 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class ErrorAnnotation extends Annotation {
-  final int? endChar;
-  final int? endLine;
-  final String? errorSeverity;
-  final String? errorType;
-  final String? libraryId;
-  final String? librarySystem;
-  final String? libraryVersion;
-  final String? message;
-  final int? startChar;
-  final int? startLine;
-
   ErrorAnnotation({
     this.librarySystem,
     this.libraryId,
@@ -38,6 +27,16 @@ class ErrorAnnotation extends Annotation {
         errorType: json['errorType'] as String?,
         errorSeverity: json['errorSeverity'] as String?,
       );
+  final int? endChar;
+  final int? endLine;
+  final String? errorSeverity;
+  final String? errorType;
+  final String? libraryId;
+  final String? librarySystem;
+  final String? libraryVersion;
+  final String? message;
+  final int? startChar;
+  final int? startLine;
 
   @override
   Map<String, dynamic> toJson() {

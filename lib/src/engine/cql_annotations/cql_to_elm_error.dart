@@ -2,30 +2,12 @@ import 'package:cql/src/internal.dart';
 
 /// Represents the CqlToElmError type
 class CqlToElmError extends Locator {
-  /// errorSeverity attribute
-  ErrorSeverity? errorSeverity;
-
-  /// errorType attribute
-  ErrorType errorType;
-
-  /// message attribute
-  String message;
-
-  /// targetIncludeLibraryId attribute
-  String? targetIncludeLibraryId;
-
-  ///The namespace uri of the included library
-  String? targetIncludeLibrarySystem;
-
-  /// targetIncludeLibraryVersionId attribute
-  String? targetIncludeLibraryVersionId;
-
   CqlToElmError({
+    required this.message,
+    required this.errorType,
     super.librarySystem,
     super.libraryId,
     super.libraryVersion,
-    required this.message,
-    required this.errorType,
     this.errorSeverity,
     this.targetIncludeLibrarySystem,
     this.targetIncludeLibraryId,
@@ -55,6 +37,24 @@ class CqlToElmError extends Locator {
       targetIncludeLibraryVersionId: json['targetIncludeLibraryVersionId'],
     );
   }
+
+  /// errorSeverity attribute
+  ErrorSeverity? errorSeverity;
+
+  /// errorType attribute
+  ErrorType errorType;
+
+  /// message attribute
+  String message;
+
+  /// targetIncludeLibraryId attribute
+  String? targetIncludeLibraryId;
+
+  ///The namespace uri of the included library
+  String? targetIncludeLibrarySystem;
+
+  /// targetIncludeLibraryVersionId attribute
+  String? targetIncludeLibraryVersionId;
 
   @override
   Map<String, dynamic> toJson() {

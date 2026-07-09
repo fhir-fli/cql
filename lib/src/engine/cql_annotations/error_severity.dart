@@ -23,7 +23,10 @@ extension ErrorSeverityExtension on ErrorSeverity {
         return ErrorSeverity.error;
       default:
         throw ArgumentError.value(
-            json, 'json', 'Invalid ErrorSeverity value: $json.');
+          json,
+          'json',
+          'Invalid ErrorSeverity value: $json.',
+        );
     }
   }
 }

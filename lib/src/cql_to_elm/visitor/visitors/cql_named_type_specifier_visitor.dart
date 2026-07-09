@@ -7,7 +7,7 @@ class CqlNamedTypeSpecifierVisitor extends CqlBaseVisitor<NamedTypeSpecifier> {
   @override
   NamedTypeSpecifier? visitNamedTypeSpecifier(NamedTypeSpecifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? qualifier;
     String? referentialOrTypeNameIdentifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -48,7 +48,9 @@ class CqlNamedTypeSpecifierVisitor extends CqlBaseVisitor<NamedTypeSpecifier> {
       }
       if (qualifier == 'System') {
         return QName(
-            namespaceURI: 'urn:hl7-org:elm-types:r1', localPart: typeName);
+          namespaceURI: 'urn:hl7-org:elm-types:r1',
+          localPart: typeName,
+        );
       }
     }
 

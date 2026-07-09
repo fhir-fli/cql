@@ -12,7 +12,7 @@ class CqlIncludeDefinitionVisitor extends CqlBaseVisitor<void> {
     String? path;
     String? version;
 
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedIdentifierContext) {
         path = visitQualifiedIdentifier(child);
       } else if (child is LocalIdentifierContext) {
@@ -23,10 +23,13 @@ class CqlIncludeDefinitionVisitor extends CqlBaseVisitor<void> {
     }
     if (localIdentifier != null || path != null || version != null) {
       library.includes ??= IncludeDefs();
-      library.includes!.def.add(IncludeDef(
+      library.includes!.def.add(
+        IncludeDef(
           localIdentifier: localIdentifier ?? path,
           path: path,
-          version: version));
+          version: version,
+        ),
+      );
     }
   }
 }

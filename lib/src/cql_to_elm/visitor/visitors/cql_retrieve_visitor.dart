@@ -31,14 +31,20 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
     if (name != null) {
       for (final model in library.usings?.def ?? <UsingDef>[]) {
         if (model.localIdentifier != null) {
-          final modelInfo = modelInfoProvider.load(ModelIdentifier(
-              id: model.localIdentifier!, version: model.version));
+          final modelInfo = modelInfoProvider.load(
+            ModelIdentifier(
+              id: model.localIdentifier!,
+              version: model.version,
+            ),
+          );
           if (modelInfo != null) {
-            final index = modelInfo.typeInfo.indexWhere((element) =>
-                (element is ClassInfo &&
-                    element.label == name!.namespace.localPart) ||
-                (element is ProfileInfo &&
-                    element.label == name!.namespace.localPart));
+            final index = modelInfo.typeInfo.indexWhere(
+              (element) =>
+                  (element is ClassInfo &&
+                      element.label == name!.namespace.localPart) ||
+                  (element is ProfileInfo &&
+                      element.label == name!.namespace.localPart),
+            );
             if (index != -1) {
               String? localPart;
               if (modelInfo.typeInfo[index] is ClassInfo) {
@@ -51,9 +57,9 @@ class CqlRetrieveVisitor extends CqlBaseVisitor<Retrieve> {
                 localPart = (modelInfo.typeInfo[index] as ProfileInfo).name;
               }
               name.namespace = QName(
-                  namespaceURI: modelInfo.url.toString(),
-                  localPart:
-                      localPart ?? templateId ?? name.namespace.localPart);
+                namespaceURI: modelInfo.url.toString(),
+                localPart: localPart ?? templateId ?? name.namespace.localPart,
+              );
               break;
             }
           }

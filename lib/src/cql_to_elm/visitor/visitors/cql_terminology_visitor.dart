@@ -7,7 +7,7 @@ class CqlTerminologyVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitTerminology(TerminologyContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedIdentifierExpressionContext) {
         return visitQualifiedIdentifierExpression(child);

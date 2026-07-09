@@ -14,11 +14,6 @@ extension CqlDecimalExtension on num {
 /// string in [valueString] is the source text; the Dart [double] value is
 /// available via [valueDouble].
 class CqlDecimal extends CqlNumber {
-  const CqlDecimal._({
-    required String? valueString,
-    required this.isInt,
-  }) : super._(valueString);
-
   /// Creates a [CqlDecimal] from a [num] or a numeric [String]. String input
   /// preserves source scale (`"1.00"` stays `"1.00"`).
   factory CqlDecimal(dynamic rawValue) {
@@ -45,6 +40,10 @@ class CqlDecimal extends CqlNumber {
       'CqlDecimal only supports num or numeric String. Got: $rawValue',
     );
   }
+  const CqlDecimal._({
+    required String? valueString,
+    required this.isInt,
+  }) : super._(valueString);
 
   /// Creates a [CqlDecimal] from a [CqlInteger].
   factory CqlDecimal.fromCqlInteger(CqlInteger integer) =>

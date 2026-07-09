@@ -118,7 +118,7 @@ class ReplaceMatches extends TernaryExpression {
     // Process Java-style regex substitution escapes:
     // \$ → literal $, \\ → literal \
     final processed =
-        substitution.replaceAll(r'\$', '\$').replaceAll(r'\\', r'\');
+        substitution.replaceAll(r'\$', r'$').replaceAll(r'\\', r'\');
     return argument.replaceAllMapped(RegExp(pattern), (match) => processed);
   }
 }

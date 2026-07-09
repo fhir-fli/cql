@@ -90,11 +90,9 @@ import 'package:cql/src/internal.dart';
 /// define "AfterIsFalse": Interval[1, 4] after 5
 /// define "AfterIsNull": Interval[1, 4] after null
 class After extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   After({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -123,10 +121,11 @@ class After extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -165,8 +164,11 @@ class After extends BinaryExpression {
     return after(left, right, precision);
   }
 
-  static CqlBoolean? after(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? after(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null || right == null) {
       return null;
     } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
@@ -255,7 +257,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.hour) {
         return CqlBoolean(
-            false); // If only comparing hours, they are equal at this point.
+          false,
+        ); // If only comparing hours, they are equal at this point.
       }
 
       if (left.minute == null || right.minute == null) {
@@ -268,7 +271,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.minute) {
         return CqlBoolean(
-            false); // If only comparing minutes, they are equal at this point.
+          false,
+        ); // If only comparing minutes, they are equal at this point.
       }
 
       if (left.second == null || right.second == null) {
@@ -281,7 +285,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.second) {
         return CqlBoolean(
-            false); // If only comparing seconds, they are equal at this point.
+          false,
+        ); // If only comparing seconds, they are equal at this point.
       }
 
       if (left.millisecond == null || right.millisecond == null) {
@@ -293,7 +298,8 @@ class After extends BinaryExpression {
       }
 
       return CqlBoolean(
-          false); // If only comparing milliseconds, they are equal at this point.
+        false,
+      ); // If only comparing milliseconds, they are equal at this point.
     }
   }
 
@@ -323,7 +329,8 @@ class After extends BinaryExpression {
       } // Year comparison is equal, move to next precision
       if (precision == CqlDateTimePrecision.year) {
         return CqlBoolean(
-            false); // If only comparing years, they are equal at this point.
+          false,
+        ); // If only comparing years, they are equal at this point.
       }
 
       if (!left.hasMonth || !right.hasMonth) {
@@ -335,7 +342,8 @@ class After extends BinaryExpression {
       }
       if (precision == CqlDateTimePrecision.month) {
         return CqlBoolean(
-            false); // If only comparing months, they are equal at this point.
+          false,
+        ); // If only comparing months, they are equal at this point.
       }
 
       if (!left.hasDay || !right.hasDay) {
@@ -347,7 +355,8 @@ class After extends BinaryExpression {
       }
       if (precision == CqlDateTimePrecision.day) {
         return CqlBoolean(
-            false); // If only comparing days, they are equal at this point.
+          false,
+        ); // If only comparing days, they are equal at this point.
       }
 
       if (!left.hasHours || !right.hasHours) {
@@ -360,7 +369,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.hour) {
         return CqlBoolean(
-            false); // If only comparing hours, they are equal at this point.
+          false,
+        ); // If only comparing hours, they are equal at this point.
       }
 
       if (!left.hasMinutes || !right.hasMinutes) {
@@ -373,7 +383,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.minute) {
         return CqlBoolean(
-            false); // If only comparing minutes, they are equal at this point.
+          false,
+        ); // If only comparing minutes, they are equal at this point.
       }
 
       if (!left.hasSeconds || !right.hasSeconds) {
@@ -386,7 +397,8 @@ class After extends BinaryExpression {
 
       if (precision == CqlDateTimePrecision.second) {
         return CqlBoolean(
-            false); // If only comparing seconds, they are equal at this point.
+          false,
+        ); // If only comparing seconds, they are equal at this point.
       }
 
       if (!left.hasMilliseconds || !right.hasMilliseconds) {
@@ -398,7 +410,8 @@ class After extends BinaryExpression {
       }
 
       return CqlBoolean(
-          false); // If only comparing milliseconds, they are equal at this point.
+        false,
+      ); // If only comparing milliseconds, they are equal at this point.
     }
   }
 }

@@ -7,12 +7,12 @@ class CqlParameterDefinitionVisitor extends CqlBaseVisitor<void> {
   @override
   void visitParameterDefinition(ParameterDefinitionContext ctx) {
     printIf(ctx);
-    String name = '';
+    var name = '';
     TypeSpecifierExpression? typeSpecifier;
-    AccessModifier accessLevel = AccessModifier.public;
+    var accessLevel = AccessModifier.public;
     CqlExpression? defaultExpression;
 
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         name = visitIdentifier(child);
       } else if (child is TypeSpecifierContext) {
@@ -28,12 +28,14 @@ class CqlParameterDefinitionVisitor extends CqlBaseVisitor<void> {
     }
     if (typeSpecifier != null) {
       library.parameters ??= ParameterDefs();
-      library.parameters!.def.add(ParameterDef(
-        name: name,
-        parameterTypeSpecifier: typeSpecifier,
-        accessLevel: accessLevel,
-        defaultExpression: defaultExpression,
-      ));
+      library.parameters!.def.add(
+        ParameterDef(
+          name: name,
+          parameterTypeSpecifier: typeSpecifier,
+          accessLevel: accessLevel,
+          defaultExpression: defaultExpression,
+        ),
+      );
     }
   }
 }

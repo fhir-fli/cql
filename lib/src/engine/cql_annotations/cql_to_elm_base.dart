@@ -21,7 +21,10 @@ abstract class CqlToElmBase {
         return Tag.fromJson(json);
       default:
         throw ArgumentError.value(
-            json, 'json', 'Invalid CqlToElmBase type: ${json['type']}.');
+          json,
+          'json',
+          'Invalid CqlToElmBase type: ${json['type']}.',
+        );
     }
   }
 

@@ -8,14 +8,14 @@ enum Severity {
 
 extension SeverityExtension on Severity {
   static const Map<Severity, String> _names = {
-    Severity.report: "report",
-    Severity.warning: "warning",
-    Severity.error: "error",
-    Severity.trace: "trace",
-    Severity.message: "message",
+    Severity.report: 'report',
+    Severity.warning: 'warning',
+    Severity.error: 'error',
+    Severity.trace: 'trace',
+    Severity.message: 'message',
   };
 
-  String get name => _names[this] ?? "unknown";
+  String get name => _names[this] ?? 'unknown';
 
   static Severity fromIndex(int index) {
     switch (index) {
@@ -30,7 +30,7 @@ extension SeverityExtension on Severity {
       case 4:
         return Severity.message;
       default:
-        throw ArgumentError("Invalid index for Severity enum");
+        throw ArgumentError('Invalid index for Severity enum');
     }
   }
 

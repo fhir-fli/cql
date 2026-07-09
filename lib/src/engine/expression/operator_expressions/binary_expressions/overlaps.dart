@@ -40,11 +40,9 @@ import 'package:cql/src/internal.dart';
 /// define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4]
 /// define "OverlapsIsNull": Interval[6, 10] overlaps (null as `Interval<Integer>`)
 class Overlaps extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   Overlaps({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -73,10 +71,11 @@ class Overlaps extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -115,17 +114,20 @@ class Overlaps extends BinaryExpression {
     return overlaps(left, right, precision);
   }
 
-  static CqlBoolean? overlaps(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? overlaps(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null || right == null) {
       return null;
     }
 
     if (left is CqlInterval && right is CqlInterval) {
-      var leftStart = left.getStart();
-      var leftEnd = left.getEnd();
-      var rightStart = right.getStart();
-      var rightEnd = right.getEnd();
+      final leftStart = left.getStart();
+      final leftEnd = left.getEnd();
+      final rightStart = right.getStart();
+      final rightEnd = right.getEnd();
 
       if (leftStart is CqlDateTimeBase &&
           rightStart is CqlDateTimeBase &&

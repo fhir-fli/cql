@@ -6,65 +6,10 @@ import 'package:cql/src/internal.dart';
 /// by the CQL translator. None of the information specified here is mandatory;
 /// it offers convenient shorthands within the language.
 class ModelInfo {
-  // Required - Model name used in CQL definitions/specifiers
-  final String name;
-
-  // Required - XML namespace associated with the model
-  final Uri url;
-
-  // Optional - Target XML namespace of the underlying representation
-  final Uri? targetUrl;
-
-  // Optional - Schema location for the XSD of the data model
-  final String? schemaLocation;
-
-  // Optional - Namespace qualifier for referencing model types in ELM
-  final String? targetQualifier;
-
-  // Optional - Deprecated: Patient class name within the model
-  final String? patientClassName;
-
-  // Optional - Deprecated: Unique name for the Patient class
-  final String? patientClassIdentifier;
-
-  // Optional - Model version used in CQL using definitions
-  final String? version;
-
-  // Optional - Target version of the underlying representation
-  final String? targetVersion;
-
-  // Optional - If identifiers should be resolved case-sensitively
-  final bool? caseSensitive;
-
-  // Optional - Context information for CQL expressions on this model
-  final List<ContextInfo> contextInfo;
-  final bool? contextInfoSingle;
-
-  // Optional - If retrieve expressions should be semantically validated
-  final bool? strictRetrieveTyping;
-
-  // Optional - Conversion information for CQL expressions on this model
-  final List<ConversionInfo> conversionInfo;
-  final bool? conversionInfoSingle;
-
-  // Optional - Default context for CQL expressions on this model
-  final String? defaultContext;
-
-  // Optional - Deprecated: Birthdate property name on the Patient model
-  final String? patientBirthDatePropertyName;
-
-  // Lists for nested elements
-  final List<ModelSpecifier> requiredModelInfo;
-  final bool? requiredModelInfoSingle;
-
-  // Lists for nested elements
-  final List<TypeInfo> typeInfo;
-  final bool? typeInfoSingle;
-
   ModelInfo({
     required this.name,
-    this.version,
     required this.url,
+    this.version,
     this.targetUrl,
     this.targetVersion,
     this.schemaLocation,
@@ -162,6 +107,60 @@ class ModelInfo {
               : null,
     );
   }
+  // Required - Model name used in CQL definitions/specifiers
+  final String name;
+
+  // Required - XML namespace associated with the model
+  final Uri url;
+
+  // Optional - Target XML namespace of the underlying representation
+  final Uri? targetUrl;
+
+  // Optional - Schema location for the XSD of the data model
+  final String? schemaLocation;
+
+  // Optional - Namespace qualifier for referencing model types in ELM
+  final String? targetQualifier;
+
+  // Optional - Deprecated: Patient class name within the model
+  final String? patientClassName;
+
+  // Optional - Deprecated: Unique name for the Patient class
+  final String? patientClassIdentifier;
+
+  // Optional - Model version used in CQL using definitions
+  final String? version;
+
+  // Optional - Target version of the underlying representation
+  final String? targetVersion;
+
+  // Optional - If identifiers should be resolved case-sensitively
+  final bool? caseSensitive;
+
+  // Optional - Context information for CQL expressions on this model
+  final List<ContextInfo> contextInfo;
+  final bool? contextInfoSingle;
+
+  // Optional - If retrieve expressions should be semantically validated
+  final bool? strictRetrieveTyping;
+
+  // Optional - Conversion information for CQL expressions on this model
+  final List<ConversionInfo> conversionInfo;
+  final bool? conversionInfoSingle;
+
+  // Optional - Default context for CQL expressions on this model
+  final String? defaultContext;
+
+  // Optional - Deprecated: Birthdate property name on the Patient model
+  final String? patientBirthDatePropertyName;
+
+  // Lists for nested elements
+  final List<ModelSpecifier> requiredModelInfo;
+  final bool? requiredModelInfoSingle;
+
+  // Lists for nested elements
+  final List<TypeInfo> typeInfo;
+  final bool? typeInfoSingle;
 
   @override
   String toString() {
@@ -175,34 +174,34 @@ class ModelInfo {
       json['targetUrl'] = targetUrl.toString();
     }
     if (targetVersion != null) {
-      json['targetVersion'] = targetVersion!;
+      json['targetVersion'] = targetVersion;
     }
     if (schemaLocation != null) {
-      json['schemaLocation'] = schemaLocation!;
+      json['schemaLocation'] = schemaLocation;
     }
     if (targetQualifier != null) {
-      json['targetQualifier'] = targetQualifier!;
+      json['targetQualifier'] = targetQualifier;
     }
     if (patientClassName != null) {
-      json['patientClassName'] = patientClassName!;
+      json['patientClassName'] = patientClassName;
     }
     if (patientClassIdentifier != null) {
-      json['patientClassIdentifier'] = patientClassIdentifier!;
+      json['patientClassIdentifier'] = patientClassIdentifier;
     }
     if (patientBirthDatePropertyName != null) {
-      json['patientBirthDatePropertyName'] = patientBirthDatePropertyName!;
+      json['patientBirthDatePropertyName'] = patientBirthDatePropertyName;
     }
     if (version != null) {
-      json['version'] = version!;
+      json['version'] = version;
     }
     if (caseSensitive != null) {
-      json['caseSensitive'] = caseSensitive!;
+      json['caseSensitive'] = caseSensitive;
     }
     if (strictRetrieveTyping != null) {
-      json['strictRetrieveTyping'] = strictRetrieveTyping!;
+      json['strictRetrieveTyping'] = strictRetrieveTyping;
     }
     if (defaultContext != null) {
-      json['defaultContext'] = defaultContext!;
+      json['defaultContext'] = defaultContext;
     }
     if (requiredModelInfo.isNotEmpty) {
       if (requiredModelInfoSingle == true) {

@@ -7,7 +7,7 @@ class CqlTypeSpecifierVisitor extends CqlBaseVisitor<TypeSpecifierExpression?> {
   @override
   TypeSpecifierExpression? visitTypeSpecifier(TypeSpecifierContext ctx) {
     printIf(ctx);
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is NamedTypeSpecifierContext) {
         return visitNamedTypeSpecifier(child);
       } else if (child is ListTypeSpecifierContext) {

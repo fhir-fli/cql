@@ -5,14 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [IntervalTypeInfo] type represents an interval type, extending [TypeInfo],
 /// incorporating a pointTypeSpecifier element and pointType attribute.
 class IntervalTypeInfo extends TypeInfo {
-  /// Point type as a string.
-  String? pointType;
-
-  /// Point type specifier element.
-  TypeSpecifierModel? pointTypeSpecifier;
-
-  final String type = 'IntervalTypeInfo';
-
   IntervalTypeInfo({
     this.pointTypeSpecifier,
     this.pointType,
@@ -28,6 +20,14 @@ class IntervalTypeInfo extends TypeInfo {
       baseType: json['baseType'] as String?,
     );
   }
+
+  /// Point type as a string.
+  String? pointType;
+
+  /// Point type specifier element.
+  TypeSpecifierModel? pointTypeSpecifier;
+
+  final String type = 'IntervalTypeInfo';
 
   @override
   Map<String, dynamic> toJson() {

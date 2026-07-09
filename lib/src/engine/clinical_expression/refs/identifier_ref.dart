@@ -17,7 +17,7 @@ class IdentifierRef extends Ref {
   factory IdentifierRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];
     if (name == null) {
-      throw ArgumentError("JSON name cannot be null");
+      throw ArgumentError('JSON name cannot be null');
     }
 
     return IdentifierRef(
@@ -42,7 +42,7 @@ class IdentifierRef extends Ref {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = super.toJson();
+    final val = super.toJson();
     return val;
   }
 

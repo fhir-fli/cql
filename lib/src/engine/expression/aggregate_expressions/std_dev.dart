@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The StdDev operator returns the statistical standard deviation of the
 /// elements in source.
@@ -64,7 +63,7 @@ class StdDev extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -135,10 +134,10 @@ class StdDev extends AggregateExpression {
 
     /// For CqlDecimal — use Variance, then sqrt
     if (mean is CqlDecimal) {
-      var varianceResult = Variance.variance(sourceResult);
+      final varianceResult = Variance.variance(sourceResult);
       if (varianceResult == null) return null;
       if (varianceResult is CqlDecimal) {
-        double stdDevValue = math.sqrt(varianceResult.valueNum!);
+        final stdDevValue = math.sqrt(varianceResult.valueNum!);
         return CqlDecimal(stdDevValue.toStringAsFixed(8));
       }
     }
@@ -150,7 +149,7 @@ class StdDev extends AggregateExpression {
     else if (mean is ValidatedQuantity) {
       final svc = UcumService();
       final meanUnit = mean.unit;
-      double sumOfSquaredDiffs = 0.0;
+      var sumOfSquaredDiffs = 0.0;
       for (final val in filtered) {
         if (val is! ValidatedQuantity) continue;
         // Convert to mean's unit to avoid cross-unit subtraction bugs
@@ -158,7 +157,8 @@ class StdDev extends AggregateExpression {
             ? val
             : ValidatedQuantity(
                 value: svc.convert(val.value, val.unit, meanUnit),
-                unit: meanUnit);
+                unit: meanUnit,
+              );
         final diff = converted - mean;
         if (diff != null) {
           final d = double.tryParse(diff.value.asUcumDecimal()) ?? 0.0;
@@ -173,7 +173,8 @@ class StdDev extends AggregateExpression {
     }
 
     throw ArgumentError(
-        'Unsupported type for Standard Deviation: ${sourceResult.runtimeType}');
+      'Unsupported type for Standard Deviation: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

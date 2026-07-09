@@ -2,10 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Abstract base class for Aggregate expressions performing operations on lists of data.
 abstract class AggregateExpression extends CqlExpression {
-  final String? path;
-  final List<TypeSpecifierExpression>? signature;
-  final CqlExpression source;
-
   AggregateExpression({
     required this.signature,
     required this.source,
@@ -56,10 +52,13 @@ abstract class AggregateExpression extends CqlExpression {
         throw ArgumentError('Unknown AggregateExpression type: $type');
     }
   }
+  final String? path;
+  final List<TypeSpecifierExpression>? signature;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'path': path,
       'signature': signature?.map((s) => s.toJson()).toList(),

@@ -6,11 +6,6 @@ import 'package:cql/src/internal.dart';
 /// including an elementType element and elementType attribute.
 
 class ListTypeSpecifier extends TypeSpecifierExpression {
-  List<Element>? element;
-
-  /// Element type specifier.
-  TypeSpecifierExpression? elementType;
-
   ListTypeSpecifier({
     this.elementType,
     this.element,
@@ -42,6 +37,10 @@ class ListTypeSpecifier extends TypeSpecifierExpression {
           : null,
     );
   }
+  List<Element>? element;
+
+  /// Element type specifier.
+  TypeSpecifierExpression? elementType;
 
   @override
   Map<String, dynamic> toJson() {

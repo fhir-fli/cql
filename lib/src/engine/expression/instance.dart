@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart' show ValidatedQuantity, ValidatedRatio;
 
 /// Expression allowing class instances to be built up.
 /// Instance : Expression
@@ -14,12 +13,6 @@ import 'package:cql/src/internal.dart';
 /// for the elements of the class instance. Note that the value of an element
 /// may be any expression, including another Instance.
 class Instance extends CqlExpression {
-  /// Type of the class instance being built.
-  QName classType;
-
-  /// List of instance elements specifying values for the elements of the class instance.
-  List<InstanceElement>? element;
-
   Instance({
     required this.classType,
     this.element,
@@ -52,9 +45,15 @@ class Instance extends CqlExpression {
     );
   }
 
+  /// Type of the class instance being built.
+  QName classType;
+
+  /// List of instance elements specifying values for the elements of the class instance.
+  List<InstanceElement>? element;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'classType': classType.toJson(),
       'type': type,
     };
@@ -94,11 +93,13 @@ class Instance extends CqlExpression {
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type String must have at least one element');
+              'Instance of type String must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type String must have exactly one element');
+              'Instance of type String must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is String) {
@@ -109,11 +110,13 @@ class Instance extends CqlExpression {
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Boolean must have at least one element');
+              'Instance of type Boolean must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Boolean must have exactly one element');
+              'Instance of type Boolean must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is bool || result is String) {
@@ -122,16 +125,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Date':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Date must have at least one element');
+              'Instance of type Date must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Date must have exactly one element');
+              'Instance of type Date must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is String) {
@@ -140,16 +144,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'DateTime':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type DateTime must have at least one element');
+              'Instance of type DateTime must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type DateTime must have exactly one element');
+              'Instance of type DateTime must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result == null) {
@@ -161,16 +166,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Integer':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Integer must have at least one element');
+              'Instance of type Integer must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Integer must have exactly one element');
+              'Instance of type Integer must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is int) {
@@ -179,16 +185,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Long':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Long must have at least one element');
+              'Instance of type Long must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Long must have exactly one element');
+              'Instance of type Long must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is int) {
@@ -197,16 +204,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Decimal':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Decimal must have at least one element');
+              'Instance of type Decimal must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Decimal must have exactly one element');
+              'Instance of type Decimal must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is num) {
@@ -215,16 +223,17 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Time':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Time must have at least one element');
+              'Instance of type Time must have at least one element',
+            );
           }
           if (element!.length != 1) {
             throw ArgumentError(
-                'Instance of type Time must have exactly one element');
+              'Instance of type Time must have exactly one element',
+            );
           }
           final result = await element!.first.value.execute(context);
           if (result is String) {
@@ -233,14 +242,14 @@ class Instance extends CqlExpression {
             return result;
           }
         }
-        break;
       case 'Code':
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Code must have at least one element');
+              'Instance of type Code must have at least one element',
+            );
           } else {
-            final Map<String, dynamic> json = {};
+            final json = <String, dynamic>{};
             for (final e in element!) {
               json[e.name] = await e.value.execute(context);
             }
@@ -251,9 +260,10 @@ class Instance extends CqlExpression {
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Concept must have at least one element');
+              'Instance of type Concept must have at least one element',
+            );
           } else {
-            final Map<String, dynamic> json = {};
+            final json = <String, dynamic>{};
             for (final e in element!) {
               var result = await e.value.execute(context);
               // Wrap single Code in a list for the 'codes' field
@@ -270,10 +280,11 @@ class Instance extends CqlExpression {
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Quantity must have at least one element');
+              'Instance of type Quantity must have at least one element',
+            );
           }
           num? value;
-          String unit = '1';
+          var unit = '1';
           for (final e in element!) {
             final result = await e.value.execute(context);
             if (e.name == 'value') {
@@ -301,7 +312,8 @@ class Instance extends CqlExpression {
         {
           if (element == null) {
             throw ArgumentError(
-                'Instance of type Ratio must have at least one element');
+              'Instance of type Ratio must have at least one element',
+            );
           }
           ValidatedQuantity? numerator;
           ValidatedQuantity? denominator;
@@ -319,7 +331,9 @@ class Instance extends CqlExpression {
           }
           if (numerator != null && denominator != null) {
             return ValidatedRatio(
-                numerator: numerator, denominator: denominator);
+              numerator: numerator,
+              denominator: denominator,
+            );
           }
           return null;
         }
@@ -327,8 +341,8 @@ class Instance extends CqlExpression {
         {
           dynamic low;
           dynamic high;
-          bool lowClosed = true;
-          bool highClosed = true;
+          var lowClosed = true;
+          var highClosed = true;
           if (element != null) {
             for (final e in element!) {
               final result = await e.value.execute(context);
@@ -361,7 +375,7 @@ class Instance extends CqlExpression {
         }
       case 'ValueSet':
         {
-          final Map<String, dynamic> json = {};
+          final json = <String, dynamic>{};
           if (element != null) {
             for (final e in element!) {
               json[e.name] = await e.value.execute(context);
@@ -375,7 +389,7 @@ class Instance extends CqlExpression {
         }
       case 'CodeSystem':
         {
-          final Map<String, dynamic> json = {};
+          final json = <String, dynamic>{};
           if (element != null) {
             for (final e in element!) {
               json[e.name] = await e.value.execute(context);

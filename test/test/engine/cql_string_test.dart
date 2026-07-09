@@ -5,11 +5,13 @@ void main() {
   group('combine', () {
     test("""define "CombineList": Combine({ 'A', 'B', 'C' }) // 'ABC'""",
         () async {
-      final list = ListExpression(element: [
-        LiteralString('A'),
-        LiteralString('B'),
-        LiteralString('C')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralString('A'),
+          LiteralString('B'),
+          LiteralString('C'),
+        ],
+      );
       final combine = Combine(source: list);
       final result = await combine.execute({});
       expect(result, 'ABC');
@@ -17,11 +19,13 @@ void main() {
     test(
         """define "CombineWithSeparator": Combine({ 'A', 'B', 'C' }, ' ') // 'A B C'""",
         () async {
-      final list = ListExpression(element: [
-        LiteralString('A'),
-        LiteralString('B'),
-        LiteralString('C')
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralString('A'),
+          LiteralString('B'),
+          LiteralString('C'),
+        ],
+      );
       final combine = Combine(source: list, separator: LiteralString(' '));
       final result = await combine.execute({});
       expect(result, 'A B C');
@@ -29,12 +33,14 @@ void main() {
     test(
         """define "CombineWithNulls": Combine({ 'A', 'B', 'C', null }) // 'ABC'""",
         () async {
-      final list = ListExpression(element: [
-        LiteralString('A'),
-        LiteralString('B'),
-        LiteralString('C'),
-        LiteralNull()
-      ]);
+      final list = ListExpression(
+        element: [
+          LiteralString('A'),
+          LiteralString('B'),
+          LiteralString('C'),
+          LiteralNull(),
+        ],
+      );
       final combine = Combine(source: list);
       final result = await combine.execute({});
       expect(result, 'ABC');
@@ -70,12 +76,14 @@ void main() {
   group('indexof', () {
     test('define "IndexOfFound": IndexOf({ 1, 3, 5, 7 }, 5) // 2', () async {
       final indexof = IndexOf(
-        source: ListExpression(element: [
-          LiteralInteger(1),
-          LiteralInteger(3),
-          LiteralInteger(5),
-          LiteralInteger(7)
-        ]),
+        source: ListExpression(
+          element: [
+            LiteralInteger(1),
+            LiteralInteger(3),
+            LiteralInteger(5),
+            LiteralInteger(7),
+          ],
+        ),
         element: LiteralInteger(5),
       );
       final result = await indexof.execute({});
@@ -84,12 +92,14 @@ void main() {
     test('define "IndexOfNotFound": IndexOf({ 1, 3, 5, 7 }, 4) // -1',
         () async {
       final indexof = IndexOf(
-        source: ListExpression(element: [
-          LiteralInteger(1),
-          LiteralInteger(3),
-          LiteralInteger(5),
-          LiteralInteger(7)
-        ]),
+        source: ListExpression(
+          element: [
+            LiteralInteger(1),
+            LiteralInteger(3),
+            LiteralInteger(5),
+            LiteralInteger(7),
+          ],
+        ),
         element: LiteralInteger(4),
       );
       final result = await indexof.execute({});
@@ -162,8 +172,9 @@ void main() {
       final pattern = LiteralString('C');
       final substitution = LiteralString('XYZ');
       final result = ReplaceMatches(
-          operand: [argument, pattern, substitution],
-          localId: 'ReplaceMatchesFound');
+        operand: [argument, pattern, substitution],
+        localId: 'ReplaceMatchesFound',
+      );
       expect(await result.execute({}), 'ABXYZDE');
     });
     test(
@@ -173,8 +184,9 @@ void main() {
       final pattern = LiteralString('XYZ');
       final substitution = LiteralString('123');
       final result = ReplaceMatches(
-          operand: [argument, pattern, substitution],
-          localId: 'ReplaceMatchesNotFound');
+        operand: [argument, pattern, substitution],
+        localId: 'ReplaceMatchesNotFound',
+      );
       expect(await result.execute({}), 'ABCDE');
     });
     test(
@@ -184,8 +196,9 @@ void main() {
       final pattern = LiteralString('C');
       final substitution = LiteralNull();
       final result = ReplaceMatches(
-          operand: [argument, pattern, substitution],
-          localId: 'ReplaceMatchesIsNull');
+        operand: [argument, pattern, substitution],
+        localId: 'ReplaceMatchesIsNull',
+      );
       expect(await result.execute({}), null);
     });
   });
@@ -242,16 +255,16 @@ void main() {
   });
 
   group('Matches', () {
-    test(""""define "MatchesTrue": Matches('1,2three', '\\d,\\d\\w+')""",
+    test(r""""define "MatchesTrue": Matches('1,2three', '\d,\d\w+')""",
         () async {
       final argument = LiteralString('1,2three');
-      final pattern = LiteralString('\\d,\\d\\w+');
+      final pattern = LiteralString(r'\d,\d\w+');
       final matches = Matches(operand: [argument, pattern]);
       expect(await matches.execute({}), CqlBoolean(true));
     });
-    test(""""define "MatchesFalse": Matches('1,2three', '\\w+')""", () async {
+    test(r""""define "MatchesFalse": Matches('1,2three', '\w+')""", () async {
       final argument = LiteralString('1,2three');
-      final pattern = LiteralString('\\w+');
+      final pattern = LiteralString(r'\w+');
       final matches = Matches(operand: [argument, pattern]);
       expect(await matches.execute({}), CqlBoolean(false));
     });
@@ -268,7 +281,7 @@ void main() {
       final output = Length(operand: input);
       expect(await output.execute({}), equals(CqlInteger(5)));
     });
-    test("""define "LengthIsNull": Length(null as String) // null""", () async {
+    test('''define "LengthIsNull": Length(null as String) // null''', () async {
       final input = As(resultTypeName: 'String', operand: LiteralNull());
       final output = Length(operand: input);
       expect(await output.execute({}), equals(null));
@@ -281,7 +294,7 @@ void main() {
       final result = await lower.execute({});
       expect(result, CqlString('hello'));
     });
-    test("""define "LowerIsNull": Lower(null) // null""", () async {
+    test('''define "LowerIsNull": Lower(null) // null''', () async {
       final lower = Lower(operand: LiteralNull());
       final result = await lower.execute({});
       expect(result, isNull);
@@ -300,7 +313,7 @@ void main() {
       final result = await upper.execute({});
       expect(result, CqlString('HELLO'));
     });
-    test("""define "UpperIsNull": Upper(null) // null""", () async {
+    test('''define "UpperIsNull": Upper(null) // null''', () async {
       final upper = Upper(operand: LiteralNull());
       final result = await upper.execute({});
       expect(result, isNull);
@@ -320,7 +333,7 @@ void main() {
       final result = await toChars.execute({});
       expect(result, [CqlString('A'), CqlString('B'), CqlString('C')]);
     });
-    test("""define "ToCharsIsNull": ToChars(null) // null""", () async {
+    test('''define "ToCharsIsNull": ToChars(null) // null''', () async {
       final toChars = ToChars(operand: LiteralNull());
       final result = await toChars.execute({});
       expect(result, isNull);
@@ -357,7 +370,7 @@ void main() {
       final result = await substring.execute({});
       expect(result, CqlString('CDE'));
     });
-    test("""define "SubstringIsNull": Substring(null, 2) // null""", () async {
+    test('''define "SubstringIsNull": Substring(null, 2) // null''', () async {
       final substring = Substring(
         stringToSub: LiteralNull(),
         startIndex: LiteralInteger(2),
@@ -378,11 +391,11 @@ void main() {
 
   group('SplitOnMatches', () {
     test(
-        """define "SplitOnMatchesRegex": SplitOnMatches('A1B2C3', '\\d') // { 'A', 'B', 'C', '' }""",
+        r"""define "SplitOnMatchesRegex": SplitOnMatches('A1B2C3', '\d') // { 'A', 'B', 'C', '' }""",
         () async {
       final splitOnMatches = SplitOnMatches(
         stringToSplit: LiteralString('A1B2C3'),
-        separatorPattern: LiteralString('\\d'),
+        separatorPattern: LiteralString(r'\d'),
       );
       final result = await splitOnMatches.execute({});
       expect(result, [
@@ -393,21 +406,21 @@ void main() {
       ]);
     });
     test(
-        """define "SplitOnMatchesIsNull": SplitOnMatches(null, '\\d') // null""",
+        r"""define "SplitOnMatchesIsNull": SplitOnMatches(null, '\d') // null""",
         () async {
       final splitOnMatches = SplitOnMatches(
         stringToSplit: LiteralNull(),
-        separatorPattern: LiteralString('\\d'),
+        separatorPattern: LiteralString(r'\d'),
       );
       final result = await splitOnMatches.execute({});
       expect(result, isNull);
     });
     test(
-        """define "SplitOnMatchesNoMatch": SplitOnMatches('ABC', '\\d') // { 'ABC' }""",
+        r"""define "SplitOnMatchesNoMatch": SplitOnMatches('ABC', '\d') // { 'ABC' }""",
         () async {
       final splitOnMatches = SplitOnMatches(
         stringToSplit: LiteralString('ABC'),
-        separatorPattern: LiteralString('\\d'),
+        separatorPattern: LiteralString(r'\d'),
       );
       final result = await splitOnMatches.execute({});
       expect(result, [CqlString('ABC')]);

@@ -2,8 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The Iteration expression returns the current iteration number of a scoped operation.
 class Iteration extends CqlExpression {
-  final String scope;
-
   Iteration({
     required this.scope,
     super.annotation,
@@ -27,10 +25,11 @@ class Iteration extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String scope;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'scope': scope,
     };
@@ -56,6 +55,6 @@ class Iteration extends CqlExpression {
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    return context[scope.isEmpty ? '\$iteration' : scope];
+    return context[scope.isEmpty ? r'$iteration' : scope];
   }
 }

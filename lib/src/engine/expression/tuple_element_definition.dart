@@ -2,15 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {
-  /// The type of the tuple element.
-  TypeSpecifierExpression? elementType;
-
-  /// The name of the tuple element.
-  String? name;
-
-  /// This element is deprecated. New implementations should use the new elementType element.
-  TypeSpecifierExpression? type;
-
   TupleElementDefinition({
     this.type,
     this.elementType,
@@ -44,9 +35,18 @@ class TupleElementDefinition extends Element {
             : null,
       );
 
+  /// The type of the tuple element.
+  TypeSpecifierExpression? elementType;
+
+  /// The name of the tuple element.
+  String? name;
+
+  /// This element is deprecated. New implementations should use the new elementType element.
+  TypeSpecifierExpression? type;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {};
+    final val = <String, dynamic>{};
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
         val[key] = value;

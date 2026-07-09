@@ -3,34 +3,9 @@ import 'package:cql/src/internal.dart';
 /// The IncludeElement type specifies include information for an include within
 /// a retrieve.
 class IncludeElement extends Element {
-  /// The localId of another Retrieve that specifies the data to be included in
-  /// this retrieve. The target Retrieve will have an includedIn attribute
-  /// referencing this includeElement.
-  String? includeFrom;
-
-  /// The isReverse attribute indicates that the include is reverse, i.e. that
-  /// the relatedDataType is referencing the data being retrieved, rather than
-  /// the retrieved data referencing the relatedDataType.
-  bool? isReverse;
-
-  /// The relatedDataType attribute specifies the type of the related data
-  /// being requested.
-  QName relatedDataType;
-
-  /// The relatedProperty attribute specifies which property of the
-  /// relatedDataType contains the relatedId for the clinical statement.
-  /// This property may be specified as a path, including qualifiers and
-  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
-  /// grammar provides the formal semantics for this path.
-  String? relatedProperty;
-
-  /// The relatedSearch attribute specifies the name of the search path to use
-  /// for searching for data of the relatedDataType.
-  String? relatedSearch;
-
   IncludeElement({
-    this.includeFrom,
     required this.relatedDataType,
+    this.includeFrom,
     this.relatedProperty,
     this.relatedSearch,
     this.isReverse,
@@ -59,6 +34,31 @@ class IncludeElement extends Element {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+
+  /// The localId of another Retrieve that specifies the data to be included in
+  /// this retrieve. The target Retrieve will have an includedIn attribute
+  /// referencing this includeElement.
+  String? includeFrom;
+
+  /// The isReverse attribute indicates that the include is reverse, i.e. that
+  /// the relatedDataType is referencing the data being retrieved, rather than
+  /// the retrieved data referencing the relatedDataType.
+  bool? isReverse;
+
+  /// The relatedDataType attribute specifies the type of the related data
+  /// being requested.
+  QName relatedDataType;
+
+  /// The relatedProperty attribute specifies which property of the
+  /// relatedDataType contains the relatedId for the clinical statement.
+  /// This property may be specified as a path, including qualifiers and
+  /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
+  /// grammar provides the formal semantics for this path.
+  String? relatedProperty;
+
+  /// The relatedSearch attribute specifies the name of the search path to use
+  /// for searching for data of the relatedDataType.
+  String? relatedSearch;
 
   @override
   Map<String, dynamic> toJson() {

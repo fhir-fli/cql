@@ -7,9 +7,10 @@ class CqlIntervalTypeSpecifierVisitor
 
   @override
   IntervalTypeSpecifier visitIntervalTypeSpecifier(
-      IntervalTypeSpecifierContext ctx) {
+    IntervalTypeSpecifierContext ctx,
+  ) {
     printIf(ctx);
-    for (var child in ctx.children ?? <ParseTree>[]) {
+    for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         return IntervalTypeSpecifier(pointType: visitTypeSpecifier(child));
       }

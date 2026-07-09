@@ -6,9 +6,10 @@ class CqlQualifiedIdentifierExpressionVisitor extends CqlBaseVisitor<Ref> {
 
   @override
   Ref visitQualifiedIdentifierExpression(
-      QualifiedIdentifierExpressionContext ctx) {
+    QualifiedIdentifierExpressionContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? name;
     String? libraryName;
     for (final child in ctx.children ?? <ParseTree>[]) {

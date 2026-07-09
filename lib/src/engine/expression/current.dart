@@ -3,8 +3,6 @@ import 'package:cql/src/internal.dart';
 /// The Current expression returns the value of the object currently in scope.
 /// It's an error to invoke the Current operator outside of a scoped operation.
 class Current extends CqlExpression {
-  final String scope;
-
   Current({
     required this.scope,
     super.annotation,
@@ -28,6 +26,7 @@ class Current extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String scope;
 
   @override
   Map<String, dynamic> toJson() {
@@ -67,6 +66,6 @@ class Current extends CqlExpression {
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    return context[scope.isEmpty ? '\$current' : scope];
+    return context[scope.isEmpty ? r'$current' : scope];
   }
 }

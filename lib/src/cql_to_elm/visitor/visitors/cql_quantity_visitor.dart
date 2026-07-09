@@ -8,7 +8,7 @@ class CqlQuantityVisitor extends CqlBaseVisitor<LiteralQuantity> {
   @override
   LiteralQuantity visitQuantity(QuantityContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     num? number;
     String? unit;
 

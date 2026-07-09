@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to check if the arguments are the same value or both null.
 /// Returns true if the arguments are the same value or both null, and false
@@ -138,7 +137,7 @@ class Equivalent extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -174,11 +173,10 @@ class Equivalent extends BinaryExpression {
   }
 
   static CqlBoolean equivalent(dynamic left, dynamic right) {
-    bool result = false;
+    var result = false;
     switch (left) {
       case null:
         result = right == null;
-        break;
       case String _:
         {
           String? rightStr;
@@ -192,39 +190,32 @@ class Equivalent extends BinaryExpression {
           result = rightStr != null &&
               left.toLowerCase().trim() == rightStr.toLowerCase().trim();
         }
-        break;
       case CqlDateTimeBase _:
-        result = right is CqlDateTimeBase
-            ? left.isEquivalent(right) ?? false
-            : false;
-        break;
+        result =
+            right is CqlDateTimeBase && (left.isEquivalent(right) ?? false);
       case CqlTime _:
-        result = right is CqlTime ? left.isEquivalent(right) ?? false : false;
-        break;
+        result = right is CqlTime && (left.isEquivalent(right) ?? false);
       case CqlCode _:
         result = left.equivalent(right);
-        break;
       case CqlConcept _:
         result = left.equivalent(right);
-        break;
       case num _:
       case BigInt _:
         if (right is num || right is BigInt) {
           result = UcumDecimal.fromString(left.toString())
               .equivalent(UcumDecimal.fromString(right.toString()));
         } else if ((right is CqlNumber) || (right is CqlLong)) {
-          result = (UcumDecimal.fromString(left.toString())
-              .equivalent(UcumDecimal.fromString(right.toString())));
+          result = UcumDecimal.fromString(left.toString())
+              .equivalent(UcumDecimal.fromString(right.toString()));
         } else if (right is ValidatedQuantity && left is double) {
           result = ValidatedQuantity.fromNumber(left).equivalent(right);
         } else {
           result = false;
         }
-        break;
       case CqlNumber _:
       case CqlLong _:
         if (right is num || right is BigInt) {
-          result = UcumDecimal.fromString(left.valueString!)
+          result = UcumDecimal.fromString(left.valueString)
               .equivalent(UcumDecimal.fromString(right.toString()));
         } else if ((right is CqlNumber) || (right is CqlLong)) {
           // CQL spec: for decimals, equivalent rounds to precision of least
@@ -232,14 +223,13 @@ class Equivalent extends BinaryExpression {
           if (left is CqlNumber && right is CqlNumber) {
             result = left.valueNum == right.valueNum;
           } else {
-            result = UcumDecimal.fromString(left.valueString!)
-                .equivalent(UcumDecimal.fromString(right.valueString!));
+            result = UcumDecimal.fromString(left.valueString)
+                .equivalent(UcumDecimal.fromString(right.valueString));
           }
         } else if (right is ValidatedQuantity && left is CqlDecimal) {
           result =
               ValidatedQuantity.fromString(left.valueString!).equivalent(right);
         }
-        break;
       case ValidatedQuantity _:
         if (right is ValidatedQuantity) {
           result = left.equivalent(right);
@@ -251,10 +241,8 @@ class Equivalent extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case ValidatedRatio _:
-        result = right is ValidatedRatio ? left.equivalent(right) : false;
-        break;
+        result = right is ValidatedRatio && left.equivalent(right);
       case List _:
         if (right is List && left.length == right.length) {
           result = true;
@@ -267,7 +255,6 @@ class Equivalent extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case CqlTuple _:
         if (right is CqlTuple &&
             left.elements?.length == right.elements?.length) {
@@ -278,7 +265,7 @@ class Equivalent extends BinaryExpression {
 
             if (!const DeepCollectionEquality()
                 .equals(left.elements, right.elements)) {
-              for (var key in left.elements!.keys) {
+              for (final key in left.elements!.keys) {
                 // Check for key presence and value equality.
                 final tempResult = right.elements!.containsKey(key)
                     ? equivalent(left.elements![key], right.elements![key])
@@ -297,12 +284,11 @@ class Equivalent extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case Map _:
         if (right is Map && left.length == right.length) {
           result = true;
           if (!const DeepCollectionEquality().equals(left, right)) {
-            for (var key in left.keys) {
+            for (final key in left.keys) {
               // Check for key presence and value equality.
               final tempResult = right.containsKey(key)
                   ? equivalent(left[key], right[key]).valueBoolean
@@ -319,10 +305,8 @@ class Equivalent extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case CqlInterval _:
-        result = right is CqlInterval ? left.equivalent(right) : false;
-        break;
+        result = right is CqlInterval && left.equivalent(right);
       default:
         result = left == right;
     }

@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the absolute value of its argument.
 /// When taking the absolute value of a quantity, the unit is unchanged.

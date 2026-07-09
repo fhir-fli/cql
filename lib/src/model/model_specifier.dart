@@ -2,14 +2,6 @@
 ///
 /// The [ModelSpecifier] type specifies a model with attributes for name and version.
 class ModelSpecifier {
-  /// Name of the model.
-  String name;
-
-  Uri? url;
-
-  /// Version of the model.
-  String? version;
-
   ModelSpecifier({
     required this.name,
     this.version,
@@ -23,6 +15,14 @@ class ModelSpecifier {
       url: json['url'] != null ? Uri.parse(json['url']) : null,
     );
   }
+
+  /// Name of the model.
+  String name;
+
+  Uri? url;
+
+  /// Version of the model.
+  String? version;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

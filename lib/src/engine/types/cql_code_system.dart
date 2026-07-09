@@ -8,6 +8,18 @@ class CqlCodeSystem extends CqlVocabulary {
     required super.name,
   });
 
+  // Static method to create a CqlCodeSystemInfo from a CqlCodeSystem
+  factory CqlCodeSystem.fromCodeSystemDef(CodeSystemDef codeSystemDef) {
+    if (codeSystemDef.id == null || codeSystemDef.name == null) {
+      throw ArgumentError('ValueSetDef must have id, version, and name');
+    }
+    return CqlCodeSystem(
+      id: codeSystemDef.id!,
+      version: codeSystemDef.version,
+      name: codeSystemDef.name!,
+    );
+  }
+
   factory CqlCodeSystem.fromCodeSystemRef(CodeSystemRef cs) {
     return CqlCodeSystem(
       id: cs.localId ?? cs.type,
@@ -29,18 +41,6 @@ class CqlCodeSystem extends CqlVocabulary {
     final json = super.toJson();
     json['type'] = 'CodeSystem';
     return json;
-  }
-
-  // Static method to create a CqlCodeSystemInfo from a CqlCodeSystem
-  factory CqlCodeSystem.fromCodeSystemDef(CodeSystemDef codeSystemDef) {
-    if (codeSystemDef.id == null || codeSystemDef.name == null) {
-      throw ArgumentError('ValueSetDef must have id, version, and name');
-    }
-    return CqlCodeSystem(
-      id: codeSystemDef.id!,
-      version: codeSystemDef.version,
-      name: codeSystemDef.name!,
-    );
   }
 
   // Getter for ID

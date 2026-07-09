@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to convert the value of its argument to a String value.
 /// The operator uses specific string representations for each type:
@@ -97,14 +96,16 @@ class ToString extends UnaryExpression {
       case CqlTime _:
         return CqlString(value.valueString);
       case ValidatedQuantity _:
-        return CqlString('${value.value.asUcumDecimal()} \'${value.unit}\'');
+        return CqlString("${value.value.asUcumDecimal()} '${value.unit}'");
       case CqlCode _:
         return CqlString('Code { code: ${value.code} system: ${value.system} '
             'version: ${value.version} display: ${value.display} }');
       case CqlConcept _:
         final codesStr = value.codes
-            .map((c) => 'Code { code: ${c.code} system: ${c.system} '
-                'version: ${c.version} display: ${c.display} }')
+            .map(
+              (c) => 'Code { code: ${c.code} system: ${c.system} '
+                  'version: ${c.version} display: ${c.display} }',
+            )
             .join(', ');
         return CqlString('Concept { $codesStr display: ${value.display} }');
       default:

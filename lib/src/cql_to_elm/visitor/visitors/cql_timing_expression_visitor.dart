@@ -7,12 +7,12 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitTimingExpression(TimingExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
 
     if (ctx.childCount == 3) {
       // Parse left and right operands
-      CqlExpression left = byContext(ctx.children![0]) as CqlExpression;
-      CqlExpression right = byContext(ctx.children![2]) as CqlExpression;
+      var left = byContext(ctx.children![0]) as CqlExpression;
+      var right = byContext(ctx.children![2]) as CqlExpression;
 
       // Parse the interval operator phrase (needed before wrapping to check
       // for starts/ends keywords)
@@ -37,40 +37,58 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       switch (intervalOperatorPhrase) {
         case ConcurrentWithIntervalOperatorPhraseContext _:
           primaryExpression = visitConcurrentWithIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case IncludesIntervalOperatorPhraseContext _:
           primaryExpression = visitIncludesIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case IncludedInIntervalOperatorPhraseContext _:
           primaryExpression = visitIncludedInIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case BeforeOrAfterIntervalOperatorPhraseContext _:
           primaryExpression = visitBeforeOrAfterIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case WithinIntervalOperatorPhraseContext _:
           primaryExpression = visitWithinIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case MeetsIntervalOperatorPhraseContext _:
           primaryExpression = visitMeetsIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case OverlapsIntervalOperatorPhraseContext _:
           primaryExpression = visitOverlapsIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case StartsIntervalOperatorPhraseContext _:
           primaryExpression = visitStartsIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         case EndsIntervalOperatorPhraseContext _:
           primaryExpression = visitEndsIntervalOperatorPhrase(
-              intervalOperatorPhrase, left, right);
-          break;
+            intervalOperatorPhrase,
+            left,
+            right,
+          );
         default:
           throw ArgumentError('$thisNode Invalid TimingExpression');
       }
@@ -113,7 +131,7 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// For non-choice date/dateTime properties, apply standard FHIRHelpers wrapping.
   CqlExpression _wrapChoiceForTiming(CqlExpression expr) {
     if (expr is Property) {
-      final String? className = _resolveClassName(expr);
+      final className = _resolveClassName(expr);
       if (className != null) {
         final element = getElementInfo(className, expr.path);
         if (element != null && CqlBaseVisitor.isChoiceType(element)) {
@@ -124,8 +142,11 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         }
       }
       // For non-choice date/dateTime properties, apply FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
-          model: currentModel);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(
+        expr,
+        expr.path,
+        model: currentModel,
+      );
     }
     return expr;
   }
@@ -174,7 +195,7 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
         }
       }
       if (refDef?.expression is SingletonFrom) {
-        final sf = refDef!.expression as SingletonFrom;
+        final sf = refDef!.expression! as SingletonFrom;
         if (sf.operand is Retrieve) {
           return (sf.operand as Retrieve).dataType.localPart;
         }

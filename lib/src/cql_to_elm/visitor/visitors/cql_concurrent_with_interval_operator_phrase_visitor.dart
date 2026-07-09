@@ -7,15 +7,16 @@ class CqlConcurrentWithIntervalOperatorPhraseVisitor
 
   @override
   CqlExpression visitConcurrentWithIntervalOperatorPhrase(
-      ConcurrentWithIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left,
-      CqlExpression? right]) {
+    ConcurrentWithIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? startsEndsOccurs;
     CqlDateTimePrecision? dateTimePrecision;
     String? relativeQualifier;
-    bool as_ = false;
+    var as_ = false;
     String? startEnd;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
@@ -32,7 +33,8 @@ class CqlConcurrentWithIntervalOperatorPhraseVisitor
         relativeQualifier = visitRelativeQualifier(child);
       } else if (child is DateTimePrecisionContext) {
         dateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecision(child));
+          visitDateTimePrecision(child),
+        );
       }
     }
     if (left != null && right != null) {
@@ -40,20 +42,24 @@ class CqlConcurrentWithIntervalOperatorPhraseVisitor
       final effectiveRight = startOrEnd(right, startEnd);
       if (as_) {
         return SameAs(
-            operand: [effectiveLeft, effectiveRight],
-            precision: dateTimePrecision);
+          operand: [effectiveLeft, effectiveRight],
+          precision: dateTimePrecision,
+        );
       } else if (relativeQualifier == 'or after') {
         return SameOrAfter(
-            operand: [effectiveLeft, effectiveRight],
-            precision: dateTimePrecision);
+          operand: [effectiveLeft, effectiveRight],
+          precision: dateTimePrecision,
+        );
       } else if (relativeQualifier == 'or before') {
         return SameOrBefore(
-            operand: [effectiveLeft, effectiveRight],
-            precision: dateTimePrecision);
+          operand: [effectiveLeft, effectiveRight],
+          precision: dateTimePrecision,
+        );
       }
     }
 
     throw ArgumentError(
-        '$thisNode Invalid ConcurrentWithIntervalOperatorPhrase');
+      '$thisNode Invalid ConcurrentWithIntervalOperatorPhrase',
+    );
   }
 }

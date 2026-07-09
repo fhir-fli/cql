@@ -7,8 +7,8 @@ class CqlAndExpressionVisitor extends CqlBaseVisitor<And> {
   @override
   And visitAndExpression(AndExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    List<CqlExpression> operand = [];
+    final thisNode = getNextNode();
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
@@ -20,20 +20,26 @@ class CqlAndExpressionVisitor extends CqlBaseVisitor<And> {
     if (operand.length == 2) {
       if (operand.first is LiteralType && operand.last is LiteralType) {
         if (operand.first is! LiteralNull && operand.last is LiteralNull) {
-          return And(operand: [
-            operand.first,
-            As(
+          return And(
+            operand: [
+              operand.first,
+              As(
                 operand: operand.last,
-                asType: QName.parse((operand.first as LiteralType).valueType))
-          ]);
+                asType: QName.parse((operand.first as LiteralType).valueType),
+              ),
+            ],
+          );
         } else if (operand.first is LiteralNull &&
             operand.last is LiteralNull) {
-          return And(operand: [
-            As(
+          return And(
+            operand: [
+              As(
                 operand: operand.first,
-                asType: QName.parse((operand.last as LiteralType).valueType)),
-            operand.last,
-          ]);
+                asType: QName.parse((operand.last as LiteralType).valueType),
+              ),
+              operand.last,
+            ],
+          );
         }
       }
       return And(operand: operand);

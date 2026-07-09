@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class Tag extends CqlToElmBase {
-  String? name;
-  String? value;
-
   Tag({this.name, this.value});
 
   factory Tag.fromJson(Map<String, dynamic> json) {
@@ -12,6 +9,8 @@ class Tag extends CqlToElmBase {
       value: json['value'] as String?,
     );
   }
+  String? name;
+  String? value;
 
   @override
   Map<String, dynamic> toJson() => {

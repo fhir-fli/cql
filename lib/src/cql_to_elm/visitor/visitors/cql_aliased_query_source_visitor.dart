@@ -7,7 +7,7 @@ class CqlAliasedQuerySourceVisitor extends CqlBaseVisitor<RelationshipClause> {
   @override
   RelationshipClause visitAliasedQuerySource(AliasedQuerySourceContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? querySource;
     String? alias;
     for (final child in ctx.children ?? <ParseTree>[]) {

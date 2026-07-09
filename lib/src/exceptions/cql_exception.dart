@@ -1,36 +1,48 @@
 import 'package:cql/src/internal.dart';
 
 class CqlException implements Exception {
+  // Constructors
+  CqlException({
+    required this.message,
+    this.cause,
+    this.sourceLocator,
+    Severity? severity,
+  }) : severity = severity ?? Severity.error;
+
+  CqlException.fromCause(
+    Exception cause, {
+    SourceLocator? sourceLocator,
+    Severity? severity,
+  }) : this(
+          message: null,
+          cause: cause,
+          sourceLocator: sourceLocator,
+          severity: severity,
+        );
+
+  CqlException.withSourceLocator(
+    String message,
+    SourceLocator sourceLocator, {
+    Severity? severity,
+  }) : this(
+          message: message,
+          sourceLocator: sourceLocator,
+          severity: severity,
+        );
+
+  CqlException.withSeverity(
+    String message, {
+    required Severity severity,
+    SourceLocator? sourceLocator,
+  }) : this(
+          message: message,
+          sourceLocator: sourceLocator,
+          severity: severity,
+        );
   final String? message;
   final Exception? cause;
   SourceLocator? sourceLocator;
   final Severity severity;
-
-  // Constructors
-  CqlException(
-      {required this.message,
-      this.cause,
-      this.sourceLocator,
-      Severity? severity})
-      : severity = severity ?? Severity.error;
-
-  CqlException.fromCause(Exception cause,
-      {SourceLocator? sourceLocator, Severity? severity})
-      : this(
-            message: null,
-            cause: cause,
-            sourceLocator: sourceLocator,
-            severity: severity);
-
-  CqlException.withSourceLocator(String message, SourceLocator sourceLocator,
-      {Severity? severity})
-      : this(
-            message: message, sourceLocator: sourceLocator, severity: severity);
-
-  CqlException.withSeverity(String message,
-      {SourceLocator? sourceLocator, required Severity severity})
-      : this(
-            message: message, sourceLocator: sourceLocator, severity: severity);
 
   // Getter for message to mimic Java's getMessage method
   String? get getMessage => message;
@@ -65,10 +77,10 @@ class CqlException implements Exception {
       result += ': $message';
     }
     if (cause != null) {
-      result += '\nCaused by: ${cause.toString()}';
+      result += '\nCaused by: $cause';
     }
     if (sourceLocator != null) {
-      result += '\nSource: ${sourceLocator.toString()}';
+      result += '\nSource: $sourceLocator';
     }
     return result;
   }

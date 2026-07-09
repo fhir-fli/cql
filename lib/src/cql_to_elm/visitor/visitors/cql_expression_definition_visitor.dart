@@ -7,8 +7,8 @@ class CqlExpressionDefinitionVisitor extends CqlBaseVisitor<ExpressionDef> {
   @override
   ExpressionDef visitExpressionDefinition(ExpressionDefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    AccessModifier accessLevel = AccessModifier.public;
+    final thisNode = getNextNode();
+    var accessLevel = AccessModifier.public;
     String? name;
     CqlExpression? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {

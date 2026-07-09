@@ -6,14 +6,15 @@ class CqlAggregateExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitAggregateExpressionTerm(
-      AggregateExpressionTermContext ctx) {
+    AggregateExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    bool distinct = false;
+    final thisNode = getNextNode();
+    var distinct = false;
     CqlExpression? expression;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
-        distinct = child.text == 'distinct' ? true : false;
+        distinct = (child.text == 'distinct');
       } else {
         final result = byContext(child);
         if (result is CqlExpression) {

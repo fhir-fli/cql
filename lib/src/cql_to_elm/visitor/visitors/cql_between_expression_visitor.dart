@@ -7,7 +7,7 @@ class CqlBetweenExpressionVisitor extends CqlBaseVisitor<And> {
   @override
   And visitBetweenExpression(BetweenExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? operand;
     CqlExpression? left;
     CqlExpression? right;
@@ -31,10 +31,12 @@ class CqlBetweenExpressionVisitor extends CqlBaseVisitor<And> {
       }
     }
     if (operand != null && left != null && right != null) {
-      return And(operand: [
-        GreaterOrEqual(operand: [operand, left]),
-        LessOrEqual(operand: [operand, right]),
-      ]);
+      return And(
+        operand: [
+          GreaterOrEqual(operand: [operand, left]),
+          LessOrEqual(operand: [operand, right]),
+        ],
+      );
     }
     throw ArgumentError('$thisNode Invalid BetweenExpression');
   }

@@ -22,11 +22,6 @@ import 'package:cql/src/internal.dart';
 /// and milliseconds are combined and represented as a Decimal for the purposes
 /// of comparison.
 class TimeExpression extends OperatorExpression {
-  final CqlExpression hour;
-  final CqlExpression? millisecond;
-  final CqlExpression? minute;
-  final CqlExpression? second;
-
   TimeExpression({
     required this.hour,
     this.minute,
@@ -39,8 +34,9 @@ class TimeExpression extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
-  factory TimeExpression.fromOperandList(
-      {required List<CqlExpression> operand}) {
+  factory TimeExpression.fromOperandList({
+    required List<CqlExpression> operand,
+  }) {
     if (operand.isEmpty) {
       throw ArgumentError('TimeExpression must have at least one operand');
     }
@@ -76,6 +72,10 @@ class TimeExpression extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression hour;
+  final CqlExpression? millisecond;
+  final CqlExpression? minute;
+  final CqlExpression? second;
 
   @override
   Map<String, dynamic> toJson() {

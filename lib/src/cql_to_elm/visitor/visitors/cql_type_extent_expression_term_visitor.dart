@@ -6,8 +6,8 @@ class CqlTypeExtentExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitTypeExtentExpressionTerm(TypeExtentExpressionTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    final NamedTypeSpecifier? namedTypeSpecifier =
+    final thisNode = getNextNode();
+    final namedTypeSpecifier =
         visitNamedTypeSpecifier(ctx.children![1] as NamedTypeSpecifierContext);
     if (namedTypeSpecifier != null) {
       if (ctx.children![0].text == 'minimum') {

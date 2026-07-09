@@ -62,7 +62,7 @@ void main() {
           final library = parseAndBuildLibrary(cqlSource);
           final json = library.toJson();
           // Dart translator returns library content directly (no wrapper)
-          actualLib = (json['library'] as Map<String, dynamic>?) ?? (json);
+          actualLib = (json['library'] as Map<String, dynamic>?) ?? json;
           parseSucceeded = true;
         } catch (e) {
           if (!knownParseFailures.contains(name)) {
@@ -76,9 +76,12 @@ void main() {
       test('parses CQL source', () {
         if (knownParseFailures.contains(name)) {
           // Known failure — just document it
-          expect(parseSucceeded, isFalse,
-              reason: '$name is expected to fail parsing '
-                  '(remove from knownParseFailures if fixed)');
+          expect(
+            parseSucceeded,
+            isFalse,
+            reason: '$name is expected to fail parsing '
+                '(remove from knownParseFailures if fixed)',
+          );
           return;
         }
         expect(parseSucceeded, isTrue, reason: '$name failed to parse');
@@ -91,8 +94,11 @@ void main() {
         final actualId = actualLib['identifier'];
 
         if (refId != null && actualId is Map) {
-          expect(actualId['id'], refId['id'],
-              reason: '$name: library id mismatch');
+          expect(
+            actualId['id'],
+            refId['id'],
+            reason: '$name: library id mismatch',
+          );
         }
       });
 
@@ -104,8 +110,11 @@ void main() {
 
         for (final refName in refStatements) {
           if (refName == 'Patient') continue;
-          expect(actualStatements, contains(refName),
-              reason: '$name: missing statement "$refName"');
+          expect(
+            actualStatements,
+            contains(refName),
+            reason: '$name: missing statement "$refName"',
+          );
         }
       });
 
@@ -138,9 +147,11 @@ void main() {
         }
 
         if (total > 0) {
-          expect(matched, total,
-              reason:
-                  '$name: $matched/$total top-level expression types matched');
+          expect(
+            matched,
+            total,
+            reason: '$name: $matched/$total top-level expression types matched',
+          );
         }
       });
 
@@ -175,9 +186,13 @@ void main() {
         if (totalTypes > 0) {
           final pct = (matchedTypes * 100 / totalTypes).round();
           print(
-              '  $name: $matchedTypes/$totalTypes node types present ($pct%)');
-          expect(matchedTypes / totalTypes, greaterThan(0.5),
-              reason: '$name: fewer than 50% of node types matched');
+            '  $name: $matchedTypes/$totalTypes node types present ($pct%)',
+          );
+          expect(
+            matchedTypes / totalTypes,
+            greaterThan(0.5),
+            reason: '$name: fewer than 50% of node types matched',
+          );
         }
       });
     });

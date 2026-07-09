@@ -6,9 +6,10 @@ class CqlReferentialOrTypeNameIdentifierVisitor extends CqlBaseVisitor<String> {
 
   @override
   String visitReferentialOrTypeNameIdentifier(
-      ReferentialOrTypeNameIdentifierContext ctx) {
+    ReferentialOrTypeNameIdentifierContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ReferentialIdentifierContext) {
         return visitReferentialIdentifier(child);

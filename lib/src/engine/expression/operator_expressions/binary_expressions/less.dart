@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/cql.dart' hide Quantity;
+import 'package:ucum/ucum.dart';
 
 /// Operator to check if the first argument is less than the second argument.
 /// Returns true if the first argument is less than the second argument.
@@ -106,7 +105,7 @@ class Less extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };

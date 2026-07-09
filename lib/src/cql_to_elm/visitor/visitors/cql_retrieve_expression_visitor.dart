@@ -7,7 +7,7 @@ class CqlRetrieveExpressionVisitor extends CqlBaseVisitor<Retrieve> {
   @override
   Retrieve visitRetrieveExpression(RetrieveExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is RetrieveContext) {
         return visitRetrieve(child);

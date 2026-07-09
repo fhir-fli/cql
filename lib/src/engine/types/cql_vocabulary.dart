@@ -2,20 +2,20 @@
 import 'package:cql/src/internal.dart';
 
 abstract class CqlVocabulary implements CqlType {
-  String id;
-  String? version;
-  String name;
-
   CqlVocabulary({
     required this.id,
     required this.version,
     required this.name,
   });
 
-  factory CqlVocabulary.fromJson(Map<String, dynamic> json) {
+  factory CqlVocabulary.fromJson() {
     throw UnimplementedError(
-        "Vocabulary is an abstract class and cannot be instantiated directly.");
+      'Vocabulary is an abstract class and cannot be instantiated directly.',
+    );
   }
+  String id;
+  String? version;
+  String name;
 
   Map<String, dynamic> toJson() {
     return {

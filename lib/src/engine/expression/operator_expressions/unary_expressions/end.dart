@@ -76,7 +76,7 @@ class End extends UnaryExpression {
       return value;
     }
     throw Exception(
-      "Cannot perform end operator with argument of type "
+      'Cannot perform end operator with argument of type '
       "'${value.runtimeType}'.",
     );
   }

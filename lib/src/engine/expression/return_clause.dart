@@ -2,9 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The ReturnClause element defines the shape of the result set of the query.
 class ReturnClause extends Element {
-  final bool? distinct;
-  final CqlExpression expression;
-
   ReturnClause({
     required this.expression,
     this.distinct,
@@ -30,10 +27,12 @@ class ReturnClause extends Element {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final bool? distinct;
+  final CqlExpression expression;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {};
+    final val = <String, dynamic>{};
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
         val[key] = value;

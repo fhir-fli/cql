@@ -89,12 +89,13 @@ class Ceiling extends UnaryExpression {
     } else if (value is CqlInteger) {
       return value;
     } else if (value is CqlLong) {
-      return CqlInteger.tryParse(value.valueBigInt!);
+      return CqlInteger.tryParse(value.valueBigInt);
     } else if (value is CqlDecimal) {
       return CqlInteger(value.valueNum!.ceil());
     } else {
       throw ArgumentError(
-          'Truncate operator can only be used with Decimal or Integer');
+        'Truncate operator can only be used with Decimal or Integer',
+      );
     }
   }
 }

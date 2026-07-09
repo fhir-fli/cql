@@ -7,7 +7,7 @@ class CqlDisplayClauseVisitor extends CqlBaseVisitor<String> {
   @override
   String visitDisplayClause(DisplayClauseContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl && child.text != 'display') {
         return noQuoteString(ctx.children![1].text!);

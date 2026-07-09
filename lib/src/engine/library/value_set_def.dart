@@ -3,9 +3,6 @@ import 'dart:convert';
 import 'package:cql/src/internal.dart';
 
 class ValueSetDefs {
-  String? type;
-  List<ValueSetDef> def = [];
-
   ValueSetDefs();
 
   factory ValueSetDefs.fromJson(Map<String, dynamic> json) => ValueSetDefs()
@@ -13,6 +10,8 @@ class ValueSetDefs {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ValueSetDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<ValueSetDef> def = [];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (type != null) 'type': type,
@@ -41,26 +40,6 @@ class ValueSetDefs {
 /// ensure static binding can be achieved when the value set definition does
 /// not specify code system versions as part of the definition header.
 class ValueSetDef extends Element {
-  /// The name of the value set.
-  String? name;
-
-  /// The unique identifier of the value set to be retrieved.
-  String? id;
-
-  /// Specifies the access level; default is Public.
-  AccessModifier accessLevel;
-
-  /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
-  String? version;
-
-  /// The code system that should be used to construct the expansion set. Note
-  /// that the recommended approach to statically binding to an expansion set
-  /// is to use a value set definition that specifies the version of each code
-  /// system used. The codeSystem elements are provided only to ensure static
-  /// binding can be achieved when the value set definition does not specify
-  /// code system versions as part of the definition header.
-  List<CodeSystemRef>? codeSystem;
-
   ValueSetDef({
     this.name,
     this.id,
@@ -94,7 +73,28 @@ class ValueSetDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              );
+
+  /// The name of the value set.
+  String? name;
+
+  /// The unique identifier of the value set to be retrieved.
+  String? id;
+
+  /// Specifies the access level; default is Public.
+  AccessModifier accessLevel;
+
+  /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
+  String? version;
+
+  /// The code system that should be used to construct the expansion set. Note
+  /// that the recommended approach to statically binding to an expansion set
+  /// is to use a value set definition that specifies the version of each code
+  /// system used. The codeSystem elements are provided only to ensure static
+  /// binding can be achieved when the value set definition does not specify
+  /// code system versions as part of the definition header.
+  List<CodeSystemRef>? codeSystem;
 
   @override
   Map<String, dynamic> toJson() {
@@ -104,8 +104,11 @@ class ValueSetDef extends Element {
       if (value != null) {
         if (key == 'codeSystem') {
           (value as List<Map<String, dynamic>>)
-              .map((e) => e.removeWhere(
-                  (key, value) => key == 'type' && value == 'CodeSystemRef'))
+              .map(
+                (e) => e.removeWhere(
+                  (key, value) => key == 'type' && value == 'CodeSystemRef',
+                ),
+              )
               .toList();
         }
         val[key] = value;
@@ -115,7 +118,7 @@ class ValueSetDef extends Element {
     writeNotNull('name', name);
     writeNotNull('id', id);
     writeNotNull('version', version);
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     writeNotNull('codeSystem', codeSystem?.map((e) => e.toJson()).toList());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
@@ -125,7 +128,7 @@ class ValueSetDef extends Element {
     return val;
   }
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };

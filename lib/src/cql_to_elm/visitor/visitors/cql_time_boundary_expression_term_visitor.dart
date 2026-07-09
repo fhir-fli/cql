@@ -5,9 +5,10 @@ class CqlTimeBoundaryExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
 
   @override
   dynamic visitTimeBoundaryExpressionTerm(
-      TimeBoundaryExpressionTermContext ctx) {
+    TimeBoundaryExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     if (ctx.childCount == 3) {
       final CqlExpression expression = byContext(ctx.children![2]);
       if (ctx.children![0].text == 'start') {

@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to check if the arguments are equal.
 /// Returns true if the arguments are equal, false if they are known unequal, and null otherwise.
@@ -119,7 +118,7 @@ class Equal extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -170,7 +169,6 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case CqlDateTimeBase _:
         // CQL spec: Date and DateTime are cross-comparable using precision
         // semantics. Date is implicitly promoted to DateTime.
@@ -190,16 +188,12 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case CqlTime _:
         result = right is CqlTime ? left.isEqual(right) : false;
-        break;
       case CqlCode _:
         result = left.equal(right);
-        break;
       case CqlConcept _:
         result = left.equal(right);
-        break;
       case num _:
         {
           if (right is num) {
@@ -214,7 +208,6 @@ class Equal extends BinaryExpression {
             result = false;
           }
         }
-        break;
       case BigInt _:
         {
           if (right is num) {
@@ -229,7 +222,6 @@ class Equal extends BinaryExpression {
             result = false;
           }
         }
-        break;
       case CqlNumber _:
         {
           if (right is CqlInterval) {
@@ -248,7 +240,6 @@ class Equal extends BinaryExpression {
             result = false;
           }
         }
-        break;
       case CqlLong _:
         {
           if (right is num) {
@@ -263,17 +254,14 @@ class Equal extends BinaryExpression {
             result = false;
           }
         }
-        break;
       case ValidatedQuantity _:
         result = right is ValidatedQuantity && left == right;
-        break;
       case ValidatedRatio _:
         result = right is ValidatedRatio && left == right;
-        break;
       case List _:
         if (right is List && left.length == right.length) {
           result = true;
-          for (int i = 0; i < left.length; i++) {
+          for (var i = 0; i < left.length; i++) {
             // CQL spec: null elements are considered equal in list equality
             if (left[i] == null && right[i] == null) continue;
             final tempResult = equal(left[i], right[i])?.valueBoolean;
@@ -289,10 +277,9 @@ class Equal extends BinaryExpression {
           // is uncertain (null) because we can't definitively say they're
           // unequal when nulls are involved.
           final hasNulls =
-              (left).any((e) => e == null) || (right).any((e) => e == null);
+              left.any((e) => e == null) || right.any((e) => e == null);
           result = hasNulls ? null : false;
         }
-        break;
       case CqlTuple _:
         if (right is CqlTuple &&
             left.elements?.length == right.elements?.length) {
@@ -303,8 +290,8 @@ class Equal extends BinaryExpression {
 
             if (!const DeepCollectionEquality()
                 .equals(left.elements, right.elements)) {
-              bool hasNull = false;
-              for (var key in left.elements!.keys) {
+              var hasNull = false;
+              for (final key in left.elements!.keys) {
                 // Check for key presence and value equality.
                 final tempResult = right.elements!.containsKey(key)
                     ? equal(left.elements![key], right.elements![key])
@@ -327,14 +314,13 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case Map _:
         if (right is Map && left.length == right.length) {
           result = true;
 
           if (!const DeepCollectionEquality().equals(left, right)) {
-            bool hasNull = false;
-            for (var key in left.keys) {
+            var hasNull = false;
+            for (final key in left.keys) {
               // Check for key presence and value equality.
               final tempResult = right.containsKey(key)
                   ? equal(left[key], right[key])?.valueBoolean
@@ -355,7 +341,6 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-        break;
       case CqlInterval _:
         if (right is CqlInterval) {
           // Use CQL's three-valued equal (not Dart's == which uses equivalence)
@@ -386,7 +371,6 @@ class Equal extends BinaryExpression {
             }
           }
         }
-        break;
       case CqlPrimitive _:
         if (right is String) {
           result = left.valueString == right;
@@ -395,7 +379,6 @@ class Equal extends BinaryExpression {
         } else {
           result = left == right;
         }
-        break;
       default:
         // Handle scalar == CqlInterval (reverse of interval-to-scalar)
         if (right is CqlInterval) {
@@ -411,7 +394,9 @@ class Equal extends BinaryExpression {
   /// doesn't — CQL assumes the no-TZ value is in the evaluation request's
   /// timezone, which equals raw component comparison.
   static bool? _componentEqualDateTime(
-      CqlDateTimeBase left, CqlDateTimeBase right) {
+    CqlDateTimeBase left,
+    CqlDateTimeBase right,
+  ) {
     // Year
     if (left.year == null || right.year == null) return null;
     if (left.year != right.year) return false;

@@ -7,7 +7,7 @@ class CqlInvocationTermVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitInvocationTerm(InvocationTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is MemberInvocationContext) {
         return visitMemberInvocation(child);

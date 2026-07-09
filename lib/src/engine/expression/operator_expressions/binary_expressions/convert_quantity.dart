@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to convert a Quantity to an equivalent Quantity with the given unit.
 /// If the unit of the input quantity can be converted to the target unit,
@@ -39,7 +38,7 @@ class ConvertQuantity extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -81,7 +80,7 @@ class ConvertQuantity extends BinaryExpression {
     } else if (right is String) {
       targetUnit = right;
     } else if (right is ValidatedQuantity) {
-      targetUnit = right.unit.toString();
+      targetUnit = right.unit;
     }
     if (targetUnit == null) return null;
 

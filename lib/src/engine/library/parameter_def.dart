@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class ParameterDefs {
-  String? type;
-  List<ParameterDef> def = <ParameterDef>[];
-
   ParameterDefs();
 
   factory ParameterDefs.fromJson(Map<String, dynamic> json) => ParameterDefs()
@@ -11,6 +8,8 @@ class ParameterDefs {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ParameterDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<ParameterDef> def = <ParameterDef>[];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (type != null) 'type': type,
@@ -22,21 +21,6 @@ class ParameterDefs {
 
 /// Definition of a parameter that can be referenced by name within an expression.
 class ParameterDef extends Element {
-  /// Name of the parameter.
-  String name;
-
-  /// Access level, defaults to Public.
-  AccessModifier accessLevel;
-
-  /// Default value expression for the parameter.
-  CqlExpression? defaultExpression;
-
-  /// Qualified name of the parameter type, optional.
-  QName? parameterType;
-
-  /// Type specifier for the parameter.
-  TypeSpecifierExpression? parameterTypeSpecifier;
-
   ParameterDef({
     required this.name,
     this.accessLevel = AccessModifier.public,
@@ -62,7 +46,8 @@ class ParameterDef extends Element {
         parameterTypeSpecifier: json['parameterTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['parameterTypeSpecifier'] as Map<String, dynamic>),
+                json['parameterTypeSpecifier'] as Map<String, dynamic>,
+              ),
         parameterType: json['parameterType'] == null
             ? null
             : QName.fromJson(json['parameterType'] as String),
@@ -76,7 +61,23 @@ class ParameterDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              );
+
+  /// Name of the parameter.
+  String name;
+
+  /// Access level, defaults to Public.
+  AccessModifier accessLevel;
+
+  /// Default value expression for the parameter.
+  CqlExpression? defaultExpression;
+
+  /// Qualified name of the parameter type, optional.
+  QName? parameterType;
+
+  /// Type specifier for the parameter.
+  TypeSpecifierExpression? parameterTypeSpecifier;
 
   @override
   Map<String, dynamic> toJson() {
@@ -89,7 +90,7 @@ class ParameterDef extends Element {
     }
 
     val['name'] = name;
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
@@ -102,7 +103,7 @@ class ParameterDef extends Element {
     return val;
   }
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };

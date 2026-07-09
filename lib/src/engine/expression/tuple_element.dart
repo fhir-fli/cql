@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Element within a Tuple expression providing the value of a specific element within a tuple literal expression.
 class TupleElement extends Element {
-  /// Name of the tuple element.
-  String name;
-
-  /// Value expression of the tuple element.
-  CqlExpression value;
-
   TupleElement({
     required this.value,
     required this.name,
@@ -34,9 +28,15 @@ class TupleElement extends Element {
             : null,
       );
 
+  /// Name of the tuple element.
+  String name;
+
+  /// Value expression of the tuple element.
+  CqlExpression value;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'name': name,
       'value': value.toJson(),
     };

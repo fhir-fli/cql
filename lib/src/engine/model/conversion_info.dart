@@ -5,21 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ConversionInfo] type includes specifications for data conversions,
 /// such as source and target types, and the conversion function name.
 class ConversionInfo {
-  // Optional attribute - Source type as string
-  final String? fromType;
-
-  // Optional element - Type specifier for the source type
-  final TypeSpecifierModel? fromTypeSpecifier;
-
-  // Required attribute - Name of the function for conversion
-  final String functionName;
-
-  // Optional attribute - Target type as string
-  final String? toType;
-
-  // Optional element - Type specifier for the target type
-  final TypeSpecifierModel? toTypeSpecifier;
-
   ConversionInfo({
     required this.functionName,
     this.fromTypeSpecifier,
@@ -41,6 +26,20 @@ class ConversionInfo {
       toType: json['toType'],
     );
   }
+  // Optional attribute - Source type as string
+  final String? fromType;
+
+  // Optional element - Type specifier for the source type
+  final TypeSpecifierModel? fromTypeSpecifier;
+
+  // Required attribute - Name of the function for conversion
+  final String functionName;
+
+  // Optional attribute - Target type as string
+  final String? toType;
+
+  // Optional element - Type specifier for the target type
+  final TypeSpecifierModel? toTypeSpecifier;
 
   @override
   String toString() {

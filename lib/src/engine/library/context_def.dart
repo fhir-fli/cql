@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class ContextDefs {
-  String? type;
-  List<ContextDef> def = <ContextDef>[];
-
   ContextDefs();
 
   factory ContextDefs.fromJson(Map<String, dynamic> json) => ContextDefs()
@@ -11,6 +8,8 @@ class ContextDefs {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ContextDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<ContextDef> def = <ContextDef>[];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (type != null) 'type': type,
@@ -21,8 +20,6 @@ class ContextDefs {
 }
 
 class ContextDef extends Element {
-  final String name;
-
   ContextDef({
     required this.name,
     super.annotation,
@@ -44,7 +41,9 @@ class ContextDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              );
+  final String name;
 
   @override
   Map<String, dynamic> toJson() {

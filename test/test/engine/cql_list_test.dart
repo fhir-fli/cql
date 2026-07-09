@@ -7,21 +7,32 @@ void main() {
         'define "Union": Interval[1, 5] union Interval[3, 7] // Interval[1, 7]',
         () async {
       final interval1 = cql.LiteralIntegerInterval(
-          low: cql.LiteralInteger(1), high: cql.LiteralInteger(5));
+        low: cql.LiteralInteger(1),
+        high: cql.LiteralInteger(5),
+      );
       final interval2 = cql.LiteralIntegerInterval(
-          low: cql.LiteralInteger(3), high: cql.LiteralInteger(7));
+        low: cql.LiteralInteger(3),
+        high: cql.LiteralInteger(7),
+      );
       final union = cql.Union(operand: [interval1, interval2]);
       final result = await union.execute({});
       expect(
-          result,
-          equals(cql.CqlInterval(
-              low: cql.CqlInteger(1), high: cql.CqlInteger(7))));
+        result,
+        equals(
+          cql.CqlInterval(
+            low: cql.CqlInteger(1),
+            high: cql.CqlInteger(7),
+          ),
+        ),
+      );
     });
     test(
         'define "UnionIsNull": Interval[3, 5] union (null as Interval<Integer>)',
         () async {
       final interval1 = cql.LiteralIntegerInterval(
-          low: cql.LiteralInteger(3), high: cql.LiteralInteger(5));
+        low: cql.LiteralInteger(3),
+        high: cql.LiteralInteger(5),
+      );
       final interval2 = cql.LiteralNull();
       final union = cql.Union(operand: [interval1, interval2]);
       final result = await union.execute({});
@@ -29,71 +40,84 @@ void main() {
     });
     test('define "Union": { 1, 2, 3 } union { 4, 5 } // { 1, 2, 3, 4, 5 }',
         () async {
-      final set1 = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-      ]);
-      final set2 = cql.ListExpression(element: [
-        cql.LiteralInteger(4),
-        cql.LiteralInteger(5),
-      ]);
+      final set1 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+        ],
+      );
+      final set2 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(4),
+          cql.LiteralInteger(5),
+        ],
+      );
       final union = cql.Union(operand: [set1, set2]);
       final result = await union.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(1),
-            cql.CqlInteger(2),
-            cql.CqlInteger(3),
-            cql.CqlInteger(4),
-            cql.CqlInteger(5),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(1),
+          cql.CqlInteger(2),
+          cql.CqlInteger(3),
+          cql.CqlInteger(4),
+          cql.CqlInteger(5),
+        ]),
+      );
     });
     test(
         'define "UnionAlternateSyntax": { 1, 2, 3 } | { 4, 5 } // { 1, 2, 3, 4, 5 }',
         () async {
-      final set1 = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-      ]);
-      final set2 = cql.ListExpression(element: [
-        cql.LiteralInteger(4),
-        cql.LiteralInteger(5),
-      ]);
+      final set1 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+        ],
+      );
+      final set2 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(4),
+          cql.LiteralInteger(5),
+        ],
+      );
       final union = cql.Union(operand: [set1, set2]);
       final result = await union.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(1),
-            cql.CqlInteger(2),
-            cql.CqlInteger(3),
-            cql.CqlInteger(4),
-            cql.CqlInteger(5),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(1),
+          cql.CqlInteger(2),
+          cql.CqlInteger(3),
+          cql.CqlInteger(4),
+          cql.CqlInteger(5),
+        ]),
+      );
     });
     test('define "UnionWithNull": null union { 4, 5 } // { 4, 5 }', () async {
       final set1 = cql.LiteralNull();
-      final set2 = cql.ListExpression(element: [
-        cql.LiteralInteger(4),
-        cql.LiteralInteger(5),
-      ]);
+      final set2 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(4),
+          cql.LiteralInteger(5),
+        ],
+      );
       final union = cql.Union(operand: [set1, set2]);
       final result = await union.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(4),
-            cql.CqlInteger(5),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(4),
+          cql.CqlInteger(5),
+        ]),
+      );
     });
   });
 
   group('Intersect', () {
     test(
-        """define "Intersect": Interval[1, 5] intersect Interval[3, 7] // Interval[3, 5]""",
+        '''define "Intersect": Interval[1, 5] intersect Interval[3, 7] // Interval[3, 5]''',
         () async {
       final left = cql.LiteralIntegerInterval(
         low: cql.LiteralInteger(1),
@@ -109,17 +133,20 @@ void main() {
       );
       final result = cql.Intersect(operand: [left, right]);
       expect(
-          await result.execute({}),
-          equals(cql.CqlInterval<cql.CqlInteger>(
+        await result.execute({}),
+        equals(
+          cql.CqlInterval<cql.CqlInteger>(
             low: cql.CqlInteger(3),
             lowClosed: true,
             high: cql.CqlInteger(5),
             highClosed: true,
-          )));
+          ),
+        ),
+      );
     });
 
     test(
-        """define "IntersectIsNull": Interval[3, 5] intersect (null as Interval<Integer>)""",
+        '''define "IntersectIsNull": Interval[3, 5] intersect (null as Interval<Integer>)''',
         () async {
       final left = cql.LiteralIntegerInterval(
         low: cql.LiteralInteger(3),
@@ -128,7 +155,9 @@ void main() {
         highClosed: cql.LiteralBoolean(true),
       );
       final right = cql.As(
-          operand: cql.LiteralNull(), resultTypeName: 'Interval<Integer>');
+        operand: cql.LiteralNull(),
+        resultTypeName: 'Interval<Integer>',
+      );
       final result = cql.Intersect(operand: [left, right]);
       expect(await result.execute({}), equals(null));
     });
@@ -149,9 +178,14 @@ void main() {
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(
-          result,
-          equals(cql.CqlInterval(
-              low: cql.CqlInteger(0), high: cql.CqlInteger(2))));
+        result,
+        equals(
+          cql.CqlInterval(
+            low: cql.CqlInteger(0),
+            high: cql.CqlInteger(2),
+          ),
+        ),
+      );
     });
     test('define "ExceptIsNull": null except Interval[-1, 7]', () async {
       final left = cql.LiteralNull();
@@ -165,76 +199,91 @@ void main() {
     });
     test('define "Except": { 1, 3, 5, 7 } except { 1, 3 } // { 5, 7 }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-        cql.LiteralInteger(7),
-      ]);
-      final right = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-      ]);
+      final left = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+          cql.LiteralInteger(7),
+        ],
+      );
+      final right = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+        ],
+      );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(5),
-            cql.CqlInteger(7),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(5),
+          cql.CqlInteger(7),
+        ]),
+      );
     });
     test('define "ExceptLeft": { 1, 3, 5, 7 } except null // { 1, 3, 5, 7 }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-        cql.LiteralInteger(7),
-      ]);
+      final left = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+          cql.LiteralInteger(7),
+        ],
+      );
       final right = cql.LiteralNull();
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(1),
-            cql.CqlInteger(3),
-            cql.CqlInteger(5),
-            cql.CqlInteger(7),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(1),
+          cql.CqlInteger(3),
+          cql.CqlInteger(5),
+          cql.CqlInteger(7),
+        ]),
+      );
     });
     test(
         'define "ExceptWithNull": { 1, 3, 5, 7, null } except { 1, 3, null } // { 5, 7 }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-        cql.LiteralInteger(7),
-        cql.LiteralNull(),
-      ]);
-      final right = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralNull(),
-      ]);
+      final left = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+          cql.LiteralInteger(7),
+          cql.LiteralNull(),
+        ],
+      );
+      final right = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralNull(),
+        ],
+      );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(5),
-            cql.CqlInteger(7),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(5),
+          cql.CqlInteger(7),
+        ]),
+      );
     });
     test('define "ExceptIsNull": null except { 1, 3, 5 }', () async {
       final left = cql.LiteralNull();
-      final right = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-      ]);
+      final right = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+        ],
+      );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(result, equals(null));
@@ -244,13 +293,15 @@ void main() {
   group('distinct', () {
     test('define "Distinct": distinct { 1, 3, 3, 5, 5 } // { 1, 3, 5 }',
         () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-        cql.LiteralInteger(5)
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+          cql.LiteralInteger(5),
+        ],
+      );
       final distinct = cql.Distinct(operand: list);
       final result = await distinct.execute({});
       expect(result, [
@@ -270,27 +321,32 @@ void main() {
     test(
         'define "Flatten": flatten { { 1, 2 }, { 3, 4, 5 } } // { 1, 2, 3, 4, 5 }',
         () async {
-      final list1 = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-      ]);
-      final list2 = cql.ListExpression(element: [
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(4),
-        cql.LiteralInteger(5),
-      ]);
+      final list1 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+        ],
+      );
+      final list2 = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(4),
+          cql.LiteralInteger(5),
+        ],
+      );
       final flatten =
           cql.Flatten(operand: cql.ListExpression(element: [list1, list2]));
       final result = await flatten.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(1),
-            cql.CqlInteger(2),
-            cql.CqlInteger(3),
-            cql.CqlInteger(4),
-            cql.CqlInteger(5)
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(1),
+          cql.CqlInteger(2),
+          cql.CqlInteger(3),
+          cql.CqlInteger(4),
+          cql.CqlInteger(5),
+        ]),
+      );
     });
     test('define "FlattenIsNull": flatten null', () async {
       final flatten = cql.Flatten(operand: cql.LiteralNull());
@@ -307,11 +363,13 @@ void main() {
       expect(result, equals(cql.CqlInteger(1)));
     });
     test('define "SingletonFromError": singleton from { 1, 3, 5 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5)
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+        ],
+      );
       final singletonFrom = cql.SingletonFrom(operand: list);
       expect(() => singletonFrom.execute({}), throwsA(isA<cql.CqlException>()));
     });
@@ -325,22 +383,25 @@ void main() {
 
   group('Tail', () {
     test('define "Tail234": Tail({ 1, 2, 3, 4 }) // { 2, 3, 4 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(4),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(4),
+        ],
+      );
 
       final tailExpr = cql.Tail(operand: list);
       final result = await tailExpr.execute({});
       expect(
-          result,
-          equals([
-            cql.CqlInteger(2),
-            cql.CqlInteger(3),
-            cql.CqlInteger(4),
-          ]));
+        result,
+        equals([
+          cql.CqlInteger(2),
+          cql.CqlInteger(3),
+          cql.CqlInteger(4),
+        ]),
+      );
     });
 
     test('define "TailEmpty": Tail({ }) // { }', () async {
@@ -360,11 +421,13 @@ void main() {
 
   group('first', () {
     test('define "First1": First({ 1, 2, 5 }) // 1', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(5),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(5),
+        ],
+      );
       final first = cql.First(source: list);
       final result = await first.execute({});
       expect(result, equals(cql.CqlInteger(1)));
@@ -378,19 +441,19 @@ void main() {
 
   group('last', () {
     test('define "Last5": Last({ 1, 3, 5 }) // 5', () async {
-      final cql.ListExpression source = cql.ListExpression(
+      final source = cql.ListExpression(
         element: [
           cql.LiteralInteger(1),
           cql.LiteralInteger(3),
           cql.LiteralInteger(5),
         ],
       );
-      final cql.Last last = cql.Last(source: source);
+      final last = cql.Last(source: source);
       final result = await last.execute({});
       expect(result, equals(cql.CqlInteger(5)));
     });
     test('define "LastIsNull": Last(null)', () async {
-      final cql.Last last = cql.Last(source: cql.LiteralNull());
+      final last = cql.Last(source: cql.LiteralNull());
       final result = await last.execute({});
       expect(result, isNull);
     });
@@ -398,62 +461,80 @@ void main() {
 
   group('Skip', () {
     test('define "Skip2": Skip({ 1, 2, 3, 4, 5 }, 2) // { 3, 4, 5 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(4),
-        cql.LiteralInteger(5),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(4),
+          cql.LiteralInteger(5),
+        ],
+      );
 
-      final skipExpr = cql.Skip(operand: [
-        list,
-        cql.LiteralInteger(2),
-      ]);
+      final skipExpr = cql.Skip(
+        operand: [
+          list,
+          cql.LiteralInteger(2),
+        ],
+      );
 
       final result = await skipExpr.execute({});
-      expect(result,
-          equals([cql.CqlInteger(3), cql.CqlInteger(4), cql.CqlInteger(5)]));
+      expect(
+        result,
+        equals([cql.CqlInteger(3), cql.CqlInteger(4), cql.CqlInteger(5)]),
+      );
     });
 
     test('define "SkipNull": Skip({ 1, 3, 5 }, null) // { 1, 3, 5 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+        ],
+      );
 
-      final skipExpr = cql.Skip(operand: [
-        list,
-        cql.LiteralNull(),
-      ]);
+      final skipExpr = cql.Skip(
+        operand: [
+          list,
+          cql.LiteralNull(),
+        ],
+      );
 
       final result = await skipExpr.execute({});
-      expect(result,
-          equals([cql.CqlInteger(1), cql.CqlInteger(3), cql.CqlInteger(5)]));
+      expect(
+        result,
+        equals([cql.CqlInteger(1), cql.CqlInteger(3), cql.CqlInteger(5)]),
+      );
     });
 
     test('define "SkipEmpty": Skip({ 1, 3, 5 }, -1) // { }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(5),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(5),
+        ],
+      );
 
-      final skipExpr = cql.Skip(operand: [
-        list,
-        cql.LiteralInteger(-1),
-      ]);
+      final skipExpr = cql.Skip(
+        operand: [
+          list,
+          cql.LiteralInteger(-1),
+        ],
+      );
 
       final result = await skipExpr.execute({});
       expect(result, equals([]));
     });
 
     test('define "SkipIsNull": Skip(null, 2)', () async {
-      final skipExpr = cql.Skip(operand: [
-        cql.LiteralNull(),
-        cql.LiteralInteger(2),
-      ]);
+      final skipExpr = cql.Skip(
+        operand: [
+          cql.LiteralNull(),
+          cql.LiteralInteger(2),
+        ],
+      );
 
       final result = await skipExpr.execute({});
       expect(result, equals(null));
@@ -462,59 +543,73 @@ void main() {
 
   group('Take', () {
     test('define "Take2": Take({ 1, 2, 3, 4 }, 2) // { 1, 2 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(4),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(4),
+        ],
+      );
 
-      final takeExpr = cql.Take(operand: [
-        list,
-        cql.LiteralInteger(2),
-      ]);
+      final takeExpr = cql.Take(
+        operand: [
+          list,
+          cql.LiteralInteger(2),
+        ],
+      );
 
       final result = await takeExpr.execute({});
       expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(2)]));
     });
 
     test('define "TakeTooMany": Take({ 1, 2 }, 3) // { 1, 2 }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+        ],
+      );
 
-      final takeExpr = cql.Take(operand: [
-        list,
-        cql.LiteralInteger(3),
-      ]);
+      final takeExpr = cql.Take(
+        operand: [
+          list,
+          cql.LiteralInteger(3),
+        ],
+      );
 
       final result = await takeExpr.execute({});
       expect(result, equals([cql.CqlInteger(1), cql.CqlInteger(2)]));
     });
 
     test('define "TakeEmpty": Take({ 1, 2, 3, 4 }, null) // { }', () async {
-      final list = cql.ListExpression(element: [
-        cql.LiteralInteger(1),
-        cql.LiteralInteger(2),
-        cql.LiteralInteger(3),
-        cql.LiteralInteger(4),
-      ]);
+      final list = cql.ListExpression(
+        element: [
+          cql.LiteralInteger(1),
+          cql.LiteralInteger(2),
+          cql.LiteralInteger(3),
+          cql.LiteralInteger(4),
+        ],
+      );
 
-      final takeExpr = cql.Take(operand: [
-        list,
-        cql.LiteralNull(),
-      ]);
+      final takeExpr = cql.Take(
+        operand: [
+          list,
+          cql.LiteralNull(),
+        ],
+      );
 
       final result = await takeExpr.execute({});
       expect(result, equals([]));
     });
 
     test('define "TakeIsNull": Take(null, 2)', () async {
-      final takeExpr = cql.Take(operand: [
-        cql.LiteralNull(),
-        cql.LiteralInteger(2),
-      ]);
+      final takeExpr = cql.Take(
+        operand: [
+          cql.LiteralNull(),
+          cql.LiteralInteger(2),
+        ],
+      );
 
       final result = await takeExpr.execute({});
       expect(result, equals(null));
@@ -525,36 +620,47 @@ void main() {
     test(
         'define "ExceptDateTimeList": { DateTime(2012, 5, 10), DateTime(2014, 12, 10), DateTime(2010, 1, 1)} except {DateTime(2014, 12, 10), DateTime(2010, 1, 1) }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+      final left = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2012),
             month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2014),
             month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2010),
             month: cql.LiteralInteger(1),
-            day: cql.LiteralInteger(1)),
-      ]);
-      final right = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(1),
+          ),
+        ],
+      );
+      final right = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2014),
             month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2010),
             month: cql.LiteralInteger(1),
-            day: cql.LiteralInteger(1)),
-      ]);
+            day: cql.LiteralInteger(1),
+          ),
+        ],
+      );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
       expect(result, isA<List>());
       expect((result as List).length, equals(1));
-      expect(result[0],
-          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
+      expect(
+        result[0],
+        equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)),
+      );
     });
   });
 
@@ -562,42 +668,56 @@ void main() {
     test(
         'define "IntersectDateTime": { DateTime(2001, 9, 11), DateTime(2012, 5, 10), DateTime(2014, 12, 10) } intersect { DateTime(2012, 5, 10), DateTime(2014, 12, 10), DateTime(2000, 5, 5) }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+      final left = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2001),
             month: cql.LiteralInteger(9),
-            day: cql.LiteralInteger(11)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(11),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2012),
             month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2014),
             month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-      ]);
-      final right = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+        ],
+      );
+      final right = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2012),
             month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2014),
             month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2000),
             month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(5)),
-      ]);
+            day: cql.LiteralInteger(5),
+          ),
+        ],
+      );
       final intersect = cql.Intersect(operand: [left, right]);
       final result = await intersect.execute({});
       expect(result, isA<List>());
       expect((result as List).length, equals(2));
-      expect(result[0],
-          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
-      expect(result[1],
-          equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)));
+      expect(
+        result[0],
+        equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)),
+      );
+      expect(
+        result[1],
+        equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)),
+      );
     });
   });
 
@@ -605,32 +725,45 @@ void main() {
     test(
         'define "UnionDateTime": { DateTime(2001, 9, 11)} union {DateTime(2012, 5, 10), DateTime(2014, 12, 10) }',
         () async {
-      final left = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+      final left = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2001),
             month: cql.LiteralInteger(9),
-            day: cql.LiteralInteger(11)),
-      ]);
-      final right = cql.ListExpression(element: [
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(11),
+          ),
+        ],
+      );
+      final right = cql.ListExpression(
+        element: [
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2012),
             month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
+            day: cql.LiteralInteger(10),
+          ),
+          cql.DateTimeExpression(
             year: cql.LiteralInteger(2014),
             month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-      ]);
+            day: cql.LiteralInteger(10),
+          ),
+        ],
+      );
       final union = cql.Union(operand: [left, right]);
       final result = await union.execute({});
       expect(result, isA<List>());
       expect((result as List).length, equals(3));
-      expect(result[0],
-          equals(cql.CqlDateTime.fromUnits(year: 2001, month: 9, day: 11)));
-      expect(result[1],
-          equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)));
-      expect(result[2],
-          equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)));
+      expect(
+        result[0],
+        equals(cql.CqlDateTime.fromUnits(year: 2001, month: 9, day: 11)),
+      );
+      expect(
+        result[1],
+        equals(cql.CqlDateTime.fromUnits(year: 2012, month: 5, day: 10)),
+      );
+      expect(
+        result[2],
+        equals(cql.CqlDateTime.fromUnits(year: 2014, month: 12, day: 10)),
+      );
     });
   });
 
@@ -651,16 +784,17 @@ void main() {
   group('Length', () {
     test('define "LengthNullList": Length(null as List<Any>) // 0', () async {
       final lengthExpr = cql.Length(
-          operand:
-              cql.As(operand: cql.LiteralNull(), resultTypeName: 'List<Any>'));
+        operand:
+            cql.As(operand: cql.LiteralNull(), resultTypeName: 'List<Any>'),
+      );
       final result = await lengthExpr.execute({});
       expect(result, equals(cql.CqlInteger(0)));
     });
 
     test('define "LengthIsNull": Length(null as String) // null', () async {
       final lengthExpr = cql.Length(
-          operand:
-              cql.As(operand: cql.LiteralNull(), resultTypeName: 'String'));
+        operand: cql.As(operand: cql.LiteralNull(), resultTypeName: 'String'),
+      );
       final result = await lengthExpr.execute({});
       expect(result, isNull);
     });
@@ -675,20 +809,26 @@ void main() {
         'define "LengthDateTime": Length({DateTime(2001, 9, 11), DateTime(2012, 5, 10), DateTime(2014, 12, 10)}) // 3',
         () async {
       final lengthExpr = cql.Length(
-          operand: cql.ListExpression(element: [
-        cql.DateTimeExpression(
-            year: cql.LiteralInteger(2001),
-            month: cql.LiteralInteger(9),
-            day: cql.LiteralInteger(11)),
-        cql.DateTimeExpression(
-            year: cql.LiteralInteger(2012),
-            month: cql.LiteralInteger(5),
-            day: cql.LiteralInteger(10)),
-        cql.DateTimeExpression(
-            year: cql.LiteralInteger(2014),
-            month: cql.LiteralInteger(12),
-            day: cql.LiteralInteger(10)),
-      ]));
+        operand: cql.ListExpression(
+          element: [
+            cql.DateTimeExpression(
+              year: cql.LiteralInteger(2001),
+              month: cql.LiteralInteger(9),
+              day: cql.LiteralInteger(11),
+            ),
+            cql.DateTimeExpression(
+              year: cql.LiteralInteger(2012),
+              month: cql.LiteralInteger(5),
+              day: cql.LiteralInteger(10),
+            ),
+            cql.DateTimeExpression(
+              year: cql.LiteralInteger(2014),
+              month: cql.LiteralInteger(12),
+              day: cql.LiteralInteger(10),
+            ),
+          ],
+        ),
+      );
       final result = await lengthExpr.execute({});
       expect(result, equals(cql.CqlInteger(3)));
     });

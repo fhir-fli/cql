@@ -28,15 +28,6 @@ import 'package:cql/src/internal.dart';
 /// and milliseconds are combined and represented as a Decimal for the purposes
 /// of comparison.
 class DateTimeExpression extends OperatorExpression {
-  final CqlExpression? day;
-  final CqlExpression? hour;
-  final CqlExpression? millisecond;
-  final CqlExpression? minute;
-  final CqlExpression? month;
-  final CqlExpression? second;
-  final CqlExpression? timezoneOffset;
-  final CqlExpression year;
-
   DateTimeExpression({
     required this.year,
     this.month,
@@ -53,8 +44,9 @@ class DateTimeExpression extends OperatorExpression {
     super.resultTypeSpecifier,
   });
 
-  factory DateTimeExpression.fromOperandList(
-      {required List<CqlExpression> operand}) {
+  factory DateTimeExpression.fromOperandList({
+    required List<CqlExpression> operand,
+  }) {
     if (operand.isEmpty) {
       throw ArgumentError('DateTimeExpression must have at least one operand');
     }
@@ -104,6 +96,14 @@ class DateTimeExpression extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression? day;
+  final CqlExpression? hour;
+  final CqlExpression? millisecond;
+  final CqlExpression? minute;
+  final CqlExpression? month;
+  final CqlExpression? second;
+  final CqlExpression? timezoneOffset;
+  final CqlExpression year;
 
   @override
   Map<String, dynamic> toJson() {
@@ -175,17 +175,18 @@ class DateTimeExpression extends OperatorExpression {
     final timezoneOffsetValue = await timezoneOffset?.execute(context);
 
     return CqlDateTime.fromUnits(
-        year: yearValue?.valueNum,
-        month: monthValue?.valueNum,
-        day: dayValue?.valueNum,
-        hour: hourValue?.valueNum,
-        minute: minuteValue?.valueNum,
-        second: secondValue?.valueNum,
-        millisecond: millisecondValue?.valueNum,
-        timeZoneOffset: timezoneOffsetValue is CqlNumber
-            ? timezoneOffsetValue.valueNum?.toDouble()
-            : timezoneOffsetValue is String
-                ? timezoneOffsetValue.stringToTimeZoneOffset
-                : null);
+      year: yearValue?.valueNum,
+      month: monthValue?.valueNum,
+      day: dayValue?.valueNum,
+      hour: hourValue?.valueNum,
+      minute: minuteValue?.valueNum,
+      second: secondValue?.valueNum,
+      millisecond: millisecondValue?.valueNum,
+      timeZoneOffset: timezoneOffsetValue is CqlNumber
+          ? timezoneOffsetValue.valueNum?.toDouble()
+          : timezoneOffsetValue is String
+              ? timezoneOffsetValue.stringToTimeZoneOffset
+              : null,
+    );
   }
 }

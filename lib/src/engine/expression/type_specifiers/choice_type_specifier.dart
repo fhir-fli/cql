@@ -5,9 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ChoiceTypeSpecifier] type represents a choice type,
 /// extending TypeInfo and including choice elements.
 class ChoiceTypeSpecifier extends TypeSpecifierExpression {
-  /// Choice elements.
-  List<TypeSpecifierExpression>? choice;
-
   ChoiceTypeSpecifier({
     this.choice,
     super.annotation,
@@ -37,6 +34,9 @@ class ChoiceTypeSpecifier extends TypeSpecifierExpression {
           : null,
     );
   }
+
+  /// Choice elements.
+  List<TypeSpecifierExpression>? choice;
 
   @override
   Map<String, dynamic> toJson() {

@@ -7,11 +7,11 @@ class CqlBooleanExpressionVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitBooleanExpression(BooleanExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    bool not = false;
-    bool null_ = false;
-    bool true_ = false;
-    bool false_ = false;
+    final thisNode = getNextNode();
+    var not = false;
+    var null_ = false;
+    var true_ = false;
+    var false_ = false;
     CqlExpression? operand;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TerminalNodeImpl) {
@@ -62,7 +62,7 @@ class CqlBooleanExpressionVisitor extends CqlBaseVisitor<dynamic> {
   /// FHIRHelpers.ToBoolean() only.
   CqlExpression _wrapChoiceForBoolean(CqlExpression expr) {
     if (expr is Property) {
-      final String? className = _resolveClassName(expr);
+      final className = _resolveClassName(expr);
       if (className != null) {
         final element = getElementInfo(className, expr.path);
         if (element != null && CqlBaseVisitor.isChoiceType(element)) {
@@ -73,8 +73,11 @@ class CqlBooleanExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       // For non-choice boolean properties, apply FHIRHelpers wrapping
-      return CqlBaseVisitor.wrapPropertyWithFhirHelper(expr, expr.path,
-          model: currentModel);
+      return CqlBaseVisitor.wrapPropertyWithFhirHelper(
+        expr,
+        expr.path,
+        model: currentModel,
+      );
     }
     return expr;
   }
@@ -125,7 +128,7 @@ class CqlBooleanExpressionVisitor extends CqlBaseVisitor<dynamic> {
         }
       }
       if (refDef?.expression is SingletonFrom) {
-        final sf = refDef!.expression as SingletonFrom;
+        final sf = refDef!.expression! as SingletonFrom;
         if (sf.operand is Retrieve) {
           final r = sf.operand as Retrieve;
           return r.dataType.localPart;

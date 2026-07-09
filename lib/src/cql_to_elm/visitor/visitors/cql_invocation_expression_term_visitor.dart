@@ -6,9 +6,10 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitInvocationExpressionTerm(
-      InvocationExpressionTermContext ctx) {
+    InvocationExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     dynamic expressionTerm;
     dynamic qualifiedInvocation;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -60,7 +61,7 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
       // Check if the left side is a library include alias
       // (e.g. Encounter."Client's age is less than 12 months")
-      String? scopeName = _extractScopeName(expressionTerm);
+      final scopeName = _extractScopeName(expressionTerm);
       if (scopeName != null &&
           library.includes?.def
                   .any((inc) => inc.localIdentifier == scopeName) ==
@@ -91,8 +92,11 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
         }
         // Legacy name-based wrapping — migrates to model-driven binding-site
         // conversion site by site.
-        return CqlBaseVisitor.wrapPropertyWithFhirHelper(prop, memberName,
-            model: model);
+        return CqlBaseVisitor.wrapPropertyWithFhirHelper(
+          prop,
+          memberName,
+          model: model,
+        );
       }
 
       final prop = Property(source: expressionTerm, path: memberName);

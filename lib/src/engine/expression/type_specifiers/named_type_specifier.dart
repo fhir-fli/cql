@@ -5,13 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [NamedTypeSpecifier] type represents a named type, inheriting from TypeSpecifier,
 /// defining modelName, namespace, and name attributes.
 class NamedTypeSpecifier extends TypeSpecifierExpression {
-  /// Deprecated model name attribute.
-  @Deprecated('Use namespace instead')
-  String? modelName;
-
-  /// Namespace of the type.
-  QName namespace;
-
   NamedTypeSpecifier({
     required this.namespace,
     super.annotation,
@@ -26,8 +19,8 @@ class NamedTypeSpecifier extends TypeSpecifierExpression {
       );
 
   factory NamedTypeSpecifier.fromJson(Map<String, dynamic> json) {
-    String? modelName = json['modelName'] as String?;
-    String? name = json['name'] as String?;
+    final modelName = json['modelName'] as String?;
+    final name = json['name'] as String?;
     return NamedTypeSpecifier(
       namespace: QName.parse(name ?? modelName ?? ''),
       annotation: json['annotation'] != null
@@ -43,6 +36,13 @@ class NamedTypeSpecifier extends TypeSpecifierExpression {
           : null,
     )..modelName = modelName;
   }
+
+  /// Deprecated model name attribute.
+  @Deprecated('Use namespace instead')
+  String? modelName;
+
+  /// Namespace of the type.
+  QName namespace;
 
   @override
   Map<String, dynamic> toJson() {

@@ -1,10 +1,101 @@
 import 'package:collection/collection.dart';
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Library represents a serialized library of CQL-Expression Logic Model.
 class CqlLibrary extends Element {
+  CqlLibrary({
+    this.type,
+    this.identifier,
+    VersionedIdentifier? schemaIdentifier,
+    UsingDefs? usings,
+    this.includes,
+    this.parameters,
+    this.codeSystems,
+    this.valueSets,
+    this.codes,
+    this.contexts,
+    this.concepts,
+    this.statements,
+    List<CqlToElmBase>? annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  })  : schemaIdentifier = schemaIdentifier ??
+            VersionedIdentifier(
+              id: 'urn:hl7-org:elm',
+              version: 'r1',
+            ),
+        usings = usings ??
+            (UsingDefs()
+              ..def = [
+                UsingDef(
+                  localIdentifier: 'System',
+                  uri: 'urn:hl7-org:elm-types:r1',
+                ),
+              ]),
+        super(annotation: annotation ?? [CqlToElmInfo()]);
+
+  factory CqlLibrary.fromJson(Map<String, dynamic> json) {
+    return CqlLibrary(
+      type: json['type'] as String?,
+      identifier: json['identifier'] == null
+          ? null
+          : VersionedIdentifier.fromJson(
+              json['identifier'] as Map<String, dynamic>,
+            ),
+      schemaIdentifier: json['schemaIdentifier'] == null
+          ? null
+          : VersionedIdentifier.fromJson(
+              json['schemaIdentifier'] as Map<String, dynamic>,
+            ),
+      usings: json['usings'] == null
+          ? null
+          : UsingDefs.fromJson(json['usings'] as Map<String, dynamic>),
+      includes: json['includes'] == null
+          ? null
+          : IncludeDefs.fromJson(json['includes'] as Map<String, dynamic>),
+      parameters: json['parameters'] == null
+          ? null
+          : ParameterDefs.fromJson(
+              json['parameters'] as Map<String, dynamic>,
+            ),
+      codeSystems: json['codeSystems'] == null
+          ? null
+          : CodeSystemDefs.fromJson(
+              json['codeSystems'] as Map<String, dynamic>,
+            ),
+      valueSets: json['valueSets'] == null
+          ? null
+          : ValueSetDefs.fromJson(json['valueSets'] as Map<String, dynamic>),
+      codes: json['codes'] == null
+          ? null
+          : CodeDefs.fromJson(json['codes'] as Map<String, dynamic>),
+      contexts: json['contexts'] == null
+          ? null
+          : ContextDefs.fromJson(json['contexts'] as Map<String, dynamic>),
+      concepts: json['concepts'] == null
+          ? null
+          : ConceptDefs.fromJson(json['concepts'] as Map<String, dynamic>),
+      statements: json['statements'] == null
+          ? null
+          : ExpressionDefs.fromJson(
+              json['statements'] as Map<String, dynamic>,
+            ),
+      annotation: (json['annotation'] as List<dynamic>?)
+          ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    )
+      ..localId = json['localId'] as String?
+      ..locator = json['locator'] as String?
+      ..resultTypeName = json['resultTypeName'] as String?
+      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
+          ? null
+          : TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            );
+  }
   String? type;
 
   /// The code systems defined within this library.
@@ -49,90 +140,6 @@ class CqlLibrary extends Element {
   /// `null` before [execute] is called.
   ModelResolver? modelResolver;
 
-  CqlLibrary({
-    this.type,
-    this.identifier,
-    VersionedIdentifier? schemaIdentifier,
-    UsingDefs? usings,
-    this.includes,
-    this.parameters,
-    this.codeSystems,
-    this.valueSets,
-    this.codes,
-    this.contexts,
-    this.concepts,
-    this.statements,
-    List<CqlToElmBase>? annotation,
-    super.localId,
-    super.locator,
-    super.resultTypeName,
-    super.resultTypeSpecifier,
-  })  : schemaIdentifier = schemaIdentifier ??
-            VersionedIdentifier(
-              id: 'urn:hl7-org:elm',
-              version: 'r1',
-            ),
-        usings = usings ??
-            (UsingDefs()
-              ..def = [
-                UsingDef(
-                    localIdentifier: 'System', uri: 'urn:hl7-org:elm-types:r1')
-              ]),
-        super(annotation: annotation ?? [CqlToElmInfo()]);
-
-  factory CqlLibrary.fromJson(Map<String, dynamic> json) {
-    return CqlLibrary(
-        type: json['type'] as String?,
-        identifier: json['identifier'] == null
-            ? null
-            : VersionedIdentifier.fromJson(
-                json['identifier'] as Map<String, dynamic>),
-        schemaIdentifier: json['schemaIdentifier'] == null
-            ? null
-            : VersionedIdentifier.fromJson(
-                json['schemaIdentifier'] as Map<String, dynamic>),
-        usings: json['usings'] == null
-            ? null
-            : UsingDefs.fromJson(json['usings'] as Map<String, dynamic>),
-        includes: json['includes'] == null
-            ? null
-            : IncludeDefs.fromJson(json['includes'] as Map<String, dynamic>),
-        parameters: json['parameters'] == null
-            ? null
-            : ParameterDefs.fromJson(
-                json['parameters'] as Map<String, dynamic>),
-        codeSystems: json['codeSystems'] == null
-            ? null
-            : CodeSystemDefs.fromJson(
-                json['codeSystems'] as Map<String, dynamic>),
-        valueSets: json['valueSets'] == null
-            ? null
-            : ValueSetDefs.fromJson(json['valueSets'] as Map<String, dynamic>),
-        codes: json['codes'] == null
-            ? null
-            : CodeDefs.fromJson(json['codes'] as Map<String, dynamic>),
-        contexts: json['contexts'] == null
-            ? null
-            : ContextDefs.fromJson(json['contexts'] as Map<String, dynamic>),
-        concepts: json['concepts'] == null
-            ? null
-            : ConceptDefs.fromJson(json['concepts'] as Map<String, dynamic>),
-        statements: json['statements'] == null
-            ? null
-            : ExpressionDefs.fromJson(
-                json['statements'] as Map<String, dynamic>),
-        annotation: (json['annotation'] as List<dynamic>?)
-            ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
-            .toList())
-      ..localId = json['localId'] as String?
-      ..locator = json['locator'] as String?
-      ..resultTypeName = json['resultTypeName'] as String?
-      ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
-          ? null
-          : TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>);
-  }
-
   @override
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{};
@@ -165,15 +172,18 @@ class CqlLibrary extends Element {
 
   CqlCode? resolveCodeRef(String name) {
     // Find the code definition in the library JSON
-    List<CodeDef>? codes = this.codes?.def;
+    final codes = this.codes?.def;
 
-    CodeDef? codeDef =
-        codes?.firstWhere((code) => code.name == name, orElse: () {
-      throw Exception("CodeRef not found");
-    });
+    final codeDef = codes?.firstWhere(
+      (code) => code.name == name,
+      orElse: () {
+        throw Exception('CodeRef not found');
+      },
+    );
 
     final codeSystemDef = codeSystems?.def.firstWhereOrNull(
-        (codeSystem) => codeSystem.name == codeDef?.codeSystem?.name);
+      (codeSystem) => codeSystem.name == codeDef?.codeSystem?.name,
+    );
 
     return codeDef == null
         ? null
@@ -182,12 +192,14 @@ class CqlLibrary extends Element {
 
   CqlValueSet? resolveValueSetRef(String name) {
     // Find the code definition in the library JSON
-    List<ValueSetDef>? valueSets = this.valueSets?.def;
+    final valueSets = this.valueSets?.def;
 
-    ValueSetDef? valueSetDef =
-        valueSets?.firstWhere((valueSet) => valueSet.name == name, orElse: () {
-      throw Exception("ValueSetRef not found");
-    });
+    final valueSetDef = valueSets?.firstWhere(
+      (valueSet) => valueSet.name == name,
+      orElse: () {
+        throw Exception('ValueSetRef not found');
+      },
+    );
 
     return valueSetDef == null
         ? null
@@ -196,12 +208,14 @@ class CqlLibrary extends Element {
 
   CqlCodeSystem? resolveCodeSystemRef(String name) {
     // Find the code definition in the library JSON
-    List<CodeSystemDef>? codeSystems = this.codeSystems?.def;
+    final codeSystems = this.codeSystems?.def;
 
-    CodeSystemDef? codeSystemDef = codeSystems
-        ?.firstWhere((valueSet) => valueSet.name == name, orElse: () {
-      throw Exception("ValueSetRef not found");
-    });
+    final codeSystemDef = codeSystems?.firstWhere(
+      (valueSet) => valueSet.name == name,
+      orElse: () {
+        throw Exception('ValueSetRef not found');
+      },
+    );
 
     return codeSystemDef == null
         ? null
@@ -221,10 +235,12 @@ class CqlLibrary extends Element {
     return libraryManager.resolveLibrary(include!.path!, include.version ?? '');
   }
 
-  FunctionDef? resolveLocalFunctionDef(String name,
-      {int? operandCount,
-      List<TypeSpecifierExpression>? signature,
-      List<dynamic>? operandValues}) {
+  FunctionDef? resolveLocalFunctionDef(
+    String name, {
+    int? operandCount,
+    List<TypeSpecifierExpression>? signature,
+    List<dynamic>? operandValues,
+  }) {
     final candidates = statements?.def
             .whereType<FunctionDef>()
             .where((e) => e.name == name)
@@ -263,7 +279,9 @@ class CqlLibrary extends Element {
 
   /// Check if a FunctionDef's declared operand types match runtime values.
   static bool _runtimeTypeMatches(
-      FunctionDef funcDef, List<dynamic> operandValues) {
+    FunctionDef funcDef,
+    List<dynamic> operandValues,
+  ) {
     final operands = funcDef.operand;
     if (operands == null || operands.length != operandValues.length) {
       return false;
@@ -280,7 +298,9 @@ class CqlLibrary extends Element {
 
   /// Check if a runtime value matches a declared TypeSpecifierExpression.
   static bool _valueMatchesTypeSpecifier(
-      dynamic value, TypeSpecifierExpression typeSpec) {
+    dynamic value,
+    TypeSpecifierExpression typeSpec,
+  ) {
     if (value == null) return true; // null matches any type
 
     if (typeSpec is NamedTypeSpecifier) {
@@ -350,12 +370,16 @@ class CqlLibrary extends Element {
 
   /// Check if a FunctionDef's operand types match the given signature.
   static bool _signatureMatches(
-      FunctionDef funcDef, List<TypeSpecifierExpression> signature) {
+    FunctionDef funcDef,
+    List<TypeSpecifierExpression> signature,
+  ) {
     final operands = funcDef.operand;
     if (operands == null || operands.length != signature.length) return false;
     for (var i = 0; i < signature.length; i++) {
       if (!_typeSpecifierMatches(
-          operands[i].operandTypeSpecifier, signature[i])) {
+        operands[i].operandTypeSpecifier,
+        signature[i],
+      )) {
         return false;
       }
     }
@@ -364,7 +388,9 @@ class CqlLibrary extends Element {
 
   /// Compare two TypeSpecifierExpressions for structural equality.
   static bool _typeSpecifierMatches(
-      TypeSpecifierExpression? declared, TypeSpecifierExpression? callSite) {
+    TypeSpecifierExpression? declared,
+    TypeSpecifierExpression? callSite,
+  ) {
     if (declared == null || callSite == null) return false;
     if (declared.runtimeType != callSite.runtimeType) return false;
 
@@ -390,26 +416,33 @@ class CqlLibrary extends Element {
     return true; // Unknown type specifier subtypes — assume match
   }
 
-  Future<FunctionDef?> resolveFunctionRef(String name, String libraryId,
-      {int? operandCount,
-      List<TypeSpecifierExpression>? signature,
-      List<dynamic>? operandValues}) async {
+  Future<FunctionDef?> resolveFunctionRef(
+    String name,
+    String libraryId, {
+    int? operandCount,
+    List<TypeSpecifierExpression>? signature,
+    List<dynamic>? operandValues,
+  }) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
 
-    return libraryRef.resolveLocalFunctionDef(name,
-        operandCount: operandCount,
-        signature: signature,
-        operandValues: operandValues);
+    return libraryRef.resolveLocalFunctionDef(
+      name,
+      operandCount: operandCount,
+      signature: signature,
+      operandValues: operandValues,
+    );
   }
 
   /// Search all included libraries for a fluent function definition.
   /// Returns the (FunctionDef, CqlLibrary) pair if found, null otherwise.
-  Future<(FunctionDef, CqlLibrary)?> resolveFluentFunction(String name,
-      {int? operandCount,
-      List<TypeSpecifierExpression>? signature,
-      List<dynamic>? operandValues,
-      Set<String>? visited}) async {
+  Future<(FunctionDef, CqlLibrary)?> resolveFluentFunction(
+    String name, {
+    int? operandCount,
+    List<TypeSpecifierExpression>? signature,
+    List<dynamic>? operandValues,
+    Set<String>? visited,
+  }) async {
     final includeDefs = includes?.def;
     if (includeDefs == null) return null;
 
@@ -423,10 +456,12 @@ class CqlLibrary extends Element {
       if (inc.localIdentifier == null) continue;
       final lib = await resolveIncludedLibrary(inc.localIdentifier!);
       if (lib == null) continue;
-      final funcDef = lib.resolveLocalFunctionDef(name,
-          operandCount: operandCount,
-          signature: signature,
-          operandValues: operandValues);
+      final funcDef = lib.resolveLocalFunctionDef(
+        name,
+        operandCount: operandCount,
+        signature: signature,
+        operandValues: operandValues,
+      );
       if (funcDef != null) {
         return (funcDef, lib);
       }
@@ -436,11 +471,13 @@ class CqlLibrary extends Element {
       if (inc.localIdentifier == null) continue;
       final lib = await resolveIncludedLibrary(inc.localIdentifier!);
       if (lib == null) continue;
-      final result = await lib.resolveFluentFunction(name,
-          operandCount: operandCount,
-          signature: signature,
-          operandValues: operandValues,
-          visited: visited);
+      final result = await lib.resolveFluentFunction(
+        name,
+        operandCount: operandCount,
+        signature: signature,
+        operandValues: operandValues,
+        visited: visited,
+      );
       if (result != null) return result;
     }
     return null;
@@ -448,7 +485,9 @@ class CqlLibrary extends Element {
 
   /// Resolve an ExpressionDef (define statement) from an included library.
   Future<ExpressionDef?> resolveExpressionRef(
-      String name, String libraryId) async {
+    String name,
+    String libraryId,
+  ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
 
@@ -457,7 +496,9 @@ class CqlLibrary extends Element {
 
   /// Resolve a CodeRef from an included library.
   Future<CqlCode?> resolveCodeRefFromLibrary(
-      String name, String libraryId) async {
+    String name,
+    String libraryId,
+  ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
     try {
@@ -469,7 +510,9 @@ class CqlLibrary extends Element {
 
   /// Resolve a ValueSetRef from an included library.
   Future<CqlValueSet?> resolveValueSetRefFromLibrary(
-      String name, String libraryId) async {
+    String name,
+    String libraryId,
+  ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
     try {
@@ -481,7 +524,9 @@ class CqlLibrary extends Element {
 
   /// Resolve a CodeSystemRef from an included library.
   Future<CqlCodeSystem?> resolveCodeSystemRefFromLibrary(
-      String name, String libraryId) async {
+    String name,
+    String libraryId,
+  ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
     try {
@@ -506,8 +551,7 @@ class CqlLibrary extends Element {
     Map<String, dynamic>? executionContext,
     ModelResolver? modelResolver,
   ]) async {
-    final Map<String, dynamic> context =
-        executionContext ?? <String, dynamic>{};
+    final context = executionContext ?? <String, dynamic>{};
     context[ContextKey.library] = this;
     context[ContextKey.startTimestamp] ??=
         CqlDateTime.fromDateTime(DateTime.now());

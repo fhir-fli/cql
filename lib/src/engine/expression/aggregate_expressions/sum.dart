@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Sum operator returns the sum of non-null elements in the source.
 /// If a path is specified, elements with no value for the property specified
@@ -65,7 +64,7 @@ class Sum extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -137,15 +136,21 @@ class Sum extends AggregateExpression {
       } else if (sourceResult.every((e) => e is BigInt)) {
         return sourceResult.cast<BigInt>().reduce((a, b) => a + b);
       } else if (sourceResult.every((e) => e is CqlInteger)) {
-        return sourceResult.cast<CqlInteger>().reduce((a, b) => Add.add(a, b));
+        return sourceResult
+            .cast<CqlInteger>()
+            .reduce((a, b) => Add.add(a, b) as CqlInteger);
       } else if (sourceResult.every((e) => e is CqlDecimal)) {
-        return sourceResult.cast<CqlDecimal>().reduce((a, b) => Add.add(a, b));
+        return sourceResult
+            .cast<CqlDecimal>()
+            .reduce((a, b) => Add.add(a, b) as CqlDecimal);
       } else if (sourceResult.every((e) => e is CqlLong)) {
-        return sourceResult.cast<CqlLong>().reduce((a, b) => Add.add(a, b));
+        return sourceResult
+            .cast<CqlLong>()
+            .reduce((a, b) => Add.add(a, b) as CqlLong);
       } else if (sourceResult.every((e) => e is ValidatedQuantity)) {
         return sourceResult
             .cast<ValidatedQuantity>()
-            .reduce((a, b) => Add.add(a, b));
+            .reduce((a, b) => Add.add(a, b) as ValidatedQuantity);
       } else {
         throw ArgumentError('Sum operator can only be applied to a List of '
             'int, double, Decimal, or Quantity, but found ${sourceResult.first.runtimeType}');

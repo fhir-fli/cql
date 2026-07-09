@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 
 /// Helper that returns a constant value from execute().
 class _ConstExpr extends CqlExpression {
-  final dynamic value;
   _ConstExpr(this.value);
+  final dynamic value;
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async => value;
@@ -19,10 +19,12 @@ void main() {
   // ───────────────────────────────────────────────────────────────────────────
   group('Tuple', () {
     test('constructs map from named elements', () async {
-      final tuple = Tuple(element: [
-        TupleElement(name: 'name', value: LiteralString('Alice')),
-        TupleElement(name: 'age', value: LiteralInteger(30)),
-      ]);
+      final tuple = Tuple(
+        element: [
+          TupleElement(name: 'name', value: LiteralString('Alice')),
+          TupleElement(name: 'age', value: LiteralInteger(30)),
+        ],
+      );
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
       expect(result['name'], equals('Alice'));
@@ -37,30 +39,36 @@ void main() {
     });
 
     test('single element tuple', () async {
-      final tuple = Tuple(element: [
-        TupleElement(name: 'x', value: LiteralBoolean(true)),
-      ]);
+      final tuple = Tuple(
+        element: [
+          TupleElement(name: 'x', value: LiteralBoolean(true)),
+        ],
+      );
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
       expect(result['x'], equals(CqlBoolean(true)));
     });
 
     test('tuple with null element value', () async {
-      final tuple = Tuple(element: [
-        TupleElement(name: 'val', value: LiteralNull()),
-      ]);
+      final tuple = Tuple(
+        element: [
+          TupleElement(name: 'val', value: LiteralNull()),
+        ],
+      );
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
       expect(result['val'], isNull);
     });
 
     test('tuple with computed expressions', () async {
-      final tuple = Tuple(element: [
-        TupleElement(
-          name: 'sum',
-          value: Add(operand: [LiteralInteger(2), LiteralInteger(3)]),
-        ),
-      ]);
+      final tuple = Tuple(
+        element: [
+          TupleElement(
+            name: 'sum',
+            value: Add(operand: [LiteralInteger(2), LiteralInteger(3)]),
+          ),
+        ],
+      );
       final result = await tuple.execute({});
       expect(result['sum'], equals(CqlInteger(5)));
     });
@@ -107,20 +115,23 @@ void main() {
 
     test('returns list source unchanged', () async {
       final message = Message(
-        source: ListExpression(element: [
-          LiteralInteger(1),
-          LiteralInteger(2),
-        ]),
+        source: ListExpression(
+          element: [
+            LiteralInteger(1),
+            LiteralInteger(2),
+          ],
+        ),
         message: LiteralString('List check'),
       );
       final result = await message.execute({});
       expect(result, isA<List>());
       expect(
-          (result as List),
-          equals([
-            CqlInteger(1),
-            CqlInteger(2),
-          ]));
+        result as List,
+        equals([
+          CqlInteger(1),
+          CqlInteger(2),
+        ]),
+      );
     });
 
     test('condition=false still passes source through', () async {
@@ -150,13 +161,15 @@ void main() {
   // ───────────────────────────────────────────────────────────────────────────
   group('Slice', () {
     test('slices a sublist from startIndex to endIndex', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(10),
-        LiteralInteger(20),
-        LiteralInteger(30),
-        LiteralInteger(40),
-        LiteralInteger(50),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(10),
+          LiteralInteger(20),
+          LiteralInteger(30),
+          LiteralInteger(40),
+          LiteralInteger(50),
+        ],
+      );
       final slice = Slice(
         source: source,
         startIndex: LiteralInteger(1),
@@ -164,11 +177,12 @@ void main() {
       );
       final result = await slice.execute({});
       expect(
-          result,
-          equals([
-            CqlInteger(20),
-            CqlInteger(30),
-          ]));
+        result,
+        equals([
+          CqlInteger(20),
+          CqlInteger(30),
+        ]),
+      );
     });
 
     test('null source returns null', () async {
@@ -182,11 +196,13 @@ void main() {
     });
 
     test('startIndex 0 with null endIndex returns entire list', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-        LiteralInteger(3),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+          LiteralInteger(3),
+        ],
+      );
       final slice = Slice(
         source: source,
         startIndex: LiteralInteger(0),
@@ -194,12 +210,13 @@ void main() {
       );
       final result = await slice.execute({});
       expect(
-          result,
-          equals([
-            CqlInteger(1),
-            CqlInteger(2),
-            CqlInteger(3),
-          ]));
+        result,
+        equals([
+          CqlInteger(1),
+          CqlInteger(2),
+          CqlInteger(3),
+        ]),
+      );
     });
 
     test('empty list returns empty list', () async {
@@ -213,9 +230,11 @@ void main() {
     });
 
     test('startIndex beyond list length returns empty', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+        ],
+      );
       final slice = Slice(
         source: source,
         startIndex: LiteralInteger(10),
@@ -226,11 +245,13 @@ void main() {
     });
 
     test('negative startIndex returns empty list', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-        LiteralInteger(3),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+          LiteralInteger(3),
+        ],
+      );
       final slice = Slice(
         source: source,
         startIndex: LiteralInteger(-1),
@@ -241,11 +262,13 @@ void main() {
     });
 
     test('null startIndex returns empty list', () async {
-      final source = ListExpression(element: [
-        LiteralInteger(1),
-        LiteralInteger(2),
-        LiteralInteger(3),
-      ]);
+      final source = ListExpression(
+        element: [
+          LiteralInteger(1),
+          LiteralInteger(2),
+          LiteralInteger(3),
+        ],
+      );
       final slice = Slice(
         source: source,
         startIndex: LiteralNull(),
@@ -266,7 +289,7 @@ void main() {
 
     test('calculates age in years from birthdate', () async {
       // Use a birthdate that yields a predictable age
-      final birthDate = DateTime(DateTime.now().year - 30, 1, 1);
+      final birthDate = DateTime(DateTime.now().year - 30);
       final birthDateStr =
           '${birthDate.year}-${birthDate.month.toString().padLeft(2, '0')}-${birthDate.day.toString().padLeft(2, '0')}';
       final calcAge = CalculateAge(
@@ -289,8 +312,8 @@ void main() {
     test('calculates age in months', () async {
       // Born exactly 6 months ago on the 1st
       final now = DateTime.now();
-      int targetMonth = now.month - 6;
-      int targetYear = now.year;
+      var targetMonth = now.month - 6;
+      var targetYear = now.year;
       if (targetMonth <= 0) {
         targetMonth += 12;
         targetYear--;

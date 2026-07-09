@@ -24,9 +24,6 @@ import 'package:cql/src/internal.dart';
 /// define "IndexOfNotFound": IndexOf({ 1, 3, 5, 7 }, 4) // -1
 /// define "IndexOfIsNull": IndexOf(null, 4)
 class IndexOf extends OperatorExpression {
-  final CqlExpression element;
-  final CqlExpression source;
-
   IndexOf({
     required this.source,
     required this.element,
@@ -52,6 +49,8 @@ class IndexOf extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression element;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {
@@ -103,7 +102,7 @@ class IndexOf extends OperatorExpression {
     }
 
     if (left is List) {
-      for (int i = 0; i < left.length; i++) {
+      for (var i = 0; i < left.length; i++) {
         final eq = Equal.equal(left[i], right);
         if (eq?.valueBoolean == true) return CqlInteger(i);
       }

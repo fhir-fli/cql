@@ -7,9 +7,10 @@ class CqlTupleElementDefinitionVisitor
 
   @override
   TupleElementDefinition visitTupleElementDefinition(
-      TupleElementDefinitionContext ctx) {
+    TupleElementDefinitionContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? name;
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {

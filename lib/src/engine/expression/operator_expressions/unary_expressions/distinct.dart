@@ -103,7 +103,7 @@ class Distinct extends UnaryExpression {
     } else if (operandValue is List) {
       final result = <dynamic>[];
       for (final item in operandValue) {
-        bool found = false;
+        var found = false;
         for (final existing in result) {
           final eq = Equivalent.equivalent(existing, item);
           if (eq.valueBoolean == true) {

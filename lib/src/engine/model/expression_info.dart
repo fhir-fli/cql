@@ -1,10 +1,4 @@
 class ExpressionInfo {
-  // The actual expression in a specific language
-  final String expression;
-
-  // The language identifier for the expression
-  final String language;
-
   ExpressionInfo({
     required this.expression,
     required this.language,
@@ -16,6 +10,11 @@ class ExpressionInfo {
       language: json['language'],
     );
   }
+  // The actual expression in a specific language
+  final String expression;
+
+  // The language identifier for the expression
+  final String language;
 
   @override
   String toString() {

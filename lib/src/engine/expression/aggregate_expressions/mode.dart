@@ -57,7 +57,7 @@ class Mode extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -123,8 +123,8 @@ class Mode extends AggregateExpression {
         return null;
       }
 
-      Map<dynamic, int> frequencyMap = {};
-      for (var element in sourceResult) {
+      final frequencyMap = <dynamic, int>{};
+      for (final element in sourceResult) {
         if (!frequencyMap.containsKey(element)) {
           frequencyMap[element] = 1;
         } else {
@@ -133,10 +133,11 @@ class Mode extends AggregateExpression {
       }
 
       // Find the highest frequency
-      int maxFreq = frequencyMap.values.fold(0, (max, e) => e > max ? e : max);
+      final maxFreq =
+          frequencyMap.values.fold(0, (max, e) => e > max ? e : max);
 
       // Collect all items that have the highest frequency
-      var modes = frequencyMap.entries
+      final modes = frequencyMap.entries
           .where((entry) => entry.value == maxFreq)
           .map((entry) => entry.key)
           .toList();
@@ -144,7 +145,8 @@ class Mode extends AggregateExpression {
       return modes.first;
     }
     throw ArgumentError(
-        'Invalid source type for Mode: ${sourceResult.runtimeType}');
+      'Invalid source type for Mode: ${sourceResult.runtimeType}',
+    );
   }
 
   @override

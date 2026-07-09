@@ -5,18 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ContextInfo] type defines the available context types for the model,
 /// specifying the context type name, key elements, and birthDateElement.
 class ContextInfo {
-  // Optional attribute - Name of the birthDateElement for the context type
-  final String? birthDateElement;
-
-  // Required element - Type for the context
-  final NamedTypeSpecifier contextType;
-
-  // Optional attribute - Key elements for the context (unique identifier)
-  final String? keyElement;
-
-  // Required attribute - Name of the context (referenced in CQL)
-  final String name;
-
   ContextInfo({
     required this.name,
     required this.contextType,
@@ -32,6 +20,17 @@ class ContextInfo {
       birthDateElement: json['birthDateElement'],
     );
   }
+  // Optional attribute - Name of the birthDateElement for the context type
+  final String? birthDateElement;
+
+  // Required element - Type for the context
+  final NamedTypeSpecifier contextType;
+
+  // Optional attribute - Key elements for the context (unique identifier)
+  final String? keyElement;
+
+  // Required attribute - Name of the context (referenced in CQL)
+  final String name;
 
   @override
   String toString() {

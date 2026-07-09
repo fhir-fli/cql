@@ -68,11 +68,9 @@ import 'package:cql/src/internal.dart';
 /// This operator is also defined for intervals, see the Same Or After
 /// (Intervals) operator for more information.
 class SameOrAfter extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   SameOrAfter({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -101,6 +99,7 @@ class SameOrAfter extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
@@ -148,7 +147,10 @@ class SameOrAfter extends BinaryExpression {
   }
 
   static CqlBoolean? sameOrAfter(
-      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
+    dynamic left,
+    dynamic right,
+    CqlDateTimePrecision? precision,
+  ) {
     if (left == null || right == null) {
       return null;
     } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {
@@ -284,53 +286,59 @@ class SameOrAfter extends BinaryExpression {
     if (left.year == null || right.year == null) return null;
     if (left.year! != right.year!) {
       return CqlBoolean(
-          isAfter ? left.year! > right.year! : left.year! < right.year!);
+        isAfter ? left.year! > right.year! : left.year! < right.year!,
+      );
     }
 
     if (!left.hasMonth && !right.hasMonth) return CqlBoolean(true);
     if (!left.hasMonth || !right.hasMonth) return null;
     if (left.month! != right.month!) {
       return CqlBoolean(
-          isAfter ? left.month! > right.month! : left.month! < right.month!);
+        isAfter ? left.month! > right.month! : left.month! < right.month!,
+      );
     }
 
     if (!left.hasDay && !right.hasDay) return CqlBoolean(true);
     if (!left.hasDay || !right.hasDay) return null;
     if (left.day! != right.day!) {
       return CqlBoolean(
-          isAfter ? left.day! > right.day! : left.day! < right.day!);
+        isAfter ? left.day! > right.day! : left.day! < right.day!,
+      );
     }
 
     if (!left.hasHours && !right.hasHours) return CqlBoolean(true);
     if (!left.hasHours || !right.hasHours) return null;
     if (left.hour! != right.hour!) {
       return CqlBoolean(
-          isAfter ? left.hour! > right.hour! : left.hour! < right.hour!);
+        isAfter ? left.hour! > right.hour! : left.hour! < right.hour!,
+      );
     }
 
     if (!left.hasMinutes && !right.hasMinutes) return CqlBoolean(true);
     if (!left.hasMinutes || !right.hasMinutes) return null;
     if (left.minute! != right.minute!) {
-      return CqlBoolean(isAfter
-          ? left.minute! > right.minute!
-          : left.minute! < right.minute!);
+      return CqlBoolean(
+        isAfter ? left.minute! > right.minute! : left.minute! < right.minute!,
+      );
     }
 
     if (!left.hasSeconds && !right.hasSeconds) return CqlBoolean(true);
     if (!left.hasSeconds || !right.hasSeconds) return null;
     if (left.second! != right.second!) {
-      return CqlBoolean(isAfter
-          ? left.second! > right.second!
-          : left.second! < right.second!);
+      return CqlBoolean(
+        isAfter ? left.second! > right.second! : left.second! < right.second!,
+      );
     }
 
     if (!left.hasMilliseconds && !right.hasMilliseconds) {
       return CqlBoolean(true);
     }
     if (!left.hasMilliseconds || !right.hasMilliseconds) return null;
-    return CqlBoolean(isAfter
-        ? left.millisecond! >= right.millisecond!
-        : left.millisecond! <= right.millisecond!);
+    return CqlBoolean(
+      isAfter
+          ? left.millisecond! >= right.millisecond!
+          : left.millisecond! <= right.millisecond!,
+    );
   }
 
   static CqlBoolean? sameOrAfterDateTime(

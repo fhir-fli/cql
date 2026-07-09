@@ -5,10 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [IntervalTypeSpecifier] type represents an interval type, inheriting from TypeSpecifier,
 /// including a pointTypeSpecifier element and pointType attribute.
 class IntervalTypeSpecifierModel extends TypeSpecifierModel {
-  TypeSpecifierModel? pointTypeSpecifier;
-
-  String? pointType;
-
   IntervalTypeSpecifierModel({
     this.pointTypeSpecifier,
     this.pointType,
@@ -20,6 +16,9 @@ class IntervalTypeSpecifierModel extends TypeSpecifierModel {
             : null,
         pointType = map['pointType'],
         super(type: 'IntervalTypeSpecifier');
+  TypeSpecifierModel? pointTypeSpecifier;
+
+  String? pointType;
 
   @override
   Map<String, dynamic> toJson() {

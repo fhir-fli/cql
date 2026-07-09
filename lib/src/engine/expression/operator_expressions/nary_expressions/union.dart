@@ -174,7 +174,7 @@ class Union extends NaryExpression {
       // Use equivalence-based deduplication to handle nulls and FHIR types
       final result = <dynamic>[];
       for (final item in [...leftList, ...rightList]) {
-        bool found = false;
+        var found = false;
         for (final existing in result) {
           if (item == null && existing == null) {
             found = true;

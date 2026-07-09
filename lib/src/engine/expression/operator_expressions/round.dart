@@ -32,9 +32,6 @@ import 'package:cql/src/internal.dart';
 /// define "DecimalRound": Round(3.14159, 3) // 3.142
 /// define "RoundIsNull": Round(null)
 class Round extends OperatorExpression {
-  final CqlExpression operand;
-  final CqlExpression? precision;
-
   Round({
     required this.operand,
     this.precision,
@@ -62,6 +59,8 @@ class Round extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression operand;
+  final CqlExpression? precision;
 
   @override
   Map<String, dynamic> toJson() {
@@ -120,16 +119,15 @@ class Round extends OperatorExpression {
     if (numValue == null) return null;
 
     final precisionValue = await precision?.execute(context);
-    int precisionInt = 0;
+    var precisionInt = 0;
     if (precisionValue is CqlInteger && precisionValue.valueInt != null) {
       precisionInt = precisionValue.valueInt!;
     }
 
-    final double mod = pow(10.0, precisionInt).toDouble();
-    final double scaled = numValue * mod;
+    final mod = pow(10.0, precisionInt).toDouble();
+    final scaled = numValue * mod;
     // CQL rounding: round half up (toward positive infinity)
-    final int rounded =
-        scaled.floor() + (scaled - scaled.floor() >= 0.5 ? 1 : 0);
+    final rounded = scaled.floor() + (scaled - scaled.floor() >= 0.5 ? 1 : 0);
     return CqlDecimal(rounded.toDouble() / mod);
   }
 }

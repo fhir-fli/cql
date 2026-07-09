@@ -68,11 +68,9 @@ import 'package:cql/src/internal.dart';
 /// This operator is also defined for intervals, see the Same Or After
 /// (Intervals) operator for more information.
 class OnOrAfter extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   OnOrAfter({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -101,6 +99,7 @@ class OnOrAfter extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {

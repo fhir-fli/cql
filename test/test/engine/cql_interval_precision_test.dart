@@ -284,21 +284,15 @@ void main() {
 
     test('Integer intervals (existing behavior preserved)', () async {
       final interval1 = IntervalExpression(
-        lowClosed: true,
         low: LiteralInteger(1),
-        highClosed: true,
         high: LiteralInteger(4),
       );
       final interval2 = IntervalExpression(
-        lowClosed: true,
         low: LiteralInteger(4),
-        highClosed: true,
         high: LiteralInteger(8),
       );
       final interval3 = IntervalExpression(
-        lowClosed: true,
         low: LiteralInteger(7),
-        highClosed: true,
         high: LiteralInteger(9),
       );
       final list = ListExpression(element: [interval1, interval2, interval3]);

@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class ConceptDefs {
-  String? type;
-  List<ConceptDef> def = <ConceptDef>[];
-
   ConceptDefs();
 
   factory ConceptDefs.fromJson(Map<String, dynamic> json) => ConceptDefs()
@@ -11,6 +8,8 @@ class ConceptDefs {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => ConceptDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<ConceptDef> def = <ConceptDef>[];
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (type != null) 'type': type,
@@ -23,24 +22,11 @@ class ConceptDefs {
 /// The ConceptDef type defines a concept identifier that can then be used to
 /// reference single concepts anywhere within an expression.
 class ConceptDef extends Element {
-  /// The name of the concept used for reference.
-  String name;
-
-  /// An optional display string used to describe the concept.
-  String? display;
-
-  /// Specifies the access level; default is Public.
-  AccessModifier accessLevel;
-
-  /// A code that makes up the concept. All codes within a given concept must
-  /// be synonyms.
-  List<CodeRef> code;
-
   ConceptDef({
     required this.name,
+    required this.code,
     this.display,
     this.accessLevel = AccessModifier.public,
-    required this.code,
     super.annotation,
     super.localId,
     super.locator,
@@ -64,10 +50,24 @@ class ConceptDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
         ..resultTypeName = json['resultTypeName'] as String?
         ..localId = json['localId'] as String?
         ..locator = json['locator'] as String?;
+
+  /// The name of the concept used for reference.
+  String name;
+
+  /// An optional display string used to describe the concept.
+  String? display;
+
+  /// Specifies the access level; default is Public.
+  AccessModifier accessLevel;
+
+  /// A code that makes up the concept. All codes within a given concept must
+  /// be synonyms.
+  List<CodeRef> code;
 
   @override
   Map<String, dynamic> toJson() {
@@ -81,7 +81,7 @@ class ConceptDef extends Element {
 
     val['name'] = name;
     writeNotNull('display', display);
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     val['code'] = code.map((e) {
       final map = e.toJson();
       map.removeWhere((key, value) => key == 'type' && value == 'CodeRef');
@@ -95,7 +95,7 @@ class ConceptDef extends Element {
     return val;
   }
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };

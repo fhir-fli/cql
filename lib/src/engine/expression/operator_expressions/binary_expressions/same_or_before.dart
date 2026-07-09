@@ -68,11 +68,9 @@ import 'package:cql/src/internal.dart';
 /// This operator is also defined for intervals, see the Same Or Before
 /// (Intervals) operator for more information.
 class SameOrBefore extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   SameOrBefore({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -101,6 +99,7 @@ class SameOrBefore extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
@@ -148,7 +147,10 @@ class SameOrBefore extends BinaryExpression {
   }
 
   static CqlBoolean? sameOrBefore(
-      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
+    dynamic left,
+    dynamic right,
+    CqlDateTimePrecision? precision,
+  ) {
     if (left == null || right == null) {
       return null;
     } else if (left is CqlDateTimeBase && right is CqlDateTimeBase) {

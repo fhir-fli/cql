@@ -1,6 +1,27 @@
 import 'package:cql/src/internal.dart';
 
 class SourceLocator {
+  SourceLocator({
+    required this.libraryName,
+    required this.nodeType,
+    this.librarySystemId,
+    this.libraryVersion,
+    this.nodeId,
+    this.sourceLocation,
+  });
+
+  factory SourceLocator.fromNode(Element node, CqlLibrary? currentLibrary) {
+    return SourceLocator(
+      librarySystemId: currentLibrary?.identifier?.system ??
+          'http://cql.hl7.org/Library/unknown',
+      libraryName: currentLibrary?.identifier?.id ?? '?',
+      libraryVersion: currentLibrary?.identifier?.version,
+      nodeId: node.localId,
+      nodeType: stripEvaluator(node.runtimeType.toString()),
+      sourceLocation:
+          node.locator != null ? Location.fromLocator(node.locator) : null,
+    );
+  }
   final String? librarySystemId;
   final String libraryName;
   final String? libraryVersion;
@@ -8,38 +29,16 @@ class SourceLocator {
   final String nodeType;
   final Location? sourceLocation;
 
-  SourceLocator({
-    this.librarySystemId,
-    required this.libraryName,
-    this.libraryVersion,
-    this.nodeId,
-    required this.nodeType,
-    this.sourceLocation,
-  });
-
-  factory SourceLocator.fromNode(Element node, CqlLibrary? currentLibrary) {
-    return SourceLocator(
-      librarySystemId: currentLibrary?.identifier?.system ??
-          "http://cql.hl7.org/Library/unknown",
-      libraryName: currentLibrary?.identifier?.id ?? "?",
-      libraryVersion: currentLibrary?.identifier?.version,
-      nodeId: node.localId,
-      nodeType: stripEvaluator(node.runtimeType.toString()),
-      sourceLocation:
-          node.locator != null ? Location.fromLocator(node.locator!) : null,
-    );
-  }
-
   static String stripEvaluator(String nodeType) {
-    return nodeType.endsWith("Evaluator")
-        ? nodeType.substring(0, nodeType.lastIndexOf("Evaluator"))
+    return nodeType.endsWith('Evaluator')
+        ? nodeType.substring(0, nodeType.lastIndexOf('Evaluator'))
         : nodeType;
   }
 
   String getLocation() {
-    final location = sourceLocation != null ? sourceLocation!.toLocator() : "?";
+    final location = sourceLocation != null ? sourceLocation!.toLocator() : '?';
     final idOrType = nodeId ?? nodeType;
-    return "$location($idOrType)";
+    return '$location($idOrType)';
   }
 
   Map<String, dynamic> toJson() {
@@ -73,6 +72,12 @@ class SourceLocator {
   }
 
   @override
-  int get hashCode => Object.hash(librarySystemId, libraryName, libraryVersion,
-      nodeId, nodeType, sourceLocation);
+  int get hashCode => Object.hash(
+        librarySystemId,
+        libraryName,
+        libraryVersion,
+        nodeId,
+        nodeType,
+        sourceLocation,
+      );
 }

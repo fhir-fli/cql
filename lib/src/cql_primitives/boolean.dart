@@ -12,8 +12,6 @@ extension CqlBooleanExtension on bool {
 /// serialization parity with FHIR JSON; the canonical Dart value is
 /// available via [valueBoolean].
 class CqlBoolean extends CqlPrimitive {
-  const CqlBoolean._(super.valueString) : super();
-
   /// Creates a [CqlBoolean] from a [bool] or a string `"true"`/`"false"`.
   factory CqlBoolean(dynamic rawValue) {
     if (rawValue == null) return const CqlBoolean._(null);
@@ -28,6 +26,7 @@ class CqlBoolean extends CqlPrimitive {
       'CqlBoolean only supports bool or string "true"/"false". Got: $rawValue',
     );
   }
+  const CqlBoolean._(super.valueString) : super();
 
   /// Constructs from a JSON map of shape `{'value': true|false|"true"|"false"}`.
   factory CqlBoolean.fromJson(Map<String, dynamic> json) =>

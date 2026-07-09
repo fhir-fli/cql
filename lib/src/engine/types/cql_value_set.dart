@@ -3,29 +3,12 @@ import 'package:collection/collection.dart';
 import 'package:cql/src/internal.dart';
 
 class CqlValueSet extends CqlVocabulary {
-  List<CqlCodeSystem>? codeSystems;
-
   CqlValueSet({
     required super.id,
     required super.version,
     required super.name,
     this.codeSystems,
   });
-
-  // Static method to create a CqlValueSet from a ValueSet
-  static CqlValueSet fromValueSet(ValueSetDef vs) {
-    var vsi = CqlValueSet(
-      id: vs.id ?? '',
-      version: vs.version ?? '',
-      name: vs.name ?? '',
-      codeSystems: <CqlCodeSystem>[],
-    );
-    for (var cs in vs.codeSystem ?? <CodeSystemRef>[]) {
-      vsi.codeSystems ??= <CqlCodeSystem>[];
-      vsi.codeSystems!.add(CqlCodeSystem.fromCodeSystemRef(cs));
-    }
-    return vsi;
-  }
 
   factory CqlValueSet.fromJson(Map<String, dynamic> json) {
     return CqlValueSet(
@@ -36,6 +19,38 @@ class CqlValueSet extends CqlVocabulary {
           .map((e) => CqlCodeSystem.fromJson(e))
           .toList(),
     );
+  }
+
+  factory CqlValueSet.fromMap(Map<String, dynamic> map) =>
+      CqlValueSet.fromJson(map);
+
+  factory CqlValueSet.fromValueSetDef(ValueSetDef valueSetDef) {
+    if (valueSetDef.id == null || valueSetDef.name == null) {
+      throw ArgumentError('ValueSetDef must have id, version, and name');
+    }
+    return CqlValueSet(
+      id: valueSetDef.id!,
+      version: valueSetDef.version,
+      name: valueSetDef.name!,
+      codeSystems:
+          valueSetDef.codeSystem?.map(CqlCodeSystem.fromCodeSystemRef).toList(),
+    );
+  }
+  List<CqlCodeSystem>? codeSystems;
+
+  // Static method to create a CqlValueSet from a ValueSet
+  static CqlValueSet fromValueSet(ValueSetDef vs) {
+    final vsi = CqlValueSet(
+      id: vs.id ?? '',
+      version: vs.version ?? '',
+      name: vs.name ?? '',
+      codeSystems: <CqlCodeSystem>[],
+    );
+    for (final cs in vs.codeSystem ?? <CodeSystemRef>[]) {
+      vsi.codeSystems ??= <CqlCodeSystem>[];
+      vsi.codeSystems!.add(CqlCodeSystem.fromCodeSystemRef(cs));
+    }
+    return vsi;
   }
 
   @override
@@ -64,9 +79,6 @@ class CqlValueSet extends CqlVocabulary {
 
   Map<String, dynamic> toMap() => toJson();
 
-  factory CqlValueSet.fromMap(Map<String, dynamic> map) =>
-      CqlValueSet.fromJson(map);
-
   @override
   String toString() =>
       'CqlValueSet { id: $id, version: $version, name: $name, codeSystems: $codeSystems }';
@@ -88,19 +100,5 @@ class CqlValueSet extends CqlVocabulary {
     codeSystems ??= <CqlCodeSystem>[];
     codeSystems!.add(codeSystem);
     return this;
-  }
-
-  factory CqlValueSet.fromValueSetDef(ValueSetDef valueSetDef) {
-    if (valueSetDef.id == null || valueSetDef.name == null) {
-      throw ArgumentError('ValueSetDef must have id, version, and name');
-    }
-    return CqlValueSet(
-      id: valueSetDef.id!,
-      version: valueSetDef.version,
-      name: valueSetDef.name!,
-      codeSystems: valueSetDef.codeSystem
-          ?.map((e) => CqlCodeSystem.fromCodeSystemRef(e))
-          .toList(),
-    );
   }
 }

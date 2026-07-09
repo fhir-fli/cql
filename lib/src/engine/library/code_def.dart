@@ -1,9 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class CodeDefs extends Element {
-  String? type;
-  List<CodeDef> def = <CodeDef>[];
-
   CodeDefs();
 
   factory CodeDefs.fromJson(Map<String, dynamic> json) => CodeDefs()
@@ -11,6 +8,8 @@ class CodeDefs extends Element {
     ..def = (json['def'] as List<dynamic>)
         .map((e) => CodeDef.fromJson(e as Map<String, dynamic>))
         .toList();
+  String? type;
+  List<CodeDef> def = <CodeDef>[];
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -24,21 +23,6 @@ class CodeDefs extends Element {
 /// The CodeDef type defines a code identifier that can then be used to
 /// reference single codes anywhere within an expression.
 class CodeDef extends Element {
-  /// The name of the code used for reference.
-  String name;
-
-  /// The unique identifier of the code.
-  String id;
-
-  /// An optional display string used to describe the code.
-  String? display;
-
-  /// Specifies the access level; default is Public.
-  AccessModifier accessLevel;
-
-  /// The code system that contains the code being referenced.
-  CodeSystemRef? codeSystem;
-
   CodeDef({
     required this.name,
     required this.id,
@@ -62,7 +46,8 @@ class CodeDef extends Element {
         codeSystem: json['codeSystem'] == null
             ? null
             : CodeSystemRef.fromJson(
-                json['codeSystem'] as Map<String, dynamic>),
+                json['codeSystem'] as Map<String, dynamic>,
+              ),
       )
         ..annotation = (json['annotation'] as List<dynamic>?)
             ?.map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -73,7 +58,23 @@ class CodeDef extends Element {
         ..resultTypeSpecifier = json['resultTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>);
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              );
+
+  /// The name of the code used for reference.
+  String name;
+
+  /// The unique identifier of the code.
+  String id;
+
+  /// An optional display string used to describe the code.
+  String? display;
+
+  /// Specifies the access level; default is Public.
+  AccessModifier accessLevel;
+
+  /// The code system that contains the code being referenced.
+  CodeSystemRef? codeSystem;
 
   @override
   Map<String, dynamic> toJson() {
@@ -83,7 +84,8 @@ class CodeDef extends Element {
       if (value != null) {
         if (key == 'codeSystem') {
           (value as Map<String, dynamic>).removeWhere(
-              (key, value) => key == 'type' && value == 'CodeSystemRef');
+            (key, value) => key == 'type' && value == 'CodeSystemRef',
+          );
         }
         val[key] = value;
       }
@@ -92,7 +94,7 @@ class CodeDef extends Element {
     val['name'] = name;
     val['id'] = id;
     writeNotNull('display', display);
-    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel]!;
+    val['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     writeNotNull('codeSystem', codeSystem?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
@@ -103,7 +105,7 @@ class CodeDef extends Element {
     return val;
   }
 
-  static const _$AccessModifierEnumMap = {
+  static const Map<AccessModifier, String> _$AccessModifierEnumMap = {
     AccessModifier.public: 'Public',
     AccessModifier.private: 'Private',
   };

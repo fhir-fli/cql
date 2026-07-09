@@ -1,5 +1,12 @@
 /// Thrown for CQL runtime errors (e.g. singleton from too many elements).
 class CqlRuntimeException implements Exception {
+  CqlRuntimeException(
+    this.message, {
+    this.libraryId,
+    this.locator,
+    this.localId,
+  });
+
   /// Human‐readable message.
   final String message;
 
@@ -7,13 +14,6 @@ class CqlRuntimeException implements Exception {
   final String? libraryId;
   final String? localId;
   final String? locator;
-
-  CqlRuntimeException(
-    this.message, {
-    this.libraryId,
-    this.locator,
-    this.localId,
-  });
 
   @override
   String toString() {

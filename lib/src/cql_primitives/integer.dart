@@ -11,8 +11,6 @@ extension CqlIntegerExtension on int {
 /// CQL Integer is a signed 32-bit integer. Stored as a canonical decimal
 /// string for round-trip parity; canonical Dart value via [valueInt].
 class CqlInteger extends CqlNumber {
-  const CqlInteger._(super.valueString) : super._();
-
   /// Creates a [CqlInteger] from an [int] or a numeric [String].
   factory CqlInteger(dynamic rawValue) {
     if (rawValue == null) return const CqlInteger._(null);
@@ -33,6 +31,7 @@ class CqlInteger extends CqlNumber {
       'CqlInteger only supports int or integer-valued String. Got: $rawValue',
     );
   }
+  const CqlInteger._(super.valueString) : super._();
 
   /// Constructs from a JSON map of shape `{'value': <int|string>}`.
   factory CqlInteger.fromJson(Map<String, dynamic> json) =>

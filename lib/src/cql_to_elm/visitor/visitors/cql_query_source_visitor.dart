@@ -7,7 +7,7 @@ class CqlQuerySourceVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitQuerySource(QuerySourceContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is RetrieveContext) {
         return visitRetrieve(child);
@@ -22,12 +22,15 @@ class CqlQuerySourceVisitor extends CqlBaseVisitor<CqlExpression> {
           // because visitLetClause adds to both scopes but should use QueryLetRef.
           if (CqlBaseVisitor.isLetIdentifier(qualifier)) {
             return _typed(
-                Property(source: QueryLetRef(name: qualifier), path: ref.name),
-                qualifier);
+              Property(source: QueryLetRef(name: qualifier), path: ref.name),
+              qualifier,
+            );
           }
           if (CqlBaseVisitor.isQueryAlias(qualifier)) {
             return _typed(
-                Property(scope: qualifier, path: ref.name), qualifier);
+              Property(scope: qualifier, path: ref.name),
+              qualifier,
+            );
           }
         }
         return ref;

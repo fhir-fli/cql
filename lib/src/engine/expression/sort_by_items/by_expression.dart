@@ -3,8 +3,6 @@ import 'package:cql/src/internal.dart';
 /// The ByExpression element specifies that the sort should be performed using the given expression and direction.
 /// This approach is used to specify the sort order as a calculated expression.
 class ByExpression extends SortByItem {
-  final CqlExpression expression;
-
   ByExpression({
     required super.direction,
     required this.expression,
@@ -30,6 +28,7 @@ class ByExpression extends SortByItem {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression expression;
 
   @override
   Map<String, dynamic> toJson() {

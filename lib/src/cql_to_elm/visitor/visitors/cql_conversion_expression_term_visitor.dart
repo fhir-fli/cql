@@ -7,8 +7,9 @@ class CqlConversionExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
   @override
   CqlExpression visitConversionExpressionTerm(
-      ConversionExpressionTermContext ctx) {
-    final int thisNode = getNextNode();
+    ConversionExpressionTermContext ctx,
+  ) {
+    final thisNode = getNextNode();
 
     CqlExpression? expression;
     TypeSpecifierExpression? typeSpecifier;
@@ -26,7 +27,8 @@ class CqlConversionExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
 
     if (expression == null || (typeSpecifier == null && unit == null)) {
       throw ArgumentError(
-          '$thisNode Invalid ConversionExpressionTerm: missing components');
+        '$thisNode Invalid ConversionExpressionTerm: missing components',
+      );
     }
 
     if (typeSpecifier != null) {
@@ -37,7 +39,8 @@ class CqlConversionExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
       );
     } else {
       throw ArgumentError(
-          '$thisNode Unexpected state: neither typeSpecifier nor unit is available.');
+        '$thisNode Unexpected state: neither typeSpecifier nor unit is available.',
+      );
     }
   }
 

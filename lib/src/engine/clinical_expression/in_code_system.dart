@@ -11,9 +11,6 @@ import 'package:cql/src/internal.dart';
 /// by the target environment as a service call to a terminology server, if
 /// desired.
 class InCodeSystem extends OperatorExpression {
-  final CqlExpression code;
-  final CodeSystemRef codesystem;
-
   InCodeSystem({
     required this.code,
     required this.codesystem,
@@ -39,10 +36,12 @@ class InCodeSystem extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression code;
+  final CodeSystemRef codesystem;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'code': code.toJson(),
       'codesystem': codesystem.toJson(),

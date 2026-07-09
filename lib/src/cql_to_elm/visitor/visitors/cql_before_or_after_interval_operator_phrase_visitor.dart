@@ -7,11 +7,12 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
 
   @override
   CqlExpression visitBeforeOrAfterIntervalOperatorPhrase(
-      BeforeOrAfterIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left,
-      CqlExpression? right]) {
+    BeforeOrAfterIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? startsEndsOccurs;
     String? temporalRelationship;
     CqlDateTimePrecision? dateTimePrecision;
@@ -42,7 +43,8 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
         temporalRelationship = visitTemporalRelationship(child);
       } else if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecision = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecisionSpecifier(child));
+          visitDateTimePrecisionSpecifier(child),
+        );
       }
     }
 
@@ -64,19 +66,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               } else if (relativeQualifier == 'or less') {
                 // "N or less before B" means: left >= (right - N) AND left <= right
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Subtract(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Subtract(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                  ],
+                );
               } else {
                 // Exact: "exactly N before B"
                 return SameAs(
@@ -111,19 +115,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               } else if (relativeQualifier == 'or less') {
                 // "N or less after B" means: left >= right AND left <= (right + N)
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Add(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Add(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                  ],
+                );
               } else {
                 // Exact: "exactly N after B"
                 return SameAs(
@@ -150,19 +156,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
               if (relativeQualifier == 'or less') {
                 // "N or less on or before B" means:
                 // left >= (right - N) AND left <= right
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Subtract(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Subtract(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                  ],
+                );
               } else if (relativeQualifier == 'or more') {
                 // "N or more on or before B" means:
                 // left <= (right - N)
@@ -198,19 +206,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
               if (relativeQualifier == 'or less') {
                 // "N or less on or after B" means:
                 // left >= right AND left <= (right + N)
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Add(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Add(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                  ],
+                );
               } else if (relativeQualifier == 'or more') {
                 // "N or more on or after B" means:
                 // left >= (right + N)
@@ -244,19 +254,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
           {
             if (quantityOffset != null) {
               if (relativeQualifier == 'or less') {
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Subtract(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Subtract(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                  ],
+                );
               } else if (relativeQualifier == 'or more') {
                 return SameOrBefore(
                   precision: dateTimePrecision,
@@ -288,19 +300,21 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
           {
             if (quantityOffset != null) {
               if (relativeQualifier == 'or less') {
-                return And(operand: [
-                  SameOrAfter(
-                    precision: dateTimePrecision,
-                    operand: [effectiveLeft, effectiveRight],
-                  ),
-                  SameOrBefore(
-                    precision: dateTimePrecision,
-                    operand: [
-                      effectiveLeft,
-                      Add(operand: [effectiveRight, quantityOffset]),
-                    ],
-                  ),
-                ]);
+                return And(
+                  operand: [
+                    SameOrAfter(
+                      precision: dateTimePrecision,
+                      operand: [effectiveLeft, effectiveRight],
+                    ),
+                    SameOrBefore(
+                      precision: dateTimePrecision,
+                      operand: [
+                        effectiveLeft,
+                        Add(operand: [effectiveRight, quantityOffset]),
+                      ],
+                    ),
+                  ],
+                );
               } else if (relativeQualifier == 'or more') {
                 return SameOrAfter(
                   precision: dateTimePrecision,

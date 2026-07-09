@@ -26,9 +26,6 @@ import 'package:cql/src/internal.dart';
 /// define "CombineWithSeparator": Combine({ 'A', 'B', 'C' }, ' ') // 'A B C'
 /// define "CombineWithNulls": Combine({ 'A', 'B', 'C', null }) // 'ABC'
 class Combine extends OperatorExpression {
-  final CqlExpression? separator;
-  final CqlExpression source;
-
   Combine({
     required this.source,
     this.separator,
@@ -56,6 +53,8 @@ class Combine extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression? separator;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {

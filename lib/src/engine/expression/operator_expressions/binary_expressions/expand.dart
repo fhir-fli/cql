@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator returns the set of intervals of size per for all the ranges present
 /// in the given list of intervals, or a list of points covering the range
@@ -38,7 +37,7 @@ class Expand extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {'type': type};
+    final json = <String, dynamic>{'type': type};
     if (operand.length > 1) {
       json['operand'] = operand.map((x) => x.toJson()).toList();
     } else {
@@ -97,7 +96,8 @@ class Expand extends BinaryExpression {
       return _expandList(intervals, per);
     } else {
       throw ArgumentError(
-          'Expand expression must have a single interval or a list of intervals');
+        'Expand expression must have a single interval or a list of intervals',
+      );
     }
   }
 
@@ -108,7 +108,7 @@ class Expand extends BinaryExpression {
     // Collapse overlapping intervals first to avoid duplicates
     final collapsed = Collapse(operand: []).collapse(intervals, null);
     if (collapsed == null) return null;
-    final List<CqlInterval> result = [];
+    final result = <CqlInterval>[];
     for (final interval in collapsed) {
       final sub = _computeSubIntervals(interval, per);
       // null return from _computeSubIntervals means incompatible per
@@ -150,7 +150,7 @@ class Expand extends BinaryExpression {
   static dynamic normalizePer(dynamic per, dynamic start) {
     if (per is! ValidatedQuantity) return per;
     final unit = per.unit;
-    final num? numVal = num.tryParse(per.value.asUcumDecimal());
+    final numVal = num.tryParse(per.value.asUcumDecimal());
     if (numVal == null) return per;
 
     // Numeric intervals: per with unit '1' or no unit → convert to matching type
@@ -198,7 +198,7 @@ class Expand extends BinaryExpression {
   /// Compute the sub-intervals for a single interval.
   /// Returns null if per is incompatible with the interval type.
   List<CqlInterval>? _computeSubIntervals(CqlInterval interval, dynamic per) {
-    final List<CqlInterval> result = [];
+    final result = <CqlInterval>[];
     // Check original boundaries for null (not getStart/getEnd which substitute min/max)
     if (interval.low == null || interval.high == null) {
       return result; // Null boundary → empty result
@@ -206,10 +206,8 @@ class Expand extends BinaryExpression {
     // Use raw low/high for open boundaries (we'll apply per-precision
     // successor/predecessor after normalization). For closed boundaries,
     // use getStart/getEnd which handles null→min/max substitution.
-    dynamic start =
-        interval.lowClosed == false ? interval.low : interval.getStart();
-    dynamic end =
-        interval.highClosed == false ? interval.high : interval.getEnd();
+    dynamic start = !interval.lowClosed ? interval.low : interval.getStart();
+    dynamic end = !interval.highClosed ? interval.high : interval.getEnd();
 
     if (start == null || end == null) {
       return result;
@@ -227,12 +225,12 @@ class Expand extends BinaryExpression {
 
     // For open boundaries, apply per-precision successor/predecessor
     // instead of the default type successor/predecessor.
-    if (interval.lowClosed == false && interval.low != null) {
-      start = _perSuccessor(interval.low!, per);
+    if (!interval.lowClosed && interval.low != null) {
+      start = _perSuccessor(interval.low, per);
       if (start == null) return [];
     }
-    if (interval.highClosed == false && interval.high != null) {
-      end = _perPredecessor(interval.high!, per);
+    if (!interval.highClosed && interval.high != null) {
+      end = _perPredecessor(interval.high, per);
       if (end == null) return [];
     }
 
@@ -248,7 +246,7 @@ class Expand extends BinaryExpression {
         per is ValidatedQuantity && !_temporalUnits.contains(per.unit);
 
     // For decimal per, track decimal places for rounding
-    final int decPlaces = isDecimalPer ? _decimalPlaces(per) : 0;
+    final decPlaces = isDecimalPer ? _decimalPlaces(per) : 0;
 
     // Safety limit to prevent infinite loops
     for (var i = 0; i < 100000; i++) {
@@ -277,12 +275,14 @@ class Expand extends BinaryExpression {
       // Only include if the entire sub-interval fits within [start, end]
       if (!(LessOrEqual.lessOrEqual(high, end)?.valueBoolean ?? false)) break;
 
-      result.add(CqlInterval(
-        low: start,
-        lowClosed: true,
-        high: high,
-        highClosed: true,
-      ));
+      result.add(
+        CqlInterval(
+          low: start,
+          lowClosed: true,
+          high: high,
+          highClosed: true,
+        ),
+      );
       start = nextStart;
     }
 
@@ -335,7 +335,9 @@ class Expand extends BinaryExpression {
   /// Check if ceiling alignment is needed: returns true if the original
   /// date/time has sub-per-precision fields that aren't at their minimum.
   static bool _needsCeilingAlignment(
-      CqlDateTimeBase original, ValidatedQuantity per) {
+    CqlDateTimeBase original,
+    ValidatedQuantity per,
+  ) {
     final unit = per.unit;
     // Fields to check and their minimums:
     // month→1, day→1, hour→0, minute→0, second→0, millisecond→0
@@ -428,7 +430,10 @@ class Expand extends BinaryExpression {
   /// Adjust start/end boundaries based on per type and precision.
   /// Returns null if per is more precise than boundaries (for dates/times).
   static (dynamic, dynamic)? _adjustBoundaries(
-      dynamic start, dynamic end, dynamic per) {
+    dynamic start,
+    dynamic end,
+    dynamic per,
+  ) {
     // Integer interval with decimal per: expand integer range to decimal
     if (start is CqlInteger && per is CqlDecimal) {
       final step = _decimalStepSize(per);
@@ -482,7 +487,7 @@ class Expand extends BinaryExpression {
       if (perNum != null && perNum == perNum.truncateToDouble()) {
         final startNum = num.tryParse(start.value.asUcumDecimal())?.toDouble();
         final endNum = end is ValidatedQuantity
-            ? num.tryParse((end).value.asUcumDecimal())?.toDouble()
+            ? num.tryParse(end.value.asUcumDecimal())?.toDouble()
             : null;
         if (startNum != null && endNum != null) {
           final ceilStart = startNum == startNum.truncateToDouble()
@@ -491,8 +496,10 @@ class Expand extends BinaryExpression {
           final floorEnd = endNum.truncateToDouble();
           return (
             ValidatedQuantity.fromNumber(ceilStart, unit: start.unit),
-            ValidatedQuantity.fromNumber(floorEnd,
-                unit: (end as ValidatedQuantity).unit),
+            ValidatedQuantity.fromNumber(
+              floorEnd,
+              unit: (end as ValidatedQuantity).unit,
+            ),
           );
         }
       }
@@ -534,7 +541,7 @@ class Expand extends BinaryExpression {
 
     // Truncate to per precision
     return CqlTime.fromUnits(
-      hour: value.hour!,
+      hour: value.hour,
       minute: perPrecision >= 1 ? value.minute : null,
       second: perPrecision >= 2 ? value.second : null,
       millisecond: perPrecision >= 3 ? value.millisecond : null,
@@ -543,7 +550,9 @@ class Expand extends BinaryExpression {
 
   /// Truncate CqlDateTimeBase to per precision. Returns null if per is finer.
   static dynamic _truncateDateTimeToPer(
-      CqlDateTimeBase value, ValidatedQuantity per) {
+    CqlDateTimeBase value,
+    ValidatedQuantity per,
+  ) {
     final unit = per.unit;
     final int perPrecision;
     switch (unit) {

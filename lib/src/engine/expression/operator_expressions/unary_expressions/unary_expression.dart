@@ -2,9 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Abstract base class for expressions that take a single argument.
 abstract class UnaryExpression extends OperatorExpression {
-  /// CqlExpression as the operand.
-  CqlExpression operand;
-
   UnaryExpression({
     required this.operand,
     super.annotation,
@@ -131,6 +128,9 @@ abstract class UnaryExpression extends OperatorExpression {
         throw ArgumentError('Unknown type: $type');
     }
   }
+
+  /// CqlExpression as the operand.
+  CqlExpression operand;
 
   @override
   Map<String, dynamic> toJson() {

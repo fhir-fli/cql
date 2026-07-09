@@ -5,12 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [ChoiceTypeInfo] type represents a choice type, extending TypeInfo,
 /// including type and choice elements.
 class ChoiceTypeInfo extends TypeInfo {
-  /// Choice type elements.
-  List<TypeSpecifierModel>? choice;
-
-  /// Deprecated type element.
-  List<TypeSpecifierModel>? type;
-
   ChoiceTypeInfo({
     this.type,
     this.choice,
@@ -21,17 +15,25 @@ class ChoiceTypeInfo extends TypeInfo {
     return ChoiceTypeInfo(
       type: json['type'] != null
           ? (json['type'] as List)
-              .map((i) => TypeSpecifierModel.fromJson(i))
+              .map(
+                  (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
       choice: json['choice'] != null
           ? (json['choice'] as List)
-              .map((i) => TypeSpecifierModel.fromJson(i))
+              .map(
+                  (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
       baseType: json['baseType'] as String?,
     );
   }
+
+  /// Choice type elements.
+  List<TypeSpecifierModel>? choice;
+
+  /// Deprecated type element.
+  List<TypeSpecifierModel>? type;
 
   @override
   Map<String, dynamic> toJson() {

@@ -2,11 +2,11 @@
 import 'package:cql/src/internal.dart';
 
 class TerminologyProviderException implements Exception {
-  String message;
   TerminologyProviderException(this.message);
+  String message;
 
   @override
-  String toString() => "TerminologyProviderException: $message";
+  String toString() => 'TerminologyProviderException: $message';
 }
 
 /// Resolves value-set membership against a terminology source (a canonical
@@ -33,8 +33,8 @@ abstract class TerminologyProvider {
   /// can't be resolved) — the CQL "unknown" result. Throws
   /// [TerminologyProviderException] only on an actual resolution error.
   Future<bool?> codeInValueSet({
-    String? system,
     required String? code,
     required CqlValueSet valueSet,
+    String? system,
   });
 }

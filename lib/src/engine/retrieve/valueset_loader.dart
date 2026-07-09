@@ -90,7 +90,8 @@ class ValueSetLoader {
   /// Loads a single ValueSet JSON file and returns a map entry
   /// `{url: List<{system, code}>}`, or null if not a valid ValueSet.
   static MapEntry<String, List<Map<String, String>>>? loadFromFile(
-      String filePath) {
+    String filePath,
+  ) {
     try {
       final content = File(filePath).readAsStringSync();
       final json = jsonDecode(content);

@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to perform integer division of its arguments.
 /// If either argument is null, the result is null.
@@ -118,7 +117,6 @@ class TruncatedDivide extends BinaryExpression {
               return CqlDecimal(left.valueNum! ~/ right.valueNum!);
             }
           }
-          break;
         case CqlLong _:
           {
             if (right is CqlInteger) {
@@ -127,24 +125,24 @@ class TruncatedDivide extends BinaryExpression {
               return CqlLong(left.valueBigInt! ~/ right.valueBigInt!);
             } else if (right is CqlDecimal) {
               return CqlDecimal(
-                  left.valueBigInt!.toDouble() ~/ right.valueNum!);
+                left.valueBigInt!.toDouble() ~/ right.valueNum!,
+              );
             }
           }
-          break;
         case CqlDecimal _:
           {
             if (right is CqlInteger) {
               return CqlDecimal(left.valueNum! ~/ right.valueNum!);
             } else if (right is CqlLong) {
               return CqlDecimal(
-                  left.valueNum! ~/ right.valueBigInt!.toDouble());
+                left.valueNum! ~/ right.valueBigInt!.toDouble(),
+              );
             } else if (right is CqlDecimal) {
               return CqlDecimal(left.valueNum! ~/ right.valueNum!);
             } else if (right is ValidatedQuantity && right.isValid()) {
               return ValidatedQuantity.fromNumber(left.valueNum!) ~/ right;
             }
           }
-          break;
         case ValidatedQuantity _:
           {
             if (right is CqlDecimal && left.isValid()) {
@@ -159,10 +157,11 @@ class TruncatedDivide extends BinaryExpression {
               }
               final truncated = (leftNum / rightNum).truncateToDouble();
               return ValidatedQuantity(
-                  value: UcumDecimal.fromDouble(truncated), unit: left.unit);
+                value: UcumDecimal.fromDouble(truncated),
+                unit: left.unit,
+              );
             }
           }
-          break;
       }
     } catch (_) {
       return null;

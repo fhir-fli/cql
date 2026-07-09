@@ -63,11 +63,9 @@ import 'package:cql/src/internal.dart';
 /// define "SameAsIsNull": @2012-01-01 same day as null
 /// This operator is also defined for intervals, see the Same As (Intervals) operator for more information.
 class SameAs extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   SameAs({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -96,6 +94,7 @@ class SameAs extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
@@ -169,7 +168,10 @@ class SameAs extends BinaryExpression {
   }
 
   static CqlBoolean? sameAs(
-      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
+    dynamic left,
+    dynamic right,
+    CqlDateTimePrecision? precision,
+  ) {
     if (left == null || right == null) {
       return null;
     }
@@ -252,13 +254,14 @@ class SameAs extends BinaryExpression {
     final offsetHours = (offset ?? 0).truncate();
     final offsetMinutes = (((offset ?? 0) - offsetHours) * 60).truncate();
     final utc = DateTime.utc(
-        dt.year!,
-        dt.month ?? 1,
-        dt.day ?? 1,
-        (dt.hour ?? 0) - offsetHours,
-        (dt.minute ?? 0) - offsetMinutes,
-        dt.second ?? 0,
-        dt.millisecond ?? 0);
+      dt.year!,
+      dt.month ?? 1,
+      dt.day ?? 1,
+      (dt.hour ?? 0) - offsetHours,
+      (dt.minute ?? 0) - offsetMinutes,
+      dt.second ?? 0,
+      dt.millisecond ?? 0,
+    );
     return CqlDateTime.fromUnits(
       year: utc.year,
       month: dt.hasMonth ? utc.month : null,
@@ -303,8 +306,10 @@ class SameAs extends BinaryExpression {
   }
 
   static CqlBoolean? _sameAsDateTime(
-      CqlDateTimeBase left, CqlDateTimeBase right,
-      [CqlDateTimePrecision? precision]) {
+    CqlDateTimeBase left,
+    CqlDateTimeBase right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (precision == null) {
       final result = left.isEqual(right);
       return result == null ? null : CqlBoolean(result);

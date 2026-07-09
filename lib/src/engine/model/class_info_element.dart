@@ -6,59 +6,9 @@ import 'package:cql/src/internal.dart';
 /// the elementTypeSpecifier. It provides an option to define typeSpecifier
 /// and elementTypeSpecifier elements along with attributes.
 @Deprecated(
-    'This element is deprecated. New implementations should use the new elementTypeSpecifier element')
+  'This element is deprecated. New implementations should use the new elementTypeSpecifier element',
+)
 class ClassInfoElement {
-  // Binding information
-  final BindingInfo? binding;
-
-  // Optional attribute - Additional markdown comments on the element
-  final String? comment;
-
-  // Constraints list
-  final List<ConstraintInfo> constraints = [];
-
-  // Optional attribute - Detailed markdown definition of the element
-  final String? definition;
-
-  // Optional attribute - Short description of the element
-  final String? description;
-
-  // Optional attribute - Element type
-  final String? elementType;
-
-  // Element type specifier
-  final TypeSpecifierModel? elementTypeSpecifier;
-
-  // Optional attribute - User-friendly label for the element
-  final String? label;
-
-  // Optional attribute - Maximum cardinality of the element
-  final String? max;
-
-  // Optional attribute - Minimum cardinality of the element
-  final int? min;
-
-  // Optional attribute - Whether the element is relevant for the use case
-  final bool? mustSupport;
-
-  // Required attribute - Name of the element
-  final String name;
-
-  // Optional attribute - Whether the list-valued element is one-based
-  final bool? oneBased;
-
-  // Optional attribute - Whether the element is prohibited
-  final bool? prohibited;
-
-  // Optional attribute - Access path for the element
-  final String? target;
-
-  // Optional attribute - Deprecated type attribute
-  final String? type;
-
-  // Deprecated element
-  final TypeSpecifierModel? typeSpecifier;
-
   ClassInfoElement({
     required this.name,
     this.typeSpecifier,
@@ -136,6 +86,56 @@ class ClassInfoElement {
       mustSupport: mustSupport,
     );
   }
+  // Binding information
+  final BindingInfo? binding;
+
+  // Optional attribute - Additional markdown comments on the element
+  final String? comment;
+
+  // Constraints list
+  final List<ConstraintInfo> constraints = [];
+
+  // Optional attribute - Detailed markdown definition of the element
+  final String? definition;
+
+  // Optional attribute - Short description of the element
+  final String? description;
+
+  // Optional attribute - Element type
+  final String? elementType;
+
+  // Element type specifier
+  final TypeSpecifierModel? elementTypeSpecifier;
+
+  // Optional attribute - User-friendly label for the element
+  final String? label;
+
+  // Optional attribute - Maximum cardinality of the element
+  final String? max;
+
+  // Optional attribute - Minimum cardinality of the element
+  final int? min;
+
+  // Optional attribute - Whether the element is relevant for the use case
+  final bool? mustSupport;
+
+  // Required attribute - Name of the element
+  final String name;
+
+  // Optional attribute - Whether the list-valued element is one-based
+  final bool? oneBased;
+
+  // Optional attribute - Whether the element is prohibited
+  final bool? prohibited;
+
+  // Optional attribute - Access path for the element
+  final String? target;
+
+  // Optional attribute - Deprecated type attribute
+  final String? type;
+
+  // Deprecated element
+  final TypeSpecifierModel? typeSpecifier;
 
   @override
   String toString() {

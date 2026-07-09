@@ -3,10 +3,6 @@ import 'package:cql/src/internal.dart';
 /// Filter operator returns a list with only those elements in the source list for which the condition element evaluates to true.
 /// If the source argument is null, the result is null.
 class Filter extends CqlExpression {
-  final CqlExpression condition;
-  final String scope;
-  final CqlExpression source;
-
   Filter({
     required this.source,
     required this.condition,
@@ -34,6 +30,9 @@ class Filter extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression condition;
+  final String scope;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {
@@ -79,7 +78,7 @@ class Filter extends CqlExpression {
     for (final item in items) {
       context[scope] = item;
       final condResult = await condition.execute(context);
-      bool keep = false;
+      var keep = false;
       if (condResult == true) {
         keep = true;
       } else if (condResult is CqlBoolean && condResult.valueBoolean == true) {

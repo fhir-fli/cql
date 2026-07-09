@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to perform numeric subtraction of its arguments.
 /// When subtracting quantities, the dimensions of each quantity must be the
@@ -159,7 +158,8 @@ class Subtract extends BinaryExpression {
   Future<dynamic> execute(Map<String, dynamic> context) async {
     if (operand.length != 2) {
       throw CqlException(
-          message: "The Subtract expression must have 2 operands.");
+        message: 'The Subtract expression must have 2 operands.',
+      );
     } else {
       final left = await operand[0].execute(context);
       final right = await operand[1].execute(context);
@@ -177,41 +177,62 @@ class Subtract extends BinaryExpression {
         return right is CqlInteger
             ? CqlInteger.tryParse(left.valueNum! - right.valueNum!)
             : right is CqlDecimal
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .subtract(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .subtract(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlLong
                     ? CqlLong.tryParse(
-                        (left.valueInt as int) - right.valueBigInt!.toInt())
+                        (left.valueInt!) - right.valueBigInt!.toInt(),
+                      )
                     : null;
       case CqlLong _:
         return right is CqlLong
             ? CqlLong(left.valueBigInt! - right.valueBigInt!)
             : right is CqlDecimal
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .subtract(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .subtract(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlInteger
                     ? CqlLong.tryParse(
-                        left.valueBigInt!.toInt() - right.valueInt!)
+                        left.valueBigInt!.toInt() - right.valueInt!,
+                      )
                     : null;
       case CqlDecimal _:
         return right is CqlDecimal
-            ? CqlDecimal(double.parse(UcumDecimal.fromString(left.valueString!)
-                .subtract(UcumDecimal.fromString(right.valueString!))
-                .asUcumDecimal()))
+            ? CqlDecimal(
+                double.parse(
+                  UcumDecimal.fromString(left.valueString)
+                      .subtract(UcumDecimal.fromString(right.valueString))
+                      .asUcumDecimal(),
+                ),
+              )
             : right is CqlInteger
-                ? CqlDecimal(double.parse(
-                    UcumDecimal.fromString(left.valueString!)
-                        .subtract(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                ? CqlDecimal(
+                    double.parse(
+                      UcumDecimal.fromString(left.valueString)
+                          .subtract(UcumDecimal.fromString(right.valueString))
+                          .asUcumDecimal(),
+                    ),
+                  )
                 : right is CqlLong
-                    ? CqlDecimal(double.parse(UcumDecimal.fromString(
-                            left.valueString!)
-                        .subtract(UcumDecimal.fromString(right.valueString!))
-                        .asUcumDecimal()))
+                    ? CqlDecimal(
+                        double.parse(
+                          UcumDecimal.fromString(
+                            left.valueString,
+                          )
+                              .subtract(
+                                  UcumDecimal.fromString(right.valueString))
+                              .asUcumDecimal(),
+                        ),
+                      )
                     : null;
       case ValidatedQuantity _:
         return right is ValidatedQuantity
@@ -245,10 +266,11 @@ class Subtract extends BinaryExpression {
           if (right is CqlInterval) {
             // [a,b] - [c,d] = [a-d, b-c]
             return CqlInterval(
-                low: subtract(left.getStart(), right.getEnd()),
-                lowClosed: true,
-                high: subtract(left.getEnd(), right.getStart()),
-                highClosed: true);
+              low: subtract(left.getStart(), right.getEnd()),
+              lowClosed: true,
+              high: subtract(left.getEnd(), right.getStart()),
+              highClosed: true,
+            );
           } else {
             return null;
           }

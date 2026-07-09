@@ -5,27 +5,6 @@ import 'package:cql/src/internal.dart';
 /// The [TupleTypeInfoElement] defines an element within the TupleTypeInfo,
 /// indicating its type and associated attributes.
 class TupleTypeInfoElement {
-  /// Element type as a string.
-  String? elementType;
-
-  /// Element type specifier.
-  TypeSpecifierModel? elementTypeSpecifier;
-
-  /// Name of the element.
-  String name;
-
-  /// Indicates if the starting index for a list-valued element is one.
-  bool? oneBased;
-
-  /// Specifies whether the element is prohibited.
-  bool? prohibited;
-
-  /// Deprecated attribute.
-  String? type;
-
-  /// Deprecated element.
-  TypeSpecifierModel? typeSpecifier;
-
   TupleTypeInfoElement({
     required this.name,
     this.typeSpecifier,
@@ -51,6 +30,27 @@ class TupleTypeInfoElement {
       oneBased: json['oneBased'] as bool?,
     );
   }
+
+  /// Element type as a string.
+  String? elementType;
+
+  /// Element type specifier.
+  TypeSpecifierModel? elementTypeSpecifier;
+
+  /// Name of the element.
+  String name;
+
+  /// Indicates if the starting index for a list-valued element is one.
+  bool? oneBased;
+
+  /// Specifies whether the element is prohibited.
+  bool? prohibited;
+
+  /// Deprecated attribute.
+  String? type;
+
+  /// Deprecated element.
+  TypeSpecifierModel? typeSpecifier;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

@@ -2,9 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Expression allowing tuples of any type to be built up as an expression.
 class Tuple extends CqlExpression {
-  /// List of tuple elements specifying values for the elements of the tuple.
-  List<TupleElement>? element;
-
   Tuple({
     this.element,
     super.annotation,
@@ -33,9 +30,12 @@ class Tuple extends CqlExpression {
             : null,
       );
 
+  /// List of tuple elements specifying values for the elements of the tuple.
+  List<TupleElement>? element;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {'type': type};
+    final val = <String, dynamic>{'type': type};
     void writeNotNull(String key, dynamic value) {
       if (value != null) {
         val[key] = value;
@@ -57,7 +57,7 @@ class Tuple extends CqlExpression {
 
   @override
   Future<Map<String, dynamic>> execute(Map<String, dynamic> context) async {
-    final Map<String, dynamic> result = {};
+    final result = <String, dynamic>{};
     for (final e in element!) {
       result[e.name] = await e.value.execute(context);
     }

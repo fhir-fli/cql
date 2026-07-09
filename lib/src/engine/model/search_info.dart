@@ -1,19 +1,10 @@
 import 'package:cql/src/internal.dart';
 
 class SearchInfo {
-  final String? comment;
-  final String? definition;
-  final String? description;
-  final String? label;
-  final String name;
-  final String path;
-  final String? type;
-  final TypeSpecifierModel? typeSpecifier;
-
   SearchInfo({
-    this.typeSpecifier,
     required this.name,
     required this.path,
+    this.typeSpecifier,
     this.type,
     this.label,
     this.description,
@@ -35,6 +26,14 @@ class SearchInfo {
       comment: json['comment'],
     );
   }
+  final String? comment;
+  final String? definition;
+  final String? description;
+  final String? label;
+  final String name;
+  final String path;
+  final String? type;
+  final TypeSpecifierModel? typeSpecifier;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

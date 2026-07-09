@@ -7,11 +7,12 @@ class CqlOverlapsIntervalOperatorPhraseVisitor
 
   @override
   CqlExpression visitOverlapsIntervalOperatorPhrase(
-      OverlapsIntervalOperatorPhraseContext ctx,
-      [CqlExpression? left,
-      CqlExpression? right]) {
+    OverlapsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     String? beforeAfter;
     CqlDateTimePrecision? dateTimePrecisionSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -21,7 +22,8 @@ class CqlOverlapsIntervalOperatorPhraseVisitor
         }
       } else if (child is DateTimePrecisionSpecifierContext) {
         dateTimePrecisionSpecifier = CqlDateTimePrecisionExtension.fromJson(
-            visitDateTimePrecisionSpecifier(child));
+          visitDateTimePrecisionSpecifier(child),
+        );
       }
     }
     if (left != null && right != null) {

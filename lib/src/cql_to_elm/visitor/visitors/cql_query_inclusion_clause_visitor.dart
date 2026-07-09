@@ -7,7 +7,7 @@ class CqlQueryInclusionClauseVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitQueryInclusionClause(QueryInclusionClauseContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is WithClauseContext) {
         return visitWithClause(child);

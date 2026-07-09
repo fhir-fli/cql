@@ -7,9 +7,10 @@ class CqlSetAggregateExpressionTermVisitor
 
   @override
   CqlExpression visitSetAggregateExpressionTerm(
-      SetAggregateExpressionTermContext ctx) {
+    SetAggregateExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     bool? expandOrCollapse;
     CqlExpression? expression;
     CqlExpression? perExpression;
@@ -23,8 +24,10 @@ class CqlSetAggregateExpressionTermVisitor
           perExpression = byContext(child);
         }
       } else if (child is DateTimePrecisionContext) {
-        perExpression = LiteralQuantity(LiteralDecimal(1),
-            unit: visitDateTimePrecision(child));
+        perExpression = LiteralQuantity(
+          LiteralDecimal(1),
+          unit: visitDateTimePrecision(child),
+        );
       }
     }
     if (expression != null) {

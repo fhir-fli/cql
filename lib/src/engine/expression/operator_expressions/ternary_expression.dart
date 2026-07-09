@@ -2,9 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// Abstract base class for expressions that take three arguments.
 abstract class TernaryExpression extends OperatorExpression {
-  /// List of expressions as operand.
-  final List<CqlExpression> operand;
-
   TernaryExpression({
     required this.operand,
     super.annotation,
@@ -23,6 +20,9 @@ abstract class TernaryExpression extends OperatorExpression {
         throw ArgumentError('Invalid type: $type');
     }
   }
+
+  /// List of expressions as operand.
+  final List<CqlExpression> operand;
 
   @override
   Map<String, dynamic> toJson() {

@@ -50,11 +50,9 @@ import 'package:cql/src/internal.dart';
 /// define "MeetsAfterIsFalse": Interval[6, 10] meets after Interval[0, 7]
 /// define "MeetsIsNull": Interval[6, 10] meets (null as `Interval<Integer>`)
 class MeetsBefore extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   MeetsBefore({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -83,10 +81,11 @@ class MeetsBefore extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -127,8 +126,11 @@ class MeetsBefore extends BinaryExpression {
     return meetsBefore(left, right, precision);
   }
 
-  static CqlBoolean? meetsBefore(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? meetsBefore(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null || right == null) {
       return null;
     } else if (left is CqlInterval && right is CqlInterval) {

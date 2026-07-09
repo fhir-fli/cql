@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to check if the first operand is completely included in the second
 /// operand.
@@ -69,11 +68,9 @@ import 'package:cql/src/internal.dart';
 /// define "IncludedInIsFalse": { 1, 3, 5 } included in { 1, 3 }
 /// define "IncludedInIsAlsoNull": { 1, 3, 5, null } included in null
 class IncludedIn extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   IncludedIn({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -102,10 +99,11 @@ class IncludedIn extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -150,7 +148,10 @@ class IncludedIn extends BinaryExpression {
   }
 
   static CqlBoolean? includedIn(
-      dynamic left, dynamic right, CqlDateTimePrecision? precision) {
+    dynamic left,
+    dynamic right,
+    CqlDateTimePrecision? precision,
+  ) {
     /// For all variations, if left is null, then return null
     if (left == null) {
       return null;
@@ -221,7 +222,10 @@ class IncludedIn extends BinaryExpression {
   /// uncertain cases. When the left interval is entirely at the known boundary
   /// of the right interval, the result is true.
   static CqlBoolean? _intervalIncludedIn(
-      CqlInterval left, CqlInterval right, CqlDateTimePrecision? precision) {
+    CqlInterval left,
+    CqlInterval right,
+    CqlDateTimePrecision? precision,
+  ) {
     final leftStart = left.getStart();
     final leftEnd = left.getEnd();
     final rightStart = right.getStart();

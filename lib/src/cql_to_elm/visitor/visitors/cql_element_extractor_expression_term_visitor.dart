@@ -7,9 +7,10 @@ class CqlElementExtractorExpressionTermVisitor
 
   @override
   SingletonFrom visitElementExtractorExpressionTerm(
-      ElementExtractorExpressionTermContext ctx) {
+    ElementExtractorExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? operand;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionTermContext) {

@@ -1,13 +1,6 @@
 import 'package:cql/src/internal.dart';
 
 class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
-  T? low;
-  bool lowClosed;
-  T? high;
-  bool highClosed;
-  dynamic state; // Adjust based on your State implementation
-  bool uncertain = false;
-
   CqlInterval({
     this.low,
     bool? lowClosed,
@@ -17,19 +10,27 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
   })  : lowClosed = lowClosed ?? true,
         highClosed = highClosed ?? true {
     if (low is CqlDateTimeBase && high is CqlDateTimeBase) {
-      if ((low as CqlDateTimeBase).isAfter(high as CqlDateTimeBase) ?? true) {
+      if ((low! as CqlDateTimeBase).isAfter(high! as CqlDateTimeBase) ?? true) {
         throw Exception(
-            "Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.");
+          'Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.',
+        );
       }
     } else if (low != null && high != null) {
-      bool? isStartGreater =
+      final isStartGreater =
           Greater.greater(getStart(), getEnd())?.valueBoolean;
       if (isStartGreater == true) {
         throw Exception(
-            "Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.");
+          'Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.',
+        );
       }
     }
   }
+  T? low;
+  bool lowClosed;
+  T? high;
+  bool highClosed;
+  dynamic state; // Adjust based on your State implementation
+  bool uncertain = false;
 
   String get type => T != dynamic
       ? T.toString()
@@ -44,12 +45,13 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
       return null;
     }
 
-    if (start is CqlNumber || false) {
+    if (start is CqlNumber) {
       return Subtract.subtract(end, start);
     }
 
     throw Exception(
-        "Cannot perform width operator with argument of type '${start.runtimeType}'.");
+      "Cannot perform width operator with argument of type '${start.runtimeType}'.",
+    );
   }
 
   bool isUncertain() => uncertain;
@@ -90,17 +92,18 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
       if (left is Comparable) {
         return left.compareTo(right);
       } else {
-        throw Exception("Type ${left.runtimeType} is not comparable");
+        throw Exception('Type ${left.runtimeType} is not comparable');
       }
     } on TypeError catch (_) {
       throw Exception(
-          "Type ${left.runtimeType} is not compatible for comparison with ${right.runtimeType}");
+        'Type ${left.runtimeType} is not compatible for comparison with ${right.runtimeType}',
+      );
     }
   }
 
-  bool contains(dynamic value) => value == null
-      ? false
-      : value is CqlInterval
+  bool contains(dynamic value) =>
+      !(value == null) &&
+      (value is CqlInterval
           ? (GreaterOrEqual.greaterOrEqual(value.getStart(), getStart())
                       ?.valueBoolean ??
                   false) &&
@@ -109,15 +112,16 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
                   false)
           : (GreaterOrEqual.greaterOrEqual(value, getStart())?.valueBoolean ??
                   false) &&
-              (LessOrEqual.lessOrEqual(value, getEnd())?.valueBoolean ?? false);
+              (LessOrEqual.lessOrEqual(value, getEnd())?.valueBoolean ??
+                  false));
 
   @override
-  bool equivalent(Object other) => other is CqlInterval
-      ? (Equivalent.equivalent(getStart(), other.getStart()).valueBoolean ??
+  bool equivalent(Object other) =>
+      other is CqlInterval &&
+      ((Equivalent.equivalent(getStart(), other.getStart()).valueBoolean ??
               false) &&
           (Equivalent.equivalent(getEnd(), other.getEnd()).valueBoolean ??
-              false)
-      : false;
+              false));
 
   @override
   bool? equal(Object other) {
@@ -128,32 +132,37 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
         }
       }
 
-      return And.and(Equal.equal(getStart(), other.getStart()),
-              Equal.equal(getEnd(), other.getEnd()))
-          ?.valueBoolean;
+      return And.and(
+        Equal.equal(getStart(), other.getStart()),
+        Equal.equal(getEnd(), other.getEnd()),
+      )?.valueBoolean;
     }
 
     if (other is int) {
       // Assuming the constructor and methods to handle this scenario
-      return equal(CqlInterval(
+      return equal(
+        CqlInterval(
           low: other,
           lowClosed: true,
           high: other,
           highClosed: true,
-          state: state));
+          state: state,
+        ),
+      );
     }
 
     throw Exception(
-        "Cannot perform equal operation on types: '$runtimeType' and '${other.runtimeType}'");
+      "Cannot perform equal operation on types: '$runtimeType' and '${other.runtimeType}'",
+    );
   }
 
   /// This method returns the intersection of two intervals.
   CqlInterval? intersect(CqlInterval right) {
     // Get start and end points for both intervals
-    var leftStart = getStart();
-    var leftEnd = getEnd();
-    var rightStart = right.getStart();
-    var rightEnd = right.getEnd();
+    final leftStart = getStart();
+    final leftEnd = getEnd();
+    final rightStart = right.getStart();
+    final rightEnd = right.getEnd();
 
     // Handle null boundaries as extending to infinity
     // Both start AND end null means empty/invalid — return null
@@ -166,7 +175,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
         leftEnd != null &&
         rightStart != null &&
         rightEnd != null) {
-      bool overlaps = Overlaps.overlaps(this, right)?.valueBoolean ?? false;
+      final overlaps = Overlaps.overlaps(this, right)?.valueBoolean ?? false;
       if (!overlaps) return null;
     } else {
       // Partial null check: if left ends before right starts, no overlap
@@ -234,18 +243,19 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
 
     // Return the new interval representing the intersection
     return CqlInterval(
-        low: maxStart,
-        lowClosed: resultLowClosed,
-        high: minEnd,
-        highClosed: resultHighClosed);
+      low: maxStart,
+      lowClosed: resultLowClosed,
+      high: minEnd,
+      highClosed: resultHighClosed,
+    );
   }
 
   CqlInterval? except(CqlInterval right) {
     // Get start and end points for both intervals
-    var leftStart = getStart();
-    var leftEnd = getEnd();
-    var rightStart = right.getStart();
-    var rightEnd = right.getEnd();
+    final leftStart = getStart();
+    final leftEnd = getEnd();
+    final rightStart = right.getStart();
+    final rightEnd = right.getEnd();
 
     // Ensure no start or end point is null
     if (leftStart == null ||
@@ -256,7 +266,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
     }
 
     // Determine if intervals overlap
-    bool overlaps = Overlaps.overlaps(this, right)?.valueBoolean ?? false;
+    final overlaps = Overlaps.overlaps(this, right)?.valueBoolean ?? false;
     if (!overlaps) {
       return this;
     }
@@ -266,10 +276,14 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
       final endsEqual = Equal.equal(rightEnd, leftEnd)?.valueBoolean ?? false;
       if (endsEqual) {
         final newEnd = Predecessor.predecessor(rightStart);
-        if ((GreaterOrEqual.greaterOrEqual(newEnd, leftStart)?.valueBoolean ??
-            false)) {
+        if (GreaterOrEqual.greaterOrEqual(newEnd, leftStart)?.valueBoolean ??
+            false) {
           return CqlInterval(
-              low: leftStart, lowClosed: true, high: newEnd, highClosed: true);
+            low: leftStart,
+            lowClosed: true,
+            high: newEnd,
+            highClosed: true,
+          );
         }
         return null;
       }
@@ -278,10 +292,13 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
           Equal.equal(rightStart, leftStart)?.valueBoolean ?? false;
       if (startsEqual) {
         final newStart = Successor.successor(rightEnd);
-        if ((LessOrEqual.lessOrEqual(newStart, leftEnd)?.valueBoolean ??
-            false)) {
+        if (LessOrEqual.lessOrEqual(newStart, leftEnd)?.valueBoolean ?? false) {
           return CqlInterval(
-              low: newStart, lowClosed: true, high: leftEnd, highClosed: true);
+            low: newStart,
+            lowClosed: true,
+            high: leftEnd,
+            highClosed: true,
+          );
         }
         return null;
       }
@@ -291,7 +308,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
 
     dynamic start;
     dynamic end;
-    if ((Less.less(leftStart, rightStart)?.valueBoolean ?? false)) {
+    if (Less.less(leftStart, rightStart)?.valueBoolean ?? false) {
       start = leftStart;
       end = Predecessor.predecessor(rightStart);
     } else if (Greater.greater(leftEnd, rightEnd)?.valueBoolean ?? false) {
@@ -305,7 +322,11 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
     }
 
     return CqlInterval(
-        low: start, lowClosed: true, high: end, highClosed: true);
+      low: start,
+      lowClosed: true,
+      high: end,
+      highClosed: true,
+    );
   }
 
   @override
@@ -318,7 +339,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
 
   @override
   int get hashCode {
-    int result = 17;
+    var result = 17;
     result = 31 * result + (lowClosed ? 1 : 0);
     result = 47 * result + (highClosed ? 1 : 0);
     result = 13 * result + (low != null ? low.hashCode : 0);

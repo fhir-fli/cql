@@ -7,7 +7,7 @@ class CqlSourceClauseVisitor extends CqlBaseVisitor<List<AliasedQuerySource>> {
   @override
   List<AliasedQuerySource> visitSourceClause(SourceClauseContext ctx) {
     printIf(ctx);
-    List<AliasedQuerySource> source = [];
+    final source = <AliasedQuerySource>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is AliasedQuerySourceContext) {
         source.add(visitAliasedQuerySource(child));

@@ -1,5 +1,3 @@
-export 'type_infos/type_infos.dart';
-export 'type_specifiers/type_specifiers.dart';
 export 'binding_info.dart';
 export 'binding_strength.dart';
 export 'class_info_element.dart';
@@ -11,5 +9,7 @@ export 'model_info.dart';
 export 'relationship_info.dart';
 export 'search_info.dart';
 export 'tuple_type_info_element.dart';
-export 'type_specifiers/tuple_type_specifier_element.dart';
+export 'type_infos/type_infos.dart';
 export 'type_parameter_info.dart';
+export 'type_specifiers/tuple_type_specifier_element.dart';
+export 'type_specifiers/type_specifiers.dart';

@@ -3,8 +3,6 @@ import 'package:cql/src/internal.dart';
 /// The ByColumn element specifies that the sort should be performed using the given column and direction.
 /// This approach is used to specify the sort order for a query when the result is a list of tuples.
 class ByColumn extends SortByItem {
-  final String path;
-
   ByColumn({
     required super.direction,
     required this.path,
@@ -30,6 +28,7 @@ class ByColumn extends SortByItem {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String path;
 
   @override
   Map<String, dynamic> toJson() {

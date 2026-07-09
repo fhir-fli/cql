@@ -8,8 +8,8 @@ class CqlChoiceTypeSpecifierVisitor
   @override
   ChoiceTypeSpecifier visitChoiceTypeSpecifier(ChoiceTypeSpecifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    List<TypeSpecifierExpression> choice = <TypeSpecifierExpression>[];
+    final thisNode = getNextNode();
+    final choice = <TypeSpecifierExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is TypeSpecifierContext) {
         final newTypeSpecifier = visitTypeSpecifier(child);

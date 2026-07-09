@@ -6,11 +6,9 @@ import 'package:cql/src/internal.dart';
 /// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class ProperIncludes extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   ProperIncludes({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -39,6 +37,7 @@ class ProperIncludes extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
@@ -82,8 +81,11 @@ class ProperIncludes extends BinaryExpression {
     return properIncludes(left, right, precision);
   }
 
-  static CqlBoolean? properIncludes(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? properIncludes(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left == null) return null;
     // When left is a List/Interval and right is a point (not a List or Interval),
     // delegate to ProperContains (point containment). This handles cases like:

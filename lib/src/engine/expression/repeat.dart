@@ -5,10 +5,6 @@ import 'package:cql/src/internal.dart';
 /// If the source argument is null, the result is null.
 /// If the element argument evaluates to null for some item in the source list, the resulting list will contain a null for that element.
 class Repeat extends CqlExpression {
-  final CqlExpression element;
-  final String scope;
-  final CqlExpression source;
-
   Repeat({
     required this.source,
     required this.element,
@@ -36,10 +32,13 @@ class Repeat extends CqlExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlExpression element;
+  final String scope;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = {
+    final val = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
       'element': element.toJson(),

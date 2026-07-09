@@ -19,9 +19,6 @@ import 'package:cql/src/internal.dart';
 /// define "First1": First({ 1, 2, 5 }) // 1
 /// define "FirstIsNull": First(null)
 class First extends OperatorExpression {
-  final String? orderBy;
-  final CqlExpression source;
-
   First({
     required this.source,
     this.orderBy,
@@ -47,6 +44,8 @@ class First extends OperatorExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final String? orderBy;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {

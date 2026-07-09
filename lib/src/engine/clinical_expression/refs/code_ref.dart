@@ -16,7 +16,7 @@ class CodeRef extends Ref {
   factory CodeRef.fromJson(Map<String, dynamic> json) {
     final name = json['name'];
     if (name == null) {
-      throw ArgumentError("JSON name cannot be null");
+      throw ArgumentError('JSON name cannot be null');
     }
 
     return CodeRef(
@@ -53,14 +53,14 @@ class CodeRef extends Ref {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> val = super.toJson();
+    final val = super.toJson();
     return val;
   }
 
   @override
   Future<CqlCode?> execute(Map<String, dynamic> context) async {
     // Retrieve the CqlLibrary from the context
-    var library = context['library'];
+    final library = context['library'];
     if (library == null || library is! CqlLibrary) {
       throw ArgumentError('CqlLibrary not found in context');
     }
@@ -70,7 +70,7 @@ class CodeRef extends Ref {
       return library.resolveCodeRefFromLibrary(name, libraryName!);
     }
 
-    final CqlCode? code = library.resolveCodeRef(name);
+    final code = library.resolveCodeRef(name);
 
     return code;
   }

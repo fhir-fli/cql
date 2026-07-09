@@ -7,7 +7,7 @@ class CqlCodeSelectorTermVisitor extends CqlBaseVisitor<dynamic> {
   @override
   dynamic visitCodeSelectorTerm(CodeSelectorTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is CodeSelectorContext) {
         return visitCodeSelector(child);

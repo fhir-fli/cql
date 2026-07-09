@@ -6,11 +6,11 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
   @override
   Case visitCaseExpressionTerm(CaseExpressionTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? comparand;
-    List<CaseItem> caseItem = [];
+    final caseItem = <CaseItem>[];
     CqlExpression? elseExpr;
-    int i = 2;
+    var i = 2;
     if (ctx.getChild(1) is ExpressionContext) {
       comparand = byContext(ctx.getChild(1)!);
     } else {
@@ -18,10 +18,13 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
     }
     for (i; i < ctx.childCount - 1; i++) {
       if (ctx.getChild(i) is CaseExpressionItemContext) {
-        caseItem.add(visitCaseExpressionItem(
-            ctx.getChild(i) as CaseExpressionItemContext));
+        caseItem.add(
+          visitCaseExpressionItem(
+            ctx.getChild(i)! as CaseExpressionItemContext,
+          ),
+        );
       } else if (ctx.getChild(i) is ExpressionContext) {
-        elseExpr = byContext(ctx.getChild(i) as ExpressionContext);
+        elseExpr = byContext(ctx.getChild(i)! as ExpressionContext);
       }
     }
     if (caseItem.isNotEmpty && elseExpr != null) {
@@ -42,8 +45,9 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
         for (var i = 0; i < caseTypes.length; i++) {
           if (caseTypes[i] == 'Integer64' || caseTypes[i] == 'Integer') {
             caseItem[i] = CaseItem(
-                when_: caseItem[i].when_,
-                then: ToDecimal(operand: caseItem[i].then));
+              when_: caseItem[i].when_,
+              then: ToDecimal(operand: caseItem[i].then),
+            );
           }
         }
       } else if (totalTypes.contains('Integer64')) {
@@ -53,8 +57,9 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
         for (var i = 0; i < caseTypes.length; i++) {
           if (caseTypes[i] == 'Integer') {
             caseItem[i] = CaseItem(
-                when_: caseItem[i].when_,
-                then: ToLong(operand: caseItem[i].then));
+              when_: caseItem[i].when_,
+              then: ToLong(operand: caseItem[i].then),
+            );
           }
         }
       }

@@ -5,11 +5,9 @@ import 'package:cql/src/internal.dart';
 /// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class ProperContains extends BinaryExpression {
-  final CqlDateTimePrecision? precision;
-
   ProperContains({
-    this.precision,
     required super.operand,
+    this.precision,
     super.annotation,
     super.localId,
     super.locator,
@@ -38,10 +36,11 @@ class ProperContains extends BinaryExpression {
             ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
             : null,
       );
+  final CqlDateTimePrecision? precision;
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       if (precision != null) 'precision': precision!.toJson(),
       'operand': operand.map((x) => x.toJson()).toList(),
@@ -108,8 +107,11 @@ class ProperContains extends BinaryExpression {
     return Equal.equal(a, b);
   }
 
-  static CqlBoolean? properContains(dynamic left, dynamic right,
-      [CqlDateTimePrecision? precision]) {
+  static CqlBoolean? properContains(
+    dynamic left,
+    dynamic right, [
+    CqlDateTimePrecision? precision,
+  ]) {
     if (left is CqlInterval) {
       if (right == null) return null;
       // Per CQL spec: properly contains means point is strictly between
@@ -137,8 +139,8 @@ class ProperContains extends BinaryExpression {
       //
       // Use equality semantics (which can return null for precision mismatches)
       // with the exception that null elements are considered equal to null.
-      bool found = false;
-      bool hasNull = false;
+      var found = false;
+      var hasNull = false;
 
       // First check if the element is in the list
       if (right == null) {
@@ -172,7 +174,7 @@ class ProperContains extends BinaryExpression {
       // Element found; now check that the list has at least one other
       // distinct element (i.e., the list is not solely composed of the
       // searched element).
-      bool hasOther = false;
+      var hasOther = false;
       for (final element in left) {
         if (right == null) {
           if (element != null) {

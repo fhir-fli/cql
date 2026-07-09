@@ -6,9 +6,10 @@ class CqlPredecessorExpressionTermVisitor extends CqlBaseVisitor<Predecessor> {
 
   @override
   Predecessor visitPredecessorExpressionTerm(
-      PredecessorExpressionTermContext ctx) {
+    PredecessorExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? expressionTerm;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {

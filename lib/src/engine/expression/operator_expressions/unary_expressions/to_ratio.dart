@@ -85,11 +85,11 @@ class ToRatio extends UnaryExpression {
     return Ratio(
       numerator: Quantity(
         value: numQty.value.asDouble,
-        unit: numQty.unit.toString(),
+        unit: numQty.unit,
       ),
       denominator: Quantity(
         value: denQty.value.asDouble,
-        unit: denQty.unit.toString(),
+        unit: denQty.unit,
       ),
     );
   }

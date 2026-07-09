@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to compute the remainder of the division of its arguments.
 /// The Modulo operator is defined for the Integer and Decimal types.
@@ -75,7 +74,7 @@ class Modulo extends BinaryExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'operand': operand.map((x) => x.toJson()).toList(),
     };
@@ -119,55 +118,68 @@ class Modulo extends BinaryExpression {
           if (right is CqlInteger) {
             return CqlInteger.tryParse(left.valueNum! % right.valueNum!);
           } else if (right is CqlDecimal) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!)
-                        .modulo(UcumDecimal.fromString(right.valueString!)))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                UcumDecimal.fromString(left.valueString)
+                    .modulo(UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is CqlLong) {
-            return CqlLong(BigInt.from(left.valueInt as int) %
-                (right.valueBigInt as BigInt));
+            return CqlLong(
+              BigInt.from(left.valueInt!) % (right.valueBigInt!),
+            );
           }
-          break;
         case CqlLong _:
           if (right is CqlInteger) {
             return CqlLong(
-                left.valueBigInt! % BigInt.from(right.valueInt as int));
+              left.valueBigInt! % BigInt.from(right.valueInt!),
+            );
           } else if (right is CqlLong) {
             return CqlLong(left.valueBigInt! % right.valueBigInt!);
           } else if (right is CqlDecimal) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!)
-                        .modulo(UcumDecimal.fromString(right.valueString!)))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                UcumDecimal.fromString(left.valueString)
+                    .modulo(UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           }
-          break;
         case CqlDecimal _:
           if (right is CqlInteger) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!)
-                        .modulo(UcumDecimal.fromString(right.valueString!)))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                UcumDecimal.fromString(left.valueString)
+                    .modulo(UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is CqlLong) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!)
-                        .modulo(UcumDecimal.fromString(right.valueString!)))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                UcumDecimal.fromString(left.valueString)
+                    .modulo(UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is CqlDecimal) {
-            return CqlDecimal(double.parse(
-                (UcumDecimal.fromString(left.valueString!)
-                        .modulo(UcumDecimal.fromString(right.valueString!)))
-                    .asUcumDecimal()));
+            return CqlDecimal(
+              double.parse(
+                UcumDecimal.fromString(left.valueString)
+                    .modulo(UcumDecimal.fromString(right.valueString))
+                    .asUcumDecimal(),
+              ),
+            );
           } else if (right is ValidatedQuantity) {
             return ValidatedQuantity.fromString(left.valueString!) % right;
           }
-          break;
         case ValidatedQuantity _:
           if (right is CqlDecimal && left.isValid()) {
             return left % ValidatedQuantity.fromString(right.valueString!);
           } else if (right is ValidatedQuantity) {
             return left % right;
           }
-          break;
       }
     } catch (_) {
       return null;

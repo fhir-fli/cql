@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to return the successor of the argument.
 /// The Successor operator is defined for the Integer, Decimal, Date, DateTime,
@@ -167,7 +166,8 @@ class Successor extends UnaryExpression {
       // the CQF reference implementation behavior.
       final newValue = value.value.add(UcumDecimal.fromString('0.00000001'));
       return ValidatedQuantity.fromString(
-          '${newValue.asUcumDecimal()} \'${value.unit}\'');
+        "${newValue.asUcumDecimal()} '${value.unit}'",
+      );
     }
     throw ArgumentError('Invalid type for Successor: ${value.runtimeType}');
   }

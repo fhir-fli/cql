@@ -2,12 +2,6 @@ import 'package:cql/src/internal.dart';
 
 /// The Concept type represents a literal concept selector.
 class Concept extends CqlExpression {
-  /// The codes that constitute the concept.
-  List<Code> code;
-
-  /// An optional display string for the concept.
-  String? display;
-
   Concept({
     required this.code,
     this.display,
@@ -36,9 +30,15 @@ class Concept extends CqlExpression {
     );
   }
 
+  /// The codes that constitute the concept.
+  List<Code> code;
+
+  /// An optional display string for the concept.
+  String? display;
+
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'code': code.map((e) => e.toJson()).toList(),
     };

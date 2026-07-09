@@ -7,7 +7,7 @@ class CqlCastExpressionVisitor extends CqlBaseVisitor<As> {
   @override
   As visitCastExpression(CastExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? operand;
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {

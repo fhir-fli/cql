@@ -20,9 +20,6 @@ import 'package:cql/src/internal.dart';
 /// define "Last5": Last({ 1, 3, 5 }) // 5
 /// define "LastIsNull": Last(null)
 class Last extends OperatorExpression {
-  final String? orderBy;
-  final CqlExpression source;
-
   Last({
     required this.source,
     this.orderBy,
@@ -50,6 +47,8 @@ class Last extends OperatorExpression {
           : null,
     );
   }
+  final String? orderBy;
+  final CqlExpression source;
 
   @override
   Map<String, dynamic> toJson() {

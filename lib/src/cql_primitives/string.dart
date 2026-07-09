@@ -15,8 +15,6 @@ extension CqlStringExtension on String {
 /// kept on this type so engine code can manipulate CqlString instances
 /// directly without unwrapping to Dart String first.
 class CqlString extends CqlPrimitive {
-  const CqlString._(super.valueString) : super();
-
   /// Creates a [CqlString] from any value via `.toString()`.
   /// Pass `null` for a CQL null.
   factory CqlString(dynamic rawValue) {
@@ -24,6 +22,7 @@ class CqlString extends CqlPrimitive {
     if (rawValue is String) return CqlString._(rawValue);
     return CqlString._(rawValue.toString());
   }
+  const CqlString._(super.valueString) : super();
 
   /// Constructs from a JSON map of shape `{'value': <string>}`.
   factory CqlString.fromJson(Map<String, dynamic> json) =>

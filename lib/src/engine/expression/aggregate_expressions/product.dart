@@ -1,6 +1,5 @@
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Product operator returns the geometric product of non-null elements in the source.
 /// If a path is specified, elements with no value for the property specified by the path are ignored.
@@ -41,7 +40,7 @@ class Product extends AggregateExpression {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = {
+    final json = <String, dynamic>{
       'type': type,
       'source': source.toJson(),
     };
@@ -105,20 +104,25 @@ class Product extends AggregateExpression {
         return sourceResult.cast<BigInt>().reduce((a, b) => a * b);
       } else if (sourceResult.every((e) => e is CqlInteger)) {
         return sourceResult.cast<CqlInteger>().reduce(
-            (a, b) => CqlInteger((a.valueInt ?? 0) * (b.valueInt ?? 0)));
+              (a, b) => CqlInteger((a.valueInt ?? 0) * (b.valueInt ?? 0)),
+            );
       } else if (sourceResult.every((e) => e is CqlLong)) {
-        return sourceResult.cast<CqlLong>().reduce((a, b) => CqlLong(
-            (a.valueBigInt ?? BigInt.zero) * (b.valueBigInt ?? BigInt.zero)));
+        return sourceResult.cast<CqlLong>().reduce(
+              (a, b) => CqlLong(
+                (a.valueBigInt ?? BigInt.zero) * (b.valueBigInt ?? BigInt.zero),
+              ),
+            );
       } else if (sourceResult.every((e) => e is CqlDecimal)) {
         return sourceResult.cast<CqlDecimal>().reduce(
-            (a, b) => CqlDecimal((a.valueNum ?? 0) * (b.valueNum ?? 0)));
+              (a, b) => CqlDecimal((a.valueNum ?? 0) * (b.valueNum ?? 0)),
+            );
       } else if (sourceResult.every((e) => e is ValidatedQuantity)) {
         // Multiply values only, keep the unit from the first element
         // (don't compound units like g*g*g)
         final quantities = sourceResult.cast<ValidatedQuantity>();
         final unit = quantities.first.unit;
         var productValue = quantities.first.value;
-        for (int i = 1; i < quantities.length; i++) {
+        for (var i = 1; i < quantities.length; i++) {
           productValue = productValue * quantities[i].value;
         }
         return ValidatedQuantity(value: productValue, unit: unit);

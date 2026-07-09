@@ -1,11 +1,10 @@
 // Generated from cql.g4 by ANTLR 4.13.1
-// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+// ignore_for_file: unused_import, unused_local_variable
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
-import 'package:ucum/ucum.dart';
-
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// This class provides an empty implementation of [CqlVisitor],
 /// which can be extended to create a visitor which only needs to handle
@@ -104,7 +103,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   /// Record the inferred result type of the define [name] on [library].
   static void registerDefineType(
-      CqlLibrary library, String name, String? type) {
+    CqlLibrary library,
+    String name,
+    String? type,
+  ) {
     (_defineTypes[library] ??= <String, String?>{})[name] = type;
   }
 
@@ -138,7 +140,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitAdditionExpressionTerm(
-          AdditionExpressionTermContext ctx) =>
+    AdditionExpressionTermContext ctx,
+  ) =>
       CqlAdditionExpressionVisitor(library).visitAdditionExpressionTerm(ctx);
 
   @override
@@ -147,7 +150,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitAggregateExpressionTerm(
-          AggregateExpressionTermContext ctx) =>
+    AggregateExpressionTermContext ctx,
+  ) =>
       CqlAggregateExpressionTermVisitor(library)
           .visitAggregateExpressionTerm(ctx);
 
@@ -164,9 +168,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitBeforeOrAfterIntervalOperatorPhrase(
-          BeforeOrAfterIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    BeforeOrAfterIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlBeforeOrAfterIntervalOperatorPhraseVisitor(library)
           .visitBeforeOrAfterIntervalOperatorPhrase(ctx, left, right);
 
@@ -196,7 +201,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   ChoiceTypeSpecifier visitChoiceTypeSpecifier(
-          ChoiceTypeSpecifierContext ctx) =>
+    ChoiceTypeSpecifierContext ctx,
+  ) =>
       CqlChoiceTypeSpecifierVisitor(library).visitChoiceTypeSpecifier(ctx);
 
   @override
@@ -257,9 +263,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitConcurrentWithIntervalOperatorPhrase(
-          ConcurrentWithIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    ConcurrentWithIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlConcurrentWithIntervalOperatorPhraseVisitor(library)
           .visitConcurrentWithIntervalOperatorPhrase(ctx, left, right);
 
@@ -294,25 +301,28 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   String visitDateTimePrecisionSpecifier(
-          DateTimePrecisionSpecifierContext ctx) =>
-      visitDateTimePrecision(ctx.getChild(0) as DateTimePrecisionContext);
+    DateTimePrecisionSpecifierContext ctx,
+  ) =>
+      visitDateTimePrecision(ctx.getChild(0)! as DateTimePrecisionContext);
 
   @override
   void visitDefinition(DefinitionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
   @override
   DifferenceBetween visitDifferenceBetweenExpression(
-          DifferenceBetweenExpressionContext ctx) =>
+    DifferenceBetweenExpressionContext ctx,
+  ) =>
       CqlDifferenceBetweenExpressionVisitor(library)
           .visitDifferenceBetweenExpression(ctx);
 
   @override
   DifferenceBetween visitDifferenceExpressionTerm(
-          DifferenceExpressionTermContext ctx) =>
+    DifferenceExpressionTermContext ctx,
+  ) =>
       CqlDifferenceExpressionTermVisitor(library)
           .visitDifferenceExpressionTerm(ctx);
 
@@ -322,25 +332,31 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   DurationBetween visitDurationBetweenExpression(
-          DurationBetweenExpressionContext ctx) =>
+    DurationBetweenExpressionContext ctx,
+  ) =>
       CqlDurationBetweenExpressionVisitor(library)
           .visitDurationBetweenExpression(ctx);
 
   @override
   DurationBetween visitDurationExpressionTerm(
-          DurationExpressionTermContext ctx) =>
+    DurationExpressionTermContext ctx,
+  ) =>
       CqlDurationExpressionTermVisitor(library)
           .visitDurationExpressionTerm(ctx);
 
   @override
   SingletonFrom visitElementExtractorExpressionTerm(
-          ElementExtractorExpressionTermContext ctx) =>
+    ElementExtractorExpressionTermContext ctx,
+  ) =>
       CqlElementExtractorExpressionTermVisitor(library)
           .visitElementExtractorExpressionTerm(ctx);
 
   @override
-  Ends visitEndsIntervalOperatorPhrase(EndsIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left, CqlExpression? right]) =>
+  Ends visitEndsIntervalOperatorPhrase(
+    EndsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlEndsIntervalOperatorPhraseVisitor(library)
           .visitEndsIntervalOperatorPhrase(ctx, left, right);
 
@@ -350,7 +366,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   String visitExclusiveRelativeQualifier(
-          ExclusiveRelativeQualifierContext ctx) =>
+    ExclusiveRelativeQualifierContext ctx,
+  ) =>
       noQuoteString(ctx.text);
 
   @override
@@ -384,7 +401,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitFunctionIdentifier(FunctionIdentifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -397,7 +414,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   String visitIdentifierOrFunctionIdentifier(
-          IdentifierOrFunctionIdentifierContext ctx) =>
+    IdentifierOrFunctionIdentifierContext ctx,
+  ) =>
       noQuoteString(ctx.text);
 
   @override
@@ -419,17 +437,19 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitIncludedInIntervalOperatorPhrase(
-          IncludedInIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    IncludedInIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlIncludedInIntervalOperatorPhraseVisitor(library)
           .visitIncludedInIntervalOperatorPhrase(ctx, left, right);
 
   @override
   CqlExpression visitIncludesIntervalOperatorPhrase(
-          IncludesIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    IncludesIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlIncludesIntervalOperatorPhraseVisitor(library)
           .visitIncludesIntervalOperatorPhrase(ctx, left, right);
 
@@ -438,7 +458,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitIndexInvocation(IndexInvocationContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -452,7 +472,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   InstanceElement visitInstanceElementSelector(
-          InstanceElementSelectorContext ctx) =>
+    InstanceElementSelectorContext ctx,
+  ) =>
       CqlInstanceElementSelectorVisitor(library)
           .visitInstanceElementSelector(ctx);
 
@@ -470,17 +491,20 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   IntervalExpression visitIntervalSelectorTerm(
-          IntervalSelectorTermContext ctx) =>
+    IntervalSelectorTermContext ctx,
+  ) =>
       CqlIntervalSelectorTermVisitor(library).visitIntervalSelectorTerm(ctx);
 
   @override
   IntervalTypeSpecifier visitIntervalTypeSpecifier(
-          IntervalTypeSpecifierContext ctx) =>
+    IntervalTypeSpecifierContext ctx,
+  ) =>
       CqlIntervalTypeSpecifierVisitor(library).visitIntervalTypeSpecifier(ctx);
 
   @override
   CqlExpression visitInvocationExpressionTerm(
-          InvocationExpressionTermContext ctx) =>
+    InvocationExpressionTermContext ctx,
+  ) =>
       CqlInvocationExpressionTermVisitor(library)
           .visitInvocationExpressionTerm(ctx);
 
@@ -493,7 +517,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitKeyword(KeywordContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -508,7 +532,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   List<LetClause> visitLetClause(LetClauseContext ctx) {
     printIf(ctx);
-    List<LetClause> items = [];
+    final items = <LetClause>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is LetClauseItemContext) {
         final item = visitLetClauseItem(child);
@@ -518,8 +542,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         // The identifier carries its expression's inferred result type so
         // properties on it (race.url) resolve model-driven.
         final model = currentModel;
-        addAliasToCurrentScope(item.identifier,
-            model == null ? null : inferType(item.expression, model));
+        addAliasToCurrentScope(
+          item.identifier,
+          model == null ? null : inferType(item.expression, model),
+        );
         addLetIdentifier(item.identifier);
       }
     }
@@ -550,7 +576,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   void visitLibrary(LibraryContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -594,9 +620,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   dynamic visitMeetsIntervalOperatorPhrase(
-          MeetsIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    MeetsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlMeetsIntervalOperatorPhraseVisitor(library)
           .visitMeetsIntervalOperatorPhrase(ctx, left, right);
 
@@ -615,7 +642,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitMultiplicationExpressionTerm(
-          MultiplicationExpressionTermContext ctx) =>
+    MultiplicationExpressionTermContext ctx,
+  ) =>
       CqlMultiplicationExpressionTermVisitor(library)
           .visitMultiplicationExpressionTerm(ctx);
 
@@ -630,7 +658,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitNullLiteral(NullLiteralContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -641,7 +669,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitObsoleteIdentifier(ObsoleteIdentifierContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -659,9 +687,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitOverlapsIntervalOperatorPhrase(
-          OverlapsIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    OverlapsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlOverlapsIntervalOperatorPhraseVisitor(library)
           .visitOverlapsIntervalOperatorPhrase(ctx, left, right);
 
@@ -683,9 +712,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   dynamic visitPointExtractorExpressionTerm(
-      PointExtractorExpressionTermContext ctx) {
+    PointExtractorExpressionTermContext ctx,
+  ) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     final exprTerm = ctx.expressionTerm();
     if (exprTerm != null) {
       final operand = byContext(exprTerm);
@@ -698,7 +728,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitPolarityExpressionTerm(
-          PolarityExpressionTermContext ctx) =>
+    PolarityExpressionTermContext ctx,
+  ) =>
       CqlPolarityExpressionTermVisitor(library)
           .visitPolarityExpressionTerm(ctx);
 
@@ -708,7 +739,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Predecessor visitPredecessorExpressionTerm(
-          PredecessorExpressionTermContext ctx) =>
+    PredecessorExpressionTermContext ctx,
+  ) =>
       CqlPredecessorExpressionTermVisitor(library)
           .visitPredecessorExpressionTerm(ctx);
 
@@ -716,7 +748,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   FunctionRef visitQualifiedFunction(QualifiedFunctionContext ctx) {
     printIf(ctx);
     String? name;
-    List<CqlExpression> operand = [];
+    final operand = <CqlExpression>[];
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierOrFunctionIdentifierContext) {
         name = visitIdentifierOrFunctionIdentifier(child);
@@ -732,7 +764,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   FunctionRef visitQualifiedFunctionInvocation(
-      QualifiedFunctionInvocationContext ctx) {
+    QualifiedFunctionInvocationContext ctx,
+  ) {
     printIf(ctx);
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedFunctionContext) {
@@ -748,7 +781,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Ref visitQualifiedIdentifierExpression(
-          QualifiedIdentifierExpressionContext ctx) =>
+    QualifiedIdentifierExpressionContext ctx,
+  ) =>
       CqlQualifiedIdentifierExpressionVisitor(library)
           .visitQualifiedIdentifierExpression(ctx);
 
@@ -763,7 +797,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitQualifierExpression(QualifierExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -809,7 +843,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   String visitReferentialOrTypeNameIdentifier(
-          ReferentialOrTypeNameIdentifierContext ctx) =>
+    ReferentialOrTypeNameIdentifierContext ctx,
+  ) =>
       CqlReferentialOrTypeNameIdentifierVisitor(library)
           .visitReferentialOrTypeNameIdentifier(ctx);
 
@@ -820,7 +855,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitReservedWord(ReservedWordContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -856,14 +891,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitSetAggregateExpressionTerm(
-          SetAggregateExpressionTermContext ctx) =>
+    SetAggregateExpressionTermContext ctx,
+  ) =>
       CqlSetAggregateExpressionTermVisitor(library)
           .visitSetAggregateExpressionTerm(ctx);
 
   @override
   dynamic visitSimpleNumberLiteral(SimpleNumberLiteralContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -871,7 +907,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   Indexer visitSimplePathIndexer(SimplePathIndexerContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? simplePath;
     CqlExpression? simpleLiteral;
     for (final child in ctx.children ?? <ParseTree>[]) {
@@ -883,23 +919,27 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   dynamic visitSimplePathQualifiedIdentifier(
-          SimplePathQualifiedIdentifierContext ctx) =>
+    SimplePathQualifiedIdentifierContext ctx,
+  ) =>
       CqlSimplePathQualifiedIdentifierVisitor(library)
           .visitSimplePathQualifiedIdentifier(ctx);
 
   @override
   String visitSimplePathReferentialIdentifier(
-          SimplePathReferentialIdentifierContext ctx) =>
+    SimplePathReferentialIdentifierContext ctx,
+  ) =>
       ctx.childCount == 1 && ctx.getChild(0) is ReferentialIdentifierContext
           ? visitReferentialIdentifier(
-              ctx.getChild(0) as ReferentialIdentifierContext)
+              ctx.getChild(0)! as ReferentialIdentifierContext,
+            )
           : throw ArgumentError(
-              'Invalid Type for SimplePathReferentialIdentifier');
+              'Invalid Type for SimplePathReferentialIdentifier',
+            );
 
   @override
   dynamic visitSimpleStringLiteral(SimpleStringLiteralContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
@@ -907,7 +947,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   ByExpression visitSortByItem(SortByItemContext ctx) {
     printIf(ctx);
     CqlExpression? expression;
-    SortDirection direction = SortDirection.asc;
+    var direction = SortDirection.asc;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is SortDirectionContext) {
         direction = visitSortDirection(child);
@@ -926,7 +966,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     printIf(ctx);
     _inSortClause = true;
     try {
-      List<SortByItem> byItems = [];
+      final byItems = <SortByItem>[];
       SortDirection? bareDirection;
       for (final child in ctx.children ?? <ParseTree>[]) {
         if (child is SortByItemContext) {
@@ -957,7 +997,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitStartingClause(StartingClauseContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     if (ctx.expression() != null) {
       return byContext(ctx.expression()!);
     } else if (ctx.quantity() != null) {
@@ -987,9 +1027,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Starts visitStartsIntervalOperatorPhrase(
-          StartsIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    StartsIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlStartsIntervalOperatorPhraseVisitor(library)
           .visitStartsIntervalOperatorPhrase(ctx, left, right);
 
@@ -1025,23 +1066,26 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitThisInvocation(ThisInvocationContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
   @override
   dynamic visitTimeBoundaryExpressionTerm(
-          TimeBoundaryExpressionTermContext ctx) =>
+    TimeBoundaryExpressionTermContext ctx,
+  ) =>
       CqlTimeBoundaryExpressionTermVisitor(library)
           .visitTimeBoundaryExpressionTerm(ctx);
 
   @override
   LiteralTime visitTimeLiteral(TimeLiteralContext ctx) => LiteralTime(
-      noQuoteString(ctx.text.replaceFirst('@', '').replaceFirst('T', '')));
+        noQuoteString(ctx.text.replaceFirst('@', '').replaceFirst('T', '')),
+      );
 
   @override
   CqlExpression visitTimeUnitExpressionTerm(
-          TimeUnitExpressionTermContext ctx) =>
+    TimeUnitExpressionTermContext ctx,
+  ) =>
       CqlTimeUnitExpressionTermVisitor(library)
           .visitTimeUnitExpressionTerm(ctx);
 
@@ -1052,13 +1096,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitTotalInvocation(TotalInvocationContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     visitChildren(ctx);
   }
 
   @override
   TupleElementDefinition visitTupleElementDefinition(
-          TupleElementDefinitionContext ctx) =>
+    TupleElementDefinitionContext ctx,
+  ) =>
       CqlTupleElementDefinitionVisitor(library)
           .visitTupleElementDefinition(ctx);
 
@@ -1081,11 +1126,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   dynamic visitTypeExpression(TypeExpressionContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
+    final thisNode = getNextNode();
     CqlExpression? operand;
     TypeSpecifierExpression? typeSpecifier;
-    bool isIs = false;
-    bool isAs = false;
+    var isIs = false;
+    var isAs = false;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionContext) {
         operand = byContext(child);
@@ -1134,7 +1179,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     final qn = nts.namespace;
     if (qn.namespaceURI == 'urn:hl7-org:elm-types:r1') {
       // Types like Quantity in `as` expressions should use FHIR namespace
-      final fhirNs = 'http://hl7.org/fhir';
+      const fhirNs = 'http://hl7.org/fhir';
       nts.namespace = QName(namespaceURI: fhirNs, localPart: qn.localPart);
     }
   }
@@ -1175,7 +1220,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// Wrap a CQL expression with a FHIRHelpers function call if the
   /// type specifier indicates a FHIR type that needs conversion.
   static CqlExpression _wrapWithFhirHelper(
-      CqlExpression expr, NamedTypeSpecifier? typeSpec) {
+    CqlExpression expr,
+    NamedTypeSpecifier? typeSpec,
+  ) {
     if (typeSpec == null) return expr;
     final qn = typeSpec.namespace;
     if (qn.namespaceURI != 'http://hl7.org/fhir') return expr;
@@ -1240,7 +1287,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     for (final model in library.usings?.def ?? <UsingDef>[]) {
       if (model.localIdentifier == null) continue;
       final modelInfo = modelInfoProvider.load(
-          ModelIdentifier(id: model.localIdentifier!, version: model.version));
+        ModelIdentifier(id: model.localIdentifier!, version: model.version),
+      );
       if (modelInfo == null) continue;
       for (final ti in modelInfo.typeInfo) {
         if (ti is ClassInfo &&
@@ -1338,7 +1386,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   /// Given a Property expression and a target FHIR type name (e.g. 'boolean'),
   /// wrap the property in As(asType: {fhir}targetType) then FHIRHelpers.ToXxx().
   static CqlExpression wrapChoiceProperty(
-      CqlExpression property, String fhirTypeName) {
+    CqlExpression property,
+    String fhirTypeName,
+  ) {
     final baseType = fhirBaseType(fhirTypeName);
     final asExpr = As(
       operand: property,
@@ -1401,9 +1451,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   CqlExpression visitWithinIntervalOperatorPhrase(
-          WithinIntervalOperatorPhraseContext ctx,
-          [CqlExpression? left,
-          CqlExpression? right]) =>
+    WithinIntervalOperatorPhraseContext ctx, [
+    CqlExpression? left,
+    CqlExpression? right,
+  ]) =>
       CqlWithinIntervalOperatorPhraseVisitor(library)
           .visitWithinIntervalOperatorPhrase(ctx, left, right);
 
@@ -1418,21 +1469,23 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       return [
         operand.first,
         As(
-            operand: operand.last,
-            asType: QName.parse((operand.first as LiteralType).valueType))
+          operand: operand.last,
+          asType: QName.parse((operand.first as LiteralType).valueType),
+        ),
       ];
     } else if (operand.first is LiteralNull &&
         operand.last is LiteralType &&
         operand.last is! LiteralNull) {
       return [
         As(
-            operand: operand.first,
-            asType: QName.parse((operand.first as LiteralType).valueType)),
-        operand.last
+          operand: operand.first,
+          asType: QName.parse((operand.first as LiteralType).valueType),
+        ),
+        operand.last,
       ];
     } else {
-      List<String> firstReturnTypes = operand.first.getReturnTypes(library);
-      List<String> lastReturnTypes = operand.last.getReturnTypes(library);
+      final firstReturnTypes = operand.first.getReturnTypes(library);
+      final lastReturnTypes = operand.last.getReturnTypes(library);
       String? firstType;
       String? lastType;
       if (firstReturnTypes.isNotEmpty) {
@@ -1475,7 +1528,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   int getNextNode() {
-    final tempNumber = nodeNumber.toInt();
+    final tempNumber = nodeNumber;
     nodeNumber++;
     return tempNumber;
   }
@@ -1973,7 +2026,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Multiply(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralLong _:
         {
           if (right is LiteralInteger || right is LiteralLong) {
@@ -1982,7 +2034,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Multiply(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralDecimal _:
         {
           if (right is LiteralInteger) {
@@ -1993,7 +2044,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Multiply(operand: [left, right]);
           }
         }
-        break;
       case LiteralQuantity _:
         {
           if (right is LiteralInteger || right is LiteralLong) {
@@ -2003,7 +2053,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Multiply(operand: [left, right]);
           }
         }
-        break;
       default:
         {
           final leftType = left.getReturnTypes(library);
@@ -2021,7 +2070,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Multiply(operand: [ToDecimal(operand: left), right]);
                   }
                 }
-                break;
               case 'Integer64':
                 {
                   if (rightType.first == 'Integer' ||
@@ -2031,7 +2079,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Multiply(operand: [ToDecimal(operand: left), right]);
                   }
                 }
-                break;
               case 'Decimal':
                 {
                   if (rightType.first == 'Integer') {
@@ -2042,7 +2089,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Multiply(operand: [left, right]);
                   }
                 }
-                break;
               case 'Quantity':
                 {
                   if (rightType.first == 'Integer' ||
@@ -2054,7 +2100,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Multiply(operand: [left, right]);
                   }
                 }
-                break;
               default:
                 break;
             }
@@ -2072,22 +2117,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         {
           if (right is LiteralInteger || right is LiteralLong) {
             return Divide(
-                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+              operand: [ToDecimal(operand: left), ToDecimal(operand: right)],
+            );
           } else if (right is LiteralDecimal) {
             return Divide(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralLong _:
         {
           if (right is LiteralInteger || right is LiteralLong) {
             return Divide(
-                operand: [ToDecimal(operand: left), ToDecimal(operand: right)]);
+              operand: [ToDecimal(operand: left), ToDecimal(operand: right)],
+            );
           } else if (right is LiteralDecimal) {
             return Divide(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralDecimal _:
         {
           if (right is LiteralInteger || right is LiteralLong) {
@@ -2096,7 +2141,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Divide(operand: [left, right]);
           }
         }
-        break;
       case LiteralQuantity _:
         {
           if (right is LiteralDecimal) {
@@ -2105,7 +2149,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Divide(operand: [left, right]);
           }
         }
-        break;
       default:
         {
           final leftType = left.getReturnTypes(library);
@@ -2116,28 +2159,30 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                 {
                   if (rightType.first == 'Integer' ||
                       rightType.first == 'Integer64') {
-                    return Divide(operand: [
-                      ToDecimal(operand: left),
-                      ToDecimal(operand: right)
-                    ]);
+                    return Divide(
+                      operand: [
+                        ToDecimal(operand: left),
+                        ToDecimal(operand: right),
+                      ],
+                    );
                   } else if (rightType.first == 'Decimal') {
                     return Divide(operand: [ToDecimal(operand: left), right]);
                   }
                 }
-                break;
               case 'Integer64':
                 {
                   if (rightType.first == 'Integer' ||
                       rightType.first == 'Integer64') {
-                    return Divide(operand: [
-                      ToDecimal(operand: left),
-                      ToDecimal(operand: right)
-                    ]);
+                    return Divide(
+                      operand: [
+                        ToDecimal(operand: left),
+                        ToDecimal(operand: right),
+                      ],
+                    );
                   } else if (rightType.first == 'Decimal') {
                     return Divide(operand: [ToDecimal(operand: left), right]);
                   }
                 }
-                break;
               case 'Decimal':
                 {
                   if (rightType.first == 'Integer' ||
@@ -2147,7 +2192,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Divide(operand: [left, right]);
                   }
                 }
-                break;
               case 'Quantity':
                 {
                   if (rightType.first == 'Decimal') {
@@ -2156,7 +2200,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Divide(operand: [left, right]);
                   }
                 }
-                break;
               default:
                 break;
             }
@@ -2169,7 +2212,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   TruncatedDivide handleTruncatedDivide(
-      CqlExpression left, CqlExpression right) {
+    CqlExpression left,
+    CqlExpression right,
+  ) {
     switch (left) {
       case LiteralInteger _:
         {
@@ -2181,7 +2226,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralLong _:
         {
           if (right is LiteralInteger) {
@@ -2192,7 +2236,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return TruncatedDivide(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralDecimal _:
         {
           if (right is LiteralInteger) {
@@ -2205,7 +2248,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return TruncatedDivide(operand: [ToQuantity(operand: left), right]);
           }
         }
-        break;
       case LiteralQuantity _:
         {
           if (right is LiteralDecimal) {
@@ -2226,47 +2268,52 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return TruncatedDivide(operand: [left, right]);
                   } else if (rightType.first == 'Integer64') {
                     return TruncatedDivide(
-                        operand: [ToLong(operand: left), right]);
+                      operand: [ToLong(operand: left), right],
+                    );
                   } else if (rightType.first == 'Decimal') {
                     return TruncatedDivide(
-                        operand: [ToDecimal(operand: left), right]);
+                      operand: [ToDecimal(operand: left), right],
+                    );
                   }
                 }
-                break;
               case 'Integer64':
                 {
                   if (rightType.first == 'Integer') {
                     return TruncatedDivide(
-                        operand: [left, ToLong(operand: right)]);
+                      operand: [left, ToLong(operand: right)],
+                    );
                   } else if (rightType.first == 'Integer64') {
                     return TruncatedDivide(operand: [left, right]);
                   } else if (rightType.first == 'Decimal') {
                     return TruncatedDivide(
-                        operand: [ToDecimal(operand: left), right]);
+                      operand: [ToDecimal(operand: left), right],
+                    );
                   }
                 }
-                break;
               case 'Decimal':
                 {
                   if (rightType.first == 'Integer') {
                     return TruncatedDivide(
-                        operand: [left, ToDecimal(operand: right)]);
+                      operand: [left, ToDecimal(operand: right)],
+                    );
                   } else if (rightType.first == 'Integer64') {
                     return TruncatedDivide(
-                        operand: [left, ToDecimal(operand: right)]);
+                      operand: [left, ToDecimal(operand: right)],
+                    );
                   } else if (rightType.first == 'Decimal') {
                     return TruncatedDivide(operand: [left, right]);
                   } else if (rightType.first == 'Quantity') {
                     return TruncatedDivide(
-                        operand: [ToQuantity(operand: left), right]);
+                      operand: [ToQuantity(operand: left), right],
+                    );
                   }
                 }
-                break;
               case 'Quantity':
                 {
                   if (rightType.first == 'Decimal') {
                     return TruncatedDivide(
-                        operand: [left, ToQuantity(operand: right)]);
+                      operand: [left, ToQuantity(operand: right)],
+                    );
                   } else if (rightType.first == 'Quantity') {
                     return TruncatedDivide(operand: [left, right]);
                   }
@@ -2296,7 +2343,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Modulo(operand: [ToQuantity(operand: left), right]);
           }
         }
-        break;
       case LiteralLong _:
         {
           if (right is LiteralInteger) {
@@ -2307,7 +2353,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Modulo(operand: [ToDecimal(operand: left), right]);
           }
         }
-        break;
       case LiteralDecimal _:
         {
           if (right is LiteralInteger) {
@@ -2320,7 +2365,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Modulo(operand: [ToQuantity(operand: left), right]);
           }
         }
-        break;
       case LiteralQuantity _:
         {
           if (right is LiteralInteger) {
@@ -2331,7 +2375,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
             return Modulo(operand: [left, right]);
           }
         }
-        break;
       default:
         {
           final leftType = left.getReturnTypes(library);
@@ -2350,7 +2393,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Modulo(operand: [ToQuantity(operand: left), right]);
                   }
                 }
-                break;
               case 'Integer64':
                 {
                   if (rightType.first == 'Integer') {
@@ -2361,7 +2403,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Modulo(operand: [ToDecimal(operand: left), right]);
                   }
                 }
-                break;
               case 'Decimal':
                 {
                   if (rightType.first == 'Integer') {
@@ -2374,7 +2415,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Modulo(operand: [ToQuantity(operand: left), right]);
                   }
                 }
-                break;
               case 'Quantity':
                 {
                   if (rightType.first == 'Integer') {
@@ -2385,7 +2425,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                     return Modulo(operand: [left, right]);
                   }
                 }
-                break;
               default:
                 break;
             }

@@ -1,60 +1,11 @@
 import 'package:cql/src/internal.dart';
 
 class QName {
-  final String namespaceURI;
-  final String localPart;
-  final String prefix;
-
   QName({
-    this.namespaceURI = '',
     required this.localPart,
+    this.namespaceURI = '',
     this.prefix = '',
   });
-
-  /// Elm‐core type → Elm namespace
-  static const _elmNs = 'urn:hl7-org:elm-types:r1';
-  static const elmCoreTypes = {
-    'Quantity',
-    'Ratio',
-    'Integer',
-    'Decimal',
-    'Code',
-    'DateTime',
-    'Time',
-    'String',
-    'Boolean',
-    'Concept',
-    'Interval',
-    'ValueSet',
-    'Null',
-  };
-
-  /// Known FHIR primitive and complex type names (lowercase for matching).
-  /// Includes both resource field names from fhirFieldMap and FHIR primitive
-  /// type names that appear in type specifiers (e.g., `as dateTime`).
-  /// FHIR primitive and complex *datatype* names (lowercase). These are
-  /// fixed, spec-defined, and small — safe to carry as data in this
-  /// model-independent util. FHIR *resource* type names are NOT here:
-  /// recognizing a resource is a model question, answered by the loaded
-  /// modelinfo (`Model.resolveTypeName`) in the model-aware translator layer.
-  static final fhirTypes = {
-    // FHIR primitive types
-    'base64binary', 'boolean', 'canonical', 'code', 'date', 'datetime',
-    'decimal', 'id', 'instant', 'integer', 'markdown', 'oid',
-    'positiveint', 'string', 'time', 'unsignedint', 'uri', 'url', 'uuid',
-    'xhtml',
-    // FHIR complex types commonly used in type specifiers
-    'address', 'age', 'annotation', 'attachment', 'codeableconcept',
-    'coding', 'contactpoint', 'count', 'distance', 'dosage', 'duration',
-    'humanname', 'identifier', 'money', 'period', 'quantity', 'range',
-    'ratio', 'reference', 'sampleddata', 'signature', 'timing',
-    'contactdetail', 'contributor', 'datarequirement', 'expression',
-    'parameterdefinition', 'relatedartifact', 'triggerdefinition',
-    'usagecontext', 'meta', 'narrative',
-  }.toList();
-
-  /// FHIR primitives & resources → FHIR namespace
-  static const _fhirNs = 'http://hl7.org/fhir';
 
   /// Factory for an Elm‐type QName
   factory QName.fromElmType(String elmType) {
@@ -97,6 +48,54 @@ class QName {
 
   /// JSON loader
   factory QName.fromJson(String json) => QName.parse(json);
+  final String namespaceURI;
+  final String localPart;
+  final String prefix;
+
+  /// Elm‐core type → Elm namespace
+  static const _elmNs = 'urn:hl7-org:elm-types:r1';
+  static const elmCoreTypes = {
+    'Quantity',
+    'Ratio',
+    'Integer',
+    'Decimal',
+    'Code',
+    'DateTime',
+    'Time',
+    'String',
+    'Boolean',
+    'Concept',
+    'Interval',
+    'ValueSet',
+    'Null',
+  };
+
+  /// Known FHIR primitive and complex type names (lowercase for matching).
+  /// Includes both resource field names from fhirFieldMap and FHIR primitive
+  /// type names that appear in type specifiers (e.g., `as dateTime`).
+  /// FHIR primitive and complex *datatype* names (lowercase). These are
+  /// fixed, spec-defined, and small — safe to carry as data in this
+  /// model-independent util. FHIR *resource* type names are NOT here:
+  /// recognizing a resource is a model question, answered by the loaded
+  /// modelinfo (`Model.resolveTypeName`) in the model-aware translator layer.
+  static final List<String> fhirTypes = {
+    // FHIR primitive types
+    'base64binary', 'boolean', 'canonical', 'code', 'date', 'datetime',
+    'decimal', 'id', 'instant', 'integer', 'markdown', 'oid',
+    'positiveint', 'string', 'time', 'unsignedint', 'uri', 'url', 'uuid',
+    'xhtml',
+    // FHIR complex types commonly used in type specifiers
+    'address', 'age', 'annotation', 'attachment', 'codeableconcept',
+    'coding', 'contactpoint', 'count', 'distance', 'dosage', 'duration',
+    'humanname', 'identifier', 'money', 'period', 'quantity', 'range',
+    'ratio', 'reference', 'sampleddata', 'signature', 'timing',
+    'contactdetail', 'contributor', 'datarequirement', 'expression',
+    'parameterdefinition', 'relatedartifact', 'triggerdefinition',
+    'usagecontext', 'meta', 'narrative',
+  }.toList();
+
+  /// FHIR primitives & resources → FHIR namespace
+  static const _fhirNs = 'http://hl7.org/fhir';
 
   @override
   String toString() =>

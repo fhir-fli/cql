@@ -6,8 +6,8 @@ class CqlTimeUnitExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
   @override
   CqlExpression visitTimeUnitExpressionTerm(TimeUnitExpressionTermContext ctx) {
     printIf(ctx);
-    final int thisNode = getNextNode();
-    final String unit =
+    final thisNode = getNextNode();
+    final unit =
         visitDateTimeComponent(ctx.children![0] as DateTimeComponentContext);
     final CqlExpression expression = byContext(ctx.children![2]);
     switch (unit) {
@@ -19,25 +19,39 @@ class CqlTimeUnitExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
         return TimezoneOffsetFrom(operand: expression);
       case 'year':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.year);
+          operand: expression,
+          precision: CqlDateTimePrecision.year,
+        );
       case 'month':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.month);
+          operand: expression,
+          precision: CqlDateTimePrecision.month,
+        );
       case 'day':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.day);
+          operand: expression,
+          precision: CqlDateTimePrecision.day,
+        );
       case 'hour':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.hour);
+          operand: expression,
+          precision: CqlDateTimePrecision.hour,
+        );
       case 'minute':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.minute);
+          operand: expression,
+          precision: CqlDateTimePrecision.minute,
+        );
       case 'second':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.second);
+          operand: expression,
+          precision: CqlDateTimePrecision.second,
+        );
       case 'millisecond':
         return DateTimeComponentFrom(
-            operand: expression, precision: CqlDateTimePrecision.millisecond);
+          operand: expression,
+          precision: CqlDateTimePrecision.millisecond,
+        );
     }
     throw ArgumentError('$thisNode Invalid TimeUnitExpressionTerm');
   }

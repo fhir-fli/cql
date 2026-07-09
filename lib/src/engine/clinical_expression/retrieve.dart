@@ -15,6 +15,97 @@ import 'package:cql/src/internal.dart';
 /// and allows the implementation engine freedom to cache intermediate
 /// results in order to improve performance.
 class Retrieve extends CqlExpression {
+  Retrieve({
+    required this.dataType,
+    this.id,
+    this.codes,
+    this.dateRange,
+    this.context,
+    this.include,
+    this.codeFilter,
+    this.dateFilter,
+    this.otherFilter,
+    this.templateId,
+    this.idProperty,
+    this.idSearch,
+    this.contextProperty,
+    this.contextSearch,
+    this.codeProperty,
+    this.codeSearch,
+    this.codeComparator,
+    this.valueSetProperty,
+    this.dateProperty,
+    this.dateLowProperty,
+    this.dateHighProperty,
+    this.dateSearch,
+    this.includedIn,
+    super.annotation,
+    super.localId,
+    super.locator,
+    super.resultTypeName,
+    super.resultTypeSpecifier,
+  });
+
+  factory Retrieve.fromJson(Map<String, dynamic> json) {
+    return Retrieve(
+      id: json['id'] != null ? CqlExpression.fromJson(json['id']) : null,
+      codes:
+          json['codes'] != null ? CqlExpression.fromJson(json['codes']) : null,
+      dateRange: json['dateRange'] != null
+          ? CqlExpression.fromJson(json['dateRange'])
+          : null,
+      context: json['context'] != null
+          ? CqlExpression.fromJson(json['context'])
+          : null,
+      include: json['include'] != null
+          ? (json['include'] as List)
+              .map((e) => IncludeElement.fromJson(e))
+              .toList()
+          : null,
+      codeFilter: json['codeFilter'] != null
+          ? (json['codeFilter'] as List)
+              .map((e) => CodeFilterElement.fromJson(e))
+              .toList()
+          : null,
+      dateFilter: json['dateFilter'] != null
+          ? (json['dateFilter'] as List)
+              .map((e) => DateFilterElement.fromJson(e))
+              .toList()
+          : null,
+      otherFilter: json['otherFilter'] != null
+          ? (json['otherFilter'] as List)
+              .map((e) => OtherFilterElement.fromJson(e))
+              .toList()
+          : null,
+      dataType: QName.fromJson(json['dataType']),
+      templateId: json['templateId'],
+      idProperty: json['idProperty'],
+      idSearch: json['idSearch'],
+      contextProperty: json['contextProperty'],
+      contextSearch: json['contextSearch'],
+      codeProperty: json['codeProperty'],
+      codeSearch: json['codeSearch'],
+      codeComparator: json['codeComparator'],
+      valueSetProperty: json['valueSetProperty'],
+      dateProperty: json['dateProperty'],
+      dateLowProperty: json['dateLowProperty'],
+      dateHighProperty: json['dateHighProperty'],
+      dateSearch: json['dateSearch'],
+      includedIn: json['includedIn'],
+      annotation: json['annotation'] != null
+          ? (json['annotation'] as List)
+              .map((e) => CqlToElmBase.fromJson(e))
+              .toList()
+          : null,
+      localId: json['localId'],
+      locator: json['locator'],
+      resultTypeName: json['resultTypeName'],
+      resultTypeSpecifier: json['resultTypeSpecifier'] != null
+          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          : null,
+    );
+  }
+
   /// The codeComparator attribute specifies how elements of the code
   /// property should be matched to the terminology. One of 'in', '=', or '~'.
   /// Note that 'in' will resolve to the appropriate terminology matching
@@ -216,97 +307,6 @@ class Retrieve extends CqlExpression {
   /// grammar provides the formal semantics for this path.
   String? valueSetProperty;
 
-  Retrieve({
-    this.id,
-    this.codes,
-    this.dateRange,
-    this.context,
-    this.include,
-    this.codeFilter,
-    this.dateFilter,
-    this.otherFilter,
-    required this.dataType,
-    this.templateId,
-    this.idProperty,
-    this.idSearch,
-    this.contextProperty,
-    this.contextSearch,
-    this.codeProperty,
-    this.codeSearch,
-    this.codeComparator,
-    this.valueSetProperty,
-    this.dateProperty,
-    this.dateLowProperty,
-    this.dateHighProperty,
-    this.dateSearch,
-    this.includedIn,
-    super.annotation,
-    super.localId,
-    super.locator,
-    super.resultTypeName,
-    super.resultTypeSpecifier,
-  });
-
-  factory Retrieve.fromJson(Map<String, dynamic> json) {
-    return Retrieve(
-      id: json['id'] != null ? CqlExpression.fromJson(json['id']) : null,
-      codes:
-          json['codes'] != null ? CqlExpression.fromJson(json['codes']) : null,
-      dateRange: json['dateRange'] != null
-          ? CqlExpression.fromJson(json['dateRange'])
-          : null,
-      context: json['context'] != null
-          ? CqlExpression.fromJson(json['context'])
-          : null,
-      include: json['include'] != null
-          ? (json['include'] as List)
-              .map((e) => IncludeElement.fromJson(e))
-              .toList()
-          : null,
-      codeFilter: json['codeFilter'] != null
-          ? (json['codeFilter'] as List)
-              .map((e) => CodeFilterElement.fromJson(e))
-              .toList()
-          : null,
-      dateFilter: json['dateFilter'] != null
-          ? (json['dateFilter'] as List)
-              .map((e) => DateFilterElement.fromJson(e))
-              .toList()
-          : null,
-      otherFilter: json['otherFilter'] != null
-          ? (json['otherFilter'] as List)
-              .map((e) => OtherFilterElement.fromJson(e))
-              .toList()
-          : null,
-      dataType: QName.fromJson(json['dataType']),
-      templateId: json['templateId'],
-      idProperty: json['idProperty'],
-      idSearch: json['idSearch'],
-      contextProperty: json['contextProperty'],
-      contextSearch: json['contextSearch'],
-      codeProperty: json['codeProperty'],
-      codeSearch: json['codeSearch'],
-      codeComparator: json['codeComparator'],
-      valueSetProperty: json['valueSetProperty'],
-      dateProperty: json['dateProperty'],
-      dateLowProperty: json['dateLowProperty'],
-      dateHighProperty: json['dateHighProperty'],
-      dateSearch: json['dateSearch'],
-      includedIn: json['includedIn'],
-      annotation: json['annotation'] != null
-          ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
-              .toList()
-          : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
-      resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
-          : null,
-    );
-  }
-
   @override
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{};
@@ -362,7 +362,10 @@ class Retrieve extends CqlExpression {
 
   /// Helper function to write not null values to the query map
   void writeNotNullToQuery(
-      Map<String, dynamic> query, String key, dynamic value) {
+    Map<String, dynamic> query,
+    String key,
+    dynamic value,
+  ) {
     if (value != null) {
       query[key] = value;
     }
@@ -390,7 +393,9 @@ class Retrieve extends CqlExpression {
   /// Gets resources from the execution context. Handles both single resources
   /// (wrapped in a list) and lists of resources.
   static List<dynamic> _getResourcesFromContext(
-      String resourceType, Map<String, dynamic> context) {
+    String resourceType,
+    Map<String, dynamic> context,
+  ) {
     if (!context.containsKey(resourceType)) {
       return <dynamic>[];
     }
@@ -405,8 +410,11 @@ class Retrieve extends CqlExpression {
   }
 
   /// Filters resources by code property using the given comparator.
-  List<dynamic> _filterByCode(List<dynamic> resources, dynamic codesResult,
-      Map<String, dynamic> context) {
+  List<dynamic> _filterByCode(
+    List<dynamic> resources,
+    dynamic codesResult,
+    Map<String, dynamic> context,
+  ) {
     return resources.where((resource) {
       final resourceCodes = _extractCodes(resource, codeProperty!);
       if (resourceCodes.isEmpty) return false;
@@ -432,7 +440,9 @@ class Retrieve extends CqlExpression {
   /// Extracts coding values from a resource's property. Returns a list of
   /// {system, code} maps for comparison.
   static List<Map<String, String?>> _extractCodes(
-      dynamic resource, String property) {
+    dynamic resource,
+    String property,
+  ) {
     if (resource is! Map<String, dynamic>) return [];
 
     final value = resource[property];
@@ -445,7 +455,7 @@ class Retrieve extends CqlExpression {
       return [
         {
           'system': value['system']?.toString(),
-          'code': value['code']?.toString()
+          'code': value['code']?.toString(),
         }
       ];
     }
@@ -476,7 +486,7 @@ class Retrieve extends CqlExpression {
     // Plain code string
     if (value is String) {
       return [
-        {'system': null, 'code': value}
+        {'system': null, 'code': value},
       ];
     }
 
@@ -484,21 +494,26 @@ class Retrieve extends CqlExpression {
   }
 
   static List<Map<String, String?>> _codingsFromCodeableConcept(
-      Map<String, dynamic> concept) {
+    Map<String, dynamic> concept,
+  ) {
     final codings = concept['coding'];
     if (codings is! List) return [];
     return codings
         .whereType<Map<String, dynamic>>()
-        .map((c) => <String, String?>{
-              'system': c['system']?.toString(),
-              'code': c['code']?.toString(),
-            })
+        .map(
+          (c) => <String, String?>{
+            'system': c['system']?.toString(),
+            'code': c['code']?.toString(),
+          },
+        )
         .toList();
   }
 
   /// Checks if any of the resource codes are equivalent to any filter codes.
   static bool _matchesCodes(
-      List<Map<String, String?>> resourceCodes, List<dynamic> filterCodes) {
+    List<Map<String, String?>> resourceCodes,
+    List<dynamic> filterCodes,
+  ) {
     for (final rc in resourceCodes) {
       for (final fc in filterCodes) {
         if (fc is CqlCode) {
@@ -518,8 +533,11 @@ class Retrieve extends CqlExpression {
 
   /// Checks if any of the resource codes are in the given value set.
   /// Looks up value set expansion in context['_valueSets'].
-  static bool _matchesValueSet(List<Map<String, String?>> resourceCodes,
-      CqlValueSet valueSet, Map<String, dynamic> context) {
+  static bool _matchesValueSet(
+    List<Map<String, String?>> resourceCodes,
+    CqlValueSet valueSet,
+    Map<String, dynamic> context,
+  ) {
     // Look up the expansion from context
     final valueSets = context['_valueSets'];
     if (valueSets is Map<String, dynamic>) {
