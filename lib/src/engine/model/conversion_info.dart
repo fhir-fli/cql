@@ -15,15 +15,17 @@ class ConversionInfo {
 
   factory ConversionInfo.fromJson(Map<String, dynamic> json) {
     return ConversionInfo(
-      functionName: json['functionName'],
+      functionName: json['functionName'] as String,
       fromTypeSpecifier: json['fromTypeSpecifier'] == null
           ? null
-          : TypeSpecifierModel.fromJson(json['fromTypeSpecifier']),
+          : TypeSpecifierModel.fromJson(
+              json['fromTypeSpecifier'] as Map<String, dynamic>),
       toTypeSpecifier: json['toTypeSpecifier'] == null
           ? null
-          : TypeSpecifierModel.fromJson(json['toTypeSpecifier']),
-      fromType: json['fromType'],
-      toType: json['toType'],
+          : TypeSpecifierModel.fromJson(
+              json['toTypeSpecifier'] as Map<String, dynamic>),
+      fromType: json['fromType'] as String?,
+      toType: json['toType'] as String?,
     );
   }
   // Optional attribute - Source type as string

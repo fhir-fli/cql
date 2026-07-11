@@ -12,10 +12,11 @@ class BoundParameterTypeSpecifierModel extends TypeSpecifierModel {
   });
 
   BoundParameterTypeSpecifierModel.fromJson(Map<String, dynamic> map)
-      : parameterName = map['parameterName'],
-        boundType = map['boundType'],
+      : parameterName = map['parameterName'] as String,
+        boundType = map['boundType'] as String,
         elementTypeSpecifier = map['elementTypeSpecifier'] != null
-            ? TypeSpecifierModel.fromJson(map['elementTypeSpecifier'])
+            ? TypeSpecifierModel.fromJson(
+                map['elementTypeSpecifier'] as Map<String, dynamic>)
             : null,
         super(type: 'BoundParameterTypeSpecifier');
 

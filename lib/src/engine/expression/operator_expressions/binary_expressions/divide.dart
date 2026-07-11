@@ -60,20 +60,21 @@ class Divide extends BinaryExpression {
 
   factory Divide.fromJson(Map<String, dynamic> json) => Divide(
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -119,10 +120,10 @@ class Divide extends BinaryExpression {
         return null;
       }
       try {
-        final leftDecimal =
-            UcumDecimal.fromString(_ensureDecimalPrecision(left.valueString));
-        final rightDecimal =
-            UcumDecimal.fromString(_ensureDecimalPrecision(right.valueString));
+        final leftDecimal = UcumDecimal.fromString(
+            _ensureDecimalPrecision(left.valueString as String));
+        final rightDecimal = UcumDecimal.fromString(
+            _ensureDecimalPrecision(right.valueString as String));
         final result = leftDecimal / rightDecimal;
         return CqlDecimal(double.parse(result.asUcumDecimal()));
       } catch (_) {
@@ -136,13 +137,13 @@ class Divide extends BinaryExpression {
         final leftQuantity = left is ValidatedQuantity
             ? left
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(left.valueString),
+                value: UcumDecimal.fromString(left.valueString as String?),
                 unit: '1',
               );
         final rightQuantity = right is ValidatedQuantity
             ? right
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(right.valueString),
+                value: UcumDecimal.fromString(right.valueString as String?),
                 unit: '1',
               );
         final result = leftQuantity / rightQuantity;

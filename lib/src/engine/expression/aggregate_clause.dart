@@ -16,22 +16,24 @@ class AggregateClause extends Element {
 
   factory AggregateClause.fromJson(Map<String, dynamic> json) =>
       AggregateClause(
-        expression: CqlExpression.fromJson(json['expression']),
+        expression:
+            CqlExpression.fromJson(json['expression'] as Map<String, dynamic>),
         starting: json['starting'] == null
             ? null
-            : CqlExpression.fromJson(json['starting']),
-        identifier: json['identifier'],
-        distinct: json['distinct'],
+            : CqlExpression.fromJson(json['starting'] as Map<String, dynamic>),
+        identifier: json['identifier'] as String,
+        distinct: json['distinct'] as bool,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   CqlExpression expression;

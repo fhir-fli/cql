@@ -36,34 +36,37 @@ class ProfileInfo extends ClassInfo {
 
   factory ProfileInfo.fromJson(Map<String, dynamic> json) {
     return ProfileInfo(
-      namespace: json['namespace'],
-      name: json['name'],
-      baseType: json['baseType'],
-      identifier: json['identifier'],
-      label: json['label'],
-      description: json['description'],
-      definition: json['definition'],
-      comment: json['comment'],
-      target: json['target'],
+      namespace: json['namespace'] as String?,
+      name: json['name'] as String,
+      baseType: json['baseType'] as String?,
+      identifier: json['identifier'] as String?,
+      label: json['label'] as String?,
+      description: json['description'] as String?,
+      definition: json['definition'] as String?,
+      comment: json['comment'] as String?,
+      target: json['target'] as String?,
       retrievable: json['retrievable'] is bool
-          ? json['retrievable']
+          ? json['retrievable'] as bool
           : json['retrievable'] == 'true',
-      primaryCodePath: json['primaryCodePath'],
-      primaryValueSetPath: json['primaryValueSetPath'],
-      parameter: json['parameter'],
-      singleParameter: json['singleParameter'],
-      element: json['element'],
-      singleElement: json['singleElement'],
-      contextRelationship: json['contextRelationship'],
-      singleContextRelationship: json['singleContextRelationship'],
-      targetContextRelationship: json['targetContextRelationship'],
-      singleTargetContextRelationship: json['singleTargetContextRelationship'],
-      search: json['search'],
-      singleSearch: json['singleSearch'],
-      inferenceExpression: json['inferenceExpression'],
-      singleInferenceExpression: json['singleInferenceExpression'],
-      constraint: json['constraint'],
-      singleConstraint: json['singleConstraint'],
+      primaryCodePath: json['primaryCodePath'] as String?,
+      primaryValueSetPath: json['primaryValueSetPath'] as String?,
+      parameter: json['parameter'] as List<TypeParameterInfo>?,
+      singleParameter: json['singleParameter'] as bool?,
+      element: json['element'] as List<ClassInfoElement>?,
+      singleElement: json['singleElement'] as bool?,
+      contextRelationship:
+          json['contextRelationship'] as List<RelationshipInfo>?,
+      singleContextRelationship: json['singleContextRelationship'] as bool?,
+      targetContextRelationship:
+          json['targetContextRelationship'] as List<RelationshipInfo>?,
+      singleTargetContextRelationship:
+          json['singleTargetContextRelationship'] as bool?,
+      search: json['search'] as List<SearchInfo>?,
+      singleSearch: json['singleSearch'] as bool?,
+      inferenceExpression: json['inferenceExpression'] as List<ExpressionInfo>?,
+      singleInferenceExpression: json['singleInferenceExpression'] as bool?,
+      constraint: json['constraint'] as List<ConstraintInfo>?,
+      singleConstraint: json['singleConstraint'] as bool?,
     );
   }
 

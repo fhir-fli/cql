@@ -65,35 +65,41 @@ class DateTimeExpression extends OperatorExpression {
 
   factory DateTimeExpression.fromJson(Map<String, dynamic> json) =>
       DateTimeExpression(
-        year: CqlExpression.fromJson(json['year']),
+        year: CqlExpression.fromJson(json['year'] as Map<String, dynamic>),
         month: json['month'] == null
             ? null
-            : CqlExpression.fromJson(json['month']),
-        day: json['day'] == null ? null : CqlExpression.fromJson(json['day']),
-        hour:
-            json['hour'] == null ? null : CqlExpression.fromJson(json['hour']),
+            : CqlExpression.fromJson(json['month'] as Map<String, dynamic>),
+        day: json['day'] == null
+            ? null
+            : CqlExpression.fromJson(json['day'] as Map<String, dynamic>),
+        hour: json['hour'] == null
+            ? null
+            : CqlExpression.fromJson(json['hour'] as Map<String, dynamic>),
         minute: json['minute'] == null
             ? null
-            : CqlExpression.fromJson(json['minute']),
+            : CqlExpression.fromJson(json['minute'] as Map<String, dynamic>),
         second: json['second'] == null
             ? null
-            : CqlExpression.fromJson(json['second']),
+            : CqlExpression.fromJson(json['second'] as Map<String, dynamic>),
         millisecond: json['millisecond'] == null
             ? null
-            : CqlExpression.fromJson(json['millisecond']),
+            : CqlExpression.fromJson(
+                json['millisecond'] as Map<String, dynamic>),
         timezoneOffset: json['timezoneOffset'] == null
             ? null
-            : CqlExpression.fromJson(json['timezoneOffset']),
+            : CqlExpression.fromJson(
+                json['timezoneOffset'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression? day;
@@ -175,13 +181,13 @@ class DateTimeExpression extends OperatorExpression {
     final timezoneOffsetValue = await timezoneOffset?.execute(context);
 
     return CqlDateTime.fromUnits(
-      year: yearValue?.valueNum,
-      month: monthValue?.valueNum,
-      day: dayValue?.valueNum,
-      hour: hourValue?.valueNum,
-      minute: minuteValue?.valueNum,
-      second: secondValue?.valueNum,
-      millisecond: millisecondValue?.valueNum,
+      year: yearValue?.valueNum as int,
+      month: monthValue?.valueNum as int?,
+      day: dayValue?.valueNum as int?,
+      hour: hourValue?.valueNum as int?,
+      minute: minuteValue?.valueNum as int?,
+      second: secondValue?.valueNum as int?,
+      millisecond: millisecondValue?.valueNum as int?,
       timeZoneOffset: timezoneOffsetValue is CqlNumber
           ? timezoneOffsetValue.valueNum?.toDouble()
           : timezoneOffsetValue is String

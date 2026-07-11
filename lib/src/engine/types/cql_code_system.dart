@@ -30,9 +30,9 @@ class CqlCodeSystem extends CqlVocabulary {
 
   factory CqlCodeSystem.fromJson(Map<String, dynamic> json) {
     return CqlCodeSystem(
-      id: json['id'],
-      version: json['version'],
-      name: json['name'],
+      id: json['id'] as String,
+      version: json['version'] as String?,
+      name: json['name'] as String,
     );
   }
 

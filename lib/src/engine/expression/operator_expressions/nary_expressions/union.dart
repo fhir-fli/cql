@@ -66,19 +66,20 @@ class Union extends NaryExpression {
   factory Union.fromJson(Map<String, dynamic> json) => Union(
         operand: json['operand'] != null
             ? (json['operand'] as List)
-                .map((e) => CqlExpression.fromJson(e))
+                .map((e) => CqlExpression.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
         localId: json['localId'] as String?,
         locator: json['locator'] as String?,
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 

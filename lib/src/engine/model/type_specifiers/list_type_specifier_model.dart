@@ -13,9 +13,10 @@ class ListTypeSpecifierModel extends TypeSpecifierModel {
 
   ListTypeSpecifierModel.fromJson(Map<String, dynamic> map)
       : elementTypeSpecifier = map['elementTypeSpecifier'] != null
-            ? TypeSpecifierModel.fromJson(map['elementTypeSpecifier'])
+            ? TypeSpecifierModel.fromJson(
+                map['elementTypeSpecifier'] as Map<String, dynamic>)
             : null,
-        elementType = map['elementType'],
+        elementType = map['elementType'] as String?,
         super(type: 'ListTypeSpecifier');
 
   /// Element type specifier.

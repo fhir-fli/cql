@@ -124,7 +124,7 @@ void main() {
         message: LiteralString('List check'),
       );
       final result = await message.execute({});
-      expect(result, isA<List>());
+      expect(result, isA<List<dynamic>>());
       expect(
         result as List,
         equals([

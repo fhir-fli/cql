@@ -70,7 +70,7 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
             intervalOperatorPhrase,
             left,
             right,
-          );
+          ) as CqlExpression;
         case OverlapsIntervalOperatorPhraseContext _:
           primaryExpression = visitOverlapsIntervalOperatorPhrase(
             intervalOperatorPhrase,

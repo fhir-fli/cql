@@ -13,10 +13,10 @@ class CqlIntervalSelectorVisitor extends CqlBaseVisitor<IntervalExpression> {
     var highClosed = true;
 
     if (ctx.childCount == 6) {
-      lowClosed = ctx.getChild(1)?.text != '(';
-      highClosed = ctx.getChild(5)?.text != ')';
-      final child2 = ctx.getChild(2);
-      final child5 = ctx.getChild(4);
+      lowClosed = ctx.getChild<dynamic>(1)?.text != '(';
+      highClosed = ctx.getChild<dynamic>(5)?.text != ')';
+      final child2 = ctx.getChild<dynamic>(2);
+      final child5 = ctx.getChild<dynamic>(4);
       if (child2 != null) {
         final result = byContext(child2);
         if (result is CqlExpression) {

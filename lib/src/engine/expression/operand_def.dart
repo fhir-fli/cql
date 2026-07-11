@@ -7,7 +7,7 @@ class OperandDefs {
     return OperandDefs(
       operands: json['operands'] != null
           ? (json['operands'] as List)
-              .map((i) => OperandDef.fromJson(i))
+              .map((i) => OperandDef.fromJson(i as Map<String, dynamic>))
               .toList()
           : null,
     );
@@ -30,11 +30,12 @@ class OperandDef extends Element {
   factory OperandDef.fromJson(Map<String, dynamic> json) {
     return OperandDef(
       operandTypeSpecifier: json['operandTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['operandTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['operandTypeSpecifier'] as Map<String, dynamic>)
           : null,
       name: json['name'] as String,
       operandType: json['operandType'] != null
-          ? QName.fromJson(json['operandType'])
+          ? QName.fromJson(json['operandType'] as String)
           : null,
     );
   }

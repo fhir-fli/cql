@@ -12,7 +12,7 @@ class CqlPolarityExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
     CqlExpression? expressionTerm;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        expressionTerm = byContext(child);
+        expressionTerm = byContext(child) as CqlExpression?;
       } else {
         isPositive = child.text == '+';
       }

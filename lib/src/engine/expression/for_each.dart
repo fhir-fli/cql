@@ -17,19 +17,20 @@ class ForEach extends CqlExpression {
   });
 
   factory ForEach.fromJson(Map<String, dynamic> json) => ForEach(
-        source: json['source']!,
-        element: json['element']!,
-        scope: json['scope']!,
+        source: json['source']! as CqlExpression,
+        element: json['element']! as CqlExpression,
+        scope: json['scope']! as String,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression element;
@@ -66,7 +67,7 @@ class ForEach extends CqlExpression {
     final sourceResult = await source.execute(context);
     if (sourceResult == null) return null;
     final items = sourceResult is List ? sourceResult : [sourceResult];
-    final results = [];
+    final results = <dynamic>[];
     for (final item in items) {
       context[scope] = item;
       final result = await element.execute(context);

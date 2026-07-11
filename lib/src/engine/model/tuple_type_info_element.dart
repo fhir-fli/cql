@@ -19,10 +19,12 @@ class TupleTypeInfoElement {
     return TupleTypeInfoElement(
       name: json['name'] as String,
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierModel.fromJson(
+              json['typeSpecifier'] as Map<String, dynamic>)
           : null,
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
-          ? TypeSpecifierModel.fromJson(json['elementTypeSpecifier'])
+          ? TypeSpecifierModel.fromJson(
+              json['elementTypeSpecifier'] as Map<String, dynamic>)
           : null,
       type: json['type'] as String?,
       elementType: json['elementType'] as String?,

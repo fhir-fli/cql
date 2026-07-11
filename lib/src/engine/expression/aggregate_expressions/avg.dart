@@ -36,23 +36,25 @@ class Avg extends AggregateExpression {
   });
 
   factory Avg.fromJson(Map<String, dynamic> json) => Avg(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifierExpression.fromJson(e))
+                .map((e) =>
+                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
                 .toList(),
-        path: json['path'],
+        path: json['path'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -131,10 +133,10 @@ class Avg extends AggregateExpression {
         ValidatedQuantity? sum;
         for (final quantity in sourceResult) {
           if (sum == null) {
-            sum = quantity;
+            sum = quantity as ValidatedQuantity?;
             continue;
           } else {
-            sum = sum + quantity;
+            sum = sum + (quantity as Object);
           }
         }
         return sum == null

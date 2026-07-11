@@ -23,23 +23,25 @@ class AnyInValueSet extends OperatorExpression {
   });
 
   factory AnyInValueSet.fromJson(Map<String, dynamic> json) => AnyInValueSet(
-        codes: CqlExpression.fromJson(json['codes']!),
+        codes: CqlExpression.fromJson(json['codes'] as Map<String, dynamic>),
         valueset: json['valueset'] == null
             ? null
-            : ValueSetRef.fromJson(json['valueset']!),
+            : ValueSetRef.fromJson(json['valueset'] as Map<String, dynamic>),
         valuesetExpression: json['valuesetExpression'] == null
             ? null
-            : CqlExpression.fromJson(json['valuesetExpression']!),
+            : CqlExpression.fromJson(
+                json['valuesetExpression'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression codes;
@@ -82,7 +84,7 @@ class AnyInValueSet extends OperatorExpression {
     final codesList = codesValue is List ? codesValue : [codesValue];
 
     var valueSetRef = await valueset?.execute(context);
-    valueSetRef ??= await valuesetExpression?.execute(context);
+    valueSetRef ??= await valuesetExpression?.execute(context) as CqlValueSet?;
     if (valueSetRef == null) return null;
 
     // Check context['_valueSets'] for local value set expansions.

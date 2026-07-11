@@ -303,7 +303,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitDateTimePrecisionSpecifier(
     DateTimePrecisionSpecifierContext ctx,
   ) =>
-      visitDateTimePrecision(ctx.getChild(0)! as DateTimePrecisionContext);
+      visitDateTimePrecision(
+          ctx.getChild<dynamic>(0)! as DateTimePrecisionContext);
 
   @override
   void visitDefinition(DefinitionContext ctx) {
@@ -928,9 +929,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   String visitSimplePathReferentialIdentifier(
     SimplePathReferentialIdentifierContext ctx,
   ) =>
-      ctx.childCount == 1 && ctx.getChild(0) is ReferentialIdentifierContext
+      ctx.childCount == 1 &&
+              ctx.getChild<dynamic>(0) is ReferentialIdentifierContext
           ? visitReferentialIdentifier(
-              ctx.getChild(0)! as ReferentialIdentifierContext,
+              ctx.getChild<dynamic>(0)! as ReferentialIdentifierContext,
             )
           : throw ArgumentError(
               'Invalid Type for SimplePathReferentialIdentifier',
@@ -1040,7 +1042,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   LiteralString visitStringLiteral(StringLiteralContext ctx) =>
-      LiteralString(noQuoteString(ctx.getChild(0)!.text!));
+      LiteralString(noQuoteString(ctx.getChild<dynamic>(0)!.text!));
 
   @override
   Successor visitSuccessorExpressionTerm(SuccessorExpressionTermContext ctx) =>
@@ -1133,7 +1135,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     var isAs = false;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionContext) {
-        operand = byContext(child);
+        operand = byContext(child) as CqlExpression?;
       } else if (child is TypeSpecifierContext) {
         typeSpecifier = visitTypeSpecifier(child);
       } else if (child is TerminalNode) {
@@ -1443,7 +1445,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Width visitWidthExpressionTerm(WidthExpressionTermContext ctx) =>
-      Width(operand: byContext(ctx.children![2]));
+      Width(operand: byContext(ctx.children![2]) as CqlExpression);
 
   @override
   With visitWithClause(WithClauseContext ctx) =>

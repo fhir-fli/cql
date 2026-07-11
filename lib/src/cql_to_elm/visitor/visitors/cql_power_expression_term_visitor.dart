@@ -12,9 +12,9 @@ class CqlPowerExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
         if (left == null) {
-          left = byContext(child);
+          left = byContext(child) as CqlExpression?;
         } else {
-          right = byContext(child);
+          right = byContext(child) as CqlExpression?;
         }
       }
     }

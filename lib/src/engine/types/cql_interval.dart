@@ -1,6 +1,6 @@
 import 'package:cql/src/internal.dart';
 
-class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
+class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   CqlInterval({
     this.low,
     bool? lowClosed,
@@ -56,7 +56,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
 
   bool isUncertain() => uncertain;
 
-  CqlInterval setUncertain(bool uncertain) {
+  CqlInterval<dynamic> setUncertain(bool uncertain) {
     this.uncertain = uncertain;
     return this;
   }
@@ -72,7 +72,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
       : Predecessor.predecessor(high);
 
   @override
-  int compareTo(CqlInterval other) {
+  int compareTo(CqlInterval<dynamic> other) {
     if (_compareTo(getStart(), other.getStart()) == 0) {
       return _compareTo(getEnd(), other.getEnd());
     }
@@ -157,7 +157,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
   }
 
   /// This method returns the intersection of two intervals.
-  CqlInterval? intersect(CqlInterval right) {
+  CqlInterval<dynamic>? intersect(CqlInterval<dynamic> right) {
     // Get start and end points for both intervals
     final leftStart = getStart();
     final leftEnd = getEnd();
@@ -250,7 +250,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval> {
     );
   }
 
-  CqlInterval? except(CqlInterval right) {
+  CqlInterval<dynamic>? except(CqlInterval<dynamic> right) {
     // Get start and end points for both intervals
     final leftStart = getStart();
     final leftEnd = getEnd();

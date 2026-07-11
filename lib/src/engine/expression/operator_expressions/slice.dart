@@ -18,19 +18,22 @@ class Slice extends OperatorExpression {
   });
 
   factory Slice.fromJson(Map<String, dynamic> json) => Slice(
-        source: CqlExpression.fromJson(json['source']),
-        startIndex: CqlExpression.fromJson(json['startIndex']),
-        endIndex: CqlExpression.fromJson(json['endIndex']),
+        source: CqlExpression.fromJson(json['source'] as Map<String, dynamic>),
+        startIndex:
+            CqlExpression.fromJson(json['startIndex'] as Map<String, dynamic>),
+        endIndex:
+            CqlExpression.fromJson(json['endIndex'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression endIndex;

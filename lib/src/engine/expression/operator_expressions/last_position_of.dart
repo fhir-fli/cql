@@ -34,18 +34,20 @@ class LastPositionOf extends OperatorExpression {
   });
 
   factory LastPositionOf.fromJson(Map<String, dynamic> json) => LastPositionOf(
-        pattern: CqlExpression.fromJson(json['pattern']!),
-        string: CqlExpression.fromJson(json['string']!),
+        pattern:
+            CqlExpression.fromJson(json['pattern']! as Map<String, dynamic>),
+        string: CqlExpression.fromJson(json['string']! as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression pattern;

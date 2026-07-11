@@ -29,28 +29,30 @@ class Message extends OperatorExpression {
   });
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         condition: json['condition'] == null
             ? null
-            : CqlExpression.fromJson(json['condition']),
-        code:
-            json['code'] == null ? null : CqlExpression.fromJson(json['code']),
+            : CqlExpression.fromJson(json['condition'] as Map<String, dynamic>),
+        code: json['code'] == null
+            ? null
+            : CqlExpression.fromJson(json['code'] as Map<String, dynamic>),
         severity: json['severity'] == null
             ? null
-            : CqlExpression.fromJson(json['severity']),
+            : CqlExpression.fromJson(json['severity'] as Map<String, dynamic>),
         message: json['message'] == null
             ? null
-            : CqlExpression.fromJson(json['message']),
+            : CqlExpression.fromJson(json['message'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression source;

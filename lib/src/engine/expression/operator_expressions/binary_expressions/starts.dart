@@ -42,23 +42,25 @@ class Starts extends BinaryExpression {
 
   factory Starts.fromJson(Map<String, dynamic> json) => Starts(
         precision: json['precision'] != null
-            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(
+                json['precision'] as String?)
             : null,
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlDateTimePrecision? precision;
@@ -112,8 +114,8 @@ class Starts extends BinaryExpression {
   }
 
   static CqlBoolean? starts(
-    CqlInterval left,
-    CqlInterval right, [
+    CqlInterval<dynamic> left,
+    CqlInterval<dynamic> right, [
     CqlDateTimePrecision? precision,
   ]) {
     final leftStart = left.getStart();

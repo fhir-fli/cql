@@ -9,7 +9,9 @@ class CqlConcept implements CqlType {
       display: json['display']?.toString(),
       codes: json['codes'] != null
           ? (json['codes'] as List)
-              .map((e) => e is CqlCode ? e : CqlCode.fromJson(e))
+              .map((e) => e is CqlCode
+                  ? e
+                  : CqlCode.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
     );

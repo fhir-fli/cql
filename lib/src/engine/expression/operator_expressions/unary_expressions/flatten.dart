@@ -26,17 +26,19 @@ class Flatten extends UnaryExpression {
   });
 
   factory Flatten.fromJson(Map<String, dynamic> json) => Flatten(
-        operand: CqlExpression.fromJson(json['operand']!),
+        operand:
+            CqlExpression.fromJson(json['operand']! as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -82,17 +84,19 @@ class Flatten extends UnaryExpression {
   }
 
   @override
-  Future<List?> execute(Map<String, dynamic> context) async {
+  Future<List<dynamic>?> execute(Map<String, dynamic> context) async {
     final operandValue = await operand.execute(context);
     return flatten(operandValue);
   }
 
-  List? flatten(dynamic operandValue) {
+  List<dynamic>? flatten(dynamic operandValue) {
     if (operandValue == null) {
       return null;
     } else if (operandValue is List &&
         operandValue.every((element) => element is List)) {
-      return operandValue.expand((element) => element).toList();
+      return operandValue
+          .expand<dynamic>((element) => element as Iterable<dynamic>)
+          .toList();
     }
     throw ArgumentError('Invalid argument for Flatten operator');
   }

@@ -7,7 +7,9 @@ class ExpressionDefs {
     return ExpressionDefs()
       ..type = json['type'] as String?
       ..def = json['def'] != null
-          ? (json['def'] as List).map((i) => ExpressionDef.fromJson(i)).toList()
+          ? (json['def'] as List)
+              .map((i) => ExpressionDef.fromJson(i as Map<String, dynamic>))
+              .toList()
           : <ExpressionDef>[];
   }
   String? type;
@@ -27,7 +29,7 @@ class ExpressionDefs {
   Future<Map<String, dynamic>> execute(Map<String, dynamic> context) async {
     for (final e in def) {
       try {
-        context.addAll(await e.execute(context));
+        context.addAll(await e.execute(context) as Map<String, dynamic>);
       } catch (exception) {
         context[e.name] = exception;
       }
@@ -82,17 +84,18 @@ class ExpressionDef extends Element {
                 ? AccessModifier.public
                 : null,
         expression: json['expression'] != null
-            ? CqlExpression.fromJson(json['expression'])
+            ? CqlExpression.fromJson(json['expression'] as Map<String, dynamic>)
             : null,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
         localId: json['localId'] as String?,
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
     }

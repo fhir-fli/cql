@@ -80,23 +80,25 @@ class IncludedIn extends BinaryExpression {
 
   factory IncludedIn.fromJson(Map<String, dynamic> json) => IncludedIn(
         precision: json['precision'] != null
-            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(
+                json['precision'] as String?)
             : null,
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlDateTimePrecision? precision;
@@ -205,7 +207,7 @@ class IncludedIn extends BinaryExpression {
   /// Check if a list contains an element using CQL equality semantics.
   /// This handles CqlTuple and other types that don't override Dart ==.
   /// Null elements are considered equal (per CQL spec for list membership).
-  static bool listContains(List list, dynamic element) {
+  static bool listContains(List<dynamic> list, dynamic element) {
     if (element == null) {
       return list.any((e) => e == null);
     }
@@ -222,8 +224,8 @@ class IncludedIn extends BinaryExpression {
   /// uncertain cases. When the left interval is entirely at the known boundary
   /// of the right interval, the result is true.
   static CqlBoolean? _intervalIncludedIn(
-    CqlInterval left,
-    CqlInterval right,
+    CqlInterval<dynamic> left,
+    CqlInterval<dynamic> right,
     CqlDateTimePrecision? precision,
   ) {
     final leftStart = left.getStart();

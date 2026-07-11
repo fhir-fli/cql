@@ -13,7 +13,7 @@ class CqlPredecessorExpressionTermVisitor extends CqlBaseVisitor<Predecessor> {
     CqlExpression? expressionTerm;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        expressionTerm = byContext(child);
+        expressionTerm = byContext(child) as CqlExpression?;
       }
     }
     if (expressionTerm != null) {

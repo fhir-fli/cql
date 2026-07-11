@@ -14,10 +14,11 @@ class ContextInfo {
 
   factory ContextInfo.fromJson(Map<String, dynamic> json) {
     return ContextInfo(
-      name: json['name'],
-      contextType: NamedTypeSpecifier.fromJson(json['contextType']),
-      keyElement: json['keyElement'],
-      birthDateElement: json['birthDateElement'],
+      name: json['name'] as String,
+      contextType: NamedTypeSpecifier.fromJson(
+          json['contextType'] as Map<String, dynamic>),
+      keyElement: json['keyElement'] as String?,
+      birthDateElement: json['birthDateElement'] as String?,
     );
   }
   // Optional attribute - Name of the birthDateElement for the context type

@@ -20,21 +20,22 @@ class CqlToElmError extends Locator {
 
   factory CqlToElmError.fromJson(Map<String, dynamic> json) {
     return CqlToElmError(
-      librarySystem: json['librarySystem'],
-      libraryId: json['libraryId'],
-      libraryVersion: json['libraryVersion'],
-      startLine: json['startLine'],
-      startChar: json['startChar'],
-      endLine: json['endLine'],
-      endChar: json['endChar'],
-      message: json['message'],
-      errorType: ErrorTypeExtension.fromJson(json['errorType']),
+      librarySystem: json['librarySystem'] as String?,
+      libraryId: json['libraryId'] as String?,
+      libraryVersion: json['libraryVersion'] as String?,
+      startLine: json['startLine'] as int?,
+      startChar: json['startChar'] as int?,
+      endLine: json['endLine'] as int?,
+      endChar: json['endChar'] as int?,
+      message: json['message'] as String,
+      errorType: ErrorTypeExtension.fromJson(json['errorType'] as String),
       errorSeverity: json['errorSeverity'] != null
-          ? ErrorSeverityExtension.fromJson(json['errorSeverity'])
+          ? ErrorSeverityExtension.fromJson(json['errorSeverity'] as String)
           : null,
-      targetIncludeLibrarySystem: json['targetIncludeLibrarySystem'],
-      targetIncludeLibraryId: json['targetIncludeLibraryId'],
-      targetIncludeLibraryVersionId: json['targetIncludeLibraryVersionId'],
+      targetIncludeLibrarySystem: json['targetIncludeLibrarySystem'] as String?,
+      targetIncludeLibraryId: json['targetIncludeLibraryId'] as String?,
+      targetIncludeLibraryVersionId:
+          json['targetIncludeLibraryVersionId'] as String?,
     );
   }
 

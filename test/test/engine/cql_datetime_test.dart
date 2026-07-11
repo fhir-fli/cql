@@ -381,7 +381,7 @@ void main() {
         operand: [low, high],
       );
       final result = await duration.execute({});
-      expect(result, isA<CqlInterval>());
+      expect(result, isA<CqlInterval<dynamic>>());
       final interval = result as CqlInterval;
       expect(interval.isUncertain(), isTrue);
       expect(interval.low, equals(CqlInteger(0)));
@@ -407,7 +407,7 @@ void main() {
         operand: [low, high],
       );
       final result = await duration.execute({});
-      expect(result, isA<CqlInterval>());
+      expect(result, isA<CqlInterval<dynamic>>());
       final interval = result as CqlInterval;
       expect(interval.isUncertain(), isTrue);
       // min: from Jan 31 to Mar 1 = 30 days; max: from Jan 1 to Mar 31 = 90 days
@@ -474,7 +474,7 @@ void main() {
         operand: [low, high],
       );
       final result = await diff.execute({});
-      expect(result, isA<CqlInterval>());
+      expect(result, isA<CqlInterval<dynamic>>());
       final interval = result as CqlInterval;
       expect(interval.isUncertain(), isTrue);
       expect(interval.low, equals(CqlInteger(0)));
@@ -490,7 +490,7 @@ void main() {
         operand: [low, high],
       );
       final result = await diff.execute({});
-      expect(result, isA<CqlInterval>());
+      expect(result, isA<CqlInterval<dynamic>>());
       final interval = result as CqlInterval;
       expect(interval.isUncertain(), isTrue);
       expect(

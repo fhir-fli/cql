@@ -18,20 +18,21 @@ class Expand extends BinaryExpression {
 
   factory Expand.fromJson(Map<String, dynamic> json) => Expand(
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -92,7 +93,7 @@ class Expand extends BinaryExpression {
       return intervals.map((iv) => iv.low).toList();
     } else if (source is List) {
       // Filter out nulls per spec
-      final intervals = source.whereType<CqlInterval>().toList();
+      final intervals = source.whereType<CqlInterval<dynamic>>().toList();
       return _expandList(intervals, per);
     } else {
       throw ArgumentError(
@@ -103,12 +104,12 @@ class Expand extends BinaryExpression {
 
   /// Expand a list of intervals into a list of sub-intervals of size per.
   /// Overlapping intervals are collapsed first, then each is expanded.
-  dynamic _expandList(List<CqlInterval> intervals, dynamic per) {
-    if (intervals.isEmpty) return <CqlInterval>[];
+  dynamic _expandList(List<CqlInterval<dynamic>> intervals, dynamic per) {
+    if (intervals.isEmpty) return <CqlInterval<dynamic>>[];
     // Collapse overlapping intervals first to avoid duplicates
     final collapsed = Collapse(operand: []).collapse(intervals, null);
     if (collapsed == null) return null;
-    final result = <CqlInterval>[];
+    final result = <CqlInterval<dynamic>>[];
     for (final interval in collapsed) {
       final sub = _computeSubIntervals(interval, per);
       // null return from _computeSubIntervals means incompatible per
@@ -197,8 +198,9 @@ class Expand extends BinaryExpression {
 
   /// Compute the sub-intervals for a single interval.
   /// Returns null if per is incompatible with the interval type.
-  List<CqlInterval>? _computeSubIntervals(CqlInterval interval, dynamic per) {
-    final result = <CqlInterval>[];
+  List<CqlInterval<dynamic>>? _computeSubIntervals(
+      CqlInterval<dynamic> interval, dynamic per) {
+    final result = <CqlInterval<dynamic>>[];
     // Check original boundaries for null (not getStart/getEnd which substitute min/max)
     if (interval.low == null || interval.high == null) {
       return result; // Null boundary → empty result
@@ -463,7 +465,7 @@ class Expand extends BinaryExpression {
     // Time truncation based on quantity unit
     if (start is CqlTime && per is ValidatedQuantity) {
       final s = _truncateTimeToPer(start, per);
-      final e = _truncateTimeToPer(end, per);
+      final e = _truncateTimeToPer(end as CqlTime, per);
       if (s == null || e == null) return null;
       return (s, e);
     }
@@ -471,7 +473,7 @@ class Expand extends BinaryExpression {
     // DateTime/Date truncation based on quantity unit
     if (start is CqlDateTimeBase && per is ValidatedQuantity) {
       var s = _truncateDateTimeToPer(start, per);
-      final e = _truncateDateTimeToPer(end, per);
+      final e = _truncateDateTimeToPer(end as CqlDateTimeBase, per);
       if (s == null || e == null) return null;
       // Ceiling alignment: if truncation dropped non-minimum fields, advance
       if (s is CqlDateTimeBase && _needsCeilingAlignment(start, per)) {

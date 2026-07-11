@@ -10,7 +10,7 @@ class ParameterTypeSpecifierModel extends TypeSpecifierModel {
   }) : parameterName = QName.parse(parameterName);
 
   ParameterTypeSpecifierModel.fromJson(Map<String, dynamic> map)
-      : parameterName = QName.parse(map['parameterName']),
+      : parameterName = QName.parse(map['parameterName'] as String),
         super(type: 'ParameterTypeSpecifier');
 
   /// Name of the parameter.

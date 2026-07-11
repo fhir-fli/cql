@@ -10,8 +10,8 @@ class RelationshipInfo {
 
   factory RelationshipInfo.fromJson(Map<String, dynamic> json) {
     return RelationshipInfo(
-      context: json['context'],
-      relatedKeyElement: json['relatedKeyElement'],
+      context: json['context'] as String,
+      relatedKeyElement: json['relatedKeyElement'] as String?,
     );
   }
 

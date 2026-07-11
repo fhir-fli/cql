@@ -64,18 +64,20 @@ class Add extends BinaryExpression {
 
   factory Add.fromJson(Map<String, dynamic> json) => Add(
         operand: List<CqlExpression>.from(
-          json['operand'].map((x) => CqlExpression.fromJson(x)),
+          (json['operand'] as List<dynamic>).map(
+              (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -204,7 +206,7 @@ class Add extends BinaryExpression {
           }
           return null;
         }
-      case CqlInterval _:
+      case CqlInterval<dynamic> _:
         {
           if (right is CqlInterval) {
             // [a,b] + [c,d] = [a+c, b+d]

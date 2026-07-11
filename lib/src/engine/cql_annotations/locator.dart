@@ -12,13 +12,13 @@ class Locator extends CqlToElmBase {
   });
 
   factory Locator.fromJson(Map<String, dynamic> json) => Locator(
-        librarySystem: json['librarySystem'],
-        libraryId: json['libraryId'],
-        libraryVersion: json['libraryVersion'],
-        startLine: json['startLine'],
-        startChar: json['startChar'],
-        endLine: json['endLine'],
-        endChar: json['endChar'],
+        librarySystem: json['librarySystem'] as String?,
+        libraryId: json['libraryId'] as String?,
+        libraryVersion: json['libraryVersion'] as String?,
+        startLine: json['startLine'] as int?,
+        startChar: json['startChar'] as int?,
+        endLine: json['endLine'] as int?,
+        endChar: json['endChar'] as int?,
       );
   final int? endChar;
   final int? endLine;

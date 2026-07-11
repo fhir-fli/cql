@@ -14,7 +14,7 @@ class CqlElementExtractorExpressionTermVisitor
     CqlExpression? operand;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionTermContext) {
-        operand = byContext(child);
+        operand = byContext(child) as CqlExpression?;
       }
     }
     if (operand != null) {

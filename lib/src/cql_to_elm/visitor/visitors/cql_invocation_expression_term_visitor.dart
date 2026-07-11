@@ -99,7 +99,8 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
         );
       }
 
-      final prop = Property(source: expressionTerm, path: memberName);
+      final prop =
+          Property(source: expressionTerm as CqlExpression?, path: memberName);
       // Source-chain member access (e.g. `(singleton from ...).url`): infer
       // the source's type and record the property's declared element type.
       final model = currentModel;

@@ -48,60 +48,67 @@ class Retrieve extends CqlExpression {
 
   factory Retrieve.fromJson(Map<String, dynamic> json) {
     return Retrieve(
-      id: json['id'] != null ? CqlExpression.fromJson(json['id']) : null,
-      codes:
-          json['codes'] != null ? CqlExpression.fromJson(json['codes']) : null,
+      id: json['id'] != null
+          ? CqlExpression.fromJson(json['id'] as Map<String, dynamic>)
+          : null,
+      codes: json['codes'] != null
+          ? CqlExpression.fromJson(json['codes'] as Map<String, dynamic>)
+          : null,
       dateRange: json['dateRange'] != null
-          ? CqlExpression.fromJson(json['dateRange'])
+          ? CqlExpression.fromJson(json['dateRange'] as Map<String, dynamic>)
           : null,
       context: json['context'] != null
-          ? CqlExpression.fromJson(json['context'])
+          ? CqlExpression.fromJson(json['context'] as Map<String, dynamic>)
           : null,
       include: json['include'] != null
           ? (json['include'] as List)
-              .map((e) => IncludeElement.fromJson(e))
+              .map((e) => IncludeElement.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
       codeFilter: json['codeFilter'] != null
           ? (json['codeFilter'] as List)
-              .map((e) => CodeFilterElement.fromJson(e))
+              .map((e) => CodeFilterElement.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
       dateFilter: json['dateFilter'] != null
           ? (json['dateFilter'] as List)
-              .map((e) => DateFilterElement.fromJson(e))
+              .map((e) => DateFilterElement.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
       otherFilter: json['otherFilter'] != null
           ? (json['otherFilter'] as List)
-              .map((e) => OtherFilterElement.fromJson(e))
+              .map(
+                (e) => OtherFilterElement.fromJson(e as Map<String, dynamic>),
+              )
               .toList()
           : null,
-      dataType: QName.fromJson(json['dataType']),
-      templateId: json['templateId'],
-      idProperty: json['idProperty'],
-      idSearch: json['idSearch'],
-      contextProperty: json['contextProperty'],
-      contextSearch: json['contextSearch'],
-      codeProperty: json['codeProperty'],
-      codeSearch: json['codeSearch'],
-      codeComparator: json['codeComparator'],
-      valueSetProperty: json['valueSetProperty'],
-      dateProperty: json['dateProperty'],
-      dateLowProperty: json['dateLowProperty'],
-      dateHighProperty: json['dateHighProperty'],
-      dateSearch: json['dateSearch'],
-      includedIn: json['includedIn'],
+      dataType: QName.fromJson(json['dataType'] as String),
+      templateId: json['templateId'] as String?,
+      idProperty: json['idProperty'] as String?,
+      idSearch: json['idSearch'] as String?,
+      contextProperty: json['contextProperty'] as String?,
+      contextSearch: json['contextSearch'] as String?,
+      codeProperty: json['codeProperty'] as String?,
+      codeSearch: json['codeSearch'] as String?,
+      codeComparator: json['codeComparator'] as String?,
+      valueSetProperty: json['valueSetProperty'] as String?,
+      dateProperty: json['dateProperty'] as String?,
+      dateLowProperty: json['dateLowProperty'] as String?,
+      dateHighProperty: json['dateHighProperty'] as String?,
+      dateSearch: json['dateSearch'] as String?,
+      includedIn: json['includedIn'] as String?,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
+              .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
+      localId: json['localId'] as String?,
+      locator: json['locator'] as String?,
+      resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

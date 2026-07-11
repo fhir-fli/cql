@@ -12,7 +12,7 @@ class ConstraintInfo {
 
   factory ConstraintInfo.fromJson(Map<String, dynamic> json) {
     return ConstraintInfo(
-      name: json['name'],
+      name: json['name'] as String,
       severity: json['severity'] == 'info'
           ? ConstraintSeverity.info
           : json['severity'] == 'warning'
@@ -21,10 +21,10 @@ class ConstraintInfo {
       expressions: json['expressions'] == null
           ? []
           : (json['expressions'] as List)
-              .map((e) => ExpressionInfo.fromJson(e))
+              .map((e) => ExpressionInfo.fromJson(e as Map<String, dynamic>))
               .toList(),
-      description: json['description'],
-      message: json['message'],
+      description: json['description'] as String?,
+      message: json['message'] as String?,
     );
   }
   // Optional attribute - Description of the constraint

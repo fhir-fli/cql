@@ -17,21 +17,22 @@ class Case extends CqlExpression {
   factory Case.fromJson(Map<String, dynamic> json) => Case(
         comparand: json['comparand'] == null
             ? null
-            : CqlExpression.fromJson(json['comparand']),
+            : CqlExpression.fromJson(json['comparand'] as Map<String, dynamic>),
         caseItem: (json['caseItem']! as List)
-            .map((e) => CaseItem.fromJson(e))
+            .map((e) => CaseItem.fromJson(e as Map<String, dynamic>))
             .toList(),
-        elseExpr: CqlExpression.fromJson(json['else']!),
+        elseExpr: CqlExpression.fromJson(json['else']! as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 

@@ -37,23 +37,25 @@ class Median extends AggregateExpression {
   });
 
   factory Median.fromJson(Map<String, dynamic> json) => Median(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifierExpression.fromJson(e))
+                .map((e) =>
+                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
                 .toList(),
-        path: json['path'],
+        path: json['path'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -159,7 +161,7 @@ class Median extends AggregateExpression {
         sourceResult.sort(
           (a, b) => a.compareTo(
             b,
-          ),
+          ) as int,
         ); // Ensure ValidatedQuantity can be compared based on value
 
         final middleIndex = sourceResult.length ~/ 2;
@@ -170,8 +172,8 @@ class Median extends AggregateExpression {
           // Calculate the average of the two middle quantities
           final sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
           return ValidatedQuantity(
-            value: sum.value / UcumDecimal.fromNum(2),
-            unit: sum.unit,
+            value: (sum.value / UcumDecimal.fromNum(2)) as UcumDecimal,
+            unit: sum.unit as String?,
           );
         }
       }

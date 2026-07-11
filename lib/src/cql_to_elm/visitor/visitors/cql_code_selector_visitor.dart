@@ -11,8 +11,8 @@ class CqlCodeSelectorVisitor extends CqlBaseVisitor<Code> {
     String? code;
     CodeSystemRef? codeSystem;
     String? display;
-    if (ctx.childCount >= 3 && ctx.getChild(1)?.text != null) {
-      code = noQuoteString(ctx.getChild(1)!.text!);
+    if (ctx.childCount >= 3 && ctx.getChild<dynamic>(1)?.text != null) {
+      code = noQuoteString(ctx.getChild<dynamic>(1)!.text!);
     }
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is CodesystemIdentifierContext) {

@@ -99,20 +99,21 @@ class Equal extends BinaryExpression {
 
   factory Equal.fromJson(Map<String, dynamic> json) => Equal(
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -191,9 +192,9 @@ class Equal extends BinaryExpression {
       case CqlTime _:
         result = right is CqlTime ? left.isEqual(right) : false;
       case CqlCode _:
-        result = left.equal(right);
+        result = left.equal(right as Object);
       case CqlConcept _:
-        result = left.equal(right);
+        result = left.equal(right as Object);
       case num _:
         {
           if (right is num) {
@@ -258,7 +259,7 @@ class Equal extends BinaryExpression {
         result = right is ValidatedQuantity && left == right;
       case ValidatedRatio _:
         result = right is ValidatedRatio && left == right;
-      case List _:
+      case List<dynamic> _:
         if (right is List && left.length == right.length) {
           result = true;
           for (var i = 0; i < left.length; i++) {
@@ -314,7 +315,7 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-      case Map _:
+      case Map<dynamic, dynamic> _:
         if (right is Map && left.length == right.length) {
           result = true;
 
@@ -341,7 +342,7 @@ class Equal extends BinaryExpression {
         } else {
           result = false;
         }
-      case CqlInterval _:
+      case CqlInterval<dynamic> _:
         if (right is CqlInterval) {
           // Use CQL's three-valued equal (not Dart's == which uses equivalence)
           // so that imprecise DateTime boundaries propagate null correctly.

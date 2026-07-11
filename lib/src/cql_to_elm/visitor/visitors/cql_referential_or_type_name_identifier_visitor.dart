@@ -14,7 +14,7 @@ class CqlReferentialOrTypeNameIdentifierVisitor extends CqlBaseVisitor<String> {
       if (child is ReferentialIdentifierContext) {
         return visitReferentialIdentifier(child);
       } else if (child is TypeNameIdentifierContext) {
-        return visitTypeNameIdentifier(child);
+        return visitTypeNameIdentifier(child) as String;
       }
     }
     throw ArgumentError('$thisNode Invalid ReferentialOrTypeNameIdentifier');

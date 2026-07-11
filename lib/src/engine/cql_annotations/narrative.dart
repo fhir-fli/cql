@@ -4,9 +4,11 @@ class Narrative {
 
   factory Narrative.fromJson(Map<String, dynamic> json) {
     return Narrative(
-      r: json['r'],
+      r: json['r'] as String?,
       s: json['s'] != null
-          ? (json['s'] as List).map((i) => Narrative.fromJson(i)).toList()
+          ? (json['s'] as List)
+              .map((i) => Narrative.fromJson(i as Map<String, dynamic>))
+              .toList()
           : null,
     );
   }

@@ -15,23 +15,26 @@ class ListExpression extends CqlExpression {
   factory ListExpression.fromJson(Map<String, dynamic> json) {
     return ListExpression(
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['typeSpecifier'] as Map<String, dynamic>)
           : null,
       element: json['element'] != null
           ? List<CqlExpression>.from(
-              json['element'].map((x) => CqlExpression.fromJson(x)),
+              (json['element'] as List).map(
+                  (x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
             )
           : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
+              .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
+      localId: json['localId'] as String?,
+      locator: json['locator'] as String?,
+      resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
           : null,
     );
   }

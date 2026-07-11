@@ -23,23 +23,25 @@ class InValueSet extends OperatorExpression {
 
   factory InValueSet.fromJson(Map<String, dynamic> json) {
     return InValueSet(
-      code: CqlExpression.fromJson(json['code']!),
+      code: CqlExpression.fromJson(json['code'] as Map<String, dynamic>),
       valueset: json['valueset'] == null
           ? null
-          : ValueSetRef.fromJson(json['valueset']!),
+          : ValueSetRef.fromJson(json['valueset'] as Map<String, dynamic>),
       valuesetExpression: json['valuesetExpression'] == null
           ? null
-          : CqlExpression.fromJson(json['valuesetExpression']!),
+          : CqlExpression.fromJson(
+              json['valuesetExpression'] as Map<String, dynamic>),
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
+              .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
+      localId: json['localId'] as String?,
+      locator: json['locator'] as String?,
+      resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
           : null,
     );
   }
@@ -105,7 +107,7 @@ class InValueSet extends OperatorExpression {
       throw ArgumentError('CqlLibrary not found in context');
     }
     var valueSetRef = await valueset?.execute(context);
-    valueSetRef ??= await valuesetExpression?.execute(context);
+    valueSetRef ??= await valuesetExpression?.execute(context) as CqlValueSet?;
     if (valueSetRef == null) {
       throw ArgumentError('ValueSet not found in context');
     }

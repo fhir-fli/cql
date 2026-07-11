@@ -31,13 +31,16 @@ class ClassInfoElement {
   factory ClassInfoElement.fromJson(Map<String, dynamic> json) {
     final name = json['name'] as String;
     final typeSpecifier = json['typeSpecifier'] != null
-        ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
+        ? TypeSpecifierModel.fromJson(
+            json['typeSpecifier'] as Map<String, dynamic>)
         : null;
     final elementTypeSpecifier = json['elementTypeSpecifier'] != null
-        ? TypeSpecifierModel.fromJson(json['elementTypeSpecifier'])
+        ? TypeSpecifierModel.fromJson(
+            json['elementTypeSpecifier'] as Map<String, dynamic>)
         : null;
-    final binding =
-        json['binding'] != null ? BindingInfo.fromJson(json['binding']) : null;
+    final binding = json['binding'] != null
+        ? BindingInfo.fromJson(json['binding'] as Map<String, dynamic>)
+        : null;
     final type = json['type'] as String?;
     final elementType = json['elementType'] as String?;
     final prohibited = json['prohibited'] is bool

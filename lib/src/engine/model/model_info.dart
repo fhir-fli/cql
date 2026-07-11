@@ -34,8 +34,9 @@ class ModelInfo {
     return ModelInfo(
       name: json['name'] as String? ?? '',
       url: Uri.parse(json['url'] as String? ?? ''),
-      targetUrl:
-          json['targetUrl'] is! String ? null : Uri.tryParse(json['targetUrl']),
+      targetUrl: json['targetUrl'] is! String
+          ? null
+          : Uri.tryParse(json['targetUrl'] as String),
       schemaLocation: json['schemaLocation'] as String?,
       targetQualifier: json['targetQualifier'] as String?,
       patientClassName: json['patientClassName'] as String?,
@@ -48,9 +49,12 @@ class ModelInfo {
       contextInfo: json['contextInfo'] == null
           ? <ContextInfo>[]
           : json['contextInfo'] is Map
-              ? [ContextInfo.fromJson(json['contextInfo'])]
+              ? [
+                  ContextInfo.fromJson(
+                      json['contextInfo'] as Map<String, dynamic>)
+                ]
               : (json['contextInfo'] as List)
-                  .map((e) => ContextInfo.fromJson(e))
+                  .map((e) => ContextInfo.fromJson(e as Map<String, dynamic>))
                   .toList(),
       contextInfoSingle: json['contextInfo'] is Map
           ? true
@@ -72,9 +76,13 @@ class ModelInfo {
       conversionInfo: json['conversionInfo'] == null
           ? <ConversionInfo>[]
           : json['conversionInfo'] is Map
-              ? [ConversionInfo.fromJson(json['conversionInfo'])]
+              ? [
+                  ConversionInfo.fromJson(
+                      json['conversionInfo'] as Map<String, dynamic>)
+                ]
               : (json['conversionInfo'] as List)
-                  .map((e) => ConversionInfo.fromJson(e))
+                  .map(
+                      (e) => ConversionInfo.fromJson(e as Map<String, dynamic>))
                   .toList(),
       conversionInfoSingle: json['conversionInfo'] is Map
           ? true
@@ -84,9 +92,13 @@ class ModelInfo {
       requiredModelInfo: json['requiredModelInfo'] == null
           ? <ModelSpecifier>[]
           : json['requiredModelInfo'] is Map
-              ? [ModelSpecifier.fromJson(json['requiredModelInfo'])]
+              ? [
+                  ModelSpecifier.fromJson(
+                      json['requiredModelInfo'] as Map<String, dynamic>)
+                ]
               : (json['requiredModelInfo'] as List)
-                  .map((e) => ModelSpecifier.fromJson(e))
+                  .map(
+                      (e) => ModelSpecifier.fromJson(e as Map<String, dynamic>))
                   .toList(),
       requiredModelInfoSingle: json['requiredModelInfo'] is Map
           ? true
@@ -96,9 +108,9 @@ class ModelInfo {
       typeInfo: json['typeInfo'] == null
           ? <TypeInfo>[]
           : json['typeInfo'] is Map
-              ? [TypeInfo.fromJson(json['typeInfo'])]
+              ? [TypeInfo.fromJson(json['typeInfo'] as Map<String, dynamic>)]
               : (json['typeInfo'] as List)
-                  .map((e) => TypeInfo.fromJson(e))
+                  .map((e) => TypeInfo.fromJson(e as Map<String, dynamic>))
                   .toList(),
       typeInfoSingle: json['typeInfo'] is Map
           ? true

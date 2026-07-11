@@ -10,9 +10,9 @@ class CqlToElmInfo extends CqlToElmBase {
 
   factory CqlToElmInfo.fromJson(Map<String, dynamic> json) {
     return CqlToElmInfo(
-      translatorVersion: json['translatorVersion'],
-      translatorOptions: json['translatorOptions'],
-      signatureLevel: json['signatureLevel'],
+      translatorVersion: json['translatorVersion'] as String?,
+      translatorOptions: json['translatorOptions'] as String?,
+      signatureLevel: json['signatureLevel'] as String?,
     );
   }
 

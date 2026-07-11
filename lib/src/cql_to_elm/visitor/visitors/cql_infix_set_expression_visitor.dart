@@ -10,11 +10,11 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     final thisNode = getNextNode();
 
     if (ctx.childCount == 3) {
-      final left = byContext(ctx.getChild(0)!);
+      final left = byContext(ctx.getChild<dynamic>(0)!);
 
-      final operator = ctx.getChild(1)!.text;
+      final operator = ctx.getChild<dynamic>(1)!.text;
 
-      final right = byContext(ctx.getChild(2)!);
+      final right = byContext(ctx.getChild<dynamic>(2)!);
 
       if (left is CqlExpression && right is CqlExpression) {
         // Get return types for left and right operands

@@ -28,11 +28,11 @@ class FunctionDef extends ExpressionDef {
               ? AccessModifier.public
               : null,
       expression: json['expression'] != null
-          ? CqlExpression.fromJson(json['expression'])
+          ? CqlExpression.fromJson(json['expression'] as Map<String, dynamic>)
           : null,
       operand: json['operand'] != null
           ? (json['operand'] as List)
-              .map((i) => OperandDef.fromJson(i))
+              .map((i) => OperandDef.fromJson(i as Map<String, dynamic>))
               .toList()
           : null,
       external: json['external'] as bool?,

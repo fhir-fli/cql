@@ -6,8 +6,8 @@ class ExpressionInfo {
 
   factory ExpressionInfo.fromJson(Map<String, dynamic> json) {
     return ExpressionInfo(
-      expression: json['expression'],
-      language: json['language'],
+      expression: json['expression'] as String,
+      language: json['language'] as String,
     );
   }
   // The actual expression in a specific language

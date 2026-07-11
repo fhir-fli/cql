@@ -7,9 +7,9 @@ class CqlWithoutClauseVisitor extends CqlBaseVisitor<Without> {
   Without visitWithoutClause(WithoutClauseContext ctx) {
     printIf(ctx);
     final thisNode = getNextNode();
-    if (ctx.getChild(1) is AliasedQuerySourceContext) {
+    if (ctx.getChild<dynamic>(1) is AliasedQuerySourceContext) {
       final source = visitAliasedQuerySource(
-          ctx.getChild(1)! as AliasedQuerySourceContext);
+          ctx.getChild<dynamic>(1)! as AliasedQuerySourceContext);
       // Add the Without alias (typed when inferable) to the current query
       // scope so suchThat can see it.
       final model = currentModel;
@@ -18,8 +18,9 @@ class CqlWithoutClauseVisitor extends CqlBaseVisitor<Without> {
         source.alias,
         model != null ? inferSourceElement(sourceExpr, model) : null,
       );
-      final suchThat =
-          ctx.getChild(3) == null ? null : byContext(ctx.getChild(3)!);
+      final suchThat = ctx.getChild<dynamic>(3) == null
+          ? null
+          : byContext(ctx.getChild<dynamic>(3)!);
       return Without(
         type: 'Without',
         alias: source.alias,

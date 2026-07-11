@@ -12,7 +12,7 @@ class CqlCastExpressionVisitor extends CqlBaseVisitor<As> {
     TypeSpecifierExpression? typeSpecifier;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionContext) {
-        operand = byContext(child);
+        operand = byContext(child) as CqlExpression?;
       } else if (child is TypeSpecifierContext) {
         typeSpecifier = visitTypeSpecifier(child);
       }

@@ -19,9 +19,9 @@ class CqlSetAggregateExpressionTermVisitor
         expandOrCollapse ??= child.text == 'expand';
       } else if (child is ExpressionContext) {
         if (expression == null) {
-          expression = byContext(child);
+          expression = byContext(child) as CqlExpression?;
         } else {
-          perExpression = byContext(child);
+          perExpression = byContext(child) as CqlExpression?;
         }
       } else if (child is DateTimePrecisionContext) {
         perExpression = LiteralQuantity(

@@ -10,7 +10,8 @@ class CqlTimeBoundaryExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
     printIf(ctx);
     final thisNode = getNextNode();
     if (ctx.childCount == 3) {
-      final CqlExpression expression = byContext(ctx.children![2]);
+      final CqlExpression expression =
+          byContext(ctx.children![2]) as CqlExpression;
       if (ctx.children![0].text == 'start') {
         return Start(operand: expression);
       } else if (ctx.children![0].text == 'end') {

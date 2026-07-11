@@ -17,22 +17,24 @@ class RelationshipClause extends AliasedQuerySource {
 
   factory RelationshipClause.fromJson(Map<String, dynamic> json) =>
       RelationshipClause(
-        alias: json['alias'],
-        expression: CqlExpression.fromJson(json['expression']),
+        alias: json['alias'] as String,
+        expression:
+            CqlExpression.fromJson(json['expression'] as Map<String, dynamic>),
         suchThat: json['suchThat'] == null
             ? null
-            : CqlExpression.fromJson(json['suchThat']),
-        type: json['type'] ?? '',
+            : CqlExpression.fromJson(json['suchThat'] as Map<String, dynamic>),
+        type: (json['type'] as String?) ?? '',
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression? suchThat;

@@ -59,24 +59,29 @@ class As extends UnaryExpression {
   });
 
   factory As.fromJson(Map<String, dynamic> json) => As(
-        operand: CqlExpression.fromJson(json['operand']!),
+        operand:
+            CqlExpression.fromJson(json['operand']! as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       )
         ..asTypeSpecifier = json['asTypeSpecifier'] == null
             ? null
-            : TypeSpecifierExpression.fromJson(json['asTypeSpecifier'])
-        ..asType = json['asType'] == null ? null : QName.parse(json['asType'])
-        ..strict = json['strict'];
+            : TypeSpecifierExpression.fromJson(
+                json['asTypeSpecifier'] as Map<String, dynamic>)
+        ..asType = json['asType'] == null
+            ? null
+            : QName.parse(json['asType'] as String)
+        ..strict = json['strict'] as bool?;
 
   /// Target type for casting.
   QName? asType;

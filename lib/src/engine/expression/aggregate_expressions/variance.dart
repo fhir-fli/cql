@@ -38,23 +38,25 @@ class Variance extends AggregateExpression {
   });
 
   factory Variance.fromJson(Map<String, dynamic> json) => Variance(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifierExpression.fromJson(e))
+                .map((e) =>
+                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
                 .toList(),
-        path: json['path'],
+        path: json['path'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -118,16 +120,16 @@ class Variance extends AggregateExpression {
   }
 
   static dynamic variance(dynamic sourceResult) {
-    if (sourceResult == null || sourceResult.isEmpty) {
+    if (sourceResult == null || sourceResult.isEmpty as bool) {
       return null;
     }
-    sourceResult.removeWhere((element) => element == null);
-    if (sourceResult.isEmpty) {
+    sourceResult.removeWhere((dynamic element) => element == null);
+    if (sourceResult.isEmpty as bool) {
       return null;
     }
 
     // Sample variance requires at least 2 values (denominator is N-1)
-    if (sourceResult.length < 2) {
+    if ((sourceResult.length < 2) as bool) {
       return null;
     }
 

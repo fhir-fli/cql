@@ -43,9 +43,9 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
         } else if (child is QueryInclusionClauseContext) {
           // With/without register their own alias (and type) into the
           // current scope as they're visited.
-          final rel = visitQueryInclusionClause(child);
+          final rel = visitQueryInclusionClause(child) as RelationshipClause;
           relationship.add(rel);
-          if (rel.alias != null) aliases.putIfAbsent(rel.alias!, () => null);
+          aliases.putIfAbsent(rel.alias, () => null);
         } else if (child is WhereClauseContext) {
           where = visitWhereClause(child);
         } else if (child is AggregateClauseContext) {

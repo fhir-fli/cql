@@ -12,11 +12,11 @@ class CqlValueSet extends CqlVocabulary {
 
   factory CqlValueSet.fromJson(Map<String, dynamic> json) {
     return CqlValueSet(
-      id: json['id'],
-      version: json['version'],
-      name: json['name'],
+      id: json['id'] as String,
+      version: json['version'] as String?,
+      name: json['name'] as String,
       codeSystems: (json['codeSystems'] as List)
-          .map((e) => CqlCodeSystem.fromJson(e))
+          .map((e) => CqlCodeSystem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

@@ -14,7 +14,7 @@ class CqlTupleElementSelectorVisitor extends CqlBaseVisitor<TupleElement> {
       if (child is ReferentialIdentifierContext) {
         referentialIdentifier = visitReferentialIdentifier(child);
       } else if (child is! TerminalNodeImpl) {
-        expression = byContext(child);
+        expression = byContext(child) as CqlExpression?;
       }
     }
     if (referentialIdentifier != null && expression != null) {

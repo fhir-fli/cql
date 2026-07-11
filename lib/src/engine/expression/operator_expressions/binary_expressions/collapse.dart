@@ -76,23 +76,27 @@ class Collapse extends BinaryExpression {
     var operand = <CqlExpression>[];
     if (json['operand'] is List) {
       operand = List<CqlExpression>.from(
-        json['operand'].map((x) => CqlExpression.fromJson(x)),
+        (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
       );
     } else if (json['operand'] is Map) {
-      operand = [CqlExpression.fromJson(json['operand'])];
+      operand = [
+        CqlExpression.fromJson(json['operand'] as Map<String, dynamic>)
+      ];
     }
     return Collapse(
       operand: operand,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
+              .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
+      localId: json['localId'] as String?,
+      locator: json['locator'] as String?,
+      resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
           : null,
     );
   }
@@ -132,7 +136,8 @@ class Collapse extends BinaryExpression {
       const ['List<CqlInterval>'];
 
   @override
-  Future<List<CqlInterval>?> execute(Map<String, dynamic> context) async {
+  Future<List<CqlInterval<dynamic>>?> execute(
+      Map<String, dynamic> context) async {
     if (operand.isEmpty) {
       return [];
     }
@@ -152,7 +157,7 @@ class Collapse extends BinaryExpression {
     return null;
   }
 
-  static CqlDateTimePrecision? _coarsestPrecision(List source) {
+  static CqlDateTimePrecision? _coarsestPrecision(List<dynamic> source) {
     CqlDateTimePrecision? coarsest;
     for (final interval in source) {
       if (interval is CqlInterval) {
@@ -186,12 +191,12 @@ class Collapse extends BinaryExpression {
     return coarsest;
   }
 
-  List<CqlInterval>? collapse(dynamic source, dynamic per) {
+  List<CqlInterval<dynamic>>? collapse(dynamic source, dynamic per) {
     if (source == null) {
       return null;
     }
 
-    if (source.isEmpty) {
+    if (source.isEmpty as bool) {
       return [];
     }
 
@@ -199,12 +204,12 @@ class Collapse extends BinaryExpression {
     if (source is List) {
       source = source.where((e) => e != null).toList();
     }
-    if (source.isEmpty) {
+    if (source.isEmpty as bool) {
       return [];
     }
     if (source is List && source.every((element) => element is CqlInterval)) {
       // Filter out null intervals (both boundaries null)
-      final intervals = source.cast<CqlInterval>();
+      final intervals = source.cast<CqlInterval<dynamic>>();
       final filtered =
           intervals.where((i) => i.low != null || i.high != null).toList();
       if (filtered.isEmpty) {
@@ -219,10 +224,11 @@ class Collapse extends BinaryExpression {
           _precisionFromQuantity(per) ?? _coarsestPrecision(source);
 
       // Sort the source by their start points
-      source.sort((a, b) => a.compareTo(b));
+      source.sort((a, b) => a.compareTo(b) as int);
 
-      final collapsedSource = <CqlInterval>[];
-      CqlInterval? currentInterval = source.first;
+      final collapsedSource = <CqlInterval<dynamic>>[];
+      CqlInterval<dynamic>? currentInterval =
+          source.first as CqlInterval<dynamic>?;
 
       // Normalize per for gap tolerance calculation.
       // When per is a ValidatedQuantity and endpoints are numeric FHIR types,
@@ -292,11 +298,11 @@ class Collapse extends BinaryExpression {
             low: currentInterval?.low,
             lowClosed: currentInterval?.lowClosed,
             high: newEnd,
-            highClosed: newHighClosed,
+            highClosed: newHighClosed as bool?,
           );
         } else if (currentInterval != null) {
           collapsedSource.add(currentInterval);
-          currentInterval = nextInterval;
+          currentInterval = nextInterval as CqlInterval<dynamic>?;
         }
       }
 

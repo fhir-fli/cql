@@ -11,7 +11,7 @@ class CqlSuccessorExpressionTermVisitor extends CqlBaseVisitor<Successor> {
     CqlExpression? expressionTerm;
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is! TerminalNodeImpl) {
-        expressionTerm = byContext(child);
+        expressionTerm = byContext(child) as CqlExpression?;
       }
     }
     if (expressionTerm != null) {

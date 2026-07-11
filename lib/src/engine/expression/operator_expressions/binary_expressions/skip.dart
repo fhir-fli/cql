@@ -30,20 +30,21 @@ class Skip extends BinaryExpression {
 
   factory Skip.fromJson(Map<String, dynamic> json) => Skip(
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List<dynamic>).map(
+            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -88,14 +89,14 @@ class Skip extends BinaryExpression {
     }
     final count = await operand[1].execute(context);
     if (count == null) {
-      return src;
+      return src as List<dynamic>?;
     }
     if (!(count is int || count is CqlInteger)) {
       throw CqlException(
         message: 'Skip operator requires a list and an integer as operands',
       );
     }
-    if (count < 0) {
+    if ((count < 0) as bool) {
       return [];
     }
     // Delegate to central Slice implementation

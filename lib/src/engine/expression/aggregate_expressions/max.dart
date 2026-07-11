@@ -64,23 +64,25 @@ class Max extends AggregateExpression {
   });
 
   factory Max.fromJson(Map<String, dynamic> json) => Max(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifierExpression.fromJson(e))
+                .map((e) =>
+                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
                 .toList(),
-        path: json['path'],
+        path: json['path'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -160,7 +162,7 @@ class Max extends AggregateExpression {
           return value;
         }
         if (value is int) {
-          return value > element ? value : element;
+          return value > (element as num) ? value : element;
         }
         if (value is CqlInteger) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
@@ -168,7 +170,7 @@ class Max extends AggregateExpression {
               : element;
         }
         if (value is double) {
-          return value > element ? value : element;
+          return value > (element as num) ? value : element;
         }
         if (value is CqlDecimal) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
@@ -176,7 +178,7 @@ class Max extends AggregateExpression {
               : element;
         }
         if (value is BigInt) {
-          return value > element ? value : element;
+          return value > (element as BigInt) ? value : element;
         }
         if (value is CqlLong) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
@@ -184,7 +186,7 @@ class Max extends AggregateExpression {
               : element;
         }
         if (value is DateTime) {
-          return value.isBefore(element) ? value : element;
+          return value.isBefore(element as DateTime) ? value : element;
         }
         if (value is CqlDateTime) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)
@@ -202,7 +204,7 @@ class Max extends AggregateExpression {
               : element;
         }
         if (value is String) {
-          return value.compareTo(element) > 0 ? value : element;
+          return value.compareTo(element as String) > 0 ? value : element;
         }
         if (value is ValidatedQuantity) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)

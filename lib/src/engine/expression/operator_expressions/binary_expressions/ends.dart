@@ -43,7 +43,8 @@ class Ends extends BinaryExpression {
 
   factory Ends.fromJson(Map<String, dynamic> json) => Ends(
         precision: json['precision'] != null
-            ? CqlDateTimePrecisionExtension.fromJson(json['precision'])
+            ? CqlDateTimePrecisionExtension.fromJson(
+                json['precision'] as String?)
             : null,
         operand: json['operand'] != null
             ? json['operand'] is List
@@ -61,14 +62,15 @@ class Ends extends BinaryExpression {
         isList: !(json['operand'] == null) && json['operand'] is List,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlDateTimePrecision? precision;

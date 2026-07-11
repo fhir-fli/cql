@@ -17,19 +17,21 @@ class Repeat extends CqlExpression {
   });
 
   factory Repeat.fromJson(Map<String, dynamic> json) => Repeat(
-        source: CqlExpression.fromJson(json['source']),
-        element: CqlExpression.fromJson(json['element']),
-        scope: json['scope'],
+        source: CqlExpression.fromJson(json['source'] as Map<String, dynamic>),
+        element:
+            CqlExpression.fromJson(json['element'] as Map<String, dynamic>),
+        scope: json['scope'] as String,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression element;

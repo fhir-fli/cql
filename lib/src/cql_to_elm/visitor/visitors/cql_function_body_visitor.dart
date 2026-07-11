@@ -10,7 +10,7 @@ class CqlFunctionBodyVisitor extends CqlBaseVisitor<CqlExpression> {
     final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionContext) {
-        return byContext(child);
+        return byContext(child) as CqlExpression;
       }
     }
     throw ArgumentError('$thisNode Invalid FunctionBody');

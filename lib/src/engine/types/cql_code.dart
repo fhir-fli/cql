@@ -5,10 +5,10 @@ class CqlCode implements CqlType {
 
   factory CqlCode.fromJson(Map<String, dynamic> json) {
     return CqlCode(
-      code: json['code'],
-      display: json['display'],
-      system: json['system'],
-      version: json['version'],
+      code: json['code'] as String?,
+      display: json['display'] as String?,
+      system: json['system'] as String?,
+      version: json['version'] as String?,
     );
   }
 

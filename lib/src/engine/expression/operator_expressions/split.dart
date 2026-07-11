@@ -35,18 +35,21 @@ class Split extends OperatorExpression {
   });
 
   factory Split.fromJson(Map<String, dynamic> json) => Split(
-        stringToSplit: CqlExpression.fromJson(json['stringToSplit']),
-        separator: CqlExpression.fromJson(json['separator']),
+        stringToSplit: CqlExpression.fromJson(
+            json['stringToSplit'] as Map<String, dynamic>),
+        separator:
+            CqlExpression.fromJson(json['separator'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression separator;
@@ -105,7 +108,7 @@ class Split extends OperatorExpression {
       if (separatorValue == null) {
         return [sourceValue];
       }
-      return sourceValue.split(separatorValue);
+      return sourceValue.split(separatorValue as Pattern);
     }
     throw ArgumentError('Invalid argument for Combine operator');
   }

@@ -19,38 +19,45 @@ class Query extends CqlExpression {
 
   factory Query.fromJson(Map<String, dynamic> json) => Query(
         source: List<AliasedQuerySource>.from(
-          json['source'].map((x) => AliasedQuerySource.fromJson(x)),
+          (json['source'] as List).map(
+              (x) => AliasedQuerySource.fromJson(x as Map<String, dynamic>)),
         ),
         let: json['let'] == null
             ? null
             : List<LetClause>.from(
-                json['let'].map((x) => LetClause.fromJson(x)),
+                (json['let'] as List)
+                    .map((x) => LetClause.fromJson(x as Map<String, dynamic>)),
               ),
         relationship: json['relationship'] == null
             ? null
             : List<RelationshipClause>.from(
-                json['relationship'].map((x) => RelationshipClause.fromJson(x)),
+                (json['relationship'] as List).map((x) =>
+                    RelationshipClause.fromJson(x as Map<String, dynamic>)),
               ),
         where: json['where'] == null
             ? null
-            : CqlExpression.fromJson(json['where']),
+            : CqlExpression.fromJson(json['where'] as Map<String, dynamic>),
         returnClause: json['return'] == null
             ? null
-            : ReturnClause.fromJson(json['return']),
-        sort: json['sort'] == null ? null : SortClause.fromJson(json['sort']),
+            : ReturnClause.fromJson(json['return'] as Map<String, dynamic>),
+        sort: json['sort'] == null
+            ? null
+            : SortClause.fromJson(json['sort'] as Map<String, dynamic>),
         aggregate: json['aggregate'] == null
             ? null
-            : AggregateClause.fromJson(json['aggregate']),
+            : AggregateClause.fromJson(
+                json['aggregate'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   List<LetClause>? let;
@@ -195,7 +202,7 @@ class Query extends CqlExpression {
     // 5) SORT
     if (sort != null && sort!.by.isNotEmpty) {
       // Precompute sort keys for each row
-      final keyLists = <List<Comparable?>>[];
+      final keyLists = <List<Comparable<dynamic>?>>[];
       final descending = sort!.by
           .map(
             (spec) =>
@@ -208,7 +215,7 @@ class Query extends CqlExpression {
         final execCtx = <String, dynamic>{}
           ..addAll(context)
           ..addAll(row);
-        final keys = <Comparable?>[];
+        final keys = <Comparable<dynamic>?>[];
         for (final spec in sort!.by) {
           dynamic rawKey;
           if (spec is ByExpression) {

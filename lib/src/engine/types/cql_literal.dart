@@ -62,7 +62,7 @@ class LiteralNull extends LiteralType {
   LiteralNull({super.resultTypeName});
 
   factory LiteralNull.fromJson(dynamic json) =>
-      LiteralNull(resultTypeName: json['resultTypeName']);
+      LiteralNull(resultTypeName: json['resultTypeName'] as String?);
 
   @override
   Map<String, dynamic> toJson() {
@@ -94,7 +94,7 @@ class LiteralBoolean extends LiteralType {
     if (json is bool) {
       return LiteralBoolean(json);
     } else if (json is Map<String, dynamic>) {
-      return LiteralBoolean(json['value']);
+      return LiteralBoolean(json['value'] as bool);
     } else if (json is String && (json == 'true' || json == 'false')) {
       return LiteralBoolean(json == 'true');
     }
@@ -133,10 +133,10 @@ class LiteralCode extends LiteralType {
 
   factory LiteralCode.fromJson(Map<String, dynamic> json) {
     return LiteralCode(
-      json['code'],
-      display: json['display'],
-      system: json['system'],
-      version: json['version'],
+      json['code'] as String,
+      display: json['display'] as String?,
+      system: json['system'] as String?,
+      version: json['version'] as String?,
     );
   }
   final String code;
@@ -178,9 +178,9 @@ class LiteralConcept extends LiteralType {
   factory LiteralConcept.fromJson(Map<String, dynamic> json) {
     return LiteralConcept(
       (json['codes'] as List)
-          .map((code) => LiteralCode.fromJson(code))
+          .map((code) => LiteralCode.fromJson(code as Map<String, dynamic>))
           .toList(),
-      display: json['display'],
+      display: json['display'] as String?,
     );
   }
   final List<LiteralCode> codes;
@@ -243,11 +243,11 @@ class LiteralValueSet extends LiteralVocabularyType {
 
   factory LiteralValueSet.fromJson(Map<String, dynamic> json) {
     return LiteralValueSet(
-      json['id'],
-      version: json['version'],
-      name: json['name'],
+      json['id'] as String,
+      version: json['version'] as String?,
+      name: json['name'] as String?,
       codesystem: (json['codesystem'] as List?)
-          ?.map((cs) => LiteralCodeSystem.fromJson(cs))
+          ?.map((cs) => LiteralCodeSystem.fromJson(cs as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -281,9 +281,9 @@ class LiteralCodeSystem extends LiteralVocabularyType {
 
   factory LiteralCodeSystem.fromJson(Map<String, dynamic> json) {
     return LiteralCodeSystem(
-      json['id'],
-      version: json['version'],
-      name: json['name'],
+      json['id'] as String,
+      version: json['version'] as String?,
+      name: json['name'] as String?,
     );
   }
 
@@ -310,8 +310,8 @@ class LiteralDate extends LiteralType {
     if (json is String) {
       return LiteralDate(json);
     } else if (json is Map<String, dynamic> &&
-        DateTime.tryParse(json['value']) != null) {
-      return LiteralDate(json['value']);
+        DateTime.tryParse(json['value'] as String) != null) {
+      return LiteralDate(json['value'] as String);
     }
     throw ArgumentError('LiteralDate: Invalid json type');
   }
@@ -349,8 +349,8 @@ class LiteralDateTime extends LiteralType {
     if (json is String) {
       return LiteralDateTime(json);
     } else if (json is Map<String, dynamic> &&
-        DateTime.tryParse(json['value']) != null) {
-      return LiteralDateTime(json['value']);
+        DateTime.tryParse(json['value'] as String) != null) {
+      return LiteralDateTime(json['value'] as String);
     }
     throw ArgumentError('LiteralDateTime: Invalid json type');
   }
@@ -427,8 +427,8 @@ class LiteralDecimal extends LiteralType {
       if (json['value'] is num) {
         return LiteralDecimal((json['value'] as num).toDouble());
       } else if (json['value'] is String &&
-          num.tryParse(json['value']) != null) {
-        return LiteralDecimal(num.parse(json['value']));
+          num.tryParse(json['value'] as String) != null) {
+        return LiteralDecimal(num.parse(json['value'] as String));
       }
     }
     throw ArgumentError('LiteralDecimal: Invalid json type');
@@ -472,8 +472,8 @@ class LiteralInteger extends LiteralType {
       if (json['value'] is num) {
         return LiteralInteger((json['value'] as num).toInt());
       } else if (json['value'] is String &&
-          int.tryParse(json['value']) != null) {
-        return LiteralInteger(int.parse(json['value']));
+          int.tryParse(json['value'] as String) != null) {
+        return LiteralInteger(int.parse(json['value'] as String));
       }
     }
     throw ArgumentError('LiteralInteger: Invalid json type');
@@ -513,8 +513,8 @@ class LiteralLong extends LiteralType {
       if (json['value'] is num) {
         return LiteralLong(BigInt.from(json['value'] as num));
       } else if (json['value'] is String &&
-          BigInt.tryParse(json['value']) != null) {
-        return LiteralLong(BigInt.parse(json['value']));
+          BigInt.tryParse(json['value'] as String) != null) {
+        return LiteralLong(BigInt.parse(json['value'] as String));
       }
     }
     throw ArgumentError('LiteralLong: Invalid json type');
@@ -547,7 +547,7 @@ class LiteralQuantity extends LiteralType {
   factory LiteralQuantity.fromJson(Map<String, dynamic> json) {
     return LiteralQuantity(
       LiteralDecimal.fromJson(json['value']),
-      unit: json['unit'],
+      unit: json['unit'] as String?,
     );
   }
   final LiteralDecimal value;
@@ -585,8 +585,8 @@ class LiteralRatio extends LiteralType {
 
   factory LiteralRatio.fromJson(Map<String, dynamic> json) {
     return LiteralRatio(
-      LiteralQuantity.fromJson(json['numerator']),
-      LiteralQuantity.fromJson(json['denominator']),
+      LiteralQuantity.fromJson(json['numerator'] as Map<String, dynamic>),
+      LiteralQuantity.fromJson(json['denominator'] as Map<String, dynamic>),
     );
   }
   final LiteralQuantity numerator;
@@ -625,7 +625,7 @@ class LiteralString extends LiteralType {
       return LiteralString(json);
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is String) {
-        return LiteralString(json['value']);
+        return LiteralString(json['value'] as String);
       }
     }
     throw ArgumentError('LiteralString: Invalid json type');
@@ -700,7 +700,7 @@ class LiteralTime extends LiteralType {
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is String && CqlTime.tryParse(json['value']) != null) {
         return LiteralTime(
-          json['value'],
+          json['value'] as String,
         );
       }
     }
@@ -800,7 +800,8 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<Integer>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<CqlInteger>?> execute(
+          Map<String, dynamic> context) async =>
       CqlInterval<CqlInteger>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -845,7 +846,8 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<Decimal>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<CqlDecimal>?> execute(
+          Map<String, dynamic> context) async =>
       CqlInterval<CqlDecimal>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -866,8 +868,8 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
     return LiteralQuantityInterval(
       lowClosed: LiteralBoolean.fromJson(json['lowClosed']),
       highClosed: LiteralBoolean.fromJson(json['highClosed']),
-      low: LiteralQuantity.fromJson(json['low']),
-      high: LiteralQuantity.fromJson(json['high']),
+      low: LiteralQuantity.fromJson(json['low'] as Map<String, dynamic>),
+      high: LiteralQuantity.fromJson(json['high'] as Map<String, dynamic>),
     );
   }
   final LiteralQuantity? low;
@@ -890,7 +892,9 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<Quantity>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<ValidatedQuantity>?> execute(
+    Map<String, dynamic> context,
+  ) async =>
       CqlInterval<ValidatedQuantity>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -935,7 +939,7 @@ class LiteralDateInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<Date>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<CqlDate>?> execute(Map<String, dynamic> context) async =>
       CqlInterval<CqlDate>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -980,7 +984,9 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<DateTime>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<CqlDateTime>?> execute(
+    Map<String, dynamic> context,
+  ) async =>
       CqlInterval<CqlDateTime>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -1025,7 +1031,7 @@ class LiteralTimeInterval extends LiteralCqlInterval {
   List<String> getReturnTypes(CqlLibrary library) => ['Interval<Time>'];
 
   @override
-  Future<CqlInterval?> execute(Map<String, dynamic> context) async =>
+  Future<CqlInterval<CqlTime>?> execute(Map<String, dynamic> context) async =>
       CqlInterval<CqlTime>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,

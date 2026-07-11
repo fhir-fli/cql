@@ -12,7 +12,7 @@ class ModelSpecifier {
     return ModelSpecifier(
       name: json['name'] as String,
       version: json['version'] as String?,
-      url: json['url'] != null ? Uri.parse(json['url']) : null,
+      url: json['url'] != null ? Uri.parse(json['url'] as String) : null,
     );
   }
 

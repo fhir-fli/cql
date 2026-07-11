@@ -13,9 +13,9 @@ class CqlCaseExpressionItemVisitor extends CqlBaseVisitor<CaseItem> {
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is ExpressionContext) {
         if (when_ == null) {
-          when_ = byContext(child);
+          when_ = byContext(child) as CqlExpression?;
         } else {
-          then = byContext(child);
+          then = byContext(child) as CqlExpression?;
         }
       }
     }

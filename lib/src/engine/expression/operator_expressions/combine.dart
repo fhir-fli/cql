@@ -37,20 +37,21 @@ class Combine extends OperatorExpression {
   });
 
   factory Combine.fromJson(Map<String, dynamic> json) => Combine(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         separator: json['separator'] == null
             ? null
-            : CqlExpression.fromJson(json['separator']),
+            : CqlExpression.fromJson(json['separator'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
   final CqlExpression? separator;
@@ -111,7 +112,7 @@ class Combine extends OperatorExpression {
       }
       sourceValue.removeWhere((element) => element == null);
       if (sourceValue.every((element) => element is String)) {
-        return sourceValue.join(separatorValue ?? '');
+        return sourceValue.join((separatorValue ?? '') as String);
       }
     }
     throw ArgumentError('Invalid argument for Combine operator');

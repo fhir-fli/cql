@@ -15,15 +15,16 @@ class SearchInfo {
   factory SearchInfo.fromJson(Map<String, dynamic> json) {
     return SearchInfo(
       typeSpecifier: json['typeSpecifier'] != null
-          ? TypeSpecifierModel.fromJson(json['typeSpecifier'])
+          ? TypeSpecifierModel.fromJson(
+              json['typeSpecifier'] as Map<String, dynamic>)
           : null,
-      name: json['name'],
-      path: json['path'],
-      type: json['type'],
-      label: json['label'],
-      description: json['description'],
-      definition: json['definition'],
-      comment: json['comment'],
+      name: json['name'] as String,
+      path: json['path'] as String,
+      type: json['type'] as String?,
+      label: json['label'] as String?,
+      description: json['description'] as String?,
+      definition: json['definition'] as String?,
+      comment: json['comment'] as String?,
     );
   }
   final String? comment;

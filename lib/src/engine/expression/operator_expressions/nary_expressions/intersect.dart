@@ -61,20 +61,21 @@ class Intersect extends NaryExpression {
 
   factory Intersect.fromJson(Map<String, dynamic> json) => Intersect(
         operand: List<CqlExpression>.from(
-          json['operand'].map(
-            (x) => CqlExpression.fromJson(x),
+          (json['operand'] as List).map(
+            (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -141,7 +142,7 @@ class Intersect extends NaryExpression {
       return left.intersect(right);
     } else if (left is List && right is List) {
       // Use CQL equivalence semantics for comparison
-      return List.from(left)
+      return List<dynamic>.from(left)
         ..retainWhere(
           (e) => right.any(
             (r) =>

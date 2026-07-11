@@ -9,7 +9,8 @@ class TupleTypeSpecifierModel extends TypeSpecifierModel {
   TupleTypeSpecifierModel.fromJson(Map<String, dynamic> map)
       : element = map['element'] != null
             ? (map['element'] as List)
-                .map((e) => TupleTypeSpecifierElement.fromJson(e))
+                .map((e) => TupleTypeSpecifierElement.fromJson(
+                    e as Map<String, dynamic>))
                 .toList()
             : null,
         super(type: 'TupleTypeSpecifier');

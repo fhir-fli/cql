@@ -18,27 +18,30 @@ class FunctionRef extends ExpressionRef {
   factory FunctionRef.fromJson(Map<String, dynamic> json) => FunctionRef(
         operand: json['operand'] != null
             ? List<CqlExpression>.from(
-                json['operand'].map((x) => CqlExpression.fromJson(x)),
+                (json['operand'] as List).map(
+                    (x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
               )
             : null,
         signature: json['signature'] != null
             ? List<TypeSpecifierExpression>.from(
-                json['signature']
-                    .map((x) => TypeSpecifierExpression.fromJson(x)),
+                (json['signature'] as List).map((x) =>
+                    TypeSpecifierExpression.fromJson(
+                        x as Map<String, dynamic>)),
               )
             : null,
-        name: json['name']!,
-        libraryName: json['libraryName'],
+        name: json['name'] as String,
+        libraryName: json['libraryName'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -564,7 +567,7 @@ class FunctionRef extends ExpressionRef {
     return value;
   }
 
-  Future<dynamic> _helperToConcept(context) async {
+  Future<dynamic> _helperToConcept(Map<String, dynamic> context) async {
     if (operand == null || operand!.isEmpty) {
       return null;
     } else if (operand!.length == 1) {

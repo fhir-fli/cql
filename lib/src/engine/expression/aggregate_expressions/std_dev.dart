@@ -41,23 +41,25 @@ class StdDev extends AggregateExpression {
   });
 
   factory StdDev.fromJson(Map<String, dynamic> json) => StdDev(
-        source: CqlExpression.fromJson(json['source']!),
+        source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) => TypeSpecifierExpression.fromJson(e))
+                .map((e) =>
+                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
                 .toList(),
-        path: json['path'],
+        path: json['path'] as String?,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
-                .map((e) => CqlToElmBase.fromJson(e))
+                .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
                 .toList()
             : null,
-        localId: json['localId'],
-        locator: json['locator'],
-        resultTypeName: json['resultTypeName'],
+        localId: json['localId'] as String?,
+        locator: json['locator'] as String?,
+        resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
-            ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+            ? TypeSpecifierExpression.fromJson(
+                json['resultTypeSpecifier'] as Map<String, dynamic>)
             : null,
       );
 
@@ -126,10 +128,11 @@ class StdDev extends AggregateExpression {
     if (sourceResult == null || sourceResult is! List || sourceResult.isEmpty) {
       return null;
     }
-    final filtered = List.from(sourceResult)..removeWhere((e) => e == null);
+    final filtered = List<dynamic>.from(sourceResult)
+      ..removeWhere((e) => e == null);
     if (filtered.length < 2) return null;
 
-    final mean = Avg.avg(List.from(filtered));
+    final mean = Avg.avg(List<dynamic>.from(filtered));
     if (mean == null) return null;
 
     /// For CqlDecimal — use Variance, then sqrt

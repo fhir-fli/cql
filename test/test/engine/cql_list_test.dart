@@ -655,7 +655,7 @@ void main() {
       );
       final except = cql.Except(operand: [left, right]);
       final result = await except.execute({});
-      expect(result, isA<List>());
+      expect(result, isA<List<dynamic>>());
       expect((result as List).length, equals(1));
       expect(
         result[0],
@@ -708,7 +708,7 @@ void main() {
       );
       final intersect = cql.Intersect(operand: [left, right]);
       final result = await intersect.execute({});
-      expect(result, isA<List>());
+      expect(result, isA<List<dynamic>>());
       expect((result as List).length, equals(2));
       expect(
         result[0],
@@ -750,7 +750,7 @@ void main() {
       );
       final union = cql.Union(operand: [left, right]);
       final result = await union.execute({});
-      expect(result, isA<List>());
+      expect(result, isA<List<dynamic>>());
       expect((result as List).length, equals(3));
       expect(
         result[0],
@@ -775,7 +775,7 @@ void main() {
       final right = cql.ListExpression(element: [cql.LiteralNull()]);
       final union = cql.Union(operand: [left, right]);
       final result = await union.execute({});
-      expect(result, isA<List>());
+      expect(result, isA<List<dynamic>>());
       expect((result as List).length, equals(1));
       expect(result[0], isNull);
     });

@@ -23,7 +23,7 @@ class StandardModelInfoReader implements ModelInfoReader {
 
   /// Reads model information from an input stream. throws IOException
   @override
-  ModelInfo readFromStream(Stream stream) {
+  ModelInfo readFromStream(Stream<dynamic> stream) {
     throw UnimplementedError();
   }
 
@@ -51,13 +51,13 @@ class StandardModelInfoReader implements ModelInfoReader {
     final json = myTransformer.toBadgerfish();
     final map = jsonDecode(json) as Map<String, dynamic>;
     var newMap = ModelInfoReader.removeAts(map);
-    newMap =
-        ModelInfoReader.removeModelName(newMap, newMap['modelInfo']['name']);
+    newMap = ModelInfoReader.removeModelName(
+        newMap, newMap['modelInfo']['name'] as String);
 
     if (newMap['modelInfo'] is Map) {
       final properMap = jsonDecode(jsonEncode(newMap['modelInfo'] as Map));
       try {
-        final modelInfo = ModelInfo.fromJson(properMap);
+        final modelInfo = ModelInfo.fromJson(properMap as Map<String, dynamic>);
         return modelInfo;
       } catch (e) {
         rethrow;

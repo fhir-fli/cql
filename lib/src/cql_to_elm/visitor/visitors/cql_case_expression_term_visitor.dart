@@ -11,20 +11,21 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
     final caseItem = <CaseItem>[];
     CqlExpression? elseExpr;
     var i = 2;
-    if (ctx.getChild(1) is ExpressionContext) {
-      comparand = byContext(ctx.getChild(1)!);
+    if (ctx.getChild<dynamic>(1) is ExpressionContext) {
+      comparand = byContext(ctx.getChild<dynamic>(1)!) as CqlExpression?;
     } else {
       i = 1;
     }
     for (i; i < ctx.childCount - 1; i++) {
-      if (ctx.getChild(i) is CaseExpressionItemContext) {
+      if (ctx.getChild<dynamic>(i) is CaseExpressionItemContext) {
         caseItem.add(
           visitCaseExpressionItem(
-            ctx.getChild(i)! as CaseExpressionItemContext,
+            ctx.getChild<dynamic>(i)! as CaseExpressionItemContext,
           ),
         );
-      } else if (ctx.getChild(i) is ExpressionContext) {
-        elseExpr = byContext(ctx.getChild(i)! as ExpressionContext);
+      } else if (ctx.getChild<dynamic>(i) is ExpressionContext) {
+        elseExpr = byContext(ctx.getChild<dynamic>(i)! as ExpressionContext)
+            as CqlExpression?;
       }
     }
     if (caseItem.isNotEmpty && elseExpr != null) {

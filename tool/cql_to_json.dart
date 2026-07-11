@@ -63,7 +63,8 @@ Future<void> _processCqlFile(
     if (response.statusCode == 200) {
       // Parse and pretty-print the JSON response
       final jsonContent = jsonDecode(response.body);
-      await jsonFile.writeAsString(jsonPrettyPrint(jsonContent));
+      await jsonFile
+          .writeAsString(jsonPrettyPrint(jsonContent as Map<String, dynamic>));
       print('Successfully created ${jsonFile.path}');
     } else {
       print('Error converting ${cqlFile.path}: HTTP ${response.statusCode}');

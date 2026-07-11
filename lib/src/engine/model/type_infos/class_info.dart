@@ -32,60 +32,74 @@ class ClassInfo extends TypeInfo {
 
   factory ClassInfo.fromJson(Map<String, dynamic> json) {
     return ClassInfo(
-      namespace: json['namespace'],
-      name: json['name'],
-      baseType: json['baseType'],
-      identifier: json['identifier'],
-      label: json['label'],
-      description: json['description'],
-      definition: json['definition'],
-      comment: json['comment'],
-      target: json['target'],
+      namespace: json['namespace'] as String?,
+      name: json['name'] as String,
+      baseType: json['baseType'] as String?,
+      identifier: json['identifier'] as String?,
+      label: json['label'] as String?,
+      description: json['description'] as String?,
+      definition: json['definition'] as String?,
+      comment: json['comment'] as String?,
+      target: json['target'] as String?,
       retrievable: json['retrievable'] is bool
-          ? json['retrievable']
+          ? json['retrievable'] as bool
           : json['retrievable'] == 'true',
-      primaryCodePath: json['primaryCodePath'],
-      primaryValueSetPath: json['primaryValueSetPath'],
+      primaryCodePath: json['primaryCodePath'] as String?,
+      primaryValueSetPath: json['primaryValueSetPath'] as String?,
       parameter: json['parameter'] == null
           ? null
           : json['parameter'] is List
               ? (json['parameter'] as List)
-                  .map((e) => TypeParameterInfo.fromJson(e))
+                  .map((e) =>
+                      TypeParameterInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['parameter'] is Map
-                  ? [TypeParameterInfo.fromJson(json['parameter'])]
+                  ? [
+                      TypeParameterInfo.fromJson(
+                          json['parameter'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleParameter: json['parameter'] is Map,
       element: json['element'] == null
           ? null
           : json['element'] is List
               ? (json['element'] as List)
-                  .map((e) => ClassInfoElement.fromJson(e))
+                  .map((e) =>
+                      ClassInfoElement.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['element'] is Map
-                  ? [ClassInfoElement.fromJson(json['element'])]
+                  ? [
+                      ClassInfoElement.fromJson(
+                          json['element'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleElement: json['element'] is Map,
       contextRelationship: json['contextRelationship'] == null
           ? null
           : json['contextRelationship'] is List
               ? (json['contextRelationship'] as List)
-                  .map((e) => RelationshipInfo.fromJson(e))
+                  .map((e) =>
+                      RelationshipInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['contextRelationship'] is Map
-                  ? [RelationshipInfo.fromJson(json['contextRelationship'])]
+                  ? [
+                      RelationshipInfo.fromJson(
+                          json['contextRelationship'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleContextRelationship: json['contextRelationship'] is Map,
       targetContextRelationship: json['targetContextRelationship'] == null
           ? null
           : json['targetContextRelationship'] is List
               ? (json['targetContextRelationship'] as List)
-                  .map((e) => RelationshipInfo.fromJson(e))
+                  .map((e) =>
+                      RelationshipInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['targetContextRelationship'] is Map
                   ? [
                       RelationshipInfo.fromJson(
-                        json['targetContextRelationship'],
+                        json['targetContextRelationship']
+                            as Map<String, dynamic>,
                       ),
                     ]
                   : null,
@@ -94,30 +108,41 @@ class ClassInfo extends TypeInfo {
           ? null
           : json['search'] is List
               ? (json['search'] as List)
-                  .map((e) => SearchInfo.fromJson(e))
+                  .map((e) => SearchInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['search'] is Map
-                  ? [SearchInfo.fromJson(json['search'])]
+                  ? [
+                      SearchInfo.fromJson(
+                          json['search'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleSearch: json['search'] is Map,
       inferenceExpression: json['inferenceExpression'] == null
           ? null
           : json['inferenceExpression'] is List
               ? (json['inferenceExpression'] as List)
-                  .map((e) => ExpressionInfo.fromJson(e))
+                  .map(
+                      (e) => ExpressionInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['inferenceExpression'] is Map
-                  ? [ExpressionInfo.fromJson(json['inferenceExpression'])]
+                  ? [
+                      ExpressionInfo.fromJson(
+                          json['inferenceExpression'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleInferenceExpression: json['inferenceExpression'] is Map,
       constraint: json['constraint'] == null
           ? null
           : json['constraint'] is List
               ? (json['constraint'] as List)
-                  .map((e) => ConstraintInfo.fromJson(e))
+                  .map(
+                      (e) => ConstraintInfo.fromJson(e as Map<String, dynamic>))
                   .toList()
               : json['constraint'] is Map
-                  ? [ConstraintInfo.fromJson(json['constraint'])]
+                  ? [
+                      ConstraintInfo.fromJson(
+                          json['constraint'] as Map<String, dynamic>)
+                    ]
                   : null,
       singleConstraint: json['constraint'] is Map,
     );

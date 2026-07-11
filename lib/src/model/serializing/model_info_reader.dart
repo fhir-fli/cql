@@ -13,7 +13,7 @@ abstract class ModelInfoReader {
   ModelInfo readFromFilePath(String filePath);
 
   /// Reads model information from an input stream. throws IOException
-  ModelInfo readFromStream(Stream stream);
+  ModelInfo readFromStream(Stream<dynamic> stream);
 
   /// Reads model information from a URL. throws IOException
   ModelInfo readFromUrl(Uri url);

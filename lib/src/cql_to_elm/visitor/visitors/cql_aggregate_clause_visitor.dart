@@ -16,9 +16,9 @@ class CqlAggregateClauseVisitor extends CqlBaseVisitor<AggregateClause> {
       if (child is IdentifierContext) {
         identifier = visitIdentifier(child);
       } else if (child is StartingClauseContext) {
-        startingClause = visitStartingClause(child);
+        startingClause = visitStartingClause(child) as CqlExpression?;
       } else if (child is ExpressionContext) {
-        expression = byContext(child);
+        expression = byContext(child) as CqlExpression?;
       } else if (child is TerminalNodeImpl) {
         if (child.text == 'distinct') {
           distinct = true;

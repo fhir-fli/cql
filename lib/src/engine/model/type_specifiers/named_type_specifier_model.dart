@@ -11,10 +11,11 @@ class NamedTypeSpecifierModel extends TypeSpecifierModel {
   });
 
   NamedTypeSpecifierModel.fromJson(Map<String, dynamic> map)
-      : modelName = map['modelName'],
-        namespace =
-            map['namespace'] != null ? QName.fromJson(map['namespace']) : null,
-        name = map['name'],
+      : modelName = map['modelName'] as String?,
+        namespace = map['namespace'] != null
+            ? QName.fromJson(map['namespace'] as String)
+            : null,
+        name = map['name'] as String,
         super(type: 'NamedTypeSpecifier');
 
   /// Deprecated model name attribute.

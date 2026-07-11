@@ -12,7 +12,7 @@ class CqlReferentialIdentifierVisitor extends CqlBaseVisitor<String> {
       if (child is IdentifierContext) {
         return visitIdentifier(child);
       } else if (child is KeywordIdentifierContext) {
-        return visitKeywordIdentifier(child);
+        return visitKeywordIdentifier(child) as String;
       }
     }
     throw ArgumentError('$thisNode Invalid ReferentialIdentifier');

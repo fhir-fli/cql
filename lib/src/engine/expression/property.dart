@@ -28,21 +28,22 @@ class Property extends CqlExpression {
 
   factory Property.fromJson(Map<String, dynamic> json) {
     return Property(
-      path: json['path'],
+      path: json['path'] as String,
       source: json['source'] != null
-          ? CqlExpression.fromJson(json['source'])
+          ? CqlExpression.fromJson(json['source'] as Map<String, dynamic>)
           : null,
-      scope: json['scope'],
+      scope: json['scope'] as String?,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
-              .map((e) => CqlToElmBase.fromJson(e))
+              .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
-      localId: json['localId'],
-      locator: json['locator'],
-      resultTypeName: json['resultTypeName'],
+      localId: json['localId'] as String?,
+      locator: json['locator'] as String?,
+      resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
-          ? TypeSpecifierExpression.fromJson(json['resultTypeSpecifier'])
+          ? TypeSpecifierExpression.fromJson(
+              json['resultTypeSpecifier'] as Map<String, dynamic>)
           : null,
     );
   }

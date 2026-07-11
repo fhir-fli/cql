@@ -11,11 +11,13 @@ class BindingInfo {
 
   factory BindingInfo.fromJson(Map<String, dynamic> json) {
     return BindingInfo(
-      name: json['name'],
-      description: json['description'],
-      strength:
-          bindingStrengthFromJson(json['strength']) ?? BindingStrength.example,
-      valueSet: json['valueSet'] == null ? Uri() : Uri.parse(json['valueSet']),
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      strength: bindingStrengthFromJson(json['strength'] as String?) ??
+          BindingStrength.example,
+      valueSet: json['valueSet'] == null
+          ? Uri()
+          : Uri.parse(json['valueSet'] as String),
     );
   }
   // Optional attribute - User-friendly description of the binding
