@@ -64,7 +64,8 @@ class MeetsAfter extends BinaryExpression {
         precision: json['precision'] == null
             ? null
             : CqlDateTimePrecisionExtension.fromJson(
-                json['precision'] as String?),
+                json['precision'] as String?,
+              ),
         operand: List<CqlExpression>.from(
           (json['operand'] as List<dynamic>).map(
             (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
@@ -80,7 +81,8 @@ class MeetsAfter extends BinaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   final CqlDateTimePrecision? precision;

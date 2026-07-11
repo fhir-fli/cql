@@ -40,8 +40,11 @@ class Avg extends AggregateExpression {
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)
-                .map((e) =>
-                    TypeSpecifierExpression.fromJson(e as Map<String, dynamic>))
+                .map(
+                  (e) => TypeSpecifierExpression.fromJson(
+                    e as Map<String, dynamic>,
+                  ),
+                )
                 .toList(),
         path: json['path'] as String?,
         annotation: json['annotation'] != null
@@ -54,7 +57,8 @@ class Avg extends AggregateExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 

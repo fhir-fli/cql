@@ -22,7 +22,8 @@ class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
       boundType: json['boundType'] as String,
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['elementTypeSpecifier'] as Map<String, dynamic>)
+              json['elementTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
@@ -34,7 +35,8 @@ class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

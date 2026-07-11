@@ -17,11 +17,13 @@ class TupleElementDefinition extends Element {
       TupleElementDefinition(
         type: json['type'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['type'] as Map<String, dynamic>)
+                json['type'] as Map<String, dynamic>,
+              )
             : null,
         elementType: json['elementType'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['elementType'] as Map<String, dynamic>)
+                json['elementType'] as Map<String, dynamic>,
+              )
             : null,
         name: json['name'] as String?,
         annotation: json['annotation'] != null
@@ -34,7 +36,8 @@ class TupleElementDefinition extends Element {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 

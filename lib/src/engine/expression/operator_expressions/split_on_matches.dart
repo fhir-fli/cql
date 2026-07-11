@@ -17,9 +17,11 @@ class SplitOnMatches extends OperatorExpression {
 
   factory SplitOnMatches.fromJson(Map<String, dynamic> json) => SplitOnMatches(
         stringToSplit: CqlExpression.fromJson(
-            json['stringToSplit'] as Map<String, dynamic>),
+          json['stringToSplit'] as Map<String, dynamic>,
+        ),
         separatorPattern: CqlExpression.fromJson(
-            json['separatorPattern'] as Map<String, dynamic>),
+          json['separatorPattern'] as Map<String, dynamic>,
+        ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -30,7 +32,8 @@ class SplitOnMatches extends OperatorExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   final CqlExpression separatorPattern;

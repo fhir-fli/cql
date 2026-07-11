@@ -36,7 +36,8 @@ class Split extends OperatorExpression {
 
   factory Split.fromJson(Map<String, dynamic> json) => Split(
         stringToSplit: CqlExpression.fromJson(
-            json['stringToSplit'] as Map<String, dynamic>),
+          json['stringToSplit'] as Map<String, dynamic>,
+        ),
         separator:
             CqlExpression.fromJson(json['separator'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
@@ -49,7 +50,8 @@ class Split extends OperatorExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   final CqlExpression separator;

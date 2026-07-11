@@ -16,7 +16,8 @@ class SearchInfo {
     return SearchInfo(
       typeSpecifier: json['typeSpecifier'] != null
           ? TypeSpecifierModel.fromJson(
-              json['typeSpecifier'] as Map<String, dynamic>)
+              json['typeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       name: json['name'] as String,
       path: json['path'] as String,

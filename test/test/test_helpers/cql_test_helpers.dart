@@ -99,12 +99,16 @@ bool _areMapsEqual(Map<dynamic, dynamic> result, Map<dynamic, dynamic> answer) {
       .equals(result, Map<dynamic, dynamic>.from(answer));
   if (!equal) {
     if (!const DeepCollectionEquality().equals(
-        result.keys.toSet(), Map<dynamic, dynamic>.from(answer).keys.toSet())) {
+      result.keys.toSet(),
+      Map<dynamic, dynamic>.from(answer).keys.toSet(),
+    )) {
       return false;
     }
     for (final key in result.keys) {
       if (!areValuesEqual(
-          result[key], Map<dynamic, dynamic>.from(answer)[key])) {
+        result[key],
+        Map<dynamic, dynamic>.from(answer)[key],
+      )) {
         return false;
       }
     }

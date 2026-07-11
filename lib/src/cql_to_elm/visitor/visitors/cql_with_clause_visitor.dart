@@ -9,7 +9,8 @@ class CqlWithClauseVisitor extends CqlBaseVisitor<With> {
     final thisNode = getNextNode();
     if (ctx.getChild<dynamic>(1) is AliasedQuerySourceContext) {
       final source = visitAliasedQuerySource(
-          ctx.getChild<dynamic>(1)! as AliasedQuerySourceContext);
+        ctx.getChild<dynamic>(1)! as AliasedQuerySourceContext,
+      );
       // Add the With alias (typed when inferable) to the current query
       // scope so suchThat can see it.
       final model = currentModel;

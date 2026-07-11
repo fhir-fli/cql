@@ -19,14 +19,17 @@ class FunctionRef extends ExpressionRef {
         operand: json['operand'] != null
             ? List<CqlExpression>.from(
                 (json['operand'] as List).map(
-                    (x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
+                  (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
+                ),
               )
             : null,
         signature: json['signature'] != null
             ? List<TypeSpecifierExpression>.from(
-                (json['signature'] as List).map((x) =>
-                    TypeSpecifierExpression.fromJson(
-                        x as Map<String, dynamic>)),
+                (json['signature'] as List).map(
+                  (x) => TypeSpecifierExpression.fromJson(
+                    x as Map<String, dynamic>,
+                  ),
+                ),
               )
             : null,
         name: json['name'] as String,
@@ -41,7 +44,8 @@ class FunctionRef extends ExpressionRef {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 

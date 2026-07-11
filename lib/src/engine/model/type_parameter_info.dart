@@ -19,7 +19,8 @@ class TypeParameterInfo {
       constraintType: json['constraintType'] as String?,
       typeSpecifier: json['typeSpecifier'] != null
           ? TypeSpecifierModel.fromJson(
-              json['typeSpecifier'] as Map<String, dynamic>)
+              json['typeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

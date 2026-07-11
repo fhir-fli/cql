@@ -81,32 +81,38 @@ class Literal extends CqlExpression {
         value = json['value'] == null
             ? null
             : LiteralIntegerInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
       case '{urn:hl7-org:elm-types:r1}DecimalInterval':
         value = json['value'] == null
             ? null
             : LiteralDecimalInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
       case '{urn:hl7-org:elm-types:r1}QuantityInterval':
         value = json['value'] == null
             ? null
             : LiteralQuantityInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
       case '{urn:hl7-org:elm-types:r1}DateTimeInterval':
         value = json['value'] == null
             ? null
             : LiteralDateTimeInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
       case '{urn:hl7-org:elm-types:r1}DateInterval':
         value = json['value'] == null
             ? null
             : LiteralDateInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
       case '{urn:hl7-org:elm-types:r1}TimeInterval':
         value = json['value'] == null
             ? null
             : LiteralTimeInterval.fromJson(
-                json['value'] as Map<String, dynamic>);
+                json['value'] as Map<String, dynamic>,
+              );
     }
     return Literal(
       valueType: QName.parse(valueType),

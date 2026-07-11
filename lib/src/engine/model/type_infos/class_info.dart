@@ -50,13 +50,16 @@ class ClassInfo extends TypeInfo {
           ? null
           : json['parameter'] is List
               ? (json['parameter'] as List)
-                  .map((e) =>
-                      TypeParameterInfo.fromJson(e as Map<String, dynamic>))
+                  .map(
+                    (e) =>
+                        TypeParameterInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['parameter'] is Map
                   ? [
                       TypeParameterInfo.fromJson(
-                          json['parameter'] as Map<String, dynamic>)
+                        json['parameter'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleParameter: json['parameter'] is Map,
@@ -64,13 +67,15 @@ class ClassInfo extends TypeInfo {
           ? null
           : json['element'] is List
               ? (json['element'] as List)
-                  .map((e) =>
-                      ClassInfoElement.fromJson(e as Map<String, dynamic>))
+                  .map(
+                    (e) => ClassInfoElement.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['element'] is Map
                   ? [
                       ClassInfoElement.fromJson(
-                          json['element'] as Map<String, dynamic>)
+                        json['element'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleElement: json['element'] is Map,
@@ -78,13 +83,15 @@ class ClassInfo extends TypeInfo {
           ? null
           : json['contextRelationship'] is List
               ? (json['contextRelationship'] as List)
-                  .map((e) =>
-                      RelationshipInfo.fromJson(e as Map<String, dynamic>))
+                  .map(
+                    (e) => RelationshipInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['contextRelationship'] is Map
                   ? [
                       RelationshipInfo.fromJson(
-                          json['contextRelationship'] as Map<String, dynamic>)
+                        json['contextRelationship'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleContextRelationship: json['contextRelationship'] is Map,
@@ -92,8 +99,9 @@ class ClassInfo extends TypeInfo {
           ? null
           : json['targetContextRelationship'] is List
               ? (json['targetContextRelationship'] as List)
-                  .map((e) =>
-                      RelationshipInfo.fromJson(e as Map<String, dynamic>))
+                  .map(
+                    (e) => RelationshipInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['targetContextRelationship'] is Map
                   ? [
@@ -113,7 +121,8 @@ class ClassInfo extends TypeInfo {
               : json['search'] is Map
                   ? [
                       SearchInfo.fromJson(
-                          json['search'] as Map<String, dynamic>)
+                        json['search'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleSearch: json['search'] is Map,
@@ -122,12 +131,14 @@ class ClassInfo extends TypeInfo {
           : json['inferenceExpression'] is List
               ? (json['inferenceExpression'] as List)
                   .map(
-                      (e) => ExpressionInfo.fromJson(e as Map<String, dynamic>))
+                    (e) => ExpressionInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['inferenceExpression'] is Map
                   ? [
                       ExpressionInfo.fromJson(
-                          json['inferenceExpression'] as Map<String, dynamic>)
+                        json['inferenceExpression'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleInferenceExpression: json['inferenceExpression'] is Map,
@@ -136,12 +147,14 @@ class ClassInfo extends TypeInfo {
           : json['constraint'] is List
               ? (json['constraint'] as List)
                   .map(
-                      (e) => ConstraintInfo.fromJson(e as Map<String, dynamic>))
+                    (e) => ConstraintInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList()
               : json['constraint'] is Map
                   ? [
                       ConstraintInfo.fromJson(
-                          json['constraint'] as Map<String, dynamic>)
+                        json['constraint'] as Map<String, dynamic>,
+                      ),
                     ]
                   : null,
       singleConstraint: json['constraint'] is Map,

@@ -26,7 +26,8 @@ class AliasedQuerySource extends CqlExpression {
         return AliasedQuerySource(
           alias: json['alias'] as String,
           expression: CqlExpression.fromJson(
-              json['expression'] as Map<String, dynamic>),
+            json['expression'] as Map<String, dynamic>,
+          ),
           annotation: json['annotation'] != null
               ? (json['annotation'] as List)
                   .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -37,7 +38,8 @@ class AliasedQuerySource extends CqlExpression {
           resultTypeName: json['resultTypeName'] as String?,
           resultTypeSpecifier: json['resultTypeSpecifier'] != null
               ? TypeSpecifierExpression.fromJson(
-                  json['resultTypeSpecifier'] as Map<String, dynamic>)
+                  json['resultTypeSpecifier'] as Map<String, dynamic>,
+                )
               : null,
         );
     }

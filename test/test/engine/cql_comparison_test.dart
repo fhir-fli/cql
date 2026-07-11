@@ -125,10 +125,12 @@ void main() {
       final right = Add(
         operand: [
           LiteralLong(BigInt.from(2)),
-          Add(operand: [
-            LiteralLong(BigInt.from(2)),
-            LiteralLong(BigInt.from(2))
-          ]),
+          Add(
+            operand: [
+              LiteralLong(BigInt.from(2)),
+              LiteralLong(BigInt.from(2)),
+            ],
+          ),
         ],
       );
       final less = Less(operand: [left, right]);

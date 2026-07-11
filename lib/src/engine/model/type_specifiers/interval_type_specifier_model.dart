@@ -13,7 +13,8 @@ class IntervalTypeSpecifierModel extends TypeSpecifierModel {
   IntervalTypeSpecifierModel.fromJson(Map<String, dynamic> map)
       : pointTypeSpecifier = map['pointTypeSpecifier'] != null
             ? TypeSpecifierModel.fromJson(
-                map['pointTypeSpecifier'] as Map<String, dynamic>)
+                map['pointTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
         pointType = map['pointType'] as String?,
         super(type: 'IntervalTypeSpecifier');

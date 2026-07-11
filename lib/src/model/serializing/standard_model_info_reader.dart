@@ -52,7 +52,9 @@ class StandardModelInfoReader implements ModelInfoReader {
     final map = jsonDecode(json) as Map<String, dynamic>;
     var newMap = ModelInfoReader.removeAts(map);
     newMap = ModelInfoReader.removeModelName(
-        newMap, newMap['modelInfo']['name'] as String);
+      newMap,
+      newMap['modelInfo']['name'] as String,
+    );
 
     if (newMap['modelInfo'] is Map) {
       final properMap = jsonDecode(jsonEncode(newMap['modelInfo'] as Map));

@@ -31,7 +31,8 @@ class OperandDef extends Element {
     return OperandDef(
       operandTypeSpecifier: json['operandTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['operandTypeSpecifier'] as Map<String, dynamic>)
+              json['operandTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       name: json['name'] as String,
       operandType: json['operandType'] != null

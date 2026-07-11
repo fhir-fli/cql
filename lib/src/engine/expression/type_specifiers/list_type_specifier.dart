@@ -20,7 +20,8 @@ class ListTypeSpecifier extends TypeSpecifierExpression {
     return ListTypeSpecifier(
       elementType: json['elementType'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['elementType'] as Map<String, dynamic>)
+              json['elementType'] as Map<String, dynamic>,
+            )
           : null,
       element: json['element'] != null
           ? (json['element'] as List)
@@ -37,7 +38,8 @@ class ListTypeSpecifier extends TypeSpecifierExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

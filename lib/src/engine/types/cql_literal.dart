@@ -801,7 +801,8 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval<CqlInteger>?> execute(
-          Map<String, dynamic> context) async =>
+    Map<String, dynamic> context,
+  ) async =>
       CqlInterval<CqlInteger>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,
@@ -847,7 +848,8 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
 
   @override
   Future<CqlInterval<CqlDecimal>?> execute(
-          Map<String, dynamic> context) async =>
+    Map<String, dynamic> context,
+  ) async =>
       CqlInterval<CqlDecimal>(
         low: await low?.execute(context),
         lowClosed: (await lowClosed?.execute(context))?.valueBoolean,

@@ -74,7 +74,8 @@ class Divide extends BinaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 
@@ -121,9 +122,11 @@ class Divide extends BinaryExpression {
       }
       try {
         final leftDecimal = UcumDecimal.fromString(
-            _ensureDecimalPrecision(left.valueString as String));
+          _ensureDecimalPrecision(left.valueString as String),
+        );
         final rightDecimal = UcumDecimal.fromString(
-            _ensureDecimalPrecision(right.valueString as String));
+          _ensureDecimalPrecision(right.valueString as String),
+        );
         final result = leftDecimal / rightDecimal;
         return CqlDecimal(double.parse(result.asUcumDecimal()));
       } catch (_) {

@@ -51,7 +51,8 @@ class ModelInfo {
           : json['contextInfo'] is Map
               ? [
                   ContextInfo.fromJson(
-                      json['contextInfo'] as Map<String, dynamic>)
+                    json['contextInfo'] as Map<String, dynamic>,
+                  ),
                 ]
               : (json['contextInfo'] as List)
                   .map((e) => ContextInfo.fromJson(e as Map<String, dynamic>))
@@ -78,11 +79,13 @@ class ModelInfo {
           : json['conversionInfo'] is Map
               ? [
                   ConversionInfo.fromJson(
-                      json['conversionInfo'] as Map<String, dynamic>)
+                    json['conversionInfo'] as Map<String, dynamic>,
+                  ),
                 ]
               : (json['conversionInfo'] as List)
                   .map(
-                      (e) => ConversionInfo.fromJson(e as Map<String, dynamic>))
+                    (e) => ConversionInfo.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList(),
       conversionInfoSingle: json['conversionInfo'] is Map
           ? true
@@ -94,11 +97,13 @@ class ModelInfo {
           : json['requiredModelInfo'] is Map
               ? [
                   ModelSpecifier.fromJson(
-                      json['requiredModelInfo'] as Map<String, dynamic>)
+                    json['requiredModelInfo'] as Map<String, dynamic>,
+                  ),
                 ]
               : (json['requiredModelInfo'] as List)
                   .map(
-                      (e) => ModelSpecifier.fromJson(e as Map<String, dynamic>))
+                    (e) => ModelSpecifier.fromJson(e as Map<String, dynamic>),
+                  )
                   .toList(),
       requiredModelInfoSingle: json['requiredModelInfo'] is Map
           ? true

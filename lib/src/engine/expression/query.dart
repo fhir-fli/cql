@@ -20,7 +20,8 @@ class Query extends CqlExpression {
   factory Query.fromJson(Map<String, dynamic> json) => Query(
         source: List<AliasedQuerySource>.from(
           (json['source'] as List).map(
-              (x) => AliasedQuerySource.fromJson(x as Map<String, dynamic>)),
+            (x) => AliasedQuerySource.fromJson(x as Map<String, dynamic>),
+          ),
         ),
         let: json['let'] == null
             ? null
@@ -31,8 +32,9 @@ class Query extends CqlExpression {
         relationship: json['relationship'] == null
             ? null
             : List<RelationshipClause>.from(
-                (json['relationship'] as List).map((x) =>
-                    RelationshipClause.fromJson(x as Map<String, dynamic>)),
+                (json['relationship'] as List).map(
+                  (x) => RelationshipClause.fromJson(x as Map<String, dynamic>),
+                ),
               ),
         where: json['where'] == null
             ? null
@@ -46,7 +48,8 @@ class Query extends CqlExpression {
         aggregate: json['aggregate'] == null
             ? null
             : AggregateClause.fromJson(
-                json['aggregate'] as Map<String, dynamic>),
+                json['aggregate'] as Map<String, dynamic>,
+              ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -57,7 +60,8 @@ class Query extends CqlExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   List<LetClause>? let;

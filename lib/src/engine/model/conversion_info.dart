@@ -19,11 +19,13 @@ class ConversionInfo {
       fromTypeSpecifier: json['fromTypeSpecifier'] == null
           ? null
           : TypeSpecifierModel.fromJson(
-              json['fromTypeSpecifier'] as Map<String, dynamic>),
+              json['fromTypeSpecifier'] as Map<String, dynamic>,
+            ),
       toTypeSpecifier: json['toTypeSpecifier'] == null
           ? null
           : TypeSpecifierModel.fromJson(
-              json['toTypeSpecifier'] as Map<String, dynamic>),
+              json['toTypeSpecifier'] as Map<String, dynamic>,
+            ),
       fromType: json['fromType'] as String?,
       toType: json['toType'] as String?,
     );

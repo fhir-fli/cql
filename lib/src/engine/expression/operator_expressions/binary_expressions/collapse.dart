@@ -77,11 +77,12 @@ class Collapse extends BinaryExpression {
     if (json['operand'] is List) {
       operand = List<CqlExpression>.from(
         (json['operand'] as List<dynamic>).map(
-            (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
+          (dynamic x) => CqlExpression.fromJson(x as Map<String, dynamic>),
+        ),
       );
     } else if (json['operand'] is Map) {
       operand = [
-        CqlExpression.fromJson(json['operand'] as Map<String, dynamic>)
+        CqlExpression.fromJson(json['operand'] as Map<String, dynamic>),
       ];
     }
     return Collapse(
@@ -96,7 +97,8 @@ class Collapse extends BinaryExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }
@@ -137,7 +139,8 @@ class Collapse extends BinaryExpression {
 
   @override
   Future<List<CqlInterval<dynamic>>?> execute(
-      Map<String, dynamic> context) async {
+    Map<String, dynamic> context,
+  ) async {
     if (operand.isEmpty) {
       return [];
     }

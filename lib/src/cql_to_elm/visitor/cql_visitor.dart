@@ -1,9 +1,5 @@
 // Generated from cql.g4 by ANTLR 4.13.1
 import 'package:antlr4/antlr4.dart';
-import 'package:cql/src/cql_to_elm/antlr/antlr.dart' show cqlParser;
-import 'package:cql/src/cql_to_elm/antlr/cql_parser.dart' show cqlParser;
-import 'package:cql/src/cql_to_elm/cql_to_elm.dart' show cqlParser;
-import 'package:cql/src/internal.dart' show cqlParser;
 
 import 'package:cql/src/cql_to_elm/antlr/cql_parser.dart';
 

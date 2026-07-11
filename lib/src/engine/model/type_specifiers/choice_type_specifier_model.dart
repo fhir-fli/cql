@@ -12,8 +12,9 @@ class ChoiceTypeSpecifierModel extends TypeSpecifierModel {
   ChoiceTypeSpecifierModel.fromJson(Map<String, dynamic> map)
       : choice = map['choice'] != null
             ? (map['choice'] as List)
-                .map((e) =>
-                    TypeSpecifierModel.fromJson(e as Map<String, dynamic>))
+                .map(
+                  (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>),
+                )
                 .toList()
             : null,
         super(type: 'ChoiceTypeSpecifier');

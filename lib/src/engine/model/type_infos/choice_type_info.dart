@@ -16,13 +16,15 @@ class ChoiceTypeInfo extends TypeInfo {
       type: json['type'] != null
           ? (json['type'] as List)
               .map(
-                  (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>))
+                (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>),
+              )
               .toList()
           : null,
       choice: json['choice'] != null
           ? (json['choice'] as List)
               .map(
-                  (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>))
+                (e) => TypeSpecifierModel.fromJson(e as Map<String, dynamic>),
+              )
               .toList()
           : null,
       baseType: json['baseType'] as String?,

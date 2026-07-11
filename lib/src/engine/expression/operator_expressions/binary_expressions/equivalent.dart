@@ -132,7 +132,8 @@ class Equivalent extends BinaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 
@@ -224,9 +225,10 @@ class Equivalent extends BinaryExpression {
           if (left is CqlNumber && right is CqlNumber) {
             result = left.valueNum == right.valueNum;
           } else {
-            result = UcumDecimal.fromString(left.valueString as String?)
-                .equivalent(
-                    UcumDecimal.fromString(right.valueString as String?));
+            result =
+                UcumDecimal.fromString(left.valueString as String?).equivalent(
+              UcumDecimal.fromString(right.valueString as String?),
+            );
           }
         } else if (right is ValidatedQuantity && left is CqlDecimal) {
           result =

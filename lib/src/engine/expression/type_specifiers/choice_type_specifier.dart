@@ -18,8 +18,10 @@ class ChoiceTypeSpecifier extends TypeSpecifierExpression {
     return ChoiceTypeSpecifier(
       choice: json['choice'] != null
           ? (json['choice'] as List)
-              .map((i) =>
-                  TypeSpecifierExpression.fromJson(i as Map<String, dynamic>))
+              .map(
+                (i) =>
+                    TypeSpecifierExpression.fromJson(i as Map<String, dynamic>),
+              )
               .toList()
           : null,
       annotation: json['annotation'] != null
@@ -32,7 +34,8 @@ class ChoiceTypeSpecifier extends TypeSpecifierExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

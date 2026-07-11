@@ -16,12 +16,14 @@ class ListExpression extends CqlExpression {
     return ListExpression(
       typeSpecifier: json['typeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['typeSpecifier'] as Map<String, dynamic>)
+              json['typeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       element: json['element'] != null
           ? List<CqlExpression>.from(
               (json['element'] as List).map(
-                  (x) => CqlExpression.fromJson(x as Map<String, dynamic>)),
+                (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
+              ),
             )
           : null,
       annotation: json['annotation'] != null
@@ -34,7 +36,8 @@ class ListExpression extends CqlExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

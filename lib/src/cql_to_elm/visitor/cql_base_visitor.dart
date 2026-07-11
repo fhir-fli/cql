@@ -304,7 +304,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     DateTimePrecisionSpecifierContext ctx,
   ) =>
       visitDateTimePrecision(
-          ctx.getChild<dynamic>(0)! as DateTimePrecisionContext);
+        ctx.getChild<dynamic>(0)! as DateTimePrecisionContext,
+      );
 
   @override
   void visitDefinition(DefinitionContext ctx) {

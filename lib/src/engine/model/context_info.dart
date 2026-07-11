@@ -16,7 +16,8 @@ class ContextInfo {
     return ContextInfo(
       name: json['name'] as String,
       contextType: NamedTypeSpecifier.fromJson(
-          json['contextType'] as Map<String, dynamic>),
+        json['contextType'] as Map<String, dynamic>,
+      ),
       keyElement: json['keyElement'] as String?,
       birthDateElement: json['birthDateElement'] as String?,
     );

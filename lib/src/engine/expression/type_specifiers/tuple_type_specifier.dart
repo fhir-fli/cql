@@ -17,8 +17,10 @@ class TupleTypeSpecifier extends TypeSpecifierExpression {
     return TupleTypeSpecifier(
       element: json['element'] != null
           ? (json['element'] as List)
-              .map((i) =>
-                  TupleElementDefinition.fromJson(i as Map<String, dynamic>))
+              .map(
+                (i) =>
+                    TupleElementDefinition.fromJson(i as Map<String, dynamic>),
+              )
               .toList()
           : null,
       annotation: json['annotation'] != null
@@ -31,7 +33,8 @@ class TupleTypeSpecifier extends TypeSpecifierExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

@@ -52,7 +52,8 @@ class DateTimeComponentFrom extends UnaryExpression {
   factory DateTimeComponentFrom.fromJson(Map<String, dynamic> json) =>
       DateTimeComponentFrom(
         precision: CqlDateTimePrecisionExtension.fromJson(
-            json['precision'] as String?),
+          json['precision'] as String?,
+        ),
         operand:
             CqlExpression.fromJson(json['operand']! as Map<String, dynamic>),
         annotation: json['annotation'] != null
@@ -65,7 +66,8 @@ class DateTimeComponentFrom extends UnaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   final CqlDateTimePrecision precision;

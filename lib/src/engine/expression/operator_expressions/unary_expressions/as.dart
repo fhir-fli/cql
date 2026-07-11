@@ -71,13 +71,15 @@ class As extends UnaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       )
         ..asTypeSpecifier = json['asTypeSpecifier'] == null
             ? null
             : TypeSpecifierExpression.fromJson(
-                json['asTypeSpecifier'] as Map<String, dynamic>)
+                json['asTypeSpecifier'] as Map<String, dynamic>,
+              )
         ..asType = json['asType'] == null
             ? null
             : QName.parse(json['asType'] as String)

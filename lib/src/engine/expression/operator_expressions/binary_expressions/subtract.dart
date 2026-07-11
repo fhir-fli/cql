@@ -125,7 +125,8 @@ class Subtract extends BinaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 
@@ -230,7 +231,8 @@ class Subtract extends BinaryExpression {
                             left.valueString,
                           )
                               .subtract(
-                                  UcumDecimal.fromString(right.valueString))
+                                UcumDecimal.fromString(right.valueString),
+                              )
                               .asUcumDecimal(),
                         ),
                       )

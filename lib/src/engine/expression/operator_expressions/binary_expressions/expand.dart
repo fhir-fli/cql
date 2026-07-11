@@ -32,7 +32,8 @@ class Expand extends BinaryExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
 
@@ -199,7 +200,9 @@ class Expand extends BinaryExpression {
   /// Compute the sub-intervals for a single interval.
   /// Returns null if per is incompatible with the interval type.
   List<CqlInterval<dynamic>>? _computeSubIntervals(
-      CqlInterval<dynamic> interval, dynamic per) {
+    CqlInterval<dynamic> interval,
+    dynamic per,
+  ) {
     final result = <CqlInterval<dynamic>>[];
     // Check original boundaries for null (not getStart/getEnd which substitute min/max)
     if (interval.low == null || interval.high == null) {

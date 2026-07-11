@@ -20,7 +20,8 @@ class IntervalTypeSpecifier extends TypeSpecifierExpression {
           ? null
           : json['pointType'] is Map<String, dynamic>
               ? TypeSpecifierExpression.fromJson(
-                  json['pointType'] as Map<String, dynamic>)
+                  json['pointType'] as Map<String, dynamic>,
+                )
               : null,
       annotation: json['annotation'] != null
           ? (json['annotation'] as List)
@@ -32,7 +33,8 @@ class IntervalTypeSpecifier extends TypeSpecifierExpression {
       resultTypeName: json['resultTypeName'] as String?,
       resultTypeSpecifier: json['resultTypeSpecifier'] != null
           ? TypeSpecifierExpression.fromJson(
-              json['resultTypeSpecifier'] as Map<String, dynamic>)
+              json['resultTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
     );
   }

@@ -14,8 +14,9 @@ class TupleTypeInfo extends TypeInfo {
     return TupleTypeInfo(
       element: json['element'] != null
           ? (json['element'] as List)
-              .map((i) =>
-                  TupleTypeInfoElement.fromJson(i as Map<String, dynamic>))
+              .map(
+                (i) => TupleTypeInfoElement.fromJson(i as Map<String, dynamic>),
+              )
               .toList()
           : null,
       baseType: json['baseType'] as String?,

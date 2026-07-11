@@ -15,7 +15,8 @@ class ListTypeInfo extends TypeInfo {
     return ListTypeInfo(
       elementTypeSpecifier: json['elementTypeSpecifier'] != null
           ? TypeSpecifierModel.fromJson(
-              json['elementTypeSpecifier'] as Map<String, dynamic>)
+              json['elementTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       elementType: json['elementType'] as String?,
       baseType: json['baseType'] as String?,

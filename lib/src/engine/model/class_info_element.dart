@@ -32,11 +32,13 @@ class ClassInfoElement {
     final name = json['name'] as String;
     final typeSpecifier = json['typeSpecifier'] != null
         ? TypeSpecifierModel.fromJson(
-            json['typeSpecifier'] as Map<String, dynamic>)
+            json['typeSpecifier'] as Map<String, dynamic>,
+          )
         : null;
     final elementTypeSpecifier = json['elementTypeSpecifier'] != null
         ? TypeSpecifierModel.fromJson(
-            json['elementTypeSpecifier'] as Map<String, dynamic>)
+            json['elementTypeSpecifier'] as Map<String, dynamic>,
+          )
         : null;
     final binding = json['binding'] != null
         ? BindingInfo.fromJson(json['binding'] as Map<String, dynamic>)

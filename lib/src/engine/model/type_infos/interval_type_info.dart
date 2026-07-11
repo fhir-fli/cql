@@ -15,7 +15,8 @@ class IntervalTypeInfo extends TypeInfo {
     return IntervalTypeInfo(
       pointTypeSpecifier: json['pointTypeSpecifier'] != null
           ? TypeSpecifierModel.fromJson(
-              json['pointTypeSpecifier'] as Map<String, dynamic>)
+              json['pointTypeSpecifier'] as Map<String, dynamic>,
+            )
           : null,
       pointType: json['pointType'] as String?,
       baseType: json['baseType'] as String?,

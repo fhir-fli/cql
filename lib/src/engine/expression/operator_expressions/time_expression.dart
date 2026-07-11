@@ -60,7 +60,8 @@ class TimeExpression extends OperatorExpression {
         millisecond: json['millisecond'] == null
             ? null
             : CqlExpression.fromJson(
-                json['millisecond'] as Map<String, dynamic>),
+                json['millisecond'] as Map<String, dynamic>,
+              ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -71,7 +72,8 @@ class TimeExpression extends OperatorExpression {
         resultTypeName: json['resultTypeName'] as String?,
         resultTypeSpecifier: json['resultTypeSpecifier'] != null
             ? TypeSpecifierExpression.fromJson(
-                json['resultTypeSpecifier'] as Map<String, dynamic>)
+                json['resultTypeSpecifier'] as Map<String, dynamic>,
+              )
             : null,
       );
   final CqlExpression hour;
