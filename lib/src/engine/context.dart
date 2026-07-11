@@ -1,9 +1,8 @@
-import 'package:cql/cql.dart' show CqlLibrary;
+import 'package:cql/src/internal.dart' show CqlLibrary;
 import 'package:cql/src/engine/engine.dart' show CqlLibrary;
 import 'package:cql/src/engine/library/cql_library.dart' show CqlLibrary;
 import 'package:cql/src/engine/library/library.dart' show CqlLibrary;
 import 'package:cql/src/engine/types/terminology_provider.dart';
-import 'package:cql/src/internal.dart' show CqlLibrary;
 import 'package:cql/src/model_resolver.dart';
 
 /// Reserved context keys used by the engine.

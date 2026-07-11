@@ -1,4 +1,4 @@
-import 'package:cql/cql.dart';
+import 'package:cql/src/internal.dart';
 import 'package:test/test.dart';
 
 void main() {

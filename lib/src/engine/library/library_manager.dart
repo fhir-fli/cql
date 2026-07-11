@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:cql/cql.dart' show CqlLibrary;
+import 'package:cql/src/internal.dart' show CqlLibrary;
 
 /// Provides CQL source text given a library path and optional version.
 abstract class LibrarySourceProvider {

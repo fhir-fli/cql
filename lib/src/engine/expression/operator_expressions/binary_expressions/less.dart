@@ -1,4 +1,4 @@
-import 'package:cql/cql.dart' hide Quantity;
+import 'package:cql/src/internal.dart' hide Quantity;
 import 'package:ucum/ucum.dart';
 
 /// Operator to check if the first argument is less than the second argument.

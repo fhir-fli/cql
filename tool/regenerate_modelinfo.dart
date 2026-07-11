@@ -15,7 +15,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cql/cql.dart';
+import 'package:cql/src/internal.dart';
 
 void main(List<String> args) {
   if (args.length != 3) {
@@ -115,7 +115,7 @@ void main(List<String> args) {
     ..writeln('// Source: ${xmlPath.split('/').last}')
     ..writeln("import 'dart:convert';")
     ..writeln()
-    ..writeln("import 'package:cql/cql.dart';")
+    ..writeln("import 'package:cql/src/internal.dart';")
     ..writeln()
     ..writeln('final $symbol =')
     ..writeln(

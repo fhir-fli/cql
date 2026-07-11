@@ -3,7 +3,7 @@
 // Results stream incrementally to tool/verify_modelinfo_reader.out.
 import 'dart:io';
 
-import 'package:cql/cql.dart';
+import 'package:cql/src/internal.dart';
 
 void main() {
   final out = File('tool/verify_modelinfo_reader.out').openSync(
