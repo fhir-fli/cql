@@ -30,6 +30,14 @@ class FileSystemLibrarySourceProvider implements LibrarySourceProvider {
   }
 }
 
+/// Loads, caches, and resolves the CQL libraries referenced by an artifact.
+///
+/// A CQL library may include other libraries (see [IncludeDef]); the manager
+/// resolves those references by name and version, caching each loaded
+/// [CqlLibrary] so it is parsed only once. When a [sourceProvider] and
+/// [parseLibrary] function are supplied, a cache miss triggers auto-loading of
+/// the library source and recursive resolution of its includes, with guards
+/// against circular includes.
 class LibraryManager {
   LibraryManager({this.sourceProvider, this.parseLibrary});
   // Cache of loaded libraries by name and version
@@ -45,6 +53,8 @@ class LibraryManager {
   /// Set this to enable auto-loading.
   CqlLibrary Function(String cqlSource)? parseLibrary;
 
+  /// Registers [library] in the cache under [libraryName] and [version],
+  /// making it available to subsequent [resolveLibrary] calls.
   void addLibrary(String libraryName, String version, CqlLibrary library) {
     if (_libraryCache.containsKey(libraryName)) {
       _libraryCache[libraryName]![version] = library;
@@ -53,6 +63,13 @@ class LibraryManager {
     }
   }
 
+  /// Resolves the library identified by [libraryName] and [version],
+  /// returning the cached copy if present.
+  ///
+  /// On a cache miss, and if both a [sourceProvider] and a [parseLibrary]
+  /// function are configured, the source is loaded and parsed, its includes
+  /// are resolved recursively, and the result is cached. Returns `null` if the
+  /// library cannot be found or a circular include is detected.
   Future<CqlLibrary?> resolveLibrary(
     String libraryName,
     String? version,

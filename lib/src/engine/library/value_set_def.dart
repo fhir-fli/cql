@@ -2,6 +2,11 @@ import 'dart:convert';
 
 import 'package:cql/src/internal.dart';
 
+/// Container for the `valueSets` section of a CQL library, holding the list of
+/// [ValueSetDef] definitions declared within it.
+///
+/// Each [ValueSetDef] introduces a named reference to a value set that can
+/// then be used by name anywhere within the library's expressions.
 class ValueSetDefs {
   ValueSetDefs();
 

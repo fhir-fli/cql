@@ -1,5 +1,11 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `statements` section of a CQL library, holding the list
+/// of [ExpressionDef] (and [FunctionDef]) definitions declared within it.
+///
+/// Each [ExpressionDef] is a named expression that can be referenced by any
+/// other expression in the library or, if public, by libraries that include
+/// it.
 class ExpressionDefs {
   ExpressionDefs();
 

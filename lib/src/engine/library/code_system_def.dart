@@ -1,5 +1,11 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `codeSystems` section of a CQL library, holding the list
+/// of [CodeSystemDef] definitions declared within it.
+///
+/// Each [CodeSystemDef] introduces a named reference to a code system that can
+/// be used to identify the code systems involved in code, concept, and value
+/// set definitions.
 class CodeSystemDefs {
   CodeSystemDefs();
 

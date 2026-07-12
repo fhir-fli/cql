@@ -1,7 +1,17 @@
 // Vocabulary type
 import 'package:cql/src/internal.dart';
 
+/// The CQL `Vocabulary` type: the common base for terminology definitions
+/// referenced by a library.
+///
+/// A vocabulary is identified by its canonical [id], carries an optional
+/// [version], and has a local [name] by which CQL expressions refer to it. It
+/// is the abstract parent of the concrete terminology kinds — [CqlCodeSystem]
+/// and [CqlValueSet]. Two vocabularies are [equivalent] on matching id and
+/// version, and [equal] when id, version and name all match.
 abstract class CqlVocabulary implements CqlType {
+  /// Creates a vocabulary with the given canonical [id], [version] and local
+  /// [name].
   CqlVocabulary({
     required this.id,
     required this.version,

@@ -1,6 +1,17 @@
 import 'package:cql/src/internal.dart';
 
+/// The CQL System `Code` type: a single terminology code drawn from a code
+/// system.
+///
+/// A CQL `Code` carries the [code] value itself, the [system] (the code
+/// system's canonical URI/identifier) it is defined in, an optional [version]
+/// of that system, and an optional human-readable [display]. Codes are the
+/// atomic terminology value in CQL and are grouped by [CqlConcept]. Under CQL
+/// semantics, code [equivalent]ce compares only `code` and `system`, while
+/// [equal]ity is a three-valued comparison across all four components.
 class CqlCode implements CqlType {
+  /// Creates a [CqlCode] from its [code], [display], [system] and [version]
+  /// components.
   CqlCode({this.code, this.display, this.system, this.version});
 
   factory CqlCode.fromJson(Map<String, dynamic> json) {
@@ -12,6 +23,8 @@ class CqlCode implements CqlType {
     );
   }
 
+  /// Builds a [CqlCode] from an ELM [CodeDef] declaration, resolving the code
+  /// system name from [codeSystemDef] when available.
   factory CqlCode.fromCodeDef(CodeDef codeDef, String? codeSystemDef) {
     return CqlCode(
       code: codeDef.id,

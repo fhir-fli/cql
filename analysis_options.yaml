@@ -7,6 +7,19 @@ analyzer:
     document_ignores: ignore
     comment_references: ignore
     avoid_catches_without_on_clauses: ignore
+    # public_member_api_docs is export-blind: it flags every non-underscore
+    # member under lib/ INCLUDING lib/src/, which Dart's package-layout spec
+    # defines as private implementation ("not part of the package's public
+    # API"). The rule's own SDK source carries a maintainer TODO to become
+    # "more aware of the actual API surface area of a package" — it isn't yet.
+    # cql's genuine public API is the small curated barrel in lib/cql.dart
+    # (proven private/public split by the 9fc05b1 curation); that exported
+    # surface is documented directly and its coverage is measured by
+    # dart doc / pana, which ARE export-aware. Requiring docs on the ~1834
+    # unreachable lib/src internals (e.g. ANTLR visitors) would be filler with
+    # no public-API or pub.dev-doc-score value. So we disable the blunt lint
+    # and rely on the real, export-aware doc measure instead.
+    public_member_api_docs: ignore
   exclude:
     - lib/src/cql_to_elm/antlr/**   # ANTLR-generated lexer/parser
     - lib/src/cql_to_elm/antlr4/**  # grammar sources / generated artifacts

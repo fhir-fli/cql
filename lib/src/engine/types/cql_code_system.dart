@@ -1,14 +1,23 @@
 import 'package:cql/src/internal.dart';
 
-// CqlCodeSystem type extending Vocabulary
+/// The CQL System `CodeSystem` type: a reference to a terminology code system.
+///
+/// A code system is a [CqlVocabulary] identified by its canonical [id] (the
+/// system URI), an optional [version], and a local [name]. It names the source
+/// from which [CqlCode]s are drawn and can serve as a member of a
+/// [CqlValueSet].
 class CqlCodeSystem extends CqlVocabulary {
+  /// Creates a code-system reference from its canonical [id], [version] and
+  /// local [name].
   CqlCodeSystem({
     required super.id,
     required super.version,
     required super.name,
   });
 
-  // Static method to create a CqlCodeSystemInfo from a CqlCodeSystem
+  /// Builds a [CqlCodeSystem] from an ELM [CodeSystemDef] declaration.
+  ///
+  /// Throws an [ArgumentError] if the definition lacks an id or name.
   factory CqlCodeSystem.fromCodeSystemDef(CodeSystemDef codeSystemDef) {
     if (codeSystemDef.id == null || codeSystemDef.name == null) {
       throw ArgumentError('ValueSetDef must have id, version, and name');
@@ -20,6 +29,7 @@ class CqlCodeSystem extends CqlVocabulary {
     );
   }
 
+  /// Builds a [CqlCodeSystem] from an ELM [CodeSystemRef] reference.
   factory CqlCodeSystem.fromCodeSystemRef(CodeSystemRef cs) {
     return CqlCodeSystem(
       id: cs.localId ?? cs.type,

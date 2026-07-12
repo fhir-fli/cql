@@ -1,5 +1,10 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `codes` section of a CQL library, holding the list of
+/// [CodeDef] definitions declared within it.
+///
+/// Each [CodeDef] introduces a named reference to a single code from a code
+/// system that can then be used anywhere within the library's expressions.
 class CodeDefs extends Element {
   CodeDefs();
 

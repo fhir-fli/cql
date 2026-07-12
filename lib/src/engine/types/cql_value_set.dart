@@ -2,7 +2,17 @@ import 'package:collection/collection.dart';
 
 import 'package:cql/src/internal.dart';
 
+/// The CQL System `ValueSet` type: a named set of codes used by terminology
+/// membership operators.
+///
+/// A value set is a [CqlVocabulary] identified by its canonical [id], optional
+/// [version] and local [name], optionally scoped to a list of [codeSystems]
+/// that constrain which systems its codes may come from. Value sets are the
+/// right-hand operand of CQL's `in`/`InValueSet` membership tests; resolving a
+/// code's membership is delegated to a [TerminologyProvider].
 class CqlValueSet extends CqlVocabulary {
+  /// Creates a value set from its canonical [id], [version], [name] and
+  /// optional constraining [codeSystems].
   CqlValueSet({
     required super.id,
     required super.version,
@@ -24,6 +34,9 @@ class CqlValueSet extends CqlVocabulary {
   factory CqlValueSet.fromMap(Map<String, dynamic> map) =>
       CqlValueSet.fromJson(map);
 
+  /// Builds a [CqlValueSet] from an ELM [ValueSetDef] declaration.
+  ///
+  /// Throws an [ArgumentError] if the definition lacks an id or name.
   factory CqlValueSet.fromValueSetDef(ValueSetDef valueSetDef) {
     if (valueSetDef.id == null || valueSetDef.name == null) {
       throw ArgumentError('ValueSetDef must have id, version, and name');
@@ -38,7 +51,8 @@ class CqlValueSet extends CqlVocabulary {
   }
   List<CqlCodeSystem>? codeSystems;
 
-  // Static method to create a CqlValueSet from a ValueSet
+  /// Builds a [CqlValueSet] from an ELM [ValueSetDef], tolerating missing
+  /// fields by substituting empty defaults.
   static CqlValueSet fromValueSet(ValueSetDef vs) {
     final vsi = CqlValueSet(
       id: vs.id ?? '',
@@ -95,7 +109,8 @@ class CqlValueSet extends CqlVocabulary {
   @override
   int get hashCode => codeSystems.hashCode;
 
-  // Method to add a CodeSystemInfo
+  /// Adds [codeSystem] to this value set's constraining code systems and
+  /// returns the value set for fluent chaining.
   CqlValueSet withCodeSystem(CqlCodeSystem codeSystem) {
     codeSystems ??= <CqlCodeSystem>[];
     codeSystems!.add(codeSystem);

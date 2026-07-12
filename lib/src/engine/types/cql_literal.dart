@@ -1,6 +1,16 @@
 import 'package:cql/src/internal.dart';
 import 'package:ucum/ucum.dart';
 
+/// Common base for the engine's representation of CQL *literal* expressions —
+/// constant values written directly in CQL source (e.g. `5`, `true`,
+/// `'text'`, `@2020-01-01`, `1 'mg'`).
+///
+/// Each concrete subclass models a literal of one CQL type: its [type] getter
+/// returns the CQL type name and [valueType] the fully-qualified ELM type URI.
+/// As an [CqlExpression], a literal evaluates (via `execute`) to the
+/// corresponding runtime System value ([LiteralInteger] to `CqlInteger`,
+/// [LiteralCode] to [CqlCode], [LiteralIntegerInterval] to a
+/// [CqlInterval], and so on).
 abstract class LiteralType extends CqlExpression {
   LiteralType({
     super.annotation,
@@ -12,8 +22,14 @@ abstract class LiteralType extends CqlExpression {
 
   @override
   String get type;
+
+  /// The fully-qualified ELM type identifier for this literal's [type], e.g.
+  /// `{urn:hl7-org:elm-types:r1}Integer`.
   String get valueType => '{urn:hl7-org:elm-types:r1}$type';
 
+  /// Maps a runtime CQL System type name (e.g. `CqlInteger`) to the name of
+  /// its corresponding literal class (e.g. `LiteralInteger`), or `null` when
+  /// there is no literal representation for [type].
   static String? typeToLiteral(String type) {
     switch (type) {
       case 'CqlBoolean':
@@ -43,6 +59,8 @@ abstract class LiteralType extends CqlExpression {
     }
   }
 
+  /// The names of the literal classes for the primitive/simple CQL types that
+  /// have a direct literal form.
   static List<String> get literalTypes => [
         'LiteralBoolean',
         'LiteralDate',
@@ -58,6 +76,7 @@ abstract class LiteralType extends CqlExpression {
       ];
 }
 
+/// The CQL `null` literal — the untyped absence of a value.
 class LiteralNull extends LiteralType {
   LiteralNull({super.resultTypeName});
 
@@ -87,7 +106,9 @@ class LiteralNull extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Null'];
 }
 
+/// A CQL `Boolean` literal (`true` or `false`).
 class LiteralBoolean extends LiteralType {
+  /// Creates a boolean literal wrapping [value].
   LiteralBoolean(this.value);
 
   factory LiteralBoolean.fromJson(dynamic json) {
@@ -123,7 +144,12 @@ class LiteralBoolean extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Boolean'];
 }
 
+/// A CQL `Code` literal: a terminology code written directly in CQL, with its
+/// [code] value and optional [system], [version] and [display]. Evaluates to a
+/// [CqlCode].
 class LiteralCode extends LiteralType {
+  /// Creates a code literal for [code] with optional [display], [system] and
+  /// [version].
   LiteralCode(
     this.code, {
     this.display,
@@ -169,7 +195,10 @@ class LiteralCode extends LiteralType {
       );
 }
 
+/// A CQL `Concept` literal: a set of equivalent [LiteralCode]s plus an
+/// optional [display]. Evaluates to a [CqlConcept].
 class LiteralConcept extends LiteralType {
+  /// Creates a concept literal from its [codes] and optional [display].
   LiteralConcept(
     this.codes, {
     this.display,
@@ -211,7 +240,12 @@ class LiteralConcept extends LiteralType {
   }
 }
 
+/// Common base for the CQL terminology-reference literals — a value set or a
+/// code system declared in a library. Carries the vocabulary [id], optional
+/// [version] and local [name]; concrete forms are [LiteralValueSet] and
+/// [LiteralCodeSystem].
 abstract class LiteralVocabularyType extends LiteralType {
+  /// Creates a vocabulary literal with the given [id], [version] and [name].
   LiteralVocabularyType(
     this.id, {
     this.version,
@@ -233,7 +267,11 @@ abstract class LiteralVocabularyType extends LiteralType {
   Map<String, dynamic> toJson();
 }
 
+/// A CQL `ValueSet` literal: a reference to a value set by [id], optionally
+/// scoped to one or more [codesystem]s.
 class LiteralValueSet extends LiteralVocabularyType {
+  /// Creates a value-set literal referencing [id], with optional [version],
+  /// [name] and constraining [codesystem]s.
   LiteralValueSet(
     super.id, {
     super.version,
@@ -272,7 +310,11 @@ class LiteralValueSet extends LiteralVocabularyType {
   String get type => 'ValueSet';
 }
 
+/// A CQL `CodeSystem` literal: a reference to a code system by [id] (its
+/// canonical URI) with optional [version] and local [name].
 class LiteralCodeSystem extends LiteralVocabularyType {
+  /// Creates a code-system literal referencing [id], with optional [version]
+  /// and [name].
   LiteralCodeSystem(
     super.id, {
     super.version,
@@ -303,7 +345,10 @@ class LiteralCodeSystem extends LiteralVocabularyType {
   String get type => 'CodeSystem';
 }
 
+/// A CQL `Date` literal (e.g. `@2020-01-01`), possibly with reduced precision
+/// (year, or year-month). Evaluates to a `CqlDate`.
 class LiteralDate extends LiteralType {
+  /// Creates a date literal from its ISO-8601 [value] string.
   LiteralDate(this.value);
 
   factory LiteralDate.fromJson(dynamic json) {
@@ -342,7 +387,10 @@ class LiteralDate extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Date'];
 }
 
+/// A CQL `DateTime` literal (e.g. `@2020-01-01T12:00:00.0`), possibly with
+/// reduced precision. Evaluates to a `CqlDateTime`.
 class LiteralDateTime extends LiteralType {
+  /// Creates a date-time literal from its ISO-8601 [value] string.
   LiteralDateTime(this.value);
 
   factory LiteralDateTime.fromJson(dynamic json) {
@@ -388,9 +436,16 @@ class LiteralDateTime extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['DateTime'];
 }
 
+/// A CQL `Decimal` literal. Tracks the number of significant figures
+/// ([sigFigs]) so that the declared precision can be preserved, per CQL's
+/// decimal precision rules. Evaluates to a `CqlDecimal`.
 class LiteralDecimal extends LiteralType {
+  /// Creates a decimal literal for [value], optionally recording its number
+  /// of significant figures in [sigFigs].
   LiteralDecimal(this.value, {this.sigFigs});
 
+  /// Parses [stringValue] into a decimal literal, computing the number of
+  /// significant figures from the source text.
   factory LiteralDecimal.fromString(String stringValue) {
     if (num.tryParse(stringValue) != null) {
       /// Remove any leading and trailing whitespaces
@@ -460,7 +515,10 @@ class LiteralDecimal extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Decimal'];
 }
 
+/// A CQL `Integer` literal (a 32-bit signed integer). Evaluates to a
+/// `CqlInteger`.
 class LiteralInteger extends LiteralType {
+  /// Creates an integer literal wrapping [value].
   LiteralInteger(this.value);
 
   factory LiteralInteger.fromJson(dynamic json) {
@@ -501,7 +559,10 @@ class LiteralInteger extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer'];
 }
 
+/// A CQL `Long` literal (a 64-bit signed integer, written with an `L`
+/// suffix). Backed by a [BigInt] and evaluates to a `CqlLong`.
 class LiteralLong extends LiteralType {
+  /// Creates a long literal wrapping [value].
   LiteralLong(this.value);
 
   factory LiteralLong.fromJson(dynamic json) {
@@ -541,7 +602,11 @@ class LiteralLong extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Integer64'];
 }
 
+/// A CQL `Quantity` literal: a decimal [value] paired with an optional UCUM
+/// [unit] (e.g. `5 'mg'`). Evaluates to a `ValidatedQuantity`.
 class LiteralQuantity extends LiteralType {
+  /// Creates a quantity literal from its decimal [value] and optional UCUM
+  /// [unit].
   LiteralQuantity(this.value, {this.unit});
 
   factory LiteralQuantity.fromJson(Map<String, dynamic> json) {
@@ -580,7 +645,11 @@ class LiteralQuantity extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Quantity'];
 }
 
+/// A CQL `Ratio` literal: a [numerator] quantity over a [denominator] quantity
+/// (e.g. `1 'mg' : 2 'mL'`). Evaluates to a `ValidatedRatio`.
 class LiteralRatio extends LiteralType {
+  /// Creates a ratio literal from its [numerator] and [denominator]
+  /// quantities.
   LiteralRatio(this.numerator, this.denominator);
 
   factory LiteralRatio.fromJson(Map<String, dynamic> json) {
@@ -617,7 +686,10 @@ class LiteralRatio extends LiteralType {
   String toString() => 'LiteralRatio: $numerator : $denominator';
 }
 
+/// A CQL `String` literal. The constructor resolves CQL/Unicode escape
+/// sequences (e.g. `\n`, `\uXXXX`) into their character values.
 class LiteralString extends LiteralType {
+  /// Creates a string literal from [value], unescaping any escape sequences.
   LiteralString(String value) : value = _unescape(value);
 
   factory LiteralString.fromJson(dynamic json) {
@@ -668,10 +740,16 @@ class LiteralString extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['String'];
 }
 
+/// A CQL `Time` literal (e.g. `@T12:00:00.0`), possibly with reduced
+/// precision. Evaluates to a `CqlTime`.
 class LiteralTime extends LiteralType {
+  /// Creates a time literal from [value], stripping any leading `@`/`T`
+  /// prefix.
   LiteralTime(String value)
       : value = value.replaceFirst('@', '').replaceFirst('T', '');
 
+  /// Builds a time literal from an operand list of hour, minute, second and
+  /// millisecond [LiteralInteger]s (as produced by the `Time(...)` operator).
   factory LiteralTime.fromOperandList({required List<CqlExpression> operand}) {
     var value = '';
     if (operand.isNotEmpty) {
@@ -737,7 +815,16 @@ class LiteralTime extends LiteralType {
   List<String> getReturnTypes(CqlLibrary library) => ['Time'];
 }
 
+/// Common base for CQL `Interval` literals (e.g. `Interval[1, 10]`).
+///
+/// Holds the boundary-inclusivity flags [lowClosed]/[highClosed]; concrete
+/// subclasses ([LiteralIntegerInterval], [LiteralDecimalInterval],
+/// [LiteralQuantityInterval], [LiteralDateInterval],
+/// [LiteralDateTimeInterval], [LiteralTimeInterval]) add typed `low`/`high`
+/// boundary literals and evaluate to a [CqlInterval] of the corresponding
+/// point type.
 abstract class LiteralCqlInterval extends LiteralType {
+  /// Creates an interval literal with the given boundary-inclusivity flags.
   LiteralCqlInterval({this.lowClosed, this.highClosed});
 
   factory LiteralCqlInterval.fromJson(Map<String, dynamic> json) {
@@ -764,7 +851,11 @@ abstract class LiteralCqlInterval extends LiteralType {
   Map<String, dynamic> toJson();
 }
 
+/// A CQL `Interval<Integer>` literal. Evaluates to a
+/// [CqlInterval] of `CqlInteger` boundaries.
 class LiteralIntegerInterval extends LiteralCqlInterval {
+  /// Creates an integer interval literal from its [low]/[high] boundary
+  /// literals and inclusivity flags.
   LiteralIntegerInterval({
     super.lowClosed,
     super.highClosed,
@@ -811,7 +902,11 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
       );
 }
 
+/// A CQL `Interval<Decimal>` literal. Evaluates to a
+/// [CqlInterval] of `CqlDecimal` boundaries.
 class LiteralDecimalInterval extends LiteralCqlInterval {
+  /// Creates a decimal interval literal from its [low]/[high] boundary
+  /// literals and inclusivity flags.
   LiteralDecimalInterval({
     super.lowClosed,
     super.highClosed,
@@ -858,7 +953,11 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
       );
 }
 
+/// A CQL `Interval<Quantity>` literal. Evaluates to a
+/// [CqlInterval] of `ValidatedQuantity` boundaries.
 class LiteralQuantityInterval extends LiteralCqlInterval {
+  /// Creates a quantity interval literal from its [low]/[high] boundary
+  /// literals and inclusivity flags.
   LiteralQuantityInterval({
     super.lowClosed,
     super.highClosed,
@@ -905,7 +1004,11 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
       );
 }
 
+/// A CQL `Interval<Date>` literal. Evaluates to a
+/// [CqlInterval] of `CqlDate` boundaries.
 class LiteralDateInterval extends LiteralCqlInterval {
+  /// Creates a date interval literal from its [low]/[high] boundary literals
+  /// and inclusivity flags.
   LiteralDateInterval({
     super.lowClosed,
     super.highClosed,
@@ -950,7 +1053,11 @@ class LiteralDateInterval extends LiteralCqlInterval {
       );
 }
 
+/// A CQL `Interval<DateTime>` literal. Evaluates to a
+/// [CqlInterval] of `CqlDateTime` boundaries.
 class LiteralDateTimeInterval extends LiteralCqlInterval {
+  /// Creates a date-time interval literal from its [low]/[high] boundary
+  /// literals and inclusivity flags.
   LiteralDateTimeInterval({
     super.lowClosed,
     super.highClosed,
@@ -997,7 +1104,11 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
       );
 }
 
+/// A CQL `Interval<Time>` literal. Evaluates to a
+/// [CqlInterval] of `CqlTime` boundaries.
 class LiteralTimeInterval extends LiteralCqlInterval {
+  /// Creates a time interval literal from its [low]/[high] boundary literals
+  /// and inclusivity flags.
   LiteralTimeInterval({
     super.lowClosed,
     super.highClosed,

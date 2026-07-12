@@ -1,5 +1,11 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `parameters` section of a CQL library, holding the list
+/// of [ParameterDef] definitions declared within it.
+///
+/// Each [ParameterDef] declares a named parameter, optionally typed and with a
+/// default value, whose value can be supplied at evaluation time and
+/// referenced by name within the library's expressions.
 class ParameterDefs {
   ParameterDefs();
 

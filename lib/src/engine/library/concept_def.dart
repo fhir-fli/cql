@@ -1,5 +1,11 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `concepts` section of a CQL library, holding the list of
+/// [ConceptDef] definitions declared within it.
+///
+/// Each [ConceptDef] introduces a named reference to a single concept (a set
+/// of synonymous codes) that can then be used anywhere within the library's
+/// expressions.
 class ConceptDefs {
   ConceptDefs();
 

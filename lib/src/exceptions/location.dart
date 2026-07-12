@@ -1,8 +1,25 @@
+/// A span of text within CQL source, expressed as a start and end
+/// line/character position.
+///
+/// Locations are used by diagnostics (via [SourceLocator]) to point at the
+/// exact region of the CQL document an error, warning, or message concerns.
+/// The locator string form is `startLine:startChar-endLine:endChar` (see
+/// [toLocator] and [fromLocator]).
 class Location {
+  /// Creates a [Location] spanning from ([startLine], [startChar]) to
+  /// ([endLine], [endChar]).
   Location(this.startLine, this.startChar, this.endLine, this.endChar);
+
+  /// The 1-based line number where the span begins.
   final int startLine;
+
+  /// The character position within [startLine] where the span begins.
   final int startChar;
+
+  /// The 1-based line number where the span ends.
   final int endLine;
+
+  /// The character position within [endLine] where the span ends.
   final int endChar;
 
   int getStartLine() => startLine;
@@ -21,6 +38,9 @@ class Location {
         endChar == other.endChar;
   }
 
+  /// Returns whether this location fully contains [other] — that is, whether
+  /// [other]'s span begins at or after this span's start and ends at or before
+  /// this span's end.
   bool includes(Location other) {
     return startLine <= other.startLine &&
         (startLine < other.startLine || startChar <= other.startChar) &&
@@ -44,12 +64,22 @@ class Location {
   String toString() =>
       'Location{ startLine=$startLine, startChar=$startChar, endLine=$endLine, endChar=$endChar }';
 
+  /// Renders this location as a locator string.
+  ///
+  /// Produces `line:char` for a zero-width span (start equals end) or
+  /// `startLine:startChar-endLine:endChar` otherwise. Inverse of [fromLocator].
   String toLocator() {
     return startLine == endLine && startChar == endChar
         ? '$startLine:$startChar'
         : '$startLine:$startChar-$endLine:$endChar';
   }
 
+  /// Parses a locator string (as produced by [toLocator]) back into a
+  /// [Location].
+  ///
+  /// Accepts either `line:char` or `startLine:startChar-endLine:endChar`.
+  /// Throws an [ArgumentError] if [locator] is null or empty, or a
+  /// [FormatException] if a segment is not in `line:char` form.
   static Location fromLocator(String? locator) {
     if (locator == null || locator.isEmpty) {
       throw ArgumentError('locator required');

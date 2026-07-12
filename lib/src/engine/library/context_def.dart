@@ -1,5 +1,10 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `contexts` section of a CQL library, holding the list of
+/// [ContextDef] definitions declared within it.
+///
+/// Each [ContextDef] names a context (such as `Patient` or `Population`) in
+/// which the library's expressions are evaluated.
 class ContextDefs {
   ContextDefs();
 
@@ -19,6 +24,12 @@ class ContextDefs {
   dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
+/// Declares the context (for example `Patient` or `Population`) in which
+/// subsequent expression definitions within a CQL library are evaluated.
+///
+/// The context determines the scope of retrieves and the identity of the
+/// evaluation subject; expressions defined after a context declaration are
+/// evaluated in that context.
 class ContextDef extends Element {
   ContextDef({
     required this.name,

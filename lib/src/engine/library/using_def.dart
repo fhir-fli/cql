@@ -1,5 +1,10 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `usings` section of a CQL library, holding the list of
+/// [UsingDef] definitions declared within it.
+///
+/// Each [UsingDef] declares a data model (such as FHIR or QDM) that is made
+/// available for use within the library.
 class UsingDefs {
   UsingDefs();
 

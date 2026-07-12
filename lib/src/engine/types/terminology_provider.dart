@@ -1,7 +1,12 @@
 // Terminology resolution for CQL membership operators.
 import 'package:cql/src/internal.dart';
 
+/// Thrown by a [TerminologyProvider] when value-set membership cannot be
+/// resolved because of an actual resolution error (as opposed to an
+/// indeterminate result, which is signalled by a `null` return instead).
 class TerminologyProviderException implements Exception {
+  /// Creates the exception with a human-readable [message] describing the
+  /// resolution failure.
   TerminologyProviderException(this.message);
   String message;
 

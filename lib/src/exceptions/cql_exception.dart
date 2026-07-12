@@ -1,7 +1,21 @@
 import 'package:cql/src/internal.dart';
 
+/// The general-purpose exception raised when CQL translation or evaluation
+/// fails.
+///
+/// A [CqlException] bundles a human-readable [message] (or an underlying
+/// [cause] exception), an optional [SourceLocator] pinpointing the position in
+/// the CQL/ELM source that triggered the problem, and a [Severity] classifying
+/// how serious the diagnostic is (defaulting to [Severity.error]). This mirrors
+/// the diagnostic model used by the reference CQL translator.
 class CqlException implements Exception {
   // Constructors
+
+  /// Creates a [CqlException] with an explicit [message].
+  ///
+  /// [cause] optionally wraps an underlying exception, [sourceLocator] marks
+  /// where in the source the problem occurred, and [severity] classifies the
+  /// diagnostic (defaults to [Severity.error] when omitted).
   CqlException({
     required this.message,
     this.cause,
@@ -9,6 +23,8 @@ class CqlException implements Exception {
     Severity? severity,
   }) : severity = severity ?? Severity.error;
 
+  /// Creates a [CqlException] that wraps an underlying [cause] exception,
+  /// leaving [message] null.
   CqlException.fromCause(
     Exception cause, {
     SourceLocator? sourceLocator,
@@ -20,6 +36,8 @@ class CqlException implements Exception {
           severity: severity,
         );
 
+  /// Creates a [CqlException] with a [message] anchored to the given
+  /// [sourceLocator].
   CqlException.withSourceLocator(
     String message,
     SourceLocator sourceLocator, {
@@ -30,6 +48,8 @@ class CqlException implements Exception {
           severity: severity,
         );
 
+  /// Creates a [CqlException] with a [message] and an explicit [severity],
+  /// optionally anchored to a [sourceLocator].
   CqlException.withSeverity(
     String message, {
     required Severity severity,
@@ -39,9 +59,19 @@ class CqlException implements Exception {
           sourceLocator: sourceLocator,
           severity: severity,
         );
+
+  /// The human-readable description of the problem, or null when the exception
+  /// is defined solely by its [cause].
   final String? message;
+
+  /// The underlying exception that triggered this one, if any.
   final Exception? cause;
+
+  /// The position in the CQL/ELM source that this diagnostic refers to, if
+  /// known.
   SourceLocator? sourceLocator;
+
+  /// How serious this diagnostic is; defaults to [Severity.error].
   final Severity severity;
 
   // Getter for message to mimic Java's getMessage method

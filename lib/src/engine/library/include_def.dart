@@ -1,5 +1,10 @@
 import 'package:cql/src/internal.dart';
 
+/// Container for the `includes` section of a CQL library, holding the list of
+/// [IncludeDef] definitions declared within it.
+///
+/// Each [IncludeDef] references another CQL/ELM library whose public
+/// components become available within this library.
 class IncludeDefs {
   IncludeDefs();
 

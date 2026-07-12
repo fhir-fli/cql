@@ -1,6 +1,21 @@
 import 'package:cql/src/internal.dart';
 
+/// The CQL `Interval` type: a range of ordered values of point type [T].
+///
+/// An interval is defined by a [low] and [high] boundary together with
+/// closed/open flags ([lowClosed]/[highClosed]) that state whether each
+/// boundary value is included. A `null` boundary denotes an unknown or
+/// unbounded endpoint. Intervals support the full CQL interval algebra —
+/// [contains], [intersect], [except], overlap and comparison operators — and
+/// use [getStart]/[getEnd] to obtain the effective inclusive endpoints
+/// (adjusting open boundaries via successor/predecessor and substituting type
+/// min/max for unbounded ends). The [uncertain] flag marks intervals derived
+/// from imprecise date/time values, per CQL's uncertainty semantics.
 class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
+  /// Creates an interval spanning [low]..[high].
+  ///
+  /// [lowClosed] and [highClosed] default to `true` (a closed interval).
+  /// Throws if the ending boundary is ordered before the starting boundary.
   CqlInterval({
     this.low,
     bool? lowClosed,
@@ -32,6 +47,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   dynamic state; // Adjust based on your State implementation
   bool uncertain = false;
 
+  /// The CQL point-type name of this interval's boundaries (e.g. `Integer`,
+  /// `DateTime`), inferred from [T] or from the runtime boundary values.
   String get type => T != dynamic
       ? T.toString()
       : low != null
@@ -61,12 +78,20 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     return this;
   }
 
+  /// The effective inclusive starting point of the interval.
+  ///
+  /// For an open low boundary the successor of [low] is returned; for an
+  /// unbounded (`null`) low the minimum value of the point type is used.
   Object? getStart() {
     return lowClosed
         ? low ?? MinValue.minValue(high.runtimeType.toString())
         : Successor.successor(low);
   }
 
+  /// The effective inclusive ending point of the interval.
+  ///
+  /// For an open high boundary the predecessor of [high] is returned; for an
+  /// unbounded (`null`) high the maximum value of the point type is used.
   Object? getEnd() => highClosed
       ? high ?? MaxValue.maxValue(low.runtimeType.toString())
       : Predecessor.predecessor(high);
@@ -101,6 +126,10 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     }
   }
 
+  /// Whether [value] falls within this interval.
+  ///
+  /// Accepts either a point of the interval's type or another
+  /// [CqlInterval] (testing containment of the whole sub-interval).
   bool contains(dynamic value) =>
       !(value == null) &&
       (value is CqlInterval
@@ -156,7 +185,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     );
   }
 
-  /// This method returns the intersection of two intervals.
+  /// Returns the interval of points common to both this interval and [right],
+  /// or `null` when they do not overlap.
   CqlInterval<dynamic>? intersect(CqlInterval<dynamic> right) {
     // Get start and end points for both intervals
     final leftStart = getStart();
@@ -250,6 +280,10 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     );
   }
 
+  /// Returns the portion of this interval that lies outside [right].
+  ///
+  /// Yields `null` when the result would be empty or would not form a single
+  /// contiguous interval (e.g. when [right] is strictly interior to this one).
   CqlInterval<dynamic>? except(CqlInterval<dynamic> right) {
     // Get start and end points for both intervals
     final leftStart = getStart();
