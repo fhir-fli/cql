@@ -52,36 +52,4 @@ class CqlCodeSystem extends CqlVocabulary {
     json['type'] = 'CodeSystem';
     return json;
   }
-
-  // Getter for ID
-  String? get getId => id;
-
-  // Setter for ID
-  set setId(String? id) {
-    if (id != null) {
-      this.id = id;
-    }
-  }
-
-  // Fluent API for setting ID
-  CqlCodeSystem withId(String id) {
-    this.id = id;
-    return this;
-  }
-
-  // Getter for version
-  String? get getVersion => version;
-
-  // Setter for version
-  set setVersion(String? version) {
-    if (version != null) {
-      this.version = version;
-    }
-  }
-
-  // Fluent API for setting version
-  CqlCodeSystem withVersion(String version) {
-    this.version = version;
-    return this;
-  }
 }

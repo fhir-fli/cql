@@ -1,12 +1,17 @@
+import 'package:meta/meta.dart';
+
+/// Identifies a data model (e.g. FHIR, QDM) by [id], with an optional
+/// [system] URI and [version].
+@immutable
 class ModelIdentifier {
   ModelIdentifier({
     required this.id,
     this.system,
     this.version,
   });
-  String id;
-  String? system;
-  String? version;
+  final String id;
+  final String? system;
+  final String? version;
 
   @override
   bool operator ==(Object other) {
@@ -33,16 +38,4 @@ class ModelIdentifier {
         system: system ?? this.system,
         version: version ?? this.version,
       );
-
-  void withId(String id) {
-    this.id = id;
-  }
-
-  void withSystem(String system) {
-    this.system = system;
-  }
-
-  void withVersion(String version) {
-    this.version = version;
-  }
 }

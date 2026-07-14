@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The general-purpose exception raised when CQL translation or evaluation
 /// fails.
@@ -8,6 +9,7 @@ import 'package:cql/src/internal.dart';
 /// the CQL/ELM source that triggered the problem, and a [Severity] classifying
 /// how serious the diagnostic is (defaulting to [Severity.error]). This mirrors
 /// the diagnostic model used by the reference CQL translator.
+@immutable
 class CqlException implements Exception {
   // Constructors
 
@@ -69,7 +71,7 @@ class CqlException implements Exception {
 
   /// The position in the CQL/ELM source that this diagnostic refers to, if
   /// known.
-  SourceLocator? sourceLocator;
+  final SourceLocator? sourceLocator;
 
   /// How serious this diagnostic is; defaults to [Severity.error].
   final Severity severity;

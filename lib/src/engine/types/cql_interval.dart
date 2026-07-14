@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The CQL `Interval` type: a range of ordered values of point type [T].
 ///
@@ -11,6 +12,7 @@ import 'package:cql/src/internal.dart';
 /// (adjusting open boundaries via successor/predecessor and substituting type
 /// min/max for unbounded ends). The [uncertain] flag marks intervals derived
 /// from imprecise date/time values, per CQL's uncertainty semantics.
+@immutable
 class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   /// Creates an interval spanning [low]..[high].
   ///
@@ -22,6 +24,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     this.high,
     bool? highClosed,
     this.state,
+    this.uncertain = false,
   })  : lowClosed = lowClosed ?? true,
         highClosed = highClosed ?? true {
     if (low is CqlDateTimeBase && high is CqlDateTimeBase) {
@@ -40,12 +43,15 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
       }
     }
   }
-  T? low;
-  bool lowClosed;
-  T? high;
-  bool highClosed;
-  dynamic state; // Adjust based on your State implementation
-  bool uncertain = false;
+  final T? low;
+  final bool lowClosed;
+  final T? high;
+  final bool highClosed;
+  final dynamic state;
+
+  /// Marks an interval derived from imprecise date/time values, per CQL's
+  /// uncertainty semantics.
+  final bool uncertain;
 
   /// The CQL point-type name of this interval's boundaries (e.g. `Integer`,
   /// `DateTime`), inferred from [T] or from the runtime boundary values.
@@ -72,11 +78,6 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   }
 
   bool isUncertain() => uncertain;
-
-  CqlInterval<dynamic> setUncertain(bool uncertain) {
-    this.uncertain = uncertain;
-    return this;
-  }
 
   /// The effective inclusive starting point of the interval.
   ///

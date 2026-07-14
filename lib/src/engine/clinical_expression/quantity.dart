@@ -77,7 +77,13 @@ class Quantity extends CqlExpression {
         unit: unit,
       );
 
+  // Quantity's own fields ([value], [unit]) are final and are the only state
+  // equality reads, but the class cannot be @immutable: its [Element] base
+  // carries mutable-by-design translator metadata (e.g. inferredResultType)
+  // shared by every ELM node. That metadata is excluded from equality, so
+  // value semantics remain sound.
   @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
@@ -88,7 +94,9 @@ class Quantity extends CqlExpression {
     }
   }
 
+  // See the rationale on [==].
   @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
   int get hashCode => value.hashCode ^ unit.hashCode;
 
   @override

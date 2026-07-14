@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The CQL System `Concept` type: a clinical idea represented by a set of
 /// equivalent [CqlCode]s.
@@ -8,6 +9,7 @@ import 'package:cql/src/internal.dart';
 /// an optional human-readable [display]. Because the codes are considered
 /// equivalent representations, two concepts are [equivalent] when each code of
 /// one has an equivalent code in the other (order-independent).
+@immutable
 class CqlConcept implements CqlType {
   /// Creates a [CqlConcept] with an optional [display] and its list of
   /// equivalent [codes] (defaulting to an empty list).
@@ -28,8 +30,8 @@ class CqlConcept implements CqlType {
           : null,
     );
   }
-  String? display;
-  List<CqlCode> codes = <CqlCode>[];
+  final String? display;
+  final List<CqlCode> codes;
 
   CqlConcept copyWith({
     String? display,

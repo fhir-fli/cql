@@ -11,6 +11,7 @@ extension CqlBooleanExtension on bool {
 /// Stored internally as a `"true"` / `"false"` string for round-trip
 /// serialization parity with FHIR JSON; the canonical Dart value is
 /// available via [valueBoolean].
+@immutable
 class CqlBoolean extends CqlPrimitive {
   /// Creates a [CqlBoolean] from a [bool] or a string `"true"`/`"false"`.
   factory CqlBoolean(dynamic rawValue) {

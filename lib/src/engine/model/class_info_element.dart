@@ -1,13 +1,15 @@
 import 'package:cql/src/internal.dart';
 
-/// Element within ClassInfoElement type, deprecated.
+/// An element (property) definition within an ELM ModelInfo ClassInfo.
 ///
-/// The [ClassInfoElement] type specifies an element deprecated in favor of
-/// the elementTypeSpecifier. It provides an option to define typeSpecifier
-/// and elementTypeSpecifier elements along with attributes.
-@Deprecated(
-  'This element is deprecated. New implementations should use the new elementTypeSpecifier element',
-)
+/// Describes one named element of a class in a model info: its type,
+/// cardinality, binding, and documentation attributes.
+///
+/// The ELM ModelInfo schema deprecates the legacy [typeSpecifier] element
+/// and [type] attribute in favor of [elementTypeSpecifier] (and the
+/// corresponding `elementType` attribute). Both forms are retained here so
+/// existing model info documents round-trip faithfully; the engine reads
+/// [elementTypeSpecifier] as the primary path.
 class ClassInfoElement {
   ClassInfoElement({
     required this.name,

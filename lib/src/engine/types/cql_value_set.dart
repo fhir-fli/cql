@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The CQL System `ValueSet` type: a named set of codes used by terminology
 /// membership operators.
@@ -10,6 +11,7 @@ import 'package:cql/src/internal.dart';
 /// that constrain which systems its codes may come from. Value sets are the
 /// right-hand operand of CQL's `in`/`InValueSet` membership tests; resolving a
 /// code's membership is delegated to a [TerminologyProvider].
+@immutable
 class CqlValueSet extends CqlVocabulary {
   /// Creates a value set from its canonical [id], [version], [name] and
   /// optional constraining [codeSystems].
@@ -49,22 +51,19 @@ class CqlValueSet extends CqlVocabulary {
           valueSetDef.codeSystem?.map(CqlCodeSystem.fromCodeSystemRef).toList(),
     );
   }
-  List<CqlCodeSystem>? codeSystems;
+  final List<CqlCodeSystem>? codeSystems;
 
   /// Builds a [CqlValueSet] from an ELM [ValueSetDef], tolerating missing
   /// fields by substituting empty defaults.
   static CqlValueSet fromValueSet(ValueSetDef vs) {
-    final vsi = CqlValueSet(
+    return CqlValueSet(
       id: vs.id ?? '',
       version: vs.version ?? '',
       name: vs.name ?? '',
-      codeSystems: <CqlCodeSystem>[],
+      codeSystems: (vs.codeSystem ?? <CodeSystemRef>[])
+          .map(CqlCodeSystem.fromCodeSystemRef)
+          .toList(),
     );
-    for (final cs in vs.codeSystem ?? <CodeSystemRef>[]) {
-      vsi.codeSystems ??= <CqlCodeSystem>[];
-      vsi.codeSystems!.add(CqlCodeSystem.fromCodeSystemRef(cs));
-    }
-    return vsi;
   }
 
   @override
@@ -108,12 +107,4 @@ class CqlValueSet extends CqlVocabulary {
 
   @override
   int get hashCode => codeSystems.hashCode;
-
-  /// Adds [codeSystem] to this value set's constraining code systems and
-  /// returns the value set for fluent chaining.
-  CqlValueSet withCodeSystem(CqlCodeSystem codeSystem) {
-    codeSystems ??= <CqlCodeSystem>[];
-    codeSystems!.add(codeSystem);
-    return this;
-  }
 }

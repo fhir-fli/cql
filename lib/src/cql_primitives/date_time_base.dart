@@ -11,6 +11,7 @@ part of 'cql_primitives.dart';
 /// `equal` returns `null` when precisions diverge at a comparable level
 /// (three-valued); `equivalent` should truncate to the lower precision before
 /// comparing (see TODO in [equivalent]).
+@immutable
 abstract class CqlDateTimeBase extends CqlPrimitive
     implements Comparable<CqlDateTimeBase> {
   const CqlDateTimeBase._({

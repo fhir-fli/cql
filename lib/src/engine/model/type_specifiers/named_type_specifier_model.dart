@@ -18,8 +18,9 @@ class NamedTypeSpecifierModel extends TypeSpecifierModel {
         name = map['name'] as String,
         super(type: 'NamedTypeSpecifier');
 
-  /// Deprecated model name attribute.
-  @Deprecated('Use namespace instead')
+  /// Legacy ModelInfo `modelName` attribute, superseded by the qualified
+  /// [namespace]. Retained so model info documents that carry it round-trip
+  /// faithfully; new code should use [namespace].
   String? modelName;
 
   /// Namespace of the type.

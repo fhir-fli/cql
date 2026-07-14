@@ -16,6 +16,7 @@ import 'dart:convert';
 import 'package:cql/src/internal.dart' show CqlCode, ModelResolver;
 // The CqlType contract (equal / equivalent) — single canonical definition.
 import 'package:cql/src/engine/types/cql_type.dart';
+import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 // CQL System primitives

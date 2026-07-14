@@ -6,6 +6,7 @@ part of 'cql_primitives.dart';
 ///
 /// Not instantiable directly — use [CqlNumber.fromNum] to dispatch to the
 /// right subclass based on whether the value is integral.
+@immutable
 abstract class CqlNumber extends CqlPrimitive implements Comparable<CqlNumber> {
   const CqlNumber._(super.valueString) : super();
 

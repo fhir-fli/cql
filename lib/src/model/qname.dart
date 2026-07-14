@@ -1,5 +1,9 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
+/// A qualified type name: a namespace URI plus local part, used to identify
+/// CQL/ELM and FHIR types unambiguously.
+@immutable
 class QName {
   QName({
     required this.localPart,

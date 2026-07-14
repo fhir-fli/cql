@@ -11,6 +11,7 @@ extension CqlTimeExtension on String {
 /// Clock time (`HH[:MM[:SS[.fff]]]`) — not bound to any date or timezone.
 /// Unlike [CqlDateTime], does not inherit from [CqlDateTimeBase]; comparison
 /// is component-wise on the string segments rather than calendar-aware.
+@immutable
 class CqlTime extends CqlPrimitive implements Comparable<CqlTime> {
   /// Creates a [CqlTime] from a string matching `HH[:MM[:SS[.fff]]]`.
   factory CqlTime(dynamic rawValue) {

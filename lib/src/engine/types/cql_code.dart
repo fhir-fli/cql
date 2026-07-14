@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The CQL System `Code` type: a single terminology code drawn from a code
 /// system.
@@ -9,6 +10,7 @@ import 'package:cql/src/internal.dart';
 /// atomic terminology value in CQL and are grouped by [CqlConcept]. Under CQL
 /// semantics, code [equivalent]ce compares only `code` and `system`, while
 /// [equal]ity is a three-valued comparison across all four components.
+@immutable
 class CqlCode implements CqlType {
   /// Creates a [CqlCode] from its [code], [display], [system] and [version]
   /// components.
@@ -32,10 +34,10 @@ class CqlCode implements CqlType {
       system: codeSystemDef ?? codeDef.codeSystem?.name,
     );
   }
-  String? code;
-  String? display;
-  String? system;
-  String? version;
+  final String? code;
+  final String? display;
+  final String? system;
+  final String? version;
 
   @override
   bool equivalent(Object other) {

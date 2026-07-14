@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// Identifies the precise origin of a CQL/ELM node for diagnostic reporting.
 ///
@@ -7,6 +8,7 @@ import 'package:cql/src/internal.dart';
 /// node ([nodeId], [nodeType]) and, when available, the [Location] span within
 /// the CQL source text. It is attached to a [CqlException] to tell the caller
 /// where a diagnostic originated.
+@immutable
 class SourceLocator {
   /// Creates a [SourceLocator] from its component parts.
   ///

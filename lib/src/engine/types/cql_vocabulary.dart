@@ -1,5 +1,6 @@
 // Vocabulary type
 import 'package:cql/src/internal.dart';
+import 'package:meta/meta.dart';
 
 /// The CQL `Vocabulary` type: the common base for terminology definitions
 /// referenced by a library.
@@ -9,6 +10,7 @@ import 'package:cql/src/internal.dart';
 /// is the abstract parent of the concrete terminology kinds — [CqlCodeSystem]
 /// and [CqlValueSet]. Two vocabularies are [equivalent] on matching id and
 /// version, and [equal] when id, version and name all match.
+@immutable
 abstract class CqlVocabulary implements CqlType {
   /// Creates a vocabulary with the given canonical [id], [version] and local
   /// [name].
@@ -23,9 +25,9 @@ abstract class CqlVocabulary implements CqlType {
       'Vocabulary is an abstract class and cannot be instantiated directly.',
     );
   }
-  String id;
-  String? version;
-  String name;
+  final String id;
+  final String? version;
+  final String name;
 
   Map<String, dynamic> toJson() {
     return {

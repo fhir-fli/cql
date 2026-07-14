@@ -14,6 +14,7 @@ extension CqlStringExtension on String {
 /// Convenience string operations (`substring`, `contains`, `split`, etc.) are
 /// kept on this type so engine code can manipulate CqlString instances
 /// directly without unwrapping to Dart String first.
+@immutable
 class CqlString extends CqlPrimitive {
   /// Creates a [CqlString] from any value via `.toString()`.
   /// Pass `null` for a CQL null.

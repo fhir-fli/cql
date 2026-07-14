@@ -39,8 +39,9 @@ class NamedTypeSpecifier extends TypeSpecifierExpression {
     )..modelName = modelName;
   }
 
-  /// Deprecated model name attribute.
-  @Deprecated('Use namespace instead')
+  /// Legacy ELM `modelName` attribute, superseded by the qualified
+  /// [namespace]. Retained so ELM documents that carry it round-trip
+  /// faithfully; new code should use [namespace].
   String? modelName;
 
   /// Namespace of the type.

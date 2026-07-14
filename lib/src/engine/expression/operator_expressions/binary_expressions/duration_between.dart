@@ -259,7 +259,8 @@ class DurationBetween extends BinaryExpression {
           return CqlInterval(
             low: CqlInteger(minResult),
             high: CqlInteger(maxResult),
-          ).setUncertain(true);
+            uncertain: true,
+          );
         }
 
         var lowDt = low.valueDateTime!;

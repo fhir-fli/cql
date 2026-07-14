@@ -24,6 +24,7 @@ extension CqlLongBigIntExtension on BigInt {
 /// values near `int64` boundaries serialize/deserialize losslessly on the
 /// web (JS numbers are doubles, so a Dart `int` cast on JS would lose
 /// precision past 2^53).
+@immutable
 class CqlLong extends CqlPrimitive implements Comparable<CqlLong> {
   /// Creates a [CqlLong] from a [BigInt], [int], [num], or numeric [String].
   factory CqlLong(dynamic rawValue) {

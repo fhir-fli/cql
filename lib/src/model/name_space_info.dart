@@ -1,3 +1,7 @@
+import 'package:meta/meta.dart';
+
+/// The name and canonical URI of an ELM library namespace.
+@immutable
 class NamespaceInfo {
   NamespaceInfo({
     required this.name,

@@ -1,3 +1,5 @@
+import 'package:meta/meta.dart';
+
 /// A span of text within CQL source, expressed as a start and end
 /// line/character position.
 ///
@@ -5,6 +7,7 @@
 /// exact region of the CQL document an error, warning, or message concerns.
 /// The locator string form is `startLine:startChar-endLine:endChar` (see
 /// [toLocator] and [fromLocator]).
+@immutable
 class Location {
   /// Creates a [Location] spanning from ([startLine], [startChar]) to
   /// ([endLine], [endChar]).
