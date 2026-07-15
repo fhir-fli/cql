@@ -26,7 +26,8 @@ import 'package:ucum/ucum.dart';
 ///
 /// define "DecimalStdDev": StdDev({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 1.58113883
 /// define "QuantityStdDev": StdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.58113883 'mg'
-/// define "StdDevIsNull": StdDev({ null as Quantity, null as Quantity, null as Quantity })
+/// define "StdDevIsNull": StdDev({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "StdDevIsAlsoNull": StdDev(null as `List<Decimal>`)
 class StdDev extends AggregateExpression {
   StdDev({

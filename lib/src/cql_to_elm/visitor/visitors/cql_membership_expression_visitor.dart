@@ -135,7 +135,7 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
 
   /// Handle `collection.value contains CodeRef` where `value` is a choice type.
   /// Generates:
-  /// ```
+  /// ```text
   /// Contains(
   ///   Query(X from Query($this from collection,
   ///                       where Not(IsNull($this.value)),
@@ -216,7 +216,7 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
           libraryName: 'FHIRHelpers',
           operand: [
             As(
-              asType: QName(
+              asType: const QName(
                 namespaceURI: 'http://hl7.org/fhir',
                 localPart: 'Coding',
               ),

@@ -14,7 +14,7 @@ import 'package:meta/meta.dart';
 abstract class CqlVocabulary implements CqlType {
   /// Creates a vocabulary with the given canonical [id], [version] and local
   /// [name].
-  CqlVocabulary({
+  const CqlVocabulary({
     required this.id,
     required this.version,
     required this.name,

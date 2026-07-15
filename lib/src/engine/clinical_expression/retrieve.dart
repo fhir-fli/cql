@@ -185,8 +185,9 @@ class Retrieve extends CqlExpression {
 
   /// Specifies a date filter to be applied as part of the retrieve. Each
   /// dateFilter is specifies as a
-  /// [property], or a [lowProperty]-[highProperty], or a [search], and a [value]
-  /// that is an expression that evaluates to an interval of a date or time
+  /// [property], or a [lowProperty]-[highProperty], or a [search], and a
+  /// [value] that is an expression that evaluates to an interval of a date or
+  /// time
   /// value. When multiple dateFilters are present, they are all applied
   /// (i.e. ANDed). For simplicity, if this element is specified at all, it
   /// will include the date filter established by the attributes of the

@@ -16,13 +16,15 @@
 /// ### Rules for implementers
 ///
 /// 1. Use the **modern** FHIRPath entry point only:
-///    `FHIRPathEngine.create(WorkerContext(), hostServices).parse(expr).evaluateWithContext(...)`.
+///    `FHIRPathEngine.create(WorkerContext(), hostServices).parse(expr)
+///    .evaluateWithContext(...)`.
 ///    Never use or reference `walkFhirPath` / `executeFhirPath` — these are
 ///    legacy petitparser-era shims that silently mis-handle host-services
 ///    and lazy variable scenarios. See `feedback_no_walkfhirpath` in memory.
 ///
 /// 2. Convert FHIR-typed values to CQL System types eagerly at the boundary.
-///    Once a value flows into the engine via [resolvePath] or [toCqlSystemType],
+///    Once a value flows into the engine via [resolvePath] or
+///    [toCqlSystemType],
 ///    it must be either a CQL System type, a plain `Map<String, dynamic>`
 ///    FHIR JSON, or a primitive `String`/`num`/`bool`. The engine must not
 ///    see `fhir_r4.FhirDateTime` etc.
@@ -62,14 +64,16 @@ abstract class ModelResolver {
   /// Handles version-specific type aliases and FHIR subtype relationships
   /// (e.g. `FhirCode is FhirString` → `true` per the FHIR class hierarchy).
   ///
-  /// Java equivalent: `ModelResolver.is(value: Any?, type: JavaClass<*>): Boolean?`.
+  /// Java equivalent:
+  /// `ModelResolver.is(value: Any?, type: JavaClass<*>): Boolean?`.
   bool? is_(dynamic value, String typeName);
 
   /// Returns [value] cast to [typeName] if compatible, otherwise:
   /// - if [isStrict] is `true`, throws;
   /// - if `false`, returns `null`.
   ///
-  /// Java equivalent: `ModelResolver.as(value: Any?, type: JavaClass<*>, isStrict: Boolean): Any?`.
+  /// Java equivalent: `ModelResolver.as(value: Any?, type: JavaClass<*>,
+  /// isStrict: Boolean): Any?`.
   dynamic as_(dynamic value, String typeName, {bool isStrict = false});
 
   // ===========================================================================
@@ -79,7 +83,8 @@ abstract class ModelResolver {
   /// Resolves [typeName] (in this resolver's namespace) to a Dart `Type`
   /// suitable for reflection / instance creation. Returns `null` if unknown.
   ///
-  /// Java equivalent: `ModelResolver.resolveType(typeName: String?): JavaClass<*>?`.
+  /// Java equivalent:
+  /// `ModelResolver.resolveType(typeName: String?): JavaClass<*>?`.
   Type? resolveType(String typeName);
 
   /// Returns the type name for [value] in this resolver's namespace,
@@ -119,13 +124,15 @@ abstract class ModelResolver {
   /// Returns `null` if the path doesn't resolve. Never throws on missing
   /// fields — silent null is the FHIRPath/CQL convention.
   ///
-  /// Java equivalent: `ModelResolver.resolvePath(target: Any?, path: String): Any?`.
+  /// Java equivalent:
+  /// `ModelResolver.resolvePath(target: Any?, path: String): Any?`.
   Future<dynamic> resolvePath(dynamic source, String path);
 
   /// Sets the value at [path] on [target] to [value], returning the modified
   /// target. Used by the engine for `set` / output-parameter scenarios.
   ///
-  /// Java equivalent: `ModelResolver.setValue(target: Any?, path: String, value: Any?)`.
+  /// Java equivalent:
+  /// `ModelResolver.setValue(target: Any?, path: String, value: Any?)`.
   dynamic setValue(dynamic target, String path, dynamic value);
 
   /// Returns the resource id of [target] if it's a FHIR resource, else `null`.
@@ -139,7 +146,8 @@ abstract class ModelResolver {
   /// Example: for context Patient, `getContextPath('Patient', 'Encounter')`
   /// returns `'subject'` (Encounter.subject references Patient).
   ///
-  /// Java equivalent: `ModelResolver.getContextPath(contextType: String?, targetType: String?): String?`.
+  /// Java equivalent: `ModelResolver.getContextPath(contextType: String?,
+  /// targetType: String?): String?`.
   String? getContextPath(String? contextType, String? targetType);
 
   // ===========================================================================
@@ -160,14 +168,16 @@ abstract class ModelResolver {
   /// Three-valued deep equality. Returns `true`/`false` when comparable;
   /// `null` when either operand is null and the spec demands propagation.
   ///
-  /// Java equivalent: `ModelResolver.objectEqual(left: Any?, right: Any?): Boolean?`.
+  /// Java equivalent:
+  /// `ModelResolver.objectEqual(left: Any?, right: Any?): Boolean?`.
   bool? objectEqual(dynamic left, dynamic right);
 
   /// CQL `~` operator on FHIR-typed values. Type-aware equivalence per the
   /// FHIR datatypes specification (e.g. `Quantity` ignores comparator/unit
   /// canonicalization; `Period` is start-exclusive/end-inclusive).
   ///
-  /// Java equivalent: `ModelResolver.objectEquivalent(left: Any?, right: Any?): Boolean?`.
+  /// Java equivalent:
+  /// `ModelResolver.objectEquivalent(left: Any?, right: Any?): Boolean?`.
   bool? objectEquivalent(dynamic left, dynamic right);
 
   // ===========================================================================

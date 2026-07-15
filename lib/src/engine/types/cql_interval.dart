@@ -30,7 +30,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     if (low is CqlDateTimeBase && high is CqlDateTimeBase) {
       if ((low! as CqlDateTimeBase).isAfter(high! as CqlDateTimeBase) ?? true) {
         throw Exception(
-          'Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.',
+          'Invalid Interval - the ending boundary must be greater than '
+          'or equal to the starting boundary.',
         );
       }
     } else if (low != null && high != null) {
@@ -38,7 +39,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
           Greater.greater(getStart(), getEnd())?.valueBoolean;
       if (isStartGreater == true) {
         throw Exception(
-          'Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.',
+          'Invalid Interval - the ending boundary must be greater than '
+          'or equal to the starting boundary.',
         );
       }
     }
@@ -73,7 +75,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     }
 
     throw Exception(
-      "Cannot perform width operator with argument of type '${start.runtimeType}'.",
+      'Cannot perform width operator with argument of type '
+      "'${start.runtimeType}'.",
     );
   }
 
@@ -120,9 +123,14 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
       } else {
         throw Exception('Type ${left.runtimeType} is not comparable');
       }
+      // A dynamic compareTo between mismatched boundary types surfaces as a
+      // runtime TypeError; converting it into a domain Exception with a
+      // helpful message is deliberate here.
+      // ignore: avoid_catching_errors
     } on TypeError catch (_) {
       throw Exception(
-        'Type ${left.runtimeType} is not compatible for comparison with ${right.runtimeType}',
+        'Type ${left.runtimeType} is not compatible for comparison with '
+        '${right.runtimeType}',
       );
     }
   }
@@ -182,7 +190,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
     }
 
     throw Exception(
-      "Cannot perform equal operation on types: '$runtimeType' and '${other.runtimeType}'",
+      "Cannot perform equal operation on types: '$runtimeType' and "
+      "'${other.runtimeType}'",
     );
   }
 
@@ -384,6 +393,7 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
 
   @override
   String toString() {
-    return 'Interval${lowClosed ? "[" : "("}${low ?? "null"}, ${high ?? "null"}${highClosed ? "]" : ")"}';
+    return 'Interval${lowClosed ? "[" : "("}${low ?? "null"}, '
+        '${high ?? "null"}${highClosed ? "]" : ")"}';
   }
 }

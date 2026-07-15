@@ -1,7 +1,8 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:cql/src/internal.dart';
 
-// Visitor for handling 'within' expressions, like 'starts within 3 days of start'
+// Visitor for handling 'within' expressions, like
+// 'starts within 3 days of start'
 class CqlWithinIntervalOperatorPhraseVisitor
     extends CqlBaseVisitor<CqlExpression> {
   CqlWithinIntervalOperatorPhraseVisitor(super.library);
@@ -56,7 +57,8 @@ class CqlWithinIntervalOperatorPhraseVisitor
         : End(operand: expression);
   }
 
-  // Helper to determine whether to use starts, ends, or occurs for the left operand
+  // Helper to determine whether to use starts, ends, or occurs for the left
+  // operand
   CqlExpression startsOrEnds(CqlExpression expr, String? startsEndsOccurs) {
     switch (startsEndsOccurs) {
       case 'starts':

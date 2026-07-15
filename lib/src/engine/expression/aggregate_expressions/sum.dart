@@ -27,7 +27,8 @@ import 'package:ucum/ucum.dart';
 ///
 /// define "DecimalSum": Sum({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 15.0
 /// define "QuantitySum": Sum({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 15.0 'mg'
-/// define "SumIsNull": Sum({ null as Quantity, null as Quantity, null as Quantity })
+/// define "SumIsNull": Sum({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "SumIsAlsoNull": Sum(null as `List<Decimal>`)
 class Sum extends AggregateExpression {
   Sum({
@@ -159,7 +160,8 @@ class Sum extends AggregateExpression {
             .reduce((a, b) => Add.add(a, b) as ValidatedQuantity);
       } else {
         throw ArgumentError('Sum operator can only be applied to a List of '
-            'int, double, Decimal, or Quantity, but found ${sourceResult.first.runtimeType}');
+            'int, double, Decimal, or Quantity, '
+            'but found ${sourceResult.first.runtimeType}');
       }
     } else {
       throw ArgumentError('Sum operator can only be applied to a List, '

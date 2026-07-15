@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Expression allowing the value of an operand to be referenced within the body of a function definition.
+/// Expression allowing the value of an operand to be referenced within the
+/// body of a function definition.
 class OperandRef extends CqlExpression {
   OperandRef({
     required this.name,

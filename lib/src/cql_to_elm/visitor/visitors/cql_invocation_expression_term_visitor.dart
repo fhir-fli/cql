@@ -26,7 +26,8 @@ class CqlInvocationExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
       }
     }
 
-    // Qualified function call: FHIRHelpers.ToDateTime(...) or fluent: 5.double()
+    // Qualified function call: FHIRHelpers.ToDateTime(...) or fluent:
+    // 5.double()
     if (qualifiedInvocation is FunctionRef) {
       String? leftName;
       if (expressionTerm is ExpressionRef) {

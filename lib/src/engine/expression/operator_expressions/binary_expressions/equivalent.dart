@@ -217,17 +217,18 @@ class Equivalent extends BinaryExpression {
       case CqlNumber _:
       case CqlLong _:
         if (right is num || right is BigInt) {
-          result = UcumDecimal.fromString(left.valueString as String?)
+          result = UcumDecimal.fromString((left as CqlPrimitive).valueString)
               .equivalent(UcumDecimal.fromString(right.toString()));
         } else if ((right is CqlNumber) || (right is CqlLong)) {
           // CQL spec: for decimals, equivalent rounds to precision of least
-          // precise operand. Use numeric comparison which handles this naturally.
+          // precise operand. Use numeric comparison which handles this
+          // naturally.
           if (left is CqlNumber && right is CqlNumber) {
             result = left.valueNum == right.valueNum;
           } else {
-            result =
-                UcumDecimal.fromString(left.valueString as String?).equivalent(
-              UcumDecimal.fromString(right.valueString as String?),
+            result = UcumDecimal.fromString((left as CqlPrimitive).valueString)
+                .equivalent(
+              UcumDecimal.fromString((right as CqlPrimitive).valueString),
             );
           }
         } else if (right is ValidatedQuantity && left is CqlDecimal) {

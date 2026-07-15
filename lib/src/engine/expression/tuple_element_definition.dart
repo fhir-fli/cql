@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// TupleElementDefinition defines the name and type of a single element within a TupleTypeSpecifier.
+/// TupleElementDefinition defines the name and type of a single element
+/// within a TupleTypeSpecifier.
 class TupleElementDefinition extends Element {
   TupleElementDefinition({
     this.type,
@@ -47,7 +48,8 @@ class TupleElementDefinition extends Element {
   /// The name of the tuple element.
   String? name;
 
-  /// This element is deprecated. New implementations should use the new elementType element.
+  /// This element is deprecated. New implementations should use the new
+  /// elementType element.
   TypeSpecifierExpression? type;
 
   @override

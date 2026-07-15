@@ -286,6 +286,7 @@ class As extends UnaryExpression {
 
   @override
   String toString() {
-    return 'As { asType: $asType, asTypeSpecifier: $asTypeSpecifier, strict: $strict, operand: $operand }';
+    return 'As { asType: $asType, asTypeSpecifier: $asTypeSpecifier, '
+        'strict: $strict, operand: $operand }';
   }
 }

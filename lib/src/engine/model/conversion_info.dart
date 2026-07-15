@@ -47,7 +47,10 @@ class ConversionInfo {
 
   @override
   String toString() {
-    return 'ConversionInfo{functionName: $functionName, fromTypeSpecifier: $fromTypeSpecifier, toTypeSpecifier: $toTypeSpecifier, fromType: $fromType, toType: $toType}';
+    return 'ConversionInfo{functionName: $functionName, '
+        'fromTypeSpecifier: $fromTypeSpecifier, '
+        'toTypeSpecifier: $toTypeSpecifier, fromType: $fromType, '
+        'toType: $toType}';
   }
 
   Map<String, dynamic> toJson() => {

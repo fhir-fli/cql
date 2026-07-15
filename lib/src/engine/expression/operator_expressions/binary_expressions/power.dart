@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:cql/src/internal.dart';
 
-/// Operator to raise the first argument to the power given by the second argument.
+/// Operator to raise the first argument to the power given by the second
+/// argument.
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 /// Signature:
@@ -59,40 +60,49 @@ class Power extends BinaryExpression {
       case LiteralInteger _:
         {
           if (second is LiteralInteger) {
-            operand.add(first);
-            operand.add(second);
+            operand
+              ..add(first)
+              ..add(second);
           } else if (second is LiteralLong) {
-            operand.add(ToLong(operand: first));
-            operand.add(second);
+            operand
+              ..add(ToLong(operand: first))
+              ..add(second);
           } else if (second is LiteralDecimal) {
-            operand.add(ToDecimal(operand: first));
-            operand.add(second);
+            operand
+              ..add(ToDecimal(operand: first))
+              ..add(second);
           }
         }
       case LiteralLong _:
         {
           if (second is LiteralInteger) {
-            operand.add(first);
-            operand.add(ToLong(operand: second));
+            operand
+              ..add(first)
+              ..add(ToLong(operand: second));
           } else if (second is LiteralLong) {
-            operand.add(first);
-            operand.add(second);
+            operand
+              ..add(first)
+              ..add(second);
           } else if (second is LiteralDecimal) {
-            operand.add(ToDecimal(operand: first));
-            operand.add(second);
+            operand
+              ..add(ToDecimal(operand: first))
+              ..add(second);
           }
         }
       case LiteralDecimal _:
         {
           if (second is LiteralInteger) {
-            operand.add(first);
-            operand.add(ToDecimal(operand: second));
+            operand
+              ..add(first)
+              ..add(ToDecimal(operand: second));
           } else if (second is LiteralLong) {
-            operand.add(first);
-            operand.add(ToDecimal(operand: second));
+            operand
+              ..add(first)
+              ..add(ToDecimal(operand: second));
           } else if (second is LiteralDecimal) {
-            operand.add(first);
-            operand.add(second);
+            operand
+              ..add(first)
+              ..add(second);
           }
         }
       default:
@@ -103,9 +113,10 @@ class Power extends BinaryExpression {
 
     if (operand.length != 2) {
       // Literal case didn't match the right operand type — use raw operands
-      operand.clear();
-      operand.add(first);
-      operand.add(second);
+      operand
+        ..clear()
+        ..add(first)
+        ..add(second);
     }
 
     return Power(

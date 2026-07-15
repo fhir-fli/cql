@@ -36,7 +36,8 @@ class ContextInfo {
 
   @override
   String toString() {
-    return 'ContextInfo{name: $name, contextType: $contextType, keyElement: $keyElement, birthDateElement: $birthDateElement}';
+    return 'ContextInfo{name: $name, contextType: $contextType, '
+        'keyElement: $keyElement, birthDateElement: $birthDateElement}';
   }
 
   Map<String, dynamic> toJson() => {

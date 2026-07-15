@@ -84,7 +84,8 @@ class DateFilterElement extends Element {
   /// attributes must not be present. And conversely, if the lowProperty and
   /// highProperty attributes are specified, the dateProperty must not be
   /// present. If specified, the lowProperty and highProperty values will be
-  /// used to construct an interval with inclusive boundaries for the date range.
+  /// used to construct an interval with inclusive boundaries for the date
+  /// range.
   /// This property may be specified as a path, including qualifiers and
   /// constant indexers. The &lt;simplePath&gt; production rule in the CQL
   /// grammar provides the formal semantics for this path.

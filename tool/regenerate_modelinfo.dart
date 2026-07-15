@@ -73,9 +73,11 @@ void main(List<String> args) {
     final spec =
         elementOf(classOf(rt, probe.$1), probe.$2)?.elementTypeSpecifier;
     if (spec is! ListTypeSpecifierModel || spec.elementType != probe.$3) {
+      final got = spec is ListTypeSpecifierModel
+          ? 'List(${spec.elementType})'
+          : '${spec?.runtimeType}';
       failures.add('${probe.$1}.${probe.$2}: expected '
-          'ListTypeSpecifier(elementType: ${probe.$3}), got '
-          '${spec is ListTypeSpecifierModel ? 'List(${spec.elementType})' : spec?.runtimeType}');
+          'ListTypeSpecifier(elementType: ${probe.$3}), got $got');
     }
   }
   // Choice types must survive.

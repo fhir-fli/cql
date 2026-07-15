@@ -102,17 +102,20 @@ class FunctionDef extends ExpressionDef {
     // If the function is external or has no expression, throw an error
     if (external == true || expression == null) {
       throw ArgumentError(
-        'Cannot execute external function or function without expression: $name',
+        'Cannot execute external function or function without expression: '
+        '$name',
       );
     }
 
     // Create a new context for function execution
     final functionContext = Map<String, dynamic>.from(context);
 
-    // If the function has operands defined in the context, make them available to the function expression
+    // If the function has operands defined in the context, make them
+    // available to the function expression
     if (operand != null && operand!.isNotEmpty) {
       for (final param in operand!) {
-        // Check if this parameter is in the context (should have been provided by the caller)
+        // Check if this parameter is in the context (should have been
+        // provided by the caller)
         if (context.containsKey(param.name)) {
           // Maps the operand name to the value provided in the context
           functionContext[param.name] = context[param.name];

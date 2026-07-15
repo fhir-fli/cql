@@ -1,6 +1,8 @@
 import 'package:cql/src/internal.dart';
 
-/// The Without clause restricts the elements of a given source to only those elements that do not have elements in the related source that satisfy the suchThat condition.
+/// The Without clause restricts the elements of a given source to only those
+/// elements that do not have elements in the related source that satisfy the
+/// suchThat condition.
 /// This operation is known as a semi-difference in database languages.
 class Without extends RelationshipClause {
   Without({

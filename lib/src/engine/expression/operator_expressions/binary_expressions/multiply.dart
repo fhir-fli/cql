@@ -4,7 +4,8 @@ import 'package:ucum/ucum.dart';
 /// Operator to perform numeric multiplication of its arguments.
 /// For multiplication operations involving quantities, the resulting quantity
 /// will have the appropriate unit.
-/// The Multiply operator is defined for the Integer, Decimal, and Quantity types.
+/// The Multiply operator is defined for the Integer, Decimal, and Quantity
+/// types.
 /// If either argument is null, the result is null.
 /// If the result of the operation cannot be represented, the result is null.
 /// Signature:
@@ -195,7 +196,8 @@ class Multiply extends BinaryExpression {
       }
     }
 
-    // CqlInterval multiplication: [a,b] * [c,d] = [min(ac,ad,bc,bd), max(ac,ad,bc,bd)]
+    // CqlInterval multiplication:
+    // [a,b] * [c,d] = [min(ac,ad,bc,bd), max(ac,ad,bc,bd)]
     if (left is CqlInterval && right is CqlInterval) {
       final a = left.getStart();
       final b = left.getEnd();

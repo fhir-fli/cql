@@ -1,8 +1,10 @@
 import 'package:cql/src/internal.dart';
 
 /// Operator to check if the first operand properly contains the second operand.
-/// Returns true if the given point is greater than the starting point of the interval and less than the ending point of the interval.
-/// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
+/// Returns true if the given point is greater than the starting point of the
+/// interval and less than the ending point of the interval.
+/// If precision is specified and the point type is Date, DateTime, or Time,
+/// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class ProperContains extends BinaryExpression {
   ProperContains({
@@ -138,7 +140,8 @@ class ProperContains extends BinaryExpression {
       return null;
     } else if (left is List) {
       // For lists, "properly contains" means:
-      // 1. The element is in the list (using equality semantics, with null == null)
+      // 1. The element is in the list (using equality semantics, with
+      //    null == null)
       // 2. The list has at least one other distinct element
       //
       // Use equality semantics (which can return null for precision mismatches)
@@ -168,7 +171,8 @@ class ProperContains extends BinaryExpression {
       }
 
       if (!found && hasNull) {
-        // Indeterminate: some comparison returned null (e.g. precision mismatch)
+        // Indeterminate: some comparison returned null
+        // (e.g. precision mismatch)
         return null;
       }
       if (!found) {

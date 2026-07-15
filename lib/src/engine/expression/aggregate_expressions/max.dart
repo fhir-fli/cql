@@ -13,7 +13,8 @@ import 'package:ucum/ucum.dart';
 /// `maximum<T>`() T
 /// Description:
 ///
-/// The maximum operator returns the maximum representable value for the given type.
+/// The maximum operator returns the maximum representable value for the
+/// given type.
 ///
 /// The maximum operator is defined for the Integer, Long, Decimal, Quantity,
 /// Date, DateTime, and Time types.
@@ -28,12 +29,14 @@ import 'package:ucum/ucum.dart';
 /// For Quantity, maximum returns the maximum representable quantity, i.e. the
 /// maximum representable decimal value with a default unit (1).
 ///
-/// For Date, maximum returns the maximum representable date value, Date(9999, 12, 31).
+/// For Date, maximum returns the maximum representable date value,
+/// Date(9999, 12, 31).
 ///
 /// For DateTime, maximum returns the maximum representable datetime value,
 /// DateTime(9999, 12, 31, 23, 59, 59, 999).
 ///
-/// For Time, maximum returns the maximum representable time value, Time(23, 59, 59, 999).
+/// For Time, maximum returns the maximum representable time value,
+/// Time(23, 59, 59, 999).
 ///
 /// For any other type, attempting to invoke maximum results in an error.
 ///

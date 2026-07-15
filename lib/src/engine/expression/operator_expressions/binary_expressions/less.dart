@@ -146,7 +146,8 @@ class Less extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     }
-    // Uncertainty interval: [a,b] < v is true if b < v, false if a >= v, else null
+    // Uncertainty interval: [a,b] < v is true if b < v, false if a >= v,
+    // else null
     if (left is CqlInterval) {
       final low = left.getStart();
       final high = left.getEnd();

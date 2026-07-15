@@ -27,8 +27,10 @@ import 'package:ucum/ucum.dart';
 ///
 /// define "DecimalPopulationStdDev": PopulationStdDev({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 1.4142135623730951
 /// define "QuantityPopulationStdDev": PopulationStdDev({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 1.4142135623730951 'mg'
-/// define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity, null as Quantity, null as Quantity })
-/// define "PopulationStdDevIsAlsoNull": PopulationStdDev(null as `List<Decimal>`)
+/// define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity,
+///   null as Quantity, null as Quantity })
+/// define "PopulationStdDevIsAlsoNull":
+///   PopulationStdDev(null as `List<Decimal>`)
 class PopulationStdDev extends AggregateExpression {
   PopulationStdDev({
     required super.source,
@@ -178,7 +180,8 @@ class PopulationStdDev extends AggregateExpression {
     }
 
     throw ArgumentError(
-      'Unsupported type for Population Standard Deviation: ${sourceResult.runtimeType}',
+      'Unsupported type for Population Standard Deviation: '
+      '${sourceResult.runtimeType}',
     );
   }
 

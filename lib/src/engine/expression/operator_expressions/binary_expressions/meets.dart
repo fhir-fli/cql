@@ -166,7 +166,8 @@ class Meets extends BinaryExpression {
       }
 
       // Try to refine null results using interval bounds:
-      // If mb is null but leftStart ≥ rightStart → leftEnd > pred(rightStart) → mb = false
+      // If mb is null but leftStart ≥ rightStart →
+      // leftEnd > pred(rightStart) → mb = false
       var refinedMb = mb;
       if (refinedMb == null && eLS != null && eRS != null) {
         final ge = precision != null
@@ -174,7 +175,8 @@ class Meets extends BinaryExpression {
             : GreaterOrEqual.greaterOrEqual(eLS, eRS);
         if (ge?.valueBoolean == true) refinedMb = CqlBoolean(false);
       }
-      // If ma is null but leftEnd ≤ rightEnd → leftStart < succ(rightEnd) → ma = false
+      // If ma is null but leftEnd ≤ rightEnd →
+      // leftStart < succ(rightEnd) → ma = false
       var refinedMa = ma;
       if (refinedMa == null && eLE != null && eRE != null) {
         final le = precision != null

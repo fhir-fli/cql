@@ -65,7 +65,8 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else if (relativeQualifier == 'or less') {
-                // "N or less before B" means: left >= (right - N) AND left <= right
+                // "N or less before B" means:
+                // left >= (right - N) AND left <= right
                 return And(
                   operand: [
                     SameOrAfter(
@@ -114,7 +115,8 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else if (relativeQualifier == 'or less') {
-                // "N or less after B" means: left >= right AND left <= (right + N)
+                // "N or less after B" means:
+                // left >= right AND left <= (right + N)
                 return And(
                   operand: [
                     SameOrAfter(
@@ -344,6 +346,8 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
           }
       }
     }
-    throw '$thisNode Invalid arguments for BeforeOrAfterIntervalOperator';
+    throw CqlException(
+      message: '$thisNode Invalid arguments for BeforeOrAfterIntervalOperator',
+    );
   }
 }

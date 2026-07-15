@@ -22,7 +22,8 @@ import 'package:ucum/ucum.dart';
 ///
 /// define "DecimalMedian": Median({ 2.0, 4.0, 8.0, 6.0 }) // 5.0
 /// define "QuantityMedian": Median({ 1.0 'mg', 2.0 'mg', 3.0 'mg' }) // 2.0 'mg'
-/// define "MedianIsNull": Median({ null as Quantity, null as Quantity, null as Quantity })
+/// define "MedianIsNull": Median({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "MedianIsAlsoNull": Median(null as `List<Decimal>`)
 class Median extends AggregateExpression {
   Median({
@@ -139,16 +140,17 @@ class Median extends AggregateExpression {
 
       // Handle CqlNumber or CqlDecimal
       if (sourceResult.every((element) => element is CqlNumber)) {
-        final decimals =
-            sourceResult.map((e) => CqlDecimal(e.valueNum)).toList();
-        decimals.sort(
-          (a, b) => a.valueNum!.compareTo(
-            b.valueNum!,
-          ),
-        ); // Ensure CqlDecimal has a comparable implementation
+        final decimals = sourceResult
+            .map((e) => CqlDecimal((e as CqlNumber).valueNum))
+            .toList()
+          ..sort(
+            (a, b) => a.valueNum!.compareTo(
+              b.valueNum!,
+            ),
+          ); // Ensure CqlDecimal has a comparable implementation
 
         final middleIndex = decimals.length ~/ 2;
-        if (decimals.length % 2 == 1) {
+        if (decimals.length.isOdd) {
           return decimals[
               middleIndex]; // return the middle element for odd length
         } else {
@@ -162,22 +164,23 @@ class Median extends AggregateExpression {
       }
       // Handle ValidatedQuantity
       else if (sourceResult.every((element) => element is ValidatedQuantity)) {
-        sourceResult.sort(
-          (a, b) => a.compareTo(
-            b,
-          ) as int,
-        ); // Ensure ValidatedQuantity can be compared based on value
+        final quantities = sourceResult.cast<ValidatedQuantity>()
+          ..sort(
+            (a, b) => a.compareTo(
+              b,
+            ),
+          ); // Ensure ValidatedQuantity can be compared based on value
 
-        final middleIndex = sourceResult.length ~/ 2;
-        if (sourceResult.length % 2 == 1) {
-          return sourceResult[
+        final middleIndex = quantities.length ~/ 2;
+        if (quantities.length.isOdd) {
+          return quantities[
               middleIndex]; // return the middle element for odd length
         } else {
           // Calculate the average of the two middle quantities
-          final sum = sourceResult[middleIndex - 1] + sourceResult[middleIndex];
+          final sum = (quantities[middleIndex - 1] + quantities[middleIndex])!;
           return ValidatedQuantity(
-            value: (sum.value / UcumDecimal.fromNum(2)) as UcumDecimal,
-            unit: sum.unit as String?,
+            value: sum.value / UcumDecimal.fromNum(2),
+            unit: sum.unit,
           );
         }
       }

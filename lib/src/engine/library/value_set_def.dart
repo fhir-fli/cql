@@ -90,7 +90,8 @@ class ValueSetDef extends Element {
   /// Specifies the access level; default is Public.
   AccessModifier accessLevel;
 
-  /// The version of the value set to be retrieved. If no version is provided, the most current published version of the value set is assumed.
+  /// The version of the value set to be retrieved. If no version is provided,
+  /// the most current published version of the value set is assumed.
   String? version;
 
   /// The code system that should be used to construct the expansion set. Note

@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Operator to take a string and returns a list with one string for each character in the input.
+/// Operator to take a string and returns a list with one string for each
+/// character in the input.
 /// If the argument is null, the result is null.
 class ToChars extends UnaryExpression {
   ToChars({

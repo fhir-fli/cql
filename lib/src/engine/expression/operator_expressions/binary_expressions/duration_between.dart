@@ -13,7 +13,11 @@ import 'package:cql/src/internal.dart';
 /// _duration_ between(low Time, high Time) Integer
 /// Description:
 ///
-/// The duration-between operator returns the number of whole calendar periods for the specified precision between the first and second arguments. If the first argument is after the second argument, the result is negative. The result of this operation is always an integer; any fractional periods are dropped.
+/// The duration-between operator returns the number of whole calendar periods
+/// for the specified precision between the first and second arguments. If the
+/// first argument is after the second argument, the result is negative. The
+/// result of this operation is always an integer; any fractional periods are
+/// dropped.
 ///
 /// For Date values, duration must be one of: years, months, weeks, or days.
 ///
@@ -180,10 +184,12 @@ class DurationBetween extends BinaryExpression {
   /// Unlike DifferenceBetween which counts boundary crossings, DurationBetween
   /// counts complete periods — so incomplete periods are dropped.
   static int _durationBetween(
-    DateTime low,
-    DateTime high,
+    DateTime lowValue,
+    DateTime highValue,
     CqlDateTimePrecision precision,
   ) {
+    var low = lowValue;
+    var high = highValue;
     final negative = high.isBefore(low);
     if (negative) {
       final temp = low;
@@ -273,7 +279,7 @@ class DurationBetween extends BinaryExpression {
         throw CqlException(
           message: 'DurationBetween must be passed two Dates, DateTimes, or '
               'Times, it was instead passed: '
-              'low (${low.runtimeType}) and'
+              'low (${low.runtimeType}) and '
               'high (${high.runtimeType})',
         );
       }
@@ -300,23 +306,27 @@ class DurationBetween extends BinaryExpression {
             return CqlInteger((differenceMilliseconds / 1000).floor());
           case CqlDateTimePrecision.millisecond:
             return CqlInteger(differenceMilliseconds);
-          default:
-            throw CqlException(
-              message:
-                  'Unsupported precision for CqlTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.',
+          case CqlDateTimePrecision.year:
+          case CqlDateTimePrecision.month:
+          case CqlDateTimePrecision.week:
+          case CqlDateTimePrecision.day:
+            throw const CqlException(
+              message: 'Unsupported precision for CqlTime comparison. '
+                  'Supported precisions are: hours, minutes, seconds, '
+                  'milliseconds.',
             );
         }
       } else {
         throw CqlException(
           message: 'DurationBetween must be passed two Dates, DateTimes, or '
               'Times, it was instead passed: '
-              'low (${low.runtimeType}) and'
+              'low (${low.runtimeType}) and '
               'high (${high.runtimeType})',
         );
       }
     } else {
       throw CqlException(
-        message: 'DurationBetween must be either Dates, DateTimes, or Times,'
+        message: 'DurationBetween must be either Dates, DateTimes, or Times, '
             'but was instead passed low (${low.runtimeType}) and '
             'high (${high.runtimeType}).',
       );

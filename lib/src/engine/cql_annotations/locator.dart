@@ -30,7 +30,9 @@ class Locator extends CqlToElmBase {
 
   @override
   String toString() {
-    return 'Locator{librarySystem: $librarySystem, libraryId: $libraryId, libraryVersion: $libraryVersion, startLine: $startLine, startChar: $startChar, endLine: $endLine, endChar: $endChar}';
+    return 'Locator{librarySystem: $librarySystem, libraryId: $libraryId, '
+        'libraryVersion: $libraryVersion, startLine: $startLine, '
+        'startChar: $startChar, endLine: $endLine, endChar: $endChar}';
   }
 
   @override

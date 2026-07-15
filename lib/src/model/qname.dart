@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 /// CQL/ELM and FHIR types unambiguously.
 @immutable
 class QName {
-  QName({
+  const QName({
     required this.localPart,
     this.namespaceURI = '',
     this.prefix = '',

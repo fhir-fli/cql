@@ -154,7 +154,8 @@ class MeetsAfter extends BinaryExpression {
       final result = Meets.checkMeetsAfter(eLS, eRE, precision);
       if (result != null) return result;
 
-      // If leftEnd ≤ rightEnd, then leftStart ≤ leftEnd ≤ rightEnd < succ(rightEnd)
+      // If leftEnd ≤ rightEnd, then
+      // leftStart ≤ leftEnd ≤ rightEnd < succ(rightEnd)
       // so leftStart ≠ succ(rightEnd) → false
       if (eLE != null && eRE != null) {
         final le = precision != null
@@ -162,7 +163,8 @@ class MeetsAfter extends BinaryExpression {
             : LessOrEqual.lessOrEqual(eLE, eRE);
         if (le?.valueBoolean == true) return CqlBoolean(false);
       }
-      // If leftEnd < rightStart, left is entirely before right → can't meet after
+      // If leftEnd < rightStart, left is entirely before right →
+      // can't meet after
       if (eLE != null && eRS != null) {
         final lt = precision != null
             ? Before.before(eLE, eRS, precision)

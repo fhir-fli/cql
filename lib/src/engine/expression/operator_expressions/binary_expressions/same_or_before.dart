@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to compare two Date, DateTime, or Time values to the specified
 /// precision to determine if the first argument is the same or before the
@@ -63,7 +64,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// define "SameOrBeforeTrue": @2012-01-01 same day or before @2012-01-02
 /// define "SameOrBeforeFalse": @2012-01-02 same day or before @2012-01-01
-/// define "UncertainSameOrBeforeIsNull": @2012-01-02 same day or before @2012-01
+/// define "UncertainSameOrBeforeIsNull":
+///   @2012-01-02 same day or before @2012-01
 /// define "SameOrBeforeIsNull": @2012-01-01 same day or before null
 /// This operator is also defined for intervals, see the Same Or Before
 /// (Intervals) operator for more information.
@@ -200,7 +202,14 @@ class SameOrBefore extends BinaryExpression {
         return CqlBoolean(left.compareTo(rightStart) <= 0);
       } else {
         try {
-          final result = left < rightStart;
+          final result = switch (left) {
+            final CqlDateTimeBase l => l < rightStart,
+            final CqlTime l => l < rightStart,
+            final CqlNumber l => l < rightStart,
+            final CqlLong l => l < rightStart,
+            final ValidatedQuantity l => l < rightStart,
+            _ => null,
+          };
           return result == null ? null : CqlBoolean(result);
         } catch (e) {
           return null;
@@ -281,10 +290,12 @@ class SameOrBefore extends BinaryExpression {
   }
 
   static CqlBoolean? sameOrBeforeDateTime(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, [
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, [
     CqlDateTimePrecision? precision,
   ]) {
+    var left = leftValue;
+    var right = rightValue;
     if (precision == null) {
       return SameOrAfter.compareNoPrecision(left, right, isAfter: false);
     }
@@ -296,7 +307,8 @@ class SameOrBefore extends BinaryExpression {
       right = SameAs.normalizeToUtc(right);
     }
 
-    // Compare field by field: if strictly less → true, strictly greater → false,
+    // Compare field by field: if strictly less → true,
+    // strictly greater → false,
     // equal → continue to next precision or return true at target precision.
     if (!left.hasYear || !right.hasYear) return null;
     if (left.year! < right.year!) return CqlBoolean(true);

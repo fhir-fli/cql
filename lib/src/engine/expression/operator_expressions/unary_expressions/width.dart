@@ -103,7 +103,8 @@ class Width extends UnaryExpression {
       }
     } else {
       throw Exception(
-        "Cannot perform end operator with argument of type '${interval.runtimeType}'.",
+        'Cannot perform end operator with argument of type '
+        "'${interval.runtimeType}'.",
       );
     }
   }

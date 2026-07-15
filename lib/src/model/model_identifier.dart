@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 /// [system] URI and [version].
 @immutable
 class ModelIdentifier {
-  ModelIdentifier({
+  const ModelIdentifier({
     required this.id,
     this.system,
     this.version,

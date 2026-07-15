@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The ByExpression element specifies that the sort should be performed using the given expression and direction.
+/// The ByExpression element specifies that the sort should be performed
+/// using the given expression and direction.
 /// This approach is used to specify the sort order as a calculated expression.
 class ByExpression extends SortByItem {
   ByExpression({

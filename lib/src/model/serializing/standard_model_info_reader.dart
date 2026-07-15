@@ -46,15 +46,14 @@ class StandardModelInfoReader implements ModelInfoReader {
   }
 
   ModelInfo _modelInfo(String modelContents) {
-    final myTransformer = Xml2Json();
-    myTransformer.parse(modelContents);
+    final myTransformer = Xml2Json()..parse(modelContents);
     final json = myTransformer.toBadgerfish();
     final map = jsonDecode(json) as Map<String, dynamic>;
-    var newMap = ModelInfoReader.removeAts(map);
-    newMap = ModelInfoReader.removeModelName(
-      newMap,
-      newMap['modelInfo']['name'] as String,
-    );
+    final withoutAts = ModelInfoReader.removeAts(map) as Map;
+    final newMap = ModelInfoReader.removeModelName(
+      withoutAts,
+      (withoutAts['modelInfo'] as Map)['name'] as String,
+    ) as Map;
 
     if (newMap['modelInfo'] is Map) {
       final properMap = jsonDecode(jsonEncode(newMap['modelInfo'] as Map));

@@ -16,9 +16,9 @@ void _deepDiff(dynamic expected, dynamic actual, String path) {
     final allKeys = {...expected.keys, ...actual.keys};
     for (final key in allKeys) {
       if (!expected.containsKey(key)) {
-        print('$path.$key: MISSING in expected');
+        stdout.writeln('$path.$key: MISSING in expected');
       } else if (!actual.containsKey(key)) {
-        print('$path.$key: MISSING in actual');
+        stdout.writeln('$path.$key: MISSING in actual');
       } else if (!const DeepCollectionEquality()
           .equals(expected[key], actual[key])) {
         _deepDiff(expected[key], actual[key], '$path.$key');
@@ -26,7 +26,7 @@ void _deepDiff(dynamic expected, dynamic actual, String path) {
     }
   } else if (expected is List && actual is List) {
     if (expected.length != actual.length) {
-      print(
+      stdout.writeln(
         '$path: list length mismatch: ${expected.length} vs ${actual.length}',
       );
     }
@@ -36,6 +36,6 @@ void _deepDiff(dynamic expected, dynamic actual, String path) {
       }
     }
   } else {
-    print('$path: $expected != $actual');
+    stdout.writeln('$path: $expected != $actual');
   }
 }

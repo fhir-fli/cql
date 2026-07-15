@@ -2,6 +2,9 @@ import 'package:cql/src/internal.dart';
 
 /// The CqlToElmBase type defines the abstract base type for all annotation
 /// elements in the CQL Translator.
+// Deliberate abstract base of the ELM annotation hierarchy (Annotation,
+// CqlToElmInfo, ...), mirroring the ELM schema — not a function in disguise.
+// ignore: one_member_abstracts
 abstract class CqlToElmBase {
   CqlToElmBase();
 

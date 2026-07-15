@@ -10,8 +10,9 @@ void main() {
     mode: FileMode.write,
   );
   void log(String s) {
-    out.writeStringSync('$s\n');
-    out.flushSync();
+    out
+      ..writeStringSync('$s\n')
+      ..flushSync();
     stdout.writeln(s);
   }
 
@@ -20,7 +21,8 @@ void main() {
   final reader = StandardModelInfoReader();
   final mi = reader.read(xml);
   log('parsed: name=${mi.name} version=${mi.version} '
-      'typeInfo=${mi.typeInfo.length} conversionInfo=${mi.conversionInfo.length}');
+      'typeInfo=${mi.typeInfo.length} '
+      'conversionInfo=${mi.conversionInfo.length}');
 
   // Account.identifier: official XML has
   //   <elementTypeSpecifier elementType="FHIR.Identifier" xsi:type="ListTypeSpecifier"/>
@@ -66,7 +68,13 @@ void main() {
   final valueSpec = value?.elementTypeSpecifier;
   log('Observation.value spec: ${valueSpec?.runtimeType}');
   if (valueSpec is ChoiceTypeSpecifierModel) {
-    log('  choices: ${valueSpec.choice?.map((c) => c is NamedTypeSpecifierModel ? c.name : c.runtimeType.toString()).toList()}');
+    final choices = valueSpec.choice
+        ?.map(
+          (c) =>
+              c is NamedTypeSpecifierModel ? c.name : c.runtimeType.toString(),
+        )
+        .toList();
+    log('  choices: $choices');
   }
 
   // Conversion declarations survive?

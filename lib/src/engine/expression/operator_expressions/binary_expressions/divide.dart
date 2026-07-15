@@ -122,10 +122,10 @@ class Divide extends BinaryExpression {
       }
       try {
         final leftDecimal = UcumDecimal.fromString(
-          _ensureDecimalPrecision(left.valueString as String),
+          _ensureDecimalPrecision((left as CqlPrimitive).valueString!),
         );
         final rightDecimal = UcumDecimal.fromString(
-          _ensureDecimalPrecision(right.valueString as String),
+          _ensureDecimalPrecision((right as CqlPrimitive).valueString!),
         );
         final result = leftDecimal / rightDecimal;
         return CqlDecimal(double.parse(result.asUcumDecimal()));
@@ -140,13 +140,13 @@ class Divide extends BinaryExpression {
         final leftQuantity = left is ValidatedQuantity
             ? left
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(left.valueString as String?),
+                value: UcumDecimal.fromString((left as CqlDecimal).valueString),
                 unit: '1',
               );
         final rightQuantity = right is ValidatedQuantity
             ? right
             : ValidatedQuantity(
-                value: UcumDecimal.fromString(right.valueString as String?),
+                value: UcumDecimal.fromString((right as CqlNumber).valueString),
                 unit: '1',
               );
         final result = leftQuantity / rightQuantity;

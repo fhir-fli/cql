@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The Total expression returns the current value of the total aggregation accumulator in an aggregate operation.
+/// The Total expression returns the current value of the total aggregation
+/// accumulator in an aggregate operation.
 class Total extends CqlExpression {
   Total({
     required this.scope,

@@ -16,7 +16,8 @@ class CqlQualifiedIdentifierExpressionVisitor extends CqlBaseVisitor<Ref> {
       if (child is QualifierContext) {
         libraryName = visitQualifier(child);
       } else if (child is QualifierExpressionContext) {
-        // qualifiedIdentifierExpression uses qualifierExpression (not qualifier)
+        // qualifiedIdentifierExpression uses qualifierExpression (not
+        // qualifier)
         // Extract the identifier text from the qualifierExpression child.
         for (final qChild in child.children ?? <ParseTree>[]) {
           if (qChild is ReferentialIdentifierContext) {

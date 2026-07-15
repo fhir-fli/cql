@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The Iteration expression returns the current iteration number of a scoped operation.
+/// The Iteration expression returns the current iteration number of a scoped
+/// operation.
 class Iteration extends CqlExpression {
   Iteration({
     required this.scope,

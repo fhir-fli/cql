@@ -15,7 +15,7 @@ import 'package:meta/meta.dart';
 class CqlValueSet extends CqlVocabulary {
   /// Creates a value set from its canonical [id], [version], [name] and
   /// optional constraining [codeSystems].
-  CqlValueSet({
+  const CqlValueSet({
     required super.id,
     required super.version,
     required super.name,
@@ -51,11 +51,10 @@ class CqlValueSet extends CqlVocabulary {
           valueSetDef.codeSystem?.map(CqlCodeSystem.fromCodeSystemRef).toList(),
     );
   }
-  final List<CqlCodeSystem>? codeSystems;
 
   /// Builds a [CqlValueSet] from an ELM [ValueSetDef], tolerating missing
   /// fields by substituting empty defaults.
-  static CqlValueSet fromValueSet(ValueSetDef vs) {
+  factory CqlValueSet.fromValueSet(ValueSetDef vs) {
     return CqlValueSet(
       id: vs.id ?? '',
       version: vs.version ?? '',
@@ -65,6 +64,7 @@ class CqlValueSet extends CqlVocabulary {
           .toList(),
     );
   }
+  final List<CqlCodeSystem>? codeSystems;
 
   @override
   Map<String, dynamic> toJson() {
@@ -93,8 +93,8 @@ class CqlValueSet extends CqlVocabulary {
   Map<String, dynamic> toMap() => toJson();
 
   @override
-  String toString() =>
-      'CqlValueSet { id: $id, version: $version, name: $name, codeSystems: $codeSystems }';
+  String toString() => 'CqlValueSet { id: $id, version: $version, '
+      'name: $name, codeSystems: $codeSystems }';
 
   @override
   bool operator ==(covariant CqlValueSet other) {

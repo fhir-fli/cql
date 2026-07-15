@@ -149,7 +149,8 @@ class Ends extends BinaryExpression {
     } else {
       throw ArgumentError(
           'Ends expression must have 2 operands of type CqlInterval. '
-          'Found $left (${left.runtimeType}) and $right (${right.runtimeType}).');
+          'Found $left (${left.runtimeType}) and '
+          '$right (${right.runtimeType}).');
     }
   }
 }

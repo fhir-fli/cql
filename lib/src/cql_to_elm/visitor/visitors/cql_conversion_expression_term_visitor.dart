@@ -39,7 +39,8 @@ class CqlConversionExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
       );
     } else {
       throw ArgumentError(
-        '$thisNode Unexpected state: neither typeSpecifier nor unit is available.',
+        '$thisNode Unexpected state: neither typeSpecifier nor unit '
+        'is available.',
       );
     }
   }

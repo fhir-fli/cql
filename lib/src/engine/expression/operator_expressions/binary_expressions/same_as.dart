@@ -11,7 +11,8 @@ import 'package:cql/src/internal.dart';
 /// Otherwise, the result is null, as there is not enough information to make a
 /// determination.
 /// If no precision is specified, the comparison is performed beginning with
-/// years (or hours for time values) and proceeding to the finest precision specified in either input.
+/// years (or hours for time values) and proceeding to the finest precision
+/// specified in either input.
 /// If either argument is null, the result is null.
 /// Signature:
 ///
@@ -38,7 +39,8 @@ import 'package:cql/src/internal.dart';
 /// For DateTime values, precision must be one of: year, month, day, hour,
 /// minute, second, or millisecond.
 ///
-/// For Time values, precision must be one of: hour, minute, second, or millisecond.
+/// For Time values, precision must be one of: hour, minute, second, or
+/// millisecond.
 ///
 /// Note specifically that due to variability in the way week numbers are
 /// determined, comparisons involving weeks are not supported.
@@ -61,7 +63,8 @@ import 'package:cql/src/internal.dart';
 /// define "SameAsFalse": @2012-01-01 same day as @2012-01-02
 /// define "UncertainSameAsIsNull": @2012-01-01 same day as @2012-01
 /// define "SameAsIsNull": @2012-01-01 same day as null
-/// This operator is also defined for intervals, see the Same As (Intervals) operator for more information.
+/// This operator is also defined for intervals, see the Same As (Intervals)
+/// operator for more information.
 class SameAs extends BinaryExpression {
   SameAs({
     required super.operand,
@@ -310,10 +313,12 @@ class SameAs extends BinaryExpression {
   }
 
   static CqlBoolean? _sameAsDateTime(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, [
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, [
     CqlDateTimePrecision? precision,
   ]) {
+    var left = leftValue;
+    var right = rightValue;
     if (precision == null) {
       final result = left.isEqual(right);
       return result == null ? null : CqlBoolean(result);

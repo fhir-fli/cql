@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:cql/src/internal.dart' show CqlLibrary;
 
 /// Provides CQL source text given a library path and optional version.
+// Deliberate SPI seam mirroring the Java reference engine's
+// LibrarySourceProvider interface; implementers supply their own source
+// lookup (filesystem, server, in-memory).
+// ignore: one_member_abstracts
 abstract class LibrarySourceProvider {
   Future<String?> getLibrarySource(String path, String? version);
 }
@@ -17,13 +21,13 @@ class FileSystemLibrarySourceProvider implements LibrarySourceProvider {
     // Try versioned filename first (e.g. FHIRHelpers-4.0.1.cql)
     if (version != null && version.isNotEmpty) {
       final versionedFile = File('$basePath/$path-$version.cql');
-      if (await versionedFile.exists()) {
+      if (versionedFile.existsSync()) {
         return versionedFile.readAsString();
       }
     }
     // Fall back to unversioned filename (e.g. FHIRCommon.cql)
     final file = File('$basePath/$path.cql');
-    if (await file.exists()) {
+    if (file.existsSync()) {
       return file.readAsString();
     }
     return null;
@@ -74,13 +78,13 @@ class LibraryManager {
     String libraryName,
     String? version,
   ) async {
-    version = version ?? '';
-    final cached = _libraryCache[libraryName]?[version];
+    final resolvedVersion = version ?? '';
+    final cached = _libraryCache[libraryName]?[resolvedVersion];
     if (cached != null) return cached;
 
     // Auto-load from source provider if available
     if (sourceProvider != null && parseLibrary != null) {
-      final loadKey = '$libraryName|$version';
+      final loadKey = '$libraryName|$resolvedVersion';
       if (_loading.contains(loadKey)) {
         // Circular dependency — return null to avoid infinite recursion
         return null;
@@ -89,12 +93,11 @@ class LibraryManager {
       try {
         final source = await sourceProvider!.getLibrarySource(
           libraryName,
-          version.isNotEmpty ? version : null,
+          resolvedVersion.isNotEmpty ? resolvedVersion : null,
         );
         if (source != null) {
-          final library = parseLibrary!(source);
           // Wire up this library to share the same manager
-          library.libraryManager = this;
+          final library = parseLibrary!(source)..libraryManager = this;
           // Recursively resolve includes
           if (library.includes != null) {
             for (final include in library.includes!.def) {
@@ -103,7 +106,7 @@ class LibraryManager {
               }
             }
           }
-          addLibrary(libraryName, version, library);
+          addLibrary(libraryName, resolvedVersion, library);
           return library;
         }
       } finally {

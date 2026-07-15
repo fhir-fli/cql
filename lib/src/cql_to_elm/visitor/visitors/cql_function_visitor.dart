@@ -46,7 +46,8 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     }
 
     //
-    // STEP 2: Convert to a Query **only** for those that sort and promote to Decimal
+    // STEP 2: Convert to a Query **only** for those that sort and promote
+    // to Decimal
     //
     // Avg, Median, Variance, StdDev, PopulationVariance, PopulationStdDev
     //
@@ -70,6 +71,10 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
     //
     try {
       return CqlExpression.byName(ref, operand, library);
+      // CqlExpression.byName signals "not a built-in operator" by throwing
+      // ArgumentError; falling back to FunctionRef for user-defined (local or
+      // included) functions is that contract's documented consumer.
+      // ignore: avoid_catching_errors
     } on ArgumentError {
       return FunctionRef(
         name: ref,
@@ -113,12 +118,13 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
   }
 
   /// Builds a Query over the original list, aliasing each element to X,
-  /// then returns `ToDecimal(AliasRef("X"))` so that sorting & decimal‐promotion
-  /// happen.
+  /// then returns `ToDecimal(AliasRef("X"))` so that sorting &
+  /// decimal‐promotion happen.
   Query _transformToQuery(ListExpression listExpr, String functionName) {
     const aliasName = 'X';
 
-    // Decide whether the wrapper type for nulls should be Integer, Quantity, or Decimal
+    // Decide whether the wrapper type for nulls should be Integer, Quantity,
+    // or Decimal
     final returnTypes =
         listExpr.getReturnTypes(library).map((e) => e.toLowerCase()).toList();
     final wrapType = returnTypes.any((e) => e.endsWith('integer')) &&

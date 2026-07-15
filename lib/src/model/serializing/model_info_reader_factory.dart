@@ -16,7 +16,8 @@ class ModelInfoReaderFactory {
     }
 
     throw Exception(
-      'No ModelInfoReaderProviders found. Add references to the desired providers.',
+      'No ModelInfoReaderProviders found. Add references to the desired '
+      'providers.',
     );
   }
 

@@ -1,7 +1,9 @@
 import 'package:cql/src/internal.dart';
 
-/// The Sort operator returns a list with all the elements in source, sorted as described by the by element.
-/// When the sort elements do not provide a unique ordering, the order of duplicates is unspecified.
+/// The Sort operator returns a list with all the elements in source, sorted
+/// as described by the by element.
+/// When the sort elements do not provide a unique ordering, the order of
+/// duplicates is unspecified.
 /// If the argument is null, the result is null.
 class Sort extends CqlExpression {
   Sort({
@@ -105,20 +107,20 @@ class Sort extends CqlExpression {
       keyLists.add(keys);
     }
 
-    final indices = List<int>.generate(list.length, (i) => i);
-    indices.sort((i, j) {
-      final k1 = keyLists[i];
-      final k2 = keyLists[j];
-      for (var idx = 0; idx < k1.length; idx++) {
-        final a = k1[idx];
-        final b = k2[idx];
-        final cmp = (a == null && b == null)
-            ? 0
-            : (a == null ? -1 : (b == null ? 1 : a.compareTo(b)));
-        if (cmp != 0) return descending[idx] ? -cmp : cmp;
-      }
-      return 0;
-    });
+    final indices = List<int>.generate(list.length, (i) => i)
+      ..sort((i, j) {
+        final k1 = keyLists[i];
+        final k2 = keyLists[j];
+        for (var idx = 0; idx < k1.length; idx++) {
+          final a = k1[idx];
+          final b = k2[idx];
+          final cmp = (a == null && b == null)
+              ? 0
+              : (a == null ? -1 : (b == null ? 1 : a.compareTo(b)));
+          if (cmp != 0) return descending[idx] ? -cmp : cmp;
+        }
+        return 0;
+      });
     return [for (final idx in indices) list[idx]];
   }
 }

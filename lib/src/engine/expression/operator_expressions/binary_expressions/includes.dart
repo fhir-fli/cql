@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Operator to check if the first operand completely includes the second operand.
+/// Operator to check if the first operand completely includes the second
+/// operand.
 /// Returns true if the starting point of the first interval is less than or
 /// equal to the starting point of the second interval, and the ending point of
 /// the first interval is greater than or equal to the ending point of the
@@ -19,7 +20,8 @@ import 'package:cql/src/internal.dart';
 /// interval, and the ending point of the first interval is greater than or
 /// equal to the ending point of the second interval.
 ///
-/// For the point overload, this operator is a synonym for the contains operator.
+/// For the point overload, this operator is a synonym for the contains
+/// operator.
 ///
 /// For the interval overload, if either argument is null, the result is null.
 ///

@@ -96,7 +96,8 @@ class AnyInValueSet extends OperatorExpression {
       if (expansion is List) {
         for (final raw in codesList) {
           if (raw == null) continue;
-          // Convert any FHIR-typed code values to CQL System types at the boundary.
+          // Convert any FHIR-typed code values to CQL System types at the
+          // boundary.
           final codeItem = mr.toCqlSystemType(raw);
           if (_codeInExpansion(codeItem, expansion)) {
             return CqlBoolean(true);

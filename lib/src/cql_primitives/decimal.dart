@@ -87,7 +87,8 @@ class CqlDecimal extends CqlNumber {
   /// become `1.0` on the way back out.
   final bool isInt;
 
-  /// The Dart [num] value (int if [isInt], else double), or `null` for CQL null.
+  /// The Dart [num] value (int if [isInt], else double), or `null` for CQL
+  /// null.
   @override
   num? get valueNum => valueString == null ? null : num.parse(valueString!);
 

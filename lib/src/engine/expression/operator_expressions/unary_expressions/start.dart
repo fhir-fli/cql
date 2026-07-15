@@ -5,7 +5,8 @@ import 'package:cql/src/internal.dart';
 /// Successor of the low value of the interval.
 /// If the low boundary of the interval is closed and the low value of the
 /// interval is not null, this operator returns the low value of the interval.
-/// Otherwise, the result is the minimum value of the point type of the interval.
+/// Otherwise, the result is the minimum value of the point type of the
+/// interval.
 /// If the argument is null, the result is null.
 /// Signature:
 ///

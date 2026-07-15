@@ -27,8 +27,8 @@ void main() {
       );
     });
     test(
-        'define "UnionIsNull": Interval[3, 5] union (null as Interval<Integer>)',
-        () async {
+        'define "UnionIsNull": '
+        'Interval[3, 5] union (null as Interval<Integer>)', () async {
       final interval1 = cql.LiteralIntegerInterval(
         low: cql.LiteralInteger(3),
         high: cql.LiteralInteger(5),
@@ -618,8 +618,9 @@ void main() {
 
   group('ExceptDateTimeList', () {
     test(
-        'define "ExceptDateTimeList": { DateTime(2012, 5, 10), DateTime(2014, 12, 10), DateTime(2010, 1, 1)} except {DateTime(2014, 12, 10), DateTime(2010, 1, 1) }',
-        () async {
+        'define "ExceptDateTimeList": { DateTime(2012, 5, 10), '
+        'DateTime(2014, 12, 10), DateTime(2010, 1, 1)} except '
+        '{DateTime(2014, 12, 10), DateTime(2010, 1, 1) }', () async {
       final left = cql.ListExpression(
         element: [
           cql.DateTimeExpression(
@@ -666,8 +667,10 @@ void main() {
 
   group('IntersectDateTime', () {
     test(
-        'define "IntersectDateTime": { DateTime(2001, 9, 11), DateTime(2012, 5, 10), DateTime(2014, 12, 10) } intersect { DateTime(2012, 5, 10), DateTime(2014, 12, 10), DateTime(2000, 5, 5) }',
-        () async {
+        'define "IntersectDateTime": { DateTime(2001, 9, 11), '
+        'DateTime(2012, 5, 10), DateTime(2014, 12, 10) } intersect '
+        '{ DateTime(2012, 5, 10), DateTime(2014, 12, 10), '
+        'DateTime(2000, 5, 5) }', () async {
       final left = cql.ListExpression(
         element: [
           cql.DateTimeExpression(
@@ -723,8 +726,8 @@ void main() {
 
   group('UnionDateTime', () {
     test(
-        'define "UnionDateTime": { DateTime(2001, 9, 11)} union {DateTime(2012, 5, 10), DateTime(2014, 12, 10) }',
-        () async {
+        'define "UnionDateTime": { DateTime(2001, 9, 11)} union '
+        '{DateTime(2012, 5, 10), DateTime(2014, 12, 10) }', () async {
       final left = cql.ListExpression(
         element: [
           cql.DateTimeExpression(

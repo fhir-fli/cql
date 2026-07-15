@@ -73,10 +73,11 @@ class ElmErrorListener implements ErrorListener {
     // // Extract information about the rule names and conflicting alternatives
     // String ruleNames = recognizer.ruleNames[prediction];
     // String conflictingAlts =
-    //     configs.toString(); // This might contain the conflicting alternatives
+    //     configs.toString(); // Might contain the conflicting alternatives
 
     // // Create a more informative error message
-    // String errorMessage = "Context sensitivity detected in rule '$ruleNames' "
+    // String errorMessage =
+    //     "Context sensitivity detected in rule '$ruleNames' "
     //     "at Line $startIndex to $stopIndex\n"
     //     "Conflicting alternatives: $conflictingAlts";
 

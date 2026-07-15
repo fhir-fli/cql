@@ -330,7 +330,9 @@ class Add extends BinaryExpression {
     }
 
     // Prepare the add components
-    var addYears = 0, addMonths = 0, addDays = 0;
+    var addYears = 0;
+    var addMonths = 0;
+    var addDays = 0;
     var addHours = 0;
     var addMinutes = 0;
     var addSeconds = 0;

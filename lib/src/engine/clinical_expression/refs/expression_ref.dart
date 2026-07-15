@@ -67,7 +67,9 @@ class ExpressionRef extends Ref {
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    // Cross-library resolution: if libraryName is set, resolve from included lib
+    // Cross-library resolution: if libraryName is set, resolve from the
+    // included lib
+
     if (libraryName != null) {
       final cacheKey = '$libraryName.$name';
       if (context.containsKey(cacheKey)) {

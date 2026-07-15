@@ -29,6 +29,10 @@ class TerminologyProviderException implements Exception {
 /// `getTerminologyProvider`); it is optional — a library that only uses
 /// locally-supplied value-set expansions (`context['_valueSets']`) needs no
 /// provider at all.
+// Deliberate SPI seam mirroring the Java/JS reference engines'
+// TerminologyProvider interface (see doc above); implemented by FHIR
+// bindings, not a function in disguise.
+// ignore: one_member_abstracts
 abstract class TerminologyProvider {
   /// Whether the code identified by [system]/[code] is a member of
   /// [valueSet], resolving the value set from the terminology source as

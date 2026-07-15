@@ -89,8 +89,8 @@ class ConceptDef extends Element {
     writeNotNull('display', display);
     val['accessLevel'] = _$AccessModifierEnumMap[accessLevel];
     val['code'] = code.map((e) {
-      final map = e.toJson();
-      map.removeWhere((key, value) => key == 'type' && value == 'CodeRef');
+      final map = e.toJson()
+        ..removeWhere((key, value) => key == 'type' && value == 'CodeRef');
       return map;
     }).toList();
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());

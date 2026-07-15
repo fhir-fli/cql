@@ -16,7 +16,7 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
     } else {
       i = 1;
     }
-    for (i; i < ctx.childCount - 1; i++) {
+    for (; i < ctx.childCount - 1; i++) {
       if (ctx.getChild<dynamic>(i) is CaseExpressionItemContext) {
         caseItem.add(
           visitCaseExpressionItem(

@@ -1,12 +1,14 @@
 import 'package:cql/src/internal.dart';
 
-/// Coalesce operator returning the first non-null result in a list of arguments.
+/// Coalesce operator returning the first non-null result in a list of
+/// arguments.
 /// Signature:
 ///
 /// `Coalesce<T>`(argument1 T, argument2 T) T
 /// `Coalesce<T>`(argument1 T, argument2 T, argument3 T) T
 /// `Coalesce<T>`(argument1 T, argument2 T, argument3 T, argument4 T) T
-/// `Coalesce<T>`(argument1 T, argument2 T, argument3 T, argument4 T, argument5 T) T
+/// `Coalesce<T>`(argument1 T, argument2 T, argument3 T, argument4 T, argument5
+/// T) T
 /// `Coalesce<T>`(arguments `List<T>`) T
 /// Description:
 ///

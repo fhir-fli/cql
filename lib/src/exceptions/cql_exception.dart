@@ -18,7 +18,7 @@ class CqlException implements Exception {
   /// [cause] optionally wraps an underlying exception, [sourceLocator] marks
   /// where in the source the problem occurred, and [severity] classifies the
   /// diagnostic (defaults to [Severity.error] when omitted).
-  CqlException({
+  const CqlException({
     required this.message,
     this.cause,
     this.sourceLocator,
@@ -27,7 +27,7 @@ class CqlException implements Exception {
 
   /// Creates a [CqlException] that wraps an underlying [cause] exception,
   /// leaving [message] null.
-  CqlException.fromCause(
+  const CqlException.fromCause(
     Exception cause, {
     SourceLocator? sourceLocator,
     Severity? severity,
@@ -40,7 +40,7 @@ class CqlException implements Exception {
 
   /// Creates a [CqlException] with a [message] anchored to the given
   /// [sourceLocator].
-  CqlException.withSourceLocator(
+  const CqlException.withSourceLocator(
     String message,
     SourceLocator sourceLocator, {
     Severity? severity,
@@ -52,7 +52,7 @@ class CqlException implements Exception {
 
   /// Creates a [CqlException] with a [message] and an explicit [severity],
   /// optionally anchored to a [sourceLocator].
-  CqlException.withSeverity(
+  const CqlException.withSeverity(
     String message, {
     required Severity severity,
     SourceLocator? sourceLocator,

@@ -28,7 +28,8 @@ import 'package:cql/src/internal.dart';
 /// define "IsAlsoTrue": true or null
 /// define "IsFalse": false or false
 /// define "IsNull": false or null
-/// Note that CQL does not prescribe short-circuit evaluation of logical operators.
+/// Note that CQL does not prescribe short-circuit evaluation of logical
+/// operators.
 class Or extends BinaryExpression {
   Or({
     required super.operand,

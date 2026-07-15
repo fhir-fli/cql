@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The QueryLetRef expression allows for the reference of a specific let definition within the scope of a query.
+/// The QueryLetRef expression allows for the reference of a specific let
+/// definition within the scope of a query.
 class QueryLetRef extends CqlExpression {
   QueryLetRef({
     required this.name,

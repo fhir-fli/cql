@@ -262,7 +262,8 @@ void main() {
 
     test('terminates when no new elements produced', () async {
       // Source: [1, 2], element expression returns null (no new elements)
-      // The repeat should terminate immediately since null results are not added
+      // The repeat should terminate immediately since null results are not
+      // added
       final repeat = Repeat(
         source: ListExpression(
           element: [
@@ -318,7 +319,8 @@ void main() {
       });
       final descendents = Descendents(source: source);
       final result = await descendents.execute({});
-      // Map values added then recursed: 1 added + recurse(1)→1, {'c':2} added + recurse→2 added + recurse(2)→2
+      // Map values added then recursed: 1 added + recurse(1)→1,
+      // {'c':2} added + recurse→2 added + recurse(2)→2
       expect(
         result,
         equals([

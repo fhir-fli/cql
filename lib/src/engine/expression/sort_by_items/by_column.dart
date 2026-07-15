@@ -1,7 +1,9 @@
 import 'package:cql/src/internal.dart';
 
-/// The ByColumn element specifies that the sort should be performed using the given column and direction.
-/// This approach is used to specify the sort order for a query when the result is a list of tuples.
+/// The ByColumn element specifies that the sort should be performed using
+/// the given column and direction.
+/// This approach is used to specify the sort order for a query when the
+/// result is a list of tuples.
 class ByColumn extends SortByItem {
   ByColumn({
     required super.direction,

@@ -11,7 +11,8 @@ import 'package:cql/src/internal.dart';
 /// not (argument Boolean) Boolean
 /// Description:
 ///
-/// The not operator returns true if the argument is false and false if the argument is true. Otherwise, the result is null.
+/// The not operator returns true if the argument is false and false if the
+/// argument is true. Otherwise, the result is null.
 ///
 /// The following table defines the truth table for this operator:
 ///

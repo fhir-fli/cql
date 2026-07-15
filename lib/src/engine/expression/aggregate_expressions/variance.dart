@@ -13,7 +13,8 @@ import 'package:ucum/ucum.dart';
 /// Variance(argument `List<Quantity>`) Quantity
 /// Description:
 ///
-/// The Variance operator returns the statistical variance of the elements in source.
+/// The Variance operator returns the statistical variance of the elements
+/// in source.
 ///
 /// If the source contains no non-null elements, null is returned.
 ///
@@ -22,8 +23,10 @@ import 'package:ucum/ucum.dart';
 /// The following examples illustrate the behavior of the Variance operator:
 ///
 /// define "DecimalVariance": Variance({ 1.0, 2.0, 3.0, 4.0, 5.0 }) // 2.5
-/// define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) // 2.5 'mg'
-/// define "VarianceIsNull": Variance({ null as Quantity, null as Quantity, null as Quantity })
+/// define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg',
+///   4.0 'mg', 5.0 'mg' }) // 2.5 'mg'
+/// define "VarianceIsNull": Variance({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "VarianceIsAlsoNull": Variance(null as `List<Decimal>`)
 class Variance extends AggregateExpression {
   Variance({
@@ -124,25 +127,29 @@ class Variance extends AggregateExpression {
   }
 
   static dynamic variance(dynamic sourceResult) {
-    if (sourceResult == null || sourceResult.isEmpty as bool) {
+    if (sourceResult == null) {
       return null;
     }
-    sourceResult.removeWhere((dynamic element) => element == null);
-    if (sourceResult.isEmpty as bool) {
+    final values = sourceResult as List<dynamic>;
+    if (values.isEmpty) {
+      return null;
+    }
+    values.removeWhere((dynamic element) => element == null);
+    if (values.isEmpty) {
       return null;
     }
 
     // Sample variance requires at least 2 values (denominator is N-1)
-    if ((sourceResult.length < 2) as bool) {
+    if (values.length < 2) {
       return null;
     }
 
-    final mean = Avg.avg(sourceResult);
+    final mean = Avg.avg(values);
 
     // For CqlDecimal — sample variance uses (N-1) denominator
     if (mean is CqlDecimal) {
       var sumOfSquaredDiffs = CqlDecimal(0.0);
-      for (final val in sourceResult as List<dynamic>) {
+      for (final val in values) {
         if (val is CqlNumber) {
           final diff = CqlDecimal(val.valueNum! - mean.valueNum!);
           final squaredDiff = CqlDecimal(diff.valueNum! * diff.valueNum!);
@@ -150,7 +157,7 @@ class Variance extends AggregateExpression {
               CqlDecimal(sumOfSquaredDiffs.valueNum! + squaredDiff.valueNum!);
         }
       }
-      final variance = sumOfSquaredDiffs.valueNum! / (sourceResult.length - 1);
+      final variance = sumOfSquaredDiffs.valueNum! / (values.length - 1);
       return CqlDecimal(variance);
     }
 
@@ -161,7 +168,7 @@ class Variance extends AggregateExpression {
       final svc = UcumService();
       final meanUnit = mean.unit;
       ValidatedQuantity? sumOfSquaredValues;
-      for (final val in sourceResult as List<dynamic>) {
+      for (final val in values) {
         if (val is! ValidatedQuantity) continue;
         // Convert to mean's unit to avoid cross-unit subtraction bugs
         final converted = val.unit == meanUnit
@@ -181,7 +188,7 @@ class Variance extends AggregateExpression {
       if (sumOfSquaredValues != null) {
         final sum =
             UcumDecimal.fromString(sumOfSquaredValues.value.asUcumDecimal());
-        var varianceValue = sum / UcumDecimal.fromNum(sourceResult.length - 1);
+        var varianceValue = sum / UcumDecimal.fromNum(values.length - 1);
         // Truncate to 8 decimal places to match CQF reference precision
         final truncated = double.tryParse(varianceValue.asUcumDecimal());
         if (truncated != null) {

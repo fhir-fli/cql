@@ -29,7 +29,8 @@ import 'package:cql/src/internal.dart';
 /// milliseconds.
 ///
 /// For calculations involving weeks, Sunday is considered to be the first day
-/// of the week for the purposes of determining the number of boundaries crossed.
+/// of the week for the purposes of determining the number of boundaries
+/// crossed.
 ///
 /// When this operator is called with both Date and DateTime inputs, the Date
 /// values will be implicitly converted to DateTime as defined by the
@@ -42,7 +43,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// If either argument is null, the result is null.
 ///
-/// The following examples illustrate the behavior of the difference-between operator:
+/// The following examples illustrate the behavior of the difference-between
+/// operator:
 ///
 /// define "DifferenceInMonths": difference in months between @2012-01-01 and @2012-02-01 // 1
 /// define "UncertainDifferenceInMonths": difference in months between @2012-01-02 and @2012 // [0, 11]
@@ -183,7 +185,8 @@ class DifferenceBetween extends BinaryExpression {
 
   /// Compute the number of boundaries crossed for the given precision.
   /// For day/week: truncate to calendar day boundaries (not 24h periods).
-  /// For sub-day: use actual time difference (caller should normalize timezone).
+  /// For sub-day: use actual time difference (caller should normalize
+  /// timezone).
   static int _differenceBetween(
     DateTime low,
     DateTime high,
@@ -261,7 +264,7 @@ class DifferenceBetween extends BinaryExpression {
         throw CqlException(
           message: 'DifferenceBetween must be passed two Dates, DateTimes, or '
               'Times, it was instead passed: '
-              'low (${low.runtimeType}) and'
+              'low (${low.runtimeType}) and '
               'high (${high.runtimeType})',
         );
       }
@@ -288,24 +291,28 @@ class DifferenceBetween extends BinaryExpression {
             return CqlInteger((differenceMilliseconds / 1000).floor());
           case CqlDateTimePrecision.millisecond:
             return CqlInteger(differenceMilliseconds);
-          default:
-            throw CqlException(
-              message:
-                  'Unsupported precision for CqlTime comparison. Supported precisions are: hours, minutes, seconds, milliseconds.',
+          case CqlDateTimePrecision.year:
+          case CqlDateTimePrecision.month:
+          case CqlDateTimePrecision.week:
+          case CqlDateTimePrecision.day:
+            throw const CqlException(
+              message: 'Unsupported precision for CqlTime comparison. '
+                  'Supported precisions are: hours, minutes, seconds, '
+                  'milliseconds.',
             );
         }
       } else {
         throw CqlException(
           message: 'DifferenceBetween must be passed two Dates, DateTimes, or '
               'Times, it was instead passed: '
-              'low (${low.runtimeType}) and'
+              'low (${low.runtimeType}) and '
               'high (${high.runtimeType})',
         );
       }
     } else {
       throw CqlException(
-        message: 'DifferenceBetween must be either Dates, DateTimes, or Times,'
-            'but was instead passed low (${low.runtimeType}) and '
+        message: 'DifferenceBetween must be either Dates, DateTimes, or '
+            'Times, but was instead passed low (${low.runtimeType}) and '
             'high (${high.runtimeType}).',
       );
     }

@@ -160,7 +160,8 @@ class IncludedIn extends BinaryExpression {
     if (left == null) {
       return null;
     } else if (right == null) {
-      /// For the interval overload, if either argument is null, the result is null.
+      /// For the interval overload, if either argument is null, the result
+      /// is null.
       if (left is CqlInterval) {
         return null;
       }
@@ -221,7 +222,8 @@ class IncludedIn extends BinaryExpression {
   }
 
   /// Interval included in interval with three-valued logic.
-  /// left included in right ↔ left.start >= right.start AND left.end <= right.end
+  /// left included in right ↔ left.start >= right.start AND
+  /// left.end <= right.end
   /// Handles unknown boundaries (null getStart/getEnd) by returning null for
   /// uncertain cases. When the left interval is entirely at the known boundary
   /// of the right interval, the result is true.

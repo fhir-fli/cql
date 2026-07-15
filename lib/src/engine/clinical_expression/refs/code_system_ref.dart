@@ -1,7 +1,8 @@
 import 'package:cql/src/internal.dart';
 
-/// The CodeSystemRef expression allows a previously defined named code system to
-/// be referenced within an expression. Conceptually, referencing a code system
+/// The CodeSystemRef expression allows a previously defined named code system
+/// to be referenced within an expression. Conceptually, referencing a code
+/// system
 /// returns the set of codes in the code system. Note that this operation should
 /// almost never be performed in practice. Code system references are allowed in
 /// order to allow for testing of code membership in a particular code system.

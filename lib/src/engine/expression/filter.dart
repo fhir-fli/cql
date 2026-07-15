@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Filter operator returns a list with only those elements in the source list for which the condition element evaluates to true.
+/// Filter operator returns a list with only those elements in the source
+/// list for which the condition element evaluates to true.
 /// If the source argument is null, the result is null.
 class Filter extends CqlExpression {
   Filter({

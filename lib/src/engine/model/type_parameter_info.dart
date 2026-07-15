@@ -2,8 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// Represents type parameter information.
 ///
-/// The [TypeParameterInfo] type specifies details regarding a generic class parameter,
-/// including its name, constraint, and optional constraint type.
+/// The [TypeParameterInfo] type specifies details regarding a generic class
+/// parameter, including its name, constraint, and optional constraint type.
 class TypeParameterInfo {
   TypeParameterInfo({
     required this.name,

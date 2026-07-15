@@ -16,7 +16,8 @@ import 'package:cql/src/internal.dart';
 /// substitution. The substitution string may refer to identified match groups
 /// in the regular expression. Regular expressions should function consistently,
 /// regardless of any culture- and locale-specific settings in the environment,
-/// should be case-sensitive, use single line mode, and allow Unicode characters.
+/// should be case-sensitive, use single line mode, and allow Unicode
+/// characters.
 ///
 /// If any argument is null, the result is null.
 ///
@@ -25,7 +26,8 @@ import 'package:cql/src/internal.dart';
 /// differences. As such, CQL does not prescribe a particular dialect, but
 /// recommends the use of the [PCRE](http://www.pcre.org) dialect.
 ///
-/// The following examples illustrate the behavior of the ReplaceMatches operator:
+/// The following examples illustrate the behavior of the ReplaceMatches
+/// operator:
 ///
 /// define "ReplaceMatchesFound": ReplaceMatches('ABCDE', 'C', 'XYZ') // 'ABXYZDE'
 /// define "ReplaceMatchesNotFound": ReplaceMatches('ABCDE', 'XYZ', '123') // 'ABCDE'

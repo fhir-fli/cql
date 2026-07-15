@@ -18,7 +18,8 @@ import 'package:cql/src/internal.dart';
 /// ToLong(argument String) Long
 /// Description:
 ///
-/// The ToLong operator converts the value of its argument to a Long value. The operator accepts strings using the following format:
+/// The ToLong operator converts the value of its argument to a Long value. The
+/// operator accepts strings using the following format:
 ///
 /// (+|-)?#0
 ///

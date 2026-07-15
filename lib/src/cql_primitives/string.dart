@@ -96,10 +96,11 @@ class CqlString extends CqlPrimitive {
   @override
   String toString() => valueString ?? 'null';
 
-  // ---------------------------------------------------------------------------
+  // ------------------------------------------------------------------------
   // String-manipulation conveniences — kept so engine code can operate on
-  // CqlString instances directly. All gracefully no-op when valueString is null.
-  // ---------------------------------------------------------------------------
+  // CqlString instances directly. All gracefully no-op when valueString is
+  // null.
+  // ------------------------------------------------------------------------
 
   bool get isEmptyString => valueString?.isEmpty ?? true;
   bool get isNotEmpty => !isEmptyString;

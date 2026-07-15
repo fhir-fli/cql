@@ -48,7 +48,8 @@ import 'package:cql/src/internal.dart';
 /// The following examples illustrate the behavior of the intersect operator:
 ///
 /// define "Intersect": Interval[1, 5] intersect Interval[3, 7] // Interval[3, 5]
-/// define "IntersectIsNull": Interval[3, 5] intersect (null as `Interval<Integer>`)
+/// define "IntersectIsNull": Interval[3, 5] intersect (null as
+/// `Interval<Integer>`)
 class Intersect extends NaryExpression {
   Intersect({
     super.operand,

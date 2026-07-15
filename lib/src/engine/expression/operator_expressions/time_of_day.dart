@@ -9,7 +9,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// The TimeOfDay operator returns the time of day of the start timestamp
 /// associated with the evaluation request. See the Now operator for more
-/// information on the rationale for defining the TimeOfDay operator in this way.
+/// information on the rationale for defining the TimeOfDay operator in this
+/// way.
 class TimeOfDay extends OperatorExpression {
   TimeOfDay({
     super.annotation,

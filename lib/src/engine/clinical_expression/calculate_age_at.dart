@@ -11,8 +11,9 @@ import 'package:cql/src/internal.dart';
 /// and the result is the number of whole calendar periods that have elapsed
 /// between the first date and the second date.
 ///
-/// For the DateTime overload, the result is the number of whole calendar periods
-/// that have elapsed between the first datetime and the second datetime.
+/// For the DateTime overload, the result is the number of whole calendar
+/// periods that have elapsed between the first datetime and the second
+/// datetime.
 class CalculateAgeAt extends BinaryExpression {
   CalculateAgeAt({
     required this.precision,

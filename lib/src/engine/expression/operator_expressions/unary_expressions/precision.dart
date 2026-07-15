@@ -71,7 +71,7 @@ class Precision extends UnaryExpression {
       // Use the original literal string if available (preserves trailing zeros)
       String str;
       if (operand is LiteralDecimal) {
-        final json = operand.toJson();
+        final json = operand.toJson() as Map<String, dynamic>;
         str = json['value']?.toString() ?? value.valueString ?? '';
       } else {
         str = value.valueString ?? '';

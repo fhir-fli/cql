@@ -8,10 +8,15 @@
 /// in-memory `Map<String, dynamic>` retriever combined with the R4
 /// model resolver for unit tests, vs. a FHIR-server-backed retriever
 /// combined with the same resolver in production.
+// Deliberate SPI seam mirroring cqframework's RetrieveProvider interface
+// (see doc above); implemented by FHIR bindings and test fakes, not a
+// function in disguise.
+// ignore: one_member_abstracts
 abstract class RetrieveProvider {
   /// Retrieves resources matching the criteria.
   ///
-  /// - [dataType]: FHIR resource type name (e.g. `'Encounter'`, `'Observation'`).
+  /// - [dataType]: FHIR resource type name (e.g. `'Encounter'`,
+  ///   `'Observation'`).
   /// - [templateId]: FHIR profile / structure-definition URL, if filtering by profile.
   /// - [codePath]: path to the property holding the code being filtered
   ///   (e.g. `'category'` for Observation.category).

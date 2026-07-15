@@ -1,6 +1,7 @@
 /// Represents a model specifier.
 ///
-/// The [ModelSpecifier] type specifies a model with attributes for name and version.
+/// The [ModelSpecifier] type specifies a model with attributes for name and
+/// version.
 class ModelSpecifier {
   ModelSpecifier({
     required this.name,

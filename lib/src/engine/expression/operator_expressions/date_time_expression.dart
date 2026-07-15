@@ -173,18 +173,18 @@ class DateTimeExpression extends OperatorExpression {
 
   @override
   Future<CqlDateTime?> execute(Map<String, dynamic> context) async {
-    final yearValue = await year.execute(context);
+    final yearValue = await year.execute(context) as CqlNumber?;
     if (yearValue == null) return null;
-    final monthValue = await month?.execute(context);
-    final dayValue = await day?.execute(context);
-    final hourValue = await hour?.execute(context);
-    final minuteValue = await minute?.execute(context);
-    final secondValue = await second?.execute(context);
-    final millisecondValue = await millisecond?.execute(context);
+    final monthValue = await month?.execute(context) as CqlNumber?;
+    final dayValue = await day?.execute(context) as CqlNumber?;
+    final hourValue = await hour?.execute(context) as CqlNumber?;
+    final minuteValue = await minute?.execute(context) as CqlNumber?;
+    final secondValue = await second?.execute(context) as CqlNumber?;
+    final millisecondValue = await millisecond?.execute(context) as CqlNumber?;
     final timezoneOffsetValue = await timezoneOffset?.execute(context);
 
     return CqlDateTime.fromUnits(
-      year: yearValue?.valueNum as int,
+      year: yearValue.valueNum! as int,
       month: monthValue?.valueNum as int?,
       day: dayValue?.valueNum as int?,
       hour: hourValue?.valueNum as int?,

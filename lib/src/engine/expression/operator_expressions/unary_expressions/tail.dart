@@ -89,8 +89,8 @@ class Tail extends UnaryExpression {
     }
     if (src is! List) {
       throw CqlException(
-        message:
-            'Tail operator requires a list as operand, but got ${src.runtimeType}',
+        message: 'Tail operator requires a list as operand, '
+            'but got ${src.runtimeType}',
       );
     }
     if (src.isEmpty) {

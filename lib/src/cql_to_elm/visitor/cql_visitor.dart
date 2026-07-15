@@ -657,8 +657,9 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// Return the visitor result.
   dynamic visitTemporalRelationship(TemporalRelationshipContext ctx);
 
-  /// Visit a parse tree produced by the {@code concurrentWithIntervalOperatorPhrase}
-  /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
+  /// Visit a parse tree produced by
+  /// the {@code concurrentWithIntervalOperatorPhrase} labeled alternative
+  /// in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitConcurrentWithIntervalOperatorPhrase(
@@ -673,16 +674,18 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
     IncludesIntervalOperatorPhraseContext ctx,
   );
 
-  /// Visit a parse tree produced by the {@code includedInIntervalOperatorPhrase}
-  /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
+  /// Visit a parse tree produced by
+  /// the {@code includedInIntervalOperatorPhrase} labeled alternative
+  /// in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitIncludedInIntervalOperatorPhrase(
     IncludedInIntervalOperatorPhraseContext ctx,
   );
 
-  /// Visit a parse tree produced by the {@code beforeOrAfterIntervalOperatorPhrase}
-  /// labeled alternative in {@link cqlParser#intervalOperatorPhrase}.
+  /// Visit a parse tree produced by
+  /// the {@code beforeOrAfterIntervalOperatorPhrase} labeled alternative
+  /// in {@link cqlParser#intervalOperatorPhrase}.
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitBeforeOrAfterIntervalOperatorPhrase(
@@ -988,7 +991,8 @@ abstract class CqlVisitor<T> extends ParseTreeVisitor<T> {
   /// Return the visitor result.
   dynamic visitReferentialIdentifier(ReferentialIdentifierContext ctx);
 
-  /// Visit a parse tree produced by [cqlParser.referentialOrTypeNameIdentifier].
+  /// Visit a parse tree produced by
+  /// [cqlParser.referentialOrTypeNameIdentifier].
   /// [ctx] the parse tree.
   /// Return the visitor result.
   dynamic visitReferentialOrTypeNameIdentifier(

@@ -2,8 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// Represents a list type specifier, extending [TypeSpecifier].
 ///
-/// The [ListTypeSpecifier] type represents a list type, inheriting from TypeSpecifier,
-/// including an elementType element and elementType attribute.
+/// The [ListTypeSpecifier] type represents a list type, inheriting from
+/// TypeSpecifier, including an elementType element and elementType attribute.
 
 class ListTypeSpecifier extends TypeSpecifierExpression {
   ListTypeSpecifier({

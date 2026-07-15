@@ -6,7 +6,9 @@ import 'package:cql/src/internal.dart';
 /// is null(argument Any) Boolean
 /// Description:
 ///
-/// The is null operator determines whether or not its argument evaluates to null. If the argument evaluates to null, the result is true; otherwise, the result is false.
+/// The is null operator determines whether or not its argument evaluates to
+/// null. If the argument evaluates to null, the result is true; otherwise, the
+/// result is false.
 ///
 /// The following examples illustrate the behavior of the is null operator:
 ///

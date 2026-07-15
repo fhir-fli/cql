@@ -80,8 +80,10 @@ abstract class LiteralType extends CqlExpression {
 class LiteralNull extends LiteralType {
   LiteralNull({super.resultTypeName});
 
-  factory LiteralNull.fromJson(dynamic json) =>
-      LiteralNull(resultTypeName: json['resultTypeName'] as String?);
+  factory LiteralNull.fromJson(dynamic json) {
+    final map = json as Map<String, dynamic>;
+    return LiteralNull(resultTypeName: map['resultTypeName'] as String?);
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -457,7 +459,8 @@ class LiteralDecimal extends LiteralType {
       /// Remove leading zeros, they are not significant
       number = number.replaceFirst(RegExp('^0+'), '');
 
-      /// If the number is in decimal form, remove the decimal point for simplicity
+      /// If the number is in decimal form, remove the decimal point for
+      /// simplicity
       if (isDecimal) {
         number = number.replaceAll('.', '');
       }
@@ -470,7 +473,9 @@ class LiteralDecimal extends LiteralType {
       // At this point, all remaining digits are significant
       return LiteralDecimal(num.parse(stringValue), sigFigs: number.length);
     }
-    throw 'Incorrectly formed String for type LiteralDecimal: $stringValue';
+    throw FormatException(
+      'Incorrectly formed String for type LiteralDecimal: $stringValue',
+    );
   }
 
   factory LiteralDecimal.fromJson(dynamic json) {
@@ -706,11 +711,11 @@ class LiteralString extends LiteralType {
 
   static String _unescape(String s) {
     // Process Unicode escapes first (\uXXXX)
-    s = s.replaceAllMapped(
+    final unescaped = s.replaceAllMapped(
       RegExp(r'\\u([0-9a-fA-F]{4})'),
       (m) => String.fromCharCode(int.parse(m.group(1)!, radix: 16)),
     );
-    return s
+    return unescaped
         .replaceAll(r'\n', '\n')
         .replaceAll(r'\t', '\t')
         .replaceAll(r'\b', '\b')
@@ -755,14 +760,17 @@ class LiteralTime extends LiteralType {
     if (operand.isNotEmpty) {
       value = (operand[0] as LiteralInteger).value.toString().padLeft(2, '0');
       if (operand.length > 1) {
-        value +=
-            ':${(operand[1] as LiteralInteger).value.toString().padLeft(2, '0')}';
+        final minute =
+            (operand[1] as LiteralInteger).value.toString().padLeft(2, '0');
+        value += ':$minute';
         if (operand.length > 2) {
-          value +=
-              ':${(operand[2] as LiteralInteger).value.toString().padLeft(2, '0')}';
+          final second =
+              (operand[2] as LiteralInteger).value.toString().padLeft(2, '0');
+          value += ':$second';
           if (operand.length > 3) {
-            value +=
-                '.${(operand[3] as LiteralInteger).value.toString().padLeft(3, '0')}';
+            final millisecond =
+                (operand[3] as LiteralInteger).value.toString().padLeft(3, '0');
+            value += '.$millisecond';
           }
         }
       }

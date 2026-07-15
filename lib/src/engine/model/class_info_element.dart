@@ -146,7 +146,12 @@ class ClassInfoElement {
 
   @override
   String toString() {
-    return 'ClassInfoElement{name: $name, typeSpecifier: $typeSpecifier, elementTypeSpecifier: $elementTypeSpecifier, binding: $binding, constraints: $constraints, type: $type, elementType: $elementType, prohibited: $prohibited, oneBased: $oneBased, target: $target, label: $label, description: $description, definition: $definition, comment: $comment, min: $min, max: $max, mustSupport: $mustSupport}';
+    return 'ClassInfoElement{name: $name, typeSpecifier: $typeSpecifier, '
+        'elementTypeSpecifier: $elementTypeSpecifier, binding: $binding, '
+        'constraints: $constraints, type: $type, elementType: $elementType, '
+        'prohibited: $prohibited, oneBased: $oneBased, target: $target, '
+        'label: $label, description: $description, definition: $definition, '
+        'comment: $comment, min: $min, max: $max, mustSupport: $mustSupport}';
   }
 
   Map<String, dynamic> toJson() => {

@@ -122,16 +122,17 @@ class Avg extends AggregateExpression {
         return null;
       }
       if (sourceResult.every((element) => element is CqlNumber)) {
-        sourceResult = sourceResult.map((e) => CqlDecimal(e.valueNum)).toList();
-        final sum =
-            sourceResult.fold(CqlDecimal(0), (previousValue, dynamic element) {
+        final decimals = sourceResult
+            .map((e) => CqlDecimal((e as CqlNumber).valueNum))
+            .toList();
+        final sum = decimals.fold(CqlDecimal(0), (previousValue, element) {
           return CqlDecimal(
-            previousValue.valueNum! + (element as CqlDecimal).valueNum!,
+            previousValue.valueNum! + element.valueNum!,
           );
         });
         return sum.valueNum == null
             ? null
-            : CqlDecimal(sum.valueNum! / sourceResult.length);
+            : CqlDecimal(sum.valueNum! / decimals.length);
       } else if (sourceResult
           .every((element) => element is ValidatedQuantity)) {
         ValidatedQuantity? sum;

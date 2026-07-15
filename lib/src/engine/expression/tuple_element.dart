@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Element within a Tuple expression providing the value of a specific element within a tuple literal expression.
+/// Element within a Tuple expression providing the value of a specific
+/// element within a tuple literal expression.
 class TupleElement extends Element {
   TupleElement({
     required this.value,

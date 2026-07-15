@@ -5,8 +5,9 @@ import 'package:cql/src/internal.dart';
 ///
 /// The first argument is expected to be a String, Code, or Concept.
 ///
-/// Note that this operator explicitly requires a CodeSystemRef as its codesystem
-/// argument. This allows for both static analysis of the code system references
+/// Note that this operator explicitly requires a CodeSystemRef as its
+/// codesystem argument. This allows for both static analysis of the code
+/// system references
 /// within an artifact, as well as the implementation of code system membership
 /// by the target environment as a service call to a terminology server, if
 /// desired.

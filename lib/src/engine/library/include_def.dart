@@ -61,7 +61,8 @@ class IncludeDef extends Element {
 
   /// A unique name within this artifact for the library reference.
   ///
-  /// This name is used within this artifact to reference components of this library.
+  /// This name is used within this artifact to reference components of this
+  /// library.
   String? localIdentifier;
 
   /// Defines the type of the library. If this attribute is omitted, the library

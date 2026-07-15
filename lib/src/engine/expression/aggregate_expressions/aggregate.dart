@@ -1,7 +1,9 @@
 import 'package:cql/src/internal.dart';
 
-/// The Aggregate operator performs custom aggregation by evaluating an expression for each element of the source.
-/// If a path is specified, the aggregation is performed for the value of the property specified by the path for each element of the source.
+/// The Aggregate operator performs custom aggregation by evaluating an
+/// expression for each element of the source.
+/// If a path is specified, the aggregation is performed for the value of the
+/// property specified by the path for each element of the source.
 /// If the list is null, the result is null.
 class Aggregate extends AggregateExpression {
   Aggregate({

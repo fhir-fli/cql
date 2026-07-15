@@ -17,16 +17,17 @@ Future<void> main() async {
           .replaceAll(')', '');
       fileNames.add(file.path.split('/').last.replaceAll('.xml', '.dart'));
       fileString = "const $fileName = r'''$fileString''';";
-      File(
+      await File(
         file.path
             .replaceAll('.xml', '.dart')
             .replaceAll('model_info_xml', 'model_info_dart'),
       ).writeAsString(fileString);
     }
   }
-  var exportString = '';
+  final exportString = StringBuffer();
   for (final fileName in fileNames) {
-    exportString += "export '$fileName';\n";
+    exportString.write("export '$fileName';\n");
   }
-  File('model_info_dart/model_info_dart.dart').writeAsString(exportString);
+  await File('model_info_dart/model_info_dart.dart')
+      .writeAsString(exportString.toString());
 }

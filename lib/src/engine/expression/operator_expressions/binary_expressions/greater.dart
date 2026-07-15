@@ -147,7 +147,8 @@ class Greater extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     }
-    // Uncertainty interval: [a,b] > v is true if a > v, false if b <= v, else null
+    // Uncertainty interval: [a,b] > v is true if a > v, false if b <= v,
+    // else null
     if (left is CqlInterval) {
       final low = left.getStart();
       final high = left.getEnd();

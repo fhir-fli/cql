@@ -36,8 +36,7 @@ class CqlTuple implements CqlType {
       elements?.forEach((key, value) {
         builder += '\t"$key": "$value"\n';
       });
-      builder += '}';
-      return builder;
+      return '$builder}';
     }
   }
 }

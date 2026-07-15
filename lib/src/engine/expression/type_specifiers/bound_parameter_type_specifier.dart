@@ -2,8 +2,9 @@ import 'package:cql/src/internal.dart';
 
 /// Represents a bound parameter type specifier.
 ///
-/// The [BoundParameterTypeSpecifier] type defines a type replacing a class parameter,
-/// including the parameter name, bound type, and elementTypeSpecifier.
+/// The [BoundParameterTypeSpecifier] type defines a type replacing a class
+/// parameter, including the parameter name, bound type, and
+/// elementTypeSpecifier.
 class BoundParameterTypeSpecifier extends TypeSpecifierExpression {
   BoundParameterTypeSpecifier({
     required this.parameterName,

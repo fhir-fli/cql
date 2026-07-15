@@ -14,7 +14,7 @@ import 'package:meta/meta.dart';
 class CqlCode implements CqlType {
   /// Creates a [CqlCode] from its [code], [display], [system] and [version]
   /// components.
-  CqlCode({this.code, this.display, this.system, this.version});
+  const CqlCode({this.code, this.display, this.system, this.version});
 
   factory CqlCode.fromJson(Map<String, dynamic> json) {
     return CqlCode(
@@ -79,7 +79,8 @@ class CqlCode implements CqlType {
 
   @override
   String toString() {
-    return 'CqlCode{ code: $code, system: $system, version: $version, display: $display }';
+    return 'CqlCode{ code: $code, system: $system, version: $version, '
+        'display: $display }';
   }
 
   @override

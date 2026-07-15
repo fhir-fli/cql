@@ -7,8 +7,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// For the Date overload, the calculation is performed using Today(), the
 /// precision must be one of year, month, week, or day, and the result is the
-/// number of whole calendar periods that have elapsed between the given date and
-/// today.
+/// number of whole calendar periods that have elapsed between the given date
+/// and today.
 ///
 /// For the DateTime overload, the calculation is performed using Now(), and the
 /// result is the number of whole calendar periods that have elapsed between the

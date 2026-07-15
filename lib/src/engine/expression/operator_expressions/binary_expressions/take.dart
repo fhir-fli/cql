@@ -99,7 +99,8 @@ class Take extends BinaryExpression {
             'but it found ${count.runtimeType}',
       );
     }
-    if ((count < 0) as bool) {
+    final isNegative = count is CqlInteger ? count < 0 : (count as int) < 0;
+    if (isNegative) {
       return [];
     }
     // Delegate to central Slice implementation

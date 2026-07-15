@@ -17,7 +17,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// If the source list is null, the result is null.
 ///
-/// The following examples illustrate the behavior of the singleton from operator:
+/// The following examples illustrate the behavior of the singleton from
+/// operator:
 ///
 /// define "SingletonFrom": singleton from { 1 } // 1
 /// define "SingletonFromError": singleton from { 1, 3, 5 }
@@ -97,8 +98,8 @@ class SingletonFrom extends UnaryExpression {
         return list.first;
       } else {
         throw CqlException(
-          message:
-              'The source list for SingletonFrom contains more than one element',
+          message: 'The source list for SingletonFrom contains more than one '
+              'element',
           severity: Severity.error,
           sourceLocator:
               SourceLocator.fromNode(this, context['library'] as CqlLibrary?),

@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The AliasRef expression allows for the reference of a specific source within the scope of a query.
+/// The AliasRef expression allows for the reference of a specific source
+/// within the scope of a query.
 class AliasRef extends Ref {
   AliasRef({
     required super.name,

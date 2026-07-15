@@ -2,8 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// Represents a named type specifier, extending [TypeSpecifier].
 ///
-/// The [NamedTypeSpecifier] type represents a named type, inheriting from TypeSpecifier,
-/// defining modelName, namespace, and name attributes.
+/// The [NamedTypeSpecifier] type represents a named type, inheriting from
+/// TypeSpecifier, defining modelName, namespace, and name attributes.
 class NamedTypeSpecifierModel extends TypeSpecifierModel {
   NamedTypeSpecifierModel({
     required this.name,

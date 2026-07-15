@@ -11,14 +11,14 @@ Future<void> main() async {
   final jsonDir = Directory('json');
 
   // Create the JSON directory if it doesn't exist
-  if (!await jsonDir.exists()) {
-    await jsonDir.create(recursive: true);
+  if (!jsonDir.existsSync()) {
+    jsonDir.createSync(recursive: true);
   }
 
   // Find all .cql files in the CQL directory and its subdirectories
   await _processCqlFiles(cqlDir, jsonDir);
 
-  print('CQL to JSON conversion complete!');
+  stdout.writeln('CQL to JSON conversion complete!');
 }
 
 Future<void> _processCqlFiles(Directory sourceDir, Directory targetDir) async {
@@ -48,7 +48,7 @@ Future<void> _processCqlFile(
     final jsonFile = File(jsonFilePath);
     await jsonFile.parent.create(recursive: true);
 
-    print('Converting ${cqlFile.path} to JSON...');
+    stdout.writeln('Converting ${cqlFile.path} to JSON...');
 
     // Send the CQL to the local translation service
     final response = await post(
@@ -65,13 +65,16 @@ Future<void> _processCqlFile(
       final jsonContent = jsonDecode(response.body);
       await jsonFile
           .writeAsString(jsonPrettyPrint(jsonContent as Map<String, dynamic>));
-      print('Successfully created ${jsonFile.path}');
+      stdout.writeln('Successfully created ${jsonFile.path}');
     } else {
-      print('Error converting ${cqlFile.path}: HTTP ${response.statusCode}');
-      print('Response: ${response.body}');
+      stdout
+        ..writeln(
+          'Error converting ${cqlFile.path}: HTTP ${response.statusCode}',
+        )
+        ..writeln('Response: ${response.body}');
     }
   } catch (e, s) {
-    print('Error processing ${cqlFile.path}: $e');
+    stdout.writeln('Error processing ${cqlFile.path}: $e');
     log(e.toString());
     log(s.toString());
   }

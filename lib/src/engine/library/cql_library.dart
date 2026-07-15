@@ -110,22 +110,28 @@ class CqlLibrary extends Element {
 
   /// A Library is an instance of a CQL-ELM library.
 
-  /// It contains various elements such as identifier, schemaIdentifier, usings, includes, parameters, codeSystems, valueSets, codes, concepts, and statements.
+  /// It contains various elements such as identifier, schemaIdentifier,
+  /// usings, includes, parameters, codeSystems, valueSets, codes, concepts,
+  /// and statements.
   VersionedIdentifier? identifier;
 
-  /// Set of libraries referenced by this artifact. Components of referenced libraries may be used within this artifact.
+  /// Set of libraries referenced by this artifact. Components of referenced
+  /// libraries may be used within this artifact.
   IncludeDefs? includes;
 
   /// The parameters defined within this library.
   ParameterDefs? parameters;
 
-  /// This is the identifier of the XML schema (and its version) which governs the structure of this Library.
+  /// This is the identifier of the XML schema (and its version) which governs
+  /// the structure of this Library.
   VersionedIdentifier? schemaIdentifier;
 
-  /// The statements section contains the expression and function definitions for the library.
+  /// The statements section contains the expression and function definitions
+  /// for the library.
   ExpressionDefs? statements;
 
-  /// Set of data models referenced in the Expression objects in this knowledge artifact.
+  /// Set of data models referenced in the Expression objects in this
+  /// knowledge artifact.
   UsingDefs? usings;
 
   /// The value sets defined within this library.

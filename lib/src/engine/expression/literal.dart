@@ -13,7 +13,7 @@ class Literal extends CqlExpression {
   });
 
   factory Literal.fromJson(Map<String, dynamic> json) {
-    final String valueType = json['valueType'] as String;
+    final valueType = json['valueType'] as String;
     LiteralType? value;
     switch (valueType) {
       case 'Null':
@@ -251,7 +251,8 @@ class Literal extends CqlExpression {
 
   @override
   String toString() {
-    return 'Literal(type: $type, valueType: ${valueType.toJson()}, value: $value)';
+    return 'Literal(type: $type, valueType: ${valueType.toJson()}, '
+        'value: $value)';
   }
 
   @override

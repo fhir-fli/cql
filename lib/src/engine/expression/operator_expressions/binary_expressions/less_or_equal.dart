@@ -1,12 +1,17 @@
 import 'package:cql/src/internal.dart';
 import 'package:ucum/ucum.dart';
 
-/// Operator to check if the first argument is less than or equal to the second argument.
-/// Returns true if the first argument is less than or equal to the second argument.
-/// For comparisons involving quantities, the dimensions of each quantity must be the same, but not necessarily the unit.
+/// Operator to check if the first argument is less than or equal to the
+/// second argument.
+/// Returns true if the first argument is less than or equal to the second
+/// argument.
+/// For comparisons involving quantities, the dimensions of each quantity must
+/// be the same, but not necessarily the unit.
 /// If either argument is null, the result is null.
-/// The LessOrEqual operator is defined for the Integer, Decimal, String, Date, DateTime, Time, and Quantity types.
-/// Note that relative ratio comparisons are not directly supported due to healthcare variance.
+/// The LessOrEqual operator is defined for the Integer, Decimal, String,
+/// Date, DateTime, Time, and Quantity types.
+/// Note that relative ratio comparisons are not directly supported due to
+/// healthcare variance.
 ///
 /// Signature
 /// <=(left Integer, right Integer) Boolean
@@ -50,7 +55,8 @@ import 'package:ucum/ucum.dart';
 /// combined as a single precision using a decimal, with decimal comparison
 /// semantics.
 /// If either argument is null, the result is null.
-/// The following examples illustrate the behavior of the less or equal operator:
+/// The following examples illustrate the behavior of the less or equal
+/// operator:
 /// define "IntegerLessOrEqualIsTrue": 4 <= (2 + 2)
 /// define "LongLessOrEqualIsTrue": 4L <= (2L + 2L)
 /// define "DecimalLessOrEqualIsFalse": 3.5 <= (3.5 - 0.1)
@@ -128,7 +134,8 @@ class LessOrEqual extends BinaryExpression {
     if (left == null || right == null) {
       return null;
     }
-    // Uncertainty interval: [a,b] <= v is true if b <= v, false if a > v, else null
+    // Uncertainty interval: [a,b] <= v is true if b <= v, false if a > v,
+    // else null
     if (left is CqlInterval) {
       final low = left.getStart();
       final high = left.getEnd();

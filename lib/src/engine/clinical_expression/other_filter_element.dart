@@ -43,7 +43,8 @@ class OtherFilterElement extends Element {
     );
   }
 
-  /// The comparator attribute specifies the comparison operation for the filter.
+  /// The comparator attribute specifies the comparison operation for the
+  /// filter.
   String comparator;
 
   /// The property attribute specifies which property the filter applies to.

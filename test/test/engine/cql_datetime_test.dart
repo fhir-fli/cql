@@ -410,7 +410,8 @@ void main() {
       expect(result, isA<CqlInterval<dynamic>>());
       final interval = result as CqlInterval;
       expect(interval.isUncertain(), isTrue);
-      // min: from Jan 31 to Mar 1 = 30 days; max: from Jan 1 to Mar 31 = 90 days
+      // min: from Jan 31 to Mar 1 = 30 days;
+      // max: from Jan 1 to Mar 31 = 90 days
       expect((interval.low as CqlInteger).valueInt! > 0, isTrue);
       expect((interval.high as CqlInteger).valueInt! > 0, isTrue);
       expect(

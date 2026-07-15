@@ -290,8 +290,9 @@ void main() {
     test('calculates age in years from birthdate', () async {
       // Use a birthdate that yields a predictable age
       final birthDate = DateTime(DateTime.now().year - 30);
-      final birthDateStr =
-          '${birthDate.year}-${birthDate.month.toString().padLeft(2, '0')}-${birthDate.day.toString().padLeft(2, '0')}';
+      final birthDateStr = '${birthDate.year}-'
+          '${birthDate.month.toString().padLeft(2, '0')}-'
+          '${birthDate.day.toString().padLeft(2, '0')}';
       final calcAge = CalculateAge(
         precision: CqlDateTimePrecision.year,
         operand: _ConstExpr(CqlDate.fromString(birthDateStr)),

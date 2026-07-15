@@ -161,7 +161,8 @@ class Concatenate extends NaryExpression {
     return l + r;
   }
 
-// Assuming you want to integrate this into your existing method with a 'plus' flag
+// Assuming you want to integrate this into your existing method with a 'plus'
+// flag
   @override
   Future<String?> execute(Map<String, dynamic> context) async {
     if (operand == null || operand!.length != 2) {

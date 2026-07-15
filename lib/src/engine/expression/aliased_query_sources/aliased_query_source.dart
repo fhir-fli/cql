@@ -1,7 +1,9 @@
 import 'package:cql/src/internal.dart';
 
-/// The AliasedQuerySource element defines a single source for inclusion in a query scope.
-/// The type of the source is determined by the expression element, and the source can be accessed within the query scope by the given alias.
+/// The AliasedQuerySource element defines a single source for inclusion in
+/// a query scope.
+/// The type of the source is determined by the expression element, and the
+/// source can be accessed within the query scope by the given alias.
 class AliasedQuerySource extends CqlExpression {
   AliasedQuerySource({
     required this.alias,

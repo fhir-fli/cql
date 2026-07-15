@@ -110,11 +110,13 @@ class FunctionRef extends ExpressionRef {
     }
 
     if (libraryName == null) {
-      // Handle well-known CQL system functions that may be parsed as FunctionRef
+      // Handle well-known CQL system functions that may be parsed as
+      // FunctionRef
       final result = await _trySystemFunction(context);
       if (!identical(result, _notHandled)) return result;
 
-      // Pre-evaluate operands for runtime type matching when signature is absent
+      // Pre-evaluate operands for runtime type matching when signature is
+      // absent
       List<dynamic>? evaluatedOperands;
       if (signature == null && operand != null && operand!.isNotEmpty) {
         evaluatedOperands = <dynamic>[];
@@ -123,7 +125,8 @@ class FunctionRef extends ExpressionRef {
         }
       }
 
-      // Try resolving as a local (same-library) function, including fluent functions
+      // Try resolving as a local (same-library) function, including fluent
+      // functions
       final localFuncDef = library.resolveLocalFunctionDef(
         name,
         operandCount: operand?.length ?? 0,
@@ -211,7 +214,8 @@ class FunctionRef extends ExpressionRef {
       functionContext['library'] = includedLib;
     }
 
-    // Evaluate operands and add them to the function context with parameter names
+    // Evaluate operands and add them to the function context with parameter
+    // names
     if (operand != null && functionDef.operand != null) {
       for (var i = 0;
           i < operand!.length && i < functionDef.operand!.length;

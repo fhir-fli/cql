@@ -1,6 +1,8 @@
 import 'package:cql/src/internal.dart';
 
-/// The With clause restricts the elements of a given source to only those elements that have elements in the related source that satisfy the suchThat condition.
+/// The With clause restricts the elements of a given source to only those
+/// elements that have elements in the related source that satisfy the
+/// suchThat condition.
 /// This operation is known as a semi-join in database languages.
 class With extends RelationshipClause {
   With({

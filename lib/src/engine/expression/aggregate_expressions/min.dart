@@ -33,7 +33,8 @@ import 'package:ucum/ucum.dart';
 /// define "IntegerMin": Min({ 2, 4, 8, 6 }) // 2
 /// define "LongMin": Min({ 2L, 4L, 8L, 6L }) // 2L
 /// define "DateMin": Min({ @2012-12-31, @2013-01-01, @2012-01-01 }) // @2012-01-01
-/// define "MinIsNull": Min({ null as Quantity, null as Quantity, null as Quantity })
+/// define "MinIsNull": Min({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "MinIsAlsoNull": Min(null as `List<Decimal>`)
 class Min extends AggregateExpression {
   Min({

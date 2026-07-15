@@ -75,7 +75,8 @@ void main() {
       );
     });
     test(
-        'define "SumIsNull": Sum({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "SumIsNull": '
+        'Sum({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [
@@ -177,7 +178,8 @@ void main() {
       expect(result, equals(CqlDate.fromString('2012-01-01')));
     });
     test(
-        'define "MinIsNull": Min({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "MinIsNull": '
+        'Min({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [LiteralNull(), LiteralNull(), LiteralNull()],
@@ -235,7 +237,8 @@ void main() {
       expect(result, equals(CqlDate.fromString('2013-01-01')));
     });
     test(
-        'define "MaxIsNull": Max({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "MaxIsNull": '
+        'Max({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [LiteralNull(), LiteralNull(), LiteralNull()],
@@ -286,7 +289,8 @@ void main() {
       );
     });
     test(
-        'define "MedianIsNull": Median({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "MedianIsNull": '
+        'Median({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [
@@ -344,7 +348,8 @@ void main() {
       );
     });
     test(
-        'define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "ModeIsNull": '
+        'Mode({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [
@@ -407,7 +412,8 @@ void main() {
       );
     });
     test(
-        'define "VarianceIsNull": Variance({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "VarianceIsNull": '
+        'Variance({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [
@@ -469,8 +475,8 @@ void main() {
       );
     });
     test(
-        'define "PopulationVarianceIsNull": PopulationVariance({ null as Quantity, null as Quantity, null as Quantity })',
-        () async {
+        'define "PopulationVarianceIsNull": PopulationVariance({ null as '
+        'Quantity, null as Quantity, null as Quantity })', () async {
       final list = ListExpression(
         element: [
           LiteralNull(),
@@ -482,8 +488,8 @@ void main() {
       expect(result, equals(null));
     });
     test(
-        'define "PopulationVarianceIsAlsoNull": PopulationVariance(null as List<Decimal>)',
-        () async {
+        'define "PopulationVarianceIsAlsoNull": '
+        'PopulationVariance(null as List<Decimal>)', () async {
       final result =
           await PopulationVariance(source: LiteralNull()).execute({});
       expect(result, equals(null));
@@ -557,7 +563,8 @@ void main() {
       );
     });
     test(
-        'define "StdDevIsNull": StdDev({ null as Quantity, null as Quantity, null as Quantity })',
+        'define "StdDevIsNull": '
+        'StdDev({ null as Quantity, null as Quantity, null as Quantity })',
         () async {
       final list = ListExpression(
         element: [
@@ -618,8 +625,8 @@ void main() {
       );
     });
     test(
-        'define "PopulationStdDevIsNull": PopulationStdDev({ null as Quantity, null as Quantity, null as Quantity })',
-        () async {
+        'define "PopulationStdDevIsNull": PopulationStdDev({ null as '
+        'Quantity, null as Quantity, null as Quantity })', () async {
       final list = ListExpression(
         element: [
           LiteralNull(),
@@ -631,8 +638,8 @@ void main() {
       expect(result, equals(null));
     });
     test(
-        'define "PopulationStdDevIsAlsoNull": PopulationStdDev(null as List<Decimal>)',
-        () async {
+        'define "PopulationStdDevIsAlsoNull": '
+        'PopulationStdDev(null as List<Decimal>)', () async {
       final result = await PopulationStdDev(source: LiteralNull()).execute({});
       expect(result, equals(null));
     });

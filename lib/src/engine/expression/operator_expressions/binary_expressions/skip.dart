@@ -2,7 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// `Skip<T>`
 ///
-/// The Skip operator returns the elements in a list, skipping the first N elements.
+/// The Skip operator returns the elements in a list, skipping the first N
+/// elements.
 /// If the source list is null, the result is null.
 ///
 /// Signature:
@@ -93,11 +94,12 @@ class Skip extends BinaryExpression {
       return src as List<dynamic>?;
     }
     if (!(count is int || count is CqlInteger)) {
-      throw CqlException(
+      throw const CqlException(
         message: 'Skip operator requires a list and an integer as operands',
       );
     }
-    if ((count < 0) as bool) {
+    final isNegative = count is CqlInteger ? count < 0 : (count as int) < 0;
+    if (isNegative) {
       return [];
     }
     // Delegate to central Slice implementation

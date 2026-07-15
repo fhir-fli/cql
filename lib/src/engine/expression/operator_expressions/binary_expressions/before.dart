@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to determine if the first interval ends before the second interval
 /// starts.
@@ -225,7 +226,14 @@ class Before extends BinaryExpression {
         return CqlBoolean(left.compareTo(rightStart) < 0);
       } else {
         try {
-          final result = left < rightStart;
+          final result = switch (left) {
+            final CqlDateTimeBase l => l < rightStart,
+            final CqlTime l => l < rightStart,
+            final CqlNumber l => l < rightStart,
+            final CqlLong l => l < rightStart,
+            final ValidatedQuantity l => l < rightStart,
+            _ => null,
+          };
           return result == null ? null : CqlBoolean(result);
         } catch (e) {
           return null;
@@ -315,10 +323,12 @@ class Before extends BinaryExpression {
   }
 
   static CqlBoolean? beforeDateTime(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, [
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, [
     CqlDateTimePrecision? precision,
   ]) {
+    var left = leftValue;
+    var right = rightValue;
     if (precision == null) {
       final result = left.isBefore(right);
       return result == null ? null : CqlBoolean(result);

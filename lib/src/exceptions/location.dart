@@ -11,7 +11,48 @@ import 'package:meta/meta.dart';
 class Location {
   /// Creates a [Location] spanning from ([startLine], [startChar]) to
   /// ([endLine], [endChar]).
-  Location(this.startLine, this.startChar, this.endLine, this.endChar);
+  const Location(this.startLine, this.startChar, this.endLine, this.endChar);
+
+  /// Parses a locator string (as produced by [toLocator]) back into a
+  /// [Location].
+  ///
+  /// Accepts either `line:char` or `startLine:startChar-endLine:endChar`.
+  /// Throws an [ArgumentError] if [locator] is null or empty, or a
+  /// [FormatException] if a segment is not in `line:char` form.
+  factory Location.fromLocator(String? locator) {
+    if (locator == null || locator.isEmpty) {
+      throw ArgumentError('locator required');
+    }
+
+    final locations = locator.split('-');
+    var startLine = 0;
+    var startChar = 0;
+    var endLine = 0;
+    var endChar = 0;
+
+    for (var i = 0; i < locations.length; i++) {
+      final ranges = locations[i].split(':');
+      if (ranges.length != 2) {
+        throw FormatException('Invalid locator format: $locator');
+      }
+      final line = int.parse(ranges[0]);
+      final char = int.parse(ranges[1]);
+      if (i == 0) {
+        startLine = line;
+        startChar = char;
+      } else {
+        endLine = line;
+        endChar = char;
+      }
+    }
+
+    if (locations.length == 1) {
+      endLine = startLine;
+      endChar = startChar;
+    }
+
+    return Location(startLine, startChar, endLine, endChar);
+  }
 
   /// The 1-based line number where the span begins.
   final int startLine;
@@ -64,8 +105,8 @@ class Location {
   }
 
   @override
-  String toString() =>
-      'Location{ startLine=$startLine, startChar=$startChar, endLine=$endLine, endChar=$endChar }';
+  String toString() => 'Location{ startLine=$startLine, '
+      'startChar=$startChar, endLine=$endLine, endChar=$endChar }';
 
   /// Renders this location as a locator string.
   ///
@@ -75,46 +116,5 @@ class Location {
     return startLine == endLine && startChar == endChar
         ? '$startLine:$startChar'
         : '$startLine:$startChar-$endLine:$endChar';
-  }
-
-  /// Parses a locator string (as produced by [toLocator]) back into a
-  /// [Location].
-  ///
-  /// Accepts either `line:char` or `startLine:startChar-endLine:endChar`.
-  /// Throws an [ArgumentError] if [locator] is null or empty, or a
-  /// [FormatException] if a segment is not in `line:char` form.
-  static Location fromLocator(String? locator) {
-    if (locator == null || locator.isEmpty) {
-      throw ArgumentError('locator required');
-    }
-
-    final locations = locator.split('-');
-    var startLine = 0;
-    var startChar = 0;
-    var endLine = 0;
-    var endChar = 0;
-
-    for (var i = 0; i < locations.length; i++) {
-      final ranges = locations[i].split(':');
-      if (ranges.length != 2) {
-        throw FormatException('Invalid locator format: $locator');
-      }
-      final line = int.parse(ranges[0]);
-      final char = int.parse(ranges[1]);
-      if (i == 0) {
-        startLine = line;
-        startChar = char;
-      } else {
-        endLine = line;
-        endChar = char;
-      }
-    }
-
-    if (locations.length == 1) {
-      endLine = startLine;
-      endChar = startChar;
-    }
-
-    return Location(startLine, startChar, endLine, endChar);
   }
 }

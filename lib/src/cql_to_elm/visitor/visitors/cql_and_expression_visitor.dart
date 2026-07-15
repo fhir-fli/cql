@@ -44,6 +44,8 @@ class CqlAndExpressionVisitor extends CqlBaseVisitor<And> {
       }
       return And(operand: operand);
     }
-    throw '$thisNode Invalid number of arguments for And operator';
+    throw CqlException(
+      message: '$thisNode Invalid number of arguments for And operator',
+    );
   }
 }

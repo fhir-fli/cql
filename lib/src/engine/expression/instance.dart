@@ -50,7 +50,8 @@ class Instance extends CqlExpression {
   /// Type of the class instance being built.
   QName classType;
 
-  /// List of instance elements specifying values for the elements of the class instance.
+  /// List of instance elements specifying values for the elements of the
+  /// class instance.
   List<InstanceElement>? element;
 
   @override

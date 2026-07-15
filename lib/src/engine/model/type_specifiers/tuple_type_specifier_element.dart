@@ -2,8 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// Represents an element within TupleTypeSpecifier.
 ///
-/// The [TupleTypeSpecifierElement] type defines the name and type of a single element
-/// within a TupleTypeSpecifier.
+/// The [TupleTypeSpecifierElement] type defines the name and type of a single
+/// element within a TupleTypeSpecifier.
 class TupleTypeSpecifierElement {
   TupleTypeSpecifierElement({
     required this.elementType,

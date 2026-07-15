@@ -25,7 +25,8 @@ class ParameterDefs {
   dynamic execute() => def.map((e) => e.execute()).toList();
 }
 
-/// Definition of a parameter that can be referenced by name within an expression.
+/// Definition of a parameter that can be referenced by name within an
+/// expression.
 class ParameterDef extends Element {
   ParameterDef({
     required this.name,

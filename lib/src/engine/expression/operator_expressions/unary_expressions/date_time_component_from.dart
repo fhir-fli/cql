@@ -2,7 +2,8 @@ import 'package:cql/src/internal.dart';
 
 /// Operator to return the specified component of the argument.
 /// If the argument is null, the result is null.
-/// The precision must be one of Year, Month, Day, Hour, Minute, Second, or Millisecond.
+/// The precision must be one of Year, Month, Day, Hour, Minute, Second, or
+/// Millisecond.
 /// Signature:
 ///
 /// _precision_ from(argument Date) Integer
@@ -20,7 +21,8 @@ import 'package:cql/src/internal.dart';
 /// For DateTime values, precision must be one of: year, month, day, hour,
 /// minute, second, or millisecond.
 ///
-/// For Time values, precision must be one of: hour, minute, second, or millisecond.
+/// For Time values, precision must be one of: hour, minute, second, or
+/// millisecond.
 ///
 /// Note specifically that due to variability in the way week numbers are
 /// determined, extraction of a week component is not supported.
@@ -31,7 +33,8 @@ import 'package:cql/src/internal.dart';
 /// If the argument is null, or is not specified to the level of precision
 /// being extracted, the result is null.
 ///
-/// The following examples illustrate the behavior of the component-from operator:
+/// The following examples illustrate the behavior of the component-from
+/// operator:
 ///
 /// define "MonthFrom": month from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // 1
 /// define "TimeZoneOffsetFrom": timezoneoffset from DateTime(2012, 1, 1, 12, 30, 0, 0, -7) // -7.0
@@ -131,7 +134,7 @@ class DateTimeComponentFrom extends UnaryExpression {
           return operandValue.hasMilliseconds
               ? CqlInteger(operandValue.millisecond)
               : null;
-        default:
+        case CqlDateTimePrecision.week:
           return null;
       }
     } else if (operandValue is CqlDate) {
@@ -142,7 +145,11 @@ class DateTimeComponentFrom extends UnaryExpression {
           return operandValue.hasMonth ? CqlInteger(operandValue.month) : null;
         case CqlDateTimePrecision.day:
           return operandValue.hasDay ? CqlInteger(operandValue.day) : null;
-        default:
+        case CqlDateTimePrecision.week:
+        case CqlDateTimePrecision.hour:
+        case CqlDateTimePrecision.minute:
+        case CqlDateTimePrecision.second:
+        case CqlDateTimePrecision.millisecond:
           return null;
       }
     } else if (operandValue is CqlTime) {
@@ -163,7 +170,10 @@ class DateTimeComponentFrom extends UnaryExpression {
           return operandValue.millisecond != null
               ? CqlInteger(operandValue.millisecond)
               : null;
-        default:
+        case CqlDateTimePrecision.year:
+        case CqlDateTimePrecision.month:
+        case CqlDateTimePrecision.week:
+        case CqlDateTimePrecision.day:
           return null;
       }
     }

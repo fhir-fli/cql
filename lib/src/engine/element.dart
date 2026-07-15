@@ -41,16 +41,18 @@ class Element {
   // numbers are 1-based.
   String? locator;
 
-  // The resultTypeName attribute is part of type information for an ELM document.
-  // ELM documents are not required to specify result type information, but if they
-  // do, the result type of each node is specified using this attribute for named
-  // types, or the resultTypeSpecifier element for non-named types.
+  // The resultTypeName attribute is part of type information for an ELM
+  // document. ELM documents are not required to specify result type
+  // information, but if they do, the result type of each node is specified
+  // using this attribute for named types, or the resultTypeSpecifier element
+  // for non-named types.
   String? resultTypeName;
 
-  // The resultTypeSpecifier element describes the type information for this ELM node.
-  // ELM documents are not required to contain result type information, but if they do,
-  // the result type of each node is specified using the resultTypeName attribute for
-  // named types, and this resultTypeSpecifier element for non-named types.
+  // The resultTypeSpecifier element describes the type information for this
+  // ELM node. ELM documents are not required to contain result type
+  // information, but if they do, the result type of each node is specified
+  // using the resultTypeName attribute for named types, and this
+  // resultTypeSpecifier element for non-named types.
   TypeSpecifierExpression? resultTypeSpecifier;
 
   /// Translator-inferred result type (normalized `Qualifier.LocalName`, e.g.

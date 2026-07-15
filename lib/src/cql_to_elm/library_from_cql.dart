@@ -14,11 +14,12 @@ CqlLibrary libraryFromCql(String source, {LibraryManager? libraryManager}) {
   final tokens = CommonTokenStream(lexer);
   final parser = cqlParser(tokens);
   final errorListener = ElmErrorListener();
-  parser.addErrorListener(errorListener);
-  parser.buildParseTree = true;
+  parser
+    ..addErrorListener(errorListener)
+    ..buildParseTree = true;
 
-  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary());
-  visitor.visit(parser.library_());
+  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary())
+    ..visit(parser.library_());
   final library = visitor.library;
 
   final errors = errorListener.errors

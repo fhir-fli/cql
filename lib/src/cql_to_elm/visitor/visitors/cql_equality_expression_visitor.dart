@@ -100,7 +100,8 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
             setOpCast = seen.length > 1;
           }
 
-          // 3) genericCast: declared element-type vs actual literal types differ
+          // 3) genericCast: declared element-type vs actual literal types
+          //    differ
           final actualTypes = expr.element
                   ?.map((e) => e.getReturnTypes(library))
                   .expand((ts) => ts)
@@ -193,7 +194,8 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
       // 2) Check FHIR concept properties compared with Code-type operands.
       //    When a FHIR property like .code is compared with a CodeRef,
-      //    wrap the FHIR side with FHIRHelpers.ToConcept and the Code with ToConcept.
+      //    wrap the FHIR side with FHIRHelpers.ToConcept and the Code with
+      //    ToConcept.
       //    When both sides are FHIR concept properties, no wrapping needed.
       final leftIsFhirConceptProp = _isFhirConceptProperty(left);
       final rightIsFhirConceptProp = _isFhirConceptProperty(right);
@@ -266,7 +268,8 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
     }
 
     throw ArgumentError(
-      '$thisNode Invalid EqualityExpression: operands=${operands.length}, operator=$equalityOperator',
+      '$thisNode Invalid EqualityExpression: operands=${operands.length}, '
+      'operator=$equalityOperator',
     );
   }
 
@@ -396,11 +399,14 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// Returns null if the property is not on a choice field.
   ///
   /// For Extension.value[x] compared to 'M', generates:
-  /// ```
+  /// ```text
   /// Case {
-  ///   when Is({fhir}base64Binary, value) then ToString(As({fhir}base64Binary, value))
-  ///   when Is({fhir}uri, value) then ToString(As({fhir}uri, value))  // for canonical
-  ///   when Is({fhir}string, value) then ToString(As({fhir}string, value))  // for code
+  ///   when Is({fhir}base64Binary, value)
+  ///     then ToString(As({fhir}base64Binary, value))
+  ///   when Is({fhir}uri, value)
+  ///     then ToString(As({fhir}uri, value))  // for canonical
+  ///   when Is({fhir}string, value)
+  ///     then ToString(As({fhir}string, value))  // for code
   ///   ...
   ///   else null
   /// }

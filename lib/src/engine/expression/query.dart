@@ -245,22 +245,22 @@ class Query extends CqlExpression {
       }
 
       // Sort rows using the precomputed keys
-      final indices = List<int>.generate(rows.length, (i) => i);
-      indices.sort((i, j) {
-        final k1 = keyLists[i];
-        final k2 = keyLists[j];
-        for (var idx = 0; idx < k1.length; idx++) {
-          final a = k1[idx];
-          final b = k2[idx];
-          final cmp = (a == null && b == null)
-              ? 0
-              : (a == null ? -1 : (b == null ? 1 : a.compareTo(b)));
-          if (cmp != 0) {
-            return descending[idx] ? -cmp : cmp;
+      final indices = List<int>.generate(rows.length, (i) => i)
+        ..sort((i, j) {
+          final k1 = keyLists[i];
+          final k2 = keyLists[j];
+          for (var idx = 0; idx < k1.length; idx++) {
+            final a = k1[idx];
+            final b = k2[idx];
+            final cmp = (a == null && b == null)
+                ? 0
+                : (a == null ? -1 : (b == null ? 1 : a.compareTo(b)));
+            if (cmp != 0) {
+              return descending[idx] ? -cmp : cmp;
+            }
           }
-        }
-        return 0;
-      });
+          return 0;
+        });
       rows = [for (final idx in indices) rows[idx]];
     }
 
@@ -306,7 +306,8 @@ class Query extends CqlExpression {
         return result.toSet().toList();
       }
     } else if (source.length == 1) {
-      // No return clause with single source: return the source elements directly
+      // No return clause with single source: return the source elements
+      // directly
       final alias = source.first.alias;
       for (final row in rows) {
         result.add(row[alias]);
@@ -331,6 +332,8 @@ class Query extends CqlExpression {
 
   @override
   String toString() {
-    return 'Query(source: $source, let: $let, relationship: $relationship, where: $where, returnClause: $returnClause, sort: $sort, aggregate: $aggregate)';
+    return 'Query(source: $source, let: $let, relationship: $relationship, '
+        'where: $where, returnClause: $returnClause, sort: $sort, '
+        'aggregate: $aggregate)';
   }
 }

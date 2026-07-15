@@ -15,7 +15,7 @@ class SourceLocator {
   /// [libraryName] and [nodeType] are required; the remaining fields refine the
   /// reference with the library's system/version, the ELM [nodeId], and the
   /// [sourceLocation] span when known.
-  SourceLocator({
+  const SourceLocator({
     required this.libraryName,
     required this.nodeType,
     this.librarySystemId,

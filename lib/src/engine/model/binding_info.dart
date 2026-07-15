@@ -34,7 +34,8 @@ class BindingInfo {
 
   @override
   String toString() {
-    return 'BindingInfo{name: $name, description: $description, strength: $strength, valueSet: $valueSet}';
+    return 'BindingInfo{name: $name, description: $description, '
+        'strength: $strength, valueSet: $valueSet}';
   }
 
   Map<String, dynamic> toJson() => {

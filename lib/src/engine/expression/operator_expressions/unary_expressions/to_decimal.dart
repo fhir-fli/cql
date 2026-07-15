@@ -121,7 +121,8 @@ class ToDecimal extends UnaryExpression {
             return null;
           }
           // Check bounds: CQL Decimal supports at least 28 digits of precision
-          // and 8 digits of scale. Values outside representable range return null.
+          // and 8 digits of scale. Values outside representable range return
+          // null.
           final dotIndex = result.indexOf('.');
           final intPart = dotIndex >= 0
               ? result.substring(

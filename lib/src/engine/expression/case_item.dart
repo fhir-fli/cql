@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Represents an element within a case operator, specifying conditions and their corresponding actions.
+/// Represents an element within a case operator, specifying conditions and
+/// their corresponding actions.
 class CaseItem extends Element {
   CaseItem({
     required this.when_,

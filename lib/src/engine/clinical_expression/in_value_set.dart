@@ -7,8 +7,9 @@ import 'package:cql/src/internal.dart';
 ///
 /// Note that this operator explicitly requires a ValueSetRef as its valueset
 /// argument. This allows for both static analysis of the value set references
-/// within an artifact, as well as the implementation of value set membership by
-/// the target environment as a service call to a terminology server, if desired.
+/// within an artifact, as well as the implementation of value set membership
+/// by the target environment as a service call to a terminology server, if
+/// desired.
 class InValueSet extends OperatorExpression {
   InValueSet({
     required this.code,
@@ -59,9 +60,8 @@ class InValueSet extends OperatorExpression {
     };
 
     if (valueset != null) {
-      final valueSetMap = valueset!.toJson();
-      valueSetMap
-          .removeWhere((key, value) => key == 'type' && value == 'ValueSetRef');
+      final valueSetMap = valueset!.toJson()
+        ..removeWhere((key, value) => key == 'type' && value == 'ValueSetRef');
       json['valueset'] = valueSetMap;
     }
 

@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Abstract base class for Aggregate expressions performing operations on lists of data.
+/// Abstract base class for Aggregate expressions performing operations on
+/// lists of data.
 abstract class AggregateExpression extends CqlExpression {
   AggregateExpression({
     required this.signature,

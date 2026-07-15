@@ -199,20 +199,20 @@ class Collapse extends BinaryExpression {
       return null;
     }
 
-    if (source.isEmpty as bool) {
+    var sourceList = source as List;
+    if (sourceList.isEmpty) {
       return [];
     }
 
-    // Filter out null elements (e.g., from Interval(null, null) evaluating to null)
-    if (source is List) {
-      source = source.where((e) => e != null).toList();
-    }
-    if (source.isEmpty as bool) {
+    // Filter out null elements (e.g., from Interval(null, null) evaluating
+    // to null)
+    sourceList = sourceList.where((e) => e != null).toList();
+    if (sourceList.isEmpty) {
       return [];
     }
-    if (source is List && source.every((element) => element is CqlInterval)) {
+    if (sourceList.every((element) => element is CqlInterval)) {
       // Filter out null intervals (both boundaries null)
-      final intervals = source.cast<CqlInterval<dynamic>>();
+      final intervals = sourceList.cast<CqlInterval<dynamic>>();
       final filtered =
           intervals.where((i) => i.low != null || i.high != null).toList();
       if (filtered.isEmpty) {
@@ -221,17 +221,15 @@ class Collapse extends BinaryExpression {
       if (filtered.length == 1) {
         return filtered;
       }
-      source = filtered;
 
       final precision =
-          _precisionFromQuantity(per) ?? _coarsestPrecision(source);
+          _precisionFromQuantity(per) ?? _coarsestPrecision(filtered);
 
       // Sort the source by their start points
-      source.sort((a, b) => a.compareTo(b) as int);
+      filtered.sort((a, b) => a.compareTo(b));
 
       final collapsedSource = <CqlInterval<dynamic>>[];
-      CqlInterval<dynamic>? currentInterval =
-          source.first as CqlInterval<dynamic>?;
+      CqlInterval<dynamic>? currentInterval = filtered.first;
 
       // Normalize per for gap tolerance calculation.
       // When per is a ValidatedQuantity and endpoints are numeric FHIR types,
@@ -240,8 +238,9 @@ class Collapse extends BinaryExpression {
       // we need to convert per to ValidatedQuantity with unit '1'.
       dynamic effectivePer = per;
       if (per is ValidatedQuantity) {
-        effectivePer = Expand.normalizePer(per, source.first.getStart());
-      } else if (per != null && source.first.getStart() is ValidatedQuantity) {
+        effectivePer = Expand.normalizePer(per, filtered.first.getStart());
+      } else if (per != null &&
+          filtered.first.getStart() is ValidatedQuantity) {
         // Endpoints are ValidatedQuantity — convert per to ValidatedQuantity
         if (per is CqlInteger) {
           effectivePer = ValidatedQuantity(
@@ -256,8 +255,8 @@ class Collapse extends BinaryExpression {
         }
       }
 
-      for (var i = 1; i < source.length; i++) {
-        final nextInterval = source[i];
+      for (var i = 1; i < filtered.length; i++) {
+        final nextInterval = filtered[i];
 
         // Check if current and next source overlap or meet
         final overlaps =
@@ -301,11 +300,11 @@ class Collapse extends BinaryExpression {
             low: currentInterval?.low,
             lowClosed: currentInterval?.lowClosed,
             high: newEnd,
-            highClosed: newHighClosed as bool?,
+            highClosed: newHighClosed,
           );
         } else if (currentInterval != null) {
           collapsedSource.add(currentInterval);
-          currentInterval = nextInterval as CqlInterval<dynamic>?;
+          currentInterval = nextInterval;
         }
       }
 

@@ -212,6 +212,7 @@ class Union extends NaryExpression {
 
   @override
   String toString() {
-    return 'Union{operand: ${operand?.map((e) => e.toString()).toList().join(', ')})';
+    return 'Union{operand: '
+        '${operand?.map((e) => e.toString()).toList().join(', ')})';
   }
 }

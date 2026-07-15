@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// The Expression type defines the abstract base type for all expressions used in the ELM expression language.
+/// The Expression type defines the abstract base type for all expressions
+/// used in the ELM expression language.
 class CqlExpression extends Element {
   CqlExpression({
     super.annotation,
@@ -1137,10 +1138,11 @@ class CqlExpression extends Element {
     return data;
   }
 
-  String? get type => throw 'Get Type Unknown Expression type: $runtimeType';
+  String? get type =>
+      throw UnsupportedError('Expression subclass does not implement type');
 
   Future<dynamic> execute(Map<String, dynamic> context) async =>
-      'Execute Unknown Expression type: $runtimeType';
+      'Execute Unknown Expression type';
 
   List<String> getReturnTypes(CqlLibrary library) => ['Unknown'];
 }

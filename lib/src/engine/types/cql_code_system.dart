@@ -9,7 +9,7 @@ import 'package:cql/src/internal.dart';
 class CqlCodeSystem extends CqlVocabulary {
   /// Creates a code-system reference from its canonical [id], [version] and
   /// local [name].
-  CqlCodeSystem({
+  const CqlCodeSystem({
     required super.id,
     required super.version,
     required super.name,

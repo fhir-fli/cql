@@ -4,9 +4,6 @@ import 'dart:io';
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
 import 'package:cql/src/internal.dart';
-// The ANTLR-generated lexer/parser is internal API; the package's own
-// tests may reach it directly.
-import 'package:cql/src/cql_to_elm/antlr/antlr.dart';
 
 class CqlParsersAndErrors {
   CqlParsersAndErrors(this.parser, this.errorListener);
@@ -20,8 +17,9 @@ CqlParsersAndErrors parseCql(String pathExpression) {
   final tokens = CommonTokenStream(lexer);
   final parser = cqlParser(tokens);
   final errorListener = ElmErrorListener();
-  parser.addErrorListener(errorListener);
-  parser.buildParseTree = true;
+  parser
+    ..addErrorListener(errorListener)
+    ..buildParseTree = true;
   return CqlParsersAndErrors(parser, errorListener);
 }
 
@@ -41,8 +39,8 @@ CqlLibrary parseAndBuildLibrary(
   final parserAndErrors = parseCql(cqlSource);
   final parser = parserAndErrors.parser;
 
-  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary());
-  visitor.visit(parser.library_());
+  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary())
+    ..visit(parser.library_());
 
   final errors = parserAndErrors.errorListener.errors.map((e) {
     return e.copyWith(
@@ -88,7 +86,8 @@ bool areValuesEqual(dynamic result, dynamic answer) {
     }
     return result == answer;
   } else if (result is CqlTime && answer is CqlTime) {
-    // Allow a 1-minute tolerance for time-sensitive expressions like TimeOfDay()
+    // Allow a 1-minute tolerance for time-sensitive expressions like
+    // TimeOfDay()
     return (_calculateSeconds(result) - _calculateSeconds(answer)).abs() < 60;
   }
   return result == answer;

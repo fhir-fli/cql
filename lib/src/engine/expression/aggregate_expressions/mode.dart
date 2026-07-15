@@ -20,7 +20,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// define "DecimalMode": Mode({ 2.0, 2.0, 8.0, 6.0, 8.0, 8.0 }) // 8.0
 /// define "QuantityMode": Mode({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 2.0 'mg' }) // 2.0 'mg'
-/// define "ModeIsNull": Mode({ null as Quantity, null as Quantity, null as Quantity })
+/// define "ModeIsNull": Mode({ null as Quantity, null as Quantity,
+///   null as Quantity })
 /// define "ModeIsAlsoNull": Mode(null as `List<Decimal>`)
 class Mode extends AggregateExpression {
   Mode({

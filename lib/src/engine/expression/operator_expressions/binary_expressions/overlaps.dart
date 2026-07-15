@@ -8,7 +8,8 @@ import 'package:cql/src/internal.dart';
 /// Signature:
 ///
 /// overlaps _precision_ (left `Interval<T>`, right `Interval<T>`) Boolean
-/// overlaps before _precision_ (left `Interval<T>`, right `Interval<T>`) Boolean
+/// overlaps before _precision_ (left `Interval<T>`, right `Interval<T>`)
+///   Boolean
 /// overlaps after _precision_ (left `Interval<T>`, right `Interval<T>`) Boolean
 /// Description:
 ///
@@ -38,7 +39,8 @@ import 'package:cql/src/internal.dart';
 /// define "OverlapsIsTrue": Interval[0, 4] overlaps Interval[1, 4]
 /// define "OverlapsBeforeIsTrue": Interval[0, 4] overlaps before Interval[1, 4]
 /// define "OverlapsAfterIsFalse": Interval[0, 4] overlaps after Interval[1, 4]
-/// define "OverlapsIsNull": Interval[6, 10] overlaps (null as `Interval<Integer>`)
+/// define "OverlapsIsNull":
+///   Interval[6, 10] overlaps (null as `Interval<Integer>`)
 class Overlaps extends BinaryExpression {
   Overlaps({
     required super.operand,

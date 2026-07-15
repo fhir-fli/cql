@@ -63,7 +63,8 @@ import 'package:cql/src/internal.dart';
 ///
 /// define "SameOrBeforeTrue": @2012-01-01 same day or before @2012-01-02
 /// define "SameOrBeforeFalse": @2012-01-02 same day or before @2012-01-01
-/// define "UncertainSameOrBeforeIsNull": @2012-01-02 same day or before @2012-01
+/// define "UncertainSameOrBeforeIsNull":
+///   @2012-01-02 same day or before @2012-01
 /// define "SameOrBeforeIsNull": @2012-01-01 same day or before null
 /// This operator is also defined for intervals, see the Same Or Before
 /// (Intervals) operator for more information.

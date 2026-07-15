@@ -1,13 +1,10 @@
 import 'dart:convert';
 
-import 'package:cql/src/internal.dart' show Retrieve;
-
 import 'package:cql/src/engine/clinical_expression/clinical_expression.dart'
     show Retrieve;
-
 import 'package:cql/src/engine/clinical_expression/retrieve.dart' show Retrieve;
-
 import 'package:cql/src/engine/engine.dart' show Retrieve;
+import 'package:cql/src/internal.dart' show Retrieve;
 
 /// Converts a FHIR Bundle into the `Map<String, dynamic>` context format
 /// the CQL engine's [Retrieve] expression expects.
@@ -37,9 +34,8 @@ class BundleDataProvider {
         // CQL `context Patient` expects a single resource
         context['Patient'] = resource;
       } else {
-        final list =
-            context.putIfAbsent(resourceType, () => <dynamic>[]) as List;
-        list.add(resource);
+        (context.putIfAbsent(resourceType, () => <dynamic>[]) as List)
+            .add(resource);
       }
     }
 

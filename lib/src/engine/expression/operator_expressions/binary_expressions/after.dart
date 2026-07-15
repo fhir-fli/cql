@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to determine if the first interval starts after the second
 /// interval ends.
@@ -218,7 +219,14 @@ class After extends BinaryExpression {
         return CqlBoolean(left.compareTo(rightEnd) > 0);
       } else {
         try {
-          final result = left > rightEnd;
+          final result = switch (left) {
+            final CqlDateTimeBase l => l > rightEnd,
+            final CqlTime l => l > rightEnd,
+            final CqlNumber l => l > rightEnd,
+            final CqlLong l => l > rightEnd,
+            final ValidatedQuantity l => l > rightEnd,
+            _ => null,
+          };
           return result == null ? null : CqlBoolean(result);
         } catch (e) {
           return null;
@@ -308,10 +316,12 @@ class After extends BinaryExpression {
   }
 
   static CqlBoolean? afterDateTime(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, [
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, [
     CqlDateTimePrecision? precision,
   ]) {
+    var left = leftValue;
+    var right = rightValue;
     if (precision == null) {
       final result = left.isAfter(right);
       return result == null ? null : CqlBoolean(result);

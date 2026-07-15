@@ -1,8 +1,8 @@
 /// The severity level classifying a CQL translation or evaluation diagnostic.
 ///
 /// Diagnostics produced while parsing, translating, or evaluating CQL carry a
-/// [Severity] indicating how they should be surfaced, ranging from informational
-/// output through to fatal errors. See [CqlException.severity].
+/// [Severity] indicating how they should be surfaced, ranging from
+/// informational output through to fatal errors. See [CqlException.severity].
 enum Severity {
   /// An informational diagnostic reported to the caller (non-blocking).
   report,

@@ -131,7 +131,8 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return type == null ? null : elementTypeName(type);
   }
 
-  /// Whether we're currently inside a sort clause (suppresses FHIRHelpers wrapping).
+  /// Whether we're currently inside a sort clause (suppresses FHIRHelpers
+  /// wrapping).
   static bool _inSortClause = false;
 
   @override
@@ -1386,8 +1387,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  /// Given a Property expression and a target FHIR type name (e.g. 'boolean'),
-  /// wrap the property in As(asType: {fhir}targetType) then FHIRHelpers.ToXxx().
+  /// Given a Property expression and a target FHIR type name (e.g.
+  /// 'boolean'), wrap the property in As(asType: {fhir}targetType) then
+  /// FHIRHelpers.ToXxx().
   static CqlExpression wrapChoiceProperty(
     CqlExpression property,
     String fhirTypeName,
@@ -1538,11 +1540,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   void printIf(ParserRuleContext ctx, [bool should = false]) {
     if (shouldPrint || should) {
-      print('$nodeNumber    '
-          '${ctx.runtimeType}    '
-          '${ctx.text}    '
-          '${ctx.childCount}    '
-          '${ctx.parent.runtimeType}');
+      log(
+        '$nodeNumber    '
+        '${ctx.runtimeType}    '
+        '${ctx.text}    '
+        '${ctx.childCount}    '
+        '${ctx.parent.runtimeType}',
+        name: 'cql.translator',
+      );
     }
   }
 
@@ -1911,14 +1916,15 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   String noQuoteString(String string) {
-    if (string.length >= 2) {
-      final first = string[0];
-      final last = string[string.length - 1];
+    var result = string;
+    if (result.length >= 2) {
+      final first = result[0];
+      final last = result[result.length - 1];
       if ((first == '"' || first == "'") && (last == '"' || last == "'")) {
-        string = string.substring(1, string.length - 1);
+        result = result.substring(1, result.length - 1);
       }
     }
-    return string;
+    return result;
   }
 
   Ref returnRef(String name, String? libraryName) {
@@ -1983,9 +1989,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   CqlExpression startsorEnds(CqlExpression expression, String? value) {
-    // If the CQL explicitly says 'starts' or 'ends', always wrap with Start/End
-    // regardless of inferred return types — the expression may return an interval
-    // at runtime even if type inference doesn't detect it (e.g. FunctionRef).
+    // If the CQL explicitly says 'starts' or 'ends', always wrap with
+    // Start/End regardless of inferred return types — the expression may
+    // return an interval at runtime even if type inference doesn't detect it
+    // (e.g. FunctionRef).
     switch (value) {
       case 'starts':
         return Start(operand: expression);

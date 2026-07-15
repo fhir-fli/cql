@@ -44,7 +44,9 @@ class ConstraintInfo {
 
   @override
   String toString() {
-    return 'ConstraintInfo{name: $name, severity: $severity, expressions: $expressions, description: $description, message: $message}';
+    return 'ConstraintInfo{name: $name, severity: $severity, '
+        'expressions: $expressions, description: $description, '
+        'message: $message}';
   }
 
   Map<String, dynamic> toJson() {

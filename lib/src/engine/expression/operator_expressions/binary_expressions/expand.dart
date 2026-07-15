@@ -155,17 +155,20 @@ class Expand extends BinaryExpression {
     final numVal = num.tryParse(per.value.asUcumDecimal());
     if (numVal == null) return per;
 
-    // Numeric intervals: per with unit '1' or no unit → convert to matching type
+    // Numeric intervals: per with unit '1' or no unit → convert to matching
+    // type
     if (unit == '1' || unit == '') {
       final isIntVal = numVal == numVal.truncateToDouble();
       if (start is CqlInteger) {
         if (isIntVal) return CqlInteger(numVal.toInt());
-        // Decimal per with integer start: return decimal (triggers int→dec conversion)
+        // Decimal per with integer start: return decimal (triggers int→dec
+        // conversion)
         return CqlDecimal(numVal.toDouble());
       }
       if (start is CqlLong) return CqlLong.fromNum(numVal.toInt());
       if (start is CqlDecimal) {
-        // Integer per with decimal start: keep as CqlInteger for ceiling alignment
+        // Integer per with decimal start: keep as CqlInteger for ceiling
+        // alignment
         if (isIntVal) return CqlInteger(numVal.toInt());
         return CqlDecimal(numVal.toDouble());
       }
@@ -218,45 +221,43 @@ class Expand extends BinaryExpression {
       return result;
     }
 
-    per ??= _defaultPer(start);
+    // Normalize per (defaulted from start when absent) to match start type
+    final effectivePer = normalizePer(per ?? _defaultPer(start), start);
+    if (effectivePer == null) return null; // Incompatible per → null result
 
-    // Normalize per to match start type
-    per = normalizePer(per, start);
-    if (per == null) return null; // Incompatible per → null result
-
-    // TODO: Cross-unit quantity expand (e.g., per 1 'mg' on 'g' intervals)
-    // requires matching CQF's precision behavior during unit conversion.
-    // Skipped for now — these 2 tests remain as known failures.
+    // TODO(Dokotela): Cross-unit quantity expand (e.g., per 1 'mg' on 'g'
+    // intervals) requires matching CQF's precision behavior during unit
+    // conversion. Skipped for now — these 2 tests remain as known failures.
 
     // For open boundaries, apply per-precision successor/predecessor
     // instead of the default type successor/predecessor.
     if (!interval.lowClosed && interval.low != null) {
-      start = _perSuccessor(interval.low, per);
+      start = _perSuccessor(interval.low, effectivePer);
       if (start == null) return [];
     }
     if (!interval.highClosed && interval.high != null) {
-      end = _perPredecessor(interval.high, per);
+      end = _perPredecessor(interval.high, effectivePer);
       if (end == null) return [];
     }
 
     // Apply precision adjustments to boundaries
-    final adjusted = _adjustBoundaries(start, end, per);
+    final adjusted = _adjustBoundaries(start, end, effectivePer);
     if (adjusted == null) return [];
     start = adjusted.$1;
     end = adjusted.$2;
 
     // Compute the step size for high boundary calculation
-    final isDecimalPer = per is CqlDecimal;
-    final isQuantityPer =
-        per is ValidatedQuantity && !_temporalUnits.contains(per.unit);
+    final isDecimalPer = effectivePer is CqlDecimal;
+    final isQuantityPer = effectivePer is ValidatedQuantity &&
+        !_temporalUnits.contains(effectivePer.unit);
 
     // For decimal per, track decimal places for rounding
-    final decPlaces = isDecimalPer ? _decimalPlaces(per) : 0;
+    final decPlaces = isDecimalPer ? _decimalPlaces(effectivePer) : 0;
 
     // Safety limit to prevent infinite loops
     for (var i = 0; i < 100000; i++) {
       if (!(LessOrEqual.lessOrEqual(start, end)?.valueBoolean ?? false)) break;
-      var nextStart = Add.add(start, per);
+      var nextStart = Add.add(start, effectivePer);
       // If adding per returns null, per is more precise than boundary
       if (nextStart == null) return [];
 
@@ -269,9 +270,9 @@ class Expand extends BinaryExpression {
       // High boundary: predecessor of next start at per's precision
       dynamic high;
       if (isDecimalPer) {
-        high = _decimalPredecessor(nextStart, per);
+        high = _decimalPredecessor(nextStart, effectivePer);
       } else if (isQuantityPer) {
-        high = _quantityPredecessor(nextStart, per);
+        high = _quantityPredecessor(nextStart, effectivePer);
       } else {
         high = Predecessor.predecessor(nextStart);
       }
@@ -444,7 +445,7 @@ class Expand extends BinaryExpression {
       final step = _decimalStepSize(per);
       final startDec = CqlDecimal(start.valueNum!.toDouble());
       // Only expand integer ends; decimal ends stay as-is
-      final endVal = end.valueNum!.toDouble();
+      final endVal = (end as CqlNumber).valueNum!.toDouble();
       final endDec = end is CqlInteger
           ? CqlDecimal(endVal + 1.0 - step)
           : CqlDecimal(endVal);
@@ -458,7 +459,7 @@ class Expand extends BinaryExpression {
       final ceilStart = startVal == startVal.truncateToDouble()
           ? startVal.toInt()
           : startVal.ceil();
-      final endVal = end.valueNum!.toDouble();
+      final endVal = (end as CqlNumber).valueNum!.toDouble();
       return (
         CqlInteger(ceilStart),
         CqlInteger(endVal.truncate()),

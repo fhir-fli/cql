@@ -5,7 +5,8 @@ import 'package:cql/src/internal.dart';
 /// Predecessor of the high value of the interval.
 /// If the high boundary of the interval is closed and the high value of the
 /// interval is not null, this operator returns the high value of the interval.
-/// Otherwise, the result is the maximum value of the point type of the interval.
+/// Otherwise, the result is the maximum value of the point type of the
+/// interval.
 /// If the argument is null, the result is null.
 /// Signature:
 ///

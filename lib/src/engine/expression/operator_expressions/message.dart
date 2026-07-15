@@ -8,7 +8,8 @@ import 'package:cql/src/internal.dart';
 /// severity that stops processing. All other severities continue evaluation of
 /// the expression.
 /// If the severity is Trace, the operator is expected to make the message
-/// available to a tracing mechanism such as a debug log in the calling environment.
+/// available to a tracing mechanism such as a debug log in the calling
+/// environment.
 
 /// If the severity is Warning, the operator is expected to provide the message
 /// as a warning to the calling environment.

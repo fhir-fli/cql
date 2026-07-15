@@ -127,9 +127,11 @@ class IntervalExpression extends CqlExpression {
     final low = await this.low?.execute(context);
     final high = await this.high?.execute(context);
     if (low == null && high == null) {
-      // Distinguish "null interval" from "interval with null (unknown) boundaries":
+      // Distinguish "null interval" from "interval with null (unknown)
+      // boundaries":
       // - Interval[null, null] with LiteralNull expressions → null interval
-      // - Interval[null as Integer, null as Integer] with typed expressions → unbounded interval
+      // - Interval[null as Integer, null as Integer] with typed expressions
+      //   → unbounded interval
       final lowIsLiteralNull = this.low == null || this.low is LiteralNull;
       final highIsLiteralNull = this.high == null || this.high is LiteralNull;
       if (lowIsLiteralNull && highIsLiteralNull) {

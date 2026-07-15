@@ -1,6 +1,7 @@
 import 'package:cql/src/internal.dart';
 
-/// Defines metadata associated with a specific model for use by the CQL translator.
+/// Defines metadata associated with a specific model for use by the CQL
+/// translator.
 ///
 /// The [ModelInfo] type encapsulates metadata enabling the model to be utilized
 /// by the CQL translator. None of the information specified here is mandatory;
@@ -181,7 +182,18 @@ class ModelInfo {
 
   @override
   String toString() {
-    return 'ModelInfo{name: $name, version: $version, url: $url, targetUrl: $targetUrl, targetVersion: $targetVersion, schemaLocation: $schemaLocation, targetQualifier: $targetQualifier, patientClassName: $patientClassName, patientClassIdentifier: $patientClassIdentifier, patientBirthDatePropertyName: $patientBirthDatePropertyName, caseSensitive: $caseSensitive, strictRetrieveTyping: $strictRetrieveTyping, defaultContext: $defaultContext, requiredModelInfo: $requiredModelInfo, typeInfo: $typeInfo, conversionInfo: $conversionInfo, contextInfo: $contextInfo}';
+    return 'ModelInfo{name: $name, version: $version, url: $url, '
+        'targetUrl: $targetUrl, targetVersion: $targetVersion, '
+        'schemaLocation: $schemaLocation, '
+        'targetQualifier: $targetQualifier, '
+        'patientClassName: $patientClassName, '
+        'patientClassIdentifier: $patientClassIdentifier, '
+        'patientBirthDatePropertyName: $patientBirthDatePropertyName, '
+        'caseSensitive: $caseSensitive, '
+        'strictRetrieveTyping: $strictRetrieveTyping, '
+        'defaultContext: $defaultContext, '
+        'requiredModelInfo: $requiredModelInfo, typeInfo: $typeInfo, '
+        'conversionInfo: $conversionInfo, contextInfo: $contextInfo}';
   }
 
   Map<String, dynamic> toJson() {

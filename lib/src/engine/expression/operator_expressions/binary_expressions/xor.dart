@@ -116,7 +116,8 @@ class Xor extends BinaryExpression {
       return CqlBoolean(false);
     }
 
-    /// In all other cases, including when one operand is null and the other is not
+    /// In all other cases, including when one operand is null and the other
+    /// is not
     return null;
   }
 

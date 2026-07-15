@@ -2,8 +2,9 @@ import 'package:cql/src/internal.dart';
 
 /// Represents an interval type, extending [TypeInfo].
 ///
-/// The [IntervalTypeInfo] type represents an interval type, extending [TypeInfo],
-/// incorporating a pointTypeSpecifier element and pointType attribute.
+/// The [IntervalTypeInfo] type represents an interval type, extending
+/// [TypeInfo], incorporating a pointTypeSpecifier element and pointType
+/// attribute.
 class IntervalTypeInfo extends TypeInfo {
   IntervalTypeInfo({
     this.pointTypeSpecifier,

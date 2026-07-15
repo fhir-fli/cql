@@ -9,8 +9,7 @@ class CqlTimeUnitExpressionTermVisitor extends CqlBaseVisitor<CqlExpression> {
     final thisNode = getNextNode();
     final unit =
         visitDateTimeComponent(ctx.children![0] as DateTimeComponentContext);
-    final CqlExpression expression =
-        byContext(ctx.children![2]) as CqlExpression;
+    final expression = byContext(ctx.children![2]) as CqlExpression;
     switch (unit) {
       case 'date':
         return DateFrom(operand: expression);

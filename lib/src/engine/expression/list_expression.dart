@@ -90,6 +90,8 @@ class ListExpression extends CqlExpression {
 
   @override
   String toString() {
-    return 'ListExpression{element: ${element?.map((e) => e.toString()).toList().join(', ')}, typeSpecifier: $typeSpecifier}';
+    return 'ListExpression{element: '
+        '${element?.map((e) => e.toString()).toList().join(', ')}, '
+        'typeSpecifier: $typeSpecifier}';
   }
 }

@@ -6,10 +6,8 @@ class NamespaceInfo {
   NamespaceInfo({
     required this.name,
     required this.uri,
-  }) {
-    assert(name.isNotEmpty, 'Name cannot be empty.');
-    assert(uri.isNotEmpty, 'Uri cannot be empty.');
-  }
+  })  : assert(name.isNotEmpty, 'Name cannot be empty.'),
+        assert(uri.isNotEmpty, 'Uri cannot be empty.');
   final String name;
   final String uri;
 

@@ -27,7 +27,8 @@ class CqlDate extends CqlDateTimeBase {
     super.timeZoneOffset,
   }) : super._();
 
-  /// Constructs from the base fields parsed by [CqlDateTimeBase.formatDateTimeString].
+  /// Constructs from the base fields parsed by
+  /// [CqlDateTimeBase.formatDateTimeString].
   factory CqlDate.fromBase({
     required String? valueString,
     required int? year,

@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 void main() {
   group('Meets with precision', () {
     test(
-        'Interval[@2024-01-01, @2024-01-31] meets day Interval[@2024-02-01, @2024-02-28]',
-        () async {
+        'Interval[@2024-01-01, @2024-01-31] meets day '
+        'Interval[@2024-02-01, @2024-02-28]', () async {
       final interval1 = LiteralDateInterval(
         low: LiteralDate('2024-01-01'),
         high: LiteralDate('2024-01-31'),

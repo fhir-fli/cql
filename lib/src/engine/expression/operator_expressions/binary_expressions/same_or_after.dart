@@ -277,10 +277,12 @@ class SameOrAfter extends BinaryExpression {
   /// Returns null when one operand lacks a precision level that the other has
   /// and values are equal at all coarser levels.
   static CqlBoolean? compareNoPrecision(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, {
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, {
     required bool isAfter,
   }) {
+    var left = leftValue;
+    var right = rightValue;
     // Normalize timezone offsets
     if (left.timeZoneOffset != null || right.timeZoneOffset != null) {
       left = SameAs.normalizeToUtc(left);
@@ -346,10 +348,12 @@ class SameOrAfter extends BinaryExpression {
   }
 
   static CqlBoolean? sameOrAfterDateTime(
-    CqlDateTimeBase left,
-    CqlDateTimeBase right, [
+    CqlDateTimeBase leftValue,
+    CqlDateTimeBase rightValue, [
     CqlDateTimePrecision? precision,
   ]) {
+    var left = leftValue;
+    var right = rightValue;
     if (precision == null) {
       return compareNoPrecision(left, right, isAfter: true);
     }
@@ -361,7 +365,8 @@ class SameOrAfter extends BinaryExpression {
       right = SameAs.normalizeToUtc(right);
     }
 
-    // Compare field by field: if strictly greater → true, strictly less → false,
+    // Compare field by field: if strictly greater → true,
+    // strictly less → false,
     // equal → continue to next precision or return true at target precision.
     if (left.year == null || right.year == null) return null;
     if (left.year! > right.year!) return CqlBoolean(true);

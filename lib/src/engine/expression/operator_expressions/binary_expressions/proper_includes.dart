@@ -1,9 +1,12 @@
 import 'package:cql/src/internal.dart';
 
-/// Operator to check if the first operand includes the second and is strictly larger.
-/// Returns true if the first interval includes every element of the second interval,
+/// Operator to check if the first operand includes the second and is strictly
+/// larger.
+/// Returns true if the first interval includes every element of the second
+/// interval,
 /// using equality semantics, and the first interval is strictly larger.
-/// If precision is specified and the point type is Date, DateTime, or Time, comparisons used in the operation are performed at the specified precision.
+/// If precision is specified and the point type is Date, DateTime, or Time,
+/// comparisons used in the operation are performed at the specified precision.
 /// If either argument is null, the result is null.
 class ProperIncludes extends BinaryExpression {
   ProperIncludes({
@@ -94,7 +97,8 @@ class ProperIncludes extends BinaryExpression {
     // When left is a List/Interval and right is a point (not a List or Interval),
     // delegate to ProperContains (point containment). This handles cases like:
     //   {'s', 'u', 'n'} properly includes null → false
-    //   Interval[@T12:00:00.000, @T21:59:59.999] properly includes @T12:00:00.000 → false
+    //   Interval[@T12:00:00.000, @T21:59:59.999] properly includes
+    //     @T12:00:00.000 → false
     if ((left is List || left is CqlInterval) &&
         right is! List &&
         right is! CqlInterval) {
@@ -105,7 +109,8 @@ class ProperIncludes extends BinaryExpression {
     // any finite interval (it represents an unbounded range)
     if (left is CqlInterval && right is CqlInterval) {
       if (left.low == null && left.high == null) {
-        // Left is unbounded — it properly includes right unless right is also unbounded
+        // Left is unbounded — it properly includes right unless right is
+        // also unbounded
         if (right.low == null && right.high == null) {
           return CqlBoolean(false); // same unbounded range, not proper
         }

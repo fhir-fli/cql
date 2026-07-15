@@ -29,7 +29,8 @@ class CqlBoolean extends CqlPrimitive {
   }
   const CqlBoolean._(super.valueString) : super();
 
-  /// Constructs from a JSON map of shape `{'value': true|false|"true"|"false"}`.
+  /// Constructs from a JSON map of shape
+  /// `{'value': true|false|"true"|"false"}`.
   factory CqlBoolean.fromJson(Map<String, dynamic> json) =>
       CqlBoolean(json['value']);
 
