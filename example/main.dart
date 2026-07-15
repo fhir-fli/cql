@@ -1,6 +1,7 @@
 // A minimal end-to-end demo of the model-independent CQL engine:
 // translate CQL source to an executable library, run it, and inspect the
 // results. Run with: dart run example/main.dart
+// ignore_for_file: avoid_print
 import 'package:cql/cql.dart';
 
 Future<void> main() async {
