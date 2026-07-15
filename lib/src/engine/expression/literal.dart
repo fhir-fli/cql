@@ -16,15 +16,17 @@ class Literal extends CqlExpression {
     final valueType = json['valueType'] as String;
     LiteralType? value;
     switch (valueType) {
+      // ELM JSON serializes scalar literal values as plain strings/numbers,
+      // so the scalar Literal* factories take dynamic — do not cast to Map.
       case 'Null':
       case '{urn:hl7-org:elm-types:r1}Null':
         value = json['value'] == null
             ? null
-            : LiteralBoolean.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralBoolean.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Boolean':
         value = json['value'] == null
             ? null
-            : LiteralBoolean.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralBoolean.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Code':
         value = json['value'] == null
             ? null
@@ -42,25 +44,23 @@ class Literal extends CqlExpression {
             ? null
             : LiteralCodeSystem.fromJson(json['value'] as Map<String, dynamic>);
       case '{urn:hl7-org:elm-types:r1}Date':
-        value = json['value'] == null
-            ? null
-            : LiteralDate.fromJson(json['value'] as Map<String, dynamic>);
+        value =
+            json['value'] == null ? null : LiteralDate.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}DateTime':
         value = json['value'] == null
             ? null
-            : LiteralDateTime.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralDateTime.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Decimal':
         value = json['value'] == null
             ? null
-            : LiteralDecimal.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralDecimal.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Integer':
         value = json['value'] == null
             ? null
-            : LiteralInteger.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralInteger.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Long':
-        value = json['value'] == null
-            ? null
-            : LiteralLong.fromJson(json['value'] as Map<String, dynamic>);
+        value =
+            json['value'] == null ? null : LiteralLong.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Quantity':
         value = json['value'] == null
             ? null
@@ -72,11 +72,10 @@ class Literal extends CqlExpression {
       case '{urn:hl7-org:elm-types:r1}String':
         value = json['value'] == null
             ? null
-            : LiteralString.fromJson(json['value'] as Map<String, dynamic>);
+            : LiteralString.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}Time':
-        value = json['value'] == null
-            ? null
-            : LiteralTime.fromJson(json['value'] as Map<String, dynamic>);
+        value =
+            json['value'] == null ? null : LiteralTime.fromJson(json['value']);
       case '{urn:hl7-org:elm-types:r1}IntegerInterval':
         value = json['value'] == null
             ? null
