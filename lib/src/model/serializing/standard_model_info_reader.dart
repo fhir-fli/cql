@@ -1,49 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:cql/src/internal.dart';
 import 'package:xml2json/xml2json.dart';
 
+/// The standard XML [ModelInfoReader]: converts ModelInfo XML to JSON via
+/// Badgerfish and deserializes it into a [ModelInfo].
 class StandardModelInfoReader implements ModelInfoReader {
-  /// Replace this method with your actual XML parsing logic.
   @override
   ModelInfo read(String xmlContent) => _modelInfo(xmlContent);
-
-  /// Reads model information from a file. throws IOException
-  @override
-  ModelInfo readFromFile(File file) {
-    throw UnimplementedError();
-  }
-
-  /// Reads model information from a reader. throws IOException
-  @override
-  ModelInfo readFromFilePath(String filePath) {
-    throw UnimplementedError();
-  }
-
-  /// Reads model information from an input stream. throws IOException
-  @override
-  ModelInfo readFromStream(Stream<dynamic> stream) {
-    throw UnimplementedError();
-  }
-
-  /// Reads model information from a string. throws IOException
-  @override
-  ModelInfo readFromString(String string) {
-    throw UnimplementedError();
-  }
-
-  /// Reads model information from a URI. throws IOException
-  @override
-  ModelInfo readFromUri(Uri uri) {
-    throw UnimplementedError();
-  }
-
-  /// Reads model information from a URL. throws IOException
-  @override
-  ModelInfo readFromUrl(Uri url) {
-    throw UnimplementedError();
-  }
 
   ModelInfo _modelInfo(String modelContents) {
     final myTransformer = Xml2Json()..parse(modelContents);

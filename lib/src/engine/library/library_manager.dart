@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cql/src/internal.dart' show CqlLibrary;
 
 /// Provides CQL source text given a library path and optional version.
@@ -9,29 +7,6 @@ import 'package:cql/src/internal.dart' show CqlLibrary;
 // ignore: one_member_abstracts
 abstract class LibrarySourceProvider {
   Future<String?> getLibrarySource(String path, String? version);
-}
-
-/// Looks in a configurable base directory for `<path>.cql` files.
-class FileSystemLibrarySourceProvider implements LibrarySourceProvider {
-  FileSystemLibrarySourceProvider({required this.basePath});
-  final String basePath;
-
-  @override
-  Future<String?> getLibrarySource(String path, String? version) async {
-    // Try versioned filename first (e.g. FHIRHelpers-4.0.1.cql)
-    if (version != null && version.isNotEmpty) {
-      final versionedFile = File('$basePath/$path-$version.cql');
-      if (versionedFile.existsSync()) {
-        return versionedFile.readAsString();
-      }
-    }
-    // Fall back to unversioned filename (e.g. FHIRCommon.cql)
-    final file = File('$basePath/$path.cql');
-    if (file.existsSync()) {
-      return file.readAsString();
-    }
-    return null;
-  }
 }
 
 /// Loads, caches, and resolves the CQL libraries referenced by an artifact.
