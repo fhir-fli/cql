@@ -511,4 +511,25 @@ void main() {
       expect(await diff.execute({}), CqlInteger(0));
     });
   });
+
+  group('Fractional timezone offsets', () {
+    // Regression: value-string rendering hardcoded ':00' minutes, so
+    // half/quarter-hour zones (+05:30 India, +05:45 Nepal) truncated to
+    // whole hours. Machine-timezone-independent by construction.
+    test('parse round-trips preserve +05:30 / +05:45 / -03:30', () {
+      final india = CqlDateTime.fromString('2023-01-01T12:00:00.000+05:30');
+      expect(india.valueString, equals('2023-01-01T12:00:00.000+05:30'));
+      expect(india.timeZoneOffset, equals(5.5));
+      final nepal = CqlDateTime.fromString('2023-01-01T12:00:00.000+05:45');
+      expect(nepal.valueString, equals('2023-01-01T12:00:00.000+05:45'));
+      expect(nepal.timeZoneOffset, equals(5.75));
+      final newfoundland =
+          CqlDateTime.fromString('2023-01-01T12:00:00.000-03:30');
+      expect(
+        newfoundland.valueString,
+        equals('2023-01-01T12:00:00.000-03:30'),
+      );
+      expect(newfoundland.timeZoneOffset, equals(-3.5));
+    });
+  });
 }

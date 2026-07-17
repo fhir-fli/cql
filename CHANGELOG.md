@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Fix: fractional timezone offsets (+05:30, +05:45, -03:30) were truncated to whole hours when rendering CqlDateTime value strings (same defect class as fhir_r4 0.6.1); regression test added
+
 ## 0.6.0
 
 > Versioned 0.6.0 (not 0.1.0) to ship on the same release train as the
