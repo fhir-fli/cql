@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2
+
+- Widen meta constraint to ^1.16.0 (was ^1.19.0, which conflicted with the meta version pinned by current Flutter SDKs, making cql unresolvable alongside Flutter packages)
+
 ## 0.6.1
 
 - Fix: fractional timezone offsets (+05:30, +05:45, -03:30) were truncated to whole hours when rendering CqlDateTime value strings (same defect class as fhir_r4 0.6.1); regression test added
