@@ -1,13 +1,7 @@
 import 'dart:convert';
 
-import 'package:cql/src/engine/clinical_expression/clinical_expression.dart'
-    show Retrieve;
-import 'package:cql/src/engine/clinical_expression/retrieve.dart' show Retrieve;
-import 'package:cql/src/engine/engine.dart' show Retrieve;
-import 'package:cql/src/internal.dart' show Retrieve;
-
 /// Converts a FHIR Bundle into the `Map<String, dynamic>` context format
-/// the CQL engine's [Retrieve] expression expects.
+/// the CQL engine's `Retrieve` expression expects.
 ///
 /// Resources are grouped by resourceType. Patient is stored as a single
 /// resource (not a list) since CQL uses `context Patient`.

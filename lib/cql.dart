@@ -32,6 +32,9 @@ export 'src/cql_to_elm/library_from_cql.dart';
 // The executable library and its manager (the return/param types of the
 // entry point). The other ELM definition types stay internal.
 export 'src/engine/library/library.dart' show CqlLibrary, LibraryManager;
+// Convenience: FHIR Bundle JSON -> the Map context format the engine's
+// Retrieve expression consumes.
+export 'src/engine/retrieve/bundle_data_provider.dart';
 // CQL System composite value types (Code, Concept, CodeSystem, ValueSet,
 // Interval, Tuple, …) and the terminology boundary interface.
 export 'src/engine/types/types.dart';
