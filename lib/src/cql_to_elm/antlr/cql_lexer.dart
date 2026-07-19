@@ -1,5 +1,5 @@
 // Generated from cql.g4 by ANTLR 4.13.1
-// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes
+// ignore_for_file: unused_import, unused_local_variable, prefer_single_quotes, camel_case_types
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, unused_field
 import 'package:antlr4/antlr4.dart';
 
