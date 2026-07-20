@@ -3,7 +3,7 @@ description: >-
   Model-independent CQL (Clinical Quality Language) translator and execution
   engine. FHIR-free — data access via ModelResolver; bindings are
   fhir_r4/r5/r6_cql.
-version: 0.6.2
+version: 0.6.3
 homepage: https://www.fhirfli.dev/
 repository: https://github.com/fhir-fli/cql
 issue_tracker: https://github.com/fhir-fli/cql/issues

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.3]
+
+- `BundleDataProvider` exported from the public barrel (retrieve data directly from a Bundle without a custom provider)
+
 ## 0.6.2
 
 - Widen meta constraint to ^1.16.0 (was ^1.19.0, which conflicted with the meta version pinned by current Flutter SDKs, making cql unresolvable alongside Flutter packages)
