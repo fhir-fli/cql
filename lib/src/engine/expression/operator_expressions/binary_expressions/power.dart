@@ -107,8 +107,9 @@ class Power extends BinaryExpression {
         }
       default:
         // Non-literal operand — let execution handle type checking
-        operand.add(first);
-        operand.add(second);
+        operand
+          ..add(first)
+          ..add(second);
     }
 
     if (operand.length != 2) {
