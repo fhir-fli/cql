@@ -371,6 +371,31 @@ void main() {
       );
       expect(await duration.execute({}), CqlInteger(3));
     });
+    // From the CQL spec's own CqlDateTimeOperatorsTest: the operands are in
+    // DIFFERENT zones, so the answer depends on the offsets being honoured
+    // once and only once. 01:00-07:00 is 08:00Z and 03:00-06:00 is 09:00Z.
+    test(
+        '''define "DurationInHoursAcrossOffsets": hours between @2017-03-12T01:00:00-07:00 and @2017-03-12T03:00:00-06:00 // 1''',
+        () async {
+      final low = LiteralDateTime('2017-03-12T01:00:00-07:00');
+      final high = LiteralDateTime('2017-03-12T03:00:00-06:00');
+      final duration = DurationBetween(
+        precision: CqlDateTimePrecision.hour,
+        operand: [low, high],
+      );
+      expect(await duration.execute({}), CqlInteger(1));
+    });
+    test(
+        '''define "DifferenceInMinutesAcrossOffsets": difference in minutes between @2017-11-05T01:30:00-06:00 and @2017-11-05T01:15:00-07:00 // 45''',
+        () async {
+      final low = LiteralDateTime('2017-11-05T01:30:00-06:00');
+      final high = LiteralDateTime('2017-11-05T01:15:00-07:00');
+      final difference = DifferenceBetween(
+        precision: CqlDateTimePrecision.minute,
+        operand: [low, high],
+      );
+      expect(await difference.execute({}), CqlInteger(45));
+    });
     test(
         '''define "UncertainDurationInMonths": months between @2012-01-02 and @2012 // [0, 11]''',
         () async {
@@ -509,6 +534,33 @@ void main() {
         operand: [low, high],
       );
       expect(await diff.execute({}), CqlInteger(0));
+    });
+  });
+
+  group('valueDateTime', () {
+    test('is the instant the offset denotes, in UTC', () {
+      // Used to be the wall clock in the machine's zone, offset discarded.
+      expect(
+        CqlDateTime.fromString('2013-01-14T10:00:00+02:00').valueDateTime,
+        DateTime.utc(2013, 1, 14, 8),
+      );
+      expect(
+        CqlDateTime.fromString('2013-01-14T10:00:00-05:00').valueDateTime,
+        DateTime.utc(2013, 1, 14, 15),
+      );
+      expect(
+        CqlDateTime.fromString('2013-01-14T10:00:00+05:30').valueDateTime,
+        DateTime.utc(2013, 1, 14, 4, 30),
+      );
+      expect(
+        CqlDateTime.fromString('2013-01-14T10:00:00Z').valueDateTime,
+        DateTime.utc(2013, 1, 14, 10),
+      );
+      // No offset: no instant of its own; the local zone is assumed.
+      expect(
+        CqlDateTime.fromString('2013-01-14T10:00:00').valueDateTime,
+        DateTime(2013, 1, 14, 10),
+      );
     });
   });
 

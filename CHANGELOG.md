@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- **`CqlDateTimeBase.valueDateTime` is the instant the value denotes.** A value with `Z` or an explicit offset is returned in UTC, as `DateTime.parse` does: `2013-01-14T10:00:00+02:00` is 08:00Z. It used to build a local `DateTime` from the wall-clock components and discard the offset, so that value read 10:00 in whatever zone the machine ran in. A value with no offset is still returned in the local zone. `DurationBetween` and `DifferenceBetween` had compensated for the old behaviour by re-applying the offset themselves; they no longer do, so their answers are unchanged (the spec's own cross-offset cases, `hours between @2017-03-12T01:00:00-07:00 and @2017-03-12T03:00:00-06:00 = 1`, are now engine tests).
+
 ## [0.6.3]
 
 - `BundleDataProvider` exported from the public barrel (retrieve data directly from a Bundle without a custom provider)

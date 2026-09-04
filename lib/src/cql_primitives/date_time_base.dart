@@ -143,29 +143,47 @@ abstract class CqlDateTimeBase extends CqlPrimitive
   /// Realizes the partial-precision value into a Dart [DateTime] with
   /// best-effort defaults for missing components. Returns `null` if
   /// [year] is unset.
-  DateTime? get valueDateTime => year == null
-      ? null
-      : isUtc
-          ? DateTime.utc(
-              year!,
-              month ?? 1,
-              day ?? 1,
-              hour ?? 0,
-              minute ?? 0,
-              second ?? 0,
-              millisecond ?? 0,
-              _convertMicrosecondToInt(microsecond),
-            )
-          : DateTime(
-              year!,
-              month ?? 1,
-              day ?? 1,
-              hour ?? 0,
-              minute ?? 0,
-              second ?? 0,
-              millisecond ?? 0,
-              _convertMicrosecondToInt(microsecond),
-            );
+  DateTime? get valueDateTime {
+    if (year == null) {
+      return null;
+    }
+    final offsetHours = timeZoneOffset;
+    if (isUtc || offsetHours != null) {
+      // A value with Z or an explicit offset names an instant: return it in
+      // UTC, as DateTime.parse does. 10:00+02:00 is 08:00Z. This used to
+      // build a LOCAL DateTime from the wall-clock components and discard
+      // the offset.
+      final wallClock = DateTime.utc(
+        year!,
+        month ?? 1,
+        day ?? 1,
+        hour ?? 0,
+        minute ?? 0,
+        second ?? 0,
+        millisecond ?? 0,
+        _convertMicrosecondToInt(microsecond),
+      );
+      if (offsetHours == null || offsetHours == 0) {
+        return wallClock;
+      }
+      return wallClock.subtract(
+        Duration(
+          microseconds: (offsetHours * Duration.microsecondsPerHour).round(),
+        ),
+      );
+    }
+    // No offset: no instant of its own; the local zone is assumed.
+    return DateTime(
+      year!,
+      month ?? 1,
+      day ?? 1,
+      hour ?? 0,
+      minute ?? 0,
+      second ?? 0,
+      millisecond ?? 0,
+      _convertMicrosecondToInt(microsecond),
+    );
+  }
 
   @override
   String toString() => _formattedString ?? 'null';

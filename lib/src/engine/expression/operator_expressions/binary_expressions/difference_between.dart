@@ -324,32 +324,24 @@ class DifferenceBetween extends BinaryExpression {
       precision == CqlDateTimePrecision.second ||
       precision == CqlDateTimePrecision.millisecond;
 
-  /// Convert a CqlDateTimeBase to UTC DateTime using its timezone offset.
-  /// Uses DateTime.utc() to avoid DST issues with local DateTime arithmetic.
-  static DateTime _toUtc(CqlDateTimeBase fdt, DateTime local) {
-    final offset = fdt.timeZoneOffset;
-    if (offset == null || fdt.isUtc) {
-      return DateTime.utc(
-        local.year,
-        local.month,
-        local.day,
-        local.hour,
-        local.minute,
-        local.second,
-        local.millisecond,
-      );
+  /// A UTC DateTime for [fdt], built so that day counts are not disturbed
+  /// by DST. [value] is `fdt.valueDateTime`, which is already the instant in
+  /// UTC when the value carries Z or an offset (it used to be the local
+  /// wall clock with the offset discarded, and this method re-applied the
+  /// offset itself; applying it twice now would be wrong). With no offset
+  /// the local wall-clock fields are read as if they were UTC.
+  static DateTime _toUtc(CqlDateTimeBase fdt, DateTime value) {
+    if (fdt.isUtc || fdt.timeZoneOffset != null) {
+      return value.toUtc();
     }
-    // timeZoneOffset is signed: -6.0 means UTC-6, so UTC = local + 6h
-    final offsetHours = offset.truncate();
-    final offsetMinutes = ((offset - offsetHours) * 60).truncate();
     return DateTime.utc(
-      local.year,
-      local.month,
-      local.day,
-      local.hour - offsetHours,
-      local.minute - offsetMinutes,
-      local.second,
-      local.millisecond,
+      value.year,
+      value.month,
+      value.day,
+      value.hour,
+      value.minute,
+      value.second,
+      value.millisecond,
     );
   }
 }
