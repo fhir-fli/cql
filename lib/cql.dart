@@ -29,6 +29,10 @@ library;
 export 'src/cql_primitives/cql_primitives.dart';
 // The entry point: CQL source text -> executable CqlLibrary.
 export 'src/cql_to_elm/library_from_cql.dart';
+// The translator's annotations: `libraryFromCql` records translation
+// errors on `CqlLibrary.annotation` as `ErrorAnnotation` (severity `Error`)
+// rather than throwing, and a caller needs the types to inspect them.
+export 'src/engine/cql_annotations/cql_annotations.dart';
 // The executable library and its manager (the return/param types of the
 // entry point). The other ELM definition types stay internal.
 export 'src/engine/library/library.dart' show CqlLibrary, LibraryManager;
