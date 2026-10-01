@@ -48,20 +48,32 @@ class CqlDateTime extends CqlDateTimeBase {
     required String? microsecond,
     required num? timeZoneOffset,
     required bool isUtc,
-  }) =>
-      CqlDateTime._(
-        valueString: valueString,
-        year: year,
-        month: month,
-        day: day,
-        hour: hour,
-        minute: minute,
-        second: second,
-        millisecond: millisecond,
-        microsecond: microsecond,
-        timeZoneOffset: timeZoneOffset,
-        isUtc: isUtc,
-      );
+  }) {
+    CqlDateTimeBase.checkFields(
+      year: year,
+      month: month,
+      day: day,
+      hour: hour,
+      minute: minute,
+      second: second,
+      millisecond: millisecond,
+      microsecond: microsecond,
+      timeZoneOffset: timeZoneOffset,
+    );
+    return CqlDateTime._(
+      valueString: valueString,
+      year: year,
+      month: month,
+      day: day,
+      hour: hour,
+      minute: minute,
+      second: second,
+      millisecond: millisecond,
+      microsecond: microsecond,
+      timeZoneOffset: timeZoneOffset,
+      isUtc: isUtc,
+    );
+  }
 
   /// Constructs from individual components.
   factory CqlDateTime.fromUnits({

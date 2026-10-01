@@ -36,15 +36,22 @@ class CqlDate extends CqlDateTimeBase {
     required int? day,
     required bool isUtc,
     num? timeZoneOffset,
-  }) =>
-      CqlDate._(
-        valueString: valueString,
-        year: year,
-        month: month,
-        day: day,
-        isUtc: isUtc,
-        timeZoneOffset: timeZoneOffset,
-      );
+  }) {
+    CqlDateTimeBase.checkFields(
+      year: year,
+      month: month,
+      day: day,
+      timeZoneOffset: timeZoneOffset,
+    );
+    return CqlDate._(
+      valueString: valueString,
+      year: year,
+      month: month,
+      day: day,
+      isUtc: isUtc,
+      timeZoneOffset: timeZoneOffset,
+    );
+  }
 
   /// Constructs from individual components.
   factory CqlDate.fromUnits({

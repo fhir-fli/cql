@@ -26,85 +26,97 @@ abstract class CqlDateTimeBase extends CqlPrimitive
     this.millisecond,
     this.microsecond,
     this.timeZoneOffset,
-  })  : assert(
-          year == null || (year >= 1 && year <= 9999),
-          'Invalid year: must be between 1 and 9999.',
-        ),
-        assert(
-          month == null || (month >= 1 && month <= 12),
-          'Invalid month: must be between 1 and 12.',
-        ),
-        assert(
-          day == null || month != null,
-          'Day cannot be provided without a month.',
-        ),
-        assert(
-          day == null ||
-              (day >= 1 &&
-                  day <=
-                      (month == 2 &&
-                              year != null &&
-                              (year % 4 == 0 &&
-                                  (year % 100 != 0 || year % 400 == 0))
-                          ? 29
-                          : month == 0
-                              ? 0
-                              : month == 2
-                                  ? 28
-                                  : month == 4 ||
-                                          month == 6 ||
-                                          month == 9 ||
-                                          month == 11
-                                      ? 30
-                                      : 31)),
-          'Invalid day for given year and month.',
-        ),
-        assert(
-          hour == null || day != null,
-          'Hour cannot be provided without a day.',
-        ),
-        assert(
-          hour == null || (hour >= 0 && hour <= 23),
-          'Invalid hour: must be between 0 and 23.',
-        ),
-        assert(
-          minute == null || hour != null,
-          'Minute cannot be provided without an hour.',
-        ),
-        assert(
-          minute == null || (minute >= 0 && minute <= 59),
-          'Invalid minute: must be between 0 and 59.',
-        ),
-        assert(
-          second == null || minute != null,
-          'Second cannot be provided without a minute.',
-        ),
-        assert(
-          second == null || (second >= 0 && second <= 59),
-          'Invalid second: must be between 0 and 59.',
-        ),
-        assert(
-          millisecond == null || second != null,
-          'Millisecond cannot be provided without a second.',
-        ),
-        assert(
-          millisecond == null || (millisecond >= 0 && millisecond <= 999),
-          'Invalid millisecond: must be between 0 and 999.',
-        ),
-        assert(
-          microsecond == null || millisecond != null,
-          'Microsecond cannot be provided without a millisecond.',
-        ),
-        assert(
-          microsecond == null || microsecond.length <= 6,
-          'Invalid microsecond: at most 6 digits.',
-        ),
-        assert(
-          timeZoneOffset == null ||
-              (timeZoneOffset <= 14 && timeZoneOffset >= -14),
-          'Invalid time zone offset: must be between -14 and 14.',
-        ),
-        super(valueString);
+  }) : super(valueString);
+
+  /// Rejects a value no calendar holds, with the field that is wrong. Every
+  /// construction path (parsing, `fromUnits`, date arithmetic) comes through
+  /// here, so a device build fails the same way a test does: these used to
+  /// be `assert`s, which a compiled app skips, and the engine then carried
+  /// February 30th as a date.
+  static void checkFields({
+    required int? year,
+    required int? month,
+    required int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    String? microsecond,
+    num? timeZoneOffset,
+  }) {
+    if (!(year == null || (year >= 1 && year <= 9999))) {
+      throw const FormatException('Invalid year: must be between 1 and 9999.');
+    }
+    if (!(month == null || (month >= 1 && month <= 12))) {
+      throw const FormatException('Invalid month: must be between 1 and 12.');
+    }
+    if (!(day == null || month != null)) {
+      throw const FormatException('Day cannot be provided without a month.');
+    }
+    if (!(day == null ||
+        (day >= 1 &&
+            day <=
+                (month == 2 &&
+                        year != null &&
+                        (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+                    ? 29
+                    : month == 0
+                        ? 0
+                        : month == 2
+                            ? 28
+                            : month == 4 ||
+                                    month == 6 ||
+                                    month == 9 ||
+                                    month == 11
+                                ? 30
+                                : 31)))) {
+      throw const FormatException('Invalid day for given year and month.');
+    }
+    if (!(hour == null || day != null)) {
+      throw const FormatException('Hour cannot be provided without a day.');
+    }
+    if (!(hour == null || (hour >= 0 && hour <= 23))) {
+      throw const FormatException('Invalid hour: must be between 0 and 23.');
+    }
+    if (!(minute == null || hour != null)) {
+      throw const FormatException('Minute cannot be provided without an hour.');
+    }
+    if (!(minute == null || (minute >= 0 && minute <= 59))) {
+      throw const FormatException('Invalid minute: must be between 0 and 59.');
+    }
+    if (!(second == null || minute != null)) {
+      throw const FormatException(
+        'Second cannot be provided without a minute.',
+      );
+    }
+    if (!(second == null || (second >= 0 && second <= 59))) {
+      throw const FormatException('Invalid second: must be between 0 and 59.');
+    }
+    if (!(millisecond == null || second != null)) {
+      throw const FormatException(
+        'Millisecond cannot be provided without a second.',
+      );
+    }
+    if (!(millisecond == null || (millisecond >= 0 && millisecond <= 999))) {
+      throw const FormatException(
+        'Invalid millisecond: must be between 0 and 999.',
+      );
+    }
+    if (!(microsecond == null || millisecond != null)) {
+      throw const FormatException(
+        'Microsecond cannot be provided without a millisecond.',
+      );
+    }
+    if (!(microsecond == null || microsecond.length <= 6)) {
+      throw const FormatException('Invalid microsecond: at most 6 digits.');
+    }
+    if (!(timeZoneOffset == null ||
+        (timeZoneOffset <= 14 && timeZoneOffset >= -14))) {
+      throw const FormatException(
+        'Invalid time zone offset: must be between -14 and 14.',
+      );
+    }
+  }
 
   /// Year (1..9999), or `null` if not specified.
   final int? year;
