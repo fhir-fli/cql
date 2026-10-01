@@ -77,7 +77,11 @@ class CqlDecimal extends CqlNumber {
   static CqlDecimal? tryParse(dynamic input) {
     try {
       return CqlDecimal(input);
-    } catch (_) {
+      // The constructor signals input it cannot read (a wrong type, a string
+      // that is not a value of this type) with ArgumentError; tryParse's
+      // contract is null for exactly that input.
+      // ignore: avoid_catching_errors
+    } on ArgumentError {
       return null;
     }
   }

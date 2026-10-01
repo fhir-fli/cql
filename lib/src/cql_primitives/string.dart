@@ -45,13 +45,7 @@ class CqlString extends CqlPrimitive {
 
   /// Attempts to parse [input] as a [CqlString]. Returns `null` on failure.
   static CqlString? tryParse(dynamic input) {
-    if (input is String) {
-      try {
-        return CqlString(input);
-      } catch (_) {
-        return null;
-      }
-    }
+    if (input is String) return CqlString(input);
     return null;
   }
 

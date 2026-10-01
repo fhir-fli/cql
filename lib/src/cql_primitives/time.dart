@@ -63,7 +63,7 @@ class CqlTime extends CqlPrimitive implements Comparable<CqlTime> {
     if (input is String) {
       try {
         return CqlTime(input);
-      } catch (_) {
+      } on FormatException {
         return null;
       }
     }

@@ -72,7 +72,7 @@ abstract class CqlNumber extends CqlPrimitive implements Comparable<CqlNumber> {
       throw FormatException(
         'CqlNumber cannot interpret non-numeric value: $valueString',
       );
-    } catch (_) {
+    } on FormatException {
       throw FormatException(
         'CqlNumber cannot parse non-numeric value: $valueString',
       );

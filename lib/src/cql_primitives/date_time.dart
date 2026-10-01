@@ -143,7 +143,8 @@ class CqlDateTime extends CqlDateTimeBase {
     try {
       if (value is DateTime) return CqlDateTime.fromDateTime(value);
       if (value is String) return CqlDateTime.fromString(value);
-    } catch (_) {
+    } on FormatException {
+      // Not an ISO 8601 string, or a date no calendar holds.
       return null;
     }
     return null;

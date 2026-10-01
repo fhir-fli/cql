@@ -55,7 +55,11 @@ class CqlBoolean extends CqlPrimitive {
   static CqlBoolean? tryParse(dynamic input) {
     try {
       return CqlBoolean(input);
-    } catch (_) {
+      // The constructor signals input it cannot read (a wrong type, a string
+      // that is not a value of this type) with ArgumentError; tryParse's
+      // contract is null for exactly that input.
+      // ignore: avoid_catching_errors
+    } on ArgumentError {
       return null;
     }
   }

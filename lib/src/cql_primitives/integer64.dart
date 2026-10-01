@@ -81,7 +81,13 @@ class CqlLong extends CqlPrimitive implements Comparable<CqlLong> {
       if (input is num) return CqlLong.fromNum(input);
       if (input is String) return CqlLong.fromString(input);
       return null;
-    } catch (_) {
+    } on FormatException {
+      return null;
+      // The constructor signals input it cannot read (a wrong type, a string
+      // that is not a value of this type) with ArgumentError; tryParse's
+      // contract is null for exactly that input.
+      // ignore: avoid_catching_errors
+    } on ArgumentError {
       return null;
     }
   }
