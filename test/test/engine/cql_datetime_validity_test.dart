@@ -72,4 +72,45 @@ void main() {
       expect(at(h: 23, mi: 59, s: 59, ms: 999, tz: 14).hour, 23);
     });
   });
+
+  group('the string parser reads the whole string or none of it', () {
+    test('a string that is not wholly a date-time is refused', () {
+      // Before 2026-10-01 the unanchored pattern matched a prefix and
+      // dropped the rest: '2024-13-01' read as 2024.
+      for (final bad in [
+        '2024-13-01',
+        '2024-1-1',
+        '20240101',
+        '2024-01-01T25:00',
+        'abc',
+        '14:30',
+      ]) {
+        expect(() => CqlDate.fromString(bad), throwsFormatException,
+            reason: bad);
+        expect(
+          () => CqlDateTime.fromString(bad),
+          throwsFormatException,
+          reason: bad,
+        );
+      }
+    });
+
+    test("CQL's DateTime literal forms with a trailing T parse", () {
+      // CQL DATETIME is '@' DATE 'T' (TIME OFFSET?)? with DATE = YYYY(-MM(-DD)?)?
+      expect(CqlDateTime.fromString('2016T').valueString, '2016');
+      expect(CqlDateTime.fromString('2012-01T').valueString, '2012-01');
+      expect(CqlDateTime.fromString('2012-01-01T').valueString, '2012-01-01');
+      expect(
+        CqlDateTime.fromString('2012-01-01T12:30-05:00').valueString,
+        '2012-01-01T12:30-05:00',
+      );
+      expect(() => CqlDateTime.fromString('2016T10'), throwsFormatException);
+    });
+
+    test('a UTC DateTime round-trips (no doubled Z)', () {
+      final v = CqlDateTime.fromDateTime(DateTime.utc(2024, 1, 2, 3, 4, 5));
+      expect(v.valueString, '2024-01-02T03:04:05.000Z');
+      expect(v.isUtc, isTrue);
+    });
+  });
 }

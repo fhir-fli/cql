@@ -495,8 +495,11 @@ abstract class CqlDateTimeBase extends CqlPrimitive
     if (input is String) {
       value = _cleanInput(input);
     } else if (input is DateTime) {
-      value = input.toIso8601String();
-      value += input.isUtc ? 'Z' : _formatTimezone(input.timeZoneOffset);
+      // toIso8601String already ends a UTC value with 'Z'; a second 'Z' was
+      // appended and silently ignored by the unanchored pattern.
+      value = input.isUtc
+          ? input.toIso8601String()
+          : input.toIso8601String() + _formatTimezone(input.timeZoneOffset);
     } else if (input is CqlDateTimeBase && input.valueString != null) {
       value = _cleanInput(input.valueString!);
     } else {
@@ -758,16 +761,28 @@ abstract class CqlDateTimeBase extends CqlPrimitive
 
   /// Regex matching the full FHIR/CQL dateTime grammar. Same shape as
   /// [HL7 datatypes#dateTime](https://build.fhir.org/datatypes.html#dateTime).
+  /// ISO 8601 / CQL date-time: a year, then optionally a month and a day,
+  /// then optionally `T` with an optional time and offset. CQL's DATETIME
+  /// literal is `'@' DATE 'T' (TIME OFFSET?)?` with DATE as `YYYY(-MM(-DD)?)?`,
+  /// so `@2016T` and `@2012-01T` are literals (a DateTime at year or month
+  /// precision); the earlier pattern only allowed `T` after a day. Whether
+  /// the fields nest properly (no hour without a day) is checkFields' job.
   static final RegExp dateTimeExp = RegExp(
-    r'(?<year>[0-9]{4})(-(?<month>0[1-9]|1[0-2])(-(?<day>0[1-9]|[1-2][0-9]|3[0-1])(T((?<hour>[01][0-9]|2[0-3])(:(?<minute>[0-5][0-9])(:(?<second>[0-5][0-9]|60)(\.(?<fraction>[0-9]+))?)?)?)?(?<timezone>Z|(\+|-)([0-1][0-9]|2[0-3])(:[0-5][0-9])?)?)?)?)?',
+    r'(?<year>[0-9]{4})(-(?<month>0[1-9]|1[0-2])(-(?<day>0[1-9]|[1-2][0-9]|3[0-1]))?)?(T((?<hour>[01][0-9]|2[0-3])(:(?<minute>[0-5][0-9])(:(?<second>[0-5][0-9]|60)(\.(?<fraction>[0-9]+))?)?)?)?(?<timezone>Z|(\+|-)([0-1][0-9]|2[0-3])(:[0-5][0-9])?)?)?',
   );
 
   /// Parses [s] into a component map. The type parameter [T] guides which
   /// components are required (CqlDate ignores time components).
   static Map<String, dynamic> formatDateTimeString<T>(String s) {
     final match = dateTimeExp.firstMatch(s);
-    if (match == null) {
-      throw ArgumentError('Invalid date-time string (no match): $s');
+    // The pattern is a chain of optional groups, so it matches a prefix of
+    // almost anything: '2024-13-01' matched '2024' and the rest was dropped
+    // without a word (measured 2026-10-01, with '2024-1-1' and '20240101'
+    // likewise read as 2024). A string is a date-time only if the whole of
+    // it is one; what is not is bad input, a FormatException like the
+    // calendar checks, not an ArgumentError.
+    if (match == null || match.start != 0 || match.end != s.length) {
+      throw FormatException('Invalid date-time string: $s');
     }
     final fraction = match.namedGroup('fraction');
     int? millisecond;
