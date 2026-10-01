@@ -176,15 +176,14 @@ class CqlLibrary extends Element {
     return val;
   }
 
+  /// The code definition named [name], or null when the library has none:
+  /// a missing reference is an answer, not an exception.
   CqlCode? resolveCodeRef(String name) {
     // Find the code definition in the library JSON
     final codes = this.codes?.def;
 
-    final codeDef = codes?.firstWhere(
+    final codeDef = codes?.firstWhereOrNull(
       (code) => code.name == name,
-      orElse: () {
-        throw Exception('CodeRef not found');
-      },
     );
 
     final codeSystemDef = codeSystems?.def.firstWhereOrNull(
@@ -200,11 +199,8 @@ class CqlLibrary extends Element {
     // Find the code definition in the library JSON
     final valueSets = this.valueSets?.def;
 
-    final valueSetDef = valueSets?.firstWhere(
+    final valueSetDef = valueSets?.firstWhereOrNull(
       (valueSet) => valueSet.name == name,
-      orElse: () {
-        throw Exception('ValueSetRef not found');
-      },
     );
 
     return valueSetDef == null
@@ -216,11 +212,8 @@ class CqlLibrary extends Element {
     // Find the code definition in the library JSON
     final codeSystems = this.codeSystems?.def;
 
-    final codeSystemDef = codeSystems?.firstWhere(
+    final codeSystemDef = codeSystems?.firstWhereOrNull(
       (valueSet) => valueSet.name == name,
-      orElse: () {
-        throw Exception('ValueSetRef not found');
-      },
     );
 
     return codeSystemDef == null
@@ -507,11 +500,7 @@ class CqlLibrary extends Element {
   ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
-    try {
-      return libraryRef.resolveCodeRef(name);
-    } catch (_) {
-      return null;
-    }
+    return libraryRef.resolveCodeRef(name);
   }
 
   /// Resolve a ValueSetRef from an included library.
@@ -521,11 +510,7 @@ class CqlLibrary extends Element {
   ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
-    try {
-      return libraryRef.resolveValueSetRef(name);
-    } catch (_) {
-      return null;
-    }
+    return libraryRef.resolveValueSetRef(name);
   }
 
   /// Resolve a CodeSystemRef from an included library.
@@ -535,11 +520,7 @@ class CqlLibrary extends Element {
   ) async {
     final libraryRef = await resolveIncludedLibrary(libraryId);
     if (libraryRef == null) return null;
-    try {
-      return libraryRef.resolveCodeSystemRef(name);
-    } catch (_) {
-      return null;
-    }
+    return libraryRef.resolveCodeSystemRef(name);
   }
 
   /// Executes the library's statements with the given [executionContext].

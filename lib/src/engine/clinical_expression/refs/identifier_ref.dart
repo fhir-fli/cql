@@ -80,14 +80,12 @@ class IdentifierRef extends Ref {
             context[cacheKey] = result;
             return result;
           }
-          // Check code definitions
-          try {
-            final codeDef = includedLib.resolveCodeRef(name);
-            if (codeDef != null) {
-              context[cacheKey] = codeDef;
-              return codeDef;
-            }
-          } catch (_) {}
+          // Check code definitions (null when the library has none).
+          final codeDef = includedLib.resolveCodeRef(name);
+          if (codeDef != null) {
+            context[cacheKey] = codeDef;
+            return codeDef;
+          }
         }
       }
       return null;
