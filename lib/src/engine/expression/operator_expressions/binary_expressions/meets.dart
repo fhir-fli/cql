@@ -290,20 +290,28 @@ class Meets extends BinaryExpression {
     return le?.valueBoolean == true;
   }
 
-  /// Safe predecessor that catches assertion errors (e.g., year < 1).
+  /// Predecessor, or null when the value is already the minimum: CQL
+  /// Predecessor, "If the result of the operation cannot be represented
+  /// (i.e. would result in an underflow), the result is null." A date
+  /// before year 1 is refused by CqlDateTimeBase.checkFields with a
+  /// FormatException; nothing else is absorbed.
   static dynamic safePredecessor(dynamic value) {
     try {
       return Predecessor.predecessor(value);
-    } catch (_) {
+    } on FormatException {
       return null;
     }
   }
 
-  /// Safe successor that catches assertion errors (e.g., year > 9999).
+  /// Successor, or null when the value is already the maximum: CQL
+  /// Successor, "If the result of the operation cannot be represented
+  /// (i.e. would result in an overflow), the result is null." A date past
+  /// year 9999 is refused by CqlDateTimeBase.checkFields with a
+  /// FormatException; nothing else is absorbed.
   static dynamic safeSuccessor(dynamic value) {
     try {
       return Successor.successor(value);
-    } catch (_) {
+    } on FormatException {
       return null;
     }
   }
@@ -324,7 +332,8 @@ class Meets extends BinaryExpression {
         return Add.add(value, qty);
       }
       return Successor.successor(value);
-    } catch (_) {
+    } on FormatException {
+      // Overflow past year 9999 (CQL Successor: the result is null).
       return null;
     }
   }
@@ -344,7 +353,8 @@ class Meets extends BinaryExpression {
         return Subtract.subtract(value, qty);
       }
       return Predecessor.predecessor(value);
-    } catch (_) {
+    } on FormatException {
+      // Underflow before year 1 (CQL Predecessor: the result is null).
       return null;
     }
   }
