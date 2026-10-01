@@ -34,8 +34,10 @@ class ValueSetFileLoader {
             }
           }
         }
-      } catch (_) {
-        // Skip files that can't be parsed
+      } on FormatException {
+        // Not JSON: not a ValueSet file, skipped.
+      } on FileSystemException {
+        // Unreadable (removed or unreadable between listing and reading).
       }
     }
 
@@ -59,8 +61,10 @@ class ValueSetFileLoader {
           }
         }
       }
-    } catch (_) {
-      // Skip files that can't be parsed
+    } on FormatException {
+      // Not JSON: not a ValueSet file.
+    } on FileSystemException {
+      // No such file, or unreadable.
     }
     return null;
   }
