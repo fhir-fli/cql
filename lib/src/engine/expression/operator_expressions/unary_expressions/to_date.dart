@@ -76,9 +76,11 @@ class ToDate extends UnaryExpression {
       if (str == null) return null;
       // Extract just the date portion (YYYY-MM-DD)
       final datePart = str.length >= 10 ? str.substring(0, 10) : str;
-      return CqlDate.fromString(datePart);
+      return CqlDate.tryParse(datePart);
     }
-    if (value is String) return CqlDate.fromString(value);
+    // CQL ToDate: "If the input string is not formatted correctly, or does
+    // not represent a valid date value, the result is null."
+    if (value is String) return CqlDate.tryParse(value);
     return null;
   }
 }

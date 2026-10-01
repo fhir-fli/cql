@@ -93,8 +93,10 @@ class CanConvert extends UnaryExpression {
     final value = await operand.execute(context);
     if (value == null) return null;
     final targetType = toType?.localPart.toLowerCase() ?? '';
-    try {
-      dynamic result;
+    // Each To* operator answers null for a value it cannot convert and
+    // throws nothing; null is this operator's false.
+    dynamic result;
+    {
       switch (targetType) {
         case 'boolean':
           result = await ToBoolean(operand: operand).execute(context);
@@ -120,8 +122,6 @@ class CanConvert extends UnaryExpression {
           return CqlBoolean(false);
       }
       return CqlBoolean(result != null);
-    } catch (_) {
-      return CqlBoolean(false);
     }
   }
 }

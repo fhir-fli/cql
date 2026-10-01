@@ -119,12 +119,10 @@ class ToLong extends UnaryExpression {
         }
       case String _:
         {
-          final value = BigInt.tryParse(result);
-          if (value == null) {
-            return null;
-          } else {
-            return CqlLong(value);
-          }
+          // CQL ToLong: "If the input string is not formatted correctly, or
+          // cannot be interpreted as a valid Long value, the result is
+          // null." tryParse is null outside the 64-bit range too.
+          return CqlLong.tryParse(result);
         }
       case CqlInteger _:
         {

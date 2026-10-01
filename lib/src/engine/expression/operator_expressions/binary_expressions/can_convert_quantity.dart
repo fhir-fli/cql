@@ -68,11 +68,10 @@ class CanConvertQuantity extends BinaryExpression {
     final left = await operand[0].execute(context);
     final right = await operand[1].execute(context);
     if (left == null || right == null) return null;
-    try {
-      final result = await ConvertQuantity(operand: operand).execute(context);
-      return CqlBoolean(result != null);
-    } catch (_) {
-      return CqlBoolean(false);
-    }
+    // ConvertQuantity answers null when the units do not convert (CQL
+    // ConvertQuantity: "Otherwise, the result is null"), which is this
+    // operator's false (CanConvertQuantity: "Otherwise, the result is false").
+    final result = await ConvertQuantity(operand: operand).execute(context);
+    return CqlBoolean(result != null);
   }
 }

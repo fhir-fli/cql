@@ -87,6 +87,13 @@ class ToInteger extends UnaryExpression {
       case CqlLong _:
         final bigVal = value.valueBigInt;
         if (bigVal == null) return null;
+        // CQL ToInteger: "If the input is a Long value, the result is the
+        // Integer value if it is within the range of an Integer, otherwise
+        // null" (ConvertsToInteger says the same). BigInt.toInt would wrap.
+        if (bigVal > BigInt.from(2147483647) ||
+            bigVal < BigInt.from(-2147483648)) {
+          return null;
+        }
         return CqlInteger(bigVal.toInt());
       case CqlDecimal _:
         final numVal = value.valueNum;

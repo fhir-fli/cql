@@ -112,9 +112,11 @@ class ToString extends UnaryExpression {
             .join(', ');
         return CqlString('Concept { $codesStr display: ${value.display} }');
       default:
-        throw Exception(
-          'Unsupported type for ToString: ${value.runtimeType}',
-        );
+        // Not one of the types CQL ToString is defined for (Boolean,
+        // Integer, Long, Decimal, Quantity, Ratio, Date, DateTime, Time,
+        // Code, Concept): no string form, so null, and ConvertsToString
+        // reads that as false.
+        return null;
     }
   }
 }

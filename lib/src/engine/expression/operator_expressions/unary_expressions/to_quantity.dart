@@ -144,6 +144,15 @@ class ToQuantity extends UnaryExpression {
             ? null
             : ValidatedQuantity.fromNumber(result.valueDouble!, unit: '1');
       case String _:
+        // CQL ToQuantity: "If the input string is not formatted correctly,
+        // or cannot be interpreted as a valid Quantity value, the result is
+        // null." No leading number is not a quantity (ucum's own test).
+        if (ValidatedQuantity.valueRegex
+                .firstMatch(result.trim())
+                ?.namedGroup('value') ==
+            null) {
+          return null;
+        }
         try {
           final q = ValidatedQuantity.fromString(result);
           if (!q.isValid()) return null;
@@ -153,7 +162,8 @@ class ToQuantity extends UnaryExpression {
               q.value.asUcumDecimal().replaceAll(RegExp('[^0-9]'), '');
           if (numStr.length > 28) return null;
           return q;
-        } catch (e) {
+        } on UcumException {
+          // A number the decimal type cannot hold: not a valid Quantity.
           return null;
         }
       case ValidatedQuantity _:

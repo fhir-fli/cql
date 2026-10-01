@@ -85,6 +85,12 @@ class ToRatio extends UnaryExpression {
     if (str == null) return null;
     final parts = str.split(':');
     if (parts.length != 2) return null;
+    // CQL ToRatio: "If the input string is not formatted correctly, or
+    // cannot be interpreted as a valid Ratio value, the result is null."
+    // A half with no leading number is not a quantity (ucum's own test).
+    if (!_startsWithNumber(parts[0]) || !_startsWithNumber(parts[1])) {
+      return null;
+    }
     final numQty = ValidatedQuantity.fromString(parts[0].trim());
     final denQty = ValidatedQuantity.fromString(parts[1].trim());
     if (!numQty.isValid() || !denQty.isValid()) return null;
@@ -99,4 +105,11 @@ class ToRatio extends UnaryExpression {
       ),
     );
   }
+
+  /// ucum's own test for a quantity string: its value pattern must match.
+  static bool _startsWithNumber(String half) =>
+      ValidatedQuantity.valueRegex.firstMatch(half.trim())?.namedGroup(
+            'value',
+          ) !=
+      null;
 }

@@ -74,11 +74,11 @@ class ConvertsToLong extends UnaryExpression {
   Future<CqlBoolean?> execute(Map<String, dynamic> context) async {
     final value = await operand.execute(context);
     if (value == null) return null;
-    try {
-      final result = await ToLong(operand: operand).execute(context);
-      return CqlBoolean(result != null);
-    } catch (_) {
-      return CqlBoolean(false);
-    }
+    // ToLong answers null for a value it cannot convert, which is this
+    // operator's false (CQL ConvertsTo*: "If the input ... cannot be
+    // interpreted as a valid ... value, the result is false"); it throws
+    // nothing, so nothing is caught here.
+    final result = await ToLong(operand: operand).execute(context);
+    return CqlBoolean(result != null);
   }
 }

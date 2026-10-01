@@ -95,7 +95,9 @@ class CqlLong extends CqlPrimitive implements Comparable<CqlLong> {
   static String? _validate(String input) {
     if (input.isEmpty) return null;
     final big = BigInt.tryParse(input);
-    if (big == null) {
+    // The message always said 64-bit; the check did not look. CQL Long is
+    // a 64-bit signed integer, so a wider value is not a Long.
+    if (big == null || big.bitLength > 63) {
       throw const FormatException(
         'Invalid Long format. Must be a valid 64-bit integer string.',
       );

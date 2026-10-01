@@ -94,7 +94,11 @@ class ConvertQuantity extends BinaryExpression {
           return converted;
         }
         return null;
-      } catch (_) {
+      } on UcumException {
+        // No conversion between the two units: CQL ConvertQuantity, "If the
+        // unit of the input quantity is or can be converted to the target
+        // unit, the result is an equivalent Quantity with the target unit.
+        // Otherwise, the result is null."
         return null;
       }
     }
