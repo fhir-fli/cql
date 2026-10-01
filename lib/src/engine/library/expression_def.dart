@@ -36,7 +36,10 @@ class ExpressionDefs {
     for (final e in def) {
       try {
         context.addAll(await e.execute(context) as Map<String, dynamic>);
-      } catch (exception) {
+      } on Exception catch (exception) {
+        // A definition that fails to evaluate carries its exception as its
+        // value, so the other definitions still evaluate and the caller
+        // sees which one failed. An Error is a defect and propagates.
         context[e.name] = exception;
       }
     }
