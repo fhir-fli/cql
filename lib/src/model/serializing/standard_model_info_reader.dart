@@ -21,12 +21,7 @@ class StandardModelInfoReader implements ModelInfoReader {
 
     if (newMap['modelInfo'] is Map) {
       final properMap = jsonDecode(jsonEncode(newMap['modelInfo'] as Map));
-      try {
-        final modelInfo = ModelInfo.fromJson(properMap as Map<String, dynamic>);
-        return modelInfo;
-      } catch (e) {
-        rethrow;
-      }
+      return ModelInfo.fromJson(properMap as Map<String, dynamic>);
     }
     throw Exception('Invalid modelInfo');
   }

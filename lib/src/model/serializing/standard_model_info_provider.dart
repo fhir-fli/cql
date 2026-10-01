@@ -7,144 +7,112 @@ class StandardModelInfoProvider implements ModelInfoProvider, NamespaceAware {
   ModelInfo? load(ModelIdentifier modelIdentifier) {
     if (isQDMModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '4.1.2':
-            return qdmmodelinfo;
-          case '4.2':
-            return qdmmodelinfo42;
-          case '4.3':
-            return qdmmodelinfo43;
-          case '5.0':
-            return qdmmodelinfo50;
-          case '5.0.1':
-            return qdmmodelinfo501;
-          case '5.0.2':
-            return qdmmodelinfo502;
-          case '5.3':
-            return qdmmodelinfo53;
-          case '5.4':
-            return qdmmodelinfo54;
-          case '5.5':
-            return qdmmodelinfo55;
-          case '5.6':
-          case '':
-            return qdmmodelinfo56;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '4.1.2':
+          return qdmmodelinfo;
+        case '4.2':
+          return qdmmodelinfo42;
+        case '4.3':
+          return qdmmodelinfo43;
+        case '5.0':
+          return qdmmodelinfo50;
+        case '5.0.1':
+          return qdmmodelinfo501;
+        case '5.0.2':
+          return qdmmodelinfo502;
+        case '5.3':
+          return qdmmodelinfo53;
+        case '5.4':
+          return qdmmodelinfo54;
+        case '5.5':
+          return qdmmodelinfo55;
+        case '5.6':
+        case '':
+          return qdmmodelinfo56;
       }
     } else if (isFhirModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '1.0.0':
-            return systemmodelinfo;
-          case '1.0.2':
-            return fhirmodelinfo102;
-          case '1.6':
-            return fhirmodelinfo16;
-          case '1.4':
-            return fhirmodelinfo14;
-          case '1.8':
-            return fhirmodelinfo18;
-          case '3.0.0':
-            return fhirmodelinfo300;
-          case '3.0.1':
-            return fhirmodelinfo301;
-          case '3.2.0':
-            return fhirmodelinfo320;
-          case '4.0.0':
-            return fhirmodelinfo400;
-          case '4.0.1':
-            {
-              return fhirmodelinfo401;
-            }
-          case '4.0.1-1.5.1':
-            return fhirmodelinfo401151;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '1.0.0':
+          return systemmodelinfo;
+        case '1.0.2':
+          return fhirmodelinfo102;
+        case '1.6':
+          return fhirmodelinfo16;
+        case '1.4':
+          return fhirmodelinfo14;
+        case '1.8':
+          return fhirmodelinfo18;
+        case '3.0.0':
+          return fhirmodelinfo300;
+        case '3.0.1':
+          return fhirmodelinfo301;
+        case '3.2.0':
+          return fhirmodelinfo320;
+        case '4.0.0':
+          return fhirmodelinfo400;
+        case '4.0.1':
+          {
+            return fhirmodelinfo401;
+          }
+        case '4.0.1-1.5.1':
+          return fhirmodelinfo401151;
       }
     } else if (isQuickModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '0.3.0':
-            return quickmodelinfo030;
-          case '3.0.0':
-            return quickmodelinfo300;
-          case '3.0.1':
-            return quickfhirmodelinfo301;
-          case '3.3.0':
-            return quickmodelinfo330;
-          case 'null':
-            return quickmodelinfo;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '0.3.0':
+          return quickmodelinfo030;
+        case '3.0.0':
+          return quickmodelinfo300;
+        case '3.0.1':
+          return quickfhirmodelinfo301;
+        case '3.3.0':
+          return quickmodelinfo330;
+        case 'null':
+          return quickmodelinfo;
       }
     } else if (isQICoreModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '4.0.0':
-            return qicoremodelinfo400;
-          case '4.1.0':
-            return qicoremodelinfo410;
-          case '4.1.1':
-            return qicoremodelinfo411;
-          case '5.0.0':
-            return qicoremodelinfo500;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '4.0.0':
+          return qicoremodelinfo400;
+        case '4.1.0':
+          return qicoremodelinfo410;
+        case '4.1.1':
+          return qicoremodelinfo411;
+        case '5.0.0':
+          return qicoremodelinfo500;
       }
     } else if (isUsCoreModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '3.1.1':
-            return uscoremodelinfo311;
-          case '3.1.0':
-            return uscoremodelinfo310;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '3.1.1':
+          return uscoremodelinfo311;
+        case '3.1.0':
+          return uscoremodelinfo310;
       }
     } else if (isTestModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case 'null':
-            return testmodelinfo;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case 'null':
+          return testmodelinfo;
       }
     } else if (isSimpleModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '1.0.0':
-          case '':
-          default:
-            return simplemodelinfo;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '1.0.0':
+        case '':
+        default:
+          return simplemodelinfo;
       }
     } else if (isSystemModelIdentifier(modelIdentifier)) {
       final localVersion = modelIdentifier.version ?? '';
-      try {
-        switch (localVersion) {
-          case '1.0.0':
-          case '':
-          default:
-            return systemmodelinfo;
-        }
-      } catch (e) {
-        // Do not throw, allow other providers to resolve
+      switch (localVersion) {
+        case '1.0.0':
+        case '':
+        default:
+          return systemmodelinfo;
       }
     }
     return null;
