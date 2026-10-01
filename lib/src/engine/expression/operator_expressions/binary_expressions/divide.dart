@@ -129,7 +129,9 @@ class Divide extends BinaryExpression {
         );
         final result = leftDecimal / rightDecimal;
         return CqlDecimal(double.parse(result.asUcumDecimal()));
-      } catch (_) {
+      } on UcumException {
+        // CQL Divide: "If the result of the division cannot be
+        // represented, or the right argument is 0, the result is null."
         return null;
       }
     } else if ((left is ValidatedQuantity || left is CqlDecimal) &&
@@ -151,7 +153,10 @@ class Divide extends BinaryExpression {
               );
         final result = leftQuantity / rightQuantity;
         return result;
-      } catch (_) {
+      } on UcumException {
+        // CQL Divide: "Attempting to operate on quantities with invalid or
+        // special units will result in null", and division by zero
+        // likewise.
         return null;
       }
     }

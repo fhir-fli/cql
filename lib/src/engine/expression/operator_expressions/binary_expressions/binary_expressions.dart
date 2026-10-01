@@ -5,6 +5,7 @@ export 'before.dart';
 export 'binary_expression.dart';
 export 'can_convert_quantity.dart';
 export 'collapse.dart';
+export 'comparison_support.dart';
 export 'contains.dart';
 export 'convert_quantity.dart';
 export 'difference_between.dart';

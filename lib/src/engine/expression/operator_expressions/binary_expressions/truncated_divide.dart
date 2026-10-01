@@ -119,11 +119,19 @@ class TruncatedDivide extends BinaryExpression {
         case CqlInteger _:
           {
             if (right is CqlInteger) {
-              return CqlInteger(left.valueNum! ~/ right.valueNum!);
+              return _truncDiv(
+                left.valueNum!,
+                right.valueNum!,
+                CqlInteger.new,
+              );
             } else if (right is CqlLong) {
               return CqlLong(BigInt.from(left.valueNum!) ~/ right.valueBigInt!);
             } else if (right is CqlDecimal) {
-              return CqlDecimal(left.valueNum! ~/ right.valueNum!);
+              return _truncDiv(
+                left.valueNum!,
+                right.valueNum!,
+                CqlDecimal.new,
+              );
             }
           }
         case CqlLong _:
@@ -133,21 +141,33 @@ class TruncatedDivide extends BinaryExpression {
             } else if (right is CqlLong) {
               return CqlLong(left.valueBigInt! ~/ right.valueBigInt!);
             } else if (right is CqlDecimal) {
-              return CqlDecimal(
-                left.valueBigInt!.toDouble() ~/ right.valueNum!,
+              return _truncDiv(
+                left.valueBigInt!.toDouble(),
+                right.valueNum!,
+                CqlDecimal.new,
               );
             }
           }
         case CqlDecimal _:
           {
             if (right is CqlInteger) {
-              return CqlDecimal(left.valueNum! ~/ right.valueNum!);
+              return _truncDiv(
+                left.valueNum!,
+                right.valueNum!,
+                CqlDecimal.new,
+              );
             } else if (right is CqlLong) {
-              return CqlDecimal(
-                left.valueNum! ~/ right.valueBigInt!.toDouble(),
+              return _truncDiv(
+                left.valueNum!,
+                right.valueBigInt!.toDouble(),
+                CqlDecimal.new,
               );
             } else if (right is CqlDecimal) {
-              return CqlDecimal(left.valueNum! ~/ right.valueNum!);
+              return _truncDiv(
+                left.valueNum!,
+                right.valueNum!,
+                CqlDecimal.new,
+              );
             } else if (right is ValidatedQuantity && right.isValid()) {
               return ValidatedQuantity.fromNumber(left.valueNum!) ~/ right;
             }
@@ -172,10 +192,24 @@ class TruncatedDivide extends BinaryExpression {
             }
           }
       }
-    } catch (_) {
+    } on UcumException {
+      // CQL TruncatedDivide: "Attempting to operate on quantities with
+      // invalid or special units will result in null".
       return null;
     }
 
     return null;
+  }
+
+  /// `a ~/ b` as a CQL value, or null when the quotient is not a finite
+  /// number: CQL TruncatedDivide, "If the result of the division cannot be
+  /// represented, or the right argument is 0, the result is null." Dart's
+  /// `~/` throws an UnsupportedError for an infinite or NaN double quotient,
+  /// which the old catch-all absorbed.
+  static T? _truncDiv<T>(num a, num b, T Function(num) wrap) {
+    if (b == 0) return null;
+    final q = a / b;
+    if (q.isInfinite || q.isNaN) return null;
+    return wrap(a ~/ b);
   }
 }

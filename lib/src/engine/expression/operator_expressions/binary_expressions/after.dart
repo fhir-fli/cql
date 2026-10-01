@@ -190,7 +190,8 @@ class After extends BinaryExpression {
       } else if (leftStart is CqlTime && rightEnd is CqlTime) {
         return afterTime(leftStart, rightEnd, precision);
       } else if (leftStart is Comparable && rightEnd is Comparable) {
-        return CqlBoolean(leftStart.compareTo(rightEnd) > 0);
+        final c = compareOrNull(leftStart, rightEnd);
+        return c == null ? null : CqlBoolean(c > 0);
       } else {
         return null;
       }
@@ -203,7 +204,8 @@ class After extends BinaryExpression {
       } else if (leftStart is CqlTime && right is CqlTime) {
         return afterTime(leftStart, right, precision);
       } else if (leftStart is Comparable && right is Comparable) {
-        return CqlBoolean(leftStart.compareTo(right) > 0);
+        final c = compareOrNull(leftStart, right);
+        return c == null ? null : CqlBoolean(c > 0);
       } else {
         return null;
       }
@@ -216,19 +218,24 @@ class After extends BinaryExpression {
       } else if (left is CqlTime && rightEnd is CqlTime) {
         return afterTime(left, rightEnd, precision);
       } else if (left is Comparable && rightEnd is Comparable) {
-        return CqlBoolean(left.compareTo(rightEnd) > 0);
+        final c = compareOrNull(left, rightEnd);
+        return c == null ? null : CqlBoolean(c > 0);
       } else {
+        // Mixed point types. Each primitive answers false or null for an
+        // operand of another type; only quantities throw (units that do not
+        // compare), which CQL Greater defines as null.
         try {
           final result = switch (left) {
             final CqlDateTimeBase l => l > rightEnd,
             final CqlTime l => l > rightEnd,
-            final CqlNumber l => l > rightEnd,
+            final CqlNumber l when rightEnd is CqlNumber || rightEnd is num =>
+              l > rightEnd,
             final CqlLong l => l > rightEnd,
             final ValidatedQuantity l => l > rightEnd,
             _ => null,
           };
           return result == null ? null : CqlBoolean(result);
-        } catch (e) {
+        } on UcumException {
           return null;
         }
       }

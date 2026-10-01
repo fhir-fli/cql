@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// Operator to determine if the first interval starts before and overlaps the
 /// second interval.
@@ -153,7 +154,15 @@ class OverlapsBefore extends BinaryExpression {
         }
 
         return And.and(beforeResult, overlapsResult);
-      } catch (_) {
+      } on UcumException {
+        // Quantity boundaries whose units do not compare: CQL Greater,
+        // "Attempting to operate on quantities with invalid units will
+        // result in a null".
+        return null;
+      } on FormatException {
+        // An open boundary at the calendar's edge: its successor or
+        // predecessor cannot be represented, which CQL Successor /
+        // Predecessor define as null.
         return null;
       }
     }

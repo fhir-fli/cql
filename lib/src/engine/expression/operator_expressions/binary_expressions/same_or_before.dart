@@ -173,7 +173,8 @@ class SameOrBefore extends BinaryExpression {
       } else if (leftEnd is CqlTime && rightStart is CqlTime) {
         return sameOrBeforeTime(leftEnd, rightStart, precision);
       } else if (leftEnd is Comparable && rightStart is Comparable) {
-        return CqlBoolean(leftEnd.compareTo(rightStart) <= 0);
+        final c = compareOrNull(leftEnd, rightStart);
+        return c == null ? null : CqlBoolean(c <= 0);
       } else {
         return null;
       }
@@ -186,7 +187,8 @@ class SameOrBefore extends BinaryExpression {
       } else if (leftEnd is CqlTime && right is CqlTime) {
         return sameOrBeforeTime(leftEnd, right, precision);
       } else if (leftEnd is Comparable && right is Comparable) {
-        return CqlBoolean(leftEnd.compareTo(right) <= 0);
+        final c = compareOrNull(leftEnd, right);
+        return c == null ? null : CqlBoolean(c <= 0);
       } else {
         return null;
       }
@@ -199,19 +201,25 @@ class SameOrBefore extends BinaryExpression {
       } else if (left is CqlTime && rightStart is CqlTime) {
         return sameOrBeforeTime(left, rightStart, precision);
       } else if (left is Comparable && rightStart is Comparable) {
-        return CqlBoolean(left.compareTo(rightStart) <= 0);
+        final c = compareOrNull(left, rightStart);
+        return c == null ? null : CqlBoolean(c <= 0);
       } else {
+        // Mixed point types. Each primitive answers false or null for an
+        // operand of another type; only quantities throw (units that do not
+        // compare), which CQL Greater defines as null.
         try {
           final result = switch (left) {
             final CqlDateTimeBase l => l < rightStart,
             final CqlTime l => l < rightStart,
-            final CqlNumber l => l < rightStart,
+            final CqlNumber l
+                when rightStart is CqlNumber || rightStart is num =>
+              l < rightStart,
             final CqlLong l => l < rightStart,
             final ValidatedQuantity l => l < rightStart,
             _ => null,
           };
           return result == null ? null : CqlBoolean(result);
-        } catch (e) {
+        } on UcumException {
           return null;
         }
       }

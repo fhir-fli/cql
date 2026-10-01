@@ -185,7 +185,11 @@ class Less extends BinaryExpression {
     } else if (left is ValidatedQuantity && right is ValidatedQuantity) {
       try {
         return CqlBoolean(left < right);
-      } catch (e) {
+      } on UcumException {
+        // CQL Greater: "Attempting to operate on quantities with invalid
+        // units will result in a null", and units of different dimensions
+        // ("'cm2' and 'cm' are not" comparable) likewise; ucum reports both
+        // as UcumException.
         return null;
       }
     } else if (left is CqlDecimal && right is CqlInteger) {

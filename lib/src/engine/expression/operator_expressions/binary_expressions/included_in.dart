@@ -188,19 +188,17 @@ class IncludedIn extends BinaryExpression {
       // Point included in interval — delegate to Contains
       return Contains.contains(right, left, precision);
     } else if (right is List) {
-      try {
-        if (left is List) {
-          for (final element in left) {
-            if (!listContains(right, element)) {
-              return CqlBoolean(false);
-            }
+      // listContains uses Equal.equal, which answers null rather than
+      // throwing for what it cannot compare; nothing here is absorbed.
+      if (left is List) {
+        for (final element in left) {
+          if (!listContains(right, element)) {
+            return CqlBoolean(false);
           }
-          return CqlBoolean(true);
-        } else {
-          return CqlBoolean(listContains(right, left));
         }
-      } catch (e) {
-        return null;
+        return CqlBoolean(true);
+      } else {
+        return CqlBoolean(listContains(right, left));
       }
     } else {
       return null;

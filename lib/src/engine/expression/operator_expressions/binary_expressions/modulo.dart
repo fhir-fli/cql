@@ -183,7 +183,11 @@ class Modulo extends BinaryExpression {
             return left % right;
           }
       }
-    } catch (_) {
+    } on UcumException {
+      // CQL Modulo: "Attempting to operate on quantities with invalid or
+      // special units will result in null ... If the result of the modulo
+      // cannot be represented, or the right argument is 0, the result is
+      // null."
       return null;
     }
 

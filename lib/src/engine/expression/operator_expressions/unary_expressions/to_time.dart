@@ -114,10 +114,8 @@ class ToTime extends UnaryExpression {
         if (second == null || second < 0 || second > 59) return null;
       }
     }
-    try {
-      return CqlTime(str);
-    } catch (_) {
-      return null;
-    }
+    // CQL ToTime: "If the input string is not formatted correctly, or does
+    // not represent a valid time-of-day value, the result is null."
+    return CqlTime.tryParse(str);
   }
 }
