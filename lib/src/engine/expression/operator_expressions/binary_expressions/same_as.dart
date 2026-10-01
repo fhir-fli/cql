@@ -158,7 +158,10 @@ class SameAs extends BinaryExpression {
         final rightInterval = CqlInterval(low: right, high: right);
         final result = left.equal(rightInterval);
         return result == null ? null : CqlBoolean(result);
-      } catch (e) {
+      } on FormatException {
+        // The interval's effective start or end is the successor or
+        // predecessor of an open boundary; at the calendar's edge it cannot
+        // be represented, which CQL Successor / Predecessor define as null.
         return null;
       }
     } else if (right is CqlInterval) {
@@ -166,7 +169,10 @@ class SameAs extends BinaryExpression {
         final leftInterval = CqlInterval(low: left, high: left);
         final result = right.equal(leftInterval);
         return result == null ? null : CqlBoolean(result);
-      } catch (e) {
+      } on FormatException {
+        // The interval's effective start or end is the successor or
+        // predecessor of an open boundary; at the calendar's edge it cannot
+        // be represented, which CQL Successor / Predecessor define as null.
         return null;
       }
     } else {
