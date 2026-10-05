@@ -13,6 +13,18 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
+      # ucum 0.9.1 from its repository until it is on pub.dev, so the engine
+      # is tested against the ucum that ships with it (2026-10-04).
+      # pubspec_overrides.yaml is gitignored; this is build-time only.
+      - name: Override unpublished dependencies
+        run: |
+          {
+            echo "dependency_overrides:"
+            echo "  ucum:"
+            echo "    git:"
+            echo "      url: https://github.com/fhir-fli/ucum.git"
+            echo "      ref: main"
+          } > pubspec_overrides.yaml
       - name: Install dependencies
         run: dart pub get
       - name: Verify formatting
