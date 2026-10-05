@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.7.0]
 
 - **Dates no calendar holds are refused everywhere.** `CqlDate` / `CqlDateTime` checked year, month, day, time fields and their nesting with `assert`s, which a compiled app skips: on a device Feb 30 2024 constructed. The checks are now `CqlDateTimeBase.checkFields`, run on every construction path, throwing a `FormatException` naming the field. The string parser also reads the whole string or refuses it (`'2024-13-01'` used to read as the year 2024), raises `FormatException` rather than `ArgumentError` for text that is not a date-time, and accepts CQL's `@2016T` / `@2012-01T` literal forms. `CqlLong` enforces the 64-bit range its message always claimed.
 - **Every `catch (_)` in the engine names what it absorbs, with the CQL sentence it implements** (62 sites). `ToDate`, `ToDateTime`, `ToTime`, `ToLong`, `ToInteger` (Long out of range), `ToRatio`, `ToQuantity` and `ToString` answer null for input they cannot convert instead of throwing; `ConvertsTo*` and `CanConvert*` are exactly `To* != null`; quantity comparisons and interval operators answer null for units that do not compare (previously `after` / `before` / `same or before` could throw a `UcumException` out of the engine); `predecessor` / `successor` at the calendar's edge are null. A library's `resolveCodeRef` / `resolveValueSetRef` / `resolveCodeSystemRef` return null for an unknown name instead of throwing. A defect (an `Error`) inside any of these now surfaces instead of becoming false or null.
