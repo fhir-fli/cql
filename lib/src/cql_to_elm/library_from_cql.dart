@@ -18,19 +18,34 @@ CqlLibrary libraryFromCql(String source, {LibraryManager? libraryManager}) {
     ..addErrorListener(errorListener)
     ..buildParseTree = true;
 
-  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary())
-    ..visit(parser.library_());
-  final library = visitor.library;
+  final tree = parser.library_();
+  // Syntax errors go on the library before the visit: a visitor meeting a
+  // node the parser built while recovering stands a Null in for it
+  // (CqlBaseVisitor.byContext) instead of crashing on a cast.
+  final library = CqlLibrary()..annotation = [...errorListener.errors];
+  CqlBaseVisitor<dynamic>(library).visit(tree);
 
-  final errors = errorListener.errors
+  // Stamp every error with the library's identity, now that it is known.
+  library.annotation = library.annotation!
       .map(
-        (e) => e.copyWith(
-          libraryId: library.identifier?.id,
-          libraryVersion: library.identifier?.version,
-        ),
+        (a) => a is CqlToElmError && a.libraryId == null
+            ? CqlToElmError(
+                message: a.message,
+                errorType: a.errorType,
+                errorSeverity: a.errorSeverity,
+                libraryId: library.identifier?.id,
+                libraryVersion: library.identifier?.version,
+                startLine: a.startLine,
+                startChar: a.startChar,
+                endLine: a.endLine,
+                endChar: a.endChar,
+                targetIncludeLibrarySystem: a.targetIncludeLibrarySystem,
+                targetIncludeLibraryId: a.targetIncludeLibraryId,
+                targetIncludeLibraryVersionId: a.targetIncludeLibraryVersionId,
+              )
+            : a,
       )
       .toList();
-  (library.annotation ??= []).addAll(errors);
 
   if (libraryManager != null) {
     library.libraryManager = libraryManager;

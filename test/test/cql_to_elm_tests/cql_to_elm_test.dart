@@ -29,14 +29,11 @@ void main() {
       .toList()
     ..sort((a, b) => a.path.compareTo(b.path));
 
-  // Files with known parse issues in the Dart translator. These still test
-  // that the failure is reported, but skip structural comparison. The two
-  // high-precision-decimal entries left on 2026-10-06: LiteralDecimal keeps
-  // its source text, so a 37-digit literal no longer throws in toJson.
-  const knownParseFailures = {
-    'CqlDateTimeOperatorsTest', // Null cast in date/time parsing
-    'CqlTypesTest', // Invalid time format 24:59:59.999
-  };
+  // Files the Dart translator cannot translate. These still test that the
+  // failure is reported, but skip structural comparison. Empty since
+  // 2026-10-06: a long Decimal is kept as text, an invalid date, datetime
+  // or time literal and a syntax-recovered node become error annotations.
+  const knownParseFailures = <String>{};
 
   for (final cqlFile in cqlFiles) {
     final name = cqlFile.path.split('/').last.replaceAll('.cql', '');
@@ -122,12 +119,17 @@ void main() {
 
         final refStmts = _getStatements(referenceLib);
         final actualStmts = _getStatements(actualLib);
+        final untranslated = _untranslatedDefines(actualLib);
         var matched = 0;
         var total = 0;
 
         for (final refStmt in refStmts) {
           final stmtName = refStmt['name'] as String?;
           if (stmtName == null || stmtName == 'Patient') continue;
+          // The reference was made from the test XML, where an invalid
+          // case is a 'skipped' element; from the CQL text that define has
+          // a syntax error and translates as Null with an error naming it.
+          if (untranslated.contains(stmtName)) continue;
           total++;
 
           final actualStmt = actualStmts.firstWhereOrNull(
@@ -159,12 +161,14 @@ void main() {
 
         final refStmts = _getStatements(referenceLib);
         final actualStmts = _getStatements(actualLib);
+        final untranslated = _untranslatedDefines(actualLib);
         var totalTypes = 0;
         var matchedTypes = 0;
 
         for (final refStmt in refStmts) {
           final stmtName = refStmt['name'] as String?;
           if (stmtName == null || stmtName == 'Patient') continue;
+          if (untranslated.contains(stmtName)) continue;
 
           final actualStmt = actualStmts.firstWhereOrNull(
             (s) => s['name'] == stmtName,
@@ -196,6 +200,18 @@ void main() {
       });
     });
   }
+}
+
+/// Defines the Dart translator reports as not translated (a syntax error
+/// inside them), by name, from the library's error annotations.
+Set<String> _untranslatedDefines(Map<String, dynamic> lib) {
+  final pattern = RegExp('^define "([^"]+)" was not translated');
+  return (lib['annotation'] as List? ?? const [])
+      .whereType<Map<String, dynamic>>()
+      .map((a) => pattern.firstMatch(a['message'] as String? ?? ''))
+      .whereType<RegExpMatch>()
+      .map((m) => m.group(1)!)
+      .toSet();
 }
 
 /// Extract statement definition names from a library map.

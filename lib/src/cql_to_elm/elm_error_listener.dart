@@ -6,7 +6,11 @@ import 'package:antlr4/src/util/bit_set.dart';
 import 'package:cql/src/internal.dart';
 
 class ElmErrorListener implements ErrorListener {
-  final List<ErrorAnnotation> errors = [];
+  /// Every syntax or semantic error the parser reported, as the ELM
+  /// `CqlToElmError` annotation the reference translator writes (library.xsd
+  /// CqlToElmError); it was this package's own `ErrorAnnotation` until
+  /// 2026-10-06, which callers filtering on `CqlToElmError` did not see.
+  final List<CqlToElmError> errors = [];
 
   @override
   void reportAmbiguity(
@@ -99,14 +103,14 @@ class ElmErrorListener implements ErrorListener {
     RecognitionException<IntStream>? e,
   ) {
     errors.add(
-      ErrorAnnotation(
+      CqlToElmError(
         startLine: line,
         startChar: charPositionInLine,
         endLine: line,
         endChar: charPositionInLine + 1,
         message: msg,
-        errorType: 'SyntaxError',
-        errorSeverity: 'Error',
+        errorType: ErrorType.syntax,
+        errorSeverity: ErrorSeverity.error,
       ),
     );
   }
@@ -120,14 +124,14 @@ class ElmErrorListener implements ErrorListener {
     RecognitionException<IntStream>? e,
   ) {
     errors.add(
-      ErrorAnnotation(
+      CqlToElmError(
         startLine: line,
         startChar: charPositionInLine,
         endLine: line,
         endChar: charPositionInLine + 1,
         message: msg,
-        errorType: 'SemanticError',
-        errorSeverity: 'Error',
+        errorType: ErrorType.semantic,
+        errorSeverity: ErrorSeverity.error,
       ),
     );
   }
