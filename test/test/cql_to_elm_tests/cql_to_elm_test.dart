@@ -35,6 +35,41 @@ void main() {
   // or time literal and a syntax-recovered node become error annotations.
   const knownParseFailures = <String>{};
 
+  // Files whose written ELM does not yet equal the reference, with the
+  // first differing path (measured 2026-10-06).
+  // All 17, at the same first difference: the sources say `using QUICK`,
+  // and the reference writes the Patient retrieve's templateId as the QICore
+  // profile; ours writes the base FHIR Patient (no QUICK model loaded).
+  const notYetEqual = <String, String>{
+    'CqlAggregateFunctionsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlAggregateTest': '/statements/def/0/expression/operand/templateId',
+    'CqlArithmeticFunctionsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlComparisonOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlConditionalOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlDateTimeOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlErrorsAndMessagingOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlIntervalOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlListOperatorsTest': '/statements/def/0/expression/operand/templateId',
+    'CqlLogicalOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlNullologicalOperatorsTest':
+        '/statements/def/0/expression/operand/templateId',
+    'CqlOverloadMatching': '/statements/def/0/expression/operand/templateId',
+    'CqlQueryTests': '/statements/def/0/expression/operand/templateId',
+    'CqlStringOperatorsTest': '/statements/def/0/expression/operand/templateId',
+    'CqlTypeOperatorsTest': '/statements/def/0/expression/operand/templateId',
+    'CqlTypesTest': '/statements/def/0/expression/operand/templateId',
+    'ValueLiteralsAndSelectors':
+        '/statements/def/0/expression/operand/templateId',
+  };
+
   for (final cqlFile in cqlFiles) {
     final name = cqlFile.path.split('/').last.replaceAll('.cql', '');
     final jsonFile = File(cqlFile.path.replaceAll('.cql', '.json'));
@@ -114,92 +149,87 @@ void main() {
         }
       });
 
-      test('statement expression types match reference', () {
+      test('written ELM equals the reference, whole tree', () {
+        // Until 2026-10-06 this file checked only that each define's
+        // top-level `type` matched and that over half of the reference's
+        // node type strings appeared somewhere in ours. Now the trees are
+        // compared value by value (DeepCollectionEquality), as Grey's
+        // original harness did, after dropping `annotation` (the reference
+        // writes an empty array on every node) and the defines the
+        // translator reports as not translated (a syntax error inside; the
+        // reference, built from the test XML, shows those as 'skipped'
+        // elements). A file that is not yet equal is pinned in
+        // `notYetEqual` with its first differing path; the pin fails once
+        // the file matches, so the list can only shrink.
         if (!parseSucceeded) return;
-
-        final refStmts = _getStatements(referenceLib);
-        final actualStmts = _getStatements(actualLib);
         final untranslated = _untranslatedDefines(actualLib);
-        var matched = 0;
-        var total = 0;
-
-        for (final refStmt in refStmts) {
-          final stmtName = refStmt['name'] as String?;
-          if (stmtName == null || stmtName == 'Patient') continue;
-          // The reference was made from the test XML, where an invalid
-          // case is a 'skipped' element; from the CQL text that define has
-          // a syntax error and translates as Null with an error naming it.
-          if (untranslated.contains(stmtName)) continue;
-          total++;
-
-          final actualStmt = actualStmts.firstWhereOrNull(
-            (s) => s['name'] == stmtName,
-          );
-          if (actualStmt == null) continue;
-
-          final refExpr = refStmt['expression'] as Map<String, dynamic>?;
-          final actualExpr = actualStmt['expression'] as Map<String, dynamic>?;
-
-          if (refExpr != null &&
-              actualExpr != null &&
-              actualExpr['type'] == refExpr['type']) {
-            matched++;
-          }
+        final ref = _comparable(referenceLib, untranslated);
+        final ours = _comparable(actualLib, untranslated);
+        final equal = const DeepCollectionEquality().equals(ref, ours);
+        final diff = _firstDifference(ref, ours, '');
+        final pinned = notYetEqual[name];
+        if (pinned != null) {
+          expect(equal, isFalse, reason: '$name now matches: remove its pin');
+          expect(diff, startsWith(pinned), reason: diff);
+          return;
         }
-
-        if (total > 0) {
-          expect(
-            matched,
-            total,
-            reason: '$name: $matched/$total top-level expression types matched',
-          );
-        }
-      });
-
-      test('expression tree node types match reference', () {
-        if (!parseSucceeded) return;
-
-        final refStmts = _getStatements(referenceLib);
-        final actualStmts = _getStatements(actualLib);
-        final untranslated = _untranslatedDefines(actualLib);
-        var totalTypes = 0;
-        var matchedTypes = 0;
-
-        for (final refStmt in refStmts) {
-          final stmtName = refStmt['name'] as String?;
-          if (stmtName == null || stmtName == 'Patient') continue;
-          if (untranslated.contains(stmtName)) continue;
-
-          final actualStmt = actualStmts.firstWhereOrNull(
-            (s) => s['name'] == stmtName,
-          );
-          if (actualStmt == null) continue;
-
-          final refTypes = _collectNodeTypes(refStmt['expression']);
-          final actualTypes = _collectNodeTypes(actualStmt['expression']);
-
-          for (final refType in refTypes) {
-            totalTypes++;
-            if (actualTypes.contains(refType)) {
-              matchedTypes++;
-            }
-          }
-        }
-
-        if (totalTypes > 0) {
-          final pct = (matchedTypes * 100 / totalTypes).round();
-          print(
-            '  $name: $matchedTypes/$totalTypes node types present ($pct%)',
-          );
-          expect(
-            matchedTypes / totalTypes,
-            greaterThan(0.5),
-            reason: '$name: fewer than 50% of node types matched',
-          );
-        }
+        expect(equal, isTrue, reason: '$name: $diff');
       });
     });
   }
+}
+
+/// The library with `annotation` removed everywhere and the untranslated
+/// defines dropped, for a value-by-value comparison.
+Map<String, dynamic> _comparable(
+  Map<String, dynamic> lib,
+  Set<String> untranslated,
+) {
+  final copy = jsonDecode(jsonEncode(lib)) as Map<String, dynamic>;
+  void strip(Object? j) {
+    if (j is Map) {
+      j.remove('annotation');
+      // expression.xsd: `signature` minOccurs=0; at signatureLevel None the
+      // reference writes an empty array on every operator, which is no value.
+      if (j['signature'] is List && (j['signature'] as List).isEmpty) {
+        j.remove('signature');
+      }
+      j.values.forEach(strip);
+    } else if (j is List) {
+      j.forEach(strip);
+    }
+  }
+
+  strip(copy);
+  final defs = (copy['statements'] as Map?)?['def'] as List?;
+  defs?.removeWhere((d) => untranslated.contains((d as Map)['name']));
+  return copy;
+}
+
+/// The first path at which [ours] differs from [reference].
+String? _firstDifference(Object? reference, Object? ours, String at) {
+  if (reference is Map && ours is Map) {
+    for (final k in reference.keys) {
+      if (!ours.containsKey(k)) return '$at/$k: missing in ours';
+      final d = _firstDifference(reference[k], ours[k], '$at/$k');
+      if (d != null) return d;
+    }
+    for (final k in ours.keys) {
+      if (!reference.containsKey(k)) return '$at/$k: extra in ours';
+    }
+    return null;
+  }
+  if (reference is List && ours is List) {
+    for (var i = 0; i < reference.length && i < ours.length; i++) {
+      final d = _firstDifference(reference[i], ours[i], '$at/$i');
+      if (d != null) return d;
+    }
+    if (reference.length != ours.length) {
+      return '$at: length ${reference.length} vs ${ours.length}';
+    }
+    return null;
+  }
+  return reference == ours ? null : '$at: $reference vs $ours';
 }
 
 /// Defines the Dart translator reports as not translated (a syntax error
@@ -224,31 +254,4 @@ List<String> _getStatementNames(Map<String, dynamic> lib) {
       .map((s) => s['name'] as String? ?? '')
       .where((n) => n.isNotEmpty)
       .toList();
-}
-
-/// Extract statement definitions from a library map.
-List<Map<String, dynamic>> _getStatements(Map<String, dynamic> lib) {
-  final stmts = lib['statements'] as Map<String, dynamic>?;
-  final defs = stmts?['def'] as List?;
-  if (defs == null) return [];
-  return defs.whereType<Map<String, dynamic>>().toList();
-}
-
-/// Collect all unique 'type' values from an expression tree.
-Set<String> _collectNodeTypes(dynamic value) {
-  final types = <String>{};
-  if (value is Map<String, dynamic>) {
-    final type = value['type'];
-    if (type is String) {
-      types.add(type);
-    }
-    for (final v in value.values) {
-      types.addAll(_collectNodeTypes(v));
-    }
-  } else if (value is List) {
-    for (final item in value) {
-      types.addAll(_collectNodeTypes(item));
-    }
-  }
-  return types;
 }
