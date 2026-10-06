@@ -46,12 +46,13 @@ void main() {
             'ToDecimal vs Literal',
     'Exercises05':
         '/statements/def/2/expression/operand/0/name: missing in ours',
-    // Both library files: the reference carries each define's doc comment
-    // as a `description` annotation; the translator drops it. Behind that,
-    // in FHIRCommon, `choice` inside a function body is an OperandRef,
-    // written as IdentifierRef.
-    'FHIRCommon': '/statements/def/1/annotation: missing in ours',
-    'QICoreCommon': '/statements/def/1/annotation: missing in ours',
+    // FHIRCommon: an `as` cast the reference writes with `strict: false`
+    // (expression.xsd As: strict default false), ours without the attribute.
+    'FHIRCommon':
+        '/statements/def/1/expression/caseItem/0/then/low/operand/0/strict',
+    // QICoreCommon: a query source written without its property path.
+    'QICoreCommon':
+        '/statements/def/1/expression/operand/source/0/expression/path',
   };
 
   for (final name in names) {
