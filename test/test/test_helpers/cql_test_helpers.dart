@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
+import 'package:cql/src/cql_to_elm/library_from_cql.dart';
 import 'package:cql/src/internal.dart';
 
 class CqlParsersAndErrors {
@@ -32,32 +33,13 @@ Map<String, dynamic> loadJsonFile(String filename) {
   return jsonDecode(content) as Map<String, dynamic>;
 }
 
+/// The translator itself; this helper used to repeat its parse, visit and
+/// error-stamping steps and drifted from it (2026-10-06).
 CqlLibrary parseAndBuildLibrary(
   String cqlSource, {
   LibraryManager? libraryManager,
-}) {
-  final parserAndErrors = parseCql(cqlSource);
-  final parser = parserAndErrors.parser;
-
-  final visitor = CqlBaseVisitor<dynamic>(CqlLibrary())
-    ..visit(parser.library_());
-
-  final errors = parserAndErrors.errorListener.errors.map((e) {
-    return e.copyWith(
-      libraryId: visitor.library.identifier?.id,
-      libraryVersion: visitor.library.identifier?.version,
-    );
-  }).toList();
-
-  visitor.library.annotation ??= [];
-  visitor.library.annotation!.addAll(errors);
-
-  if (libraryManager != null) {
-    visitor.library.libraryManager = libraryManager;
-  }
-
-  return visitor.library;
-}
+}) =>
+    libraryFromCql(cqlSource, libraryManager: libraryManager);
 
 Map<String, dynamic> libraryToElm(CqlLibrary library) {
   final visitor = CqlBaseVisitor<dynamic>(library);

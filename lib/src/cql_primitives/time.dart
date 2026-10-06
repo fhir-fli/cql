@@ -80,8 +80,12 @@ class CqlTime extends CqlPrimitive implements Comparable<CqlTime> {
     throw FormatException('Invalid time format: $input');
   }
 
+  /// CQL Developer's Guide Table 3-G: Time ranges over
+  /// @T00:00:00.0..@T23:59:59.999 in steps of 1 millisecond, so seconds run
+  /// 00-59 (no leap second) and the fraction has one to three digits. Until
+  /// 2026-10-06 `:60` and `.10000` passed (CqlTypesTest.cql lines 111, 115).
   static final RegExp _timeRegex = RegExp(
-    r'^([01][0-9]|2[0-3])(:([0-5][0-9])(:([0-5][0-9]|60)(\.[0-9]+)?)?)?$',
+    r'^([01][0-9]|2[0-3])(:([0-5][0-9])(:([0-5][0-9])(\.[0-9]{1,3})?)?)?$',
   );
 
   @override

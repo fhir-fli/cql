@@ -20,12 +20,10 @@ void main() {
       .toList()
     ..sort((a, b) => a.path.compareTo(b.path));
 
-  // Translator defects, not serialisation ones: the message each throws.
-  const translatorFailures = {
-    'CqlDateTimeOperatorsTest.cql':
-        "type 'Null' is not a subtype of type 'CqlExpression' in type cast",
-    'CqlTypesTest.cql': 'Invalid time format: 24:59:59.999',
-  };
+  // Sources the translator cannot translate, with the message each throws.
+  // Empty since 2026-10-06: invalid literals and recovered parse nodes are
+  // recorded as error annotations, so every source translates.
+  const translatorFailures = <String, String>{};
 
   // Libraries that do not execute here, pinned with the message each
   // throws: three need a ModelResolver (they retrieve from a data model),

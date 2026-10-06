@@ -285,16 +285,33 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           .visitConversionExpressionTerm(ctx);
 
   @override
-  LiteralDate visitDateLiteral(DateLiteralContext ctx) =>
-      LiteralDate(ctx.text.replaceFirst('@', ''));
+  LiteralType visitDateLiteral(DateLiteralContext ctx) {
+    final text = ctx.text.replaceFirst('@', '');
+    try {
+      CqlDate.fromString(text);
+    } on FormatException catch (e) {
+      return translationError(ctx, 'Invalid date literal @$text: ${e.message}');
+    }
+    return LiteralDate(text);
+  }
 
   @override
   String visitDateTimeComponent(DateTimeComponentContext ctx) =>
       CqlDateTimeComponentVisitor(library).visitDateTimeComponent(ctx);
 
   @override
-  LiteralDateTime visitDateTimeLiteral(DateTimeLiteralContext ctx) =>
-      LiteralDateTime(ctx.text.replaceFirst('@', ''));
+  LiteralType visitDateTimeLiteral(DateTimeLiteralContext ctx) {
+    final text = ctx.text.replaceFirst('@', '');
+    try {
+      CqlDateTime.fromString(text);
+    } on FormatException catch (e) {
+      return translationError(
+        ctx,
+        'Invalid datetime literal @$text: ${e.message}',
+      );
+    }
+    return LiteralDateTime(text);
+  }
 
   @override
   String visitDateTimePrecision(DateTimePrecisionContext ctx) =>
@@ -1082,9 +1099,21 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
           .visitTimeBoundaryExpressionTerm(ctx);
 
   @override
-  LiteralTime visitTimeLiteral(TimeLiteralContext ctx) => LiteralTime(
-        noQuoteString(ctx.text.replaceFirst('@', '').replaceFirst('T', '')),
+  LiteralType visitTimeLiteral(TimeLiteralContext ctx) {
+    final text =
+        noQuoteString(ctx.text.replaceFirst('@', '').replaceFirst('T', ''));
+    try {
+      // CqlTime validates (hour 00-23, minute 00-59, …); the literal class
+      // does not until it is written, so a bad time is caught here.
+      CqlTime(text);
+    } on FormatException catch (e) {
+      return translationError(
+        ctx,
+        'Invalid time literal @T$text: ${e.message}',
       );
+    }
+    return LiteralTime(text);
+  }
 
   @override
   CqlExpression visitTimeUnitExpressionTerm(
@@ -1552,6 +1581,48 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   Map<String, dynamic> get result => {'library': library.toJson()};
+
+  /// Records a translation error on the library and stands a Null
+  /// expression in for the element. `libraryFromCql` records errors as
+  /// annotations instead of throwing, as the reference translator does; a
+  /// visitor that threw (an impossible time literal, a cast on a recovered
+  /// parse node) broke that contract until 2026-10-06.
+  /// Whether the parser reported a syntax error inside [ctx]'s lines. The
+  /// listener's errors are on the library before the visit
+  /// (`libraryFromCql`).
+  bool syntaxErrorWithin(ParserRuleContext ctx) {
+    final first = ctx.start?.line;
+    final last = ctx.stop?.line ?? first;
+    if (first == null) return false;
+    return (library.annotation ?? const []).any(
+      (a) =>
+          a is CqlToElmError &&
+          a.errorType == ErrorType.syntax &&
+          a.startLine != null &&
+          a.startLine! >= first &&
+          a.startLine! <= last!,
+    );
+  }
+
+  LiteralNull translationError(
+    ParserRuleContext ctx,
+    String message, {
+    ErrorType errorType = ErrorType.semantic,
+  }) {
+    (library.annotation ??= <CqlToElmBase>[]).add(
+      CqlToElmError(
+        libraryId: library.identifier?.id,
+        startLine: ctx.start?.line,
+        startChar: ctx.start?.charPositionInLine,
+        endLine: ctx.stop?.line,
+        endChar: ctx.stop?.charPositionInLine,
+        message: message,
+        errorType: errorType,
+        errorSeverity: ErrorSeverity.error,
+      ),
+    );
+    return LiteralNull();
+  }
 
   dynamic byContext(ParseTree ctx) {
     if (ctx is LibraryContext) {
