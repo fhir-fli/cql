@@ -38,8 +38,10 @@ class Split extends OperatorExpression {
         stringToSplit: CqlExpression.fromJson(
           json['stringToSplit'] as Map<String, dynamic>,
         ),
-        separator:
-            CqlExpression.fromJson(json['separator'] as Map<String, dynamic>),
+        // expression.xsd Split: `separator` minOccurs=0.
+        separator: json['separator'] == null
+            ? null
+            : CqlExpression.fromJson(json['separator'] as Map<String, dynamic>),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -54,7 +56,7 @@ class Split extends OperatorExpression {
               )
             : null,
       );
-  final CqlExpression separator;
+  final CqlExpression? separator;
   final CqlExpression stringToSplit;
 
   @override
@@ -62,7 +64,7 @@ class Split extends OperatorExpression {
     final data = <String, dynamic>{
       'type': type,
       'stringToSplit': stringToSplit.toJson(),
-      'separator': separator.toJson(),
+      if (separator != null) 'separator': separator!.toJson(),
     };
 
     if (annotation != null) {
@@ -97,7 +99,7 @@ class Split extends OperatorExpression {
   @override
   Future<List<String>?> execute(Map<String, dynamic> context) async {
     final stringToSplitValue = await stringToSplit.execute(context);
-    final separatorValue = await separator.execute(context);
+    final separatorValue = await separator?.execute(context);
     return split(stringToSplitValue, separatorValue);
   }
 

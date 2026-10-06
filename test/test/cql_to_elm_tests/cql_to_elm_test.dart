@@ -29,14 +29,13 @@ void main() {
       .toList()
     ..sort((a, b) => a.path.compareTo(b.path));
 
-  // Files with known parse issues in the Dart translator (edge cases like
-  // time 24:59:59.999, high-precision decimals). These still test that the
-  // failure is reported, but skip structural comparison.
+  // Files with known parse issues in the Dart translator. These still test
+  // that the failure is reported, but skip structural comparison. The two
+  // high-precision-decimal entries left on 2026-10-06: LiteralDecimal keeps
+  // its source text, so a 37-digit literal no longer throws in toJson.
   const knownParseFailures = {
-    'CqlArithmeticFunctionsTest', // RangeError on high precision decimal
     'CqlDateTimeOperatorsTest', // Null cast in date/time parsing
     'CqlTypesTest', // Invalid time format 24:59:59.999
-    'ValueLiteralsAndSelectors', // RangeError on precision
   };
 
   for (final cqlFile in cqlFiles) {

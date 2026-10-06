@@ -1011,7 +1011,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       if (lit is SimpleNumberLiteralContext) {
         final text = lit.text;
         if (text.contains('.')) {
-          return LiteralDecimal(double.parse(text));
+          return LiteralDecimal.fromString(text);
         }
         return LiteralInteger(int.parse(text));
       } else if (lit is SimpleStringLiteralContext) {

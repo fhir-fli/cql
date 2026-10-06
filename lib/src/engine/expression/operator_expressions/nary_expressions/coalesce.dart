@@ -131,7 +131,8 @@ class Coalesce extends NaryExpression {
 
   factory Coalesce.fromJson(Map<String, dynamic> json) => Coalesce(
         operand: List<CqlExpression>.from(
-          (json['operand'] as List).map(
+          // expression.xsd NaryExpression: `operand` minOccurs=0.
+          (json['operand'] as List? ?? const []).map(
             (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),

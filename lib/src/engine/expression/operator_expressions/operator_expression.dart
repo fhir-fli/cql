@@ -112,8 +112,8 @@ abstract class OperatorExpression extends CqlExpression {
         return SameOrAfter.fromJson(json);
       case 'SameOrBefore':
         return SameOrBefore.fromJson(json);
-      // case 'Skip':
-      //   return Skip.fromJson(json);
+      case 'Skip':
+        return Skip.fromJson(json);
       case 'StartsWith':
         return StartsWith.fromJson(json);
       case 'Starts':
@@ -128,6 +128,8 @@ abstract class OperatorExpression extends CqlExpression {
         return Xor.fromJson(json);
 
       /// Nary Expressions
+      // 'Contactenate' (sic) was the only spelling here until 2026-10-06.
+      case 'Concatenate':
       case 'Contactenate':
         return Concatenate.fromJson(json);
       case 'Union':
@@ -288,8 +290,8 @@ abstract class OperatorExpression extends CqlExpression {
         return Split.fromJson(json);
       case 'Substring':
         return Substring.fromJson(json);
-      // case 'Take':
-      //   return Take.fromJson(json);
+      case 'Take':
+        return Take.fromJson(json);
       // 'Time' is the ELM name and what the class writes now; 'TimeExpression'
       // is what it wrote before 2026-10-06, kept so that ELM already stored
       // (a Library's application/elm+json attachment) still reads.

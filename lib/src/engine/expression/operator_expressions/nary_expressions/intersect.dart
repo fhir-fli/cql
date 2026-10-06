@@ -62,7 +62,8 @@ class Intersect extends NaryExpression {
 
   factory Intersect.fromJson(Map<String, dynamic> json) => Intersect(
         operand: List<CqlExpression>.from(
-          (json['operand'] as List).map(
+          // expression.xsd NaryExpression: `operand` minOccurs=0.
+          (json['operand'] as List? ?? const []).map(
             (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),

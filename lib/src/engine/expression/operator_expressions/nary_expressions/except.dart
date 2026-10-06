@@ -68,7 +68,8 @@ class Except extends NaryExpression {
 
   factory Except.fromJson(Map<String, dynamic> json) => Except(
         operand: List<CqlExpression>.from(
-          (json['operand'] as List).map(
+          // expression.xsd NaryExpression: `operand` minOccurs=0.
+          (json['operand'] as List? ?? const []).map(
             (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),
