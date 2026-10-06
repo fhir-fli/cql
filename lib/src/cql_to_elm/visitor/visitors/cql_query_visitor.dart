@@ -121,4 +121,37 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
       ),
     );
   }
+
+  /// The elements of [query] converted to their System type through an
+  /// outer query `X`, when the return's known type is a model type with a
+  /// declared conversion that no binding site owns: what the reference
+  /// writes for an aggregate over `… return (T.value as Quantity)`
+  /// (Exercises08: `Avg(…)` becomes Avg over `X` returning
+  /// FHIRHelpers.ToQuantity(X)). A query whose elements stay model-typed
+  /// (`return D.code` fed to a `~` comparison) is returned as is.
+  static Query convertElementsForAggregate(Query query, Model? model) {
+    final expr = query.returnClause?.expression;
+    final type = expr?.knownResultType;
+    if (model == null || expr == null || type == null) return query;
+    if (type.startsWith('List<')) return query;
+    final conversion = model.findConversionFrom(type);
+    if (conversion == null ||
+        CqlBaseVisitor.isBindingOwnedConversion(conversion.functionName)) {
+      return query;
+    }
+    final dot = conversion.functionName.indexOf('.');
+    if (dot <= 0) return query;
+    const outerAlias = 'X';
+    return Query(
+      source: [AliasedQuerySource(alias: outerAlias, expression: query)],
+      returnClause: ReturnClause(
+        distinct: false,
+        expression: FunctionRef(
+          name: conversion.functionName.substring(dot + 1),
+          libraryName: conversion.functionName.substring(0, dot),
+          operand: [AliasRef(name: outerAlias)],
+        ),
+      ),
+    );
+  }
 }

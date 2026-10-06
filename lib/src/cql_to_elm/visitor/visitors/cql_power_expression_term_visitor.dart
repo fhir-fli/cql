@@ -19,6 +19,8 @@ class CqlPowerExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
       }
     }
     if (left != null && right != null) {
+      left = CqlBaseVisitor.convertCastForBinding(left, currentModel);
+      right = CqlBaseVisitor.convertCastForBinding(right, currentModel);
       if (left is LiteralType && right is LiteralType) {
         switch (left) {
           case LiteralInteger _:
