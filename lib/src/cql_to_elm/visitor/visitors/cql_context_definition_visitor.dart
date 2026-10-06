@@ -39,10 +39,17 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
             );
             if (index != -1) {
               // A retrievable ClassInfo is a model resource type (the
-              // model-driven answer to "is `name` a FHIR resource?"), so it
-              // gets a StructureDefinition templateId.
+              // model-driven answer to "is `name` a FHIR resource?"). Its
+              // templateId is the model info's `identifier` for the type,
+              // as the retrieve visitor writes it: under `using QUICK` that
+              // is the QICore profile (…/qicore-patient), which the reference
+              // translator writes for all 17 CQL test sources; until
+              // 2026-10-06 this wrote the base FHIR StructureDefinition
+              // whatever the model.
               final typeInfo = modelInfo.typeInfo[index];
               final isResource = typeInfo is ClassInfo && typeInfo.retrievable;
+              final identifier =
+                  typeInfo is ClassInfo ? typeInfo.identifier : null;
               library.statements ??= ExpressionDefs();
               library.statements!.def.add(
                 ExpressionDef(
@@ -50,9 +57,10 @@ class CqlContextDefinitionVisitor extends CqlBaseVisitor<void> {
                   context: name,
                   expression: SingletonFrom(
                     operand: Retrieve(
-                      templateId: isResource
-                          ? 'http://hl7.org/fhir/StructureDefinition/$name'
-                          : name,
+                      templateId: identifier ??
+                          (isResource
+                              ? 'http://hl7.org/fhir/StructureDefinition/$name'
+                              : name),
                       dataType: QName(
                         namespaceURI: modelInfo.url.toString(),
                         localPart: name,

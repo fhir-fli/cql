@@ -37,37 +37,43 @@ void main() {
 
   // Files whose written ELM does not yet equal the reference, with the
   // first differing path (measured 2026-10-06).
-  // All 17, at the same first difference: the sources say `using QUICK`,
-  // and the reference writes the Patient retrieve's templateId as the QICore
-  // profile; ours writes the base FHIR Patient (no QUICK model loaded).
+  // Files whose written ELM does not yet equal the reference, at the
+  // path of the first difference (measured 2026-10-06, after the
+  // templateId fix). Families: implicit conversions the reference inserts
+  // (As around nulls, FHIRHelpers FunctionRefs, ToDecimal, If), a let
+  // reference written as IdentifierRef, a return clause not written, and
+  // zero-padded date-component literals written as plain integers.
   const notYetEqual = <String, String>{
     'CqlAggregateFunctionsTest':
-        '/statements/def/0/expression/operand/templateId',
-    'CqlAggregateTest': '/statements/def/0/expression/operand/templateId',
+        '/statements/def/1/expression/element/5/value/element/0/value/source/element/0/type',
+    'CqlAggregateTest':
+        '/statements/def/1/expression/element/0/value/element/0/value/aggregate/expression/operand/0/type',
     'CqlArithmeticFunctionsTest':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/1/expression/element/0/value/element/0/value/operand/type',
     'CqlComparisonOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/2/expression/element/4/value/element/0/value/operand/0/type',
     'CqlConditionalOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/2/expression/element/0/value/element/0/value/else/type',
     'CqlDateTimeOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
-    'CqlErrorsAndMessagingOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/2/expression/element/5/value/element/0/value/operand/0/day/value',
     'CqlIntervalOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
-    'CqlListOperatorsTest': '/statements/def/0/expression/operand/templateId',
+        '/statements/def/1/expression/element/0/value/element/0/value/operand/0/type',
+    'CqlListOperatorsTest':
+        '/statements/def/2/expression/element/0/value/element/0/value/operand/0/element/2/type',
     'CqlLogicalOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/1/expression/element/6/value/element/0/value/operand/0/type',
     'CqlNullologicalOperatorsTest':
-        '/statements/def/0/expression/operand/templateId',
-    'CqlOverloadMatching': '/statements/def/0/expression/operand/templateId',
-    'CqlQueryTests': '/statements/def/0/expression/operand/templateId',
-    'CqlStringOperatorsTest': '/statements/def/0/expression/operand/templateId',
-    'CqlTypeOperatorsTest': '/statements/def/0/expression/operand/templateId',
-    'CqlTypesTest': '/statements/def/0/expression/operand/templateId',
+        '/statements/def/1/expression/element/0/value/element/0/value/operand/1/type',
+    'CqlQueryTests':
+        '/statements/def/1/expression/element/2/value/element/0/value/return',
+    'CqlStringOperatorsTest':
+        '/statements/def/1/expression/element/0/value/element/0/value/source/type',
+    'CqlTypeOperatorsTest':
+        '/statements/def/1/expression/element/0/value/element/0/value/type',
+    'CqlTypesTest':
+        '/statements/def/2/expression/element/1/value/element/0/value/year/value',
     'ValueLiteralsAndSelectors':
-        '/statements/def/0/expression/operand/templateId',
+        '/statements/def/4/expression/element/12/value/element/0/value/operand/0/operand/1/type',
   };
 
   for (final cqlFile in cqlFiles) {
@@ -163,8 +169,9 @@ void main() {
         // the file matches, so the list can only shrink.
         if (!parseSucceeded) return;
         final untranslated = _untranslatedDefines(actualLib);
-        final ref = _comparable(referenceLib, untranslated);
-        final ours = _comparable(actualLib, untranslated);
+        final skipped = _skippedCases(referenceLib);
+        final ref = _comparable(referenceLib, untranslated, skipped);
+        final ours = _comparable(actualLib, untranslated, skipped);
         final equal = const DeepCollectionEquality().equals(ref, ours);
         final diff = _firstDifference(ref, ours, '');
         final pinned = notYetEqual[name];
@@ -184,17 +191,20 @@ void main() {
 Map<String, dynamic> _comparable(
   Map<String, dynamic> lib,
   Set<String> untranslated,
+  Set<String> skipped,
 ) {
   final copy = jsonDecode(jsonEncode(lib)) as Map<String, dynamic>;
   void strip(Object? j) {
     if (j is Map) {
-      j.remove('annotation');
-      // expression.xsd: `signature` minOccurs=0; at signatureLevel None the
-      // reference writes an empty array on every operator, which is no value.
-      if (j['signature'] is List && (j['signature'] as List).isEmpty) {
-        j.remove('signature');
-      }
-      j.values.forEach(strip);
+      // Every list element in the schema is minOccurs=0 (signature, the
+      // retrieve's include/codeFilter/dateFilter/otherFilter, a query's
+      // let/relationship…); the reference writes an empty array where ours
+      // omits the element. An empty array is the element's absence, not a
+      // value, so both sides drop it.
+      j
+        ..remove('annotation')
+        ..removeWhere((k, v) => v is List && v.isEmpty)
+        ..values.forEach(strip);
     } else if (j is List) {
       j.forEach(strip);
     }
@@ -203,7 +213,57 @@ Map<String, dynamic> _comparable(
   strip(copy);
   final defs = (copy['statements'] as Map?)?['def'] as List?;
   defs?.removeWhere((d) => untranslated.contains((d as Map)['name']));
+  dropSkippedCases(copy, skipped);
   return copy;
+}
+
+/// Test cases the reference marks `skipped`. The reference ELM was made
+/// from the test-suite XML, where a case the suite cannot run is a Tuple
+/// with one element named `skipped` (a String literal saying why); the CQL
+/// text still has the case's `expression`/`output`/`invalid` elements, so
+/// no translator can produce the reference's shape for it. Both sides drop
+/// the whole case, found by its enclosing element name. Measured
+/// 2026-10-06: 111 such cases across the 17 files.
+Set<String> _skippedCases(Map<String, dynamic> lib) {
+  final names = <String>{};
+  void walk(Object? j) {
+    if (j is Map) {
+      final elements = j['element'];
+      if (j['type'] == 'Tuple' && elements is List) {
+        for (final e in elements) {
+          final value = (e as Map)['value'];
+          if (value is Map &&
+              value['type'] == 'Tuple' &&
+              (value['element'] as List? ?? const [])
+                  .any((x) => (x as Map)['name'] == 'skipped')) {
+            names.add(e['name'] as String);
+          }
+        }
+      }
+      j.values.forEach(walk);
+    } else if (j is List) {
+      j.forEach(walk);
+    }
+  }
+
+  walk(lib);
+  return names;
+}
+
+void dropSkippedCases(Object? j, Set<String> names) {
+  if (j is Map) {
+    final elements = j['element'];
+    if (j['type'] == 'Tuple' && elements is List) {
+      elements.removeWhere((e) => names.contains((e as Map)['name']));
+    }
+    for (final v in j.values) {
+      dropSkippedCases(v, names);
+    }
+  } else if (j is List) {
+    for (final v in j) {
+      dropSkippedCases(v, names);
+    }
+  }
 }
 
 /// The first path at which [ours] differs from [reference].
