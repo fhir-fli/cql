@@ -57,6 +57,9 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
     CqlExpression expr,
     CqlExpression other,
   ) {
+    if (expr is As) {
+      return CqlBaseVisitor.convertCastForBinding(expr, currentModel);
+    }
     if (expr is Property) {
       final className = _resolvePropertyClassName(expr);
       if (className != null) {

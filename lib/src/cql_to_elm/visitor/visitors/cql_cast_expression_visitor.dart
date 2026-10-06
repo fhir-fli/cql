@@ -19,7 +19,13 @@ class CqlCastExpressionVisitor extends CqlBaseVisitor<As> {
     }
 
     if (operand != null && typeSpecifier != null) {
-      return As(operand: operand, resultTypeSpecifier: typeSpecifier);
+      // expression.xsd As: `strict` (default false) means a value not of
+      // the type is an error rather than null; CQL's `cast … as` is the
+      // strict form. The reference writes it with asTypeSpecifier and
+      // strict=true (CqlTypeOperatorsTest). Until 2026-10-06 this wrote the
+      // type as resultTypeSpecifier and no strict at all.
+      return As(operand: operand, asTypeSpecifier: typeSpecifier)
+        ..strict = true;
     }
 
     throw ArgumentError('$thisNode Invalid CastExpression');

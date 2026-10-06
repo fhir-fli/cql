@@ -26,6 +26,10 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
       }
     }
     if (operand.length == 2) {
+      for (var i = 0; i < 2; i++) {
+        operand[i] =
+            CqlBaseVisitor.convertCastForBinding(operand[i], currentModel);
+      }
       if (!inContains) {
         // For `list.value contains CodeRef` where value is a choice type,
         // transform the collection operand into a Query with type narrowing.

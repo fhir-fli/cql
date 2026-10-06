@@ -25,8 +25,10 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
     // Ensure we have two operands for addition/subtraction
     if (operand.length == 2) {
-      final left = operand[0];
-      final right = operand[1];
+      final left =
+          CqlBaseVisitor.convertCastForBinding(operand[0], currentModel);
+      final right =
+          CqlBaseVisitor.convertCastForBinding(operand[1], currentModel);
 
       // Handle subtraction operator
       if (additionOperator == '-') {

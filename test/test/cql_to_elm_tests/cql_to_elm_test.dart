@@ -49,9 +49,9 @@ void main() {
     'CqlAggregateTest':
         '/statements/def/1/expression/element/0/value/element/0/value/aggregate/expression/operand/0/type',
     'CqlArithmeticFunctionsTest':
-        '/statements/def/1/expression/element/0/value/element/0/value/operand/type',
+        '/statements/def/3/expression/element/6/value/element/0/value/operand/type',
     'CqlComparisonOperatorsTest':
-        '/statements/def/2/expression/element/4/value/element/0/value/operand/0/type',
+        '/statements/def/2/expression/element/4/value/element/0/value/operand/1/type',
     'CqlConditionalOperatorsTest':
         '/statements/def/2/expression/element/0/value/element/0/value/else/type',
     'CqlDateTimeOperatorsTest':
@@ -69,7 +69,7 @@ void main() {
     'CqlStringOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/source/type',
     'CqlTypeOperatorsTest':
-        '/statements/def/1/expression/element/0/value/element/0/value/type',
+        '/statements/def/1/expression/element/2/value/element/0/value/operand/month/value',
     'CqlTypesTest':
         '/statements/def/2/expression/element/1/value/element/0/value/year/value',
     'ValueLiteralsAndSelectors':

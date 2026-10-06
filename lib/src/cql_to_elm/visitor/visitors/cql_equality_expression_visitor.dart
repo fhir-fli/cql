@@ -157,6 +157,10 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
 
     // ───── Inject FHIRHelpers wrappers ─────
     if (operands.length == 2 && equalityOperator != null) {
+      for (var i = 0; i < 2; i++) {
+        operands[i] =
+            CqlBaseVisitor.convertCastForBinding(operands[i], currentModel);
+      }
       final left = operands[0];
       final right = operands[1];
 

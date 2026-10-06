@@ -135,10 +135,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return type == null ? null : elementTypeName(type);
   }
 
-  /// Whether we're currently inside a sort clause (suppresses FHIRHelpers
-  /// wrapping).
-  static bool _inSortClause = false;
-
   @override
   AccessModifier visitAccessModifier(AccessModifierContext ctx) =>
       CqlAccessModifierVisitor(library).visitAccessModifier(ctx);
@@ -804,7 +800,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       CqlQualifiedIdentifierVisitor(library).visitQualifiedIdentifier(ctx);
 
   @override
-  Ref visitQualifiedIdentifierExpression(
+  CqlExpression visitQualifiedIdentifierExpression(
     QualifiedIdentifierExpressionContext ctx,
   ) =>
       CqlQualifiedIdentifierExpressionVisitor(library)
@@ -989,7 +985,6 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   @override
   SortClause visitSortClause(SortClauseContext ctx) {
     printIf(ctx);
-    _inSortClause = true;
     try {
       final byItems = <SortByItem>[];
       SortDirection? bareDirection;
@@ -1004,9 +999,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         byItems.add(ByDirection(direction: bareDirection));
       }
       return SortClause(by: byItems);
-    } finally {
-      _inSortClause = false;
-    }
+    } finally {}
   }
 
   @override
@@ -1182,94 +1175,106 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       }
     }
     if (operand != null && typeSpecifier != null) {
+      final nts = typeSpecifier is NamedTypeSpecifier ? typeSpecifier : null;
+      if (nts != null && !_isQualified(ctx)) {
+        _resolveAgainstChoice(nts, operand);
+      }
       if (isIs) {
-        final nts = typeSpecifier is NamedTypeSpecifier ? typeSpecifier : null;
-        if (nts != null) _ensureFhirNamespace(nts);
         return Is(
           operand: operand,
           isTypeSpecifier: nts,
         );
       } else if (isAs) {
-        // For `as` in FHIR context, ensure the type uses FHIR namespace
-        // and wrap with the appropriate FHIRHelpers conversion function
-        // (unless we're in a sort clause context).
-        final nts = typeSpecifier is NamedTypeSpecifier ? typeSpecifier : null;
-        if (nts != null) {
-          _ensureFhirNamespace(nts);
-        }
-        // Use the full type specifier (which may be a ListTypeSpecifier,
-        // IntervalTypeSpecifier, etc.) not just the NamedTypeSpecifier.
+        // The full type specifier (a List or Interval specifier too), as
+        // the reference writes it, with strict=false (CQL's `as`; `cast …
+        // as` is the strict form). Until 2026-10-06 this also forced the
+        // FHIR namespace onto the type and wrapped the cast in a
+        // FHIRHelpers conversion; measured over the 31 reference files, no
+        // user-written cast is wrapped by the translator (the 63 wrapped
+        // ones are the source's own FHIRHelpers calls, which this
+        // double-wrapped), and 39 of 184 target a System type.
         final asExpr = As(
           operand: operand,
           asTypeSpecifier: nts ?? typeSpecifier,
         )..strict = false;
-        if (_inSortClause) return asExpr;
-        return _wrapWithFhirHelper(asExpr, nts);
+        // The cast's result type, for the binding site that uses it: the
+        // reference inserts the model's conversion (FHIRHelpers.ToQuantity
+        // around `MR.value as Quantity` in a subtraction, Exercises08) at
+        // the operator, never at the cast.
+        final model = currentModel;
+        if (model != null && nts != null) {
+          final normalized = model.normalizeTypeName(nts.namespace.toString());
+          if (model.resolveTypeName(normalized) != null) {
+            asExpr.inferredResultType = normalized;
+          }
+        }
+        return asExpr;
       }
     }
     throw ArgumentError('$thisNode Invalid TypeExpression');
   }
 
-  /// For `as` type expressions targeting ambiguous types like Quantity,
-  /// ensure the type specifier uses the FHIR namespace (not ELM system).
-  void _ensureFhirNamespace(NamedTypeSpecifier nts) {
-    final qn = nts.namespace;
-    if (qn.namespaceURI == 'urn:hl7-org:elm-types:r1') {
-      // Types like Quantity in `as` expressions should use FHIR namespace
-      const fhirNs = 'http://hl7.org/fhir';
-      nts.namespace = QName(namespaceURI: fhirNs, localPart: qn.localPart);
+  /// A cast bound into an operator that needs a System value gets the
+  /// model's declared conversion, as a typed property does
+  /// ([wrapPropertyWithFhirHelper]); anything else passes through.
+  static CqlExpression convertCastForBinding(
+    CqlExpression expression,
+    Model? model,
+  ) =>
+      expression is As
+          ? wrapPropertyWithFhirHelper(expression, '', model: model)
+          : expression;
+
+  /// Whether the type in an `is`/`as` expression was written with a
+  /// qualifier (`FHIR.Quantity`, `System.Quantity`).
+  static bool _isQualified(TypeExpressionContext ctx) {
+    bool hasQualifier(ParseTree node) {
+      if (node is QualifierContext) return true;
+      for (var i = 0; i < node.childCount; i++) {
+        final child = node.getChild<ParseTree>(i);
+        if (child != null && hasQualifier(child)) return true;
+      }
+      return false;
     }
+
+    for (final child in ctx.children ?? <ParseTree>[]) {
+      if (child is TypeSpecifierContext && hasQualifier(child)) return true;
+    }
+    return false;
   }
 
-  /// Map a FHIR type name to its FHIRHelpers conversion function name.
-  static String? _fhirHelperForType(String typeName) {
-    switch (typeName.toLowerCase()) {
-      case 'datetime':
-      case 'instant':
-        return 'ToDateTime';
-      case 'date':
-        return 'ToDate';
-      case 'quantity':
-        return 'ToQuantity';
-      case 'period':
-        return 'ToInterval';
-      case 'codeableconcept':
-        return 'ToConcept';
-      case 'code':
-      case 'string':
-      case 'id':
-      case 'uri':
-      case 'markdown':
-        return 'ToString';
-      case 'boolean':
-        return 'ToBoolean';
-      case 'integer':
-      case 'positiveint':
-      case 'unsignedint':
-        return 'ToInteger';
-      case 'decimal':
-        return 'ToDecimal';
-      default:
-        return null;
+  /// An unqualified type name in `x is T` / `x as T`, where `x` is a model
+  /// choice element (`Observation.value[x]`) with a member whose name is
+  /// `T`, is that member. Derived from the reference translator's output
+  /// (2026-10-06): `O.value is Quantity` and `MR.value as Quantity` over
+  /// FHIR observations resolve to {http://hl7.org/fhir}Quantity (12 nodes
+  /// in Exercises07/08), while `null as Quantity` and `45.5 'g' as Quantity`
+  /// resolve to System.Quantity (11 nodes in the CQL test sources). The
+  /// specification's Choice Types section gives no rule for the name; this
+  /// is the observed one. Any other unqualified name keeps the resolution
+  /// every type specifier gets (the System type first).
+  void _resolveAgainstChoice(NamedTypeSpecifier nts, CqlExpression operand) {
+    final model = currentModel;
+    if (model == null || operand is! Property) return;
+    final sourceType = operand.scope != null
+        ? CqlBaseVisitor.aliasType(operand.scope!)
+        : operand.source == null
+            ? null
+            : inferType(operand.source!, model);
+    if (sourceType == null || sourceType.startsWith('List<')) return;
+    final resolved = model.resolveElementType(sourceType, operand.path);
+    if (resolved == null || !resolved.isChoice) return;
+    final name = nts.namespace.localPart;
+    for (final member in resolved.types) {
+      final dot = member.lastIndexOf('.');
+      if (member.substring(dot + 1) == name) {
+        nts.namespace = QName(
+          namespaceURI: model.modelInfo.url.toString(),
+          localPart: name,
+        );
+        return;
+      }
     }
-  }
-
-  /// Wrap a CQL expression with a FHIRHelpers function call if the
-  /// type specifier indicates a FHIR type that needs conversion.
-  static CqlExpression _wrapWithFhirHelper(
-    CqlExpression expr,
-    NamedTypeSpecifier? typeSpec,
-  ) {
-    if (typeSpec == null) return expr;
-    final qn = typeSpec.namespace;
-    if (qn.namespaceURI != 'http://hl7.org/fhir') return expr;
-    final helperName = _fhirHelperForType(qn.localPart);
-    if (helperName == null) return expr;
-    return FunctionRef(
-      name: helperName,
-      libraryName: 'FHIRHelpers',
-      operand: [expr],
-    );
   }
 
   /// Conversions that comparison/membership visitors insert at their own
@@ -1279,6 +1284,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     'FHIRHelpers.ToCode',
     'FHIRHelpers.ToConcept',
   };
+
+  /// Whether [functionName] is a conversion a comparison binding site
+  /// inserts itself (see [_bindingOwnedConversions]).
+  static bool isBindingOwnedConversion(String functionName) =>
+      _bindingOwnedConversions.contains(functionName);
 
   /// Wrap a Property access with its FHIRHelpers conversion.
   ///
@@ -2110,7 +2120,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
-  Multiply handleMultiply(CqlExpression left, CqlExpression right) {
+  Multiply handleMultiply(
+    CqlExpression leftOperand,
+    CqlExpression rightOperand,
+  ) {
+    final left = convertCastForBinding(leftOperand, currentModel);
+    final right = convertCastForBinding(rightOperand, currentModel);
     final leftTypes = left.getReturnTypes(library);
     final rightTypes = right.getReturnTypes(library);
     switch (left) {
@@ -2209,7 +2224,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return Multiply(operand: [left, right]);
   }
 
-  CqlExpression handleDivide(CqlExpression left, CqlExpression right) {
+  CqlExpression handleDivide(
+    CqlExpression leftOperand,
+    CqlExpression rightOperand,
+  ) {
+    final left = convertCastForBinding(leftOperand, currentModel);
+    final right = convertCastForBinding(rightOperand, currentModel);
     switch (left) {
       case LiteralInteger _:
         {
@@ -2310,9 +2330,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   TruncatedDivide handleTruncatedDivide(
-    CqlExpression left,
-    CqlExpression right,
+    CqlExpression leftOperand,
+    CqlExpression rightOperand,
   ) {
+    final left = convertCastForBinding(leftOperand, currentModel);
+    final right = convertCastForBinding(rightOperand, currentModel);
     switch (left) {
       case LiteralInteger _:
         {
@@ -2427,7 +2449,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return TruncatedDivide(operand: [left, right]);
   }
 
-  Modulo handleModulo(CqlExpression left, CqlExpression right) {
+  Modulo handleModulo(CqlExpression leftOperand, CqlExpression rightOperand) {
+    final left = convertCastForBinding(leftOperand, currentModel);
+    final right = convertCastForBinding(rightOperand, currentModel);
     switch (left) {
       case LiteralInteger _:
         {

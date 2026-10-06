@@ -10,7 +10,8 @@ class CqlContextIdentifierVisitor extends CqlBaseVisitor<Ref> {
     final thisNode = getNextNode();
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is QualifiedIdentifierExpressionContext) {
-        return visitQualifiedIdentifierExpression(child);
+        final ref = visitQualifiedIdentifierExpression(child);
+        if (ref is Ref) return ref;
       }
     }
     throw ArgumentError('$thisNode Invalid ContextIdentifier');

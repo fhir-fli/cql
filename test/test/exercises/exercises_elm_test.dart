@@ -46,13 +46,12 @@ void main() {
             'ToDecimal vs Literal',
     'Exercises05':
         '/statements/def/2/expression/operand/0/name: missing in ours',
-    // FHIRCommon: an `as` cast the reference writes with `strict: false`
-    // (expression.xsd As: strict default false), ours without the attribute.
-    'FHIRCommon':
-        '/statements/def/1/expression/caseItem/0/then/low/operand/0/strict',
-    // QICoreCommon: a query source written without its property path.
-    'QICoreCommon':
-        '/statements/def/1/expression/operand/source/0/expression/path',
+    // FHIRCommon: `FHIRHelpers.ToDateTime(x) + 1 day` style arithmetic the
+    // reference writes with the conversion outside the Add.
+    'FHIRCommon': '/statements/def/1/expression/caseItem/3/then/low/type',
+    // QICoreCommon: `C ~ Community` where C is an alias over codes; the
+    // reference converts C with FHIRHelpers.ToConcept at the comparison.
+    'QICoreCommon': '/statements/def/1/expression/operand/where/operand/0/name',
   };
 
   for (final name in names) {

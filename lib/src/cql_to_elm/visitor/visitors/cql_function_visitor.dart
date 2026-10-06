@@ -64,6 +64,21 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
         operand.first is ListExpression) {
       operand[0] = _transformToQuery(operand.first as ListExpression, ref);
     }
+    // An aggregate over a query whose elements are model-typed converts
+    // them through an outer query (the reference's shape for
+    // `Avg(… return (T.value as Quantity))`, Exercises08).
+    if ((simpleAggregates.containsKey(ref) ||
+            queryBasedFunctions.contains(ref) ||
+            ref == 'Mode' ||
+            ref == 'Min' ||
+            ref == 'Max') &&
+        operand.isNotEmpty &&
+        operand.first is Query) {
+      operand[0] = CqlQueryVisitor.convertElementsForAggregate(
+        operand.first as Query,
+        currentModel,
+      );
+    }
 
     //
     // STEP 3: Delegate to the standard factory; fall back to FunctionRef

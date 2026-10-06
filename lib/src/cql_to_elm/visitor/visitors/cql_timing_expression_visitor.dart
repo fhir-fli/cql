@@ -130,6 +130,9 @@ class CqlTimingExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   /// 'dateTime', wrap it with As({fhir}dateTime) then FHIRHelpers.ToDateTime().
   /// For non-choice date/dateTime properties, apply standard FHIRHelpers wrapping.
   CqlExpression _wrapChoiceForTiming(CqlExpression expr) {
+    if (expr is As) {
+      return CqlBaseVisitor.convertCastForBinding(expr, currentModel);
+    }
     if (expr is Property) {
       final className = _resolveClassName(expr);
       if (className != null) {
