@@ -2,9 +2,9 @@ import 'package:cql/src/internal.dart';
 
 /// Expression allowing the value of an operand to be referenced within the
 /// body of a function definition.
-class OperandRef extends CqlExpression {
+class OperandRef extends Ref {
   OperandRef({
-    required this.name,
+    required super.name,
     super.annotation,
     super.localId,
     super.locator,
@@ -37,9 +37,6 @@ class OperandRef extends CqlExpression {
               )
             : null,
       );
-
-  /// Name of the referenced operand.
-  String name;
 
   @override
   Map<String, dynamic> toJson() {

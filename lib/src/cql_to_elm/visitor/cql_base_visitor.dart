@@ -85,6 +85,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (_operandScopes.isNotEmpty) _operandScopes.removeLast();
   }
 
+  /// Whether [name] is an operand of a function whose body is being visited.
+  static bool isOperandInScope(String name) =>
+      _operandScopes.any((scope) => scope.containsKey(name));
+
   /// The declared type of the function operand [name], looking from the
   /// innermost scope outward.
   static String? operandTypeOf(String name) {
@@ -1999,6 +2003,19 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   Ref returnRef(String name, String? libraryName) {
+    // CQL Developer's Guide, Identifier Resolution: "query aliases, operand
+    // names, and let aliases are allowed to be defined with the same name
+    // as an existing identifier, effectively hiding the existing
+    // identifier." So an unqualified name is an operand or an alias before
+    // it is anything the library declares. Until 2026-10-06 an operand was
+    // recognised only when the whole function body was that bare operand
+    // (FHIRCommon.ToInterval: `choice` inside its case was written as
+    // IdentifierRef), and an alias only after every library-level name.
+    if (libraryName == null) {
+      if (isOperandInScope(name)) return OperandRef(name: name);
+      if (isQueryAlias(name)) return AliasRef(name: name);
+    }
+
     /// usings?
     /// includes?
     /// contexts?

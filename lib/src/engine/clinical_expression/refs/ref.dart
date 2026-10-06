@@ -27,6 +27,8 @@ abstract class Ref extends CqlExpression {
         return ParameterRef.fromJson(json);
       case 'ExpressionRef':
         return ExpressionRef.fromJson(json);
+      case 'OperandRef':
+        return OperandRef.fromJson(json);
       case 'FunctionRef':
         return FunctionRef.fromJson(json);
       case 'IdentifierRef':
