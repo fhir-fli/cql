@@ -58,19 +58,33 @@ class QName {
 
   /// Elm‐core type → Elm namespace
   static const _elmNs = 'urn:hl7-org:elm-types:r1';
+
+  /// The System-defined types, CQL Reference (09-b) Appendix B "Types":
+  /// Any, Boolean, Code, CodeSystem, Concept, Date, DateTime, Decimal, Long,
+  /// Integer, Quantity, Ratio, String, Time, ValueSet, Vocabulary. Until
+  /// 2026-10-06 Date, Long, Any, CodeSystem and Vocabulary were missing, so
+  /// an unqualified `Date` fell through to the FHIR table (`date`) and
+  /// `minimum Date` translated with the FHIR namespace, where the reference
+  /// translator writes {urn:hl7-org:elm-types:r1}Date. Interval and Null are
+  /// kept as before.
   static const elmCoreTypes = {
+    'Any',
+    'Boolean',
+    'Code',
+    'CodeSystem',
+    'Concept',
+    'Date',
+    'DateTime',
+    'Decimal',
+    'Long',
+    'Integer',
     'Quantity',
     'Ratio',
-    'Integer',
-    'Decimal',
-    'Code',
-    'DateTime',
-    'Time',
     'String',
-    'Boolean',
-    'Concept',
-    'Interval',
+    'Time',
     'ValueSet',
+    'Vocabulary',
+    'Interval',
     'Null',
   };
 
