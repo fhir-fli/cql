@@ -132,9 +132,6 @@ class DateTimeExpression extends OperatorExpression {
               json['second'] = second!.toJson();
               if (millisecond != null) {
                 json['millisecond'] = millisecond!.toJson();
-                if (timezoneOffset != null) {
-                  json['timezoneOffset'] = timezoneOffset!.toJson();
-                }
               }
             }
           }
@@ -162,6 +159,14 @@ class DateTimeExpression extends OperatorExpression {
       json['resultTypeSpecifier'] = resultTypeSpecifier!.toJson();
     }
 
+    // expression.xsd DateTime: `timezoneOffset` is its own optional element,
+    // not the end of the precision chain. The reference translator writes
+    // it on 24 nodes that have seconds but no milliseconds
+    // (@2017-03-12T01:00:00-07:00 and the like); until 2026-10-06 the
+    // offset was written only after a millisecond, so those lost it.
+    if (timezoneOffset != null) {
+      json['timezoneOffset'] = timezoneOffset!.toJson();
+    }
     return json;
   }
 
