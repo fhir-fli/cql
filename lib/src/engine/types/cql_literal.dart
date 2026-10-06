@@ -421,6 +421,15 @@ class LiteralDateTime extends LiteralType {
         'second': LiteralInteger(dateTime.second!).toJson(),
       if (dateTime.hasMilliseconds)
         'millisecond': LiteralInteger(dateTime.millisecond!).toJson(),
+      // expression.xsd DateTime: `timezoneOffset` (minOccurs=0) is an
+      // Expression; the reference translator writes `@...Z` as the Decimal
+      // literal 0.0. This was omitted until 2026-10-06, so a reloaded library
+      // read `@2013-01-02T00:00:00.000Z` as a local time.
+      if (dateTime.isUtc)
+        'timezoneOffset': LiteralDecimal(0.0).toJson()
+      else if (dateTime.timeZoneOffset != null)
+        'timezoneOffset':
+            LiteralDecimal(dateTime.timeZoneOffset!.toDouble()).toJson(),
     };
   }
 
@@ -444,7 +453,12 @@ class LiteralDateTime extends LiteralType {
 class LiteralDecimal extends LiteralType {
   /// Creates a decimal literal for [value], optionally recording its number
   /// of significant figures in [sigFigs].
-  LiteralDecimal(this.value, {this.sigFigs});
+  LiteralDecimal(this.value, {this.sigFigs}) : source = null;
+
+  LiteralDecimal._text(String text)
+      : source = text,
+        value = num.parse(text),
+        sigFigs = null;
 
   /// Parses [stringValue] into a decimal literal, computing the number of
   /// significant figures from the source text.
@@ -470,8 +484,10 @@ class LiteralDecimal extends LiteralType {
         number = number.replaceFirst(RegExp(r'0+$'), '');
       }
 
-      // At this point, all remaining digits are significant
-      return LiteralDecimal(num.parse(stringValue), sigFigs: number.length);
+      // At this point, all remaining digits are significant; the text is
+      // kept and written back verbatim, as the reference translator does
+      // (a 37-digit decimal exceeds both a double and toStringAsPrecision).
+      return LiteralDecimal._text(stringValue.trim());
     }
     throw FormatException(
       'Incorrectly formed String for type LiteralDecimal: $stringValue',
@@ -482,13 +498,13 @@ class LiteralDecimal extends LiteralType {
     if (json is num) {
       return LiteralDecimal(json.toDouble());
     } else if (json is String && num.tryParse(json) != null) {
-      return LiteralDecimal(num.parse(json));
+      return LiteralDecimal._text(json);
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
         return LiteralDecimal((json['value'] as num).toDouble());
       } else if (json['value'] is String &&
           num.tryParse(json['value'] as String) != null) {
-        return LiteralDecimal(num.parse(json['value'] as String));
+        return LiteralDecimal._text(json['value'] as String);
       }
     }
     throw ArgumentError('LiteralDecimal: Invalid json type');
@@ -497,12 +513,20 @@ class LiteralDecimal extends LiteralType {
   final num value;
   final int? sigFigs;
 
+  /// The literal's source text, when it was parsed from CQL or ELM; written
+  /// back verbatim. A double holds 15-17 significant digits and
+  /// `toStringAsPrecision` accepts at most 21, so a value such as
+  /// `10000000000000000000000000000.00000000` (CqlArithmeticFunctionsTest)
+  /// can only survive as text.
+  final String? source;
+
   @override
   Map<String, dynamic> toJson() => {
         'valueType': '{urn:hl7-org:elm-types:r1}$type',
-        'value': sigFigs == null
-            ? value.toString()
-            : value.toStringAsPrecision(sigFigs!),
+        'value': source ??
+            (sigFigs == null
+                ? value.toString()
+                : value.toStringAsPrecision(sigFigs!)),
         'type': 'Literal',
       };
 
@@ -885,8 +909,12 @@ class LiteralIntegerInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };
@@ -936,8 +964,12 @@ class LiteralDecimalInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };
@@ -987,8 +1019,12 @@ class LiteralQuantityInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };
@@ -1038,8 +1074,12 @@ class LiteralDateInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };
@@ -1087,8 +1127,12 @@ class LiteralDateTimeInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };
@@ -1138,8 +1182,12 @@ class LiteralTimeInterval extends LiteralCqlInterval {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (lowClosed != null) 'lowClosed': lowClosed!.toJson(),
-      if (highClosed != null) 'highClosed': highClosed!.toJson(),
+      // The ELM Interval expression shape (expression.xsd Interval), which
+      // `CqlExpression.fromJson` reads; until 2026-10-06 this wrote no
+      // `type` and Literal objects for the closures.
+      'type': 'Interval',
+      if (lowClosed != null) 'lowClosed': lowClosed!.value,
+      if (highClosed != null) 'highClosed': highClosed!.value,
       if (low != null) 'low': low!.toJson(),
       if (high != null) 'high': high!.toJson(),
     };

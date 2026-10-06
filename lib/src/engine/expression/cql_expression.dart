@@ -281,6 +281,8 @@ class CqlExpression extends Element {
           return Now.fromJson(json);
         case 'NullExpression':
           return NullExpression.fromJson(json);
+        case 'OnOrAfter':
+          return OnOrAfter.fromJson(json);
         case 'OnOrBefore':
           return OnOrBefore.fromJson(json);
         case 'OperandRef':
@@ -357,6 +359,8 @@ class CqlExpression extends Element {
           return Size.fromJson(json);
         // case 'Skip':
         //   return Skip.fromJson(json);
+        case 'Skip':
+          return Skip.fromJson(json);
         case 'Slice':
           return Slice.fromJson(json);
         case 'Sort':
@@ -387,6 +391,8 @@ class CqlExpression extends Element {
           return Sum.fromJson(json);
         case 'Tail':
           return Tail.fromJson(json);
+        case 'Take':
+          return Take.fromJson(json);
         // case 'Take':
         //   return Take.fromJson(json);
         case 'TernaryExpression':

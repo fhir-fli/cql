@@ -21,7 +21,10 @@ class Quantity extends CqlExpression {
             : json['value'] is num
                 ? json['value'] as num
                 : throw ArgumentError('Quantity value must be a number'),
-        unit: json['unit'] as String,
+        // clinicalexpression.xsd Quantity: `unit` is optional. CQL reference
+        // 09-b, Quantity: "When a quantity has no units specified, it is
+        // treated as a quantity with the default unit ('1')."
+        unit: json['unit'] as String? ?? '1',
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))

@@ -23,9 +23,12 @@ class Aggregate extends AggregateExpression {
         iteration:
             CqlExpression.fromJson(json['iteration']! as Map<String, dynamic>),
         source: CqlExpression.fromJson(json['source']! as Map<String, dynamic>),
-        initialValue: CqlExpression.fromJson(
-          json['initialValue'] as Map<String, dynamic>,
-        ),
+        // expression.xsd Aggregate: `initialValue` minOccurs=0.
+        initialValue: json['initialValue'] == null
+            ? null
+            : CqlExpression.fromJson(
+                json['initialValue'] as Map<String, dynamic>,
+              ),
         signature: json['signature'] == null
             ? null
             : (json['signature'] as List)

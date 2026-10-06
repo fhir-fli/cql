@@ -89,7 +89,8 @@ class Concatenate extends NaryExpression {
 
   factory Concatenate.fromJson(Map<String, dynamic> json) => Concatenate(
         operand: List<CqlExpression>.from(
-          (json['operand'] as List).map(
+          // expression.xsd NaryExpression: `operand` minOccurs=0.
+          (json['operand'] as List? ?? const []).map(
             (x) => CqlExpression.fromJson(x as Map<String, dynamic>),
           ),
         ),

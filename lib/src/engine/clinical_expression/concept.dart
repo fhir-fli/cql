@@ -14,7 +14,8 @@ class Concept extends CqlExpression {
 
   factory Concept.fromJson(Map<String, dynamic> json) {
     return Concept(
-      code: (json['code'] as List)
+      // clinicalexpression.xsd Concept: `code` minOccurs=0.
+      code: (json['code'] as List? ?? const [])
           .map((e) => Code.fromJson(e as Map<String, dynamic>))
           .toList(),
       display: json['display'] as String?,

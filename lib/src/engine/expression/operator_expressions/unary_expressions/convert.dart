@@ -25,10 +25,16 @@ class Convert extends UnaryExpression {
   });
 
   factory Convert.fromJson(Map<String, dynamic> json) => Convert(
-        toTypeSpecifier: TypeSpecifierExpression.fromJson(
-          json['toTypeSpecifier'] as Map<String, dynamic>,
-        ),
-        toType: QName.parse(json['toType'] as String),
+        // expression.xsd Convert: `toTypeSpecifier` minOccurs=0 and `toType`
+        // use=optional; a producer gives one of the two.
+        toTypeSpecifier: json['toTypeSpecifier'] == null
+            ? null
+            : TypeSpecifierExpression.fromJson(
+                json['toTypeSpecifier'] as Map<String, dynamic>,
+              ),
+        toType: json['toType'] == null
+            ? null
+            : QName.parse(json['toType'] as String),
         operand:
             CqlExpression.fromJson(json['operand']! as Map<String, dynamic>),
         annotation: json['annotation'] != null

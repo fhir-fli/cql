@@ -22,7 +22,10 @@ class AggregateClause extends Element {
             ? null
             : CqlExpression.fromJson(json['starting'] as Map<String, dynamic>),
         identifier: json['identifier'] as String,
-        distinct: json['distinct'] as bool,
+        // expression.xsd AggregateClause: `distinct` is optional, default
+        // false; the reference translator omits it on 8 of the 13 aggregate
+        // clauses in test/test/cql_to_elm_tests (2026-10-06).
+        distinct: (json['distinct'] as bool?) ?? false,
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
