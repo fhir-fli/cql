@@ -164,7 +164,16 @@ class MaxValue extends CqlExpression {
           millisecond: 999,
         );
       default:
-        throw UnimplementedError();
+        // CQL Reference (09-b), Maximum: "The maximum operator is
+        // defined for the Integer, Long, Decimal, Quantity, Date, DateTime,
+        // and Time types." Any other type is a runtime error, which a
+        // definition carries as its value; it was a bare UnimplementedError
+        // until 2026-10-06 (CqlArithmeticFunctionsTest.cql `maximum Boolean`,
+        // marked invalid there).
+        throw CqlException(
+          message: 'maximum is defined for Integer, Long, Decimal, Quantity, '
+              'Date, DateTime and Time, not for $type',
+        );
     }
   }
 }

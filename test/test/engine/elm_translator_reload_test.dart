@@ -26,10 +26,8 @@ void main() {
   const translatorFailures = <String, String>{};
 
   // Libraries that do not execute here, pinned with the message each
-  // throws: three need a ModelResolver (they retrieve from a data model),
-  // one reaches an operator the engine has not implemented.
+  // throws: three need a ModelResolver (they retrieve from a data model).
   const notExecutable = {
-    'CqlArithmeticFunctionsTest.cql': 'UnimplementedError',
     'CqlIntervalOperatorsTest.cql': 'No ModelResolver',
     'CqlStringOperatorsTest.cql': 'No ModelResolver',
     'CqlTypeOperatorsTest.cql': 'No ModelResolver',

@@ -159,7 +159,16 @@ class MinValue extends CqlExpression {
       case 'Time':
         return CqlTime.fromUnits(hour: 0, minute: 0, second: 0, millisecond: 0);
       default:
-        throw UnimplementedError();
+        // CQL Reference (09-b), Minimum: "The minimum operator is
+        // defined for the Integer, Long, Decimal, Quantity, Date, DateTime,
+        // and Time types." Any other type is a runtime error, which a
+        // definition carries as its value; it was a bare UnimplementedError
+        // until 2026-10-06 (CqlArithmeticFunctionsTest.cql `minimum Boolean`,
+        // marked invalid there).
+        throw CqlException(
+          message: 'minimum is defined for Integer, Long, Decimal, Quantity, '
+              'Date, DateTime and Time, not for $type',
+        );
     }
   }
 }
