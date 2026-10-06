@@ -61,8 +61,11 @@ void main() {
 
   test('a null argument is null', () async {
     for (final entry in bad.entries) {
-      expect(await entry.value(LiteralNull()).execute({}), isNull,
-          reason: entry.key);
+      expect(
+        await entry.value(LiteralNull()).execute({}),
+        isNull,
+        reason: entry.key,
+      );
     }
   });
 

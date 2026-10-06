@@ -46,8 +46,11 @@ void main() {
           isUtc: false,
         ),
         throwsA(
-          isA<FormatException>().having((e) => e.message, 'message',
-              contains('Day cannot be provided without a month')),
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            contains('Day cannot be provided without a month'),
+          ),
         ),
       );
     });
@@ -85,8 +88,11 @@ void main() {
         'abc',
         '14:30',
       ]) {
-        expect(() => CqlDate.fromString(bad), throwsFormatException,
-            reason: bad);
+        expect(
+          () => CqlDate.fromString(bad),
+          throwsFormatException,
+          reason: bad,
+        );
         expect(
           () => CqlDateTime.fromString(bad),
           throwsFormatException,
@@ -96,7 +102,8 @@ void main() {
     });
 
     test("CQL's DateTime literal forms with a trailing T parse", () {
-      // CQL DATETIME is '@' DATE 'T' (TIME OFFSET?)? with DATE = YYYY(-MM(-DD)?)?
+      // CQL DATETIME is '@' DATE 'T' (TIME OFFSET?)? with
+      // DATE = YYYY(-MM(-DD)?)?
       expect(CqlDateTime.fromString('2016T').valueString, '2016');
       expect(CqlDateTime.fromString('2012-01T').valueString, '2012-01');
       expect(CqlDateTime.fromString('2012-01-01T').valueString, '2012-01-01');
