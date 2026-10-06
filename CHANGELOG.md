@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- **A library reloaded from its own ELM JSON writes the same ELM JSON.** `Literal.toJson` wrote the scalar literal class's whole `toJson()` under `value`, so every `CqlLibrary.fromJson(x).toJson()` nested a literal's value one level deeper (`"value": {"valueType": …, "value": "true", "type": "Literal"}`), and a library reloaded twice failed to execute (`type 'String' is not a subtype of type 'bool'`). The translator never builds the `Literal` wrapper, only `fromJson` does, which is why one reload worked. `value` is the scalar now, as the reference translator writes it (all 10,324 Literal nodes in `test/test/cql_to_elm_tests` carry a string). `TimeExpression` writes its ELM type as `Time` (it wrote `TimeExpression`, which only the operator dispatch read; both still read). Four two-reload tests, one over the reference translator's own ELM.
+
 ## [0.7.0]
 
 - **Dates no calendar holds are refused everywhere.** `CqlDate` / `CqlDateTime` checked year, month, day, time fields and their nesting with `assert`s, which a compiled app skips: on a device Feb 30 2024 constructed. The checks are now `CqlDateTimeBase.checkFields`, run on every construction path, throwing a `FormatException` naming the field. The string parser also reads the whole string or refuses it (`'2024-13-01'` used to read as the year 2024), raises `FormatException` rather than `ArgumentError` for text that is not a date-time, and accepts CQL's `@2016T` / `@2012-01T` literal forms. `CqlLong` enforces the 64-bit range its message always claimed.

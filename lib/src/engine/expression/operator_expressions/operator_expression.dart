@@ -290,6 +290,10 @@ abstract class OperatorExpression extends CqlExpression {
         return Substring.fromJson(json);
       // case 'Take':
       //   return Take.fromJson(json);
+      // 'Time' is the ELM name and what the class writes now; 'TimeExpression'
+      // is what it wrote before 2026-10-06, kept so that ELM already stored
+      // (a Library's application/elm+json attachment) still reads.
+      case 'Time':
       case 'TimeExpression':
         return TimeExpression.fromJson(json);
       case 'TimeOfDay':

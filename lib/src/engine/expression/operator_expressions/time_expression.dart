@@ -124,7 +124,12 @@ class TimeExpression extends OperatorExpression {
   }
 
   @override
-  String get type => 'TimeExpression';
+  // The ELM name, as `DateExpression` ('Date') and `DateTimeExpression`
+  // ('DateTime') write theirs: `CqlExpression.fromJson` reads 'Time', and
+  // 'TimeExpression' was readable only through the operator dispatch, so a
+  // library written by this engine did not reload at the top level
+  // (found by the two-reload test, 2026-10-06).
+  String get type => 'Time';
 
   @override
   List<String> getReturnTypes(CqlLibrary library) => ['Time'];

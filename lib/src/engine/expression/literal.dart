@@ -243,9 +243,31 @@ class Literal extends CqlExpression {
   Map<String, dynamic> toJson() {
     return {
       'valueType': valueType.toJson(),
-      if (value != null) 'value': value!.toJson(),
+      if (value != null) 'value': _elmValue(value!),
       'type': type,
     };
+  }
+
+  /// What goes under `value` in ELM JSON. ELM's `Literal.value` is a
+  /// string: every one of the 10,324 Literal nodes in the reference
+  /// translator's outputs under test/test/cql_to_elm_tests carries one
+  /// (surveyed 2026-10-06). The scalar literal classes serialise themselves
+  /// as a whole Literal expression (`valueType`, `value`, `type: Literal`),
+  /// and writing that object here nested the value one level per reload, so
+  /// a library reloaded twice failed to execute ("'String' is not a subtype
+  /// of 'bool'"; fhirant REVIEW-2026-10-06 finding 16). The translator never
+  /// builds this wrapper, only [Literal.fromJson] does, which is why one
+  /// reload worked and the second did not. The scalar is taken out of that
+  /// object; a value that is not a Literal expression (this package's own
+  /// Code/Concept/Quantity/Ratio/Interval shapes, which no producer emits)
+  /// is written as it was.
+  static Object? _elmValue(LiteralType value) {
+    // `CqlExpression.toJson` is declared `dynamic`; every LiteralType
+    // subclass returns a map.
+    final json = value.toJson() as Map<String, dynamic>;
+    final Object? type = json['type'];
+    final Object? scalar = json['value'];
+    return type == 'Literal' ? scalar : json;
   }
 
   @override
