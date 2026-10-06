@@ -22,6 +22,43 @@ void main() {
     expect(files.length, 17);
   });
 
+  test('no non-empty value of the reference is lost on a load and write', () {
+    // Empty `annotation: []` and `signature: []` arrays the reference
+    // writes are not values. Before 2026-10-06 this lost 30 values across
+    // the 17 files: 24 DateTime.timezoneOffset, 3 Interval.lowClosedExpression,
+    // 3 Interval.highClosedExpression.
+    final lost = <String, int>{};
+    bool empty(Object? v) =>
+        v == null || (v is List && v.isEmpty) || (v is Map && v.isEmpty);
+    void compare(Object? ref, Object? out, String parentType) {
+      if (ref is Map && out is Map) {
+        final t = (ref['type'] ?? parentType).toString();
+        for (final k in ref.keys) {
+          if (!out.containsKey(k)) {
+            if (!empty(ref[k])) lost['$t.$k'] = (lost['$t.$k'] ?? 0) + 1;
+            continue;
+          }
+          compare(ref[k], out[k], t);
+        }
+      } else if (ref is List && out is List) {
+        for (var i = 0; i < ref.length && i < out.length; i++) {
+          compare(ref[i], out[i], parentType);
+        }
+      }
+    }
+
+    for (final file in files) {
+      final elm = (jsonDecode(file.readAsStringSync())
+          as Map<String, dynamic>)['library'] as Map<String, dynamic>;
+      compare(
+        elm,
+        jsonDecode(jsonEncode(CqlLibrary.fromJson(elm).toJson())),
+        'Library',
+      );
+    }
+    expect(lost, isEmpty);
+  });
+
   for (final file in files) {
     final name = file.path.split('/').last;
     test('$name loads, reloads unchanged, and keeps string literals', () {

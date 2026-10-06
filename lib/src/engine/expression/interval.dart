@@ -39,6 +39,8 @@ class IntervalExpression extends CqlExpression {
     this.highClosed = true,
     this.low,
     this.high,
+    this.lowClosedExpression,
+    this.highClosedExpression,
     super.annotation,
     super.localId,
     super.locator,
@@ -56,6 +58,16 @@ class IntervalExpression extends CqlExpression {
             : null,
         lowClosed: (json['lowClosed'] as bool?) ?? true,
         highClosed: (json['highClosed'] as bool?) ?? true,
+        lowClosedExpression: json['lowClosedExpression'] == null
+            ? null
+            : CqlExpression.fromJson(
+                json['lowClosedExpression'] as Map<String, dynamic>,
+              ),
+        highClosedExpression: json['highClosedExpression'] == null
+            ? null
+            : CqlExpression.fromJson(
+                json['highClosedExpression'] as Map<String, dynamic>,
+              ),
         annotation: json['annotation'] != null
             ? (json['annotation'] as List)
                 .map((e) => CqlToElmBase.fromJson(e as Map<String, dynamic>))
@@ -84,6 +96,18 @@ class IntervalExpression extends CqlExpression {
   /// Low bound closed status, defaults to true.
   bool lowClosed = true;
 
+  /// expression.xsd Interval: `lowClosedExpression` and
+  /// `highClosedExpression` (minOccurs=0) give the closed indicators as
+  /// expressions. The reference translator writes them when it converts an
+  /// untyped interval to a typed one (`Interval(null, null)` compared with
+  /// an `Interval<Integer>`: `Property lowClosed` of the source). Until
+  /// 2026-10-06 the reader dropped both (3 nodes each in the reference ELM).
+  /// When present, the expression's Boolean value is the closed indicator;
+  /// the specification gives no rule for a null result (unknown), and the
+  /// attribute is used then.
+  CqlExpression? lowClosedExpression;
+  CqlExpression? highClosedExpression;
+
   @override
   Map<String, dynamic> toJson() {
     final val = <String, dynamic>{
@@ -98,7 +122,9 @@ class IntervalExpression extends CqlExpression {
     }
 
     writeNotNull('low', low?.toJson());
+    writeNotNull('lowClosedExpression', lowClosedExpression?.toJson());
     writeNotNull('high', high?.toJson());
+    writeNotNull('highClosedExpression', highClosedExpression?.toJson());
     writeNotNull('annotation', annotation?.map((e) => e.toJson()).toList());
     writeNotNull('localId', localId);
     writeNotNull('locator', locator);
@@ -138,11 +164,17 @@ class IntervalExpression extends CqlExpression {
         return null;
       }
     }
+    final lowClosedValue = await lowClosedExpression?.execute(context);
+    final highClosedValue = await highClosedExpression?.execute(context);
     return CqlInterval(
       low: low,
-      lowClosed: lowClosed,
+      lowClosed: lowClosedValue is CqlBoolean
+          ? lowClosedValue.valueBoolean ?? lowClosed
+          : lowClosed,
       high: high,
-      highClosed: highClosed,
+      highClosed: highClosedValue is CqlBoolean
+          ? highClosedValue.valueBoolean ?? highClosed
+          : highClosed,
       state: context,
     );
   }
