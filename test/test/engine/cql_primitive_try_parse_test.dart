@@ -31,7 +31,9 @@ void main() {
     expect(CqlDecimal.tryParse('1.25')?.valueNum, 1.25);
     expect(CqlInteger.tryParse('42')?.valueNum, 42);
     expect(
-        CqlLong.tryParse('9007199254740993')?.valueString, '9007199254740993');
+      CqlLong.tryParse('9007199254740993')?.valueString,
+      '9007199254740993',
+    );
     expect(CqlDate.tryParse('2024-02-29')?.valueString, '2024-02-29');
     expect(CqlDateTime.tryParse(DateTime.utc(2024, 1, 2))?.year, 2024);
     expect(CqlTime.tryParse('14:30')?.valueString, '14:30');
