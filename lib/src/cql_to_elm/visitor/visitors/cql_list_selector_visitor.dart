@@ -17,16 +17,18 @@ class CqlListSelectorVisitor extends CqlBaseVisitor<ListExpression> {
       }
     }
 
-    // If they wrote “[Integer] { 1, null, 3 }`, use that to wrap nulls:
-    final transformed = elements.map((e) {
-      if (e is LiteralNull && typeSpecifier != null) {
-        return As(
-          operand: e,
-          asTypeSpecifier: typeSpecifier,
-        );
-      }
-      return e;
-    }).toList();
+    // `List<Integer> { 1, null, 3 }` types its nulls from the specifier;
+    // `{ 1, null, 3 }` from a sibling element, as the reference does (42 of
+    // its 152 typed nulls are list elements).
+    final transformed = typeSpecifier != null
+        ? elements
+            .map(
+              (e) => e is LiteralNull
+                  ? As(operand: e, asTypeSpecifier: typeSpecifier)
+                  : e,
+            )
+            .toList()
+        : typeNullOperands(elements);
 
     return ListExpression(
       typeSpecifier: typeSpecifier,

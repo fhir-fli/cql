@@ -55,7 +55,7 @@ class Log extends BinaryExpression {
     } else if (first is LiteralNull) {
       operand.add(As(operand: first, asType: QName.fromElmType('Decimal')));
     } else {
-      final return1 = operand.first.getReturnTypes(library);
+      final return1 = first.getReturnTypes(library);
       if (return1.length == 1) {
         if (return1.first == 'LiteralInteger' ||
             return1.first == 'LiteralLong') {
@@ -74,7 +74,7 @@ class Log extends BinaryExpression {
     } else if (second is LiteralNull) {
       operand.add(As(operand: second, asType: QName.fromElmType('Decimal')));
     } else {
-      final return2 = operand.last.getReturnTypes(library);
+      final return2 = second.getReturnTypes(library);
       if (return2.length == 1) {
         if (return2.first == 'LiteralInteger' || return2.first is LiteralLong) {
           operand.add(ToDecimal(operand: second));

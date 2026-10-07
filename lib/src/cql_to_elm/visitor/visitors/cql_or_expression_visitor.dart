@@ -21,40 +21,11 @@ class CqlOrExpressionVisitor extends CqlBaseVisitor<BinaryExpression> {
       }
     }
     if (operand.length == 2) {
-      final left = operand.first;
-      final right = operand.last;
-      if (left is LiteralType && right is LiteralType) {
-        if (left is! LiteralNull && right is LiteralNull) {
-          return orXor
-              ? Or(
-                  operand: [
-                    left,
-                    As(operand: right, asType: QName.parse(left.valueType)),
-                  ],
-                )
-              : Xor(
-                  operand: [
-                    left,
-                    As(operand: right, asType: QName.parse(left.valueType)),
-                  ],
-                );
-        } else if (left is LiteralNull && right is! LiteralNull) {
-          return orXor
-              ? Or(
-                  operand: [
-                    As(operand: left, asType: QName.parse(right.valueType)),
-                    right,
-                  ],
-                )
-              : Xor(
-                  operand: [
-                    As(operand: left, asType: QName.parse(right.valueType)),
-                    right,
-                  ],
-                );
-        }
-      }
-      return orXor ? Or(operand: operand) : Xor(operand: operand);
+      final typed = typeNullOperands(
+        operand,
+        expected: QName.fromElmType('Boolean'),
+      );
+      return orXor ? Or(operand: typed) : Xor(operand: typed);
     }
     throw ArgumentError('$thisNode Invalid OrExpression');
   }

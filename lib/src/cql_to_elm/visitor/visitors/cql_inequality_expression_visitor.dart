@@ -33,6 +33,12 @@ class CqlInequalityExpressionVisitor extends CqlBaseVisitor<dynamic> {
         final other = operand[1 - i];
         operand[i] = _wrapChoiceForInequality(operand[i], other);
       }
+      // Integer against Decimal (`1.0 > 2` → ToDecimal(2)) and a null
+      // against a typed operand, as the reference writes them.
+      final bound = translateOperand(operand);
+      for (var i = 0; i < 2; i++) {
+        operand[i] = bound[i];
+      }
 
       if (inequality == '!=') {
         return NotEqual(operand: operand);

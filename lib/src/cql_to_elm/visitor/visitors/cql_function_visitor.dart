@@ -59,10 +59,30 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       'PopulationVariance',
       'PopulationStdDev',
     };
+    // An Integer list under Avg/Median/Variance/StdDev is promoted through
+    // a query, `X` returning ToDecimal(X) (`Avg({ 1, 2, 3, null })`,
+    // Exercises04); a Decimal or Quantity list stays the bare list
+    // (`Avg({1.0, 2.0, 3.0})`, CqlAggregateFunctionsTest). Until
+    // 2026-10-06 every list was rewritten.
     if (queryBasedFunctions.contains(ref) &&
         operand.isNotEmpty &&
         operand.first is ListExpression) {
-      operand[0] = _transformToQuery(operand.first as ListExpression, ref);
+      final list = operand.first as ListExpression;
+      final kinds = (list.element ?? const <CqlExpression>[])
+          .where((e) => e is! LiteralNull && e is! As)
+          .map(numericKindOf)
+          .toSet();
+      if (kinds.isNotEmpty &&
+          kinds.every((k) => k == 'Integer' || k == 'Long')) {
+        const alias = 'X';
+        operand[0] = Query(
+          source: [AliasedQuerySource(alias: alias, expression: list)],
+          returnClause: ReturnClause(
+            distinct: false,
+            expression: ToDecimal(operand: AliasRef(name: alias)),
+          ),
+        );
+      }
     }
     // An aggregate over a query whose elements are model-typed converts
     // them through an outer query (the reference's shape for
@@ -80,6 +100,56 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       );
     }
 
+    // System functions whose parameter is Decimal take an Integer operand
+    // through ToDecimal (the reference: Ceiling(ToDecimal(1)), Ln, Exp,
+    // Floor, Truncate, Log on both operands, Round on its first); the
+    // DateTime operator's timezoneOffset likewise. Coalesce leaves a bare
+    // null bare (Exercises02 `Coalesce(null, 1)` in the reference).
+    const decimalParameterFunctions = {
+      'Ceiling',
+      'Floor',
+      'Truncate',
+      'Ln',
+      'Exp',
+    };
+    if (decimalParameterFunctions.contains(ref)) {
+      for (var i = 0; i < operand.length; i++) {
+        operand[i] = toDecimalIfIntegral(operand[i]);
+      }
+    } else if (ref == 'Round' && operand.isNotEmpty) {
+      operand[0] = toDecimalIfIntegral(operand[0]);
+    } else if (ref == 'DateTime' && operand.length == 8) {
+      operand[7] = toDecimalIfIntegral(operand[7]);
+    } else if ((ref == 'AllTrue' || ref == 'AnyTrue') &&
+        operand.length == 1 &&
+        operand.first is LiteralNull) {
+      // `AllTrue(null)`: the null is the operator's parameter type,
+      // List<Boolean> (CqlAggregateFunctionsTest).
+      operand[0] = As(
+        operand: operand.first,
+        asTypeSpecifier: ListTypeSpecifier(
+          elementType:
+              NamedTypeSpecifier(namespace: QName.fromElmType('Boolean')),
+        ),
+      );
+    } else if ((ref == 'AllTrue' || ref == 'AnyTrue') &&
+        operand.length == 1 &&
+        operand.first is ListExpression &&
+        ((operand.first as ListExpression).element?.isEmpty ?? true)) {
+      // `AllTrue({})`: the reference types the empty list's elements through
+      // a query, `X` returning `X as Boolean` (CqlAggregateFunctionsTest).
+      const alias = 'X';
+      operand[0] = Query(
+        source: [AliasedQuerySource(alias: alias, expression: operand.first)],
+        returnClause: ReturnClause(
+          distinct: false,
+          expression: As(
+            operand: AliasRef(name: alias),
+            asType: QName.fromElmType('Boolean'),
+          ),
+        ),
+      );
+    }
     //
     // STEP 3: Delegate to the standard factory; fall back to FunctionRef
     // for user-defined (local or included) functions
@@ -130,49 +200,5 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       return t.endsWith('decimal') ? 'Decimal' : 'Integer';
     }
     return 'Decimal';
-  }
-
-  /// Builds a Query over the original list, aliasing each element to X,
-  /// then returns `ToDecimal(AliasRef("X"))` so that sorting &
-  /// decimal‐promotion happen.
-  Query _transformToQuery(ListExpression listExpr, String functionName) {
-    const aliasName = 'X';
-
-    // Decide whether the wrapper type for nulls should be Integer, Quantity,
-    // or Decimal
-    final returnTypes =
-        listExpr.getReturnTypes(library).map((e) => e.toLowerCase()).toList();
-    final wrapType = returnTypes.any((e) => e.endsWith('integer')) &&
-            returnTypes
-                .every((e) => e.endsWith('integer') || e.endsWith('null'))
-        ? 'Integer'
-        : returnTypes.any((e) => e.endsWith('quantity'))
-            ? 'Quantity'
-            : 'Decimal';
-
-    // First cast any nulls in the original list to the chosen wrapType
-    final processedList = _processAggregateOperand(listExpr, wrapType);
-
-    // Create the aliased source from that list
-    final aliasedSource = AliasedQuerySource(
-      alias: aliasName,
-      expression: ListExpression(
-        typeSpecifier: listExpr.typeSpecifier,
-        element: processedList.element,
-      ),
-    );
-
-    // For Quantity lists, pass elements through unchanged — ToDecimal would
-    // destroy the quantity values (it returns null for ValidatedQuantity).
-    // For Integer/Decimal lists, promote to Decimal for aggregate accuracy.
-    final returnExpr = wrapType == 'Quantity'
-        ? AliasRef(name: aliasName)
-        : ToDecimal(operand: AliasRef(name: aliasName));
-    final returnClause = ReturnClause(
-      distinct: false,
-      expression: returnExpr,
-    );
-
-    return Query(source: [aliasedSource], returnClause: returnClause);
   }
 }

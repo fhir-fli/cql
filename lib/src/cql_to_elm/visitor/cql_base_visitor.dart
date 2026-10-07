@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:antlr4/antlr4.dart';
+import 'package:collection/collection.dart';
 import 'package:cql/src/internal.dart';
 import 'package:ucum/ucum.dart';
 
@@ -1027,7 +1028,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         if (text.contains('.')) {
           return LiteralDecimal.fromString(text);
         }
-        return LiteralInteger(int.parse(text));
+        return LiteralInteger.fromString(text);
       } else if (lit is SimpleStringLiteralContext) {
         // Strip surrounding quotes
         var text = lit.text;
@@ -1510,63 +1511,161 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   Without visitWithoutClause(WithoutClauseContext ctx) =>
       CqlWithoutClauseVisitor(library).visitWithoutClause(ctx);
 
+  /// The System type an operand fixes for a sibling `null`: a literal's
+  /// own type, a cast's target, or the operator's known result type.
+  QName? systemTypeOf(CqlExpression expression) {
+    if (expression is LiteralNull) return null;
+    if (expression is LiteralType) return QName.parse(expression.valueType);
+    if (expression is As) {
+      final specifier = expression.asTypeSpecifier;
+      if (specifier is NamedTypeSpecifier) return specifier.namespace;
+      if (specifier is ListTypeSpecifier) {
+        final element = specifier.elementType;
+        if (element is NamedTypeSpecifier) {
+          return QName.parse('List<${element.namespace}>');
+        }
+      }
+      return expression.asType;
+    }
+    if (expression is ListExpression) {
+      final typed = expression.element
+          ?.map(systemTypeOf)
+          .whereType<QName>()
+          .map((q) => q.toString())
+          .toSet();
+      if (typed != null && typed.length == 1) {
+        return QName.parse('List<${typed.single}>');
+      }
+      return null;
+    }
+    final types = expression.getReturnTypes(library);
+    if (types.isEmpty) return null;
+    final literal = LiteralType.typeToLiteral(types.first);
+    if (literal == null || literal == 'LiteralNull') return null;
+    return QName.fromElmType(literal.substring('Literal'.length));
+  }
+
+  /// Bare `null` operands typed from a sibling: `As(Null, asType: T)`, the
+  /// form the reference writes wherever a null meets a typed operand (152
+  /// nodes across the 31 reference files on 2026-10-06: list elements,
+  /// the logical operators, equality, Add, Concatenate, Contains, Coalesce,
+  /// interval bounds). Until then each visitor typed a null only against a
+  /// literal sibling, and the equality one read the type off the null.
+  List<CqlExpression> typeNullOperands(
+    List<CqlExpression> operands, {
+    QName? expected,
+  }) {
+    if (!operands.any((o) => o is LiteralNull)) return operands;
+    var type = expected;
+    if (type == null) {
+      // Only when every typed sibling agrees: `{ 1, 'abc', null }` keeps its
+      // null bare in the reference (Exercises04).
+      final types = <String, QName>{};
+      for (final o in operands) {
+        final t = systemTypeOf(o);
+        if (t != null) types[t.toString()] = t;
+      }
+      if (types.length != 1) return operands;
+      type = types.values.single;
+    }
+    // A sibling cast to a list type (`{} as List<String> = null`,
+    // CqlListOperatorsTest) or a typed list types the null with a list
+    // specifier; anything else with asType.
+    final listSpecifier = operands
+        .whereType<As>()
+        .map((a) => a.asTypeSpecifier)
+        .whereType<ListTypeSpecifier>()
+        .firstOrNull;
+    final local = type.localPart;
+    final specifier = listSpecifier ??
+        (local.startsWith('List<') && local.endsWith('>')
+            ? ListTypeSpecifier(
+                elementType: NamedTypeSpecifier(
+                  namespace: QName.parse(local.substring(5, local.length - 1)),
+                ),
+              )
+            : null);
+    As typed(CqlExpression o) => specifier != null
+        ? As(operand: o, asTypeSpecifier: specifier)
+        : As(operand: o, asType: type);
+    return [
+      for (final o in operands)
+        if (o is LiteralNull) typed(o) else o,
+    ];
+  }
+
+  /// The numeric kind of an operand (Integer, Long, Decimal, Quantity), from
+  /// the literal class or the reported return type, whichever spelling the
+  /// expression uses ('Integer', 'CqlInteger', 'LiteralInteger', …). Until
+  /// 2026-10-06 the promotion compared against one spelling and never fired
+  /// for a bare literal (`1.0 > 2` stayed unpromoted).
+  String? numericKindOf(CqlExpression expression) {
+    if (expression is LiteralInteger) return 'Integer';
+    if (expression is LiteralLong) return 'Long';
+    if (expression is LiteralDecimal) return 'Decimal';
+    if (expression is LiteralQuantity) return 'Quantity';
+    final types = expression.getReturnTypes(library);
+    if (types.isEmpty) return null;
+    switch (types.first) {
+      case 'Integer':
+      case 'CqlInteger':
+      case 'LiteralInteger':
+        return 'Integer';
+      case 'Integer64':
+      case 'Long':
+      case 'CqlLong':
+      case 'LiteralLong':
+        return 'Long';
+      case 'Decimal':
+      case 'CqlDecimal':
+      case 'LiteralDecimal':
+        return 'Decimal';
+      case 'Quantity':
+      case 'ValidatedQuantity':
+      case 'LiteralQuantity':
+        return 'Quantity';
+      default:
+        return null;
+    }
+  }
+
+  /// An Integer (or Long) operand where a Decimal is required, wrapped in
+  /// ToDecimal as the reference writes it (`Ceiling(1)` →
+  /// Ceiling(ToDecimal(1)); CqlArithmeticFunctionsTest).
+  CqlExpression toDecimalIfIntegral(CqlExpression expression) {
+    final kind = numericKindOf(expression);
+    return kind == 'Integer' || kind == 'Long'
+        ? ToDecimal(operand: expression)
+        : expression;
+  }
+
   List<CqlExpression> translateOperand(List<CqlExpression> operand) {
-    if (operand.first is LiteralType &&
-        operand.first is! LiteralNull &&
-        operand.last is LiteralNull) {
-      return [
-        operand.first,
-        As(
-          operand: operand.last,
-          asType: QName.parse((operand.first as LiteralType).valueType),
-        ),
-      ];
-    } else if (operand.first is LiteralNull &&
-        operand.last is LiteralType &&
-        operand.last is! LiteralNull) {
-      return [
-        As(
-          operand: operand.first,
-          asType: QName.parse((operand.first as LiteralType).valueType),
-        ),
-        operand.last,
-      ];
+    if (operand.any((o) => o is LiteralNull)) {
+      return typeNullOperands(operand);
     } else {
-      final firstReturnTypes = operand.first.getReturnTypes(library);
-      final lastReturnTypes = operand.last.getReturnTypes(library);
-      String? firstType;
-      String? lastType;
-      if (firstReturnTypes.isNotEmpty) {
-        firstType = firstReturnTypes.first;
-      }
-      if (lastReturnTypes.isNotEmpty) {
-        lastType = lastReturnTypes.first;
-      }
-      if (firstType != null && lastType != null) {
-        firstType = LiteralType.typeToLiteral(firstType);
-        lastType = LiteralType.typeToLiteral(lastType);
-        if (firstType == 'LiteralInteger') {
-          if (lastType == 'LiteralLong') {
+      final firstKind = numericKindOf(operand.first);
+      final lastKind = numericKindOf(operand.last);
+      if (firstKind != null && lastKind != null) {
+        if (firstKind == 'Integer') {
+          if (lastKind == 'Long') {
             return [ToLong(operand: operand.first), operand.last];
-          } else if (lastType == 'LiteralDecimal') {
+          } else if (lastKind == 'Decimal') {
             return [ToDecimal(operand: operand.first), operand.last];
           }
-        } else if (firstType == 'LiteralLong') {
-          if (lastType == 'LiteralInteger') {
+        } else if (firstKind == 'Long') {
+          if (lastKind == 'Integer') {
             return [operand.first, ToLong(operand: operand.last)];
-          } else if (lastType == 'LiteralDecimal') {
+          } else if (lastKind == 'Decimal') {
             return [ToDecimal(operand: operand.first), operand.last];
           }
-        } else if (firstType == 'LiteralDecimal') {
-          if (lastType == 'LiteralInteger') {
+        } else if (firstKind == 'Decimal') {
+          if (lastKind == 'Integer' || lastKind == 'Long') {
             return [operand.first, ToDecimal(operand: operand.last)];
-          } else if (lastType == 'LiteralLong') {
-            return [operand.first, ToDecimal(operand: operand.last)];
-          } else if (lastType == 'LiteralQuantity') {
+          } else if (lastKind == 'Quantity') {
             return [operand.first, ToQuantity(operand: operand.last)];
           }
-        } else if (firstType == 'LiteralQuantity') {
-          if (lastType == 'LiteralDecimal') {
+        } else if (firstKind == 'Quantity') {
+          if (lastKind == 'Decimal') {
             return [operand.first, ToQuantity(operand: operand.last)];
           }
         }
@@ -2124,8 +2223,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression leftOperand,
     CqlExpression rightOperand,
   ) {
-    final left = convertCastForBinding(leftOperand, currentModel);
-    final right = convertCastForBinding(rightOperand, currentModel);
+    final bound = translateOperand(
+      typeNullOperands([
+        convertCastForBinding(leftOperand, currentModel),
+        convertCastForBinding(rightOperand, currentModel),
+      ]),
+    );
+    final left = bound[0];
+    final right = bound[1];
     final leftTypes = left.getReturnTypes(library);
     final rightTypes = right.getReturnTypes(library);
     switch (left) {
@@ -2228,8 +2333,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression leftOperand,
     CqlExpression rightOperand,
   ) {
-    final left = convertCastForBinding(leftOperand, currentModel);
-    final right = convertCastForBinding(rightOperand, currentModel);
+    final cast = [
+      convertCastForBinding(leftOperand, currentModel),
+      convertCastForBinding(rightOperand, currentModel),
+    ];
+    if (cast.any((o) => o is LiteralNull)) {
+      // Division is Decimal: the null is typed Decimal and an integral
+      // operand promoted (`1 / null`, CqlArithmeticFunctionsTest).
+      final typed = typeNullOperands(
+        cast,
+        expected: QName.fromElmType('Decimal'),
+      );
+      return Divide(operand: typed.map(toDecimalIfIntegral).toList());
+    }
+    final bound = translateOperand(cast);
+    final left = bound[0];
+    final right = bound[1];
     switch (left) {
       case LiteralInteger _:
         {
@@ -2261,7 +2380,11 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
         }
       case LiteralQuantity _:
         {
-          if (right is LiteralDecimal) {
+          if (right is LiteralDecimal ||
+              right is LiteralInteger ||
+              right is LiteralLong) {
+            // `10 'g' / 5`: the reference converts the number to a quantity
+            // (CqlArithmeticFunctionsTest).
             return Divide(operand: [left, ToQuantity(operand: right)]);
           } else if (right is LiteralQuantity) {
             return Divide(operand: [left, right]);
@@ -2333,8 +2456,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     CqlExpression leftOperand,
     CqlExpression rightOperand,
   ) {
-    final left = convertCastForBinding(leftOperand, currentModel);
-    final right = convertCastForBinding(rightOperand, currentModel);
+    final bound = translateOperand(
+      typeNullOperands([
+        convertCastForBinding(leftOperand, currentModel),
+        convertCastForBinding(rightOperand, currentModel),
+      ]),
+    );
+    final left = bound[0];
+    final right = bound[1];
     switch (left) {
       case LiteralInteger _:
         {
@@ -2450,8 +2579,14 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   }
 
   Modulo handleModulo(CqlExpression leftOperand, CqlExpression rightOperand) {
-    final left = convertCastForBinding(leftOperand, currentModel);
-    final right = convertCastForBinding(rightOperand, currentModel);
+    final bound = translateOperand(
+      typeNullOperands([
+        convertCastForBinding(leftOperand, currentModel),
+        convertCastForBinding(rightOperand, currentModel),
+      ]),
+    );
+    final left = bound[0];
+    final right = bound[1];
     switch (left) {
       case LiteralInteger _:
         {

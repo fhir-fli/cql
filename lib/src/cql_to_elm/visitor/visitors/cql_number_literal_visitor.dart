@@ -9,7 +9,7 @@ class CqlNumberLiteralVisitor extends CqlBaseVisitor<LiteralType> {
     final thisNode = getNextNode();
     final text = ctx.getChild<dynamic>(0)!.text!;
     if (int.tryParse(text) != null) {
-      return LiteralInteger(int.parse(text));
+      return LiteralInteger.fromString(text);
     } else if (double.tryParse(text) != null) {
       return LiteralDecimal.fromString(text);
     } else if (BigInt.tryParse(text) != null) {

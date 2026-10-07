@@ -12,7 +12,13 @@ class CqlNotExpressionVisitor extends CqlBaseVisitor<Not> {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
         if (result is CqlExpression) {
-          return Not(operand: result);
+          // `not null`: the operand is typed Boolean (CqlLogicalOperatorsTest).
+          return Not(
+            operand: typeNullOperands(
+              [result],
+              expected: QName.fromElmType('Boolean'),
+            ).single,
+          );
         }
       }
     }

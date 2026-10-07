@@ -18,31 +18,14 @@ class CqlAndExpressionVisitor extends CqlBaseVisitor<And> {
       }
     }
     if (operand.length == 2) {
-      if (operand.first is LiteralType && operand.last is LiteralType) {
-        if (operand.first is! LiteralNull && operand.last is LiteralNull) {
-          return And(
-            operand: [
-              operand.first,
-              As(
-                operand: operand.last,
-                asType: QName.parse((operand.first as LiteralType).valueType),
-              ),
-            ],
-          );
-        } else if (operand.first is LiteralNull &&
-            operand.last is LiteralNull) {
-          return And(
-            operand: [
-              As(
-                operand: operand.first,
-                asType: QName.parse((operand.last as LiteralType).valueType),
-              ),
-              operand.last,
-            ],
-          );
-        }
-      }
-      return And(operand: operand);
+      // The operator's parameter type: `null and null` is typed Boolean on
+      // both sides in the reference (CqlLogicalOperatorsTest).
+      return And(
+        operand: typeNullOperands(
+          operand,
+          expected: QName.fromElmType('Boolean'),
+        ),
+      );
     }
     throw CqlException(
       message: '$thisNode Invalid number of arguments for And operator',
