@@ -56,6 +56,19 @@ class CqlNamedTypeSpecifierVisitor extends CqlBaseVisitor<NamedTypeSpecifier> {
 
     // No qualifier — use QName.parse which checks ELM core types first,
     // then FHIR types, preserving correct namespace priority.
-    return QName.parse(typeName);
+    final parsed = QName.parse(typeName);
+    if (parsed.namespaceURI == null || parsed.namespaceURI!.isEmpty) {
+      // A bare name the model declares (`DomainResource`, `Condition`) is
+      // the model's type: the reference writes it with the model's
+      // namespace (FHIRCommon/QICoreCommon, 2026-10-07).
+      final model = currentModel;
+      if (model != null && model.resolveTypeName(typeName) != null) {
+        return QName(
+          namespaceURI: model.modelInfo.url.toString(),
+          localPart: typeName,
+        );
+      }
+    }
+    return parsed;
   }
 }

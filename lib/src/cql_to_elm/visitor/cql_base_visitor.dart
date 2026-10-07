@@ -1637,6 +1637,13 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (expression is LiteralLong) return 'Long';
     if (expression is LiteralDecimal) return 'Decimal';
     if (expression is LiteralQuantity) return 'Quantity';
+    // The translator's own inference first (a define's type, a Quantity's
+    // value): `strength.value * 1000` promotes the 1000 with ToDecimal, as
+    // the reference writes (Exercises03 "If Conditional", 2026-10-07).
+    final inferred = systemTypeOf(expression)?.localPart;
+    if (const {'Integer', 'Long', 'Decimal', 'Quantity'}.contains(inferred)) {
+      return inferred;
+    }
     final types = expression.getReturnTypes(library);
     if (types.isEmpty) return null;
     switch (types.first) {
