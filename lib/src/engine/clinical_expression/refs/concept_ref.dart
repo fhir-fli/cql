@@ -61,8 +61,20 @@ class ConceptRef extends Ref {
 
   @override
   Future<dynamic> execute(Map<String, dynamic> context) async {
-    final library = context['library'];
-    if (library is! CqlLibrary) return null;
+    final current = context['library'];
+    if (current is! CqlLibrary) return null;
+    // A concept of an included library (ELM 04, ConceptRef.libraryName):
+    // looked up there, and its codes resolved there too. Ignored until
+    // 2026-10-07 (cql-engine IncludedConceptRefTest answered null).
+    var library = current;
+    var conceptContext = context;
+    if (libraryName != null) {
+      final included = await current.resolveIncludedLibrary(libraryName!);
+      if (included == null) return null;
+      library = included;
+      conceptContext = Map<String, dynamic>.from(context)
+        ..['library'] = included;
+    }
     final conceptDefs = library.concepts?.def;
     if (conceptDefs == null) return null;
     for (final conceptDef in conceptDefs) {
@@ -70,7 +82,7 @@ class ConceptRef extends Ref {
         // Resolve each CodeRef in the ConceptDef
         final codes = <CqlCode>[];
         for (final codeRef in conceptDef.code) {
-          final resolved = await codeRef.execute(context);
+          final resolved = await codeRef.execute(conceptContext);
           if (resolved is CqlCode) {
             codes.add(resolved);
           }
