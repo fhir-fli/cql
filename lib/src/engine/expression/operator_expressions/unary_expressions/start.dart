@@ -69,10 +69,13 @@ class Start extends UnaryExpression {
     final raw = await operand.execute(context);
     if (raw == null) return null;
 
-    // Convert FHIR-typed values (e.g. Period) to CQL System types at the
-    // boundary. Already-CQL values pass through unchanged.
-    final mr = requireModelResolver(context);
-    final value = mr.toCqlSystemType(raw);
+    // A System value needs no model: `start of Interval[1, 5]` executes
+    // without a ModelResolver (Grey's original start/end tests, restored
+    // 2026-10-06; until then this asked for one first). A model-typed value
+    // (a FHIR Period) is converted at the boundary.
+    final value = raw is CqlInterval || raw is CqlDateTime || raw is CqlDate
+        ? raw
+        : requireModelResolver(context).toCqlSystemType(raw);
 
     if (value is CqlInterval) return value.getStart();
     if (value is CqlDateTime || value is CqlDate) {

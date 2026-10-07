@@ -210,7 +210,13 @@ class CqlExpression extends Element {
         case 'IsFalse':
           return IsFalse.fromJson(json);
         case 'Null':
-          return NullExpression.fromJson(json);
+          // The translator builds LiteralNull for `null`, and every null
+          // check in the engine (32 sites) tests for that class; reading a
+          // Null node as the separate NullExpression class made
+          // `Interval[null, null]` a null interval when translated but an
+          // unbounded one after a reload (the reloaded CqlIntervalOperatorsTest
+          // threw "minimum … not for Null", 2026-10-06).
+          return LiteralNull.fromJson(json);
         case 'IsNull':
           return IsNull.fromJson(json);
         case 'IsTrue':
