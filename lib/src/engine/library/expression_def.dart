@@ -34,6 +34,14 @@ class ExpressionDefs {
 
   Future<Map<String, dynamic>> execute(Map<String, dynamic> context) async {
     for (final e in def) {
+      // ELM 04, FunctionDef: "defines a named function that can be invoked
+      // by any expression in the artifact"; it has no value of its own and
+      // is evaluated at each FunctionRef, so it is not a statement to
+      // evaluate here. Evaluating it ran the body with no operands and
+      // returned a bare value, and the Map cast below threw on every
+      // library that declares a function (measured 2026-10-06: the June
+      // fhir_r4_cql fluent and function tests, 12 of them).
+      if (e is FunctionDef) continue;
       try {
         context.addAll(await e.execute(context) as Map<String, dynamic>);
       } on Exception catch (exception) {
