@@ -531,8 +531,13 @@ class LiteralDecimal extends LiteralType {
       };
 
   @override
+  // The literal's own text when it has one: `0.000` stays `0.000` (CQL
+  // reference 09-b, ToString: "The result of any ToString must be
+  // round-trippable back to the source value"; the reference engine keeps
+  // the scale, `f2('hell', 0, 0.000)` → 'hell00.000' in CqlFunctionTests).
+  // Until 2026-10-07 the double was used and the scale was lost ('0.0').
   Future<CqlDecimal> execute(Map<String, dynamic> context) async =>
-      CqlDecimal(value);
+      CqlDecimal(source ?? value);
 
   @override
   String get type => 'Decimal';

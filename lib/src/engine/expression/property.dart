@@ -185,6 +185,10 @@ class Property extends CqlExpression {
     dynamic sourceResult,
     Map<String, dynamic> context,
   ) async {
+    // A property of null is null (ELM 04, Property: the source is an
+    // expression; nothing to navigate). It went to the model resolver and
+    // threw where there was none (2026-10-07, `x.y` with x null).
+    if (sourceResult == null) return null;
     // For plain Maps (CQL tuples), directly access the property
     if (sourceResult is Map<String, dynamic> &&
         sourceResult.containsKey(path) &&

@@ -193,10 +193,19 @@ class Equal extends BinaryExpression {
         }
       case CqlTime _:
         result = right is CqlTime ? left.isEqual(right) : false;
+      // A Code converts to a Concept implicitly (CQL Developer's Guide,
+      // conversion precedence: Code to Concept), so `concept = code` is the
+      // tuple equality of two Concepts (09-b, Equal for Codes and
+      // Concepts). Measured 2026-10-07 (Exercises05 "Patient is Married
+      // (=)"): it was false whatever the codes.
       case CqlCode _:
-        result = left.equal(right as Object);
+        result = right is CqlConcept
+            ? CqlConcept(codes: [left], display: left.display).equal(right)
+            : left.equal(right as Object);
       case CqlConcept _:
-        result = left.equal(right as Object);
+        result = right is CqlCode
+            ? left.equal(CqlConcept(codes: [right], display: right.display))
+            : left.equal(right as Object);
       case num _:
         {
           if (right is num) {

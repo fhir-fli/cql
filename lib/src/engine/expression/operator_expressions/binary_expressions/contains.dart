@@ -176,10 +176,16 @@ class Contains extends BinaryExpression {
     final start = interval.getStart();
     final end = interval.getEnd();
 
-    // Compute lower bound check: point >= start
+    // Compute lower bound check: point >= start. CQL reference 09-b,
+    // Contains (intervals): "For closed interval boundaries, if the
+    // interval boundary is null, the result of the boundary comparison is
+    // considered true"; an open null boundary stays uncertain. Until
+    // 2026-10-07 a closed null boundary made the result false; the
+    // reference engine's DateOrDateTimeInNullIntervalTest expects null,
+    // which the spec sentence does not say.
     CqlBoolean? lowerCheck;
     if (start == null) {
-      lowerCheck = null; // unknown boundary → uncertain
+      lowerCheck = interval.lowClosed ? CqlBoolean(true) : null;
     } else if (precision != null) {
       lowerCheck = SameOrAfter.sameOrAfter(point, start, precision);
     } else {
@@ -189,7 +195,7 @@ class Contains extends BinaryExpression {
     // Compute upper bound check: point <= end
     CqlBoolean? upperCheck;
     if (end == null) {
-      upperCheck = null; // unknown boundary → uncertain
+      upperCheck = interval.highClosed ? CqlBoolean(true) : null;
     } else if (precision != null) {
       upperCheck = SameOrBefore.sameOrBefore(point, end, precision);
     } else {

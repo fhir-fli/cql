@@ -126,8 +126,17 @@ class Successor extends UnaryExpression {
     if (value == null) {
       return null;
     } else if (value is CqlInteger) {
+      // CQL reference 09-b, Successor: "If the argument is already the
+      // maximum value for the type, a null is returned" (ELM 04 says the
+      // same). Integer is 32-bit (09-b, Integer); it wrapped into a 64-bit
+      // Dart int until 2026-10-07. The reference engine's error suite
+      // expects a run-time error here (Successor_ofr); the spec is followed.
+      if (value.valueInt == 2147483647) return null;
       return CqlInteger.tryParse(value.valueNum! + 1);
     } else if (value is CqlLong) {
+      if (value.valueBigInt == BigInt.parse('9223372036854775807')) {
+        return null;
+      }
       return CqlLong(value.valueBigInt! + BigInt.from(1));
     } else if (value is CqlDecimal) {
       return CqlDecimal(value.valueNum! + 0.00000001);

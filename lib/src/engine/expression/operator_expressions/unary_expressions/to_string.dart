@@ -65,9 +65,13 @@ class ToString extends UnaryExpression {
   Future<CqlString?> execute(Map<String, dynamic> context) async {
     final raw = await operand.execute(context);
     if (raw == null) return null;
-    // Convert any FHIR-typed input to CQL System types at the boundary.
-    final mr = requireModelResolver(context);
-    return toStringCql(mr.toCqlSystemType(raw));
+    // A System value needs no model (ToString(0.000) without a resolver
+    // threw "No ModelResolver", 2026-10-07); a model value is converted at
+    // the boundary.
+    if (raw is CqlType || raw is CqlPrimitive || raw is ValidatedQuantity) {
+      return toStringCql(raw);
+    }
+    return toStringCql(requireModelResolver(context).toCqlSystemType(raw));
   }
 
   CqlString? toStringCql(dynamic value) {
