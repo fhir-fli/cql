@@ -86,6 +86,15 @@ class IdentifierRef extends Ref {
             context[cacheKey] = codeDef;
             return codeDef;
           }
+          // Then the concept definitions, resolved with their codes in the
+          // included library (2026-10-07: `Common.testConcept` answered
+          // null, cql-engine IncludedConceptRefTest).
+          final concept = await ConceptRef(name: name, libraryName: libraryName)
+              .execute(context);
+          if (concept != null) {
+            context[cacheKey] = concept;
+            return concept;
+          }
         }
       }
       return null;
