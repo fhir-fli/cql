@@ -142,3 +142,14 @@ class CqlString extends CqlPrimitive {
   String replaceRange(int start, int? end, String replacement) =>
       valueString?.replaceRange(start, end, replacement) ?? '';
 }
+
+/// The text of a string value: a [CqlString] (the System String every
+/// string operator answers with) or a bare Dart String (what a FHIR model
+/// or a caller may hand in); null for anything else. The one coercion the
+/// string operators share (2026-10-06: StartsWith, Matches, Split,
+/// PositionOf, Length and the comparisons accepted only the bare String).
+String? textOf(dynamic value) => value is String
+    ? value
+    : value is CqlString
+        ? value.valueString
+        : null;

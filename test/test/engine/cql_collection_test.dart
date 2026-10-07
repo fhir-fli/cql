@@ -151,7 +151,7 @@ void main() {
       final forEach =
           ForEach(source: source, element: element, scope: r'$this');
       final result = await forEach.execute({});
-      expect(result, equals(['mapped', 'mapped']));
+      expect(result, equals([CqlString('mapped'), CqlString('mapped')]));
     });
 
     test('non-list source is wrapped in a list', () async {

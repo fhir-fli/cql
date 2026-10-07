@@ -91,9 +91,11 @@ class EndsWith extends BinaryExpression {
     if (argument == null || prefix == null) {
       return null;
     }
-    if (argument is! String || prefix is! String) {
-      throw ArgumentError('StartsWith operands must be of type String');
+    final text = textOf(argument);
+    final suffixText = textOf(prefix);
+    if (text == null || suffixText == null) {
+      throw ArgumentError('EndsWith operands must be of type String');
     }
-    return CqlBoolean(argument.endsWith(prefix));
+    return CqlBoolean(text.endsWith(suffixText));
   }
 }

@@ -98,8 +98,10 @@ class LastPositionOf extends OperatorExpression {
     if (patternValue == null || stringValue == null) {
       return null;
     }
-    if (patternValue is String && stringValue is String) {
-      return CqlInteger(stringValue.lastIndexOf(patternValue));
+    final patternText = textOf(patternValue);
+    final text = textOf(stringValue);
+    if (patternText != null && text != null) {
+      return CqlInteger(text.lastIndexOf(patternText));
     }
     return null;
   }

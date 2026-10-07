@@ -97,23 +97,26 @@ class Split extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['List<String>'];
 
   @override
-  Future<List<String>?> execute(Map<String, dynamic> context) async {
+  Future<List<CqlString>?> execute(Map<String, dynamic> context) async {
     final stringToSplitValue = await stringToSplit.execute(context);
     final separatorValue = await separator?.execute(context);
     return split(stringToSplitValue, separatorValue);
   }
 
-  List<String>? split(dynamic sourceValue, dynamic separatorValue) {
+  /// A list of System Strings (2026-10-06; it was a list of bare Strings).
+  List<CqlString>? split(dynamic sourceValue, dynamic separatorValue) {
     if (sourceValue == null) {
       return null;
     }
-    if (sourceValue is String &&
-        (separatorValue is String || separatorValue == null)) {
-      if (separatorValue == null) {
-        return [sourceValue];
+    final text = textOf(sourceValue);
+    final separatorText =
+        separatorValue == null ? null : textOf(separatorValue);
+    if (text != null && (separatorText != null || separatorValue == null)) {
+      if (separatorText == null) {
+        return [CqlString(text)];
       }
-      return sourceValue.split(separatorValue as Pattern);
+      return text.split(separatorText).map(CqlString.new).toList();
     }
-    throw ArgumentError('Invalid argument for Combine operator');
+    throw ArgumentError('Invalid argument for Split operator');
   }
 }

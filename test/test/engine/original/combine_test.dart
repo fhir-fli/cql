@@ -18,7 +18,8 @@ void main() {
       );
       final combine = Combine(source: list);
       final result = await combine.execute({});
-      expect(result, 'ABC');
+      // A System String (every string operator answers CqlString, 2026-10-06).
+      expect(result, CqlString('ABC'));
     });
     test(
         """define "CombineWithSeparator": Combine({ 'A', 'B', 'C' }, ' ') // 'A B C'""",
@@ -32,7 +33,7 @@ void main() {
       );
       final combine = Combine(source: list, separator: LiteralString(' '));
       final result = await combine.execute({});
-      expect(result, 'A B C');
+      expect(result, CqlString('A B C'));
     });
     test(
         """define "CombineWithNulls": Combine({ 'A', 'B', 'C', null }) // 'ABC'""",
@@ -47,7 +48,8 @@ void main() {
       );
       final combine = Combine(source: list);
       final result = await combine.execute({});
-      expect(result, 'ABC');
+      // A System String (every string operator answers CqlString, 2026-10-06).
+      expect(result, CqlString('ABC'));
     });
   });
 }

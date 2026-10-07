@@ -95,8 +95,8 @@ class ToConcept extends UnaryExpression {
     if (value is CqlCode) {
       return CqlConcept(codes: [value], display: value.display);
     }
-    if (value is String) {
-      return CqlConcept(codes: [CqlCode(code: value)]);
+    if (textOf(value) != null) {
+      return CqlConcept(codes: [CqlCode(code: textOf(value))]);
     }
     if (value is List) {
       if (value.length != 1) return null;

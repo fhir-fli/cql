@@ -210,8 +210,10 @@ class Max extends AggregateExpression {
               ? value
               : element;
         }
-        if (value is String) {
-          return value.compareTo(element as String) > 0 ? value : element;
+        if (textOf(value) != null && textOf(element) != null) {
+          return textOf(value)!.compareTo(textOf(element)!) > 0
+              ? value
+              : element;
         }
         if (value is ValidatedQuantity) {
           return (Greater.greater(value, element)?.valueBoolean ?? true)

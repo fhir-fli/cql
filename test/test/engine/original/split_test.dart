@@ -13,7 +13,8 @@ void main() {
       final separator = LiteralString(' ');
       final split = Split(stringToSplit: string, separator: separator);
       final result = await split.execute({});
-      expect(result, ['A', 'B', 'C']);
+      // A System String (every string operator answers CqlString, 2026-10-06).
+      expect(result, [CqlString('A'), CqlString('B'), CqlString('C')]);
     });
     test("""define "SplitNotFound": Split('A B C', ',') // { 'A B C' }""",
         () async {
@@ -21,7 +22,7 @@ void main() {
       final separator = LiteralString(',');
       final split = Split(stringToSplit: string, separator: separator);
       final result = await split.execute({});
-      expect(result, ['A B C']);
+      expect(result, [CqlString('A B C')]);
     });
     test("""define "SplitIsNull": Split(null, ' ') // null""", () async {
       final string = LiteralNull();

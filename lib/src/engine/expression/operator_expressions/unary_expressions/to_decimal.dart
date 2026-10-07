@@ -114,32 +114,34 @@ class ToDecimal extends UnaryExpression {
           }
         }
       case String _:
+      case CqlString _:
         {
+          final text = textOf(result)!;
           // CQL format: (+|-)?#0(.0#)? — must have at least one digit before
           // optional decimal point. Full string match required.
-          if (!RegExp(r'^[+-]?\d+(\.\d+)?$').hasMatch(result)) {
+          if (!RegExp(r'^[+-]?\d+(\.\d+)?$').hasMatch(text)) {
             return null;
           }
           // Check bounds: CQL Decimal supports at least 28 digits of precision
           // and 8 digits of scale. Values outside representable range return
           // null.
-          final dotIndex = result.indexOf('.');
+          final dotIndex = text.indexOf('.');
           final intPart = dotIndex >= 0
-              ? result.substring(
-                  result.startsWith('-') || result.startsWith('+') ? 1 : 0,
+              ? text.substring(
+                  text.startsWith('-') || text.startsWith('+') ? 1 : 0,
                   dotIndex,
                 )
-              : result.substring(
-                  result.startsWith('-') || result.startsWith('+') ? 1 : 0,
+              : text.substring(
+                  text.startsWith('-') || text.startsWith('+') ? 1 : 0,
                 );
           if (intPart.length > 28) return null;
-          final value = double.tryParse(result);
+          final value = double.tryParse(text);
           if (value == null || value.isInfinite || value.isNaN) return null;
           // Truncate to 8 decimal places
           if (dotIndex >= 0) {
-            final fracPart = result.substring(dotIndex + 1);
+            final fracPart = text.substring(dotIndex + 1);
             if (fracPart.length > 8) {
-              final truncated = result.substring(0, dotIndex + 9);
+              final truncated = text.substring(0, dotIndex + 9);
               final truncVal = double.tryParse(truncated);
               if (truncVal == null) return null;
               return CqlDecimal(truncVal);

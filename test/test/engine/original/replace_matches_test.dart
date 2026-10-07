@@ -17,7 +17,8 @@ void main() {
         operand: [argument, pattern, substitution],
         localId: 'ReplaceMatchesFound',
       );
-      expect(await result.execute({}), 'ABXYZDE');
+      // A System String (every string operator answers CqlString, 2026-10-06).
+      expect(await result.execute({}), CqlString('ABXYZDE'));
     });
     test(
         """define "ReplaceMatchesNotFound": ReplaceMatches('ABCDE', 'XYZ', '123') // 'ABCDE'""",
@@ -29,7 +30,7 @@ void main() {
         operand: [argument, pattern, substitution],
         localId: 'ReplaceMatchesNotFound',
       );
-      expect(await result.execute({}), 'ABCDE');
+      expect(await result.execute({}), CqlString('ABCDE'));
     });
     test(
         """define "ReplaceMatchesIsNull": ReplaceMatches('ABCDE', 'C', null) // null""",

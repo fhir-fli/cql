@@ -236,6 +236,8 @@ class Query extends CqlExpression {
           } else {
             throw ArgumentError('Unknown SortByItem type: ${spec.type}');
           }
+          // A System String sorts by its text (2026-10-06).
+          if (rawKey is CqlString) rawKey = rawKey.valueString;
           if (rawKey != null && rawKey is! Comparable) {
             throw ArgumentError('Sort key must be Comparable');
           }

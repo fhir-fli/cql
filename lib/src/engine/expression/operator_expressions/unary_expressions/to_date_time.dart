@@ -51,15 +51,16 @@ class ToDateTime extends UnaryExpression {
     if (value is CqlDate) {
       return CqlDateTime.tryParse(value.valueString ?? '');
     }
-    if (value is String) {
+    final text = textOf(value);
+    if (text != null) {
       // Validate against ISO-8601 datetime format: YYYY[-MM[-DD[Thh[:mm[:ss[.fff]]]]]][+/-hh:mm|Z]
       final dateTimeRegex = RegExp(
         r'^\d{4}(-\d{2}(-\d{2}(T\d{2}(:\d{2}(:\d{2}(\.\d+)?)?)?(Z|[+-]\d{2}:\d{2})?)?)?)?$',
       );
-      if (!dateTimeRegex.hasMatch(value)) return null;
+      if (!dateTimeRegex.hasMatch(text)) return null;
       // CQL ToDateTime: "If the input string is not formatted correctly, or
       // does not represent a valid DateTime value, the result is null."
-      return CqlDateTime.tryParse(value);
+      return CqlDateTime.tryParse(text);
     }
     return null;
   }

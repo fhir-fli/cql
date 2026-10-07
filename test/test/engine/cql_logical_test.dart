@@ -216,7 +216,7 @@ void main() {
     });
     test('define "CoalesceString": Coalesce(null, \'hello\')', () async {
       final coalesce = Coalesce.two(LiteralNull(), LiteralString('hello'));
-      expect(await coalesce.execute({}), 'hello');
+      expect(await coalesce.execute({}), CqlString('hello'));
     });
   });
 }

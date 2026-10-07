@@ -221,6 +221,10 @@ class Add extends BinaryExpression {
           }
           return null;
         }
+      // `+` over strings is concatenation (CQL reference 09-b, Concatenate:
+      // "the + operator can be used"); the answer is a System String, like
+      // Concatenate's since 2026-10-06. A bare Dart String here failed the
+      // June 2026 fluent tests (`first + ' ' + last` → CqlString).
       case String _:
         {
           final r = right is String
@@ -228,7 +232,7 @@ class Add extends BinaryExpression {
               : right is CqlPrimitive
                   ? right.valueString
                   : null;
-          return r != null ? left + r : null;
+          return r != null ? CqlString(left + r) : null;
         }
       case CqlString _:
         {
@@ -239,7 +243,7 @@ class Add extends BinaryExpression {
               : right is CqlPrimitive
                   ? right.valueString
                   : null;
-          return r != null ? l + r : null;
+          return r != null ? CqlString(l + r) : null;
         }
       default:
         return null;
