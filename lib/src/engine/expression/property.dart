@@ -1,4 +1,5 @@
 import 'package:cql/src/internal.dart';
+import 'package:ucum/ucum.dart';
 
 /// The Property operator returns the value of the property on source specified
 /// by the path attribute.
@@ -80,6 +81,59 @@ class Property extends CqlExpression {
   @override
   String get type => 'Property';
 
+  static const _noSystemElement = Object();
+
+  /// The element [path] of a System composite, or [_noSystemElement] when
+  /// [value] is not one (or has no such element).
+  Object? _systemElement(dynamic value) {
+    switch (value) {
+      case ValidatedQuantity _:
+        switch (path) {
+          case 'value':
+            return CqlDecimal(value.value.asUcumDecimal());
+          case 'unit':
+            return CqlString(value.unit);
+        }
+      case ValidatedRatio _:
+        switch (path) {
+          case 'numerator':
+            return value.numerator;
+          case 'denominator':
+            return value.denominator;
+        }
+      case CqlCode _:
+        switch (path) {
+          case 'code':
+            return value.code == null ? null : CqlString(value.code);
+          case 'system':
+            return value.system == null ? null : CqlString(value.system);
+          case 'version':
+            return value.version == null ? null : CqlString(value.version);
+          case 'display':
+            return value.display == null ? null : CqlString(value.display);
+        }
+      case CqlConcept _:
+        switch (path) {
+          case 'codes':
+            return value.codes;
+          case 'display':
+            return value.display == null ? null : CqlString(value.display);
+        }
+      case CqlInterval<dynamic> _:
+        switch (path) {
+          case 'low':
+            return value.low;
+          case 'high':
+            return value.high;
+          case 'lowClosed':
+            return CqlBoolean(value.lowClosed);
+          case 'highClosed':
+            return CqlBoolean(value.highClosed);
+        }
+    }
+    return _noSystemElement;
+  }
+
   @override
   List<String> getReturnTypes(CqlLibrary library) {
     if (source != null) {
@@ -137,6 +191,15 @@ class Property extends CqlExpression {
         !sourceResult.containsKey('resourceType')) {
       return sourceResult[path];
     }
+    // A System composite's elements (CQL reference 09-b, Types: Quantity
+    // has value and unit; Code has code, display, system, version; Concept
+    // has codes and display; Interval has low, high, lowClosed, highClosed;
+    // Ratio has numerator and denominator) are read here, in System types.
+    // Until 2026-10-07 a System Quantity went to the model resolver, came
+    // back as a FHIR Quantity and `strength.value < 0.1` failed on a
+    // FhirDecimal (Exercises03 "If Conditional").
+    final systemElement = _systemElement(sourceResult);
+    if (systemElement != _noSystemElement) return systemElement;
     // All FHIR-shaped navigation is delegated to the version-specific
     // ModelResolver, keeping the engine free of any fhir_r* dependency.
     return requireModelResolver(context).resolvePath(sourceResult, path);
