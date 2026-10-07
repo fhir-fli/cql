@@ -38,9 +38,8 @@ void main() {
   // Files whose written ELM does not yet equal the reference, with the
   // first differing path (measured 2026-10-06).
   // Files whose written ELM does not yet equal the reference, at the path
-  // of the first difference (measured 2026-10-06). Fifteen of the 17 are
-  // exact. Left: a null as a function's list parameter, and the Time
-  // deviation.
+  // of the first difference (measured 2026-10-07). Sixteen of the 17 are
+  // exact. Left: the Time deviation.
   const notYetEqual = <String, String>{
     'CqlAggregateTest':
         '/statements/def/1/expression/element/0/value/element/0/value/aggregate/expression/operand/0/type',
@@ -48,10 +47,6 @@ void main() {
         '/statements/def/2/expression/element/0/value/element/0/value/else/type',
     'CqlIntervalOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/operand/0/type',
-    // A null given as a function's list parameter (`Distinct(null)` and its
-    // kin) is typed List<T> by the reference from the function's signature.
-    'CqlListOperatorsTest':
-        '/statements/def/14/expression/element/1/value/element/0/value/source/type',
     'CqlNullologicalOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/operand/1/type',
     'CqlQueryTests':
