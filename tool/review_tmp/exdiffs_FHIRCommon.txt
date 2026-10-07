@@ -39,38 +39,4 @@
 /statements/def/2/expression/else/else/else/else/else/else/type: As vs Null
 /statements/def/2/expression/else/else/else/else/else/else/operand: missing in ours ({"type":"Null"})
 /statements/def/2/expression/else/else/else/else/else/else/asTypeSpecifier: missing in ours ({"type":"IntervalTypeSpecifier","pointType":{"name":"{urn:hl7-org:elm-)
-/statements/def/2/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Condition vs Condition
-/statements/def/3/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Condition vs Condition
-/statements/def/4/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/5/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/6/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/7/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/8/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/9/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/10/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/11/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/12/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/13/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/14/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/15/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/16/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/17/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/18/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/19/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/20/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/21/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/22/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/23/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/24/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/25/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/26/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/27/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/28/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/29/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/30/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/31/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}Element vs Element
-/statements/def/32/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/33/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}DomainResource vs DomainResource
-/statements/def/34/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-/statements/def/35/operand/0/operandTypeSpecifier/name: {http://hl7.org/fhir}BackboneElement vs BackboneElement
-TOTAL 75
+TOTAL 41

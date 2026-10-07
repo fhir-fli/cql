@@ -41,9 +41,6 @@ void main() {
   // differing path (measured 2026-10-06). An entry here that becomes equal
   // fails the test, so it is removed.
   const notYetEqual = {
-    'Exercises03':
-        '/statements/def/79/expression/then/element/0/value/operand/1/type: '
-            'ToDecimal vs Literal',
     'Exercises05':
         '/statements/def/2/expression/operand/0/name: missing in ours',
     // FHIRCommon: `FHIRHelpers.ToDateTime(x) + 1 day` style arithmetic the
