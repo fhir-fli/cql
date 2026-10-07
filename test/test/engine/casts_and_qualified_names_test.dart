@@ -92,7 +92,8 @@ define "D": [Observation] O return (O.value as Quantity) - (O.value as Quantity)
       expect((operand as Map)['type'], 'FunctionRef');
       expect(operand['name'], 'ToQuantity');
       expect(operand['libraryName'], 'FHIRHelpers');
-      expect((operand['operand'] as List).single['type'], 'As');
+      final inner = (operand['operand'] as List).single as Map;
+      expect(inner['type'], 'As');
     }
   });
 

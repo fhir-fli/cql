@@ -17,18 +17,7 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
       final right = byContext(ctx.getChild<dynamic>(2)!);
 
       if (left is CqlExpression && right is CqlExpression) {
-        // Get return types for left and right operands
-        final leftTypes = left.getReturnTypes(library).toSet();
-        final rightTypes = right.getReturnTypes(library).toSet();
-
-        // Combine types and determine if transformation is needed
-        final combinedTypes = _combineTypes(leftTypes, rightTypes);
-
-        final transformedOperands = _transformOperandsForMixedTypes(
-          left,
-          right,
-          combinedTypes,
-        );
+        final transformedOperands = _bindSetOperands(left, right);
 
         switch (operator) {
           case '|': // Pipe operator
@@ -47,83 +36,45 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
     throw ArgumentError('$thisNode Invalid InFixSetExpression');
   }
 
-  /// Combines return types from two operands.
-  Set<String> _combineTypes(Set<String> leftTypes, Set<String> rightTypes) {
-    final combined = {...leftTypes, ...rightTypes};
-
-    return combined;
-  }
-
-  List<CqlExpression> _transformOperandsForMixedTypes(
+  /// The operands of a set operator as the reference writes them
+  /// (measured 2026-10-06 over the 31 reference files): two lists whose
+  /// element types differ are each cast to the list of the choice of both
+  /// (`{ 1, 2, 3 } union { 'a', 'b', 'c' }` → As(List<Choice<Integer,
+  /// String>>) on both sides, Exercises04); a bare null is typed as the
+  /// other side's list type (`{ 1, 4 } except null`, CqlListOperatorsTest);
+  /// everything else, same-typed or empty lists included, stays as written.
+  /// Until then every pair of lists was cast, empty ones to a choice of
+  /// nothing.
+  List<CqlExpression> _bindSetOperands(
     CqlExpression left,
     CqlExpression right,
-    Set<String> combinedTypes,
   ) {
-    // Static homogeneous lists can be wrapped directly in `As`.
     if (left is ListExpression && right is ListExpression) {
-      final choiceType = _buildChoiceType(combinedTypes);
-      return [
-        As(
-          operand: left,
-          asTypeSpecifier: ListTypeSpecifier(elementType: choiceType),
-        ),
-        As(
-          operand: right,
-          asTypeSpecifier: ListTypeSpecifier(elementType: choiceType),
-        ),
-      ];
+      final leftType = systemTypeOf(left);
+      final rightType = systemTypeOf(right);
+      if (leftType != null &&
+          rightType != null &&
+          leftType.toString() != rightType.toString()) {
+        ListTypeSpecifier choiceOfBoth() => ListTypeSpecifier(
+              elementType: ChoiceTypeSpecifier(
+                choice: [
+                  NamedTypeSpecifier(namespace: _elementOf(leftType)),
+                  NamedTypeSpecifier(namespace: _elementOf(rightType)),
+                ],
+              ),
+            );
+        return [
+          As(operand: left, asTypeSpecifier: choiceOfBoth()),
+          As(operand: right, asTypeSpecifier: choiceOfBoth()),
+        ];
+      }
     }
-
-    // Fallback for mixed/dynamic types.
-    if (combinedTypes.length > 1) {
-      final choiceType = _buildChoiceType(combinedTypes);
-
-      return [
-        _transformExpressionToQuery(left, choiceType, 'AliasLeft'),
-        _transformExpressionToQuery(right, choiceType, 'AliasRight'),
-      ];
-    }
-
-    // Homogeneous types don't require transformation.
-    return [left, right];
+    return typeNullOperands([left, right]);
   }
 
-  Query _transformExpressionToQuery(
-    CqlExpression expression,
-    ChoiceTypeSpecifier choiceType,
-    String alias,
-  ) {
-    return Query(
-      source: [
-        RelationshipClause(
-          alias: alias,
-          expression: expression,
-        ),
-      ],
-      returnClause: ReturnClause(
-        distinct: false,
-        expression: As(
-          operand: ExpressionRef(name: alias),
-          asTypeSpecifier: choiceType,
-        ),
-      ),
-    );
-  }
-
-  /// Builds a ChoiceTypeSpecifier from the combined types.
-  ChoiceTypeSpecifier _buildChoiceType(Set<String> combinedTypes) {
-    final choiceType = ChoiceTypeSpecifier(
-      choice: combinedTypes.map((type) {
-        return NamedTypeSpecifier(
-          namespace: QName.elmCoreTypes.contains(type)
-              ? QName.fromElmType(type)
-              : QName.fhirTypes.contains(type)
-                  ? QName.fromFhirType(type)
-                  : QName(localPart: type),
-        );
-      }).toList(),
-    );
-
-    return choiceType;
+  /// `List<{ns}T>` → `{ns}T`.
+  static QName _elementOf(QName listType) {
+    final local = listType.localPart;
+    return QName.parse(local.substring(5, local.length - 1));
   }
 }

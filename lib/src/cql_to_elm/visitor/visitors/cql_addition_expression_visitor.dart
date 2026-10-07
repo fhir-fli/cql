@@ -43,25 +43,8 @@ class CqlAdditionExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   }
 
   // Helper function to handle subtraction, including null checks and casting
-  CqlExpression handleSubtraction(CqlExpression left, CqlExpression right) {
-    if (left is LiteralType && right is LiteralNull) {
-      return Subtract(
-        operand: [
-          left,
-          As(operand: right, asType: QName.parse(left.valueType)),
-        ],
-      );
-    } else if (left is LiteralNull && right is LiteralType) {
-      return Subtract(
-        operand: [
-          As(operand: left, asType: QName.parse(right.valueType)),
-          right,
-        ],
-      );
-    } else {
-      return Subtract(operand: [left, right]);
-    }
-  }
+  CqlExpression handleSubtraction(CqlExpression left, CqlExpression right) =>
+      Subtract(operand: translateOperand([left, right]));
 
   // Determine whether to use Add or Concatenate based on operand types
   CqlExpression handleConcatenationOrAddition(

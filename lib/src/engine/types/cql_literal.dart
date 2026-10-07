@@ -548,29 +548,40 @@ class LiteralDecimal extends LiteralType {
 /// `CqlInteger`.
 class LiteralInteger extends LiteralType {
   /// Creates an integer literal wrapping [value].
-  LiteralInteger(this.value);
+  LiteralInteger(this.value) : source = null;
+
+  LiteralInteger._text(String text)
+      : source = text,
+        value = int.parse(text);
+
+  /// From CQL or ELM text, kept verbatim: the reference translator writes
+  /// `DateTime(2014, 01, 01)` with the literal `01` (CqlTypeOperatorsTest).
+  factory LiteralInteger.fromString(String text) => LiteralInteger._text(text);
 
   factory LiteralInteger.fromJson(dynamic json) {
     if (json is num) {
       return LiteralInteger(json.toInt());
     } else if (json is String && int.tryParse(json) != null) {
-      return LiteralInteger(int.parse(json));
+      return LiteralInteger._text(json);
     } else if (json is Map<String, dynamic> && json['value'] != null) {
       if (json['value'] is num) {
         return LiteralInteger((json['value'] as num).toInt());
       } else if (json['value'] is String &&
           int.tryParse(json['value'] as String) != null) {
-        return LiteralInteger(int.parse(json['value'] as String));
+        return LiteralInteger._text(json['value'] as String);
       }
     }
     throw ArgumentError('LiteralInteger: Invalid json type');
   }
   final int value;
 
+  /// The literal's source text, when it was parsed from CQL or ELM.
+  final String? source;
+
   @override
   Map<String, dynamic> toJson() => {
         'valueType': '{urn:hl7-org:elm-types:r1}$type',
-        'value': value.toString(),
+        'value': source ?? value.toString(),
         'type': 'Literal',
       };
 

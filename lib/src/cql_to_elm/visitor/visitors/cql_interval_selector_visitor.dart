@@ -29,6 +29,11 @@ class CqlIntervalSelectorVisitor extends CqlBaseVisitor<IntervalExpression> {
           high = result;
         }
       }
+      if (low != null && high != null) {
+        final typed = typeNullOperands([low, high]);
+        low = typed[0];
+        high = typed[1];
+      }
       return IntervalExpression(
         low: low,
         high: high,

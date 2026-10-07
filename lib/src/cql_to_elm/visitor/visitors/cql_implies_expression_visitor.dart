@@ -16,7 +16,12 @@ class CqlImpliesExpressionVisitor extends CqlBaseVisitor<dynamic> {
       }
     }
     if (operand.length == 2) {
-      return Implies(operand: operand);
+      return Implies(
+        operand: typeNullOperands(
+          operand,
+          expected: QName.fromElmType('Boolean'),
+        ),
+      );
     }
     throw ArgumentError('$thisNode Invalid ImpliesExpression');
   }

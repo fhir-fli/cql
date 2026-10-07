@@ -30,6 +30,32 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
         operand[i] =
             CqlBaseVisitor.convertCastForBinding(operand[i], currentModel);
       }
+      // A bare null on the list side of `contains`/`in` is typed as the
+      // list of the other side's type (`null contains 'a'` →
+      // As(Null, List<String>), CqlListOperatorsTest); on the element side,
+      // as the list's element type.
+      final listIndex = inContains ? 1 : 0;
+      final elementIndex = inContains ? 0 : 1;
+      if (operand[listIndex] is LiteralNull) {
+        final elementType = systemTypeOf(operand[elementIndex]);
+        if (elementType != null) {
+          operand[listIndex] = As(
+            operand: operand[listIndex],
+            asTypeSpecifier: ListTypeSpecifier(
+              elementType: NamedTypeSpecifier(namespace: elementType),
+            ),
+          );
+        }
+      } else if (operand[elementIndex] is LiteralNull) {
+        final list = operand[listIndex];
+        if (list is ListExpression) {
+          final typed = typeNullOperands([
+            ...?list.element,
+            operand[elementIndex],
+          ]);
+          operand[elementIndex] = typed.last;
+        }
+      }
       if (!inContains) {
         // For `list.value contains CodeRef` where value is a choice type,
         // transform the collection operand into a Query with type narrowing.
