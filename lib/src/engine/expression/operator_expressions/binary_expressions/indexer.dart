@@ -90,11 +90,14 @@ class Indexer extends BinaryExpression {
     if (result == null || index == null) {
       return null;
     }
-    if (result is String && index is CqlInteger) {
-      if (index < 0 || index >= result.length) {
+    // A System String (CqlString) or a bare String; the character is a
+    // System String (2026-10-07, Exercises03 "String Indexer").
+    final text = textOf(result);
+    if (text != null && index is CqlInteger) {
+      if (index < 0 || index >= text.length) {
         return null;
       }
-      return result[index.valueInt!];
+      return CqlString(text[index.valueInt!]);
     }
     if (result is List && index is CqlInteger) {
       if (index < 0 || index >= result.length) {
