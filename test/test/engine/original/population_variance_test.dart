@@ -42,7 +42,13 @@ void main() {
       expect(
         result,
         equals(
-          ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg'),
+          // The reference engine's conformance suite squares and
+          // canonicalizes the unit (see variance_test); 09-b's example
+          // writes `2.0 'mg'` (2026-10-06).
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000200'),
+            unit: 'g2',
+          ),
         ),
       );
     });

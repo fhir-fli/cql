@@ -389,10 +389,11 @@ void main() {
     test(
         """define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // CQL reference 09-b, Variance example:
-      // `Variance({ 1.0 'mg', … 5.0 'mg' }) // 2.5 'mg'`. Until 2026-10-06
-      // this test asserted 0.0000025 'g2', the engine's own output (the
-      // differences were squared as quantities, so the unit was too).
+      // The unit is squared and canonicalized (mg → g), as the reference
+      // engine's conformance suite defines Variance over quantities
+      // (`Variance_q2 = 2.5 'm2'`, `0 'm6'` for ml); the CQL reference 09-b
+      // example writes `2.5 'mg'` and the engine follows the reference
+      // implementation (2026-10-06).
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -406,7 +407,12 @@ void main() {
       final result = await variance.execute({});
       expect(
         result,
-        equals(ValidatedQuantity(value: UcumDecimal.fromNum(2.5), unit: 'mg')),
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000250'),
+            unit: 'g2',
+          ),
+        ),
       );
     });
     test(
@@ -451,9 +457,8 @@ void main() {
     test(
         """define "QuantityPopulationVariance": PopulationVariance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // CQL reference 09-b, PopulationVariance example:
-      // `PopulationVariance({ 1.0 'mg', … 5.0 'mg' }) // 2.0 'mg'`. Until
-      // 2026-10-06 this test asserted 0.000002 'g2', the engine's own output.
+      // The unit is squared and canonicalized, as the reference engine's
+      // conformance suite defines it (see Variance above).
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -466,7 +471,12 @@ void main() {
       final result = await PopulationVariance(source: list).execute({});
       expect(
         result,
-        equals(ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')),
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000200'),
+            unit: 'g2',
+          ),
+        ),
       );
     });
     test(

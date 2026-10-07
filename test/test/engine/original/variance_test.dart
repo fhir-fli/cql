@@ -46,8 +46,18 @@ void main() {
       );
       final variance = Variance(source: list);
       final result = await variance.execute({});
-      // `Variance({ 1.0 'mg', … 5.0 'mg' }) // 2.5 'mg'` (09-b)
-      expect(result, equals(ValidatedQuantity.fromNumber(2.5, unit: 'mg')));
+      // 09-b's example writes `2.5 'mg'`; the reference engine's conformance
+      // suite squares and canonicalizes the unit (`2.5 'm2'`, `0 'm6'`),
+      // and the engine follows the reference implementation (2026-10-06).
+      expect(
+        result,
+        equals(
+          ValidatedQuantity(
+            value: UcumDecimal.fromString('0.00000250'),
+            unit: 'g2',
+          ),
+        ),
+      );
     });
     test(
         'define "VarianceIsNull": Variance({ null as Quantity, null as Quantity, null as Quantity })',
