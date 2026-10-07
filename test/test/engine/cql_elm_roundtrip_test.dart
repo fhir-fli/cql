@@ -29,7 +29,8 @@ define "IntervalContains": 100 in Interval[90, 120]
       final results = await reloaded.execute() as Map<String, dynamic>;
 
       expect(results['IntProduct'], CqlInteger(42));
-      expect(results['StringConcat'], 'Hello, CQL!');
+      // A System String (Concatenate answers CqlString since 2026-10-06).
+      expect(results['StringConcat'], CqlString('Hello, CQL!'));
       expect(results['DecimalSum'], CqlDecimal(3.75));
       expect(results['BoolAnd'], CqlBoolean(true));
       expect(results['LongValue'], CqlLong.fromNum(30));
@@ -116,7 +117,8 @@ define "IntervalContains": 100 in Interval[90, 120]
       final reloaded = CqlLibrary.fromJson(CqlLibrary.fromJson(once).toJson());
       final results = await reloaded.execute() as Map<String, dynamic>;
       expect(results['IntProduct'], CqlInteger(42));
-      expect(results['StringConcat'], 'Hello, CQL!');
+      // A System String (Concatenate answers CqlString since 2026-10-06).
+      expect(results['StringConcat'], CqlString('Hello, CQL!'));
       expect(results['DecimalSum'], CqlDecimal(3.75));
       expect(results['BoolAnd'], CqlBoolean(true));
       expect(results['BoolOr'], CqlBoolean(true));

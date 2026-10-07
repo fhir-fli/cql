@@ -165,14 +165,19 @@ class Concatenate extends NaryExpression {
 // Assuming you want to integrate this into your existing method with a 'plus'
 // flag
   @override
-  Future<String?> execute(Map<String, dynamic> context) async {
+  Future<CqlString?> execute(Map<String, dynamic> context) async {
     if (operand == null || operand!.length != 2) {
       throw ArgumentError('Concatenate operator requires exactly 2 operands');
     } else {
       final left = await operand!.first.execute(context);
       final right = await operand!.last.execute(context);
-      // Use the plus flag to decide which function to use
-      return plus ? concatenatePlus(left, right) : concatenateAnd(left, right);
+      // The result is a System String (ELM 04: Concatenate returns String),
+      // the type every other string operator answers with; a bare Dart
+      // String here failed the June 2026 aggregate test restored
+      // 2026-10-06 (`aggregate acc starting "" : acc + N` → CqlString).
+      final joined =
+          plus ? concatenatePlus(left, right) : concatenateAnd(left, right);
+      return joined == null ? null : CqlString(joined);
     }
   }
 
