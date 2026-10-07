@@ -1314,6 +1314,208 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return applyImplicitConversion(property, model);
   }
 
+  /// The model type [expression] is inferred to have, or `null` when it is
+  /// untyped, System-typed, a list or an interval.
+  String? modelTypeOf(CqlExpression expression, Model model) {
+    if (expression is LiteralNull) return null;
+    final type = inferType(expression, model);
+    if (type == null ||
+        type.startsWith('System.') ||
+        type.startsWith('List<') ||
+        type.startsWith('Interval<')) {
+      return null;
+    }
+    return model.resolveTypeName(type) == null ? null : type;
+  }
+
+  /// Whether the library that declares [conversion]'s function is included
+  /// (`include FHIRHelpers`), so the FunctionRef can resolve.
+  bool conversionLibraryIncluded(ConversionInfo conversion) {
+    final name = conversion.functionName;
+    final dot = name.indexOf('.');
+    if (dot < 0) return true;
+    final libraryName = name.substring(0, dot);
+    return library.includes?.def.any((d) => d.localIdentifier == libraryName) ??
+        false;
+  }
+
+  /// [expression] wrapped in the model's declared implicit conversion when
+  /// it is model-typed and the conversion's library is included (CQL
+  /// Developer's Guide §3.5.3, quoted from cql.hl7.org/03-developersguide
+  /// 2026-10-07: "specific data models may introduce conversions,
+  /// including implicit conversions"); otherwise [expression] itself.
+  CqlExpression convertModelValue(CqlExpression expression, Model model) {
+    final type = modelTypeOf(expression, model);
+    if (type == null) return expression;
+    final conversion = model.findConversionFrom(type);
+    if (conversion == null || !conversionLibraryIncluded(conversion)) {
+      return expression;
+    }
+    expression.inferredResultType ??= type;
+    return applyImplicitConversion(expression, model);
+  }
+
+  /// Whether [expression] is known to carry a System type: a literal, a
+  /// code or concept reference, a conversion to a System type, or a node
+  /// the translator infers as System-typed.
+  bool isSystemTyped(CqlExpression expression, Model model) {
+    if (expression is LiteralNull) return false;
+    if (expression is LiteralType ||
+        expression is CodeRef ||
+        expression is ConceptRef ||
+        expression is ToConcept ||
+        expression is ToString ||
+        expression is ToDate ||
+        expression is ToDateTime ||
+        expression is ToTime ||
+        expression is ToQuantity ||
+        expression is ToDecimal ||
+        expression is ToInteger ||
+        expression is ToBoolean) {
+      return true;
+    }
+    final inferred = inferType(expression, model);
+    if (inferred != null) {
+      return inferred.startsWith('System.') ||
+          inferred.startsWith('Interval<System.') ||
+          inferred.startsWith('List<System.');
+    }
+    return systemTypeOf(expression) != null;
+  }
+
+  /// The result type of a call to a model conversion function
+  /// (`FHIRHelpers.ToInterval(x)` → `Interval<System.DateTime>`), from the
+  /// node's known type or the modelinfo's declaration.
+  String? conversionResultType(FunctionRef ref) {
+    final known = ref.knownResultType;
+    if (known != null) return known;
+    final model = currentModel;
+    final libraryName = ref.libraryName;
+    if (model == null || libraryName == null) return null;
+    final declared = model.conversionByFunction('$libraryName.${ref.name}');
+    final toType = declared?.toType;
+    return toType == null ? null : model.normalizeTypeName(toType);
+  }
+
+  static QName _systemQName(String normalized) => QName.fromElmType(
+        normalized.startsWith('System.') ? normalized.substring(7) : normalized,
+      );
+
+  /// The System type of a value used as an interval boundary: a date
+  /// conversion, a start or end of an interval, a date plus or minus a
+  /// quantity (CQL reference 09-b Date + Quantity is a Date), a conversion
+  /// function's declared result, or the literal/constructor types
+  /// [systemTypeOf] knows.
+  QName? pointValueTypeOf(CqlExpression expression) {
+    if (expression is ToDateTime) return QName.fromElmType('DateTime');
+    if (expression is ToDate) return QName.fromElmType('Date');
+    if (expression is ToTime) return QName.fromElmType('Time');
+    if (expression is Start) return intervalPointTypeOf(expression.operand);
+    if (expression is End) return intervalPointTypeOf(expression.operand);
+    if (expression is Add || expression is Subtract) {
+      final first = (expression as BinaryExpression).operand.firstOrNull;
+      final type = first == null ? null : pointValueTypeOf(first);
+      return type != null &&
+              const {'Date', 'DateTime', 'Time'}.contains(type.localPart)
+          ? type
+          : null;
+    }
+    if (expression is FunctionRef) {
+      final type = conversionResultType(expression);
+      if (type == null || type.startsWith('Interval<')) return null;
+      return _systemQName(type);
+    }
+    return systemTypeOf(expression);
+  }
+
+  /// The point type of an interval-valued [expression], or `null` when it
+  /// is not known to be an interval.
+  QName? intervalPointTypeOf(CqlExpression expression) {
+    if (expression is IntervalExpression) {
+      for (final boundary in [expression.low, expression.high]) {
+        if (boundary == null) continue;
+        final type = pointValueTypeOf(boundary);
+        if (type != null) return type;
+      }
+      return null;
+    }
+    if (expression is As) {
+      final specifier = expression.asTypeSpecifier;
+      if (specifier is IntervalTypeSpecifier) {
+        final point = specifier.pointType;
+        if (point is NamedTypeSpecifier) return point.namespace;
+      }
+      return null;
+    }
+    if (expression is Message) return intervalPointTypeOf(expression.source);
+    if (expression is IfThenElse) {
+      return intervalPointTypeOf(expression.then) ??
+          intervalPointTypeOf(expression.elseExpr);
+    }
+    if (expression is Case) {
+      for (final item in expression.caseItem) {
+        final type = intervalPointTypeOf(item.then);
+        if (type != null) return type;
+      }
+      return intervalPointTypeOf(expression.elseExpr);
+    }
+    if (expression is FunctionRef) {
+      final type = conversionResultType(expression);
+      if (type != null && type.startsWith('Interval<') && type.endsWith('>')) {
+        return _systemQName(type.substring(9, type.length - 1));
+      }
+    }
+    return null;
+  }
+
+  /// `Interval<Date>` converted to `Interval<DateTime>` the way the
+  /// reference translator writes it (QICoreCommon toInterval, the Age case,
+  /// 2026-10-07): each boundary is ToDateTime of the source interval's
+  /// `low`/`high`, and the closed indicators are the source's
+  /// `lowClosed`/`highClosed` expressions. Date → DateTime is an implicit
+  /// conversion (CQL Developer's Guide Table 3-J, read whole 2026-10-07).
+  IntervalExpression convertIntervalToDateTime(CqlExpression interval) =>
+      IntervalExpression(
+        low: ToDateTime(operand: Property(path: 'low', source: interval)),
+        lowClosedExpression: Property(path: 'lowClosed', source: interval),
+        high: ToDateTime(operand: Property(path: 'high', source: interval)),
+        highClosedExpression: Property(path: 'highClosed', source: interval),
+      );
+
+  /// The branches of an `if` or `case` brought to one type. CQL Developer's
+  /// Guide, "Type Inference of Conditional Expressions" (quoted from
+  /// cql.hl7.org/03-developersguide, read whole 2026-10-07): "For each
+  /// subsequent expression, if the result type is a supertype of the
+  /// inferred type, or if the inferred type is convertible to the result
+  /// type, the type of the subsequent element becomes the new inferred
+  /// element type for the expression." Where one branch is an
+  /// `Interval<DateTime>`, the reference translator converts every
+  /// `Interval<Date>` branch to it and types a null branch as
+  /// `Interval<DateTime>` (QICoreCommon toInterval / abatementInterval).
+  /// Only that pair is handled; every other mix is left as written.
+  List<CqlExpression> unifyConditionalBranches(List<CqlExpression> branches) {
+    final points = [
+      for (final branch in branches) intervalPointTypeOf(branch)?.localPart,
+    ];
+    if (!points.contains('DateTime')) return branches;
+    return [
+      for (var i = 0; i < branches.length; i++)
+        if (points[i] == 'Date')
+          convertIntervalToDateTime(branches[i])
+        else if (branches[i] is LiteralNull)
+          As(
+            operand: branches[i],
+            asTypeSpecifier: IntervalTypeSpecifier(
+              pointType: NamedTypeSpecifier(
+                namespace: QName.fromElmType('DateTime'),
+              ),
+            ),
+          )
+        else
+          branches[i],
+    ];
+  }
+
   /// The [Model] for this library's data-model `using` declaration (e.g.
   /// FHIR 4.0.1), or `null` when none is declared or loadable. This is the
   /// single source for translator type inference and implicit-conversion
@@ -2230,6 +2432,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     // IdentifierRef), and an alias only after every library-level name.
     if (libraryName == null) {
       if (isOperandInScope(name)) return OperandRef(name: name);
+      // A `let` name is a QueryLetRef (ELM expression.xsd), also when it
+      // is the receiver of a fluent call (QICoreCommon race:
+      // `raceEx.extensions('ombCategory')`, 2026-10-07).
+      if (isLetIdentifier(name)) return QueryLetRef(name: name);
       if (isQueryAlias(name)) return AliasRef(name: name);
     }
 
@@ -2281,6 +2487,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                   resultTypeName: typeName == 'Unknown' ? null : typeName,
                 );
               } else {
+                if (isLetIdentifier(name)) return QueryLetRef(name: name);
                 if (isQueryAlias(name)) {
                   return AliasRef(name: name);
                 }

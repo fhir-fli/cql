@@ -29,6 +29,16 @@ class CqlIntervalSelectorVisitor extends CqlBaseVisitor<IntervalExpression> {
           high = result;
         }
       }
+      // An interval's point type is a System type (CQL Author's Guide,
+      // intervals of Integer, Decimal, Quantity, Date, DateTime, Time), so
+      // a model-typed boundary takes its declared conversion, as the
+      // reference writes `FHIRHelpers.ToDateTime(condition.recordedDate)`
+      // (QICoreCommon abatementInterval, 2026-10-07).
+      final model = currentModel;
+      if (model != null) {
+        if (low != null) low = convertModelValue(low, model);
+        if (high != null) high = convertModelValue(high, model);
+      }
       if (low != null && high != null) {
         final typed = typeNullOperands([low, high]);
         low = typed[0];

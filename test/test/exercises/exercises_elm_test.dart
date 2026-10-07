@@ -40,17 +40,8 @@ void main() {
   // Files the translator does not yet reproduce exactly, with the first
   // differing path (measured 2026-10-06). An entry here that becomes equal
   // fails the test, so it is removed.
-  const notYetEqual = {
-    // FHIRCommon: `FHIRHelpers.ToDateTime(x) + 1 day` style arithmetic the
-    // reference writes with the conversion outside the Add.
-    'FHIRCommon': '/statements/def/1/expression/caseItem/3/then/low/type',
-    // QICoreCommon: toInterval's Age case, `Interval[ToDate(birthDate) +
-    // ToQuantity(choice as Age), …]`: the reference writes Add over a
-    // Date and a Quantity (with lowClosedExpression); ours wraps the sum
-    // in ToDateTime.
-    'QICoreCommon':
-        '/statements/def/3/expression/caseItem/3/then/low/type: ToDateTime vs Add',
-  };
+  // Empty since 2026-10-07: every file with a reference is exact.
+  const notYetEqual = <String, String>{};
 
   for (final name in names) {
     final jsonFile = File('$dir/$name.json');

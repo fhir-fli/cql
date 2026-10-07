@@ -300,7 +300,7 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
   bool _applyModelConversions(List<CqlExpression> operands) {
     final model = currentModel;
     if (model == null) return false;
-    final types = [for (final o in operands) _modelTypeOf(o, model)];
+    final types = [for (final o in operands) modelTypeOf(o, model)];
     var converted = false;
     for (var i = 0; i < 2; i++) {
       final type = types[i];
@@ -308,9 +308,9 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       // type the translator cannot infer (Exercises08's `TestCode`, an
       // alias over a tuple query) is left alone, as the reference compares
       // the two model values directly.
-      if (type == null || !_isSystemTyped(operands[1 - i], model)) continue;
+      if (type == null || !isSystemTyped(operands[1 - i], model)) continue;
       final conversion = model.findConversionFrom(type);
-      if (conversion == null || !_conversionLibraryIncluded(conversion)) {
+      if (conversion == null || !conversionLibraryIncluded(conversion)) {
         continue;
       }
       operands[i].inferredResultType ??= type;
@@ -325,59 +325,6 @@ class CqlEqualityExpressionVisitor extends CqlBaseVisitor<CqlExpression> {
       }
     }
     return converted;
-  }
-
-  /// Whether [expression] is known to carry a System type: a literal, a
-  /// code or concept reference, a conversion to a System type, or a node
-  /// the translator infers as System-typed.
-  bool _isSystemTyped(CqlExpression expression, Model model) {
-    if (expression is LiteralNull) return false;
-    if (expression is LiteralType ||
-        expression is CodeRef ||
-        expression is ConceptRef ||
-        expression is ToConcept ||
-        expression is ToString ||
-        expression is ToDate ||
-        expression is ToDateTime ||
-        expression is ToTime ||
-        expression is ToQuantity ||
-        expression is ToDecimal ||
-        expression is ToInteger ||
-        expression is ToBoolean) {
-      return true;
-    }
-    final inferred = inferType(expression, model);
-    if (inferred != null) {
-      return inferred.startsWith('System.') ||
-          inferred.startsWith('Interval<System.') ||
-          inferred.startsWith('List<System.');
-    }
-    return systemTypeOf(expression) != null;
-  }
-
-  /// The model type [expression] is inferred to have, or `null` when it is
-  /// untyped, System-typed, a list or an interval.
-  String? _modelTypeOf(CqlExpression expression, Model model) {
-    if (expression is LiteralNull) return null;
-    final type = inferType(expression, model);
-    if (type == null ||
-        type.startsWith('System.') ||
-        type.startsWith('List<') ||
-        type.startsWith('Interval<')) {
-      return null;
-    }
-    return model.resolveTypeName(type) == null ? null : type;
-  }
-
-  /// Whether the library that declares [conversion]'s function is included
-  /// (`include FHIRHelpers`), so the FunctionRef can resolve.
-  bool _conversionLibraryIncluded(ConversionInfo conversion) {
-    final name = conversion.functionName;
-    final dot = name.indexOf('.');
-    if (dot < 0) return true;
-    final libraryName = name.substring(0, dot);
-    return library.includes?.def.any((d) => d.localIdentifier == libraryName) ??
-        false;
   }
 
   /// Wrap any CodeRef operands in ToConcept for equivalence comparisons.

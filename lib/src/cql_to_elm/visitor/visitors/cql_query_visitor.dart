@@ -97,9 +97,8 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
     // the reference translator splits this into a nested query:
     //   inner: original query with return = As(...)
     //   outer: X alias, return FHIRHelpers.ToXxx(X) with distinct: false
-    final result = _maybeWrapReturnWithConversion(query);
-    result.inferredResultType ??= resultType;
-    return result;
+    return _maybeWrapReturnWithConversion(query)
+      ..inferredResultType ??= resultType;
   }
 
   /// Detects when a query's return clause is a FHIRHelpers conversion wrapping
