@@ -239,7 +239,9 @@ class As extends UnaryExpression {
       case 'Decimal':
         return value is CqlDecimal ? value : _notMatched;
       case 'String':
-        return value is String ? value : _notMatched;
+        // A System String is a CqlString (bare Strings still arrive from
+        // models and callers; 2026-10-06).
+        return value is String || value is CqlString ? value : _notMatched;
       case 'string':
         // FHIR string and subtypes via the resolver; raw/System strings
         // (already-converted values) also satisfy the cast.
