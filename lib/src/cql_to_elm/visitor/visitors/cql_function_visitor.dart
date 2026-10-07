@@ -127,6 +127,28 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
         operand[0],
         QName.fromElmType('String'),
       );
+    } else if (const {'IndexOf', 'Skip', 'Tail', 'Take'}.contains(ref) &&
+        operand.isNotEmpty &&
+        operand.first is LiteralNull) {
+      // `Skip(null, 3)`, `Tail(null)`, `Take(null, 3)`, `IndexOf(null, {})`:
+      // the null source is the operator's list parameter, written as
+      // List<Any> by the reference (CqlListOperatorsTest, 2026-10-07).
+      operand[0] = As(
+        operand: operand.first,
+        asTypeSpecifier: ListTypeSpecifier(
+          elementType: NamedTypeSpecifier(namespace: QName.fromElmType('Any')),
+        ),
+      );
+    } else if (ref == 'IndexOf' &&
+        operand.length == 2 &&
+        operand[1] is LiteralNull) {
+      // `IndexOf({ 1, null }, null)`: the element is the list's element type
+      // (CqlListOperatorsTest IndexOfNullIn1Null).
+      final listType = systemTypeOf(operand[0]);
+      final element = CqlBaseVisitor.elementTypeOf(listType);
+      if (element != null) {
+        operand[1] = As(operand: operand[1], asType: element);
+      }
     } else if (ref == 'Exists' &&
         operand.length == 1 &&
         operand.first is LiteralNull) {

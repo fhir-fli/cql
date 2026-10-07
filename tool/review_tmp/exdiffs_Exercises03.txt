@@ -1,0 +1,5 @@
+/statements/def/79/expression/then/element/0/value/operand/1/type: ToDecimal vs Literal
+/statements/def/79/expression/then/element/0/value/operand/1/operand: missing in ours ({"valueType":"{urn:hl7-org:elm-types:r1}Integer","value":"1000","type")
+/statements/def/79/expression/then/element/0/value/operand/1/valueType: extra in ours ("{urn:hl7-org:elm-types:r1}Integer")
+/statements/def/79/expression/then/element/0/value/operand/1/value: extra in ours ("1000")
+TOTAL 4

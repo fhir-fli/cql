@@ -1516,6 +1516,36 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   QName? systemTypeOf(CqlExpression expression) {
     if (expression is LiteralNull) return null;
     if (expression is LiteralType) return QName.parse(expression.valueType);
+    // The constructors: DateTime(…), Date(…), Time(…) (CqlListOperatorsTest
+    // EquivalentDateTime: `{ DateTime(2001, 9, 11), null }` types its null).
+    if (expression is DateTimeExpression) return QName.fromElmType('DateTime');
+    if (expression is DateExpression) return QName.fromElmType('Date');
+    if (expression is TimeExpression) return QName.fromElmType('Time');
+    // A define's type is its expression's (`strength.value` where strength
+    // is `10.0 'mg/mL'`: Exercises03 "If Conditional").
+    if (expression is ExpressionRef && expression.libraryName == null) {
+      final def = library.statements?.def
+          .firstWhereOrNull((d) => d.name == expression.name);
+      final body = def?.expression;
+      if (body != null && body != expression && !_typing.contains(def)) {
+        _typing.add(def!);
+        try {
+          return systemTypeOf(body);
+        } finally {
+          _typing.remove(def);
+        }
+      }
+      return null;
+    }
+    // The elements of a System Quantity (CQL reference 09-b, Types).
+    if (expression is Property && expression.source != null) {
+      final sourceType = systemTypeOf(expression.source!);
+      if (sourceType?.localPart == 'Quantity') {
+        if (expression.path == 'value') return QName.fromElmType('Decimal');
+        if (expression.path == 'unit') return QName.fromElmType('String');
+      }
+      return null;
+    }
     if (expression is As) {
       final specifier = expression.asTypeSpecifier;
       if (specifier is NamedTypeSpecifier) return specifier.namespace;
@@ -1544,6 +1574,9 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     if (literal == null || literal == 'LiteralNull') return null;
     return QName.fromElmType(literal.substring('Literal'.length));
   }
+
+  /// Defines whose type is being derived, against a self-reference.
+  static final _typing = <ExpressionDef>{};
 
   /// Bare `null` operands typed from a sibling: `As(Null, asType: T)`, the
   /// form the reference writes wherever a null meets a typed operand (152
