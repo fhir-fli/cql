@@ -3,10 +3,8 @@ import 'package:test/test.dart';
 
 /// Grey's original engine tests for `included_in` (fhir_r4_cql
 /// test/engine/expression, 2025, at fhir_r4 c2ae05ab), restored 2026-10-06.
-/// The 2026-02-10 consolidation ("~75 unit tests into 8 spec-aligned files")
-/// dropped these 8 cases; the value types are the cql engine's
-/// (CqlBoolean for FhirBoolean, and so on), the titles and assertions are
-/// as written.
+/// All 8 cases of the file, titles and assertions as written; the
+/// value types are the cql engine's (CqlBoolean for FhirBoolean, and so on).
 void main() {
   group('included in', () {
     test('define "IncludedInIsTrue": Interval[1, 5] included in Interval[0, 5]',

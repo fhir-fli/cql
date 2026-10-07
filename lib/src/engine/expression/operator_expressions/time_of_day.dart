@@ -71,6 +71,14 @@ class TimeOfDay extends OperatorExpression {
   @override
   Future<CqlTime> execute(Map<String, dynamic> context) async {
     final startTimestamp = context['startTimestamp'] as CqlDateTime;
-    return CqlTime(startTimestamp.toIso8601String()!.substring(11, 23));
+    // CQL reference 09-b, TimeOfDay: "returns the time of day of the start
+    // timestamp associated with the evaluation request", in the timestamp's
+    // own offset (components as written, not the UTC rendering; see Today).
+    return CqlTime.fromUnits(
+      hour: startTimestamp.hour,
+      minute: startTimestamp.minute,
+      second: startTimestamp.second,
+      millisecond: startTimestamp.millisecond,
+    );
   }
 }

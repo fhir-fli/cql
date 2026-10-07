@@ -129,9 +129,17 @@ class PopulationVariance extends AggregateExpression {
           sumOfSquaredDiffs.valueNum! / sourceResult.length; // N instead of N-1
       return CqlDecimal(variance.toStringAsFixed(8));
     } else if (mean is ValidatedQuantity) {
+      // CQL reference 09-b, Variance / PopulationVariance examples:
+      // `Variance({ 1.0 'mg', … 5.0 'mg' }) // 2.5 'mg'` and
+      // `PopulationVariance({ … 'mg' }) // 2.0 'mg'`: the result carries the
+      // values' unit. Squaring the differences as quantities multiplied the
+      // units too (mg → g2), measured 2026-10-06 against Grey's original
+      // QuantityVariance / QuantityPopulationVariance tests; the squares
+      // are taken on the numbers, in the mean's unit, the way StdDev does.
       final svc = UcumService();
       final meanUnit = mean.unit;
-      ValidatedQuantity? sumOfSquaredValues;
+      var sumOfSquaredDiffs = 0.0;
+      var n = 0;
       for (final val in sourceResult) {
         if (val is! ValidatedQuantity) continue;
         final converted = val.unit == meanUnit
@@ -140,27 +148,19 @@ class PopulationVariance extends AggregateExpression {
                 value: svc.convert(val.value, val.unit, meanUnit),
                 unit: meanUnit,
               );
-        final diffValue = converted - mean;
-        if (diffValue != null) {
-          final squaredDiff = diffValue * diffValue;
-          sumOfSquaredValues = sumOfSquaredValues == null
-              ? squaredDiff
-              : sumOfSquaredValues + squaredDiff;
+        final diff = converted - mean;
+        if (diff != null) {
+          final d = double.tryParse(diff.value.asUcumDecimal()) ?? 0.0;
+          sumOfSquaredDiffs += d * d;
+          n++;
         }
       }
-      if (sumOfSquaredValues != null) {
-        final sum =
-            UcumDecimal.fromString(sumOfSquaredValues.value.asUcumDecimal());
-        var varianceValue =
-            sum / UcumDecimal.fromNum(sourceResult.length); // N instead of N-1
-        // Truncate to 8 decimal places to match CQF reference precision
-        final truncated = double.tryParse(varianceValue.asUcumDecimal());
-        if (truncated != null) {
-          varianceValue = UcumDecimal.fromString(truncated.toStringAsFixed(8));
-        }
+      if (n > 0) {
+        final variance = sumOfSquaredDiffs / (sourceResult.length);
+        // Decimal scale of 8 (CQL reference 09-b, Decimal).
         return ValidatedQuantity(
-          value: varianceValue,
-          unit: sumOfSquaredValues.unit,
+          value: UcumDecimal.fromString(variance.toStringAsFixed(8)),
+          unit: meanUnit,
         );
       }
     }

@@ -70,8 +70,15 @@ class Today extends OperatorExpression {
   @override
   Future<CqlDate> execute(Map<String, dynamic> context) async {
     final startTimestamp = context['startTimestamp'] as CqlDateTime;
-    return CqlDate.fromString(
-      startTimestamp.toIso8601String()!.substring(0, 10),
+    // CQL reference 09-b, Today: "returns the date of the start timestamp
+    // associated with the evaluation request", in that timestamp's own
+    // timezone offset (see Now). The components are read as written;
+    // toIso8601String rendered the instant in UTC, so after 20:00 in
+    // UTC-4 Today was tomorrow (Exercises02, 2026-10-06).
+    return CqlDate.fromUnits(
+      year: startTimestamp.year!,
+      month: startTimestamp.month,
+      day: startTimestamp.day,
     );
   }
 }

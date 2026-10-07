@@ -389,7 +389,10 @@ void main() {
     test(
         """define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // UCUM multiplication canonicalizes mg*mg → g2 (gram-squared)
+      // CQL reference 09-b, Variance example:
+      // `Variance({ 1.0 'mg', … 5.0 'mg' }) // 2.5 'mg'`. Until 2026-10-06
+      // this test asserted 0.0000025 'g2', the engine's own output (the
+      // differences were squared as quantities, so the unit was too).
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -403,12 +406,7 @@ void main() {
       final result = await variance.execute({});
       expect(
         result,
-        equals(
-          ValidatedQuantity(
-            value: UcumDecimal.fromString('0.00000250'),
-            unit: 'g2',
-          ),
-        ),
+        equals(ValidatedQuantity(value: UcumDecimal.fromNum(2.5), unit: 'mg')),
       );
     });
     test(
@@ -453,7 +451,9 @@ void main() {
     test(
         """define "QuantityPopulationVariance": PopulationVariance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // UCUM multiplication canonicalizes mg*mg → g2 (gram-squared)
+      // CQL reference 09-b, PopulationVariance example:
+      // `PopulationVariance({ 1.0 'mg', … 5.0 'mg' }) // 2.0 'mg'`. Until
+      // 2026-10-06 this test asserted 0.000002 'g2', the engine's own output.
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -466,12 +466,7 @@ void main() {
       final result = await PopulationVariance(source: list).execute({});
       expect(
         result,
-        equals(
-          ValidatedQuantity(
-            value: UcumDecimal.fromString('0.00000200'),
-            unit: 'g2',
-          ),
-        ),
+        equals(ValidatedQuantity(value: UcumDecimal.fromNum(2.0), unit: 'mg')),
       );
     });
     test(
