@@ -239,8 +239,8 @@ class Instance extends CqlExpression {
             );
           }
           final result = await element!.first.value.execute(context);
-          if (result is String) {
-            return CqlTime(result);
+          if (textOf(result) != null) {
+            return CqlTime(textOf(result));
           } else if (result is CqlTime) {
             return result;
           }

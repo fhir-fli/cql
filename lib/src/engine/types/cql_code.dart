@@ -16,12 +16,15 @@ class CqlCode implements CqlType {
   /// components.
   const CqlCode({this.code, this.display, this.system, this.version});
 
+  /// Reads each component from a bare String (ELM JSON) or a System
+  /// String ([CqlString], what an Instance's element expressions answer
+  /// since 2026-10-06; the cast threw on every `Code { code: 'x' }`).
   factory CqlCode.fromJson(Map<String, dynamic> json) {
     return CqlCode(
-      code: json['code'] as String?,
-      display: json['display'] as String?,
-      system: json['system'] as String?,
-      version: json['version'] as String?,
+      code: textOf(json['code']),
+      display: textOf(json['display']),
+      system: textOf(json['system']),
+      version: textOf(json['version']),
     );
   }
 
