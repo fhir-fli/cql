@@ -26,11 +26,12 @@ void main() {
   const translatorFailures = <String, String>{};
 
   // Libraries that do not execute here, pinned with the message each
-  // throws: two need a ModelResolver (they retrieve from a data model).
+  // throws: one needs a ModelResolver (it retrieves from a data model).
+  // CqlStringOperatorsTest left this list on 2026-10-07, once ToString
+  // stopped asking for a model over System values.
   // CqlIntervalOperatorsTest left this list on 2026-10-06, once Start and
   // End stopped asking for a model over System values.
   const notExecutable = {
-    'CqlStringOperatorsTest.cql': 'No ModelResolver',
     'CqlTypeOperatorsTest.cql': 'No ModelResolver',
   };
 

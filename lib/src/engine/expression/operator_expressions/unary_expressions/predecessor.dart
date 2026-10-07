@@ -126,8 +126,14 @@ class Predecessor extends UnaryExpression {
     if (value == null) {
       return null;
     } else if (value is CqlInteger) {
+      // CQL reference 09-b, Predecessor: "If the argument is already the
+      // minimum value for the type, a null is returned" (see Successor).
+      if (value.valueInt == -2147483648) return null;
       return CqlInteger.tryParse(value.valueNum! - 1);
     } else if (value is CqlLong) {
+      if (value.valueBigInt == BigInt.parse('-9223372036854775808')) {
+        return null;
+      }
       return CqlLong(value.valueBigInt! - BigInt.from(1));
     } else if (value is CqlDecimal) {
       // Use string-based arithmetic to avoid floating-point precision errors.

@@ -168,6 +168,21 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
         ),
       );
     }
+    // Length(List<T>) over a single value: list promotion (CQL Developer's
+    // Guide, Promotion and Demotion: a value is promoted to a list where a
+    // list is expected), written as ToList, the way the reference
+    // translator writes `Length(null as Integer)` (cqf-engine CqlTestSuite,
+    // ToList_LengthOfNull: "CQL-to-ELM will promote the null to a list via
+    // ToList"). A String operand is Length(String) and stays as it is.
+    if (ref == 'Length' && operand.length == 1) {
+      final o = operand[0];
+      final asNonList = o is As &&
+          o.asTypeSpecifier is! ListTypeSpecifier &&
+          o.asType?.localPart != 'String';
+      if (asNonList || o is LiteralNull) {
+        operand[0] = ToList(operand: o);
+      }
+    }
     //
     // STEP 3: Delegate to the standard factory; fall back to FunctionRef
     // for user-defined (local or included) functions

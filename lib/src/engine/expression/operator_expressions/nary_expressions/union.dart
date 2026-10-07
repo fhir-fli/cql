@@ -121,8 +121,22 @@ class Union extends NaryExpression {
     final left = await operand![0].execute(context);
     final right = await operand![1].execute(context);
 
+    // CQL reference 09-b, Union (lists): "If either argument is null, it is
+    // considered an empty list for the purposes of evaluating the union."
+    // Two nulls carry no value to tell a list union from an interval one
+    // (where null is null), so the operands' declared types decide: two
+    // typed-list nulls give an empty list (2026-10-07, cql-engine
+    // TestUnion "NullAndNullList").
+    if (left == null && right == null && operand!.any(_isListTyped)) {
+      return <dynamic>[];
+    }
     return union(left, right);
   }
+
+  static bool _isListTyped(CqlExpression e) =>
+      e is ListExpression ||
+      (e is As && e.asTypeSpecifier is ListTypeSpecifier) ||
+      e.resultTypeSpecifier is ListTypeSpecifier;
 
   static dynamic union(dynamic left, dynamic right) {
     if (left is CqlInterval || right is CqlInterval) {

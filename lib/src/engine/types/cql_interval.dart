@@ -87,8 +87,14 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   /// For an open low boundary the successor of [low] is returned; for an
   /// unbounded (`null`) low the minimum value of the point type is used.
   Object? getStart() {
+    // With both boundaries null the point type is unknown and there is no
+    // minimum to stand in (09-b, Start: `start of Interval[null, null] as
+    // Interval<Any> // null`); asking MinValue for 'Null' threw.
     return lowClosed
-        ? low ?? MinValue.minValue(high.runtimeType.toString())
+        ? low ??
+            (high == null
+                ? null
+                : MinValue.minValue(high.runtimeType.toString()))
         : Successor.successor(low);
   }
 
@@ -97,7 +103,8 @@ class CqlInterval<T> implements CqlType, Comparable<CqlInterval<dynamic>> {
   /// For an open high boundary the predecessor of [high] is returned; for an
   /// unbounded (`null`) high the maximum value of the point type is used.
   Object? getEnd() => highClosed
-      ? high ?? MaxValue.maxValue(low.runtimeType.toString())
+      ? high ??
+          (low == null ? null : MaxValue.maxValue(low.runtimeType.toString()))
       : Predecessor.predecessor(high);
 
   @override
