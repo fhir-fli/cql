@@ -190,8 +190,23 @@ class Expand extends BinaryExpression {
     // Quantity intervals: keep as ValidatedQuantity for same-unit or convert
     if (start is ValidatedQuantity) {
       if (!_temporalUnits.contains(unit)) {
-        // Quantity per with quantity start — keep as ValidatedQuantity
-        return per;
+        // A per in another unit is converted into the interval's unit with
+        // the UCUM decimal arithmetic the reference engine uses: 1 'mg' → g
+        // is 0.0010 (four places), 1 'g' → mg is 1000, 800 'mg' → g is
+        // 0.80 (measured 2026-10-07, ucum 0.9.1). The per's precision, and
+        // the predecessor at it, then follow the converted value, which is
+        // how the cqf CqlTestSuite's QtyIvlExpand_ClosedSingleGPerMG gets
+        // `Interval[2 'g', 2.0009 'g']` from `per 1 'mg'`. CQL reference
+        // 09-b Expand: "For intervals of quantities, the semantics of
+        // quantity arithmetic and comparison apply, including unit
+        // conversion". Units that do not convert → incompatible (null).
+        final startUnit = start.ucumUnit;
+        final perUnit = per.ucumUnit;
+        if (startUnit == null || perUnit == null) return per;
+        if (startUnit == perUnit) return per;
+        if (!UcumService().isComparable(startUnit, perUnit)) return null;
+        final converted = UcumService().convert(per.value, perUnit, startUnit);
+        return per.copyWith(value: converted, unit: start.unit);
       }
       // Temporal per with quantity start → incompatible
       return null;
@@ -224,10 +239,6 @@ class Expand extends BinaryExpression {
     // Normalize per (defaulted from start when absent) to match start type
     final effectivePer = normalizePer(per ?? _defaultPer(start), start);
     if (effectivePer == null) return null; // Incompatible per → null result
-
-    // TODO(Dokotela): Cross-unit quantity expand (e.g., per 1 'mg' on 'g'
-    // intervals) requires matching CQF's precision behavior during unit
-    // conversion. Skipped for now — these 2 tests remain as known failures.
 
     // For open boundaries, apply per-precision successor/predecessor
     // instead of the default type successor/predecessor.
@@ -298,31 +309,33 @@ class Expand extends BinaryExpression {
   /// For quantity per, compute the predecessor at the per's precision.
   static dynamic _quantityPredecessor(dynamic value, ValidatedQuantity per) {
     if (value is! ValidatedQuantity) return Predecessor.predecessor(value);
-    final perNum = num.tryParse(per.value.asUcumDecimal())?.toDouble() ?? 1.0;
+    final perText = per.value.asUcumDecimal();
+    final perNum = num.tryParse(perText)?.toDouble() ?? 1.0;
     final valNum = num.tryParse(value.value.asUcumDecimal())?.toDouble();
     if (valNum == null) return null;
     // If per is integer-valued, step is 1; otherwise use decimal precision
     final isIntPer = perNum == perNum.truncateToDouble();
     if (isIntPer) {
-      return ValidatedQuantity.fromNumber(valNum - 1, unit: value.unit);
+      // An integral value steps to an integer (3999 → 3998, not 3998.0).
+      final stepped = valNum - 1;
+      return ValidatedQuantity.fromNumber(
+        stepped == stepped.truncateToDouble() ? stepped.toInt() : stepped,
+        unit: value.unit,
+      );
     }
-    final places = _quantityDecimalPlaces(perNum);
+    // The places of the per as written or converted (0.0010 has four), not
+    // of the double it parses to (0.001 has three): see normalizePer.
+    final places = _decimalPlacesOfText(perText);
     final step = math.pow(10, -places).toDouble();
     final factor = math.pow(10, places);
     final rounded = ((valNum - step) * factor).roundToDouble() / factor;
     return ValidatedQuantity.fromNumber(rounded, unit: value.unit);
   }
 
-  static int _quantityDecimalPlaces(double value) {
-    final s = value.toString();
-    final dotIdx = s.indexOf('.');
-    if (dotIdx < 0) return 0;
-    // Trim trailing zeros
-    var end = s.length;
-    while (end > dotIdx + 1 && s[end - 1] == '0') {
-      end--;
-    }
-    return end - dotIdx - 1;
+  /// Decimal places of a decimal as written (`0.0010` → 4, `1000` → 0).
+  static int _decimalPlacesOfText(String text) {
+    final dotIdx = text.indexOf('.');
+    return dotIdx < 0 ? 0 : text.length - dotIdx - 1;
   }
 
   /// For decimal per, compute the predecessor at the per's decimal precision
@@ -496,16 +509,25 @@ class Expand extends BinaryExpression {
             ? num.tryParse(end.value.asUcumDecimal())?.toDouble()
             : null;
         if (startNum != null && endNum != null) {
-          final ceilStart = startNum == startNum.truncateToDouble()
-              ? startNum
-              : startNum.ceilToDouble();
+          // A boundary already on the grid stays as written (2999 'mg'
+          // stays 2999, not 2999.0: the reference's CqlTestSuite writes
+          // `Interval[2999 'mg', 3998 'mg']`); an adjusted one is the
+          // integer it moves to.
+          final onGrid = startNum == startNum.truncateToDouble();
           final floorEnd = endNum.truncateToDouble();
           return (
-            ValidatedQuantity.fromNumber(ceilStart, unit: start.unit),
-            ValidatedQuantity.fromNumber(
-              floorEnd,
-              unit: (end as ValidatedQuantity).unit,
-            ),
+            onGrid
+                ? start
+                : ValidatedQuantity.fromNumber(
+                    startNum.ceil(),
+                    unit: start.unit,
+                  ),
+            floorEnd == endNum
+                ? end
+                : ValidatedQuantity.fromNumber(
+                    endNum.truncate(),
+                    unit: (end as ValidatedQuantity).unit,
+                  ),
           );
         }
       }
