@@ -14,6 +14,7 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
     AggregateClause? aggregateClause;
     ReturnClause? returnClause;
     SortClause? sort;
+    String? resultType;
 
     // First pass: collect source aliases (with the element type each alias
     // ranges over, inferred from its source expression) so they're available
@@ -52,6 +53,28 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
           aggregateClause = visitAggregateClause(child);
         } else if (child is ReturnClauseContext) {
           returnClause = visitReturnClause(child);
+          // The query's result type, inferred while its aliases are still
+          // in scope: a list of the return expression's type when a source
+          // is a list (CQL Author's Guide, queries over a list yield a
+          // list), else the return expression's type. An alias over this
+          // query (Exercises08 `(… D return D.code) TestCode`) then ranges
+          // over FHIR.CodeableConcept, and `D.code ~ TestCode` is a
+          // comparison of two model values, written without conversion as
+          // the reference does.
+          if (model != null) {
+            final returned = inferType(returnClause.expression, model);
+            if (returned != null) {
+              final overList = source.length > 1 ||
+                  source.any(
+                    (s) =>
+                        inferType(s.expression, model)?.startsWith('List<') ??
+                        false,
+                  );
+              resultType = overList && !returned.startsWith('List<')
+                  ? 'List<$returned>'
+                  : returned;
+            }
+          }
         } else if (child is SortClauseContext) {
           sort = visitSortClause(child);
         }
@@ -74,7 +97,9 @@ class CqlQueryVisitor extends CqlBaseVisitor<Query> {
     // the reference translator splits this into a nested query:
     //   inner: original query with return = As(...)
     //   outer: X alias, return FHIRHelpers.ToXxx(X) with distinct: false
-    return _maybeWrapReturnWithConversion(query);
+    final result = _maybeWrapReturnWithConversion(query);
+    result.inferredResultType ??= resultType;
+    return result;
   }
 
   /// Detects when a query's return clause is a FHIRHelpers conversion wrapping

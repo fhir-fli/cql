@@ -16,3 +16,6 @@ pubspec_overrides.yaml
 # Generated files
 *.g.dart
 *.freezed.dart
+
+# session probes (never committed)
+tool/review_tmp/
