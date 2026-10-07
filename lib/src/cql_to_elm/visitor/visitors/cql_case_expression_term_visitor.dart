@@ -64,7 +64,18 @@ class CqlCaseExpressionTermVisitor extends CqlBaseVisitor<Case> {
           }
         }
       }
-      return Case(comparand: comparand, caseItem: caseItem, elseExpr: elseExpr);
+      final unified = unifyConditionalBranches([
+        for (final item in caseItem) item.then,
+        elseExpr,
+      ]);
+      for (var i = 0; i < caseItem.length; i++) {
+        caseItem[i] = CaseItem(when_: caseItem[i].when_, then: unified[i]);
+      }
+      return Case(
+        comparand: comparand,
+        caseItem: caseItem,
+        elseExpr: unified.last,
+      );
     } else {
       throw ArgumentError('$thisNode Invalid CaseExpressionTerm');
     }

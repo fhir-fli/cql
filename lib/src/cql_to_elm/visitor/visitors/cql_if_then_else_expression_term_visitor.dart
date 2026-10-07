@@ -23,7 +23,12 @@ class CqlIfThenElseExpressionTermVisitor extends CqlBaseVisitor<dynamic> {
       }
     }
     if (condition != null && then != null && elseExpr != null) {
-      return IfThenElse(condition: condition, then: then, elseExpr: elseExpr);
+      final unified = unifyConditionalBranches([then, elseExpr]);
+      return IfThenElse(
+        condition: condition,
+        then: unified[0],
+        elseExpr: unified[1],
+      );
     }
   }
 }

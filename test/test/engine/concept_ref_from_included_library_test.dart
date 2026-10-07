@@ -16,11 +16,14 @@ code testCode: 'code-value' from testSystem display 'code-display'
 concept testConcept: { testCode } display 'concept-display'
 ''');
     manager.addLibrary('Common', '', common);
-    final main = libraryFromCql('''
+    final main = libraryFromCql(
+      '''
 library Main
 include Common called Common
 define "X": Common.testConcept
-''', libraryManager: manager);
+''',
+      libraryManager: manager,
+    );
     final r = await main.execute() as Map<String, dynamic>;
     final concept = r['X'] as CqlConcept;
     expect(concept.display, 'concept-display');

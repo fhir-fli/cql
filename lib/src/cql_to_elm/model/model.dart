@@ -207,6 +207,13 @@ class Model {
   ConversionInfo? findConversionFrom(String fromType) =>
       findConversionsFrom(fromType).firstOrNull;
 
+  /// The declared conversion whose function is [functionName]
+  /// (`FHIRHelpers.ToInterval`), if any: the result type of an explicit
+  /// call to a conversion function.
+  ConversionInfo? conversionByFunction(String functionName) =>
+      modelInfo.conversionInfo
+          .firstWhereOrNull((c) => c.functionName == functionName);
+
   /// The declared conversion from [fromType] to [toType], if any.
   ConversionInfo? findConversion(String fromType, String toType) {
     final to = normalizeTypeName(toType);

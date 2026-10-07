@@ -110,9 +110,13 @@ class IntervalExpression extends CqlExpression {
 
   @override
   Map<String, dynamic> toJson() {
+    // expression.xsd Interval: `lowClosed`/`highClosed` are attributes with
+    // default true, `lowClosedExpression`/`highClosedExpression` elements.
+    // When the closed indicator is an expression, the reference writes
+    // only the expression (QICoreCommon toInterval, 2026-10-07).
     final val = <String, dynamic>{
-      'lowClosed': lowClosed,
-      'highClosed': highClosed,
+      if (lowClosedExpression == null) 'lowClosed': lowClosed,
+      if (highClosedExpression == null) 'highClosed': highClosed,
       'type': type,
     };
     void writeNotNull(String key, dynamic value) {

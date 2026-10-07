@@ -2,9 +2,9 @@ import 'package:cql/src/internal.dart';
 
 /// The QueryLetRef expression allows for the reference of a specific let
 /// definition within the scope of a query.
-class QueryLetRef extends CqlExpression {
+class QueryLetRef extends Ref {
   QueryLetRef({
-    required this.name,
+    required super.name,
     super.annotation,
     super.localId,
     super.locator,
@@ -28,7 +28,6 @@ class QueryLetRef extends CqlExpression {
               )
             : null,
       );
-  final String name;
 
   @override
   Map<String, dynamic> toJson() {

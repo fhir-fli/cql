@@ -33,6 +33,8 @@ abstract class Ref extends CqlExpression {
         return FunctionRef.fromJson(json);
       case 'IdentifierRef':
         return IdentifierRef.fromJson(json);
+      case 'QueryLetRef':
+        return QueryLetRef.fromJson(json);
       default:
         throw ArgumentError('Invalid type: ${json['type']}');
     }
