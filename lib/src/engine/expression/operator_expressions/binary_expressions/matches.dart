@@ -100,18 +100,20 @@ class Matches extends BinaryExpression {
     // Check if either operand is null
     if (left == null || right == null) {
       return null;
-    } else
+    }
 
     // Ensure operands are strings
-    if (left is! String || right is! String) {
+    final text = textOf(left);
+    final pattern = textOf(right);
+    if (text == null || pattern == null) {
       throw ArgumentError('Both operands must be of type String');
     }
 
     // Adjust the regular expression to ensure it matches the entire string
     // by using start ^ and end $ anchors.
-    final regex = RegExp('^$right\$');
+    final regex = RegExp('^$pattern\$');
 
     // Return true if the entire string matches the pattern, otherwise false
-    return CqlBoolean(regex.hasMatch(left));
+    return CqlBoolean(regex.hasMatch(text));
   }
 }

@@ -768,7 +768,12 @@ class LiteralString extends LiteralType {
       };
 
   @override
-  Future<String> execute(Map<String, dynamic> context) async => value;
+  // A String literal is a System String (CqlString), the type every
+  // string operator answers with; a bare Dart String here made `+`, `&`,
+  // Combine and ReplaceMatches answer bare Strings too (measured 2026-10-06,
+  // the June fhir_r4_cql suite).
+  Future<CqlString> execute(Map<String, dynamic> context) async =>
+      CqlString(value);
 
   @override
   String get type => 'String';

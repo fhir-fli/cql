@@ -137,27 +137,19 @@ class Concatenate extends NaryExpression {
     return data;
   }
 
-  /// Coerces a value to a plain Dart [String], handling raw strings and CQL
-  /// System primitives that carry string values.
-  static String? _coerceToString(dynamic value) {
-    if (value is String) return value;
-    if (value is CqlPrimitive) return value.valueString;
-    return null;
-  }
-
   String? concatenatePlus(dynamic left, dynamic right) {
     // For '+', if either argument is null, the result is null.
     if (left == null || right == null) return null;
-    final l = _coerceToString(left);
-    final r = _coerceToString(right);
+    final l = textOf(left);
+    final r = textOf(right);
     if (l == null || r == null) return null;
     return l + r;
   }
 
   String? concatenateAnd(dynamic left, dynamic right) {
     // For '&', null is treated as empty string.
-    final l = left == null ? '' : _coerceToString(left);
-    final r = right == null ? '' : _coerceToString(right);
+    final l = left == null ? '' : textOf(left);
+    final r = right == null ? '' : textOf(right);
     if (l == null || r == null) return null;
     return l + r;
   }

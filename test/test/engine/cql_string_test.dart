@@ -14,7 +14,7 @@ void main() {
       );
       final combine = Combine(source: list);
       final result = await combine.execute({});
-      expect(result, 'ABC');
+      expect(result, CqlString('ABC'));
     });
     test(
         """define "CombineWithSeparator": Combine({ 'A', 'B', 'C' }, ' ') // 'A B C'""",
@@ -28,7 +28,7 @@ void main() {
       );
       final combine = Combine(source: list, separator: LiteralString(' '));
       final result = await combine.execute({});
-      expect(result, 'A B C');
+      expect(result, CqlString('A B C'));
     });
     test(
         """define "CombineWithNulls": Combine({ 'A', 'B', 'C', null }) // 'ABC'""",
@@ -43,7 +43,7 @@ void main() {
       );
       final combine = Combine(source: list);
       final result = await combine.execute({});
-      expect(result, 'ABC');
+      expect(result, CqlString('ABC'));
     });
   });
 
@@ -54,7 +54,7 @@ void main() {
       final separator = LiteralString(' ');
       final split = Split(stringToSplit: string, separator: separator);
       final result = await split.execute({});
-      expect(result, ['A', 'B', 'C']);
+      expect(result, [CqlString('A'), CqlString('B'), CqlString('C')]);
     });
     test("""define "SplitNotFound": Split('A B C', ',') // { 'A B C' }""",
         () async {
@@ -62,7 +62,7 @@ void main() {
       final separator = LiteralString(',');
       final split = Split(stringToSplit: string, separator: separator);
       final result = await split.execute({});
-      expect(result, ['A B C']);
+      expect(result, [CqlString('A B C')]);
     });
     test("""define "SplitIsNull": Split(null, ' ') // null""", () async {
       final string = LiteralNull();
@@ -175,7 +175,7 @@ void main() {
         operand: [argument, pattern, substitution],
         localId: 'ReplaceMatchesFound',
       );
-      expect(await result.execute({}), 'ABXYZDE');
+      expect(await result.execute({}), CqlString('ABXYZDE'));
     });
     test(
         """define "ReplaceMatchesNotFound": ReplaceMatches('ABCDE', 'XYZ', '123') // 'ABCDE'""",
@@ -187,7 +187,7 @@ void main() {
         operand: [argument, pattern, substitution],
         localId: 'ReplaceMatchesNotFound',
       );
-      expect(await result.execute({}), 'ABCDE');
+      expect(await result.execute({}), CqlString('ABCDE'));
     });
     test(
         """define "ReplaceMatchesIsNull": ReplaceMatches('ABCDE', 'C', null) // null""",

@@ -98,24 +98,54 @@ class Combine extends OperatorExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['String'];
 
   @override
-  Future<String?> execute(Map<String, dynamic> context) async {
+  Future<CqlString?> execute(Map<String, dynamic> context) async {
     final sourceValue = await source.execute(context);
     final separatorValue = await separator?.execute(context);
     return combine(sourceValue, separatorValue);
   }
 
-  String? combine(dynamic sourceValue, dynamic separatorValue) {
-    if (sourceValue == null) {
-      return null;
-    } else if (sourceValue is List) {
-      if (sourceValue.isEmpty) {
-        return null;
+  static String? textOf(dynamic value) => value is String
+      ? value
+      : value is CqlString
+          ? value.valueString
+          : null;
+
+  /// CQL reference 09-b, Combine: "If the source is null, the result is
+  /// null"; "if the separator is null, the result is the same as if it were
+  /// the empty string"; "if the source list contains null elements, they
+  /// are ignored". A source that is not a list of strings is a run-time
+  /// error (CqlException): a definition carries it as its value and the
+  /// rest of the library still evaluates. Until 2026-10-06 it was an
+  /// ArgumentError, which stopped the whole CqlTestSuite run (1,789 cases)
+  /// at one define.
+  CqlString? combine(dynamic sourceValue, dynamic separatorValue) {
+    if (sourceValue == null) return null;
+    if (sourceValue is List) {
+      final parts = <String>[];
+      for (final element in sourceValue) {
+        if (element == null) continue;
+        final text = textOf(element);
+        if (text == null) {
+          throw CqlException(
+            message: 'Combine: the source must be a List<String>, found '
+                '${element.runtimeType}',
+          );
+        }
+        parts.add(text);
       }
-      sourceValue.removeWhere((element) => element == null);
-      if (sourceValue.every((element) => element is String)) {
-        return sourceValue.join((separatorValue ?? '') as String);
+      if (parts.isEmpty) return null;
+      final separator = separatorValue == null ? '' : textOf(separatorValue);
+      if (separator == null) {
+        throw CqlException(
+          message: 'Combine: the separator must be a String, found '
+              '${separatorValue.runtimeType}',
+        );
       }
+      return CqlString(parts.join(separator));
     }
-    throw ArgumentError('Invalid argument for Combine operator');
+    throw CqlException(
+      message: 'Combine: the source must be a List<String>, found '
+          '${sourceValue.runtimeType}',
+    );
   }
 }

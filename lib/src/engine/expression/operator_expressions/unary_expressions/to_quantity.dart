@@ -144,17 +144,19 @@ class ToQuantity extends UnaryExpression {
             ? null
             : ValidatedQuantity.fromNumber(result.valueDouble!, unit: '1');
       case String _:
+      case CqlString _:
         // CQL ToQuantity: "If the input string is not formatted correctly,
         // or cannot be interpreted as a valid Quantity value, the result is
         // null." No leading number is not a quantity (ucum's own test).
+        final text = textOf(result)!;
         if (ValidatedQuantity.valueRegex
-                .firstMatch(result.trim())
+                .firstMatch(text.trim())
                 ?.namedGroup('value') ==
             null) {
           return null;
         }
         try {
-          final q = ValidatedQuantity.fromString(result);
+          final q = ValidatedQuantity.fromString(text);
           if (!q.isValid()) return null;
           // CQL Decimal values support at least 28 digits of precision.
           // Reject quantities whose numeric part exceeds this.

@@ -172,8 +172,8 @@ class Less extends BinaryExpression {
       return CqlBoolean(left < right);
     } else if (left is CqlLong && right is CqlLong) {
       return CqlBoolean(left < right);
-    } else if (left is String && right is String) {
-      return CqlBoolean(left.compareTo(right) < 0);
+    } else if (textOf(left) != null && textOf(right) != null) {
+      return CqlBoolean(textOf(left)!.compareTo(textOf(right)!) < 0);
     } else if (left is CqlDateTime && right is CqlDateTime) {
       final result = left < right;
       return result == null ? null : CqlBoolean(left < right);

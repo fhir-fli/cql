@@ -90,9 +90,11 @@ class StartsWith extends BinaryExpression {
     if (argument == null || prefix == null) {
       return null;
     }
-    if (argument is! String || prefix is! String) {
+    final text = textOf(argument);
+    final prefixText = textOf(prefix);
+    if (text == null || prefixText == null) {
       throw ArgumentError('StartsWith operands must be of type String');
     }
-    return CqlBoolean(argument.startsWith(prefix));
+    return CqlBoolean(text.startsWith(prefixText));
   }
 }

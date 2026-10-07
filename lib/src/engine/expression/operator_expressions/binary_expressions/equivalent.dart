@@ -180,17 +180,15 @@ class Equivalent extends BinaryExpression {
       case null:
         result = right == null;
       case String _:
+      case CqlString _:
         {
-          String? rightStr;
-          if (right is String) {
-            rightStr = right;
-          } else if (right is CqlString) {
-            rightStr = right.valueString;
-          }
+          // A System String (CqlString) or a bare String, either side.
+          final leftStr = textOf(left)!;
+          final rightStr = textOf(right);
           // Don't compare String with non-string PrimitiveTypes (Integer,
           // Boolean, etc.) — different types are not equivalent per CQL spec.
           result = rightStr != null &&
-              left.toLowerCase().trim() == rightStr.toLowerCase().trim();
+              leftStr.toLowerCase().trim() == rightStr.toLowerCase().trim();
         }
       case CqlDateTimeBase _:
         result =

@@ -100,29 +100,33 @@ class ReplaceMatches extends TernaryExpression {
   List<String> getReturnTypes(CqlLibrary library) => ['String'];
 
   @override
-  Future<String?> execute(Map<String, dynamic> context) async {
+  Future<CqlString?> execute(Map<String, dynamic> context) async {
     if (operand.length != 3) {
       throw ArgumentError('Ternary expression must have 3 operands');
     }
 
-    final argument = await operand[0].execute(context);
-    final pattern = await operand[1].execute(context);
-    final substitution = await operand[2].execute(context);
+    final argument = textOf(await operand[0].execute(context));
+    final pattern = textOf(await operand[1].execute(context));
+    final substitution = textOf(await operand[2].execute(context));
 
     // Check if either operand is null
     if (argument == null || pattern == null || substitution == null) {
       return null;
-    } else
-
-    // Ensure operands are strings
-    if (argument is! String || pattern is! String || substitution is! String) {
-      throw ArgumentError('Both operands must be of type String');
     }
 
     // Process Java-style regex substitution escapes:
     // \$ → literal $, \\ → literal \
     final processed =
         substitution.replaceAll(r'\$', r'$').replaceAll(r'\\', r'\');
-    return argument.replaceAllMapped(RegExp(pattern), (match) => processed);
+    // A System String, like every other string operator (2026-10-06).
+    return CqlString(
+      argument.replaceAllMapped(RegExp(pattern), (match) => processed),
+    );
   }
+
+  static String? textOf(dynamic value) => value is String
+      ? value
+      : value is CqlString
+          ? value.valueString
+          : null;
 }

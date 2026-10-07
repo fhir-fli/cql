@@ -93,8 +93,9 @@ class Length extends UnaryExpression {
       }
       return null;
     }
-    if (operand is String) {
-      return CqlInteger(operand.length);
+    final text = textOf(operand);
+    if (text != null) {
+      return CqlInteger(text.length);
     }
     if (operand is List) {
       return CqlInteger(operand.length);

@@ -80,7 +80,8 @@ class ToDate extends UnaryExpression {
     }
     // CQL ToDate: "If the input string is not formatted correctly, or does
     // not represent a valid date value, the result is null."
-    if (value is String) return CqlDate.tryParse(value);
+    final text = textOf(value);
+    if (text != null) return CqlDate.tryParse(text);
     return null;
   }
 }

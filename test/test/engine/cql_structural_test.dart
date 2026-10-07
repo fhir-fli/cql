@@ -27,7 +27,7 @@ void main() {
       );
       final result = await tuple.execute({});
       expect(result, isA<Map<String, dynamic>>());
-      expect(result['name'], equals('Alice'));
+      expect(result['name'], equals(CqlString('Alice')));
       expect(result['age'], equals(CqlInteger(30)));
     });
 
@@ -110,7 +110,7 @@ void main() {
         message: LiteralString('Debug'),
       );
       final result = await message.execute({});
-      expect(result, equals('hello'));
+      expect(result, equals(CqlString('hello')));
     });
 
     test('returns list source unchanged', () async {

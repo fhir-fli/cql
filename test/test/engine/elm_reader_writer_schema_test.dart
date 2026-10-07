@@ -53,7 +53,7 @@ void main() {
         'stringToSplit': lit('String', 'a,b'),
       }) as Split;
       expect(split.separator, isNull);
-      expect(await split.execute({}), ['a,b']);
+      expect(await split.execute({}), [CqlString('a,b')]);
       expect(split.toJson().containsKey('separator'), isFalse);
     });
 

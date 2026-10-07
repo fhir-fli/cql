@@ -192,8 +192,10 @@ class Min extends AggregateExpression {
               ? value
               : element;
         }
-        if (value is String) {
-          return value.compareTo(element as String) < 0 ? value : element;
+        if (textOf(value) != null && textOf(element) != null) {
+          return textOf(value)!.compareTo(textOf(element)!) < 0
+              ? value
+              : element;
         }
         if (value is ValidatedQuantity) {
           return (Less.less(value, element)?.valueBoolean ?? true)
