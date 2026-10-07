@@ -26,9 +26,10 @@ void main() {
   const translatorFailures = <String, String>{};
 
   // Libraries that do not execute here, pinned with the message each
-  // throws: three need a ModelResolver (they retrieve from a data model).
+  // throws: two need a ModelResolver (they retrieve from a data model).
+  // CqlIntervalOperatorsTest left this list on 2026-10-06, once Start and
+  // End stopped asking for a model over System values.
   const notExecutable = {
-    'CqlIntervalOperatorsTest.cql': 'No ModelResolver',
     'CqlStringOperatorsTest.cql': 'No ModelResolver',
     'CqlTypeOperatorsTest.cql': 'No ModelResolver',
   };
@@ -103,7 +104,13 @@ void main() {
 
 /// Deep equality by `==` on the leaves, so a UTC DateTime written as
 /// `Z` and read back as offset `+00:00` (the ELM form) compare equal.
+/// A define that threw holds its exception as its value (see
+/// expression_def_failure_test); two exceptions are never `==`, so they
+/// compare by text. CqlIntervalOperatorsTest's "Interval" define throws
+/// on both sides, from its `InvalidIntegerInterval` case (`Interval[5, 3]`,
+/// marked `invalid: true` in the suite).
 bool sameValues(Object? a, Object? b) {
+  if (a is Exception && b is Exception) return '$a' == '$b';
   if (a is Map && b is Map) {
     if (a.length != b.length) return false;
     for (final k in a.keys) {
