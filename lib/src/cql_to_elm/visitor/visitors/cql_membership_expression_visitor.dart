@@ -30,30 +30,57 @@ class CqlMembershipExpressionVisitor extends CqlBaseVisitor<dynamic> {
         operand[i] =
             CqlBaseVisitor.convertCastForBinding(operand[i], currentModel);
       }
-      // A bare null on the list side of `contains`/`in` is typed as the
-      // list of the other side's type (`null contains 'a'` →
-      // As(Null, List<String>), CqlListOperatorsTest); on the element side,
-      // as the list's element type.
+      // Nulls as the reference types them (CqlListOperatorsTest,
+      // CqlIntervalOperatorsTest): on the list side of `contains`/`in`, the
+      // list of the other side's type (`null contains 'a'` → As(Null,
+      // List<String>)); on the element side of `contains`, the list's
+      // element type (`{ 'a', 'b', null } contains null` → As(Null,
+      // String)); on the element side of `in` over an interval, the
+      // interval's point type (`null in Interval[1, 10]` → As(Null,
+      // Integer)); on the element side of `in` over a list, bare
+      // (`null in { 1, null }`).
+      // `inContains` is true for `in` (element, list) and false for
+      // `contains` (list, element).
       final listIndex = inContains ? 1 : 0;
       final elementIndex = inContains ? 0 : 1;
-      if (operand[listIndex] is LiteralNull) {
+      final container = operand[listIndex];
+      if (container is LiteralNull) {
         final elementType = systemTypeOf(operand[elementIndex]);
         if (elementType != null) {
+          // The reference resolves `1 in null` and `null contains 1` to the
+          // interval overload (Interval<Integer>) and `null contains 'a'`
+          // to the list one: a point type that can bound an interval
+          // (Integer, Long, Decimal, Quantity, Date, DateTime, Time) takes
+          // the interval, anything else the list.
+          const pointTypes = {
+            'Integer',
+            'Long',
+            'Decimal',
+            'Quantity',
+            'Date',
+            'DateTime',
+            'Time',
+          };
+          final point = NamedTypeSpecifier(namespace: elementType);
           operand[listIndex] = As(
-            operand: operand[listIndex],
-            asTypeSpecifier: ListTypeSpecifier(
-              elementType: NamedTypeSpecifier(namespace: elementType),
-            ),
+            operand: container,
+            asTypeSpecifier: pointTypes.contains(elementType.localPart)
+                ? IntervalTypeSpecifier(pointType: point)
+                : ListTypeSpecifier(elementType: point),
           );
         }
       } else if (operand[elementIndex] is LiteralNull) {
-        final list = operand[listIndex];
-        if (list is ListExpression) {
-          final typed = typeNullOperands([
-            ...?list.element,
+        if (!inContains && container is ListExpression) {
+          operand[elementIndex] = typeNullOperands([
+            ...?container.element,
             operand[elementIndex],
-          ]);
-          operand[elementIndex] = typed.last;
+          ]).last;
+        } else if (inContains && container is IntervalExpression) {
+          final bound = container.low ?? container.high;
+          if (bound != null) {
+            operand[elementIndex] =
+                typeNullOperands([bound, operand[elementIndex]]).last;
+          }
         }
       }
       if (!inContains) {

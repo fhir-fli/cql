@@ -38,28 +38,26 @@ void main() {
   // Files whose written ELM does not yet equal the reference, with the
   // first differing path (measured 2026-10-06).
   // Files whose written ELM does not yet equal the reference, at the path
-  // of the first difference (measured 2026-10-06). Ten of the 17 are exact.
-  // Left: a null in a unary operand, SameOrAfter written as OnOrAfter, a
-  // conversion the reference builds with ToList, and the Time deviation.
+  // of the first difference (measured 2026-10-06). Fifteen of the 17 are
+  // exact. Left: a null as a function's list parameter, and the Time
+  // deviation.
   const notYetEqual = <String, String>{
     'CqlAggregateTest':
         '/statements/def/1/expression/element/0/value/element/0/value/aggregate/expression/operand/0/type',
     'CqlConditionalOperatorsTest':
         '/statements/def/2/expression/element/0/value/element/0/value/else/type',
-    'CqlDateTimeOperatorsTest':
-        '/statements/def/11/expression/element/36/value/element/0/value/type',
     'CqlIntervalOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/operand/0/type',
+    // A null given as a function's list parameter (`Distinct(null)` and its
+    // kin) is typed List<T> by the reference from the function's signature.
     'CqlListOperatorsTest':
-        '/statements/def/7/expression/element/6/value/element/0/value/operand/type',
+        '/statements/def/14/expression/element/1/value/element/0/value/source/type',
     'CqlNullologicalOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/operand/1/type',
     'CqlQueryTests':
         '/statements/def/1/expression/element/2/value/element/0/value/return',
     'CqlStringOperatorsTest':
         '/statements/def/1/expression/element/0/value/element/0/value/source/type',
-    'CqlTypeOperatorsTest':
-        '/statements/def/5/expression/element/0/value/element/1/value/element/0/value/type',
     // The source marks `@T23:59:59.10000` invalid and the CQL Developer's
     // Guide (Table 3-G) bounds Time at millisecond precision; this
     // translator records the error and writes Null, while the reference

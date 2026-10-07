@@ -1629,6 +1629,74 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     }
   }
 
+  /// Whether an operand is a single value rather than a list or interval.
+  /// CQL Reference (09-b), Includes, list overloads: "For the list-singleton
+  /// overload, this operator is a synonym for the contains operator";
+  /// Included In: "For the singleton-list overload, this operator is a
+  /// synonym for the in operator"; the interval overloads say the same of
+  /// their point forms. The reference translator writes
+  /// `{ @T02:29:15.000, … } includes @T02:29:15.000` as Contains
+  /// (CqlListOperatorsTest). For `properly includes` with a point the
+  /// reference says "returns true if the list contains the element, and it
+  /// is not the only element in the list", which is ELM's ProperContains.
+  bool isPointOperand(CqlExpression expression) {
+    if (expression is ListExpression ||
+        expression is IntervalExpression ||
+        expression is Query ||
+        expression is Retrieve) {
+      return false;
+    }
+    if (expression is As) {
+      final specifier = expression.asTypeSpecifier;
+      if (specifier is ListTypeSpecifier ||
+          specifier is IntervalTypeSpecifier) {
+        return false;
+      }
+    }
+    if (expression is LiteralNull) return false;
+    if (expression is LiteralType ||
+        expression is DateTimeExpression ||
+        expression is DateExpression ||
+        expression is TimeExpression) {
+      return true;
+    }
+    final type = systemTypeOf(expression);
+    return type != null && !type.localPart.startsWith('List<');
+  }
+
+  /// An empty list bound where a typed list is expected takes the type
+  /// through a query, `X` returning `X as T`: the reference's shape for
+  /// `{ 1, 2, 3 } includes {}`, `{ 1 } union {}`, `AllTrue({})` and
+  /// `Combine({}, …)` (6 nodes over the 31 reference files, 2026-10-06).
+  /// Two empty lists against each other stay bare (`{} except {}`).
+  static CqlExpression typeEmptyList(
+    CqlExpression expression,
+    QName? elementType,
+  ) {
+    if (expression is! ListExpression ||
+        (expression.element?.isNotEmpty ?? false) ||
+        elementType == null) {
+      return expression;
+    }
+    const alias = 'X';
+    return Query(
+      source: [AliasedQuerySource(alias: alias, expression: expression)],
+      returnClause: ReturnClause(
+        distinct: false,
+        expression: As(operand: AliasRef(name: alias), asType: elementType),
+      ),
+    );
+  }
+
+  /// `List<{ns}T>` → `{ns}T`, or null for anything else.
+  static QName? elementTypeOf(QName? listType) {
+    final local = listType?.localPart;
+    if (local == null || !local.startsWith('List<') || !local.endsWith('>')) {
+      return null;
+    }
+    return QName.parse(local.substring(5, local.length - 1));
+  }
+
   /// An Integer (or Long) operand where a Decimal is required, wrapped in
   /// ToDecimal as the reference writes it (`Ceiling(1)` →
   /// Ceiling(ToDecimal(1)); CqlArithmeticFunctionsTest).
