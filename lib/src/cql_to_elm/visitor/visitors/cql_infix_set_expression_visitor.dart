@@ -69,7 +69,14 @@ class CqlInFixSetExpressionVisitor extends CqlBaseVisitor<NaryExpression> {
         ];
       }
     }
-    return typeNullOperands([left, right]);
+    // `{ 1 } union {}`: an empty RIGHT operand takes the left's element
+    // type through a query; an empty left one stays bare (measured over
+    // every set and inclusion operator in the reference files).
+    final leftElement = CqlBaseVisitor.elementTypeOf(systemTypeOf(left));
+    return typeNullOperands([
+      left,
+      CqlBaseVisitor.typeEmptyList(right, leftElement),
+    ]);
   }
 
   /// `List<{ns}T>` → `{ns}T`.

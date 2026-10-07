@@ -30,29 +30,51 @@ class CqlIncludesIntervalOperatorPhraseVisitor
       }
     }
     if (left != null && right != null) {
+      // `{ 1, 2, 3 } includes {}`: an empty RIGHT operand takes the left's
+      // element type through a query; an empty left operand stays bare
+      // (`{} included in { 1, 2, 3 }`): measured over every inclusion and
+      // set operator in the reference files, 2026-10-06. A null against a
+      // typed list takes that list's type (`null includes { 2 }`).
+      final leftElement = CqlBaseVisitor.elementTypeOf(systemTypeOf(left));
+      final bound = typeNullOperands([
+        left,
+        CqlBaseVisitor.typeEmptyList(right, leftElement),
+      ]);
+      final boundLeft = bound[0];
+      final boundRight = bound[1];
       if (startEnd != null) {
         final start = startEnd == 'start';
         final end = startEnd == 'end';
         if (start) {
           return Starts(
             precision: dateTimePrecisionSpecifier,
-            operand: [left, right],
+            operand: [boundLeft, boundRight],
           );
         } else if (end) {
           return Ends(
             precision: dateTimePrecisionSpecifier,
-            operand: [left, right],
+            operand: [boundLeft, boundRight],
           );
         }
+      } else if (isPointOperand(boundRight)) {
+        return properly
+            ? ProperContains(
+                precision: dateTimePrecisionSpecifier,
+                operand: [boundLeft, boundRight],
+              )
+            : Contains(
+                precision: dateTimePrecisionSpecifier,
+                operand: [boundLeft, boundRight],
+              );
       } else if (properly) {
         return ProperIncludes(
           precision: dateTimePrecisionSpecifier,
-          operand: [left, right],
+          operand: [boundLeft, boundRight],
         );
       } else {
         return Includes(
           precision: dateTimePrecisionSpecifier,
-          operand: [left, right],
+          operand: [boundLeft, boundRight],
         );
       }
     }

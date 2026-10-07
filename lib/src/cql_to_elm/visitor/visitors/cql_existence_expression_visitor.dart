@@ -12,6 +12,19 @@ class CqlExistenceExpressionVisitor extends CqlBaseVisitor<Exists> {
       if (child is! TerminalNodeImpl) {
         final result = byContext(child);
         if (result is CqlExpression) {
+          // `exists null`: the null is the operator's parameter type,
+          // List<Any> (CqlListOperatorsTest).
+          if (result is LiteralNull) {
+            return Exists(
+              operand: As(
+                operand: result,
+                asTypeSpecifier: ListTypeSpecifier(
+                  elementType:
+                      NamedTypeSpecifier(namespace: QName.fromElmType('Any')),
+                ),
+              ),
+            );
+          }
           return Exists(operand: result);
         }
       }

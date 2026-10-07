@@ -120,6 +120,24 @@ class CqlFunctionVisitor extends CqlBaseVisitor<dynamic> {
       operand[0] = toDecimalIfIntegral(operand[0]);
     } else if (ref == 'DateTime' && operand.length == 8) {
       operand[7] = toDecimalIfIntegral(operand[7]);
+    } else if (ref == 'Combine' && operand.isNotEmpty) {
+      // `Combine({}, …)`: the empty list takes String through a query
+      // (CqlStringOperatorsTest).
+      operand[0] = CqlBaseVisitor.typeEmptyList(
+        operand[0],
+        QName.fromElmType('String'),
+      );
+    } else if (ref == 'Exists' &&
+        operand.length == 1 &&
+        operand.first is LiteralNull) {
+      // `exists null`: the null is the operator's parameter type, List<Any>
+      // (CqlListOperatorsTest).
+      operand[0] = As(
+        operand: operand.first,
+        asTypeSpecifier: ListTypeSpecifier(
+          elementType: NamedTypeSpecifier(namespace: QName.fromElmType('Any')),
+        ),
+      );
     } else if ((ref == 'AllTrue' || ref == 'AnyTrue') &&
         operand.length == 1 &&
         operand.first is LiteralNull) {

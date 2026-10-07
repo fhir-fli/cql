@@ -1,6 +1,11 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:cql/src/internal.dart';
 
+/// `on or after` / `on or before` are SameOrAfter / SameOrBefore: ELM
+/// (expression.xsd) has no OnOrAfter or OnOrBefore type, and the reference
+/// translator writes none (0 of 46 SameOrAfter and 49 SameOrBefore nodes in
+/// the 31 reference files, 2026-10-06). This engine keeps classes of those
+/// names only to read ELM written before that date.
 class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
     extends CqlBaseVisitor<CqlExpression> {
   CqlBeforeOrAfterIntervalOperatorPhraseVisitor(super.library);
@@ -184,7 +189,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else {
-                return OnOrBefore(
+                return SameOrBefore(
                   precision: dateTimePrecision,
                   operand: [
                     effectiveLeft,
@@ -193,7 +198,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               }
             } else {
-              return OnOrBefore(
+              return SameOrBefore(
                 precision: dateTimePrecision,
                 operand: [
                   effectiveLeft,
@@ -234,7 +239,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else {
-                return OnOrAfter(
+                return SameOrAfter(
                   precision: dateTimePrecision,
                   operand: [
                     effectiveLeft,
@@ -243,7 +248,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               }
             } else {
-              return OnOrAfter(
+              return SameOrAfter(
                 precision: dateTimePrecision,
                 operand: [
                   effectiveLeft,
@@ -280,7 +285,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else {
-                return OnOrBefore(
+                return SameOrBefore(
                   precision: dateTimePrecision,
                   operand: [
                     effectiveLeft,
@@ -289,7 +294,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               }
             } else {
-              return OnOrBefore(
+              return SameOrBefore(
                 precision: dateTimePrecision,
                 operand: [
                   effectiveLeft,
@@ -326,7 +331,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                   ],
                 );
               } else {
-                return OnOrAfter(
+                return SameOrAfter(
                   precision: dateTimePrecision,
                   operand: [
                     effectiveLeft,
@@ -335,7 +340,7 @@ class CqlBeforeOrAfterIntervalOperatorPhraseVisitor
                 );
               }
             } else {
-              return OnOrAfter(
+              return SameOrAfter(
                 precision: dateTimePrecision,
                 operand: [
                   effectiveLeft,
