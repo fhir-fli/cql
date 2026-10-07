@@ -41,14 +41,15 @@ void main() {
   // differing path (measured 2026-10-06). An entry here that becomes equal
   // fails the test, so it is removed.
   const notYetEqual = {
-    'Exercises05':
-        '/statements/def/2/expression/operand/0/name: missing in ours',
     // FHIRCommon: `FHIRHelpers.ToDateTime(x) + 1 day` style arithmetic the
     // reference writes with the conversion outside the Add.
     'FHIRCommon': '/statements/def/1/expression/caseItem/3/then/low/type',
-    // QICoreCommon: `C ~ Community` where C is an alias over codes; the
-    // reference converts C with FHIRHelpers.ToConcept at the comparison.
-    'QICoreCommon': '/statements/def/1/expression/operand/where/operand/0/name',
+    // QICoreCommon: toInterval's Age case, `Interval[ToDate(birthDate) +
+    // ToQuantity(choice as Age), …]`: the reference writes Add over a
+    // Date and a Quantity (with lowClosedExpression); ours wraps the sum
+    // in ToDateTime.
+    'QICoreCommon':
+        '/statements/def/3/expression/caseItem/3/then/low/type: ToDateTime vs Add',
   };
 
   for (final name in names) {
