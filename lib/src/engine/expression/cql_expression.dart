@@ -599,6 +599,54 @@ class CqlExpression extends Element {
             if (operand.isNotEmpty) operand.first,
           ],
         );
+      case 'AgeInWeeksAt':
+        // CQL reference 09-b, AgeAt: AgeInWeeksAt, AgeInHoursAt,
+        // AgeInMinutesAt and AgeInSecondsAt are in the signature list; only
+        // years, months and days were dispatched until 2026-10-07 (the WHO
+        // IMMZElements library's AgeInWeeksAt threw "Function not found").
+        return CalculateAgeAt(
+          precision: CqlDateTimePrecision.week,
+          operand: [
+            Property(path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            if (operand.isNotEmpty) operand.first,
+          ],
+        );
+      case 'AgeInHoursAt':
+        // CQL reference 09-b, AgeAt: AgeInWeeksAt, AgeInHoursAt,
+        // AgeInMinutesAt and AgeInSecondsAt are in the signature list; only
+        // years, months and days were dispatched until 2026-10-07 (the WHO
+        // IMMZElements library's AgeInWeeksAt threw "Function not found").
+        return CalculateAgeAt(
+          precision: CqlDateTimePrecision.hour,
+          operand: [
+            Property(path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            if (operand.isNotEmpty) operand.first,
+          ],
+        );
+      case 'AgeInMinutesAt':
+        // CQL reference 09-b, AgeAt: AgeInWeeksAt, AgeInHoursAt,
+        // AgeInMinutesAt and AgeInSecondsAt are in the signature list; only
+        // years, months and days were dispatched until 2026-10-07 (the WHO
+        // IMMZElements library's AgeInWeeksAt threw "Function not found").
+        return CalculateAgeAt(
+          precision: CqlDateTimePrecision.minute,
+          operand: [
+            Property(path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            if (operand.isNotEmpty) operand.first,
+          ],
+        );
+      case 'AgeInSecondsAt':
+        // CQL reference 09-b, AgeAt: AgeInWeeksAt, AgeInHoursAt,
+        // AgeInMinutesAt and AgeInSecondsAt are in the signature list; only
+        // years, months and days were dispatched until 2026-10-07 (the WHO
+        // IMMZElements library's AgeInWeeksAt threw "Function not found").
+        return CalculateAgeAt(
+          precision: CqlDateTimePrecision.second,
+          operand: [
+            Property(path: 'birthDate', source: ExpressionRef(name: 'Patient')),
+            if (operand.isNotEmpty) operand.first,
+          ],
+        );
       // case 'CalculateAge':
       //   return CalculateAge(operand: operand);
       // case 'CalculateAgeAt':
