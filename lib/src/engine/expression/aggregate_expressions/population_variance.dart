@@ -128,19 +128,23 @@ class PopulationVariance extends AggregateExpression {
       final variance =
           sumOfSquaredDiffs.valueNum! / sourceResult.length; // N instead of N-1
       return CqlDecimal(variance.toStringAsFixed(8));
-      // The unit is the elements' unit SQUARED, the
-      // way the reference engine's own conformance suite defines it
-      // (cqf-engine CqlTestSuite.cql, "The unit of the variance is the unit
-      // of the sequence elements squared. In this case, UCUM uses m^6 instead
-      // of L^2"; `Variance_q2 = 2.5 'm2'` for metres, `0 'm6'` for ml). The
-      // CQL reference 09-b example writes `Variance({ 1.0 'mg', … }) // 2.5
-      // 'mg'`, the unit unsquared; the two disagree, and the engine follows
-      // the reference implementation, measured by its 1,789-case suite
-      // (2026-10-06). StdDev takes the square root and keeps the unit.
+      // The unit of a quantity variance is the elements' unit, unchanged.
+      // CQL reference 09-b, Variance example (read whole 2026-10-07):
+      // `Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' }) //
+      // 2.5 'mg'`. Two of the three reference engines do the same: the
+      // JavaScript cql-execution (elm/aggregate.ts finalizeAggregateResult:
+      // `new Quantity(bounded, firstItem.unit)`) and Firely's .NET SDK
+      // (CqlOperators.AggregateFunctions.cs Variance: `new
+      // CqlQuantity(varianceVal, stdDev.unit)`), both read 2026-10-07 from
+      // their main branches. Only the Java engine squares and canonicalizes
+      // the unit (its CqlTestSuite expects `0 'm6'` for millilitres, the
+      // squared value lost below its 8 decimals); #20 had followed it, and
+      // this reverses #20. The value is computed in the mean's unit.
     } else if (mean is ValidatedQuantity) {
       final svc = UcumService();
       final meanUnit = mean.unit;
-      ValidatedQuantity? sumOfSquaredValues;
+      var sumOfSquaredDiffs = 0.0;
+      var count = 0;
       for (final val in sourceResult) {
         if (val is! ValidatedQuantity) continue;
         final converted = val.unit == meanUnit
@@ -149,29 +153,18 @@ class PopulationVariance extends AggregateExpression {
                 value: svc.convert(val.value, val.unit, meanUnit),
                 unit: meanUnit,
               );
-        final diffValue = converted - mean;
-        if (diffValue != null) {
-          final squaredDiff = diffValue * diffValue;
-          sumOfSquaredValues = sumOfSquaredValues == null
-              ? squaredDiff
-              : sumOfSquaredValues + squaredDiff;
+        final diff = converted - mean;
+        if (diff != null) {
+          final d = double.tryParse(diff.value.asUcumDecimal()) ?? 0.0;
+          sumOfSquaredDiffs += d * d;
+          count++;
         }
       }
-      if (sumOfSquaredValues != null) {
-        final sum =
-            UcumDecimal.fromString(sumOfSquaredValues.value.asUcumDecimal());
-        var varianceValue =
-            sum / UcumDecimal.fromNum(sourceResult.length); // N instead of N-1
-        // Truncate to 8 decimal places to match CQF reference precision
-        final truncated = double.tryParse(varianceValue.asUcumDecimal());
-        if (truncated != null) {
-          varianceValue = UcumDecimal.fromString(truncated.toStringAsFixed(8));
-        }
-        return ValidatedQuantity(
-          value: varianceValue,
-          unit: sumOfSquaredValues.unit,
-        );
-      }
+      final variance = sumOfSquaredDiffs / count;
+      return ValidatedQuantity(
+        value: UcumDecimal.fromString(_eightPlaces(variance)),
+        unit: meanUnit,
+      );
     }
 
     throw ArgumentError(
@@ -181,4 +174,12 @@ class PopulationVariance extends AggregateExpression {
 
   @override
   String toString() => 'PopulationVariance { source: $source }';
+}
+
+/// A double at the Decimal scale of 8 (09-b, Decimal), trailing zeros
+/// dropped but one decimal kept (`2.5`, `1.58113883`).
+String _eightPlaces(double value) {
+  final fixed = value.toStringAsFixed(8);
+  final trimmed = fixed.replaceFirst(RegExp(r'0+$'), '');
+  return trimmed.endsWith('.') ? '${trimmed}0' : trimmed;
 }

@@ -46,16 +46,13 @@ void main() {
       );
       final variance = Variance(source: list);
       final result = await variance.execute({});
-      // 09-b's example writes `2.5 'mg'`; the reference engine's conformance
-      // suite squares and canonicalizes the unit (`2.5 'm2'`, `0 'm6'`),
-      // and the engine follows the reference implementation (2026-10-06).
+      // 09-b's example: `2.5 'mg'`, the unit unchanged. The JavaScript and
+      // .NET reference engines keep the unit too; only the Java engine
+      // squares it (read 2026-10-07; see Variance's quantity branch).
       expect(
         result,
         equals(
-          ValidatedQuantity(
-            value: UcumDecimal.fromString('0.00000250'),
-            unit: 'g2',
-          ),
+          ValidatedQuantity(value: UcumDecimal.fromString('2.5'), unit: 'mg'),
         ),
       );
     });
