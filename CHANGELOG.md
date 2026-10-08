@@ -1,6 +1,13 @@
 # Changelog
 
-## [Unreleased]
+## [0.8.0]
+
+Breaking: every string operator answers a `CqlString` (not a Dart
+`String`); `Successor`/`Predecessor` at a type's bound answer null where
+they threw; Variance of quantities keeps the elements' unit. Where the CQL
+reference and the Java engine's suite disagree, this release follows the
+reference and the majority of the three reference engines (Java,
+JavaScript cql-execution, Firely .NET), each case cited in its test.
 
 - **Variance and PopulationVariance over quantities keep the elements' unit** (#31, reversing #20). CQL reference 09-b's example is `Variance({ 1.0 'mg', … 5.0 'mg' }) // 2.5 'mg'`; the JavaScript cql-execution engine (`finalizeAggregateResult`, first item's unit) and Firely's .NET SDK (`new CqlQuantity(varianceVal, stdDev.unit)`) do the same, read from their main branches 2026-10-07. Only the Java engine squares and canonicalizes the unit (its suite expects `0 'm6'` for millilitres, the squared value lost below 8 decimals); #20 had followed it against the spec. The value is computed in the mean's unit, at the Decimal scale of 8.
 - **`expand` over quantity intervals converts a `per` in another unit into the interval's unit** (#30). CQL reference 09-b, Expand: "For intervals of quantities, the semantics of quantity arithmetic and comparison apply, including unit conversion." Until now the per stayed in its own unit and the predecessor subtracted 1 of the interval's unit, so `expand { Interval[2 'g', 2.003 'g'] } per 1 'mg'` threw "Invalid Interval". The spec gives no precision rule for the converted per; the reference engine's answer comes from UCUM decimal arithmetic (1 'mg' in g is `0.0010`, four places; 1 'g' in mg is `1000`), so the sub-interval highs sit one unit of that precision below the next start: `Interval[2 'g', 2.0009 'g'], Interval[2.0010 'g', 2.0019 'g'], Interval[2.0020 'g', 2.0029 'g']`, as the cqf CqlTestSuite expects. A boundary already on the per's grid is kept as written (`2999 'mg'`, not `2999.0`). A per whose unit does not convert answers null.
