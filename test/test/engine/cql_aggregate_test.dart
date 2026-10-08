@@ -389,11 +389,9 @@ void main() {
     test(
         """define "QuantityVariance": Variance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // The unit is squared and canonicalized (mg → g), as the reference
-      // engine's conformance suite defines Variance over quantities
-      // (`Variance_q2 = 2.5 'm2'`, `0 'm6'` for ml); the CQL reference 09-b
-      // example writes `2.5 'mg'` and the engine follows the reference
-      // implementation (2026-10-06).
+      // 09-b's example: `2.5 'mg'`, the unit unchanged; the JavaScript and
+      // .NET reference engines agree, the Java engine alone squares it
+      // (read 2026-10-07; see Variance's quantity branch).
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -408,10 +406,7 @@ void main() {
       expect(
         result,
         equals(
-          ValidatedQuantity(
-            value: UcumDecimal.fromString('0.00000250'),
-            unit: 'g2',
-          ),
+          ValidatedQuantity(value: UcumDecimal.fromString('2.5'), unit: 'mg'),
         ),
       );
     });
@@ -457,8 +452,7 @@ void main() {
     test(
         """define "QuantityPopulationVariance": PopulationVariance({ 1.0 'mg', 2.0 'mg', 3.0 'mg', 4.0 'mg', 5.0 'mg' })""",
         () async {
-      // The unit is squared and canonicalized, as the reference engine's
-      // conformance suite defines it (see Variance above).
+      // The unit is unchanged (see Variance above): `2.0 'mg'`.
       final list = ListExpression(
         element: [
           LiteralQuantity(LiteralDecimal(1.0), unit: 'mg'),
@@ -472,10 +466,7 @@ void main() {
       expect(
         result,
         equals(
-          ValidatedQuantity(
-            value: UcumDecimal.fromString('0.00000200'),
-            unit: 'g2',
-          ),
+          ValidatedQuantity(value: UcumDecimal.fromString('2.0'), unit: 'mg'),
         ),
       );
     });

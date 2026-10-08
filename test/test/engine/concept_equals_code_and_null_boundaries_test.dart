@@ -38,8 +38,11 @@ define "N": @2018-01-01 in Interval[null, null]
     expect(r['D'], CqlBoolean(true));
     // Two untyped nulls make a null interval (IntervalExpression), and a
     // point in a null interval is false (09-b, Contains: "If the first
-    // argument is null, the result is false"). The reference engine's
-    // DateOrDateTimeInNullIntervalTest expects null here.
+    // argument is null, the result is false"; HL7's conformance suite,
+    // CqlIntervalOperatorsTest: `5 in Interval[null, null] // false`). The
+    // Java engine's DateOrDateTimeInNullIntervalTest and the JavaScript
+    // engine answer null here; Firely's .NET answers true (read
+    // 2026-10-07).
     expect(r['N'], CqlBoolean(false));
   });
 }
