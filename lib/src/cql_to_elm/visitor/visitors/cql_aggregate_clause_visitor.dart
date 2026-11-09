@@ -15,6 +15,10 @@ class CqlAggregateClauseVisitor extends CqlBaseVisitor<AggregateClause> {
     for (final child in ctx.children ?? <ParseTree>[]) {
       if (child is IdentifierContext) {
         identifier = visitIdentifier(child);
+        // The accumulator is in scope in the aggregate expression; the
+        // reference translator writes a use of it as QueryLetRef
+        // (CqlAggregateTest.json, "FactorialOfFive": `Result * Num`).
+        CqlBaseVisitor.addLetIdentifier(identifier);
       } else if (child is StartingClauseContext) {
         startingClause = visitStartingClause(child) as CqlExpression?;
       } else if (child is ExpressionContext) {

@@ -119,6 +119,111 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
   static String? defineResultType(CqlLibrary library, String name) =>
       _defineTypes[library]?[name];
 
+  /// Identifiers that [returnRef] could not resolve while a definition was
+  /// being visited, one list per definition being visited (innermost last).
+  /// A name declared later in the library is a forward reference and
+  /// resolves once the whole library is known, so the verdict waits for
+  /// [reportUnresolvedIdentifiers].
+  static final List<List<UnresolvedIdentifier>> _unresolvedScopes = [];
+
+  /// The unresolved candidates recorded for each finished definition.
+  static final Expando<List<UnresolvedIdentifier>> _unresolvedByDef =
+      Expando<List<UnresolvedIdentifier>>();
+
+  /// Depth of `sort by` items being visited. CQL Author's Guide, Sorting:
+  /// in a sort clause an identifier names an element of the query result,
+  /// so ELM IdentifierRef "has been resolved to an attribute in an
+  /// unambiguous iteration scope such as a sort" (ELM expression.xsd) and
+  /// is not an error. Measured against the reference translator
+  /// (cql-translation-service, 2026-11-09): `X sort by a` translates with
+  /// no error; `X where a = 2` and `X return a` do not.
+  static int _sortByDepth = 0;
+
+  D _collectingUnresolved<D extends ExpressionDef>(D Function() visit) {
+    _unresolvedScopes.add(<UnresolvedIdentifier>[]);
+    try {
+      final def = visit();
+      _unresolvedByDef[def] = _unresolvedScopes.last;
+      return def;
+    } finally {
+      _unresolvedScopes.removeLast();
+    }
+  }
+
+  /// Adds to [names] every unqualified IdentifierRef name in the ELM
+  /// [node], skipping `sort by` items, where an identifier names an element
+  /// of the result (see [_sortByDepth]).
+  static void _collectIdentifierRefNames(Object? node, Set<String> names) {
+    if (node is Map) {
+      if (node['type'] == 'ByExpression') return;
+      if (node['type'] == 'IdentifierRef' && node['libraryName'] == null) {
+        final name = node['name'];
+        if (name is String) names.add(name);
+      }
+      for (final value in node.values) {
+        _collectIdentifierRefNames(value, names);
+      }
+    } else if (node is List) {
+      for (final value in node) {
+        _collectIdentifierRefNames(value, names);
+      }
+    }
+  }
+
+  /// Reports every identifier no declaration of [library] resolves, the
+  /// way the reference translator does: an error annotation reading
+  /// "Could not resolve identifier `name` in the current library.", and
+  /// the definition that holds it translated as Null (its ELM output for
+  /// such a define is `{"type": "Null"}`). Until 2026-11-09 such a name
+  /// became an IdentifierRef with no error and evaluated to null at run
+  /// time, so a misspelled define silently changed a result (a weight-band
+  /// dose fell through to the wrong band in the orbweaver CPG probe).
+  ///
+  /// Names qualified by an include alias (`Lib."X"`) are not checked
+  /// here: the included library is loaded asynchronously at run time, so
+  /// its declarations are not known while translating.
+  static void reportUnresolvedIdentifiers(CqlLibrary library) {
+    final declared = <String>{
+      ...?library.statements?.def.map((d) => d.name).whereType<String>(),
+      ...?library.parameters?.def.map((d) => d.name).whereType<String>(),
+      ...?library.codes?.def.map((d) => d.name).whereType<String>(),
+      ...?library.codeSystems?.def.map((d) => d.name).whereType<String>(),
+      ...?library.valueSets?.def.map((d) => d.name).whereType<String>(),
+      ...?library.concepts?.def.map((d) => d.name).whereType<String>(),
+    };
+    for (final def in library.statements?.def ?? const <ExpressionDef>[]) {
+      final candidates = _unresolvedByDef[def];
+      if (candidates == null) continue;
+      // A name met while visiting can still be rewritten before the define
+      // is finished (a member name becomes a Property path, an aggregate
+      // accumulator a QueryLetRef), so only a name that is still an
+      // unqualified IdentifierRef in the finished ELM counts.
+      final remaining = <String>{};
+      _collectIdentifierRefNames(def.toJson(), remaining);
+      final unresolved = candidates
+          .where((c) => remaining.contains(c.name))
+          .where((c) => !declared.contains(c.name))
+          .toList();
+      if (unresolved.isEmpty) continue;
+      for (final c in unresolved) {
+        (library.annotation ??= <CqlToElmBase>[]).add(
+          CqlToElmError(
+            libraryId: library.identifier?.id,
+            startLine: c.startLine,
+            startChar: c.startChar,
+            endLine: c.endLine,
+            endChar: c.endChar,
+            message: 'Could not resolve identifier ${c.name} '
+                'in the current library.',
+            errorType: ErrorType.semantic,
+            errorSeverity: ErrorSeverity.error,
+          ),
+        );
+      }
+      def.expression = LiteralNull();
+    }
+  }
+
   /// Infers [expression]'s static result type against [model], resolving
   /// query aliases / let identifiers through the active scopes and define
   /// references through this library's recorded define types.
@@ -397,7 +502,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   ExpressionDef visitExpressionDefinition(ExpressionDefinitionContext ctx) =>
-      CqlExpressionDefinitionVisitor(library).visitExpressionDefinition(ctx);
+      _collectingUnresolved(
+        () => CqlExpressionDefinitionVisitor(library)
+            .visitExpressionDefinition(ctx),
+      );
 
   @override
   dynamic visitExternalConstant(ExternalConstantContext ctx) =>
@@ -417,7 +525,10 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   FunctionDef visitFunctionDefinition(FunctionDefinitionContext ctx) =>
-      CqlFunctionDefinitionVisitor(library).visitFunctionDefinition(ctx);
+      _collectingUnresolved(
+        () =>
+            CqlFunctionDefinitionVisitor(library).visitFunctionDefinition(ctx),
+      );
 
   @override
   dynamic visitFunctionIdentifier(FunctionIdentifierContext ctx) {
@@ -650,7 +761,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Ref visitMemberInvocation(MemberInvocationContext ctx) =>
-      returnRef(noQuoteString(ctx.text), null);
+      returnRef(noQuoteString(ctx.text), null, ctx);
 
   @override
   dynamic visitMembershipExpression(MembershipExpressionContext ctx) =>
@@ -809,7 +920,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
 
   @override
   Ref visitQualifiedMemberInvocation(QualifiedMemberInvocationContext ctx) =>
-      returnRef(noQuoteString(ctx.text), null);
+      returnRef(noQuoteString(ctx.text), null, ctx);
 
   @override
   String visitQualifier(QualifierContext ctx) =>
@@ -974,7 +1085,12 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
       if (child is SortDirectionContext) {
         direction = visitSortDirection(child);
       } else if (child is ExpressionTermContext) {
-        expression = byContext(child) as CqlExpression;
+        _sortByDepth++;
+        try {
+          expression = byContext(child) as CqlExpression;
+        } finally {
+          _sortByDepth--;
+        }
       }
     }
     return ByExpression(
@@ -2421,7 +2537,7 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     return result;
   }
 
-  Ref returnRef(String name, String? libraryName) {
+  Ref returnRef(String name, String? libraryName, [ParserRuleContext? ctx]) {
     // CQL Developer's Guide, Identifier Resolution: "query aliases, operand
     // names, and let aliases are allowed to be defined with the same name
     // as an existing identifier, effectively hiding the existing
@@ -2490,6 +2606,19 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
                 if (isLetIdentifier(name)) return QueryLetRef(name: name);
                 if (isQueryAlias(name)) {
                   return AliasRef(name: name);
+                }
+                if (libraryName == null &&
+                    _sortByDepth == 0 &&
+                    _unresolvedScopes.isNotEmpty) {
+                  _unresolvedScopes.last.add(
+                    UnresolvedIdentifier(
+                      name: name,
+                      startLine: ctx?.start?.line,
+                      startChar: ctx?.start?.charPositionInLine,
+                      endLine: ctx?.stop?.line,
+                      endChar: ctx?.stop?.charPositionInLine,
+                    ),
+                  );
                 }
                 return IdentifierRef(name: name, libraryName: libraryName);
               }
@@ -3007,4 +3136,22 @@ class CqlBaseVisitor<T> extends ParseTreeVisitor<T> implements CqlVisitor<T> {
     // Fallback: let execution handle type checking and null propagation
     return Modulo(operand: [left, right]);
   }
+}
+
+/// An identifier [CqlBaseVisitor.returnRef] could not resolve when it was
+/// met, with where it sits in the source.
+class UnresolvedIdentifier {
+  UnresolvedIdentifier({
+    required this.name,
+    this.startLine,
+    this.startChar,
+    this.endLine,
+    this.endChar,
+  });
+
+  final String name;
+  final int? startLine;
+  final int? startChar;
+  final int? endLine;
+  final int? endChar;
 }
