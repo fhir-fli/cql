@@ -41,8 +41,10 @@ void main() {
   // of the first difference (measured 2026-10-07). Sixteen of the 17 are
   // exact. Left: the Time deviation.
   const notYetEqual = <String, String>{
+    // 2026-11-09: the accumulator is now a QueryLetRef as in the reference;
+    // the first difference moved to the clause's own type tag.
     'CqlAggregateTest':
-        '/statements/def/1/expression/element/0/value/element/0/value/aggregate/expression/operand/0/type',
+        '/statements/def/1/expression/element/0/value/element/0/value/aggregate/type',
     'CqlConditionalOperatorsTest':
         '/statements/def/2/expression/element/0/value/element/0/value/else/type',
     'CqlIntervalOperatorsTest':

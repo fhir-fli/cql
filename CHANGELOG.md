@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **An identifier nothing declares is a translation error, and its define is Null.** The reference translator reports "Could not resolve identifier X in the current library." and writes the define as `Null`; this translator wrote an `IdentifierRef` with no error, which evaluated to null at run time. A misspelled define in a `case` therefore silently chose the wrong branch (orbweaver CPG probe, 2026-11-09: a 3 kg neonate got two suppositories instead of one). Now both match the reference, measured on the same sources against cqframework/cql-translation-service: an unknown name, and an implicit element name in `where` or `return`, are errors; a forward reference and `sort by a` are not. Over the 32 CQL files in this package's tests and 104 CQL files in fhir_r4/r5/r6_cql and cicada, the only new error is `Common` in cqf-engine's MeasureA.cql, which has no include for it and which the reference reports identically. Names qualified by an include alias are not yet checked: the included library is loaded asynchronously at run time.
+- **An aggregate accumulator is a `QueryLetRef`**, as the reference translator writes it (`({ 1, 2, 3 }) N aggregate R starting 1: R * N`); it was an `IdentifierRef`.
+
 ## [0.8.0]
 
 Breaking: every string operator answers a `CqlString` (not a Dart

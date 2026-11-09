@@ -24,6 +24,7 @@ CqlLibrary libraryFromCql(String source, {LibraryManager? libraryManager}) {
   // (CqlBaseVisitor.byContext) instead of crashing on a cast.
   final library = CqlLibrary()..annotation = [...errorListener.errors];
   CqlBaseVisitor<dynamic>(library).visit(tree);
+  CqlBaseVisitor.reportUnresolvedIdentifiers(library);
   _attachCommentTags(tree, tokens, library);
 
   // Stamp every error with the library's identity, now that it is known.

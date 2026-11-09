@@ -70,7 +70,7 @@ class CqlQualifiedIdentifierExpressionVisitor
           );
         }
       }
-      return returnRef(name, libraryName);
+      return returnRef(name, libraryName, ctx);
     }
     throw ArgumentError('$thisNode Invalid QualifiedIdentifierExpression');
   }
